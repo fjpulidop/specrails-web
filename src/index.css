@@ -1,105 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 231 15% 18%;
+    --background-darker: 234 16% 14%;
+    --foreground: 60 30% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 232 14% 31%;
+    --card-foreground: 60 30% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 231 15% 18%;
+    --popover-foreground: 60 30% 96%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 265 89% 78%;
+    --primary-foreground: 231 15% 18%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 326 100% 74%;
+    --secondary-foreground: 231 15% 18%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 232 14% 31%;
+    --muted-foreground: 225 27% 51%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 191 97% 77%;
+    --accent-foreground: 231 15% 18%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 100% 67%;
+    --destructive-foreground: 60 30% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 225 27% 51%;
+    --input: 232 14% 31%;
+    --ring: 265 89% 78%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Dracula semantic tokens */
+    --dracula-bg: 231 15% 18%;
+    --dracula-darker: 234 16% 14%;
+    --dracula-current: 232 14% 31%;
+    --dracula-fg: 60 30% 96%;
+    --dracula-comment: 225 27% 51%;
+    --dracula-cyan: 191 97% 77%;
+    --dracula-green: 135 94% 65%;
+    --dracula-orange: 31 100% 71%;
+    --dracula-pink: 326 100% 74%;
+    --dracula-purple: 265 89% 78%;
+    --dracula-red: 0 100% 67%;
+    --dracula-yellow: 65 92% 76%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --gradient-primary: linear-gradient(135deg, hsl(265 89% 78%), hsl(326 100% 74%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(265 89% 72%), hsl(326 100% 68%));
 
-    --sidebar-primary: 240 5.9% 10%;
+    --glass-bg: 232 14% 31% / 0.3;
+    --glass-border: 225 27% 51% / 0.3;
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 231 15% 18%;
+    --sidebar-foreground: 60 30% 96%;
+    --sidebar-primary: 265 89% 78%;
+    --sidebar-primary-foreground: 231 15% 18%;
+    --sidebar-accent: 232 14% 31%;
+    --sidebar-accent-foreground: 60 30% 96%;
+    --sidebar-border: 225 27% 51%;
+    --sidebar-ring: 265 89% 78%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border/30;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border));
+    @apply rounded-xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--dracula-comment) / 0.6);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-btn {
+    background: var(--gradient-primary);
+    @apply text-background font-semibold transition-all duration-300;
+  }
+
+  .gradient-btn:hover {
+    background: var(--gradient-primary-hover);
+    box-shadow: 0 0 30px hsl(var(--dracula-purple) / 0.3);
+  }
+
+  .glow-purple { box-shadow: 0 0 20px hsl(var(--dracula-purple) / 0.2); }
+  .glow-cyan { box-shadow: 0 0 20px hsl(var(--dracula-cyan) / 0.2); }
+  .glow-green { box-shadow: 0 0 20px hsl(var(--dracula-green) / 0.2); }
+  .glow-pink { box-shadow: 0 0 20px hsl(var(--dracula-pink) / 0.2); }
+  .glow-orange { box-shadow: 0 0 20px hsl(var(--dracula-orange) / 0.2); }
+  .glow-red { box-shadow: 0 0 20px hsl(var(--dracula-red) / 0.2); }
+  .glow-yellow { box-shadow: 0 0 20px hsl(var(--dracula-yellow) / 0.2); }
+
+  .section-darker {
+    background-color: hsl(var(--dracula-darker));
+  }
+
+  .section-current {
+    background-color: hsl(var(--dracula-current) / 0.3);
+  }
+
+  .terminal {
+    background-color: hsl(var(--dracula-darker));
+    border: 1px solid hsl(var(--glass-border));
+    @apply rounded-xl font-mono;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-dracula-fg { color: hsl(var(--dracula-fg)); }
+  .text-dracula-comment { color: hsl(var(--dracula-comment)); }
+  .text-dracula-cyan { color: hsl(var(--dracula-cyan)); }
+  .text-dracula-green { color: hsl(var(--dracula-green)); }
+  .text-dracula-orange { color: hsl(var(--dracula-orange)); }
+  .text-dracula-pink { color: hsl(var(--dracula-pink)); }
+  .text-dracula-purple { color: hsl(var(--dracula-purple)); }
+  .text-dracula-red { color: hsl(var(--dracula-red)); }
+  .text-dracula-yellow { color: hsl(var(--dracula-yellow)); }
+  .bg-dracula-darker { background-color: hsl(var(--dracula-darker)); }
+  .bg-dracula-current { background-color: hsl(var(--dracula-current)); }
+  .border-dracula-comment { border-color: hsl(var(--dracula-comment) / 0.3); }
+  .border-dracula-cyan { border-color: hsl(var(--dracula-cyan)); }
+  .border-dracula-purple { border-color: hsl(var(--dracula-purple)); }
+  .border-dracula-pink { border-color: hsl(var(--dracula-pink)); }
+  .border-dracula-green { border-color: hsl(var(--dracula-green)); }
+  .border-dracula-orange { border-color: hsl(var(--dracula-orange)); }
+  .border-dracula-red { border-color: hsl(var(--dracula-red)); }
+  .border-dracula-yellow { border-color: hsl(var(--dracula-yellow)); }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: hsl(var(--dracula-green)); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.25; }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+  .delay-700 { animation-delay: 700ms; }
 }
