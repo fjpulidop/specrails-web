@@ -6,7 +6,7 @@ import {
 const features = [
   { title: "Value Proposition Canvas", desc: "Integrated VPC framework. Evaluates features by mapping Products & Services, Pain Relievers, and Gain Creators against Customer Jobs, Pains, and Gains. Scoring 0-5 per persona.", icon: BarChart3, accent: "text-dracula-purple", hoverGlow: "hover:glow-purple" },
   { title: "Parallel Execution", desc: "Multiple features are implemented simultaneously in isolated git worktrees. Conflict-aware merge with intelligent resolution.", icon: GitBranch, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
-  { title: "Dry-Run Mode", desc: "Preview all changes before touching the real repo. The --dry-run flag generates artifacts in a sandbox, --apply materializes them.", icon: Eye, accent: "text-dracula-cyan", hoverGlow: "hover:glow-cyan" },
+  { title: "Spec-Driven Development", desc: "Each agent is specialized in one part of the software development process using SDD with OpenSpec.", icon: Eye, accent: "text-dracula-cyan", hoverGlow: "hover:glow-cyan" },
   { title: "Institutional Memory", desc: "Each agent maintains persistent memory. Learned patterns, architectural decisions, and recurring fixes accumulate across sessions.", icon: Brain, accent: "text-dracula-pink", hoverGlow: "hover:glow-pink" },
   { title: "Security Gate", desc: "The Security Reviewer scans credentials (11 patterns) and OWASP vulnerabilities before every deploy. BLOCKED status prevents shipping.", icon: ShieldCheck, accent: "text-dracula-red", hoverGlow: "hover:glow-red" },
   { title: "Multi-Stack", desc: "Python, Node, Go, Rust, Java, Ruby, .NET, React, Vue, Angular, Svelte, Next.js, PostgreSQL, MongoDB, Redis, and more.", icon: Layers, accent: "text-dracula-orange", hoverGlow: "hover:glow-orange" },
