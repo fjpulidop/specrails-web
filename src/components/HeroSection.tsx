@@ -1,16 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Github, Download } from "lucide-react";
+import { Download } from "lucide-react";
 
 const terminalLines = [
-  { text: "$ ./specrails/install.sh", color: "text-dracula-green", delay: 0 },
-  { text: "🔍 Analyzing project structure...", color: "text-dracula-cyan", delay: 800 },
-  { text: "📦 Installing agent templates...", color: "text-foreground", delay: 1600 },
-  { text: "✅ Product Manager agent ready", color: "text-dracula-purple", delay: 2200 },
-  { text: "✅ Architect agent ready", color: "text-dracula-orange", delay: 2600 },
-  { text: "✅ Developer agents ready", color: "text-dracula-green", delay: 3000 },
-  { text: "✅ Security Reviewer ready", color: "text-dracula-red", delay: 3400 },
-  { text: "🚀 specrails installed successfully!", color: "text-dracula-pink", delay: 4000 },
+  { text: "$ ./specrails/install.sh --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
+  { text: "$ cd <your-project>", color: "text-dracula-green", delay: 600 },
+  { text: "$ claude", color: "text-dracula-green", delay: 1200 },
+  { text: "> /setup", color: "text-dracula-purple", delay: 1800 },
+  { text: "🔍 Analyzing project structure...", color: "text-dracula-cyan", delay: 2400 },
+  { text: "📦 Installing agent templates...", color: "text-foreground", delay: 3200 },
+  { text: "✅ Product Manager agent ready", color: "text-dracula-purple", delay: 3800 },
+  { text: "✅ Architect agent ready", color: "text-dracula-orange", delay: 4200 },
+  { text: "✅ Developer agents ready", color: "text-dracula-green", delay: 4600 },
+  { text: "✅ Security Reviewer ready", color: "text-dracula-red", delay: 5000 },
+  { text: "🚀 specrails installed successfully!", color: "text-dracula-pink", delay: 5600 },
 ];
 
 const ParticleBackground = () => {
@@ -122,12 +125,6 @@ const HeroSection = () => {
             <Button variant="gradient" size="lg" className="text-base px-8 py-6">
               <Download className="w-5 h-5 mr-2" />
               Install specrails
-            </Button>
-          </a>
-          <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer">
-            <Button variant="cyan" size="lg" className="text-base px-8 py-6">
-              <Github className="w-5 h-5 mr-2" />
-              View on GitHub
             </Button>
           </a>
         </div>

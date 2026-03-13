@@ -141,6 +141,20 @@
   .terminal-dot {
     @apply w-3 h-3 rounded-full;
   }
+
+  .terminal ::-webkit-scrollbar {
+    width: 6px;
+  }
+  .terminal ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .terminal ::-webkit-scrollbar-thumb {
+    background: hsl(var(--dracula-comment) / 0.4);
+    border-radius: 3px;
+  }
+  .terminal ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--dracula-comment) / 0.6);
+  }
 }
 
 @layer utilities {
