@@ -272,7 +272,7 @@ const DemoSection = () => {
             <div className="terminal-dot bg-dracula-yellow" />
             <div className="terminal-dot bg-dracula-green" />
             <span className="text-xs text-muted-foreground ml-2">
-              specrails \u2014 /sr:implement
+              specrails — /sr:implement
             </span>
           </div>
 
