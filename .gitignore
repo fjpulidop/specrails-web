@@ -25,3 +25,7 @@ dist-ssr
 
 # specrails installer (one-time setup tool, not part of the project)
 specrails/
+
+# Ephemeral cache files
+.claude/backlog-cache.json
+.claude/health-history/
