@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# specrails installer (one-time setup tool, not part of the project)
+specrails/
