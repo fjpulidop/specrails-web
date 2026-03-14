@@ -1,5 +1,6 @@
 import {
   Briefcase, Search, Cpu, Code, Server, Monitor, TestTubes, CheckCircle, Shield,
+  LayoutDashboard, ServerCog,
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -11,7 +12,9 @@ const agents = [
   { name: "Backend Developer", model: "Sonnet", desc: "Server-side specialist for parallel frontend/backend pipelines", icon: Server, color: "text-dracula-yellow", border: "border-dracula-yellow", glow: "glow-yellow" },
   { name: "Frontend Developer", model: "Sonnet", desc: "UI/UX specialist with pixel-perfect precision", icon: Monitor, color: "text-dracula-pink", border: "border-dracula-pink", glow: "glow-pink" },
   { name: "Test Writer", model: "Sonnet", desc: "Generates test suites with >80% coverage. Auto-detects frameworks", icon: TestTubes, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
-  { name: "Reviewer", model: "Sonnet", desc: "Final quality checkpoint. Runs CI, autonomously fixes issues (up to 3 attempts)", icon: CheckCircle, color: "text-dracula-orange", border: "border-dracula-orange", glow: "glow-orange" },
+  { name: "Reviewer", model: "Sonnet", desc: "Final quality checkpoint. Outputs confidence scores across 5 aspects, runs CI, and blocks shipping below threshold", icon: CheckCircle, color: "text-dracula-orange", border: "border-dracula-orange", glow: "glow-orange" },
+  { name: "Frontend Reviewer", model: "Sonnet", desc: "Layer-specific expert for UI code. Reviews accessibility, component patterns, and rendering performance in parallel", icon: LayoutDashboard, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
+  { name: "Backend Reviewer", model: "Sonnet", desc: "Layer-specific expert for server code. Reviews API contracts, data integrity, and security posture in parallel", icon: ServerCog, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
   { name: "Security Reviewer", model: "Opus", desc: "Security auditor. Scans 11 credential patterns and OWASP vulnerabilities. Can BLOCK deployment", icon: Shield, color: "text-dracula-red", border: "border-dracula-red", glow: "glow-red" },
 ];
 
@@ -40,7 +43,7 @@ const AgentsSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          9 specialized agents working in concert, each with a distinct role and
+          11 specialized agents working in concert, each with a distinct role and
           the right model for the job.
         </p>
 

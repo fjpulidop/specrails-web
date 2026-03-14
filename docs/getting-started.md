@@ -4,7 +4,7 @@ Get SpecRails running in your project in under 5 minutes.
 
 ## What is SpecRails?
 
-SpecRails installs a **product-driven development workflow** into any repository. It gives Claude Code a team of specialized AI agents — an architect, developers, a reviewer, a product manager — that work together to go from idea to shipped PR automatically.
+SpecRails installs a **product-driven development workflow** into any repository. It gives Claude Code a team of **12 specialized AI agents** — an architect, developers, layer reviewers, a reviewer, a product manager — that work together to go from idea to shipped PR automatically.
 
 Think of it as hiring a full engineering team that lives inside your CLI.
 
@@ -76,6 +76,14 @@ SpecRails will:
 7. Creates a **Pull Request** ready for human review
 
 That's it. One command, full pipeline.
+
+## Useful commands for newcomers
+
+Once you have a feature running, a few commands help you understand what's happening and why:
+
+- `/why "question"` — search agent explanation records in plain language. Ask why a design decision was made, why a library was chosen, or why a particular pattern is used. Agents record their reasoning as they work.
+- `/product-backlog` — see your prioritized backlog with safe implementation ordering. Good first stop before picking what to build next.
+- `/compat-check #N` — check whether an issue's implementation would break existing API consumers before you commit to it.
 
 ## What's next?
 

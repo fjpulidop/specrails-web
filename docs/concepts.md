@@ -113,6 +113,64 @@ Each agent maintains a **persistent memory** at `.claude/agent-memory/<agent>/ME
 
 Memory is automatic — agents write observations as they work and read them in future sessions.
 
+In addition to per-agent memory, two shared directories accumulate institutional knowledge over time:
+
+```
+.claude/agent-memory/
+├── failures/       # Structured failure records (see Failure Learning Loop)
+└── explanations/   # Decision rationale records (see Explanation Recording)
+```
+
+## Confidence Scoring
+
+After every review cycle, the Reviewer outputs a **confidence score** (0–100%) across five quality aspects:
+
+| Aspect | What it measures |
+|--------|-----------------|
+| Correctness | Does the implementation match the spec? |
+| Test Coverage | Are edge cases and failure modes covered? |
+| Security | No secrets, injections, or OWASP vulnerabilities? |
+| Performance | No obvious bottlenecks introduced? |
+| Maintainability | Is the code readable, consistent, and well-structured? |
+
+The pipeline behavior at Phase 4b-conf is controlled by `.claude/confidence-config.json`. Scores below the configured threshold can warn, block, or require an explicit override. See [Confidence thresholds](customization.md#confidence-thresholds).
+
+## Failure Learning Loop
+
+When the Reviewer finds a non-trivial issue during Phase 4b, it writes a structured failure record to `.claude/agent-memory/failures/`. Each record captures:
+
+```json
+{
+  "error_type": "missing-index",
+  "root_cause": "Foreign key column added without a corresponding index",
+  "prevention_rule": "Always create an index for every new foreign key column"
+}
+```
+
+Before starting implementation, the Developer reads matching failure records as **guardrails** — so the same class of mistake is not repeated. Over time this creates an institutional memory of what has gone wrong and how to avoid it.
+
+## Explanation Recording
+
+The Architect, Developer, and Reviewer record **decision rationale** in `.claude/agent-memory/explanations/` as they work. These records capture the "why" behind implementation choices — which library was chosen and why, which trade-off was accepted, which alternative was rejected.
+
+Use `/why` to search this memory in plain language:
+
+```
+/why "why did we switch to event sourcing"
+```
+
+This gives you an audit trail from product decision to implementation choice, without digging through git history or asking the original author.
+
+## Dependency-Aware Ordering
+
+When `/product-backlog` is run, the Product Analyst parses `Prerequisites:` fields from GitHub Issue bodies and builds a **dependency DAG** (directed acyclic graph). It then:
+
+1. Detects cycles and reports them as errors (circular dependencies block ordering)
+2. Computes a safe implementation order via topological sort
+3. Presents the top 3 Wave 1 issues — features with no unimplemented prerequisites
+
+This prevents shipping features that depend on other features not yet built, and makes sprint planning safe by default.
+
 ## What's next?
 
 Now that you understand the concepts, meet the agents:

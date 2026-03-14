@@ -177,6 +177,67 @@ Create a new persona file following the template structure. Include:
 
 ---
 
+## Confidence thresholds
+
+The confidence gate at Phase 4b-conf is controlled by `.claude/confidence-config.json`:
+
+```json
+{
+  "thresholds": {
+    "overall": 80,
+    "correctness": 85,
+    "test_coverage": 75,
+    "security": 90,
+    "performance": 70,
+    "maintainability": 75
+  },
+  "on_failure": "block"
+}
+```
+
+| `on_failure` value | Behavior |
+|--------------------|---------|
+| `"block"` | Pipeline stops; fix required before PR creation |
+| `"warn"` | Pipeline continues; warning added to PR description |
+| `"override"` | Always continue regardless of score |
+
+Adjust thresholds per aspect to match your team's quality bar. Set `"on_failure": "warn"` during initial rollout if you want visibility without blocking.
+
+---
+
+## Layer reviewers
+
+The Frontend Reviewer and Backend Reviewer agents live in `.claude/agents/`:
+
+- `.claude/agents/frontend-reviewer.md`
+- `.claude/agents/backend-reviewer.md`
+
+Customize them the same way as any other agent — add domain-specific checks, change what's flagged as a finding, or adjust severity thresholds.
+
+Example — adding a project-specific frontend rule:
+
+```markdown
+## Additional Checks
+- Flag any component that fetches data directly (use React Query hooks instead)
+- Warn on inline styles with more than 3 properties (extract to CSS module)
+```
+
+Both agents run in parallel during Phase 4b and feed their findings into the generalist Reviewer's final report.
+
+---
+
+## Backwards compatibility baseline
+
+Use `/compat-check --save` to snapshot your current API surface as a baseline:
+
+```
+/compat-check --save
+```
+
+This writes the current API surface to `.claude/compat-baseline.json`. Future runs of `/compat-check` and the Architect's Phase 6 auto-check compare against this baseline to detect breaking changes. Re-run `--save` after any intentional breaking release to advance the baseline.
+
+---
+
 ## Security exemptions
 
 The Security Reviewer can produce false positives. Suppress known safe patterns in `.claude/security-exemptions.yaml`:

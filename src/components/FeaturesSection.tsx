@@ -1,6 +1,7 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
-  BarChart3, GitBranch, Eye, Brain, ShieldCheck, Layers, Ticket, Wand2,
+  BarChart3, GitBranch, Eye, Brain, ShieldCheck, Layers, Wand2,
+  Gauge, AlertTriangle, Users, ListOrdered,
 } from "lucide-react";
 
 const features = [
@@ -10,8 +11,11 @@ const features = [
   { title: "Institutional Memory", desc: "Each agent maintains persistent memory. Learned patterns, architectural decisions, and recurring fixes accumulate across sessions.", icon: Brain, accent: "text-dracula-pink", hoverGlow: "hover:glow-pink" },
   { title: "Security Gate", desc: "The Security Reviewer scans credentials (11 patterns) and OWASP vulnerabilities before every deploy. BLOCKED status prevents shipping.", icon: ShieldCheck, accent: "text-dracula-red", hoverGlow: "hover:glow-red" },
   { title: "Multi-Stack", desc: "Python, Node, Go, Rust, Java, Ruby, .NET, React, Vue, Angular, Svelte, Next.js, PostgreSQL, MongoDB, Redis, and more.", icon: Layers, accent: "text-dracula-orange", hoverGlow: "hover:glow-orange" },
-  { title: "Backlog Integration", desc: "Syncs with GitHub Issues (labels, auto-close via PR) and JIRA (epics, stories, custom fields) automatically.", icon: Ticket, accent: "text-dracula-yellow", hoverGlow: "hover:glow-yellow" },
   { title: "Smart Setup", desc: "Analyzes your real codebase (imports, patterns, conventions, CI) instead of applying generic templates. Self-cleans after installation.", icon: Wand2, accent: "text-dracula-purple", hoverGlow: "hover:glow-purple" },
+  { title: "Confidence Scoring", desc: "Reviewer agents self-assess output quality across 5 aspects (correctness, security, tests, docs, performance). A configurable gate blocks shipping below threshold.", icon: Gauge, accent: "text-dracula-yellow", hoverGlow: "hover:glow-yellow" },
+  { title: "Failure Learning Loop", desc: "When the reviewer flags a failure, a post-mortem record is written to memory. Future developer agents load these records as guardrails, preventing repeated mistakes.", icon: AlertTriangle, accent: "text-dracula-orange", hoverGlow: "hover:glow-orange" },
+  { title: "Layer-Specific Reviews", desc: "Dedicated frontend and backend reviewer agents run in parallel, applying domain expertise to UI patterns and API contracts independently.", icon: Users, accent: "text-dracula-cyan", hoverGlow: "hover:glow-cyan" },
+  { title: "Dependency-Aware Ordering", desc: "/product-backlog parses Prerequisites fields, builds a dependency DAG, and topological-sorts features so the safest implementation order is always chosen.", icon: ListOrdered, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
 ];
 
 const FeaturesSection = () => {
