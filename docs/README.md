@@ -15,7 +15,7 @@ Welcome to the SpecRails docs. This guide will take you from zero to a fully aut
 |-------|----------------|
 | [Installation & Setup](installation.md) | Detailed setup, prerequisites, the `/setup` wizard |
 | [Agents](agents.md) | Every agent explained — role, when it runs, why it exists |
-| [Workflows & Commands](workflows.md) | How to use `/implement`, `/product-backlog`, and more |
+| [Workflows & Commands](workflows.md) | How to use `/sr:implement`, `/sr:product-backlog`, and more |
 | [Customization](customization.md) | Adapt agents, rules, personas, and conventions to your project |
 | [Updating](updating.md) | Keep SpecRails up to date without losing your customizations |
 

@@ -1,7 +1,7 @@
 import { Github, BookOpen, Bug } from "lucide-react";
 
 const FooterSection = () => (
-  <footer className="py-16 px-6 section-darker border-t border-border/10">
+  <footer id="footer" className="py-16 px-6 section-darker border-t border-border/10">
     <div className="container mx-auto max-w-4xl text-center">
       <div className="font-mono text-2xl font-bold mb-6">
         <span className="text-dracula-purple">spec</span>

@@ -17,7 +17,7 @@ export interface DocEntry {
 export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "",
-    title: "Documentation",
+    title: "Welcome",
     description: "Overview and reading guide",
     content: readmeRaw,
   },
@@ -48,7 +48,7 @@ export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "workflows",
     title: "Workflows & Commands",
-    description: "How to use /implement, /product-backlog, and more",
+    description: "How to use /sr:implement, /sr:product-backlog, and more",
     content: workflowsRaw,
   },
   {

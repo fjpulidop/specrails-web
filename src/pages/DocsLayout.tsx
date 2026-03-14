@@ -5,6 +5,7 @@ import { DocsSidebar } from "@/components/DocsSidebar";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import SectionNav from "@/components/SectionNav";
 
 export default function DocsLayout(): JSX.Element {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function DocsLayout(): JSX.Element {
           <Outlet />
         </main>
       </div>
+      <SectionNav autoDetect=".docs-prose h2[id]" scrollThreshold={50} />
     </div>
   );
 }

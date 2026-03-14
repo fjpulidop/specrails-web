@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import rehypeSlug from "rehype-slug";
 import { Link } from "react-router-dom";
 import type { Components } from "react-markdown";
 
@@ -46,7 +47,7 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps): JSX.Elemen
     <div className="docs-prose">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeHighlight]}
+        rehypePlugins={[rehypeSlug, rehypeHighlight]}
         components={customComponents}
         urlTransform={transformUrl}
       >

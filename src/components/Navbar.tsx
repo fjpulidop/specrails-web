@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Github } from "lucide-react";
 import { DocsDropdown } from "@/components/DocsDropdown";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
+  const isDocsPage = pathname.startsWith("/docs");
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -29,18 +31,20 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" className="font-mono text-xl font-bold">
+      <div className="container mx-auto px-6 h-16 flex items-center justify-center md:justify-between relative">
+        <a href="/" data-logo="nav" className="font-mono text-[1.8rem] font-bold">
           <span className="text-dracula-purple">spec</span>
           <span className="text-dracula-pink">rails</span>
         </a>
-        <div className="flex md:hidden items-center gap-4">
-          <Link
-            to="/docs"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Docs
-          </Link>
+        <div className="flex md:hidden items-center gap-4 absolute right-6">
+          {!isDocsPage && (
+            <Link
+              to="/docs"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Docs
+            </Link>
+          )}
           <a
             href="https://github.com/fjpulidop/specrails"
             target="_blank"

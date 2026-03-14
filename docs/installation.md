@@ -129,20 +129,21 @@ The wizard fills all templates with your project-specific context:
 ```
 .claude/
 ├── agents/
-│   ├── architect.md          # Adapted to your stack
-│   ├── developer.md          # Knows your CI commands
-│   ├── reviewer.md           # Runs your specific checks
-│   ├── product-manager.md    # Knows your domain
-│   ├── product-analyst.md    # Reads your backlog
-│   ├── test-writer.md        # Uses your test framework
-│   ├── security-reviewer.md  # Scans your patterns
-│   ├── doc-sync.md           # Updates your doc format
-│   └── [personas].md         # Your user personas
+│   ├── sr-architect.md          # Adapted to your stack
+│   ├── sr-developer.md          # Knows your CI commands
+│   ├── sr-reviewer.md           # Runs your specific checks
+│   ├── sr-product-manager.md    # Knows your domain
+│   ├── sr-product-analyst.md    # Reads your backlog
+│   ├── sr-test-writer.md        # Uses your test framework
+│   ├── sr-security-reviewer.md  # Scans your patterns
+│   ├── sr-doc-sync.md           # Updates your doc format
+│   └── [personas].md            # Your user personas
 ├── commands/
-│   ├── implement.md
-│   ├── product-backlog.md
-│   ├── batch-implement.md
-│   └── ...
+│   └── sr/
+│       ├── implement.md
+│       ├── product-backlog.md
+│       ├── batch-implement.md
+│       └── ...
 ├── rules/
 │   ├── backend.md
 │   ├── frontend.md

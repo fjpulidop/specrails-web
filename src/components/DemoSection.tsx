@@ -28,10 +28,10 @@ function buildLines(): TermLine[] {
     add(text, color, TABLE_LINE_PAUSE);
 
   // Command
-  add("$ /implement #7, #11, #9", "text-dracula-green", 600);
+  add("$ /sr:implement #7, #11, #9", "text-dracula-green", 600);
   add("", "text-dracula-fg", 200);
   add(
-    "Implementation Pipeline \u2014 architect \u2192 developer \u2192 reviewer across 3 features in parallel.",
+    "Implementation Pipeline \u2014 sr-architect \u2192 sr-developer \u2192 sr-reviewer across 3 features in parallel.",
     "text-dracula-purple",
     SECTION_PAUSE
   );
@@ -62,14 +62,14 @@ function buildLines(): TermLine[] {
 
   // Phase 3a
   section("\u2500\u2500 Phase 3a: Architect (parallel)", "text-dracula-cyan");
-  add("Launching 3 architect agents in parallel to create OpenSpec artifacts.", "text-dracula-fg");
+  add("Launching 3 sr-architect agents in parallel to create OpenSpec artifacts.", "text-dracula-fg");
   add("", "text-dracula-fg", TABLE_LINE_PAUSE);
   tbl("\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
-  tbl("\u2502 Agent       \u2502 Feature                          \u2502 Target Directory                            \u2502");
+  tbl("\u2502 Agent          \u2502 Feature                          \u2502 Target Directory                            \u2502");
   tbl("\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524");
-  tbl("\u2502 architect   \u2502 #7 Auto-Doc Sync Agent           \u2502 openspec/changes/auto-doc-sync-agent/        \u2502", "text-dracula-purple");
-  tbl("\u2502 architect   \u2502 #11 Refactor Priority Recommender\u2502 openspec/changes/refactor-recommender/       \u2502", "text-dracula-orange");
-  tbl("\u2502 architect   \u2502 #9 Health Check Dashboard        \u2502 openspec/changes/health-check-dashboard/     \u2502", "text-dracula-pink");
+  tbl("\u2502 sr-architect   \u2502 #7 Auto-Doc Sync Agent           \u2502 openspec/changes/auto-doc-sync-agent/        \u2502", "text-dracula-purple");
+  tbl("\u2502 sr-architect   \u2502 #11 Refactor Priority Recommender\u2502 openspec/changes/refactor-recommender/       \u2502", "text-dracula-orange");
+  tbl("\u2502 sr-architect   \u2502 #9 Health Check Dashboard        \u2502 openspec/changes/health-check-dashboard/     \u2502", "text-dracula-pink");
   tbl("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
 
   // Agent completions
@@ -112,32 +112,32 @@ function buildLines(): TermLine[] {
 
   // Phase 3b
   section("\u2500\u2500 Phase 3b: Implement (parallel, worktrees)", "text-dracula-cyan");
-  add("Launching 3 developer agents in isolated worktrees.", "text-dracula-fg");
+  add("Launching 3 sr-developer agents in isolated worktrees.", "text-dracula-fg");
   add("", "text-dracula-fg", TABLE_LINE_PAUSE);
   tbl("\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
-  tbl("\u2502 Agent       \u2502 Feature                          \u2502 Isolation            \u2502 Mode       \u2502");
+  tbl("\u2502 Agent          \u2502 Feature                          \u2502 Isolation            \u2502 Mode       \u2502");
   tbl("\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524");
-  tbl("\u2502 developer   \u2502 #7 Auto-Doc Sync Agent           \u2502 worktree agent-ac47  \u2502 background \u2502", "text-dracula-purple");
-  tbl("\u2502 developer   \u2502 #11 Refactor Priority Recommender\u2502 worktree agent-af8a  \u2502 background \u2502", "text-dracula-orange");
-  tbl("\u2502 developer   \u2502 #9 Health Check Dashboard        \u2502 worktree agent-a0b3  \u2502 background \u2502", "text-dracula-pink");
+  tbl("\u2502 sr-developer   \u2502 #7 Auto-Doc Sync Agent           \u2502 worktree agent-ac47  \u2502 background \u2502", "text-dracula-purple");
+  tbl("\u2502 sr-developer   \u2502 #11 Refactor Priority Recommender\u2502 worktree agent-af8a  \u2502 background \u2502", "text-dracula-orange");
+  tbl("\u2502 sr-developer   \u2502 #9 Health Check Dashboard        \u2502 worktree agent-a0b3  \u2502 background \u2502", "text-dracula-pink");
   tbl("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
 
   // Implementation completions
   add("", "text-dracula-fg", SECTION_PAUSE);
   add("\u2713 #11 Refactor Priority Recommender \u2014 completed (61s)", "text-dracula-green");
-  add("  Created: templates/commands/refactor-recommender.md", "text-dracula-fg");
-  add("  Created: .claude/commands/refactor-recommender.md", "text-dracula-fg");
+  add("  Created: templates/commands/sr/refactor-recommender.md", "text-dracula-fg");
+  add("  Created: .claude/commands/sr/refactor-recommender.md", "text-dracula-fg");
   add("  Verification: template has expected placeholders, instance has none. \u2705", "text-dracula-green");
   add("", "text-dracula-fg", TABLE_LINE_PAUSE);
   add("\u2713 #7 Auto-Doc Sync Agent \u2014 completed (160s)", "text-dracula-green");
-  add("  Created: templates/agents/doc-sync.md", "text-dracula-fg");
-  add("  Created: .claude/agents/doc-sync.md", "text-dracula-fg");
-  add("  Created: .claude/agent-memory/doc-sync/MEMORY.md", "text-dracula-fg");
-  add("  Modified: templates/commands/implement.md (added Phase 3d)", "text-dracula-fg");
+  add("  Created: templates/agents/sr-doc-sync.md", "text-dracula-fg");
+  add("  Created: .claude/agents/sr-doc-sync.md", "text-dracula-fg");
+  add("  Created: .claude/agent-memory/sr-doc-sync/MEMORY.md", "text-dracula-fg");
+  add("  Modified: templates/commands/sr/implement.md (added Phase 3d)", "text-dracula-fg");
   add("", "text-dracula-fg", TABLE_LINE_PAUSE);
   add("\u2713 #9 Health Check Dashboard \u2014 completed (338s)", "text-dracula-green");
-  add("  Created: templates/commands/health-check.md (396 lines)", "text-dracula-fg");
-  add("  Created: .claude/commands/health-check.md", "text-dracula-fg");
+  add("  Created: templates/commands/sr/health-check.md (396 lines)", "text-dracula-fg");
+  add("  Created: .claude/commands/sr/health-check.md", "text-dracula-fg");
   add("  Created: .claude/health-history/.gitkeep", "text-dracula-fg");
   add("  Verification: zero unresolved placeholders in instance. \u2705", "text-dracula-green");
 
@@ -152,14 +152,14 @@ function buildLines(): TermLine[] {
   tbl("\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510");
   tbl("\u2502 Status           \u2502 Files                                            \u2502");
   tbl("\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524");
-  tbl("\u2502 Cleanly merged   \u2502 templates/agents/doc-sync.md (new)                \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 .claude/agents/doc-sync.md (new)                  \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 .claude/agent-memory/doc-sync/MEMORY.md (new)     \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 templates/commands/implement.md (modified)         \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 templates/commands/refactor-recommender.md (new)   \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 .claude/commands/refactor-recommender.md (new)     \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 templates/commands/health-check.md (new)           \u2502", "text-dracula-green");
-  tbl("\u2502 Cleanly merged   \u2502 .claude/commands/health-check.md (new)             \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 templates/agents/sr-doc-sync.md (new)                \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 .claude/agents/sr-doc-sync.md (new)                  \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 .claude/agent-memory/sr-doc-sync/MEMORY.md (new)     \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 templates/commands/sr/implement.md (modified)         \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 templates/commands/sr/refactor-recommender.md (new)   \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 .claude/commands/sr/refactor-recommender.md (new)     \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 templates/commands/sr/health-check.md (new)           \u2502", "text-dracula-green");
+  tbl("\u2502 Cleanly merged   \u2502 .claude/commands/sr/health-check.md (new)             \u2502", "text-dracula-green");
   tbl("\u2502 Cleanly merged   \u2502 .claude/health-history/.gitkeep (new)              \u2502", "text-dracula-green");
   tbl("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
   add("No merge conflicts. Worktrees cleaned up.", "text-dracula-green");
@@ -244,7 +244,7 @@ const DemoSection = () => {
   }, [visibleLines]);
 
   return (
-    <section className="py-24 px-6 section-darker" ref={ref}>
+    <section id="demo" className="py-24 px-6 section-darker" ref={ref}>
       <div className="container mx-auto max-w-5xl">
         <h2
           className={`text-3xl md:text-4xl font-bold text-center mb-4 transition-all duration-700 ${
@@ -272,7 +272,7 @@ const DemoSection = () => {
             <div className="terminal-dot bg-dracula-yellow" />
             <div className="terminal-dot bg-dracula-green" />
             <span className="text-xs text-muted-foreground ml-2">
-              specrails \u2014 /implement
+              specrails — /sr:implement
             </span>
           </div>
 

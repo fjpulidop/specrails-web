@@ -6,7 +6,7 @@ import { DOC_ENTRIES } from "@/lib/docs-registry";
 export function DocsDropdown(): JSX.Element {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const entries = DOC_ENTRIES.filter((d) => d.slug !== "");
+  const entries = DOC_ENTRIES;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -35,7 +35,7 @@ export function DocsDropdown(): JSX.Element {
           {entries.map((entry) => (
             <li key={entry.slug}>
               <Link
-                to={`/docs/${entry.slug}`}
+                to={entry.slug ? `/docs/${entry.slug}` : "/docs"}
                 onClick={() => setOpen(false)}
                 className="block rounded-lg px-3 py-2 hover:bg-dracula-current transition-colors group"
               >

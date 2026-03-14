@@ -13,22 +13,28 @@
       "Bash(npx tsc --noEmit)",
       "Bash(npx vite build)",
       "Bash(npx vitest run)",
-      "Bash(npm install)",
+      "Bash(npm install*)",
       "Bash(npm run dev)",
       "Bash(npm run build)",
       "Bash(npm run lint)",
       "Bash(npm test)",
+      "Bash(npm audit*)",
       "Bash(gh auth status*)",
       "Bash(gh issue *)",
       "Bash(gh pr *)",
       "Bash(gh label *)",
+      "Bash(gh run *)",
       "Bash(git *)",
       "Bash(which openspec*)",
       "Bash(openspec *)",
       "Bash(ls *)",
       "Bash(mkdir *)",
       "Bash(cat *)",
-      "Bash(sha256sum *)"
+      "Bash(sha256sum *)",
+      "Bash(cp *)",
+      "Bash(rm -rf .claude/setup-templates/)",
+      "Bash(rm -f .claude/commands/setup.md)",
+      "Bash(patch *)"
     ]
   }
 }
