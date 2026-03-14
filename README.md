@@ -1,73 +1,118 @@
-# Welcome to your Lovable project
+<p align="center">
+  <img src="public/favicon.ico" alt="specrails" width="80" />
+</p>
 
-## Project info
+<h1 align="center">specrails-web</h1>
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+<p align="center">
+  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails">specrails</a> — a chained AI agent system that transforms Claude Code into a complete software development team.
+</p>
 
-## How can I edit this code?
+<p align="center">
+  <a href="https://specrails.dev">Live Site</a> ·
+  <a href="https://github.com/fjpulidop/specrails">specrails gem</a> ·
+  <a href="#contributing">Contributing</a>
+</p>
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## About specrails
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+[specrails](https://github.com/fjpulidop/specrails) is a full-stack AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — each powered by the right Claude model for the job.
 
-Changes made via Lovable will be committed automatically to this repo.
+This repository contains the **landing page** at [specrails.dev](https://specrails.dev), which showcases the agent team, the development pipeline, live terminal demos, and a dynamic roadmap pulled from GitHub issues.
 
-**Use your preferred IDE**
+## Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+| Category | Tools |
+|----------|-------|
+| **Framework** | [React 18](https://react.dev) + [TypeScript](https://www.typescriptlang.org) |
+| **Build** | [Vite](https://vite.dev) with SWC |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com) with Dracula color theme |
+| **Components** | [shadcn/ui](https://ui.shadcn.com) + [Radix UI](https://www.radix-ui.com) |
+| **Icons** | [Lucide](https://lucide.dev) |
+| **Testing** | [Vitest](https://vitest.dev) + [Playwright](https://playwright.dev) |
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
+
+- [Node.js](https://nodejs.org) >= 18
+- npm
+
+### Development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/fjpulidop/specrails-web.git
+cd specrails-web
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the dev server (http://localhost:8080)
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run unit tests |
+| `npm run test:watch` | Run tests in watch mode |
 
-**Use GitHub Codespaces**
+## Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```
+src/
+├── components/
+│   ├── AgentsSection.tsx       # AI agent team showcase
+│   ├── CommandsSection.tsx     # CLI commands reference
+│   ├── DemoSection.tsx         # Animated terminal demo
+│   ├── FeaturesSection.tsx     # Key features grid
+│   ├── FooterSection.tsx       # Footer with links
+│   ├── HeroSection.tsx         # Hero with particle animation
+│   ├── InstallSection.tsx      # Installation instructions
+│   ├── Navbar.tsx              # Navigation bar
+│   ├── PipelineSection.tsx     # Development pipeline timeline
+│   ├── PrinciplesSection.tsx   # Core principles
+│   ├── ProblemSection.tsx      # Problem statement
+│   ├── RoadmapSection.tsx      # Live roadmap from GitHub issues
+│   └── ui/                     # shadcn/ui component library
+├── hooks/                      # Custom React hooks
+├── lib/                        # Utilities
+└── pages/                      # Route pages
+```
 
-## What technologies are used for this project?
+## Features
 
-This project is built with:
+- **Dracula Theme** — Dark color scheme with glassmorphism effects and gradient accents
+- **Animated Terminal Demo** — Realistic line-by-line simulation of the `/implement` command
+- **Particle Background** — Canvas-based particle network animation in the hero section
+- **Scroll Animations** — Intersection Observer-based fade-in and slide-up transitions
+- **Live Roadmap** — Dynamically fetches open issues from the specrails GitHub repository
+- **Fully Responsive** — Mobile-first design across all sections
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Contributing
 
-## How can I deploy this project?
+Contributions are welcome! Whether it's fixing a typo, improving animations, or adding new sections — feel free to open a PR.
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feat/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feat/your-feature`)
+5. Open a Pull Request
 
-## Can I connect a custom domain to my Lovable project?
+## License
 
-Yes, you can!
+This project is open source. See the specrails [repository](https://github.com/fjpulidop/specrails) for license details.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+---
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+<p align="center">
+  Built with 🧛 Dracula vibes for <a href="https://github.com/fjpulidop/specrails">specrails</a>
+</p>

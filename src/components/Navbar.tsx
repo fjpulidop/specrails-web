@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Github } from "lucide-react";
+import { DocsDropdown } from "@/components/DocsDropdown";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -42,6 +43,7 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <DocsDropdown />
           <a
             href="https://github.com/fjpulidop/specrails"
             target="_blank"
