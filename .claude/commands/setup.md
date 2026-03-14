@@ -398,7 +398,7 @@ Where do you track your product backlog?
 
 1. **GitHub Issues** — uses `gh` CLI to read/create issues with labels and VPC scores
 2. **JIRA** — uses JIRA CLI or REST API to read/create tickets in a JIRA project
-3. **None** — skip backlog commands (you can still use /implement with text descriptions)
+3. **None** — skip backlog commands (you can still use /sr:implement with text descriptions)
 ```
 
 Wait for the user's choice. Set `BACKLOG_PROVIDER` to `github`, `jira`, or `none`.
