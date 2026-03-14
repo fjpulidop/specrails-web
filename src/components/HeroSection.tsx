@@ -26,23 +26,20 @@ const ParticleBackground = () => {
     if (!ctx) return;
 
     let animationId: number;
-    const particles: { x: number; y: number; vx: number; vy: number }[] = [];
+    let particles: { x: number; y: number; vx: number; vy: number }[] = [];
+    let running = false;
 
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
+    const initParticles = (w: number, h: number) => {
+      particles = [];
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+        });
+      }
     };
-    resize();
-    window.addEventListener("resize", resize);
-
-    for (let i = 0; i < 50; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-      });
-    }
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -74,11 +71,35 @@ const ParticleBackground = () => {
 
       animationId = requestAnimationFrame(draw);
     };
-    draw();
+
+    // Observe the parent section — absolute canvas gets its size from there
+    const parent = canvas.parentElement;
+    if (!parent) return;
+
+    const ro = new ResizeObserver(() => {
+      const w = parent.clientWidth;
+      const h = parent.clientHeight;
+      if (w === 0 || h === 0) return;
+
+      canvas.width = w;
+      canvas.height = h;
+
+      if (!running) {
+        initParticles(w, h);
+        running = true;
+        draw();
+      } else {
+        for (const p of particles) {
+          p.x = Math.min(p.x, w);
+          p.y = Math.min(p.y, h);
+        }
+      }
+    });
+    ro.observe(parent);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      ro.disconnect();
     };
   }, []);
 
@@ -101,13 +122,13 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 overflow-hidden">
       <ParticleBackground />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
-        <h1 className="font-mono text-5xl md:text-7xl font-bold mb-6 animate-fade-up">
-          <span className="text-dracula-purple">spec</span>
-          <span className="text-dracula-pink">rails</span>
+        <h1 data-logo="hero" className="font-mono text-5xl md:text-7xl font-bold mb-6 invisible">
+          <span>spec</span>
+          <span>rails</span>
         </h1>
 
         <p className="text-xl md:text-2xl font-medium text-foreground mb-4 animate-fade-up delay-100">
@@ -136,7 +157,7 @@ const HeroSection = () => {
             <div className="terminal-dot bg-dracula-green" />
             <span className="text-xs text-muted-foreground ml-2">terminal</span>
           </div>
-          <div className="p-4 text-left text-sm leading-relaxed min-h-[220px]">
+          <div className="p-4 text-left text-sm leading-relaxed h-[300px] overflow-hidden">
             {terminalLines.slice(0, visibleLines).map((line, i) => (
               <div key={i} className={`${line.color} animate-fade-up`}>
                 {line.text}

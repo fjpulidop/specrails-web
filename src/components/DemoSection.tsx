@@ -244,7 +244,7 @@ const DemoSection = () => {
   }, [visibleLines]);
 
   return (
-    <section className="py-24 px-6 section-darker" ref={ref}>
+    <section id="demo" className="py-24 px-6 section-darker" ref={ref}>
       <div className="container mx-auto max-w-5xl">
         <h2
           className={`text-3xl md:text-4xl font-bold text-center mb-4 transition-all duration-700 ${

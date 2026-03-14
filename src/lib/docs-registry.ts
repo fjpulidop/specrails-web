@@ -17,7 +17,7 @@ export interface DocEntry {
 export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "",
-    title: "Documentation",
+    title: "Welcome",
     description: "Overview and reading guide",
     content: readmeRaw,
   },

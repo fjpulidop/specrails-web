@@ -12,6 +12,8 @@ import CommandsSection from "@/components/CommandsSection";
 import PrinciplesSection from "@/components/PrinciplesSection";
 import RoadmapSection from "@/components/RoadmapSection";
 import FooterSection from "@/components/FooterSection";
+import SectionNav from "@/components/SectionNav";
+import AnimatedLogo from "@/components/AnimatedLogo";
 
 const Index = () => {
   const { hash } = useLocation();
@@ -39,6 +41,8 @@ const Index = () => {
       <PrinciplesSection />
       <RoadmapSection />
       <FooterSection />
+      <SectionNav />
+      <AnimatedLogo />
     </div>
   );
 };

@@ -32,7 +32,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="/" className="font-mono text-xl font-bold">
+        <a href="/" data-logo="nav" className="font-mono text-[1.8rem] font-bold">
           <span className="text-dracula-purple">spec</span>
           <span className="text-dracula-pink">rails</span>
         </a>
