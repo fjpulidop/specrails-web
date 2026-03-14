@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getDocBySlug, getAdjacentDocs } from "@/lib/docs-registry";
@@ -22,6 +23,11 @@ function NotFoundContent(): JSX.Element {
 
 export default function DocPage(): JSX.Element {
   const { slug = "" } = useParams<{ slug?: string }>();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
   const doc = getDocBySlug(slug);
 
   if (!doc) {
