@@ -35,8 +35,7 @@ const InstallSection = () => {
               </div>
               <div className="p-4 text-sm font-mono space-y-1">
                 <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails.git</div>
-                <div><span className="text-dracula-green">$</span> cd your-project</div>
-                <div><span className="text-dracula-green">$</span> ./specrails/install.sh</div>
+                <div><span className="text-dracula-green">$</span> ./specrails/install.sh --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
               </div>
             </div>
           </div>
@@ -58,6 +57,7 @@ const InstallSection = () => {
                 <div className="terminal-dot bg-dracula-green" />
               </div>
               <div className="p-4 text-sm font-mono space-y-1">
+                <div><span className="text-dracula-green">$</span> cd <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
                 <div><span className="text-dracula-green">$</span> claude</div>
                 <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/setup</span></div>
               </div>
