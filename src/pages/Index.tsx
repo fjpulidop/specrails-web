@@ -41,7 +41,7 @@ const Index = () => {
       <PrinciplesSection />
       <RoadmapSection />
       <FooterSection />
-      <SectionNav />
+      <SectionNav sectionIds={["hero","problem","agents","pipeline","demo","features","install","commands","principles","roadmap","footer"]} />
       <AnimatedLogo />
     </div>
   );

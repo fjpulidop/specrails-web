@@ -1,36 +1,62 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { cn } from "@/lib/utils";
 
-const SECTION_IDS = [
-  "hero",
-  "problem",
-  "agents",
-  "pipeline",
-  "demo",
-  "features",
-  "install",
-  "commands",
-  "principles",
-  "roadmap",
-  "footer",
-];
-
 const IDLE_DELAY = 1200;
 
-const SectionNav = () => {
+interface SectionNavProps {
+  sectionIds?: string[];
+  autoDetect?: string;
+  scrollThreshold?: number;
+}
+
+const SectionNav = ({
+  sectionIds,
+  autoDetect,
+  scrollThreshold = 100,
+}: SectionNavProps) => {
+  const [ids, setIds] = useState<string[]>(sectionIds ?? []);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visible, setVisible] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const idleTimer = useRef<ReturnType<typeof setTimeout>>();
   const navigating = useRef(false);
 
+  // Auto-detect headings with IDs from the DOM, re-detect on content changes
+  useEffect(() => {
+    if (!autoDetect) return;
+    const detect = () => {
+      const els = document.querySelectorAll(autoDetect);
+      const found = Array.from(els)
+        .map((el) => el.id)
+        .filter(Boolean);
+      setIds(found);
+    };
+    // Wait for content to render
+    const timer = setTimeout(detect, 100);
+    // Re-detect when DOM changes (page navigation in docs)
+    const observer = new MutationObserver(() => {
+      setTimeout(detect, 50);
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
+  }, [autoDetect]);
+
+  // Use prop IDs when provided
+  useEffect(() => {
+    if (sectionIds) setIds(sectionIds);
+  }, [sectionIds]);
+
   const updateCurrent = useCallback(() => {
+    if (ids.length === 0) return;
     const viewportMid = window.innerHeight / 2;
     let closest = 0;
     let closestDist = Infinity;
 
-    for (let i = 0; i < SECTION_IDS.length; i++) {
-      const el = document.getElementById(SECTION_IDS[i]);
+    for (let i = 0; i < ids.length; i++) {
+      const el = document.getElementById(ids[i]);
       if (!el) continue;
       const rect = el.getBoundingClientRect();
       const dist = Math.abs(rect.top + rect.height / 2 - viewportMid);
@@ -41,14 +67,14 @@ const SectionNav = () => {
     }
 
     setCurrentIndex(closest);
-    setVisible(window.scrollY > 100);
+    setVisible(window.scrollY > scrollThreshold);
 
     if (!navigating.current) {
       setScrolling(true);
       clearTimeout(idleTimer.current);
       idleTimer.current = setTimeout(() => setScrolling(false), IDLE_DELAY);
     }
-  }, []);
+  }, [ids, scrollThreshold]);
 
   useEffect(() => {
     window.addEventListener("scroll", updateCurrent, { passive: true });
@@ -60,8 +86,8 @@ const SectionNav = () => {
   }, [updateCurrent]);
 
   const scrollTo = (index: number) => {
-    const clamped = Math.max(0, Math.min(SECTION_IDS.length - 1, index));
-    const el = document.getElementById(SECTION_IDS[clamped]);
+    const clamped = Math.max(0, Math.min(ids.length - 1, index));
+    const el = document.getElementById(ids[clamped]);
     if (el) {
       navigating.current = true;
       clearTimeout(idleTimer.current);
@@ -71,8 +97,10 @@ const SectionNav = () => {
     }
   };
 
+  if (ids.length === 0) return null;
+
   const isFirst = currentIndex === 0;
-  const isLast = currentIndex === SECTION_IDS.length - 1;
+  const isLast = currentIndex === ids.length - 1;
 
   return (
     <>

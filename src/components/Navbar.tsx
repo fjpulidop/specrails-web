@@ -31,12 +31,12 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="container mx-auto px-6 h-16 flex items-center justify-center md:justify-between relative">
         <a href="/" data-logo="nav" className="font-mono text-[1.8rem] font-bold">
           <span className="text-dracula-purple">spec</span>
           <span className="text-dracula-pink">rails</span>
         </a>
-        <div className="flex md:hidden items-center gap-4">
+        <div className="flex md:hidden items-center gap-4 absolute right-6">
           {!isDocsPage && (
             <Link
               to="/docs"
