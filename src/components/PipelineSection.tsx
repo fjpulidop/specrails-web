@@ -10,7 +10,7 @@ const phases = [
   { phase: "3a", label: "Architecture", desc: "Architect agents design in parallel, detect multi-feature conflicts", icon: PenTool, color: "text-dracula-orange", bg: "bg-dracula-orange/10" },
   { phase: "3b", label: "Implementation", desc: "Developers work in isolated git worktrees in parallel", icon: Code, color: "text-dracula-green", bg: "bg-dracula-green/10" },
   { phase: "3c", label: "Testing", desc: "Test Writers generate comprehensive suites", icon: TestTubes, color: "text-dracula-cyan", bg: "bg-dracula-cyan/10" },
-  { phase: "4", label: "Merge, Review & Ship", desc: "Conflict-aware merge, code review, security scan, CI, deploy", icon: Rocket, color: "text-dracula-pink", bg: "bg-dracula-pink/10" },
+  { phase: "4", label: "Merge, Review & Ship", desc: "Conflict-aware merge, parallel layer reviews (frontend + backend), confidence gate, security scan, CI, deploy", icon: Rocket, color: "text-dracula-pink", bg: "bg-dracula-pink/10" },
 ];
 
 const PipelineSection = () => {

@@ -27,23 +27,30 @@ This is the command you'll use most. It takes a feature request and drives it th
 When you run `/implement #85`, here's what happens:
 
 ```
-Phase -1  Environment check
-          ↓ prerequisites verified
-Phase 0   Parse input, detect mode
-          ↓ feature(s) identified
-Phase 3a  Architect → design + tasks
-          ↓ implementation plan ready
-Phase 3b  Developer → write code
-          ↓ implementation complete
-Phase 3c  Test Writer → generate tests
-          ↓ tests passing
-Phase 3d  Doc Sync → update docs
-          ↓ docs in sync
-Phase 4   Security Reviewer → scan
-          ↓ no critical findings
-Phase 4b  Reviewer → run CI + fix issues
-          ↓ CI green
-Phase 5   Create PR
+Phase -1    Environment check
+            ↓ prerequisites verified
+Phase 0     Parse input, detect mode + snapshot issue state
+            ↓ feature(s) identified
+Phase 3a.0  Conflict check — verify issue unchanged since Phase 0
+            ↓ no external modifications detected
+Phase 3a    Architect → design + tasks + compat check
+            ↓ implementation plan ready
+Phase 3b    Developer → write code
+            ↓ implementation complete
+Phase 3c    Test Writer → generate tests
+            ↓ tests passing
+Phase 3d    Doc Sync → update docs
+            ↓ docs in sync
+Phase 4     Security Reviewer → scan
+            ↓ no critical findings
+Phase 4b    Layer reviewers (Frontend + Backend, parallel)
+            + Generalist Reviewer → run CI + fix issues
+            ↓ CI green
+Phase 4b-conf  Confidence gate → score 0–100% across 5 aspects
+            ↓ score meets threshold (or override)
+Phase 4c.0  Conflict check — verify issue unchanged before ship
+            ↓ no external modifications detected
+Phase 5     Create PR
 ```
 
 ### Single vs. multi-feature
@@ -79,8 +86,16 @@ For multiple features, each gets its own isolated worktree. Agents run concurren
 └─────────────────────────────────────────────────┘
 
 ┌─ Phase 4b: Review ────────────────────────────┐
+│ Frontend Reviewer: bundle +2kb, WCAG ok         │
+│ Backend Reviewer: no N+1, indexes ok            │
 │ ✓ lint      ✓ typecheck     ✓ tests            │
 │ Fixed: 1 import, 1 lint warning                 │
+└─────────────────────────────────────────────────┘
+
+┌─ Phase 4b-conf: Confidence ───────────────────┐
+│ Correctness: 92%  Tests: 87%  Security: 95%     │
+│ Performance: 88%  Maintainability: 90%          │
+│ Overall: 90% — threshold met                    │
 └─────────────────────────────────────────────────┘
 
 PR #42 created: feat: add health check endpoint
@@ -114,8 +129,9 @@ View your prioritized product backlog, ranked by VPC fit and effort.
 The Product Analyst reads your GitHub Issues (labeled `product-driven-backlog`) and produces:
 
 - **Backlog table** per area — sorted by Total Persona Score
-- **Top 3 recommendations** — ranked by VPC score / effort ratio
+- **Top 3 recommendations** — ranked by VPC score / effort ratio, filtered to Wave 1 of the safe implementation order
 - **Metadata** — area, persona fit scores, effort estimate, description
+- **Safe Implementation Order** — dependency DAG built from `Prerequisites:` fields in issue bodies; cycles are detected and reported; topological sort determines the order
 
 ### Example output
 
@@ -127,10 +143,10 @@ The Product Analyst reads your GitHub Issues (labeled `product-driven-backlog`) 
 │ 3  #63      8/15  High    GraphQL migration      │
 └─────────────────────────────────────────────────┘
 
-Top 3 for next sprint:
-1. #71 — Rate limiting (score/effort: 3.33)
-2. #85 — Health check (score/effort: 2.40)
-3. #63 — GraphQL (score/effort: 0.53)
+Safe Implementation Order (Wave 1):
+1. #71 — Rate limiting (no prerequisites)
+2. #85 — Health check (requires #71)
+3. #63 — GraphQL migration (requires #85)
 ```
 
 ---
@@ -175,6 +191,46 @@ Scan for refactoring opportunities ranked by impact/effort ratio.
 ```
 
 Identifies duplicates, long functions, large files, dead code, outdated patterns, and complex logic. Optionally creates GitHub Issues for tracking.
+
+---
+
+## `/compat-check`
+
+Analyze the backwards compatibility impact of a proposed change before implementation.
+
+```
+/compat-check #85                    # Check a specific issue
+/compat-check #85 --save             # Check and save as the new API baseline
+```
+
+The Architect's Phase 6 auto-check runs this analysis as part of every `/implement` pipeline. You can also run it standalone to evaluate a change before committing to it.
+
+### What it detects
+
+| Category | Examples |
+|----------|---------|
+| **Removed endpoints** | Deleted routes, removed methods |
+| **Changed signatures** | Parameter renames, type changes, reordered args |
+| **Changed response shapes** | Added required fields, removed fields, type widening |
+| **Behavioral changes** | Changed defaults, altered error codes, modified side effects |
+
+When breaking changes are found, `compat-check` generates a **migration guide** describing what callers need to update.
+
+---
+
+## `/why`
+
+Search agent explanation records in plain language.
+
+```
+/why "why did we switch to event sourcing"
+/why "why is pagination implemented this way"
+/why "explain the auth middleware design"
+```
+
+The Architect, Developer, and Reviewer record decision rationale in `.claude/agent-memory/explanations/` as they work. `/why` searches these records semantically and surfaces the relevant context.
+
+This is useful for onboarding, code review, and revisiting past decisions without digging through git history.
 
 ---
 

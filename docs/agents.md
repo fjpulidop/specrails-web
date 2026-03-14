@@ -1,6 +1,6 @@
 # Agents
 
-SpecRails ships with **10 specialized agents**. Each has a clear role, a dedicated AI model, and knows exactly when to stay in its lane.
+SpecRails ships with **12 specialized agents**. Each has a clear role, a dedicated AI model, and knows exactly when to stay in its lane.
 
 ## Why specialized agents?
 
@@ -74,6 +74,9 @@ The Architect translates **what to build** into **how to build it**. It reads th
 - Implementation design (technical approach per layer)
 - Ordered task breakdown with dependencies
 - Risks and considerations
+- Backwards compatibility impact report (Phase 6 auto-check against API surface)
+
+The Architect also records decision rationale in `.claude/agent-memory/explanations/` — queryable later with `/why`.
 
 ---
 
@@ -87,6 +90,8 @@ The Architect translates **what to build** into **how to build it**. It reads th
 | **Role** | Full-stack implementation |
 
 The Developer is the **workhorse**. It reads the Architect's design, loads the relevant layer conventions, and writes production-quality code across all layers. It follows a strict process: understand, plan, implement, verify.
+
+Before starting implementation, the Developer reads any **failure records** from `.claude/agent-memory/failures/` that match the current task — using past mistakes as guardrails. After implementation, it records decision rationale in `.claude/agent-memory/explanations/`.
 
 **What it produces:**
 - Production code across all affected layers
@@ -151,6 +156,43 @@ Doc Sync detects and updates your project's documentation after implementation:
 
 ---
 
+### Frontend Reviewer
+
+| | |
+|-|-|
+| **Color** | Cyan |
+| **Model** | Sonnet |
+| **Trigger** | `/implement` (Phase 4b, parallel) |
+| **Role** | Frontend-specific quality audit |
+
+The Frontend Reviewer runs in parallel with the Backend Reviewer during Phase 4b, specializing in client-side concerns that a generalist reviewer might miss.
+
+**What it scans for:**
+- **Bundle size** — detects imports that bloat the client bundle
+- **WCAG accessibility** — missing ARIA labels, keyboard navigation, contrast issues
+- **Render performance** — unnecessary re-renders, missing memoization, large lists without virtualization
+
+---
+
+### Backend Reviewer
+
+| | |
+|-|-|
+| **Color** | Cyan |
+| **Model** | Sonnet |
+| **Trigger** | `/implement` (Phase 4b, parallel) |
+| **Role** | Backend-specific quality audit |
+
+The Backend Reviewer runs in parallel with the Frontend Reviewer during Phase 4b, specializing in server-side concerns.
+
+**What it scans for:**
+- **N+1 queries** — database calls inside loops without eager loading
+- **Connection pools** — missing pool configuration or pool exhaustion risks
+- **Pagination** — unbounded list queries that could return millions of rows
+- **Missing indexes** — foreign keys and filter columns without index coverage
+
+---
+
 ### Security Reviewer
 
 | | |
@@ -187,14 +229,19 @@ The Reviewer is the **last agent before ship**. It:
 1. Runs **every CI check** in the exact order your CI pipeline runs them
 2. **Fixes failures** autonomously (up to 3 retry cycles per issue)
 3. Reviews **code quality**, test quality, and consistency
-4. Produces a final report
+4. Produces a **confidence score** (0–100%) across 5 quality aspects
+5. Writes structured **failure records** to `.claude/agent-memory/failures/` for any non-trivial issues found
+6. Records decision rationale in `.claude/agent-memory/explanations/`
 
 **Why not just run CI?** Because the Reviewer can _fix_ what it finds. A lint error, a missing import, a flaky test setup — the Reviewer patches them and re-runs. By the time it creates the PR, CI will pass.
+
+**Confidence scoring:** After each review, the Reviewer outputs a score (0–100%) across five aspects: correctness, test coverage, security, performance, and maintainability. Scores below the configured threshold trigger a warning or block the pipeline entirely. See [Confidence thresholds](customization.md#confidence-thresholds) to configure this behavior.
 
 **What it produces:**
 - CI check results table (pass/fail per check)
 - List of issues found and fixed
 - Files modified during fixes
+- Confidence score report (Phase 4b-conf)
 
 ---
 
@@ -207,10 +254,12 @@ Every agent stores observations in `.claude/agent-memory/<agent>/MEMORY.md`. Thi
 ├── architect/MEMORY.md
 ├── developer/MEMORY.md
 ├── reviewer/MEMORY.md
+├── failures/           # Structured failure records (written by Reviewer)
+├── explanations/       # Decision rationale (written by Architect, Developer, Reviewer)
 └── ...
 ```
 
-Memory is automatic — you don't need to manage it. Agents read relevant memories at the start of each task and write new observations as they work.
+Memory is automatic — you don't need to manage it. Agents read relevant memories at the start of each task and write new observations as they work. Use `/why` to search the explanations directory in plain language.
 
 ## What's next?
 
