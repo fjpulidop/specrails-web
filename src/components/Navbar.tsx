@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Github } from "lucide-react";
 import { DocsDropdown } from "@/components/DocsDropdown";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
+  const isDocsPage = pathname.startsWith("/docs");
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -35,12 +37,14 @@ const Navbar = () => {
           <span className="text-dracula-pink">rails</span>
         </a>
         <div className="flex md:hidden items-center gap-4">
-          <Link
-            to="/docs"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Docs
-          </Link>
+          {!isDocsPage && (
+            <Link
+              to="/docs"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Docs
+            </Link>
+          )}
           <a
             href="https://github.com/fjpulidop/specrails"
             target="_blank"
