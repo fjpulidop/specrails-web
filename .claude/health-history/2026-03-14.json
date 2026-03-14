@@ -1,0 +1,52 @@
+{
+  "date": "2026-03-14",
+  "branch": "feat/landing-polish",
+  "grade": "C+",
+  "checks": {
+    "tests": {
+      "status": "pass",
+      "files": 3,
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "duration": "1.30s"
+    },
+    "typecheck": {
+      "status": "pass",
+      "errors": 0
+    },
+    "lint": {
+      "status": "fail",
+      "errors": 25,
+      "warnings": 7,
+      "breakdown": {
+        "no-explicit-any": 17,
+        "no-empty-object-type": 2,
+        "no-require-imports": 1,
+        "react-refresh/only-export-components": 7
+      }
+    },
+    "build": {
+      "status": "warn",
+      "bundleSize": {
+        "js": "775.07 kB",
+        "jsGzip": "238.67 kB",
+        "css": "71.09 kB",
+        "cssGzip": "12.31 kB"
+      },
+      "warnings": ["chunk > 500 kB"]
+    },
+    "deps": {
+      "status": "warn",
+      "vulnerabilities": 15,
+      "low": 3,
+      "moderate": 5,
+      "high": 7,
+      "critical": 0
+    },
+    "coverage": {
+      "status": "not-configured",
+      "testFileRatio": "3/72"
+    }
+  }
+}
