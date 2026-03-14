@@ -29,3 +29,9 @@ specrails/
 # Ephemeral cache files
 .claude/backlog-cache.json
 .claude/health-history/
+
+# Setup templates (already installed, not needed in repo)
+.claude/setup-templates/
+
+# Web manager tool (separate utility)
+.claude/web-manager/
