@@ -37,39 +37,60 @@ When invoked during OpenSpec workflows (`/opsx:ff`, `/opsx:continue`, `/opsx:app
   - Define acceptance criteria (what "done" looks like)
   - Note dependencies on other tasks
 - Group tasks by layer when appropriate: frontend
-- Tag each task with its layer: `[frontend]`
+- Tag each task with its layer: [frontend]
 
 ### 4. Respect the Architecture
 
 This project follows this architecture:
 ```
 React 18 + TypeScript SPA (Vite + SWC)
-├── src/components/     → Page sections (HeroSection, PipelineSection, etc.)
-├── src/components/ui/  → shadcn/ui primitives (Button, Card, etc.)
+├── src/components/     → Page sections + shadcn/ui primitives
+│   └── ui/             → shadcn/ui components (lowercase naming)
 ├── src/hooks/          → Custom React hooks
-├── src/lib/            → Utilities (cn, etc.)
-├── src/pages/          → Route pages (Index, NotFound)
+├── src/lib/            → Utilities (cn helper)
+├── src/pages/          → Route pages
+├── src/test/           → Test files
 ├── public/             → Static assets
 └── index.html          → Entry point
 ```
 
-**Frontend conventions:**
-- TypeScript strict mode, functional components only
-- PascalCase for components, camelCase for hooks/utils
-- `@/` path alias for `src/`
-- Tailwind utility classes with CSS custom properties (Dracula theme)
-- shadcn/ui components (Radix primitives + CVA + tailwind-merge)
-- React Router DOM for routing
+Frontend: TypeScript strict mode, functional components, PascalCase files, `@/` path alias, Tailwind utility classes with Dracula theme CSS vars, shadcn/ui, `cn()` merging, Vitest + Testing Library
 
 - Always check scoped context: `.claude/rules/frontend.md`
 - Always check `.claude/rules/` for conditional conventions per layer
 
 ### 5. Key Warnings to Always Consider
-- This is a landing page / marketing site — prioritize visual polish and performance
-- Dracula color theme is mandatory — all new UI must use the existing CSS custom properties
-- shadcn/ui components must be used where applicable — do not create custom implementations
-- No backend — this is a static SPA deployed to static hosting
-- Test coverage is minimal — ensure new features include at least basic Vitest tests
+- Dracula color theme is mandatory — all new UI must use CSS custom properties
+- shadcn/ui components must be used where applicable — no custom reimplementations
+- No backend — this is a static SPA, do not add server-side code
+- Test coverage is minimal — include basic Vitest tests for new features
+- No CI/CD yet — verify manually with lint, type check, build, and test commands
+
+### 6. Run Compatibility Check
+
+After producing the task breakdown and before finalizing output:
+
+1. **Extract the proposed surface changes** from your implementation design: which commands, agents, placeholders, flags, or config keys are being added, removed, renamed, or modified?
+
+2. **Compare against the current surface** by reading:
+   - `install.sh` for CLI flags
+   - `templates/commands/*.md` for command names and argument flags
+   - `templates/agents/*.md` for agent names
+   - `templates/**/*.md` for `{{PLACEHOLDER}}` keys
+   - `openspec/config.yaml` for config keys
+
+3. **Classify each change** using the four categories:
+   - Category 1: Removal (BREAKING — the element no longer exists; example: a CLI flag is deleted)
+   - Category 2: Rename (BREAKING — the element exists under a new name; example: a placeholder is renamed)
+   - Category 3: Signature Change (BREAKING or MINOR — the element exists but its interface changed; example: a command now requires a flag prefix)
+   - Category 4: Behavioral Change (ADVISORY — same name and signature, different behavior; example: a default value changes)
+
+4. **Append to your output:**
+   - If breaking changes found: a "Compatibility Impact" section listing each breaking change and a Migration Guide per change
+   - If advisory changes only: a brief "Compatibility Notes" section
+   - If no changes to the contract surface: a one-line "Compatibility: No contract surface changes detected."
+
+This phase is mandatory. Do not skip it even if the change appears purely internal.
 
 ## Output Format
 
@@ -87,6 +108,12 @@ When analyzing spec changes, produce your output in this structure:
 
 ## Task Breakdown
 [Ordered list of atomic tasks with descriptions, files involved, and acceptance criteria]
+
+## Compatibility Impact
+[Required: one of the three variants below]
+  - Breaking changes found: list each breaking change by category + a Migration Guide per change
+  - Advisory only: "Compatibility Notes" section listing advisory changes
+  - No surface changes: "Compatibility: No contract surface changes detected."
 
 ## Risks & Considerations
 [Edge cases, potential regressions, performance concerns, migration needs]
@@ -119,6 +146,44 @@ Before finalizing any design or task breakdown:
 - Verify the design doesn't violate any architectural constraints
 - Verify test tasks are included for every significant behavior change
 - Re-read the original spec change one final time to catch anything missed
+
+## Explain Your Work
+
+When you make a significant design decision, write an explanation record to `.claude/agent-memory/explanations/`.
+
+**Write an explanation when you:**
+- Chose one approach over two or more plausible alternatives
+- Applied a project convention that a new developer might not expect
+- Resolved a spec ambiguity by choosing a specific default
+- Rejected a seemingly natural interpretation because of a codebase constraint
+
+**Do NOT write an explanation for:**
+- Routine task ordering that follows obvious dependency rules
+- Decisions already documented verbatim in `CLAUDE.md` or `.claude/rules/` (unless you are adding context about *why* the rule exists)
+- Minor choices with no meaningful tradeoff
+
+**How to write an explanation record:**
+
+Create a file at:
+  `.claude/agent-memory/explanations/YYYY-MM-DD-architect-<slug>.md`
+
+Use today's date. Use a kebab-case slug describing the decision topic (max 6 words).
+
+Required frontmatter:
+```yaml
+---
+agent: architect
+feature: <change-name or "general">
+tags: [keyword1, keyword2, keyword3]
+date: YYYY-MM-DD
+---
+```
+
+Required body section — `## Decision`: one sentence stating what was decided.
+
+Optional sections: `## Why This Approach` (2–4 sentences of reasoning), `## Alternatives Considered` (bullet list), `## See Also` (file references).
+
+Aim for 2–5 explanation records per significant feature design. Quality over quantity — a missing explanation is better than a noisy one.
 
 ## Update your agent memory
 

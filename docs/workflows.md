@@ -2,17 +2,17 @@
 
 SpecRails commands are Claude Code slash commands that orchestrate the agent pipeline. Here's every command, what it does, and when to use it.
 
-## The main workflow: `/implement`
+## The main workflow: `/sr:implement`
 
 This is the command you'll use most. It takes a feature request and drives it through the entire pipeline — from architecture to shipped PR.
 
 ### Usage
 
 ```
-/implement #85                          # From a GitHub Issue
-/implement #85, #71, #63               # Multiple issues (parallel)
-/implement "add dark mode toggle"       # Text description
-/implement UI, Analytics               # By area (explores + selects)
+/sr:implement #85                          # From a GitHub Issue
+/sr:implement #85, #71, #63               # Multiple issues (parallel)
+/sr:implement "add dark mode toggle"       # Text description
+/sr:implement UI, Analytics               # By area (explores + selects)
 ```
 
 ### Flags
@@ -24,7 +24,7 @@ This is the command you'll use most. It takes a feature request and drives it th
 
 ### Pipeline phases
 
-When you run `/implement #85`, here's what happens:
+When you run `/sr:implement #85`, here's what happens:
 
 ```
 Phase -1    Environment check
@@ -65,7 +65,7 @@ For multiple features, each gets its own isolated worktree. Agents run concurren
 ### Example output
 
 ```
-/implement #85
+/sr:implement #85
 ```
 
 ```
@@ -103,25 +103,25 @@ PR #42 created: feat: add health check endpoint
 
 ---
 
-## `/batch-implement`
+## `/sr:batch-implement`
 
 Orchestrates **multiple independent features** in parallel using git worktrees. Use this when you have several unrelated features to ship at once.
 
 ```
-/batch-implement #85, #71, #63
+/sr:batch-implement #85, #71, #63
 ```
 
 Each feature gets its own worktree, its own agent pipeline, and its own PR. Features run concurrently for maximum speed.
 
 ---
 
-## `/product-backlog`
+## `/sr:product-backlog`
 
 View your prioritized product backlog, ranked by VPC fit and effort.
 
 ```
-/product-backlog                # Full backlog
-/product-backlog UI, API        # Filter by area
+/sr:product-backlog                # Full backlog
+/sr:product-backlog UI, API        # Filter by area
 ```
 
 ### What it shows
@@ -151,13 +151,13 @@ Safe Implementation Order (Wave 1):
 
 ---
 
-## `/update-product-driven-backlog`
+## `/sr:update-product-driven-backlog`
 
 Generate new feature ideas through product discovery. The Product Manager (Opus) researches your competitive landscape and generates ideas evaluated against your personas.
 
 ```
-/update-product-driven-backlog              # All areas
-/update-product-driven-backlog UI, API      # Focus areas
+/sr:update-product-driven-backlog              # All areas
+/sr:update-product-driven-backlog UI, API      # Focus areas
 ```
 
 ### What it does
@@ -170,40 +170,40 @@ Generate new feature ideas through product discovery. The Product Manager (Opus)
 
 ---
 
-## `/health-check`
+## `/sr:health-check`
 
 Run a comprehensive codebase quality analysis.
 
 ```
-/health-check
+/sr:health-check
 ```
 
 Analyzes code quality, test coverage, technical debt, and dependency health. Compares with previous runs to detect regressions.
 
 ---
 
-## `/refactor-recommender`
+## `/sr:refactor-recommender`
 
 Scan for refactoring opportunities ranked by impact/effort ratio.
 
 ```
-/refactor-recommender
+/sr:refactor-recommender
 ```
 
 Identifies duplicates, long functions, large files, dead code, outdated patterns, and complex logic. Optionally creates GitHub Issues for tracking.
 
 ---
 
-## `/compat-check`
+## `/sr:compat-check`
 
 Analyze the backwards compatibility impact of a proposed change before implementation.
 
 ```
-/compat-check #85                    # Check a specific issue
-/compat-check #85 --save             # Check and save as the new API baseline
+/sr:compat-check #85                    # Check a specific issue
+/sr:compat-check #85 --save             # Check and save as the new API baseline
 ```
 
-The Architect's Phase 6 auto-check runs this analysis as part of every `/implement` pipeline. You can also run it standalone to evaluate a change before committing to it.
+The Architect's Phase 6 auto-check runs this analysis as part of every `/sr:implement` pipeline. You can also run it standalone to evaluate a change before committing to it.
 
 ### What it detects
 
@@ -218,17 +218,17 @@ When breaking changes are found, `compat-check` generates a **migration guide** 
 
 ---
 
-## `/why`
+## `/sr:why`
 
 Search agent explanation records in plain language.
 
 ```
-/why "why did we switch to event sourcing"
-/why "why is pagination implemented this way"
-/why "explain the auth middleware design"
+/sr:why "why did we switch to event sourcing"
+/sr:why "why is pagination implemented this way"
+/sr:why "explain the auth middleware design"
 ```
 
-The Architect, Developer, and Reviewer record decision rationale in `.claude/agent-memory/explanations/` as they work. `/why` searches these records semantically and surfaces the relevant context.
+The Architect, Developer, and Reviewer record decision rationale in `.claude/agent-memory/explanations/` as they work. `/sr:why` searches these records semantically and surfaces the relevant context.
 
 This is useful for onboarding, code review, and revisiting past decisions without digging through git history.
 
@@ -321,7 +321,7 @@ Or step by step:
 Any workflow can be run in preview mode to see what would happen without making changes:
 
 ```
-/implement --dry-run #85
+/sr:implement --dry-run #85
 ```
 
 Preview mode runs the full pipeline but skips:
@@ -332,7 +332,7 @@ Preview mode runs the full pipeline but skips:
 The results are cached. Apply them later with:
 
 ```
-/implement --apply health-check-endpoint
+/sr:implement --apply health-check-endpoint
 ```
 
 ---

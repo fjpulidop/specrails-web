@@ -48,7 +48,7 @@ export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "workflows",
     title: "Workflows & Commands",
-    description: "How to use /implement, /product-backlog, and more",
+    description: "How to use /sr:implement, /sr:product-backlog, and more",
     content: workflowsRaw,
   },
   {

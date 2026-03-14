@@ -62,7 +62,7 @@ After setup, your `.claude/` directory contains fully adapted agents, commands, 
 Let's implement something. Pick an issue from your backlog, or describe a feature:
 
 ```
-/implement "add a health check endpoint"
+/sr:implement "add a health check endpoint"
 ```
 
 SpecRails will:
@@ -81,9 +81,9 @@ That's it. One command, full pipeline.
 
 Once you have a feature running, a few commands help you understand what's happening and why:
 
-- `/why "question"` — search agent explanation records in plain language. Ask why a design decision was made, why a library was chosen, or why a particular pattern is used. Agents record their reasoning as they work.
-- `/product-backlog` — see your prioritized backlog with safe implementation ordering. Good first stop before picking what to build next.
-- `/compat-check #N` — check whether an issue's implementation would break existing API consumers before you commit to it.
+- `/sr:why "question"` — search agent explanation records in plain language. Ask why a design decision was made, why a library was chosen, or why a particular pattern is used. Agents record their reasoning as they work.
+- `/sr:product-backlog` — see your prioritized backlog with safe implementation ordering. Good first stop before picking what to build next.
+- `/sr:compat-check #N` — check whether an issue's implementation would break existing API consumers before you commit to it.
 
 ## What's next?
 

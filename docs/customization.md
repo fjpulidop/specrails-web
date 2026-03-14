@@ -228,13 +228,13 @@ Both agents run in parallel during Phase 4b and feed their findings into the gen
 
 ## Backwards compatibility baseline
 
-Use `/compat-check --save` to snapshot your current API surface as a baseline:
+Use `/sr:compat-check --save` to snapshot your current API surface as a baseline:
 
 ```
-/compat-check --save
+/sr:compat-check --save
 ```
 
-This writes the current API surface to `.claude/compat-baseline.json`. Future runs of `/compat-check` and the Architect's Phase 6 auto-check compare against this baseline to detect breaking changes. Re-run `--save` after any intentional breaking release to advance the baseline.
+This writes the current API surface to `.claude/compat-baseline.json`. Future runs of `/sr:compat-check` and the Architect's Phase 6 auto-check compare against this baseline to detect breaking changes. Re-run `--save` after any intentional breaking release to advance the baseline.
 
 ---
 

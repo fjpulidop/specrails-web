@@ -1,4 +1,4 @@
-# Security scan exemptions
+# Security scan exemptions for specrails-web
 #
 # Add entries here to suppress known false positives from the security-reviewer agent.
 # All exemptions are tracked in git — every addition is auditable.
