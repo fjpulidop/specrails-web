@@ -20,7 +20,6 @@ const Navbar = () => {
     { label: "Features", href: "/#features" },
     { label: "Install", href: "/#install" },
     { label: "Commands", href: "/#commands" },
-    { label: "Compare", href: "/agents" },
   ];
 
   return (
