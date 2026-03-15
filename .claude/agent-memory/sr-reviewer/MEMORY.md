@@ -1,7 +1,3 @@
-# Agent Memory
+# Agent Memory: sr-reviewer
 
-This file is the index for the reviewer agent's persistent memory.
-
-## Memory files
-
-- [common-failures.md](common-failures.md) — CI failure patterns and pre-existing lint baseline
+This file is loaded into context at the start of every session. Keep it under 200 lines.

@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "change": "specrails-playbook",
+  "agent": "reviewer",
+  "scored_at": "2026-03-15T01:27:00Z",
+  "overall": 92,
+  "aspects": {
+    "type_correctness": 98,
+    "pattern_adherence": 95,
+    "test_coverage": 85,
+    "security": 98,
+    "architectural_alignment": 95
+  },
+  "notes": {
+    "type_correctness": "docs-registry.ts correctly extends DocEntry with optional section field. No type changes needed — the existing interface accommodated the new field cleanly.",
+    "pattern_adherence": "Three new DOC_ENTRIES follow the exact same shape as existing entries. DocsSidebar section-header rendering uses a clean IIFE with closure variable to track current section — pattern is novel but correct and readable. All imports use @/ alias.",
+    "test_coverage": "5 tests in playbook-registry.test.ts cover: total count (11), slug lookup for all three new entries, adjacency (prev/next), and section filtering. docs-registry.test.ts updated last-entry check to use playbook-oss-maintainer. Coverage is adequate for a data-registry feature.",
+    "security": "Static markdown files — no executable code, no secrets, no external requests. Pure content addition.",
+    "architectural_alignment": "Playbook docs follow identical pattern to existing docs: markdown files in docs/, registry entries in docs-registry.ts, automatically rendered by the existing DocPage/DocsLayout. No new components or routes needed. Section header rendering in DocsSidebar is a clean extension."
+  },
+  "flags": []
+}

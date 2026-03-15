@@ -16,7 +16,12 @@ Analyze the project from a **product perspective** to generate new feature ideas
 
 ## Areas
 
-{{AREA_TABLE}}
+| Tag | Area | Description |
+|-----|------|-------------|
+| `area:landing` | Landing Page | Hero, features, pipeline, agents sections |
+| `area:docs` | Documentation | Docs pages, guides, playbooks |
+| `area:dx` | Developer Experience | Installation, onboarding, CLI integration |
+| `area:community` | Community & Adoption | Social proof, testimonials, engagement |
 
 ---
 
@@ -26,7 +31,7 @@ Launch a **single** explorer subagent (`subagent_type: Explore`, `run_in_backgro
 
 The Explore agent receives this prompt:
 
-> You are a product strategist analyzing the {{PROJECT_NAME}} project to generate new feature ideas using the **Value Proposition Canvas** framework.
+> You are a product strategist analyzing the specrails-web project to generate new feature ideas using the **Value Proposition Canvas** framework.
 >
 > **Your goal:** For each area, propose 2-4 new features that would significantly improve the user experience. Every feature MUST be evaluated against the project's personas.
 >
@@ -35,7 +40,10 @@ The Explore agent receives this prompt:
 > ### Step 0: Read Personas
 >
 > **Before anything else**, read all persona files:
-> {{PERSONA_FILE_READ_LIST}}
+> - Read `.claude/agents/personas/sr-the-maintainer.md`
+> - Read `.claude/agents/personas/sr-the-solo-shipper.md`
+> - Read `.claude/agents/personas/sr-the-engineering-lead.md`
+> - Read `.claude/agents/personas/sr-the-ux-craftsperson.md`
 >
 > These contain full Value Proposition Canvas profiles (jobs, pains, gains).
 >
@@ -79,11 +87,11 @@ After the Explore agent completes:
    ## Product Discovery Results (not synced)
 
    Backlog access is set to **read-only**. The following features were discovered
-   but NOT created in {{BACKLOG_PROVIDER_NAME}}. Create them manually if desired.
+   but NOT created in GitHub Issues. Create them manually if desired.
 
    ### Feature 1: {name}
    - **Area:** {area}
-   - **Persona Fit:** {{PERSONA_FIT_FORMAT}}
+   - **Persona Fit:** Kai: X/5 · Alex: X/5 · Morgan: X/5 · Luna: X/5
    - **Effort:** {level}
    - **User Story:** As a {user}, I want to {action} so that {benefit}
    - **Description:** {2-3 sentences}
@@ -91,9 +99,9 @@ After the Explore agent completes:
    (repeat for each feature)
 
    ### Summary
-   | # | Feature | {{PERSONA_SCORE_HEADERS}} | Total | Effort |
-   |---|---------|{{PERSONA_SCORE_SEPARATORS}}|-------|--------|
-   | 1 | ... | ... | ... | ... |
+   | # | Feature | Kai | Alex | Morgan | Luna | Total | Effort |
+   |---|---------|-----|------|--------|------|-------|--------|
+   | 1 | ... | ... | ... | ... | ... | ... | ... |
    ```
 
 4. **Do NOT** create, modify, or comment on any issues/tickets.
@@ -102,17 +110,21 @@ After the Explore agent completes:
 
 3. **Fetch existing product-driven backlog items** to avoid duplicates:
    ```bash
-   {{BACKLOG_FETCH_ALL_CMD}}
+   gh issue list --label "product-driven-backlog" --state open --limit 100 --json number,title,labels,body
    ```
 
 4. **Initialize backlog labels/tags** (idempotent):
    ```bash
-   {{BACKLOG_INIT_LABELS_CMD}}
+   gh label create "product-driven-backlog" --color "7C3AED" --description "Product feature idea from VPC discovery" --force
+   gh label create "area:landing" --color "3B82F6" --description "Landing page sections" --force
+   gh label create "area:docs" --color "10B981" --description "Documentation pages" --force
+   gh label create "area:dx" --color "F59E0B" --description "Developer experience" --force
+   gh label create "area:community" --color "EC4899" --description "Community and adoption" --force
    ```
 
 5. **For each proposed feature, create a backlog item** (skip duplicates):
    ```bash
-   {{BACKLOG_CREATE_CMD}}
+   gh issue create --title "{Feature Name}" --label "product-driven-backlog,area:{area}" --body "$(cat <<'EOF'
    > **This is a product feature idea.** Generated through VPC-based product discovery.
 
    ## Overview
@@ -120,7 +132,7 @@ After the Explore agent completes:
    | Field | Value |
    |-------|-------|
    | **Area** | {Area} |
-   | **Persona Fit** | {{PERSONA_FIT_FORMAT}} |
+   | **Persona Fit** | Kai: X/5 · Alex: X/5 · Morgan: X/5 · Luna: X/5 |
    | **Effort** | {High/Medium/Low} — {justification} |
    | **Inspiration** | {source or "Original idea"} |
    | **Prerequisites** | {list or "None"} |
@@ -135,7 +147,22 @@ After the Explore agent completes:
 
    ## Value Proposition Canvas
 
-   {{PERSONA_VPC_SECTIONS}}
+   ### Kai (Maintainer)
+   | Dimension | Detail |
+   |-----------|--------|
+   | **Jobs addressed** | {jobs} |
+   | **Pains relieved** | {pains with severity} |
+   | **Gains created** | {gains with impact} |
+   | **Score** | X/5 |
+
+   ### Alex (Solo Shipper)
+   (same format)
+
+   ### Morgan (Engineering Lead)
+   (same format)
+
+   ### Luna (UX Craftsperson)
+   (same format)
 
    ## Implementation Notes
 

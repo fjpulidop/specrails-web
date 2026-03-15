@@ -2,18 +2,21 @@ import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 
-const terminalLines = [
-  { text: "$ ./specrails/install.sh --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
-  { text: "$ cd <your-project>", color: "text-dracula-green", delay: 600 },
-  { text: "$ claude", color: "text-dracula-green", delay: 1200 },
-  { text: "> /setup", color: "text-dracula-purple", delay: 1800 },
-  { text: "🔍 Analyzing project structure...", color: "text-dracula-cyan", delay: 2400 },
-  { text: "📦 Installing agent templates...", color: "text-foreground", delay: 3200 },
-  { text: "✅ Product Manager agent ready", color: "text-dracula-purple", delay: 3800 },
-  { text: "✅ Architect agent ready", color: "text-dracula-orange", delay: 4200 },
-  { text: "✅ Developer agents ready", color: "text-dracula-green", delay: 4600 },
-  { text: "✅ Security Reviewer ready", color: "text-dracula-red", delay: 5000 },
-  { text: "🚀 specrails installed successfully!", color: "text-dracula-pink", delay: 5600 },
+const gitCloneLines = [
+  { text: "$ git clone https://github.com/fjpulidop/specrails.git", color: "text-dracula-green", delay: 0 },
+  { text: "$ ./specrails/install.sh --root-dir .", color: "text-dracula-green", delay: 800 },
+  { text: "", color: "text-foreground", delay: 1200 },
+  { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1600 },
+  { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 2000 },
+  { text: "🚀 Ready! Run /setup in Claude Code", color: "text-dracula-pink", delay: 2400 },
+];
+
+const npxLines = [
+  { text: "$ npx specrails@latest init --root-dir .", color: "text-dracula-green", delay: 0 },
+  { text: "", color: "text-foreground", delay: 600 },
+  { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
+  { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
+  { text: "🚀 Ready! Run /setup in Claude Code", color: "text-dracula-pink", delay: 1800 },
 ];
 
 const ParticleBackground = () => {
@@ -111,21 +114,44 @@ const ParticleBackground = () => {
   );
 };
 
-const HeroSection = () => {
+const AnimatedTerminal = ({ lines, label }: { lines: typeof gitCloneLines; label: string }) => {
   const [visibleLines, setVisibleLines] = useState(0);
 
   useEffect(() => {
-    const timers = terminalLines.map((line, i) =>
+    const timers = lines.map((line, i) =>
       setTimeout(() => setVisibleLines(i + 1), line.delay)
     );
     return () => timers.forEach(clearTimeout);
-  }, []);
+  }, [lines]);
 
+  return (
+    <div className="terminal p-0 flex-1 min-w-0">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20">
+        <div className="terminal-dot bg-dracula-red" />
+        <div className="terminal-dot bg-dracula-yellow" />
+        <div className="terminal-dot bg-dracula-green" />
+        <span className="text-xs text-muted-foreground ml-2">{label}</span>
+      </div>
+      <div className="p-4 text-left text-sm leading-relaxed h-[200px] overflow-hidden">
+        {lines.slice(0, visibleLines).map((line, i) => (
+          <div key={i} className={`${line.color} animate-fade-up`}>
+            {line.text || "\u00A0"}
+          </div>
+        ))}
+        {visibleLines < lines.length && (
+          <span className="inline-block w-2 h-4 bg-dracula-green animate-pulse" />
+        )}
+      </div>
+    </div>
+  );
+};
+
+const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 overflow-hidden">
       <ParticleBackground />
 
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
+      <div className="relative z-10 max-w-5xl mx-auto text-center">
         <h1 data-logo="hero" className="font-mono text-5xl md:text-7xl font-bold mb-6 invisible">
           <span>spec</span>
           <span>rails</span>
@@ -136,8 +162,8 @@ const HeroSection = () => {
         </p>
 
         <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
-          A system of specialized agents that turns Claude Code into a complete
-          pipeline: Product Discovery → Architecture → Implementation → Review →
+          A system of 12 specialized agents that turns Claude Code into a complete
+          pipeline: Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr;
           Ship
         </p>
 
@@ -150,22 +176,18 @@ const HeroSection = () => {
           </a>
         </div>
 
-        <div className="terminal max-w-2xl mx-auto p-0 animate-fade-up delay-400">
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20">
-            <div className="terminal-dot bg-dracula-red" />
-            <div className="terminal-dot bg-dracula-yellow" />
-            <div className="terminal-dot bg-dracula-green" />
-            <span className="text-xs text-muted-foreground ml-2">terminal</span>
+        <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-400">
+          <div className="flex-1 min-w-0">
+            <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
+              <span className="text-dracula-purple">Option A</span> — npx
+            </p>
+            <AnimatedTerminal lines={npxLines} label="npx" />
           </div>
-          <div className="p-4 text-left text-sm leading-relaxed h-[300px] overflow-hidden">
-            {terminalLines.slice(0, visibleLines).map((line, i) => (
-              <div key={i} className={`${line.color} animate-fade-up`}>
-                {line.text}
-              </div>
-            ))}
-            {visibleLines < terminalLines.length && (
-              <span className="inline-block w-2 h-4 bg-dracula-green animate-pulse" />
-            )}
+          <div className="flex-1 min-w-0">
+            <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
+              <span className="text-dracula-cyan">Option B</span> — git clone
+            </p>
+            <AnimatedTerminal lines={gitCloneLines} label="git clone" />
           </div>
         </div>
       </div>

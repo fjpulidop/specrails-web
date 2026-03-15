@@ -29,21 +29,29 @@ The installer checks for all of these and offers to install missing tools.
 
 ## Installation
 
-### From curl (recommended)
-
-Run from **your project's root directory**:
+### From npx (recommended)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/fjpulidop/specrails/main/install.sh | bash
+npx specrails@latest init --root-dir <your-project>
 ```
+
+No cloning required. Downloads the latest version and runs the installer automatically.
 
 ### From a local clone
 
-If you've cloned the SpecRails repo:
+If you prefer to clone the repo first:
 
 ```bash
-cd /path/to/your-project
-bash /path/to/specrails/install.sh
+git clone https://github.com/fjpulidop/specrails.git
+./specrails/install.sh --root-dir <your-project>
+```
+
+### From curl
+
+Alternatively, pipe the installer directly:
+
+```bash
+curl -sL https://raw.githubusercontent.com/fjpulidop/specrails/main/install.sh | bash
 ```
 
 > **Important:** Always run the installer from the **target repository** — the project where you want SpecRails installed. If you run it from inside the SpecRails source repo, the installer will detect this and prompt you for the correct target path.

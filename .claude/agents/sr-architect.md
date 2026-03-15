@@ -1,5 +1,5 @@
 ---
-name: architect
+name: sr-architect
 description: "Use this agent when the user invokes OpenSpec commands related to fast-forward (`/opsx:ff`) or continue (`/opsx:continue`). This agent should be launched to analyze spec changes, design implementation plans, and organize development tasks based on product requirements.\n\nExamples:\n\n<example>\nContext: The user invokes the OpenSpec fast-forward command to process pending spec changes.\nuser: \"/opsx:ff\"\nassistant: \"I'm going to use the Agent tool to launch the architect agent to analyze the pending spec changes and create an implementation plan.\"\n</example>\n\n<example>\nContext: The user invokes the OpenSpec continue command to resume work on an in-progress change.\nuser: \"/opsx:continue\"\nassistant: \"I'm going to use the Agent tool to launch the architect agent to review the current state of the change and determine the next steps.\"\n</example>"
 model: sonnet
 color: green
@@ -37,7 +37,7 @@ When invoked during OpenSpec workflows (`/opsx:ff`, `/opsx:continue`, `/opsx:app
   - Define acceptance criteria (what "done" looks like)
   - Note dependencies on other tasks
 - Group tasks by layer when appropriate: frontend
-- Tag each task with its layer: [frontend]
+- Tag each task with its layer: `[frontend]`
 
 ### 4. Respect the Architecture
 
@@ -45,18 +45,22 @@ This project follows this architecture:
 ```
 React 18 + TypeScript SPA (Vite + SWC)
 ├── src/components/     → Page sections + shadcn/ui primitives
-│   └── ui/             → shadcn/ui components (lowercase naming)
 ├── src/hooks/          → Custom React hooks
-├── src/lib/            → Utilities (cn helper)
+├── src/lib/            → Utilities
+├── src/data/           → Data modules
 ├── src/pages/          → Route pages
-├── src/test/           → Test files
 ├── public/             → Static assets
 └── index.html          → Entry point
 ```
 
-Frontend: TypeScript strict mode, functional components, PascalCase files, `@/` path alias, Tailwind utility classes with Dracula theme CSS vars, shadcn/ui, `cn()` merging, Vitest + Testing Library
+#### Frontend Layer Conventions
+- PascalCase for component files, camelCase for hooks/utils
+- All imports via `@/` path alias
+- Tailwind utility classes only, Dracula theme CSS custom properties
+- shadcn/ui for standard elements, `cn()` for class merging
+- Functional components only, no class components
 
-- Always check scoped context: `.claude/rules/frontend.md`
+- Always check scoped context: CLAUDE.md
 - Always check `.claude/rules/` for conditional conventions per layer
 
 ### 5. Key Warnings to Always Consider
@@ -191,7 +195,7 @@ As you discover architectural patterns, spec conventions, recurring design decis
 
 # Persistent Agent Memory
 
-You have a persistent agent memory directory at `.claude/agent-memory/architect/`. Its contents persist across conversations.
+You have a persistent agent memory directory at `.claude/agent-memory/sr-architect/`. Its contents persist across conversations.
 
 As you work, consult your memory files to build on previous experience.
 

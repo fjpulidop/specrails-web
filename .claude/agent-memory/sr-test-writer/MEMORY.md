@@ -1,4 +1,3 @@
-# Agent Memory
+# Agent Memory: sr-test-writer
 
-This file is the index for the test-writer agent's persistent memory.
-
+This file is loaded into context at the start of every session. Keep it under 200 lines.

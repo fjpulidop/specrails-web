@@ -1,6 +1,6 @@
 # Persona: The Solo Shipper
 
-> "I'm a one-person team. Every tool that replaces a missing teammate lets me punch above my weight."
+> "I can build anything — I just can't be the architect, developer, reviewer, and QA engineer all at once. I need a team, not a tool."
 
 ## Profile
 
@@ -8,22 +8,22 @@
 |-------|-------|
 | **Name** | "Alex" — The Solo Shipper |
 | **Age** | 25-40 |
-| **Role** | Solo developer, indie hacker, or early-stage founder |
-| **Projects** | 1-3 active projects, usually full-stack SaaS or developer tools |
-| **Experience** | 3-10 years; strong in one stack, competent across others |
-| **Tools today** | Claude Code, Cursor, GitHub Copilot, VS Code, Vercel/Railway, GitHub Actions |
-| **Spending** | $20-100/month on dev tools; ROI-sensitive — every dollar must save time |
-| **Tech comfort** | High — comfortable with CLI, APIs, and CI/CD; prefers automation over manual work |
+| **Role** | Solo developer, indie hacker, or early-stage startup founder |
+| **Projects** | 1-3 active projects, shipping MVPs and iterating fast |
+| **Experience** | Strong full-stack generalist; 3-10 years of professional experience |
+| **Tools today** | Cursor, GitHub Copilot, Claude Code, Aider, VS Code, GitHub |
+| **Spending** | $20-100/month on AI dev tools (willing to pay for genuine productivity gains) |
+| **Tech comfort** | High — comfortable with CLI, APIs, and multiple languages/frameworks |
 
 ## Behaviors
 
-- Ships features alone, from idea to production, often in a single session
-- Context-switches constantly between product thinking, architecture, coding, and ops
-- Uses AI coding assistants daily but spends significant time providing context and correcting output
-- Values speed and iteration over perfection — "good enough, shipped" beats "perfect, stuck in dev"
-- Gravitates toward opinionated tools that make decisions for them
-- Abandons tools that require too much configuration or have steep learning curves
-- Reads Reddit, HN, and Twitter/X for tool recommendations; trusts peer reviews over marketing
+- Ships fast but worries about quality debt accumulating silently
+- Uses 2-3 AI coding tools simultaneously, switching based on task type
+- Spends more time reviewing AI output than expected — AI writes code but creates review burden
+- Re-explains project context to AI tools every session; frustrated by context loss
+- Avoids complex refactors because no one else reviews or validates the architecture
+- Evaluates tools by "does this make me feel like I have a team?" not just "does this write code faster?"
+- Reads Hacker News, Reddit r/programming, and dev Twitter for tool recommendations
 
 ## Value Proposition Canvas
 
@@ -31,47 +31,48 @@
 
 | Type | Job |
 |------|-----|
-| Functional | Implement features end-to-end without needing to hire specialists |
-| Functional | Maintain code quality without a dedicated reviewer or QA process |
-| Functional | Prioritize what to build next based on user impact, not just gut feeling |
-| Functional | Keep the codebase healthy (tests, linting, security) as a solo maintainer |
-| Social | Demonstrate professional-quality output despite being a one-person team |
-| Emotional | Avoid the overwhelm of wearing every hat simultaneously |
-| Emotional | Feel confident that shipped code won't break production at 2am |
+| Functional | Ship features end-to-end without needing to hire a team |
+| Functional | Get architectural guidance before writing code, not after |
+| Functional | Ensure code quality through automated review, not self-review |
+| Functional | Maintain consistent codebase conventions as the project grows |
+| Functional | Catch security issues and bugs before they reach production |
+| Social | Ship work that looks "team-quality" to users, investors, or employers |
+| Emotional | Feel confident that code is solid, not just "it works for now" |
+| Emotional | Reduce the cognitive overload of wearing every hat simultaneously |
 
 ### Pains
 
 | Severity | Pain |
 |----------|------|
-| Critical | AI assistants require constant hand-holding — they don't know the codebase's architecture or conventions |
-| Critical | No second pair of eyes — bugs, security issues, and design mistakes slip through without code review |
-| High | Context-switching between "product manager brain" and "developer brain" kills flow state |
-| High | AI tools generate code that works in isolation but breaks existing patterns or creates inconsistencies |
-| Medium | Setting up and maintaining CI/CD, linting, testing infrastructure eats into feature development time |
-| Medium | Hard to evaluate which features will actually move the needle for users |
-| Low | Existing AI tools optimize for code generation, not for the full idea-to-production pipeline |
+| Critical | AI writes code but doesn't think about architecture — treats every task as greenfield |
+| Critical | No quality gate between "AI generated code" and "code ships to production" |
+| High | Spends more time reviewing AI output than saved by generating it |
+| High | Context loss across sessions — re-explains codebase, conventions, and goals every time |
+| High | Complex multi-file features fall apart — AI handles single files but not cross-cutting concerns |
+| Medium | No structured workflow — AI is a suggestion engine, not a pipeline |
+| Medium | Tool lock-in anxiety and unpredictable token costs |
+| Low | Generic suggestions that don't match project-specific patterns or conventions |
 
 ### Gains
 
 | Impact | Gain |
 |--------|------|
-| High | A single command that orchestrates the full pipeline: product thinking → architecture → implementation → review |
-| High | AI reviewer that catches bugs, security issues, and convention violations before they ship |
-| High | Codebase-aware AI that understands existing architecture and generates consistent code |
-| Medium | Product discovery that surfaces high-impact feature ideas based on user personas, not guesswork |
-| Medium | Automated branch, commit, and PR creation so shipping doesn't break flow |
-| Medium | Per-layer conventions enforced automatically — consistent code without manual vigilance |
-| Low | Memory across sessions — the AI system learns the project over time |
-| Low | Works with existing tools (GitHub, CLI) rather than requiring a new IDE or platform |
+| High | Multi-agent pipeline that separates planning, implementation, and review into distinct phases |
+| High | Architect agent that pushes back on bad designs before code is written |
+| High | Reviewer agent that catches bugs, security issues, and convention violations automatically |
+| High | Persistent project memory — AI knows the codebase like a long-term team member |
+| Medium | Model-tier routing — expensive reasoning for architecture, fast models for boilerplate |
+| Medium | Spec-driven development that links implementation back to requirements |
+| Medium | Structured shipping workflow (branch, commit, PR) built into the pipeline |
+| Low | Open-source and extensible — no proprietary lock-in |
 
 ## Key Insight
 
-> Solo developers don't need a better autocomplete — they need a **virtual development team**. The critical gap is not code generation (Copilot/Cursor handle that) but the *orchestration* of the full development workflow: product thinking, architecture, implementation, review, and shipping. A tool that replaces the missing teammates — PM, architect, reviewer — with specialized AI agents is transformatively more valuable than a smarter code suggestion engine.
+> Solo developers don't need a faster coding tool — they need the equivalent of a **full development team** (architect + developer + reviewer + QA) orchestrated into a single pipeline. The gap isn't code generation speed; it's the absence of the planning, review, and quality assurance roles that make teams productive. specrails fills this by turning Claude Code into a team, not just a faster typist.
 
 ## Sources
 
-- Reddit r/SideProject, r/indiehackers — recurring threads on AI tool fatigue and "which AI coding tool" comparisons
-- Hacker News discussions on Claude Code, Cursor, Devin — common theme of "great for greenfield, frustrating for existing codebases"
-- IndieHackers.com — solo founder workflows and tool stacks
-- Augment Code — "Best Devin Alternatives for AI Agent Orchestration" (2025)
-- Anthropic — 2026 Agentic Coding Trends Report
+- Competitive analysis: Cursor, GitHub Copilot Workspace, Devin, Aider, Claude Code
+- Reddit r/programming and r/ExperiencedDevs discussions on AI coding tool adoption
+- Hacker News threads on solo developer workflows with AI (2024-2025)
+- Developer surveys on AI tool satisfaction and pain points (Stack Overflow, JetBrains)
