@@ -31,7 +31,7 @@ export function DocsDropdown(): JSX.Element {
       </button>
 
       {open && (
-        <ul className="absolute right-0 top-full mt-2 w-80 grid gap-1 p-3 bg-popover border border-border/30 rounded-xl shadow-xl z-50">
+        <ul className="absolute right-0 top-full mt-2 w-80 grid gap-1 p-3 bg-popover border border-border/30 rounded-xl shadow-xl z-50 max-h-[70vh] overflow-y-auto">
           {entries.map((entry) => (
             <li key={entry.slug}>
               <Link
