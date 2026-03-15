@@ -6,18 +6,22 @@ import agentsRaw from "../../docs/agents.md?raw";
 import workflowsRaw from "../../docs/workflows.md?raw";
 import customizationRaw from "../../docs/customization.md?raw";
 import updatingRaw from "../../docs/updating.md?raw";
+import playbookProductDiscoveryRaw from "../../docs/playbook-product-discovery.md?raw";
+import playbookParallelDevRaw from "../../docs/playbook-parallel-dev.md?raw";
+import playbookOssMaintainerRaw from "../../docs/playbook-oss-maintainer.md?raw";
 
 export interface DocEntry {
   slug: string;
   title: string;
   description: string;
   content: string;
+  section?: string;
 }
 
 export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "",
-    title: "Welcome",
+    title: "Documentation",
     description: "Overview and reading guide",
     content: readmeRaw,
   },
@@ -48,7 +52,7 @@ export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "workflows",
     title: "Workflows & Commands",
-    description: "How to use /sr:implement, /sr:product-backlog, and more",
+    description: "How to use /implement, /product-backlog, and more",
     content: workflowsRaw,
   },
   {
@@ -62,6 +66,27 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "Updating",
     description: "Keep SpecRails current without losing customizations",
     content: updatingRaw,
+  },
+  {
+    slug: "playbook-product-discovery",
+    title: "Product Discovery",
+    description: "Write specs that produce reliable implementations",
+    content: playbookProductDiscoveryRaw,
+    section: "Playbook",
+  },
+  {
+    slug: "playbook-parallel-dev",
+    title: "Parallel Development",
+    description: "Run multiple features in parallel without merge conflicts",
+    content: playbookParallelDevRaw,
+    section: "Playbook",
+  },
+  {
+    slug: "playbook-oss-maintainer",
+    title: "OSS Maintainer Workflow",
+    description: "Review gates, confidence thresholds, and convention enforcement",
+    content: playbookOssMaintainerRaw,
+    section: "Playbook",
   },
 ];
 
