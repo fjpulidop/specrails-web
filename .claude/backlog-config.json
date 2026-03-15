@@ -1,5 +1,4 @@
 {
   "provider": "github",
-  "write_access": true,
-  "git_auto": true
+  "write_access": true
 }

@@ -5,7 +5,7 @@ category: Workflow
 tags: [workflow, backlog, viewer, product-driven]
 ---
 
-Display the product-driven backlog by reading issues/tickets from the configured backlog provider ({{BACKLOG_PROVIDER_NAME}}). These are feature ideas generated through VPC-based product discovery — evaluated against user personas. Use `/sr:update-product-driven-backlog` to generate new ideas.
+Display the product-driven backlog by reading issues/tickets from the configured backlog provider (GitHub Issues). These are feature ideas generated through VPC-based product discovery — evaluated against user personas. Use `/sr:update-product-driven-backlog` to generate new ideas.
 
 **Input:** $ARGUMENTS (optional: comma-separated areas to filter. If empty, show all.)
 
@@ -16,7 +16,7 @@ Display the product-driven backlog by reading issues/tickets from the configured
 Verify the backlog provider is accessible:
 
 ```bash
-{{BACKLOG_PREFLIGHT}}
+gh auth status
 ```
 
 If the backlog provider is unavailable, stop and inform the user.
@@ -29,11 +29,11 @@ Launch a **single** sr-product-analyst agent (`subagent_type: sr-product-analyst
 
 The product-analyst receives this prompt:
 
-> You are reading the product-driven backlog from {{BACKLOG_PROVIDER_NAME}} and producing a prioritized view.
+> You are reading the product-driven backlog from GitHub Issues and producing a prioritized view.
 
 1. **Fetch all open product-driven backlog items:**
    ```bash
-   {{BACKLOG_FETCH_CMD}}
+   gh issue list --label "product-driven-backlog" --state open --limit 100 --json number,title,labels,body
    ```
 
 2. **Parse each issue/ticket** to extract metadata from the body:
@@ -100,14 +100,14 @@ The product-analyst receives this prompt:
    ## Product-Driven Backlog
 
    {N} open issues | Source: VPC-based product discovery
-   Personas: {{PERSONA_NAMES_WITH_ROLES}}
+   Personas: Kai (Maintainer) · Alex (Solo Shipper) · Morgan (Engineering Lead) · Luna (UX Craftsperson)
 
    ### {Area Name}
 
-   | # | Issue | {{PERSONA_SCORE_HEADERS}} | Total | Effort | Prereqs |
-   |---|-------|{{PERSONA_SCORE_SEPARATORS}}|-------|--------|---------|
-   | 1 | #42 Feature name [blocked] | ... | X/{{MAX_SCORE}} | Low | #12, #17 |
-   | 2 | #43 Other feature | ... | X/{{MAX_SCORE}} | High | — |
+   | # | Issue | Kai | Alex | Morgan | Luna | Total | Effort | Prereqs |
+   |---|-------|-----|------|--------|------|-------|--------|---------|
+   | 1 | #42 Feature name [blocked] | ... | X/20 | Low | #12, #17 |
+   | 2 | #43 Other feature | ... | X/20 | High | — |
 
    ---
 
@@ -115,8 +115,8 @@ The product-analyst receives this prompt:
 
    Ranked by VPC persona score / effort ratio:
 
-   | Priority | Issue | Area | {{PERSONA_SCORE_HEADERS}} | Total | Effort | Rationale |
-   |----------|-------|------|{{PERSONA_SCORE_SEPARATORS}}|-------|--------|-----------|
+   | Priority | Issue | Area | Kai | Alex | Morgan | Luna | Total | Effort | Rationale |
+   |----------|-------|------|-----|------|--------|------|-------|--------|-----------|
 
    ### Selection criteria
    - Cross-persona features (both 4+/5) prioritized over single-persona
@@ -138,8 +138,8 @@ The product-analyst receives this prompt:
 
    | Wave | Issue | Title | Prereqs | Score | Effort |
    |------|-------|-------|---------|-------|--------|
-   | 1    | #N    | ...   | —       | X/{{MAX_SCORE}} | Low |
-   | 2    | #M    | ...   | #N      | X/{{MAX_SCORE}} | Medium |
+   | 1    | #N    | ...   | —       | X/20 | Low |
+   | 2    | #M    | ...   | #N      | X/20 | Medium |
 
    To implement in this order:
      /sr:batch-implement <issue-refs in wave order> --deps "<A> -> <B>, <C> -> <D>, ..."

@@ -1,5 +1,5 @@
 ---
-name: security-reviewer
+name: sr-security-reviewer
 description: "Use this agent to scan all modified files for secrets, hardcoded credentials, and security vulnerability patterns after implementation. Runs as part of Phase 4 in the implement pipeline. Do NOT use this agent to fix issues — it scans and reports only.
 
 Examples:
@@ -159,7 +159,7 @@ The `SECURITY_STATUS:` line MUST be the very last line of your output. Nothing m
 
 # Persistent Agent Memory
 
-You have a persistent agent memory directory at `.claude/agent-memory/security-reviewer/`. Its contents persist across conversations.
+You have a persistent agent memory directory at `.claude/agent-memory/sr-security-reviewer/`. Its contents persist across conversations.
 
 As you work, consult your memory files to build on previous experience.
 

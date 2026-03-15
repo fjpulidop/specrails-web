@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "change": "agent-comparison-matrix",
+  "agent": "reviewer",
+  "scored_at": "2026-03-15T01:27:00Z",
+  "overall": 86,
+  "aspects": {
+    "type_correctness": 95,
+    "pattern_adherence": 82,
+    "test_coverage": 88,
+    "security": 95,
+    "architectural_alignment": 90
+  },
+  "notes": {
+    "type_correctness": "All types are explicit and strict — AgentEntry interface is well-defined with union types for model/stage/category. No implicit any anywhere in the feature files.",
+    "pattern_adherence": "Two issues fixed: AgentsSection.tsx had stale copy ('9 specialized agents' should be '11'), and Navbar.tsx dropped pre-existing useLocation/isDocsPage logic that hid the Docs link on docs pages — restored both. All imports use @/ alias, cn() used for conditional classes, shadcn/ui used throughout.",
+    "test_coverage": "6 tests cover the main interaction paths: initial render (11 agents), search by name, search by primaryJob, model filter, clear-filters, and zero state. All critical filter combinations tested. Mobile card rendering is implicitly covered since both table and cards render in jsdom.",
+    "security": "Static SPA — no server-side code, no secrets, no new dependencies that introduce attack surface. @testing-library/user-event added as devDependency only.",
+    "architectural_alignment": "New /agents route follows the established page pattern (Navbar + main + FooterSection). Shared data module in src/data/ is a clean separation. Component uses shadcn/ui Table, Select, Badge, Input, Button correctly."
+  },
+  "flags": ["navbar-regression-fixed"]
+}

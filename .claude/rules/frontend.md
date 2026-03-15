@@ -5,51 +5,37 @@ paths:
 
 # Frontend Conventions
 
-## Language & Framework
-- TypeScript strict mode — no `any` types, explicit return types on exported functions
-- React 18 functional components only — no class components
-- React Router DOM v6 for routing
-
-## Naming
-- **Component files**: PascalCase (`HeroSection.tsx`, `PipelineSection.tsx`)
-- **Component exports**: PascalCase, matching filename
-- **Hook files**: camelCase (`useScrollAnimation.ts`, `use-mobile.tsx`)
-- **Utility files**: camelCase (`utils.ts`)
-- **shadcn/ui components**: lowercase (`button.tsx`, `card.tsx`) — these are third-party, do not rename
-- **Test files**: `*.test.ts` or `*.test.tsx`
+## File Naming
+- PascalCase for component files (`HeroSection.tsx`, `AgentsDropdown.tsx`)
+- camelCase for hooks (`useScrollAnimation.ts`, `use-mobile.tsx`)
+- camelCase for utilities (`docs-registry.ts`)
+- lowercase for shadcn/ui components (`button.tsx`, `card.tsx`)
 
 ## Imports
-- Use `@/` path alias for all `src/` imports (e.g., `import { Button } from "@/components/ui/button"`)
-- Group imports: React/external libs first, then `@/` internal imports
-- No barrel exports — import directly from the file
+- Always use `@/` path alias for all `src/` imports
+- Group: React → third-party → `@/components/ui` → `@/components` → `@/hooks` → `@/lib`
 
 ## Styling
-- Tailwind CSS utility classes exclusively — no inline styles, no CSS modules
-- Dracula theme colors via CSS custom properties: `hsl(var(--primary))`, `hsl(var(--background))`, etc.
-- Never hardcode hex, rgb, or hsl color values — always use theme variables
-- Use `cn()` from `@/lib/utils` for conditional class merging (tailwind-merge + clsx)
-- Mobile-first responsive design with Tailwind breakpoints (`sm:`, `md:`, `lg:`, `xl:`)
+- Tailwind utility classes only — no inline styles, no CSS modules
+- Dracula theme CSS custom properties for all colors
+- Use `cn()` from `@/lib/utils` for conditional class merging
+- Never use arbitrary Tailwind values for colors — use theme tokens
 
 ## Components
-- Use shadcn/ui components for all standard UI elements (Button, Card, Badge, etc.)
-- Props must be typed with explicit TypeScript interfaces
-- Destructure props in function signature
-- Use `useScrollAnimation` hook for scroll-triggered entrance animations
-
-## State & Effects
-- `useState` for local component state
-- `useRef` for DOM references and mutable values
-- `useEffect` with proper cleanup functions
-- `@tanstack/react-query` for server state (API calls)
+- shadcn/ui primitives for all standard UI elements (Button, Card, Dialog, etc.)
+- Functional components only — no class components
+- Props interfaces defined inline or in the same file
+- Use Lucide React for all icons
 
 ## Testing
-- Vitest as test runner
-- `@testing-library/react` for component tests
-- Test files in `src/test/` directory
-- `describe`/`it`/`expect` pattern from vitest
+- Vitest + @testing-library/react for unit tests
+- Test files: `*.test.tsx` in `src/test/`
+- Test behavior, not implementation details
+- Radix UI: test user interactions, not DOM structure (jsdom limitations)
+- Mock IntersectionObserver, canvas, matchMedia for jsdom
 
-## Performance
-- Lazy load heavy components and images
-- Use `loading="lazy"` on images below the fold
-- Minimize bundle size — import only what you need from libraries
-- Canvas animations (particle background) should respect `requestAnimationFrame` lifecycle
+## React Patterns
+- React Router v6 for routing (`useNavigate`, `Link`, `Routes`)
+- @tanstack/react-query for async state
+- Custom hooks in `src/hooks/` for reusable logic
+- Prefer composition over prop drilling

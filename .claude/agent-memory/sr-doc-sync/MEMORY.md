@@ -1,4 +1,3 @@
-# Agent Memory
+# Agent Memory: sr-doc-sync
 
-This file is the index for the doc-sync agent's persistent memory.
-
+This file is loaded into context at the start of every session. Keep it under 200 lines.
