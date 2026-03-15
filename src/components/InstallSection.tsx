@@ -1,20 +1,62 @@
+import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 
+type Method = "npx" | "git";
+
 const InstallSection = () => {
   const { ref, isVisible } = useScrollAnimation();
+  const [method, setMethod] = useState<Method>("npx");
 
   return (
     <section id="install" className="py-24 px-6 section-darker" ref={ref}>
       <div className="container mx-auto max-w-3xl">
         <h2
-          className={`text-3xl md:text-4xl font-bold text-center mb-16 transition-all duration-700 ${
+          className={`text-3xl md:text-4xl font-bold text-center mb-4 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           Installation in <span className="gradient-text">2 Steps</span>
         </h2>
+
+        <p
+          className={`text-muted-foreground text-center mb-12 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          Two methods, same result. Pick your style.
+        </p>
+
+        {/* Method tabs */}
+        <div
+          className={`flex justify-center mb-8 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="inline-flex rounded-lg bg-muted p-1 gap-1">
+            <button
+              onClick={() => setMethod("npx")}
+              className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
+                method === "npx"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              npx
+            </button>
+            <button
+              onClick={() => setMethod("git")}
+              className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
+                method === "git"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Git Clone
+            </button>
+          </div>
+        </div>
 
         <div className="space-y-6">
           {/* Step 1 */}
@@ -32,10 +74,19 @@ const InstallSection = () => {
                 <div className="terminal-dot bg-dracula-red" />
                 <div className="terminal-dot bg-dracula-yellow" />
                 <div className="terminal-dot bg-dracula-green" />
+                <span className="text-xs text-muted-foreground ml-2">
+                  {method === "npx" ? "npx" : "git clone"}
+                </span>
               </div>
               <div className="p-4 text-sm font-mono space-y-1">
-                <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails.git</div>
-                <div><span className="text-dracula-green">$</span> ./specrails/install.sh --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
+                {method === "npx" ? (
+                  <div><span className="text-dracula-green">$</span> npx specrails@latest init --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
+                ) : (
+                  <>
+                    <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails.git</div>
+                    <div><span className="text-dracula-green">$</span> ./specrails/install.sh --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
+                  </>
+                )}
               </div>
             </div>
           </div>

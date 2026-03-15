@@ -27,7 +27,7 @@ const AgentsSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          11 specialized agents working in concert, each with a distinct role and
+          12 specialized agents working in concert, each with a distinct role and
           the right model for the job.
         </p>
         <div

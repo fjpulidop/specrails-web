@@ -11,7 +11,7 @@ export default function AgentsPage(): JSX.Element {
           Agent <span className="gradient-text">Comparison Matrix</span>
         </h1>
         <p className="text-muted-foreground mb-10 max-w-2xl">
-          All 11 specrails agents — filter by model, pipeline stage, or job category to find the agent that solves your problem.
+          All 12 specrails agents — filter by model, pipeline stage, or job category to find the agent that solves your problem.
         </p>
         <AgentComparisonMatrix />
       </main>

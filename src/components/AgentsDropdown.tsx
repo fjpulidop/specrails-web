@@ -6,7 +6,7 @@ const AGENT_LINKS = [
   {
     label: "Overview",
     href: "/#agents",
-    description: "Meet the 11 specialized AI agents",
+    description: "Meet the 12 specialized AI agents",
   },
   {
     label: "Comparison Matrix",

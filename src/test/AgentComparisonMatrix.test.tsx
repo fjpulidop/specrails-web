@@ -9,10 +9,10 @@ function renderWithRouter(ui: React.ReactElement) {
 }
 
 describe("AgentComparisonMatrix", () => {
-  it("renders all 11 agents by default", () => {
+  it("renders all 12 agents by default", () => {
     renderWithRouter(<AgentComparisonMatrix />);
-    // 11 data rows + 1 header row = 12
-    expect(screen.getAllByRole("row")).toHaveLength(12);
+    // 12 data rows + 1 header row = 13
+    expect(screen.getAllByRole("row")).toHaveLength(13);
   });
 
   it("search by name filters results", async () => {
@@ -66,8 +66,8 @@ describe("AgentComparisonMatrix", () => {
     const clearBtn = screen.getByRole("button", { name: /clear filters/i });
     expect(clearBtn).toBeInTheDocument();
     await user.click(clearBtn);
-    // All 11 agents should be back
-    expect(screen.getAllByRole("row")).toHaveLength(12);
+    // All 12 agents should be back
+    expect(screen.getAllByRole("row")).toHaveLength(13);
   });
 
   it("zero state shown when no agents match", async () => {

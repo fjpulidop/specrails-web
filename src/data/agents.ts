@@ -10,6 +10,7 @@ import {
   Eye,
   ShieldCheck,
   Shield,
+  FileText,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -186,5 +187,18 @@ export const AGENTS: AgentEntry[] = [
     color: "text-dracula-red",
     border: "border-dracula-red",
     glow: "glow-red",
+  },
+  {
+    name: "Doc Sync",
+    model: "Sonnet",
+    primaryJob: "Updates changelogs, READMEs, and API docs",
+    desc: "Documentation keeper. Syncs changelogs, READMEs, and API docs after code changes",
+    stage: "review",
+    category: "quality",
+    docsSlug: "agents",
+    icon: FileText,
+    color: "text-dracula-cyan",
+    border: "border-dracula-cyan",
+    glow: "glow-cyan",
   },
 ];

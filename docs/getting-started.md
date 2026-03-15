@@ -22,10 +22,19 @@ Optional (recommended):
 
 ## Install
 
-Run the installer from **your project's root directory**:
+Pick your preferred method:
+
+**npx (recommended)**
 
 ```bash
-curl -sL https://raw.githubusercontent.com/fjpulidop/specrails/main/install.sh | bash
+npx specrails@latest init --root-dir <your-project>
+```
+
+**git clone**
+
+```bash
+git clone https://github.com/fjpulidop/specrails.git
+./specrails/install.sh --root-dir <your-project>
 ```
 
 The installer will:
