@@ -15,30 +15,42 @@ export function DocsSidebar({ onNavigate }: DocsSidebarProps): JSX.Element {
         Documentation
       </div>
       <ul className="space-y-1">
-        {DOC_ENTRIES.map((entry) => {
-          const href = entry.slug === "" ? "/docs" : `/docs/${entry.slug}`;
-          const isActive =
-            entry.slug === ""
-              ? location.pathname === "/docs" || location.pathname === "/docs/"
-              : location.pathname === href;
+        {(() => {
+          let currentSection: string | undefined = undefined;
+          return DOC_ENTRIES.map((entry) => {
+            const showSectionHeader =
+              entry.section !== undefined && entry.section !== currentSection;
+            if (showSectionHeader) currentSection = entry.section;
 
-          return (
-            <li key={entry.slug}>
-              <Link
-                to={href}
-                onClick={onNavigate}
-                className={cn(
-                  "block rounded-lg px-3 py-2 text-sm transition-colors",
-                  isActive
-                    ? "border-l-2 border-dracula-purple text-dracula-purple bg-dracula-current/50 pl-[calc(0.75rem_-_2px)]"
-                    : "text-muted-foreground hover:text-foreground hover:bg-dracula-current/30"
+            const href = entry.slug === "" ? "/docs" : `/docs/${entry.slug}`;
+            const isActive =
+              entry.slug === ""
+                ? location.pathname === "/docs" || location.pathname === "/docs/"
+                : location.pathname === href;
+
+            return (
+              <li key={entry.slug}>
+                {showSectionHeader && (
+                  <div className="font-mono text-xs uppercase tracking-wider text-dracula-comment mb-2 mt-4 px-3">
+                    {entry.section}
+                  </div>
                 )}
-              >
-                {entry.title}
-              </Link>
-            </li>
-          );
-        })}
+                <Link
+                  to={href}
+                  onClick={onNavigate}
+                  className={cn(
+                    "block rounded-lg px-3 py-2 text-sm transition-colors",
+                    isActive
+                      ? "border-l-2 border-dracula-purple text-dracula-purple bg-dracula-current/50 pl-[calc(0.75rem_-_2px)]"
+                      : "text-muted-foreground hover:text-foreground hover:bg-dracula-current/30"
+                  )}
+                >
+                  {entry.title}
+                </Link>
+              </li>
+            );
+          });
+        })()}
       </ul>
     </nav>
   );
