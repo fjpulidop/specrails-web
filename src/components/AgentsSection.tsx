@@ -1,22 +1,6 @@
-import {
-  Briefcase, Search, Cpu, Code, Server, Monitor, TestTubes, CheckCircle, Shield,
-  LayoutDashboard, ServerCog,
-} from "lucide-react";
+import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-const agents = [
-  { name: "Product Manager", model: "Opus", desc: "Strategy and discovery. Analyzes the market, brainstorms features, and scores them with Value Proposition Canvas", icon: Briefcase, color: "text-dracula-purple", border: "border-dracula-purple", glow: "glow-purple" },
-  { name: "Product Analyst", model: "Haiku", desc: "Read-only audit. Compares specs vs actual code and generates divergence reports", icon: Search, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
-  { name: "Architect", model: "Sonnet", desc: "Translates specs into technical designs, ordered tasks, and risk assessments", icon: Cpu, color: "text-dracula-orange", border: "border-dracula-orange", glow: "glow-orange" },
-  { name: "Developer", model: "Sonnet", desc: "Full-stack polyglot engineer. 4 phases: Understand → Plan → Implement → Verify", icon: Code, color: "text-dracula-green", border: "border-dracula-green", glow: "glow-green" },
-  { name: "Backend Developer", model: "Sonnet", desc: "Server-side specialist for parallel frontend/backend pipelines", icon: Server, color: "text-dracula-yellow", border: "border-dracula-yellow", glow: "glow-yellow" },
-  { name: "Frontend Developer", model: "Sonnet", desc: "UI/UX specialist with pixel-perfect precision", icon: Monitor, color: "text-dracula-pink", border: "border-dracula-pink", glow: "glow-pink" },
-  { name: "Test Writer", model: "Sonnet", desc: "Generates test suites with >80% coverage. Auto-detects frameworks", icon: TestTubes, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
-  { name: "Reviewer", model: "Sonnet", desc: "Final quality checkpoint. Outputs confidence scores across 5 aspects, runs CI, and blocks shipping below threshold", icon: CheckCircle, color: "text-dracula-orange", border: "border-dracula-orange", glow: "glow-orange" },
-  { name: "Frontend Reviewer", model: "Sonnet", desc: "Layer-specific expert for UI code. Reviews accessibility, component patterns, and rendering performance in parallel", icon: LayoutDashboard, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
-  { name: "Backend Reviewer", model: "Sonnet", desc: "Layer-specific expert for server code. Reviews API contracts, data integrity, and security posture in parallel", icon: ServerCog, color: "text-dracula-cyan", border: "border-dracula-cyan", glow: "glow-cyan" },
-  { name: "Security Reviewer", model: "Opus", desc: "Security auditor. Scans 11 credential patterns and OWASP vulnerabilities. Can BLOCK deployment", icon: Shield, color: "text-dracula-red", border: "border-dracula-red", glow: "glow-red" },
-];
+import { AGENTS } from "@/data/agents";
 
 const modelColors: Record<string, string> = {
   Opus: "bg-dracula-purple/20 text-dracula-purple",
@@ -39,16 +23,28 @@ const AgentsSection = () => {
           <span className="gradient-text">A Complete AI Agent Team</span>
         </h2>
         <p
-          className={`text-muted-foreground text-center max-w-2xl mx-auto mb-16 transition-all duration-700 delay-100 ${
+          className={`text-muted-foreground text-center max-w-2xl mx-auto mb-4 transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           11 specialized agents working in concert, each with a distinct role and
           the right model for the job.
         </p>
+        <div
+          className={`text-center mb-12 transition-all duration-700 delay-150 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <Link
+            to="/agents"
+            className="text-sm text-dracula-purple hover:text-dracula-pink transition-colors"
+          >
+            Compare all agents →
+          </Link>
+        </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {agents.map((a, i) => (
+          {AGENTS.map((a, i) => (
             <div
               key={a.name}
               className={`glass-card p-5 transition-all duration-500 hover:${a.glow} hover:border-opacity-60 ${
