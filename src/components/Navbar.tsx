@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Github } from "lucide-react";
+import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
 
 const Navbar = () => {
@@ -15,8 +16,6 @@ const Navbar = () => {
   }, []);
 
   const links = [
-    { label: "Problem", href: "/#problem" },
-    { label: "Agents", href: "/#agents" },
     { label: "Pipeline", href: "/#pipeline" },
     { label: "Features", href: "/#features" },
     { label: "Install", href: "/#install" },
@@ -56,6 +55,13 @@ const Navbar = () => {
           </a>
         </div>
         <div className="hidden md:flex items-center gap-6">
+          <a
+            href="/#problem"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Problem
+          </a>
+          <AgentsDropdown />
           {links.map((l) => (
             <a
               key={l.href}
