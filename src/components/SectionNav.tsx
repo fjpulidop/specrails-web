@@ -114,7 +114,7 @@ const SectionNav = ({
           "w-8 h-8 rounded-full",
           "bg-foreground/[0.07] hover:bg-foreground/[0.13] active:bg-foreground/[0.18]",
           "flex items-center justify-center",
-          "transition-all duration-700 cursor-pointer",
+          "transition-all duration-300 cursor-pointer",
           visible && !isFirst && !scrolling
             ? "opacity-100 scale-100"
             : "opacity-0 scale-90 pointer-events-none"
@@ -145,7 +145,7 @@ const SectionNav = ({
           "w-8 h-8 rounded-full",
           "bg-foreground/[0.07] hover:bg-foreground/[0.13] active:bg-foreground/[0.18]",
           "flex items-center justify-center",
-          "transition-all duration-700 cursor-pointer",
+          "transition-all duration-300 cursor-pointer",
           !isLast && !scrolling
             ? "opacity-100 scale-100"
             : "opacity-0 scale-90 pointer-events-none"

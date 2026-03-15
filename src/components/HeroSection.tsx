@@ -148,7 +148,7 @@ const AnimatedTerminal = ({ lines, label }: { lines: typeof gitCloneLines; label
 
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-16 md:pb-0 overflow-hidden">
       <ParticleBackground />
 
       <div className="relative z-10 max-w-5xl mx-auto text-center">
