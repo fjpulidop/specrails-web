@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
 
 type Method = "npx" | "git";
 
@@ -124,14 +122,16 @@ const InstallSection = () => {
           Requirements: <span className="text-dracula-green">git</span> + <span className="text-dracula-cyan">Claude Code CLI</span>. Optional: npm, GitHub CLI, JIRA CLI
         </p>
 
-        <div className="text-center mt-6">
-          <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer">
-            <Button variant="cyan" size="lg">
-              <ExternalLink className="w-4 h-4 mr-2" />
-              View full documentation
-            </Button>
-          </a>
-        </div>
+        <p
+          className={`text-muted-foreground text-xs text-center mt-3 transition-all duration-700 delay-300 ${
+            isVisible ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          Estimated install time: ~15 minutes (may vary depending on your project).
+          <br />
+          This project does not collect telemetry or access your source code. All code is{" "}
+          <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer" className="text-dracula-purple hover:underline">open source on GitHub</a>.
+        </p>
       </div>
     </section>
   );

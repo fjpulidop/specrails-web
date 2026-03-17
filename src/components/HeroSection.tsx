@@ -4,7 +4,7 @@ import { Download } from "lucide-react";
 
 const gitCloneLines = [
   { text: "$ git clone https://github.com/fjpulidop/specrails.git", color: "text-dracula-green", delay: 0 },
-  { text: "$ ./specrails/install.sh --root-dir .", color: "text-dracula-green", delay: 800 },
+  { text: "$ ./specrails/install.sh --root-dir <your-project>", color: "text-dracula-green", delay: 800 },
   { text: "", color: "text-foreground", delay: 1200 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1600 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 2000 },
@@ -12,7 +12,7 @@ const gitCloneLines = [
 ];
 
 const npxLines = [
-  { text: "$ npx specrails@latest init --root-dir .", color: "text-dracula-green", delay: 0 },
+  { text: "$ npx specrails@latest init --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
   { text: "", color: "text-foreground", delay: 600 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
