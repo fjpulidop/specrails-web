@@ -9,13 +9,13 @@ const FooterSection = () => (
       </div>
 
       <div className="flex justify-center gap-6 mb-8">
-        <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
+        <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
           <Github className="w-4 h-4" /> GitHub
         </a>
-        <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
+        <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
           <BookOpen className="w-4 h-4" /> Documentation
         </a>
-        <a href="https://github.com/fjpulidop/specrails/issues" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
+        <a href="https://github.com/fjpulidop/specrails-core/issues" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm">
           <Bug className="w-4 h-4" /> Issues
         </a>
         <span className="text-muted-foreground text-sm">MIT License</span>

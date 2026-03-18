@@ -33,7 +33,7 @@ npx specrails@latest init --root-dir <your-project>
 **git clone**
 
 ```bash
-git clone https://github.com/fjpulidop/specrails.git
+git clone https://github.com/fjpulidop/specrails-core.git
 ./specrails/install.sh --root-dir <your-project>
 ```
 

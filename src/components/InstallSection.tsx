@@ -81,7 +81,7 @@ const InstallSection = () => {
                   <div><span className="text-dracula-green">$</span> npx specrails@latest init --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
                 ) : (
                   <>
-                    <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails.git</div>
+                    <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails-core.git</div>
                     <div><span className="text-dracula-green">$</span> ./specrails/install.sh --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
                   </>
                 )}
@@ -130,7 +130,7 @@ const InstallSection = () => {
           Estimated install time: ~15 minutes (may vary depending on your project).
           <br />
           This project does not collect telemetry or access your source code. All code is{" "}
-          <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer" className="text-dracula-purple hover:underline">open source on GitHub</a>.
+          <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer" className="text-dracula-purple hover:underline">open source on GitHub</a>.
         </p>
       </div>
     </section>
