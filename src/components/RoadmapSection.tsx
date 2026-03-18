@@ -16,8 +16,8 @@ interface GitHubIssue {
   created_at: string;
 }
 
-const REPO_URL = "https://api.github.com/repos/fjpulidop/specrails/issues";
-const REPO_ISSUES_URL = "https://github.com/fjpulidop/specrails/issues";
+const REPO_URL = "https://api.github.com/repos/fjpulidop/specrails-core/issues";
+const REPO_ISSUES_URL = "https://github.com/fjpulidop/specrails-core/issues";
 
 const RoadmapSection = () => {
   const { ref, isVisible } = useScrollAnimation();

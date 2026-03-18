@@ -13,7 +13,7 @@ The update system uses a **manifest-based approach**:
 ## Running an update
 
 ```bash
-curl -sL https://raw.githubusercontent.com/fjpulidop/specrails/main/update.sh | bash
+curl -sL https://raw.githubusercontent.com/fjpulidop/specrails-core/main/update.sh | bash
 ```
 
 Or from a local clone:

@@ -205,7 +205,7 @@ function buildLines(): TermLine[] {
   tbl("\u2502 #9 Cmd     \u2502 health-check-dashboard   \u2502 ok        \u2502 ok        \u2502 ok       \u2502 Shipped   \u2502", "text-dracula-green");
   tbl("\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518");
   add("", "text-dracula-fg", TABLE_LINE_PAUSE);
-  add("PR: https://github.com/fjpulidop/specrails/pull/31", "text-dracula-purple");
+  add("PR: https://github.com/fjpulidop/specrails-core/pull/31", "text-dracula-purple");
   add("", "text-dracula-fg", TABLE_LINE_PAUSE);
   add("Pipeline completed successfully. 3 features shipped. \u2705", "text-dracula-green", 0);
 

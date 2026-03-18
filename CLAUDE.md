@@ -1,6 +1,6 @@
 # specrails-web
 
-Landing page and documentation site for [specrails](https://github.com/fjpulidop/specrails) — a chained AI agent system that transforms Claude Code into a complete software development team. Hosted at [specrails.dev](https://specrails.dev).
+Landing page and documentation site for [specrails](https://github.com/fjpulidop/specrails-core) — a chained AI agent system that transforms Claude Code into a complete software development team. Hosted at [specrails.dev](https://specrails.dev).
 
 ## Stack
 
