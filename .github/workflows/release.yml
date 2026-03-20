@@ -51,24 +51,27 @@ jobs:
           echo "=== Total files: $(find dist/ -type f | wc -l) ==="
 
       # Validate FTP credentials before attempting deployment.
-      # FTP_SERVER must be a plain hostname (e.g. ftp.yourdomain.com) — no protocol prefix.
+      # FTP_SERVER must be a plain hostname or IP — no protocol prefix, no trailing spaces.
       # Find the correct value in Hostinger hPanel > FTP Accounts.
+      # Outputs ftp_server with all whitespace stripped to guard against copy-paste issues.
       - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
         name: Validate FTP configuration
+        id: ftp-validate
         run: |
-          if [ -z "$FTP_SERVER" ]; then
+          FTP_SERVER_TRIMMED=$(echo "$FTP_SERVER" | tr -d '[:space:]')
+          if [ -z "$FTP_SERVER_TRIMMED" ]; then
             echo "::error::FTP_SERVER secret is not configured. Add it under Settings > Secrets and variables > Actions."
-            echo "::error::Expected format: ftp.yourdomain.com (plain hostname, no ftp:// prefix)"
+            echo "::error::Expected format: ftp.yourdomain.com or a plain hostname/IP — no ftp:// prefix, no spaces"
             exit 1
           fi
-          echo "Resolving FTP server hostname: $FTP_SERVER"
-          if ! nslookup "$FTP_SERVER" > /dev/null 2>&1; then
-            echo "::error::Cannot resolve hostname '$FTP_SERVER'."
-            echo "::error::Check that FTP_SERVER is set to the plain hostname provided by Hostinger (hPanel > FTP Accounts)."
-            echo "::error::Common mistake: including the 'ftp://' prefix. The secret should contain only the hostname."
+          echo "Resolving FTP server: $FTP_SERVER_TRIMMED"
+          if ! nslookup "$FTP_SERVER_TRIMMED" > /dev/null 2>&1; then
+            echo "::error::Cannot resolve '$FTP_SERVER_TRIMMED'."
+            echo "::error::Check FTP_SERVER in repository secrets. Must be a plain hostname or IP — no protocol prefix, no trailing spaces."
             exit 1
           fi
-          echo "FTP server hostname resolved successfully."
+          echo "FTP server resolved successfully."
+          echo "ftp_server=$FTP_SERVER_TRIMMED" >> "$GITHUB_OUTPUT"
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
 
@@ -79,7 +82,7 @@ jobs:
         name: Deploy to Hostinger (clean slate — full re-upload)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.ftp-validate.outputs.ftp_server }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
@@ -91,7 +94,7 @@ jobs:
         name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.ftp-validate.outputs.ftp_server }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
