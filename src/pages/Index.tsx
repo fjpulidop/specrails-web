@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useSeo } from "@/hooks/useSeo";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
@@ -17,6 +18,13 @@ import AnimatedLogo from "@/components/AnimatedLogo";
 
 const Index = () => {
   const { hash } = useLocation();
+
+  useSeo({
+    title: "specrails — AI Coding Assistant for Dev Teams",
+    description:
+      "specrails is the AI coding assistant that turns Claude Code into your full dev team — architect, engineers, QA, and release manager. From idea to production code.",
+    canonical: "https://specrails.dev/",
+  });
 
   useEffect(() => {
     // Validate hash against allowlist before using as CSS selector (MED-03)

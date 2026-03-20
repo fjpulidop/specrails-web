@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
+import { useSeo } from "@/hooks/useSeo";
 import { ArrowRight, BookOpen, Layers } from "lucide-react";
 import { DOC_ENTRIES } from "@/lib/docs-registry";
 
 export default function DocsIndex(): JSX.Element {
+  useSeo({
+    title: "Documentation — specrails",
+    description:
+      "Complete documentation for specrails — from installation to advanced agent customization and autonomous development workflows.",
+    canonical: "https://specrails.dev/docs",
+  });
+
   const coreEntries = DOC_ENTRIES.filter((e) => e.slug !== "" && !e.section);
   const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbook");
 

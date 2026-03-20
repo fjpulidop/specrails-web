@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getDocBySlug, getAdjacentDocs } from "@/lib/docs-registry";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import { useSeo } from "@/hooks/useSeo";
 
 function NotFoundContent(): JSX.Element {
   return (
@@ -23,12 +24,19 @@ function NotFoundContent(): JSX.Element {
 
 export default function DocPage(): JSX.Element {
   const { slug = "" } = useParams<{ slug?: string }>();
+  const doc = getDocBySlug(slug);
+
+  useSeo({
+    title: doc ? `${doc.title} — specrails` : "Not Found — specrails",
+    description: doc
+      ? `${doc.description} — specrails documentation.`
+      : "This documentation page doesn't exist.",
+    canonical: `https://specrails.dev/docs/${slug}`,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
-
-  const doc = getDocBySlug(slug);
 
   if (!doc) {
     return <NotFoundContent />;
