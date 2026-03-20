@@ -13,7 +13,7 @@ const gitCloneLines = [
 ];
 
 const npxLines = [
-  { text: "$ npx specrails@latest init --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
+  { text: "$ npx specrails-core@latest init --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
   { text: "", color: "text-foreground", delay: 600 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
