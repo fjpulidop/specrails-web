@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 15 entries", () => {
-    expect(DOC_ENTRIES).toHaveLength(15);
+  it("has 16 entries", () => {
+    expect(DOC_ENTRIES).toHaveLength(16);
   });
 
   it("getDocBySlug returns correct entry", () => {
