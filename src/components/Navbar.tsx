@@ -45,7 +45,7 @@ const Navbar = () => {
             </Link>
           )}
           <a
-            href="https://github.com/fjpulidop/specrails"
+            href="https://github.com/fjpulidop/specrails-core"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"
@@ -72,7 +72,7 @@ const Navbar = () => {
           ))}
           <DocsDropdown />
           <a
-            href="https://github.com/fjpulidop/specrails"
+            href="https://github.com/fjpulidop/specrails-core"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-foreground transition-colors"

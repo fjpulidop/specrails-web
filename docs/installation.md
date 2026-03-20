@@ -42,7 +42,7 @@ No cloning required. Downloads the latest version and runs the installer automat
 If you prefer to clone the repo first:
 
 ```bash
-git clone https://github.com/fjpulidop/specrails.git
+git clone https://github.com/fjpulidop/specrails-core.git
 ./specrails/install.sh --root-dir <your-project>
 ```
 
@@ -51,7 +51,7 @@ git clone https://github.com/fjpulidop/specrails.git
 Alternatively, pipe the installer directly:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/fjpulidop/specrails/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/fjpulidop/specrails-core/main/install.sh | bash
 ```
 
 > **Important:** Always run the installer from the **target repository** — the project where you want SpecRails installed. If you run it from inside the SpecRails source repo, the installer will detect this and prompt you for the correct target path.

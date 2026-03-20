@@ -5,12 +5,12 @@
 <h1 align="center">specrails-web</h1>
 
 <p align="center">
-  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails">specrails</a> — a chained AI agent system that transforms Claude Code into a complete software development team.
+  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails-core">specrails</a> — a chained AI agent system that transforms Claude Code into a complete software development team.
 </p>
 
 <p align="center">
   <a href="https://specrails.dev">Live Site</a> ·
-  <a href="https://github.com/fjpulidop/specrails">specrails gem</a> ·
+  <a href="https://github.com/fjpulidop/specrails-core">specrails gem</a> ·
   <a href="#contributing">Contributing</a>
 </p>
 
@@ -18,7 +18,7 @@
 
 ## About specrails
 
-[specrails](https://github.com/fjpulidop/specrails) is a full-stack AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — each powered by the right Claude model for the job.
+[specrails](https://github.com/fjpulidop/specrails-core) is a full-stack AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — each powered by the right Claude model for the job.
 
 This repository contains the **landing page** at [specrails.dev](https://specrails.dev), which showcases the agent team, the development pipeline, live terminal demos, and a dynamic roadmap pulled from GitHub issues.
 
@@ -44,7 +44,7 @@ This repository contains the **landing page** at [specrails.dev](https://specrai
 
 ```sh
 # Clone the repository
-git clone https://github.com/fjpulidop/specrails-web.git
+git clone https://github.com/fjpulidop/specrails-core-web.git
 cd specrails-web
 
 # Install dependencies
@@ -109,10 +109,10 @@ Contributions are welcome! Whether it's fixing a typo, improving animations, or 
 
 ## License
 
-This project is open source. See the specrails [repository](https://github.com/fjpulidop/specrails) for license details.
+This project is open source. See the specrails [repository](https://github.com/fjpulidop/specrails-core) for license details.
 
 ---
 
 <p align="center">
-  Built with 🧛 Dracula vibes for <a href="https://github.com/fjpulidop/specrails">specrails</a>
+  Built with 🧛 Dracula vibes for <a href="https://github.com/fjpulidop/specrails-core">specrails</a>
 </p>
