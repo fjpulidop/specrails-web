@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/fjpulidop/specrails-web/compare/v1.0.1...v1.0.2) (2026-03-20)
+
+
+### Bug Fixes
+
+* **ci:** FTP deploy path and force-deploy workflow_dispatch ([67528d8](https://github.com/fjpulidop/specrails-web/commit/67528d80f249b44b56d28fb033295ff516cc596a))
+* **ci:** update FTP server-dir default path to domain/specrails.dev/public_html ([974c1ce](https://github.com/fjpulidop/specrails-web/commit/974c1ce2ca01c85f051a924114e3bd56b2d1789d))
+
 ## [1.0.1](https://github.com/fjpulidop/specrails-web/compare/v1.0.0...v1.0.1) (2026-03-20)
 
 
