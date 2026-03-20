@@ -10,6 +10,11 @@ on:
         required: false
         default: 'true'
         type: boolean
+      clean_slate:
+        description: 'Force full re-upload (deletes server state file, then uploads all files)'
+        required: false
+        default: 'false'
+        type: boolean
 
 permissions:
   contents: write
@@ -38,6 +43,13 @@ jobs:
           npm ci
           npm run build
 
+      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
+        name: Show build output
+        run: |
+          echo "=== dist/ contents ==="
+          find dist/ -type f | sort
+          echo "=== Total files: $(find dist/ -type f | wc -l) ==="
+
       # Validate FTP credentials before attempting deployment.
       # FTP_SERVER must be a plain hostname (e.g. ftp.yourdomain.com) — no protocol prefix.
       # Find the correct value in Hostinger hPanel > FTP Accounts.
@@ -60,7 +72,22 @@ jobs:
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
 
-      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
+      # When clean_slate=true (manual dispatch) or first deploy, we do a full re-upload.
+      # This fixes the common issue where the sync-state file on the server is stale,
+      # causing the action to report "nothing to deploy" when files are actually missing.
+      - if: ${{ (steps.release.outputs.release_created || github.event_name == 'workflow_dispatch') && github.event.inputs.clean_slate == 'true' }}
+        name: Deploy to Hostinger (clean slate — full re-upload)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
+          dangerous-clean-slate: true
+          log-level: verbose
+
+      - if: ${{ (steps.release.outputs.release_created || github.event_name == 'workflow_dispatch') && github.event.inputs.clean_slate != 'true' }}
         name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
@@ -69,3 +96,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
           server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
+          log-level: verbose
