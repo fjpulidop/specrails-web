@@ -95,5 +95,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
-          log-level: verbose
+          server-dir: ${{ vars.FTP_SERVER_DIR || 'domain/specrails.dev/public_html/' }}
