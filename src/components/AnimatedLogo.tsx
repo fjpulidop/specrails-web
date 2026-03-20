@@ -99,7 +99,7 @@ const AnimatedLogo = () => {
     });
 
     // Trigger fade-in (replicate hero animate-fade-up timing)
-    requestAnimationFrame(() => setFadeIn(true));
+    const fadeInRafId = requestAnimationFrame(() => setFadeIn(true));
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", init);
@@ -110,6 +110,7 @@ const AnimatedLogo = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", init);
       cancelAnimationFrame(rafId.current);
+      cancelAnimationFrame(fadeInRafId);
       // Restore navbar logo when unmounted
       if (navLogoEl) navLogoEl.style.opacity = "";
     };
