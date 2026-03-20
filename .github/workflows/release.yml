@@ -100,3 +100,33 @@ jobs:
           security: loose
           local-dir: ./dist/
           server-dir: ${{ vars.FTP_SERVER_DIR || 'domains/specrails.dev/public_html/' }}
+
+      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
+        name: Smoke test — verify site is live
+        run: |
+          SITE_URL="${{ vars.SITE_URL || 'https://specrails.dev' }}"
+          echo "Running smoke test against $SITE_URL"
+          for i in 1 2 3; do
+            STATUS=$(curl -o /tmp/smoke_body.html -s -w "%{http_code}" --max-time 15 "$SITE_URL")
+            if [ "$STATUS" -eq 200 ]; then
+              break
+            fi
+            echo "Attempt $i: got HTTP $STATUS, retrying in 10s..."
+            sleep 10
+          done
+          if [ "$STATUS" -ne 200 ]; then
+            echo "::error::Smoke test failed — $SITE_URL returned HTTP $STATUS"
+            exit 1
+          fi
+          echo "HTTP 200 OK"
+          if ! grep -qi '<title>' /tmp/smoke_body.html; then
+            echo "::error::Smoke test failed — <title> tag not found in response"
+            exit 1
+          fi
+          echo "Title tag present"
+          if ! grep -qi '<meta' /tmp/smoke_body.html; then
+            echo "::error::Smoke test failed — no <meta> tags found in response"
+            exit 1
+          fi
+          echo "Meta tags present"
+          echo "Smoke test passed."
