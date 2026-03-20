@@ -30,5 +30,13 @@ jobs:
         run: |
           npm ci
           npm run build
-        # TODO: add deployment step once Hostinger/hosting CI integration is configured
-        # Options: rsync via SSH, Vercel CLI, or webhook trigger
+
+      - if: ${{ steps.release.outputs.release_created }}
+        name: Deploy to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: ${{ vars.FTP_SERVER_DIR || 'public_html/' }}
