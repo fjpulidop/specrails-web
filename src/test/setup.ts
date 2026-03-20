@@ -27,3 +27,17 @@ Object.defineProperty(window, "matchMedia", {
     dispatchEvent: () => {},
   }),
 });
+
+if (!window.scrollTo) {
+  window.scrollTo = () => undefined;
+}
+
+// IntersectionObserver stub for components using useScrollAnimation
+if (!window.IntersectionObserver) {
+  window.IntersectionObserver = class IntersectionObserver {
+    constructor(cb: IntersectionObserverCallback) { void cb; }
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  } as unknown as typeof IntersectionObserver;
+}
