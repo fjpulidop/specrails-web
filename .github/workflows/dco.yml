@@ -8,6 +8,8 @@ jobs:
   dco-check:
     name: DCO Sign-off Check
     runs-on: ubuntu-latest
+    # Skip DCO check for Dependabot and other automated bots
+    if: github.event.pull_request.user.login != 'dependabot[bot]' && github.event.pull_request.user.login != 'github-actions[bot]'
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
         with:
@@ -20,10 +22,26 @@ jobs:
         run: |
           MISSING=0
           while IFS= read -r commit; do
+            author_email=$(git log --format=%ae -n 1 "$commit")
+            subject=$(git log --format='%s' -n 1 "$commit")
+            parent_count=$(git cat-file -p "$commit" | grep -c "^parent " || true)
+
+            # Skip merge commits (automated merge commits don't require DCO)
+            if [ "$parent_count" -gt 1 ]; then
+              echo "SKIP (merge commit): $commit — $subject"
+              continue
+            fi
+
+            # Skip known bot accounts
+            if echo "$author_email" | grep -qE "(noreply@github\.com|users\.noreply\.github\.com)"; then
+              echo "SKIP (bot): $commit — $subject"
+              continue
+            fi
+
             message=$(git log --format=%B -n 1 "$commit")
             if ! echo "$message" | grep -qE "^Signed-off-by: .+ <.+@.+>$"; then
               echo "ERROR: Commit $commit is missing a 'Signed-off-by:' sign-off."
-              echo "  Subject: $(git log --format='%s' -n 1 "$commit")"
+              echo "  Subject: $subject"
               MISSING=1
             fi
           done < <(git rev-list "$BASE_SHA".."$HEAD_SHA")
