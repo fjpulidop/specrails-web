@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.0](https://github.com/fjpulidop/specrails-web/compare/v1.0.2...v1.1.0) (2026-03-20)
+
+
+### Features
+
+* **docs:** import docs from specrails-core npm package ([b728a2b](https://github.com/fjpulidop/specrails-web/commit/b728a2bc43397922de362e35d55a88fc23b687b3))
+* **docs:** import docs from specrails-core npm package ([a3a2b56](https://github.com/fjpulidop/specrails-web/commit/a3a2b5637bcac19690a320fc1ff67abe7ccb9d33))
+* **web:** remove local dashboard (HubSection) from landing page ([63d2a9e](https://github.com/fjpulidop/specrails-web/commit/63d2a9e8b70cf7af647d4b8da4d380994850cefd))
+
 ## [1.0.2](https://github.com/fjpulidop/specrails-web/compare/v1.0.1...v1.0.2) (2026-03-20)
 
 
