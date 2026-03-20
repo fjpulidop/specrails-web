@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/fjpulidop/specrails-web/compare/v1.2.0...v1.2.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* **AnimatedLogo:** prevent document access after test teardown ([c3d5d97](https://github.com/fjpulidop/specrails-web/commit/c3d5d970b19c263ff3a387bd127ef0fd762e9f31))
+* **ci:** exempt Dependabot from DCO check and fix window.scrollTo polyfill ([#73](https://github.com/fjpulidop/specrails-web/issues/73)) ([06d04a6](https://github.com/fjpulidop/specrails-web/commit/06d04a6c675ee6425ba1661198d70291331d1f74))
+
 ## [1.2.0](https://github.com/fjpulidop/specrails-web/compare/v1.1.0...v1.2.0) (2026-03-20)
 
 
