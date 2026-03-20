@@ -177,7 +177,7 @@ export const AGENTS: AgentEntry[] = [
   },
   {
     name: "Security Reviewer",
-    model: "Opus",
+    model: "Sonnet",
     primaryJob: "OWASP scan, credential audit, deployment block",
     desc: "Security auditor. Scans 11 credential patterns and OWASP vulnerabilities. Can BLOCK deployment",
     stage: "review",

@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { GitHubStarsButton } from "@/components/GitHubStarsButton";
 
 const gitCloneLines = [
-  { text: "$ git clone https://github.com/fjpulidop/specrails.git", color: "text-dracula-green", delay: 0 },
-  { text: "$ ./specrails/install.sh --root-dir .", color: "text-dracula-green", delay: 800 },
+  { text: "$ git clone https://github.com/fjpulidop/specrails-core.git", color: "text-dracula-green", delay: 0 },
+  { text: "$ ./specrails/install.sh --root-dir <your-project>", color: "text-dracula-green", delay: 800 },
   { text: "", color: "text-foreground", delay: 1200 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1600 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 2000 },
@@ -12,7 +13,7 @@ const gitCloneLines = [
 ];
 
 const npxLines = [
-  { text: "$ npx specrails@latest init --root-dir .", color: "text-dracula-green", delay: 0 },
+  { text: "$ npx specrails@latest init --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
   { text: "", color: "text-foreground", delay: 600 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
@@ -168,12 +169,13 @@ const HeroSection = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-up delay-300">
-          <a href="https://github.com/fjpulidop/specrails" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer">
             <Button variant="gradient" size="lg" className="text-base px-8 py-6">
               <Download className="w-5 h-5 mr-2" />
               Install specrails
             </Button>
           </a>
+          <GitHubStarsButton />
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-400">

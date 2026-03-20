@@ -26,6 +26,11 @@ describe("playbook registry entries", () => {
     expect(next?.slug).toBe("changelog");
   });
 
+  it("deployment has no next entry", () => {
+    const { next } = getAdjacentDocs("deployment");
+    expect(next).toBeNull();
+  });
+
   it("all playbook entries have section set to Playbook", () => {
     const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbook");
     expect(playbookEntries).toHaveLength(3);
