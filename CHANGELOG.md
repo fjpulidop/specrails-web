@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.2.0](https://github.com/fjpulidop/specrails-web/compare/v1.1.0...v1.2.0) (2026-03-20)
+
+
+### Features
+
+* **hero:** improve typography, spacing, and install CTA ([c595ecb](https://github.com/fjpulidop/specrails-web/commit/c595ecb680a48ca25b16262317b855573ecebc83))
+* **hero:** improve typography, spacing, and install CTA ([7428925](https://github.com/fjpulidop/specrails-web/commit/74289252409dfd27ebd3195ed37aed7c15cdadc8))
+
+
+### Bug Fixes
+
+* **ci:** enable FTPS with strict TLS for Hostinger FTP deployments ([575f39c](https://github.com/fjpulidop/specrails-web/commit/575f39c9814d0729ec04c54a57a4c244970f7f0e))
+* **ci:** remove npm audit step (covered by dedicated security PR) ([c0b05cf](https://github.com/fjpulidop/specrails-web/commit/c0b05cf64b3963e21548907b212314a4814edcf2))
+* **hero:** correct install command to npx specrails-core@latest init ([75c0dbc](https://github.com/fjpulidop/specrails-web/commit/75c0dbcca2fe7bd030ac452c2899ed7e2eef7237))
+* **hero:** resolve merge conflict in INSTALL_COMMAND constant ([2df76be](https://github.com/fjpulidop/specrails-web/commit/2df76bef3c038063e47f800d4c94916e34c39ec6))
+* **SectionNav:** prevent document access after test teardown ([f32a444](https://github.com/fjpulidop/specrails-web/commit/f32a444ae16023a5546a9b0a6c87b663dc78bcba))
+* **security:** fix HIGH npm vulnerabilities and enforce audit in CI ([bc76317](https://github.com/fjpulidop/specrails-web/commit/bc763174a2cb54e5c163a69089cacab85439bdb0))
+* **security:** patch HIGH CVEs and remediate injection vulnerabilities ([b81d8ab](https://github.com/fjpulidop/specrails-web/commit/b81d8abd82acef0a144bc62135e4a86b515ab348))
+* **security:** remediate 7 HIGH npm vulnerabilities ([1673f40](https://github.com/fjpulidop/specrails-web/commit/1673f40686ec5d6da76fd4cddb3c9665d6e78449))
+* **tests:** update DOC_ENTRIES count to 16 after CLI reference addition ([77adca4](https://github.com/fjpulidop/specrails-web/commit/77adca432636f760742faf06324ad93fc76dc9ec))
+
 ## [1.1.0](https://github.com/fjpulidop/specrails-web/compare/v1.0.2...v1.1.0) (2026-03-20)
 
 
