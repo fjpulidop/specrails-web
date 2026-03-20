@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/fjpulidop/specrails-web/compare/v1.2.1...v1.2.2) (2026-03-20)
+
+
+### Bug Fixes
+
+* cancel fade-in rAF on AnimatedLogo cleanup (flaky test fix) ([#74](https://github.com/fjpulidop/specrails-web/issues/74)) ([41aa49e](https://github.com/fjpulidop/specrails-web/commit/41aa49e7c872e8d6f95b20e2e06abf6ca9cd522d))
+
 ## [1.2.1](https://github.com/fjpulidop/specrails-web/compare/v1.2.0...v1.2.1) (2026-03-20)
 
 
