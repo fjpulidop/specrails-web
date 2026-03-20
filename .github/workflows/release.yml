@@ -38,6 +38,28 @@ jobs:
           npm ci
           npm run build
 
+      # Validate FTP credentials before attempting deployment.
+      # FTP_SERVER must be a plain hostname (e.g. ftp.yourdomain.com) — no protocol prefix.
+      # Find the correct value in Hostinger hPanel > FTP Accounts.
+      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
+        name: Validate FTP configuration
+        run: |
+          if [ -z "$FTP_SERVER" ]; then
+            echo "::error::FTP_SERVER secret is not configured. Add it under Settings > Secrets and variables > Actions."
+            echo "::error::Expected format: ftp.yourdomain.com (plain hostname, no ftp:// prefix)"
+            exit 1
+          fi
+          echo "Resolving FTP server hostname: $FTP_SERVER"
+          if ! nslookup "$FTP_SERVER" > /dev/null 2>&1; then
+            echo "::error::Cannot resolve hostname '$FTP_SERVER'."
+            echo "::error::Check that FTP_SERVER is set to the plain hostname provided by Hostinger (hPanel > FTP Accounts)."
+            echo "::error::Common mistake: including the 'ftp://' prefix. The secret should contain only the hostname."
+            exit 1
+          fi
+          echo "FTP server hostname resolved successfully."
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+
       - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
         name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
