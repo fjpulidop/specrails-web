@@ -35,6 +35,7 @@ const RoadmapSection = () => {
   useEffect(() => {
     fetch(`${REPO_URL}?state=open&per_page=20&sort=created&direction=desc`)
       .then((res) => {
+        if (res.status === 429) throw new Error("GitHub API rate limit exceeded");
         if (!res.ok) throw new Error("GitHub API error");
         return res.json();
       })
