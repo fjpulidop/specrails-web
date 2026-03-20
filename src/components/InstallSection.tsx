@@ -78,7 +78,7 @@ const InstallSection = () => {
               </div>
               <div className="p-4 text-sm font-mono space-y-1">
                 {method === "npx" ? (
-                  <div><span className="text-dracula-green">$</span> npx specrails@latest init --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
+                  <div><span className="text-dracula-green">$</span> npx specrails-core@latest init --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
                 ) : (
                   <>
                     <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails-core.git</div>
