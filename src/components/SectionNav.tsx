@@ -24,7 +24,9 @@ const SectionNav = ({
   // Auto-detect headings with IDs from the DOM, re-detect on content changes
   useEffect(() => {
     if (!autoDetect) return;
+    let cancelled = false;
     const detect = () => {
+      if (cancelled) return;
       const els = document.querySelectorAll(autoDetect);
       const found = Array.from(els)
         .map((el) => el.id)
@@ -39,6 +41,7 @@ const SectionNav = ({
     });
     observer.observe(document.body, { childList: true, subtree: true });
     return () => {
+      cancelled = true;
       clearTimeout(timer);
       observer.disconnect();
     };
