@@ -85,11 +85,17 @@ const AnimatedLogo = () => {
     };
 
     // Measure after fonts load, then re-measure shortly after to catch layout settling
+    let mounted = true;
+    let settleTimeoutId: ReturnType<typeof setTimeout> | undefined;
+
     const fontsReady = document.fonts?.ready ?? Promise.resolve();
     fontsReady.then(() => {
+      if (!mounted) return;
       init();
       // Re-measure after layout fully settles (images, lazy content, etc.)
-      setTimeout(init, 200);
+      settleTimeoutId = setTimeout(() => {
+        if (mounted) init();
+      }, 200);
     });
 
     // Trigger fade-in (replicate hero animate-fade-up timing)
@@ -99,6 +105,8 @@ const AnimatedLogo = () => {
     window.addEventListener("resize", init);
 
     return () => {
+      mounted = false;
+      clearTimeout(settleTimeoutId);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", init);
       cancelAnimationFrame(rafId.current);
