@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { GitHubStarsButton } from "@/components/GitHubStarsButton";
+
+const INSTALL_COMMAND = "npx specrails@latest init";
 
 const gitCloneLines = [
   { text: "$ git clone https://github.com/fjpulidop/specrails-core.git", color: "text-dracula-green", delay: 0 },
@@ -147,47 +148,110 @@ const AnimatedTerminal = ({ lines, label }: { lines: typeof gitCloneLines; label
   );
 };
 
+const InstallCommand = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(INSTALL_COMMAND);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard not available in test/SSR environments
+    }
+  };
+
+  return (
+    <div className="terminal p-0 max-w-lg mx-auto w-full">
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border/20">
+        <div className="terminal-dot bg-dracula-red" />
+        <div className="terminal-dot bg-dracula-yellow" />
+        <div className="terminal-dot bg-dracula-green" />
+        <span className="text-xs text-muted-foreground ml-2 font-mono">Terminal</span>
+      </div>
+      <div className="flex items-center justify-between px-4 py-3.5 gap-4">
+        <code className="font-mono text-sm md:text-base text-left">
+          <span className="text-muted-foreground select-none">$ </span>
+          <span className="text-dracula-green">{INSTALL_COMMAND}</span>
+        </code>
+        <button
+          onClick={handleCopy}
+          aria-label="Copy install command"
+          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0 px-2 py-1 rounded border border-border/20 hover:border-border/50"
+        >
+          {copied ? (
+            <Check className="w-3.5 h-3.5 text-dracula-green" />
+          ) : (
+            <Copy className="w-3.5 h-3.5" />
+          )}
+          <span>{copied ? "Copied!" : "Copy"}</span>
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const HeroSection = () => {
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-16 md:pb-0 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-20 overflow-hidden">
       <ParticleBackground />
 
+      {/* Ambient radial glow */}
+      <div className="absolute inset-0 hero-glow pointer-events-none" />
+
       <div className="relative z-10 max-w-5xl mx-auto text-center">
-        <h1 data-logo="hero" className="font-mono text-5xl md:text-7xl font-bold mb-6 invisible">
+        <h1 data-logo="hero" className="font-mono text-5xl md:text-7xl font-bold mb-8 invisible">
           <span>spec</span>
           <span>rails</span>
         </h1>
 
-        <p className="text-xl md:text-2xl font-medium text-foreground mb-4 animate-fade-up delay-100">
-          Your AI Development Team. From Idea to Production Code.
+        {/* Open source badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/30 bg-background/30 backdrop-blur-sm text-xs font-mono text-muted-foreground mb-8 animate-fade-up">
+          <span className="w-1.5 h-1.5 rounded-full bg-dracula-green animate-pulse" />
+          Open Source &middot; MIT License
+        </div>
+
+        {/* Tagline — large, bold, two lines */}
+        <p className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6 animate-fade-up delay-100 leading-tight">
+          Your AI Development Team.<br />
+          <span className="gradient-text">From Idea to Production Code.</span>
         </p>
 
-        <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
+        {/* Supporting line */}
+        <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
           A system of 12 specialized agents that turns Claude Code into a complete
           pipeline: Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr;
           Ship
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-up delay-300">
-          <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer">
-            <Button variant="gradient" size="lg" className="text-base px-8 py-6">
-              <Download className="w-5 h-5 mr-2" />
-              Install specrails
-            </Button>
-          </a>
-          <GitHubStarsButton />
+        {/* Install command — primary CTA */}
+        <div className="mb-6 animate-fade-up delay-300">
+          <InstallCommand />
+          <p className="text-xs text-muted-foreground mt-2.5 font-mono">
+            No account required &middot; Runs locally
+          </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-400">
+        {/* Secondary CTAs */}
+        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-16 animate-fade-up delay-400">
+          <GitHubStarsButton />
+          <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group">
+            Read the docs
+            <span className="transition-transform group-hover:translate-x-0.5 inline-block">&rarr;</span>
+          </a>
+        </div>
+
+        {/* Terminal previews */}
+        <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-500">
           <div className="flex-1 min-w-0">
             <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-              <span className="text-dracula-purple">Option A</span> — npx
+              <span className="text-dracula-purple">Option A</span> &mdash; npx
             </p>
             <AnimatedTerminal lines={npxLines} label="npx" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-              <span className="text-dracula-cyan">Option B</span> — git clone
+              <span className="text-dracula-cyan">Option B</span> &mdash; git clone
             </p>
             <AnimatedTerminal lines={gitCloneLines} label="git clone" />
           </div>

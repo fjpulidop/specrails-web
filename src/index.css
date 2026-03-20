@@ -116,6 +116,18 @@
     box-shadow: 0 0 30px hsl(var(--dracula-purple) / 0.3);
   }
 
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -5%, hsl(var(--dracula-purple) / 0.20), transparent 65%),
+      radial-gradient(ellipse 50% 35% at 75% 25%, hsl(var(--dracula-cyan) / 0.09), transparent 55%),
+      radial-gradient(ellipse 40% 30% at 25% 30%, hsl(var(--dracula-pink) / 0.06), transparent 50%);
+  }
+
+  /* Generous section spacing */
+  .section-spacious {
+    @apply py-32 px-6;
+  }
+
   .glow-purple { box-shadow: 0 0 20px hsl(var(--dracula-purple) / 0.2); }
   .glow-cyan { box-shadow: 0 0 20px hsl(var(--dracula-cyan) / 0.2); }
   .glow-green { box-shadow: 0 0 20px hsl(var(--dracula-green) / 0.2); }
