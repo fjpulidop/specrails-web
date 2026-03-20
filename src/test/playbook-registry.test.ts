@@ -21,6 +21,11 @@ describe("playbook registry entries", () => {
     expect(prev?.slug).toBe("updating");
   });
 
+  it("playbook-oss-maintainer next entry is changelog", () => {
+    const { next } = getAdjacentDocs("playbook-oss-maintainer");
+    expect(next?.slug).toBe("changelog");
+  });
+
   it("deployment has no next entry", () => {
     const { next } = getAdjacentDocs("deployment");
     expect(next).toBeNull();
