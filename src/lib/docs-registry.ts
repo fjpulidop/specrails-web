@@ -1,5 +1,6 @@
 import readmeRaw from "specrails-core/docs/README.md?raw";
 import gettingStartedRaw from "specrails-core/docs/getting-started.md?raw";
+import tutorialQuickstartRaw from "../content/tutorial-quickstart.md?raw";
 import conceptsRaw from "specrails-core/docs/concepts.md?raw";
 import installationRaw from "specrails-core/docs/installation.md?raw";
 import agentsRaw from "specrails-core/docs/agents.md?raw";
@@ -33,6 +34,13 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "Getting Started",
     description: "Install and run your first workflow in 5 minutes",
     content: gettingStartedRaw,
+  },
+  {
+    slug: "tutorial-quickstart",
+    title: "Getting Started in 5 Minutes",
+    description: "Zero to first agent-generated PR in 5 minutes",
+    content: tutorialQuickstartRaw,
+    section: "Tutorials",
   },
   {
     slug: "concepts",
