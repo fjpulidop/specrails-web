@@ -9,6 +9,9 @@ import updatingRaw from "../../docs/updating.md?raw";
 import playbookProductDiscoveryRaw from "../../docs/playbook-product-discovery.md?raw";
 import playbookParallelDevRaw from "../../docs/playbook-parallel-dev.md?raw";
 import playbookOssMaintainerRaw from "../../docs/playbook-oss-maintainer.md?raw";
+import changelogRaw from "../../docs/changelog.md?raw";
+import apiReferenceRaw from "../../docs/api-reference.md?raw";
+import deploymentRaw from "../../docs/deployment.md?raw";
 
 export interface DocEntry {
   slug: string;
@@ -87,6 +90,26 @@ export const DOC_ENTRIES: DocEntry[] = [
     description: "Review gates, confidence thresholds, and convention enforcement",
     content: playbookOssMaintainerRaw,
     section: "Playbook",
+  },
+  {
+    slug: "changelog",
+    title: "Changelog",
+    description: "What's new in each SpecRails release",
+    content: changelogRaw,
+  },
+  {
+    slug: "api-reference",
+    title: "API Reference",
+    description: "Complete reference for the specrails-hub local API endpoints",
+    content: apiReferenceRaw,
+    section: "Reference",
+  },
+  {
+    slug: "deployment",
+    title: "Deployment",
+    description: "Local, Docker, and CI/CD deployment options",
+    content: deploymentRaw,
+    section: "Reference",
   },
 ];
 
