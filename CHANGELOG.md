@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/fjpulidop/specrails-web/compare/v1.2.2...v1.2.3) (2026-03-20)
+
+
+### Bug Fixes
+
+* **ci:** use ftps security=loose to fix Hostinger TLS cert mismatch ([#77](https://github.com/fjpulidop/specrails-web/issues/77)) ([89e1d97](https://github.com/fjpulidop/specrails-web/commit/89e1d97624ebe30533b7a047b3488b31390f032d))
+
 ## [1.2.2](https://github.com/fjpulidop/specrails-web/compare/v1.2.1...v1.2.2) (2026-03-20)
 
 
