@@ -28,9 +28,11 @@ Object.defineProperty(window, "matchMedia", {
   }),
 });
 
-if (!window.scrollTo) {
-  window.scrollTo = () => undefined;
-}
+// jsdom defines window.scrollTo but throws "Not implemented" — override unconditionally
+Object.defineProperty(window, "scrollTo", {
+  writable: true,
+  value: () => undefined,
+});
 
 // IntersectionObserver stub for components using useScrollAnimation
 if (!window.IntersectionObserver) {
