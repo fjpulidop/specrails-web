@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/fjpulidop/specrails-web/compare/v1.0.0...v1.0.1) (2026-03-20)
+
+
+### Bug Fixes
+
+* **ci:** add verbose FTP logging and clean-slate option for Hostinger sync ([a8532c3](https://github.com/fjpulidop/specrails-web/commit/a8532c3d5ab09ecc684f3f88ae744936d54252e8))
+* **ci:** add verbose FTP logging and clean-slate option for Hostinger sync issues ([6ea1888](https://github.com/fjpulidop/specrails-web/commit/6ea18888ce93d972f285ed6db983c72ac2f21433))
+
 ## 1.0.0 (2026-03-20)
 
 
