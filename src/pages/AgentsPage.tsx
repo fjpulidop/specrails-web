@@ -1,8 +1,16 @@
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import AgentComparisonMatrix from "@/components/AgentComparisonMatrix";
+import { useSeo } from "@/hooks/useSeo";
 
 export default function AgentsPage(): JSX.Element {
+  useSeo({
+    title: "Agent Comparison Matrix — specrails",
+    description:
+      "Compare all 12 specrails AI agents by model, pipeline stage, and job category. Find the right AI coding assistant agent for your development workflow.",
+    canonical: "https://specrails.dev/agents",
+  });
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
