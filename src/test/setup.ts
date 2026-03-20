@@ -41,3 +41,9 @@ if (!window.IntersectionObserver) {
     disconnect() {}
   } as unknown as typeof IntersectionObserver;
 }
+
+// requestAnimationFrame stub — prevents canvas animation loops from continuing
+// after test environment teardown (avoids "document is not defined" post-test errors)
+let _rafId = 0;
+window.requestAnimationFrame = (_cb: FrameRequestCallback) => ++_rafId;
+window.cancelAnimationFrame = () => {};
