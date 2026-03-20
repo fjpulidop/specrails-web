@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/fjpulidop/specrails-web/compare/v1.2.3...v1.3.0) (2026-03-20)
+
+
+### Features
+
+* **seo:** on-page SEO — meta tags, JSON-LD, sitemap, canonical URLs (SPEA-405) ([#80](https://github.com/fjpulidop/specrails-web/issues/80)) ([6a1a613](https://github.com/fjpulidop/specrails-web/commit/6a1a613180f4ffbf801f3ac175f9b5c8c0440d1a))
+
+
+### Bug Fixes
+
+* **docs:** remove internal Paperclip references from public docs (SPEA-434) ([#81](https://github.com/fjpulidop/specrails-web/issues/81)) ([6023dec](https://github.com/fjpulidop/specrails-web/commit/6023decf27b8f29c8e356d66725e5a58758e5abe))
+
 ## [1.2.3](https://github.com/fjpulidop/specrails-web/compare/v1.2.2...v1.2.3) (2026-03-20)
 
 
