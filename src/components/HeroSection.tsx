@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
+import { GitHubStarsButton } from "@/components/GitHubStarsButton";
 
 const gitCloneLines = [
   { text: "$ git clone https://github.com/fjpulidop/specrails.git", color: "text-dracula-green", delay: 0 },
@@ -174,6 +175,7 @@ const HeroSection = () => {
               Install specrails
             </Button>
           </a>
+          <GitHubStarsButton />
         </div>
 
         <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-400">
