@@ -51,9 +51,9 @@ describe("AgentComparisonMatrix", () => {
     });
     const opusOption = screen.getByRole("option", { name: "Opus" });
     await user.click(opusOption);
-    // Opus agents: Product Manager + Security Reviewer = 2 data rows + 1 header = 3 rows
+    // Opus agents: Product Manager only (Security Reviewer is now Sonnet) = 1 data row + 1 header = 2 rows
     await waitFor(() => {
-      expect(screen.getAllByRole("row")).toHaveLength(3);
+      expect(screen.getAllByRole("row")).toHaveLength(2);
     });
   });
 

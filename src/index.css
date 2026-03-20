@@ -156,6 +156,13 @@
     background: hsl(var(--dracula-comment) / 0.6);
   }
 
+  /* ── HTTP method badges (API Reference docs) ── */
+  .badge-get    { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-cyan/10 text-dracula-cyan border border-dracula-cyan/30; }
+  .badge-post   { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-green/10 text-dracula-green border border-dracula-green/30; }
+  .badge-patch  { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-yellow/10 text-dracula-yellow border border-dracula-yellow/30; }
+  .badge-delete { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-red/10 text-dracula-red border border-dracula-red/30; }
+  .badge-put    { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-orange/10 text-dracula-orange border border-dracula-orange/30; }
+
   /* ── Docs prose ── */
 
   .docs-prose {

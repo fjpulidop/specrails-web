@@ -1,7 +1,12 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "specrails-web",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjpulidop/specrails-web.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
