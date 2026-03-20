@@ -1,6 +1,7 @@
 import readmeRaw from "specrails-core/docs/README.md?raw";
 import gettingStartedRaw from "specrails-core/docs/getting-started.md?raw";
 import tutorialQuickstartRaw from "../content/tutorial-quickstart.md?raw";
+import cliReferenceRaw from "../content/cli-reference.md?raw";
 import conceptsRaw from "specrails-core/docs/concepts.md?raw";
 import installationRaw from "specrails-core/docs/installation.md?raw";
 import agentsRaw from "specrails-core/docs/agents.md?raw";
@@ -104,6 +105,13 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "Changelog",
     description: "What's new in each SpecRails release",
     content: changelogRaw,
+  },
+  {
+    slug: "cli-reference",
+    title: "CLI Reference",
+    description: "All specrails-core commands — init, setup, doctor, implement, preview, update",
+    content: cliReferenceRaw,
+    section: "Reference",
   },
   {
     slug: "api-reference",
