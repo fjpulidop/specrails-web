@@ -83,7 +83,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          security: strict
+          security: loose
           local-dir: ./dist/
           server-dir: ${{ vars.FTP_SERVER_DIR || 'domains/specrails.dev/public_html/' }}
           dangerous-clean-slate: true
@@ -97,6 +97,6 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          security: strict
+          security: loose
           local-dir: ./dist/
           server-dir: ${{ vars.FTP_SERVER_DIR || 'domains/specrails.dev/public_html/' }}
