@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("playbook registry entries", () => {
-  it("has 11 total entries in DOC_ENTRIES", () => {
-    expect(DOC_ENTRIES).toHaveLength(11);
+  it("has 14 total entries in DOC_ENTRIES", () => {
+    expect(DOC_ENTRIES).toHaveLength(14);
   });
 
   it("getDocBySlug returns a result for each playbook slug", () => {
@@ -21,9 +21,9 @@ describe("playbook registry entries", () => {
     expect(prev?.slug).toBe("updating");
   });
 
-  it("playbook-oss-maintainer has no next entry", () => {
+  it("playbook-oss-maintainer next entry is changelog", () => {
     const { next } = getAdjacentDocs("playbook-oss-maintainer");
-    expect(next).toBeNull();
+    expect(next?.slug).toBe("changelog");
   });
 
   it("all playbook entries have section set to Playbook", () => {

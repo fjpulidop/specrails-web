@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 11 entries", () => {
-    expect(DOC_ENTRIES).toHaveLength(11);
+  it("has 14 entries", () => {
+    expect(DOC_ENTRIES).toHaveLength(14);
   });
 
   it("getDocBySlug returns correct entry", () => {
@@ -23,7 +23,7 @@ describe("docs-registry", () => {
   });
 
   it("getAdjacentDocs: last entry has no next", () => {
-    expect(getAdjacentDocs("playbook-oss-maintainer").next).toBeNull();
+    expect(getAdjacentDocs("deployment").next).toBeNull();
   });
 
   it("content is non-empty for all entries", () => {
