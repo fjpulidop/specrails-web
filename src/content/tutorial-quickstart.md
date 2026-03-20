@@ -53,7 +53,7 @@ The initializer runs automatically. You will see:
 Your team is ready. Create your first task to get started.
 ```
 
-**What was installed:** SpecRails downloaded and configured the agent system, set up a local task board (Paperclip), and launched a dashboard server. Nothing in your codebase was modified.
+**What was installed:** SpecRails downloaded and configured the agent system, set up a local task board, and launched a dashboard server. Nothing in your codebase was modified.
 
 > First run downloads dependencies. Expect 2–4 minutes on the initial install. Subsequent starts are instant.
 
@@ -65,7 +65,7 @@ Your team is ready. Create your first task to get started.
 open http://localhost:3001
 ```
 
-You will see your **Paperclip board** — a local task management interface where your AI agents live and take assignments.
+You will see your **SpecRails dashboard** — a local task management interface where your AI agents live and take assignments.
 
 The left panel lists your agent team. By default you get:
 
@@ -137,7 +137,7 @@ Expected output:
 ✔ Node.js 18+ found
 ✔ Git found
 ✔ specrails-hub running on :3001
-✔ Paperclip board connected
+✔ SpecRails Hub connected
 ✔ Agent configs loaded (6 agents)
 ✔ GitHub CLI authenticated
 ✔ Anthropic API key present
