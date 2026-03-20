@@ -19,6 +19,13 @@ interface GitHubIssue {
 const REPO_URL = "https://api.github.com/repos/fjpulidop/specrails-core/issues";
 const REPO_ISSUES_URL = "https://github.com/fjpulidop/specrails-core/issues";
 
+const HEX_COLOR_RE = /^[0-9a-fA-F]{6}$/;
+const FALLBACK_COLOR = "6e7681";
+
+function sanitizeLabelColor(color: string): string {
+  return HEX_COLOR_RE.test(color) ? color : FALLBACK_COLOR;
+}
+
 const RoadmapSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [issues, setIssues] = useState<GitHubIssue[]>([]);
@@ -28,6 +35,7 @@ const RoadmapSection = () => {
   useEffect(() => {
     fetch(`${REPO_URL}?state=open&per_page=20&sort=created&direction=desc`)
       .then((res) => {
+        if (res.status === 429) throw new Error("GitHub API rate limit exceeded");
         if (!res.ok) throw new Error("GitHub API error");
         return res.json();
       })
@@ -128,19 +136,22 @@ const RoadmapSection = () => {
                       {issue.title}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mt-2">
-                      {issue.labels.map((label) => (
-                        <span
-                          key={label.name}
-                          className="text-xs px-2 py-0.5 rounded-full font-medium"
-                          style={{
-                            backgroundColor: `#${label.color}20`,
-                            color: `#${label.color}`,
-                            border: `1px solid #${label.color}40`,
-                          }}
-                        >
-                          {label.name}
-                        </span>
-                      ))}
+                      {issue.labels.map((label) => {
+                        const safeColor = sanitizeLabelColor(label.color);
+                        return (
+                          <span
+                            key={label.name}
+                            className="text-xs px-2 py-0.5 rounded-full font-medium"
+                            style={{
+                              backgroundColor: `#${safeColor}20`,
+                              color: `#${safeColor}`,
+                              border: `1px solid #${safeColor}40`,
+                            }}
+                          >
+                            {label.name}
+                          </span>
+                        );
+                      })}
                     </div>
                     <span className="text-xs text-dracula-foreground/40 mt-2 block">
                       #{issue.number}

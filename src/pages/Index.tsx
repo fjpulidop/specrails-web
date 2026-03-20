@@ -19,7 +19,8 @@ const Index = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
+    // Validate hash against allowlist before using as CSS selector (MED-03)
+    if (hash && /^#[a-zA-Z][\w-]*$/.test(hash)) {
       const el = document.querySelector(hash);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
