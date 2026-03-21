@@ -22,7 +22,7 @@ const FooterSection = () => (
       </div>
 
       <p className="text-muted-foreground text-sm">
-        Made with 💜 for the Claude Code community
+        Made with 💜 for the AI coding community
       </p>
       <p className="text-muted-foreground/50 text-xs mt-2">
         © 2026 specrails
