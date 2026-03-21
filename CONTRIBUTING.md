@@ -21,7 +21,7 @@ npm install
 npm run dev
 ```
 
-The site runs at `http://localhost:5173` by default (Vite).
+The site runs at `http://localhost:8080` (configured in `vite.config.ts`).
 
 ## Project Structure
 

@@ -108,6 +108,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ---
 
-All other third-party dependencies are licensed under MIT, ISC, Apache-2.0,
-BlueOak-1.0.0, or 0BSD, which do not require attribution notices.
+All other third-party dependencies in the runtime bundle are licensed under
+MIT, ISC, BlueOak-1.0.0, or 0BSD, which require no additional attribution
+beyond the copyright notices embedded in each package's own LICENSE file.
+
+Apache-2.0 packages used at runtime (class-variance-authority) are covered
+by the Apache License 2.0 terms; no separate NOTICE file was found in their
+source distribution at time of audit (2026-03-20), so no additional
+reproduction is required under Apache-2.0 Section 4(d).
+
 For a full list see: https://github.com/fjpulidop/specrails-web
