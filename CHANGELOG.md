@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/fjpulidop/specrails-web/compare/v1.4.1...v1.4.2) (2026-03-21)
+
+
+### Bug Fixes
+
+* update copy to reference both Claude Code and OpenAI Codex ([#90](https://github.com/fjpulidop/specrails-web/issues/90)) ([527bfb7](https://github.com/fjpulidop/specrails-web/commit/527bfb70c1d4cc22f066eb5b52a22e8119a829c3))
+
 ## [1.4.1](https://github.com/fjpulidop/specrails-web/compare/v1.4.0...v1.4.1) (2026-03-21)
 
 
