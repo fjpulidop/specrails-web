@@ -13,7 +13,6 @@ import InstallSection from "@/components/InstallSection";
 import CommandsSection from "@/components/CommandsSection";
 import PrinciplesSection from "@/components/PrinciplesSection";
 import RoadmapSection from "@/components/RoadmapSection";
-import WaitlistSection from "@/components/WaitlistSection";
 import FooterSection from "@/components/FooterSection";
 import SectionNav from "@/components/SectionNav";
 import AnimatedLogo from "@/components/AnimatedLogo";
@@ -52,9 +51,8 @@ const Index = () => {
       <CommandsSection />
       <PrinciplesSection />
       <RoadmapSection />
-      <WaitlistSection />
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","agents","pipeline","demo","features","cli-compat","install","commands","principles","roadmap","waitlist","footer"]} />
+      <SectionNav sectionIds={["hero","problem","agents","pipeline","demo","features","cli-compat","install","commands","principles","roadmap","footer"]} />
       <AnimatedLogo />
     </div>
   );
