@@ -80,7 +80,7 @@ All specrails features work with both CLIs:
 
 **Can I switch between Claude Code and Codex on the same installation?**
 
-Yes. specrails installs into `.claude/` and is not tied to a specific CLI binary. You can run `/setup` or any `/sr:*` command from either CLI at any time.
+Yes. specrails installs into `.claude/` — a directory it creates in your project root. The name comes from historical convention; it is not tied to the Claude Code binary. You can run `/setup` or any `/sr:*` command from either CLI at any time.
 
 ---
 

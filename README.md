@@ -5,7 +5,7 @@
 <h1 align="center">specrails-web</h1>
 
 <p align="center">
-  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails-core">specrails</a> — a chained AI agent system that transforms Claude Code into a complete software development team.
+  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails-core">specrails</a> — a chained AI agent system that works with Claude Code and OpenAI Codex to build a complete software development team.
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 ## About specrails
 
-[specrails](https://github.com/fjpulidop/specrails-core) is a full-stack AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — each powered by the right Claude model for the job.
+[specrails](https://github.com/fjpulidop/specrails-core) is a CLI-agnostic AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — running on Claude Code or OpenAI Codex.
 
 This repository contains the **landing page** at [specrails.dev](https://specrails.dev), which showcases the agent team, the development pipeline, live terminal demos, and a dynamic roadmap pulled from GitHub issues.
 
@@ -84,6 +84,7 @@ src/
 │   ├── AgentsDropdown.tsx         # Agents navigation dropdown
 │   ├── AgentsSection.tsx          # AI agent team showcase
 │   ├── AnimatedLogo.tsx           # Animated SpecRails logo
+│   ├── CliCompatibilitySection.tsx # CLI feature parity comparison table
 │   ├── CommandsSection.tsx        # CLI commands reference
 │   ├── DemoSection.tsx            # Animated terminal demo
 │   ├── DocsDropdown.tsx           # Docs navigation dropdown
@@ -102,7 +103,6 @@ src/
 │   ├── ProblemSection.tsx         # Problem statement
 │   ├── RoadmapSection.tsx         # Live roadmap from GitHub issues
 │   ├── SectionNav.tsx             # In-page section navigation
-│   ├── WaitlistSection.tsx        # Waitlist signup form
 │   └── ui/                        # shadcn/ui component library
 ├── hooks/
 │   ├── use-mobile.tsx             # Mobile viewport detection
