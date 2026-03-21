@@ -30,7 +30,7 @@ const ProblemSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Claude Code is powerful.{" "}
+          Claude Code and OpenAI Codex are powerful.{" "}
           <span className="text-dracula-comment">But without structure, it's chaos.</span>
         </h2>
 

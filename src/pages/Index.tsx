@@ -23,7 +23,7 @@ const Index = () => {
   useSeo({
     title: "specrails — AI Coding Assistant for Dev Teams",
     description:
-      "specrails is the AI coding assistant that turns Claude Code into your full dev team — architect, engineers, QA, and release manager. From idea to production code.",
+      "specrails is the AI coding assistant that turns Claude Code and OpenAI Codex into your full dev team — architect, engineers, QA, and release manager. From idea to production code.",
     canonical: "https://specrails.dev/",
   });
 

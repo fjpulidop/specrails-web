@@ -4,7 +4,7 @@ import { useSeo } from "@/hooks/useSeo";
 
 const BASE_TITLE = "specrails — AI Coding Assistant for Dev Teams";
 const BASE_DESC =
-  "specrails is the AI coding assistant that turns Claude Code into your full dev team.";
+  "specrails is the AI coding assistant that turns Claude Code and OpenAI Codex into your full dev team.";
 const BASE_CANONICAL = "https://specrails.dev/";
 
 beforeEach(() => {

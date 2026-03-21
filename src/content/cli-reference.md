@@ -2,7 +2,7 @@
 
 <!-- specrails-web: docs slug=cli-reference -->
 
-Command reference for `specrails-core`. All commands are run via `npx specrails-core` or inside Claude Code as slash commands.
+Command reference for `specrails-core`. All commands are run via `npx specrails-core` or inside Claude Code / OpenAI Codex as slash commands.
 
 ---
 
@@ -34,7 +34,7 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
 2. If Claude Code CLI is missing, prints the install URL and exits (no stack trace)
 3. If no API key is configured, prints exact fix instructions and exits
 4. Copies templates and agent definitions into `.claude/`
-5. Prints next step: `Open Claude Code and run /setup`
+5. Prints next step: `Open Claude Code or Codex and run /setup`
 
 **Expected output:**
 
@@ -45,7 +45,7 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
   ✔ npm found
 ✔ Installing SpecRails artifacts into .claude/
 ✔ Installed version 1.7.0
-✔ Ready. Open Claude Code and run /setup to complete configuration.
+✔ Ready. Open Claude Code or Codex and run /setup to complete configuration.
 ```
 
 **See also:** [`setup`](#specrails-setup), [`doctor`](#specrails-doctor)
@@ -56,7 +56,7 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
 
 **Synopsis:** `/setup [--advanced]`
 
-**Description:** Configures your SpecRails team. Run inside Claude Code after `init`. Defaults to Quick Start mode (3 questions). Use `--advanced` for the full 5-phase wizard.
+**Description:** Configures your SpecRails team. Run inside Claude Code or Codex after `init`. Defaults to Quick Start mode (3 questions). Use `--advanced` for the full 5-phase wizard.
 
 **Options:**
 
@@ -109,10 +109,10 @@ Runs the full 5-phase wizard:
 **Examples:**
 
 ```bash
-# Inside Claude Code — Quick Start (recommended for new users)
+# Inside Claude Code or Codex — Quick Start (recommended for new users)
 /setup
 
-# Inside Claude Code — full wizard
+# Inside Claude Code or Codex — full wizard
 /setup --advanced
 ```
 
@@ -271,10 +271,10 @@ npx specrails-core doctor
 | Command | How to invoke | What it does |
 |---------|--------------|-------------|
 | `init` | `npx specrails-core@latest init` | Install SpecRails into a project |
-| `setup` | `/setup` (Claude Code) | Configure your agent team |
+| `setup` | `/setup` (Claude Code / Codex) | Configure your agent team |
 | `doctor` | `npx specrails-core doctor` | Run diagnostics |
-| `implement` | `/sr:implement` (Claude Code) | Run the full pipeline for a feature |
-| `preview` | `/sr:implement ... --dry-run` (Claude Code) | Dry-run the pipeline — no code committed |
+| `implement` | `/sr:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
+| `preview` | `/sr:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |
 | `update` | `npx specrails-core@latest update` | Update to the latest release |
 
 ---
