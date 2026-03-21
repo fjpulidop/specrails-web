@@ -5,7 +5,7 @@
 <h1 align="center">specrails-web</h1>
 
 <p align="center">
-  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails-core">specrails</a> — a chained AI agent system that transforms Claude Code into a complete software development team.
+  Landing page and documentation site for <a href="https://github.com/fjpulidop/specrails-core">specrails</a> — a chained AI agent system that works with Claude Code and OpenAI Codex to build a complete software development team.
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 ## About specrails
 
-[specrails](https://github.com/fjpulidop/specrails-core) is a full-stack AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — each powered by the right Claude model for the job.
+[specrails](https://github.com/fjpulidop/specrails-core) is a CLI-agnostic AI agent pipeline that automates the journey from idea to production code. It orchestrates a team of specialized AI agents — Product Manager, Architect, Developer, Reviewer, Security Reviewer, and more — running on Claude Code or OpenAI Codex.
 
 This repository contains the **landing page** at [specrails.dev](https://specrails.dev), which showcases the agent team, the development pipeline, live terminal demos, and a dynamic roadmap pulled from GitHub issues.
 
@@ -58,34 +58,67 @@ npm run dev
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
+| `npm run dev` | Start development server (http://localhost:8080) |
 | `npm run build` | Production build |
+| `npm run build:dev` | Development build (with source maps) |
 | `npm run preview` | Preview production build locally |
 | `npm run lint` | Run ESLint |
-| `npm test` | Run unit tests |
+| `npm test` | Run unit tests (Vitest) |
 | `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with coverage report |
+
+### End-to-End Tests
+
+```sh
+# Requires the dev server running on port 8080
+npm run dev &
+npx playwright test
+```
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── AgentsSection.tsx       # AI agent team showcase
-│   ├── CommandsSection.tsx     # CLI commands reference
-│   ├── DemoSection.tsx         # Animated terminal demo
-│   ├── FeaturesSection.tsx     # Key features grid
-│   ├── FooterSection.tsx       # Footer with links
-│   ├── HeroSection.tsx         # Hero with particle animation
-│   ├── InstallSection.tsx      # Installation instructions
-│   ├── Navbar.tsx              # Navigation bar
-│   ├── PipelineSection.tsx     # Development pipeline timeline
-│   ├── PrinciplesSection.tsx   # Core principles
-│   ├── ProblemSection.tsx      # Problem statement
-│   ├── RoadmapSection.tsx      # Live roadmap from GitHub issues
-│   └── ui/                     # shadcn/ui component library
-├── hooks/                      # Custom React hooks
-├── lib/                        # Utilities
-└── pages/                      # Route pages
+│   ├── AgentComparisonMatrix.tsx  # Side-by-side agent capability comparison
+│   ├── AgentsDropdown.tsx         # Agents navigation dropdown
+│   ├── AgentsSection.tsx          # AI agent team showcase
+│   ├── AnimatedLogo.tsx           # Animated SpecRails logo
+│   ├── CliCompatibilitySection.tsx # CLI feature parity comparison table
+│   ├── CommandsSection.tsx        # CLI commands reference
+│   ├── DemoSection.tsx            # Animated terminal demo
+│   ├── DocsDropdown.tsx           # Docs navigation dropdown
+│   ├── DocsSidebar.tsx            # Documentation sidebar nav
+│   ├── FeaturesSection.tsx        # Key features grid
+│   ├── FooterSection.tsx          # Footer with links
+│   ├── GitHubStarsButton.tsx      # Live GitHub star count button
+│   ├── HeroSection.tsx            # Hero with particle animation
+│   ├── HubSection.tsx             # specrails-hub product section
+│   ├── InstallSection.tsx         # Installation instructions
+│   ├── MarkdownRenderer.tsx       # Syntax-highlighted markdown renderer
+│   ├── Navbar.tsx                 # Navigation bar
+│   ├── NavLink.tsx                # Styled navigation link
+│   ├── PipelineSection.tsx        # Development pipeline timeline
+│   ├── PrinciplesSection.tsx      # Core principles
+│   ├── ProblemSection.tsx         # Problem statement
+│   ├── RoadmapSection.tsx         # Live roadmap from GitHub issues
+│   ├── SectionNav.tsx             # In-page section navigation
+│   └── ui/                        # shadcn/ui component library
+├── hooks/
+│   ├── use-mobile.tsx             # Mobile viewport detection
+│   ├── use-toast.ts               # Toast notification hook
+│   ├── useScrollAnimation.ts      # Intersection Observer scroll animations
+│   └── useSeo.ts                  # SEO meta tag management
+├── lib/
+│   ├── docs-registry.ts           # Documentation content registry
+│   └── utils.ts                   # Shared utilities (cn, etc.)
+└── pages/
+    ├── AgentsPage.tsx             # Full agents reference page
+    ├── DocPage.tsx                # Individual documentation page
+    ├── DocsIndex.tsx              # Documentation index
+    ├── DocsLayout.tsx             # Docs section layout
+    ├── Index.tsx                  # Landing page (home)
+    └── NotFound.tsx               # 404 page
 ```
 
 ## Features
