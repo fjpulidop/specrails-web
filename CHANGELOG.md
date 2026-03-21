@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/fjpulidop/specrails-web/compare/v1.3.1...v1.4.0) (2026-03-21)
+
+
+### Features
+
+* add Codex CLI support, lint fixes ([#84](https://github.com/fjpulidop/specrails-web/issues/84)) ([ac53b4c](https://github.com/fjpulidop/specrails-web/commit/ac53b4ccab89fc5da2cba41a0cef223de229b7db))
+
 ## [1.3.1](https://github.com/fjpulidop/specrails-web/compare/v1.3.0...v1.3.1) (2026-03-21)
 
 
