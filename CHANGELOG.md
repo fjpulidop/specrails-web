@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/fjpulidop/specrails-web/compare/v1.4.0...v1.4.1) (2026-03-21)
+
+
+### Bug Fixes
+
+* **build:** revert tailwind config to require() — await import breaks jiti ([#88](https://github.com/fjpulidop/specrails-web/issues/88)) ([006a09a](https://github.com/fjpulidop/specrails-web/commit/006a09a6b6ff6b15e47615b54f82d2614c3d7117))
+
 ## [1.4.0](https://github.com/fjpulidop/specrails-web/compare/v1.3.1...v1.4.0) (2026-03-21)
 
 
