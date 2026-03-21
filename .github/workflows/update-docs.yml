@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: write
-  actions: write
+  pull-requests: write
 
 jobs:
   update-docs:
@@ -34,24 +34,21 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Commit and push dependency update
+      - name: Create pull request for dependency update
         if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          VERSION="${{ github.event.client_payload.core_version }}"
+          BRANCH="chore/update-specrails-core-${VERSION}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
           git add package.json package-lock.json
-          git commit -m "chore(deps): update specrails-core to ${{ github.event.client_payload.core_version }}"
-          git push
-
-      - name: Trigger deploy
-        if: steps.changes.outputs.changed == 'true'
-        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd  # v8.0.0
-        with:
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'release.yml',
-              ref: 'main',
-              inputs: { force_deploy: 'true' },
-            });
+          git commit -m "chore(deps): update specrails-core to ${VERSION}"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --title "chore(deps): update specrails-core to ${VERSION}" \
+            --body "Automated dependency update triggered by specrails-core release ${VERSION}. Merging will trigger deployment via the Release workflow." \
+            --base main \
+            --head "$BRANCH"
