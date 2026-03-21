@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/fjpulidop/specrails-web/compare/v1.3.0...v1.3.1) (2026-03-21)
+
+
+### Bug Fixes
+
+* **ci:** create PR instead of direct push to main for docs updates ([#85](https://github.com/fjpulidop/specrails-web/issues/85)) ([756ab02](https://github.com/fjpulidop/specrails-web/commit/756ab02de869f5a1a97de8d965d6b6aa426a58aa))
+
 ## [1.3.0](https://github.com/fjpulidop/specrails-web/compare/v1.2.3...v1.3.0) (2026-03-20)
 
 
