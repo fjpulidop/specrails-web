@@ -1,6 +1,7 @@
 import readmeRaw from "specrails-core/docs/README.md?raw";
 import gettingStartedRaw from "specrails-core/docs/getting-started.md?raw";
 import tutorialQuickstartRaw from "../content/tutorial-quickstart.md?raw";
+import codexGettingStartedRaw from "../content/codex-getting-started.md?raw";
 import cliReferenceRaw from "../content/cli-reference.md?raw";
 import conceptsRaw from "specrails-core/docs/concepts.md?raw";
 import installationRaw from "specrails-core/docs/installation.md?raw";
@@ -41,6 +42,13 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "Getting Started in 5 Minutes",
     description: "Zero to first agent-generated PR in 5 minutes",
     content: tutorialQuickstartRaw,
+    section: "Tutorials",
+  },
+  {
+    slug: "codex-getting-started",
+    title: "Getting Started with OpenAI Codex",
+    description: "Install and run specrails using OpenAI Codex — full feature parity with Claude Code",
+    content: codexGettingStartedRaw,
     section: "Tutorials",
   },
   {

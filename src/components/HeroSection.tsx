@@ -10,7 +10,7 @@ const gitCloneLines = [
   { text: "", color: "text-foreground", delay: 1200 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1600 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 2000 },
-  { text: "🚀 Ready! Run /setup in Claude Code", color: "text-dracula-pink", delay: 2400 },
+  { text: "🚀 Ready! Run /setup in Claude Code or Codex", color: "text-dracula-pink", delay: 2400 },
 ];
 
 const npxLines = [
@@ -18,7 +18,7 @@ const npxLines = [
   { text: "", color: "text-foreground", delay: 600 },
   { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
   { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
-  { text: "🚀 Ready! Run /setup in Claude Code", color: "text-dracula-pink", delay: 1800 },
+  { text: "🚀 Ready! Run /setup in Claude Code or Codex", color: "text-dracula-pink", delay: 1800 },
 ];
 
 const ParticleBackground = () => {
@@ -219,9 +219,8 @@ const HeroSection = () => {
 
         {/* Supporting line */}
         <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
-          A system of 12 specialized agents that turns Claude Code into a complete
-          pipeline: Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr;
-          Ship
+          A system of 12 specialized agents that works with Claude Code and OpenAI Codex — from
+          Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
         </p>
 
         {/* Install command — primary CTA */}
