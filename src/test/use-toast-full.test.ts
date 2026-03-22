@@ -54,7 +54,7 @@ describe("toast() function", () => {
     expect(result.current.toasts[0].title).toBe("Original");
 
     act(() => {
-      toastResult.update({ id: toastResult.id, title: "Updated" } as any);
+      toastResult.update({ id: toastResult.id, title: "Updated" } as Parameters<typeof toastResult.update>[0]);
     });
     expect(result.current.toasts[0].title).toBe("Updated");
   });
