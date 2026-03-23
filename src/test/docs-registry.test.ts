@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 28 entries (9 core + 9 hub + 2 mcp + 3 playbooks + 5 reference)", () => {
-    expect(DOC_ENTRIES).toHaveLength(28);
+  it("has 29 entries (9 core + 9 hub + 3 mcp + 3 playbooks + 5 reference)", () => {
+    expect(DOC_ENTRIES).toHaveLength(29);
   });
 
   it("getDocBySlug returns correct entry", () => {
@@ -39,7 +39,7 @@ describe("docs-registry", () => {
 
   it("all mcp entries use mcp- slug prefix", () => {
     const mcpEntries = DOC_ENTRIES.filter((d) => d.section === "specrails-mcp");
-    expect(mcpEntries).toHaveLength(2);
+    expect(mcpEntries).toHaveLength(3);
     mcpEntries.forEach((d) => expect(d.slug).toMatch(/^mcp-/));
   });
 
@@ -51,6 +51,7 @@ describe("docs-registry", () => {
   it("getDocBySlug returns mcp entries", () => {
     expect(getDocBySlug("mcp-getting-started")?.title).toBe("Getting Started");
     expect(getDocBySlug("mcp-overview")?.title).toBe("Overview");
+    expect(getDocBySlug("mcp-tools-reference")?.title).toBe("Tools Reference");
   });
 
   it("existing core doc slugs are unchanged", () => {

@@ -31,6 +31,7 @@ import hubGettingStartedCodexRaw from "../content/hub-getting-started-codex.md?r
 
 // MCP docs (local content)
 import mcpGettingStartedRaw from "../content/mcp-getting-started.md?raw";
+import mcpToolsReferenceRaw from "../content/mcp-tools-reference.md?raw";
 
 // MCP README (specrails-mcp)
 import mcpReadmeRaw from "specrails-mcp/README.md?raw";
@@ -207,6 +208,14 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "Overview",
     description: "Architecture, resources, and tools provided by the specrails-mcp server",
     content: mcpReadmeRaw,
+    section: "specrails-mcp",
+    product: "mcp",
+  },
+  {
+    slug: "mcp-tools-reference",
+    title: "Tools Reference",
+    description: "Detailed reference for all specrails-mcp tools: doctor, score-feature, and query-failures",
+    content: mcpToolsReferenceRaw,
     section: "specrails-mcp",
     product: "mcp",
   },
