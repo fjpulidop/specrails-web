@@ -5,16 +5,6 @@
 
 export type JobStatus = "queued" | "running" | "completed" | "failed" | "canceled";
 
-export interface PhaseDefinition {
-  key: string;
-  label: string;
-  description: string;
-}
-
-export type PhaseState = "idle" | "running" | "done" | "error";
-
-export type PhaseMap = Record<string, PhaseState>;
-
 export interface CommandInfo {
   id: string;
   name: string;
@@ -76,10 +66,3 @@ export interface DemoProject {
 
 export type SectionId = "spec" | "rails" | "jobs" | "health";
 
-export interface AnalyticsKpi {
-  totalCostUsd: number;
-  totalJobs: number;
-  successRate: number;
-  avgDurationMs: number | null;
-  totalTokens: number;
-}

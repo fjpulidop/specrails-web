@@ -6,11 +6,8 @@
 import type {
   CommandInfo,
   DemoProject,
-  PhaseDefinition,
-  PhaseMap,
   ProjectMetrics,
   JobSummary,
-  AnalyticsKpi,
 } from "./types";
 
 // ─── Projects ────────────────────────────────────────────────
@@ -89,21 +86,6 @@ export const DEMO_COMMANDS: CommandInfo[] = [
   },
 ];
 
-// ─── Pipeline ────────────────────────────────────────────────
-
-export const DEMO_PHASE_DEFINITIONS: PhaseDefinition[] = [
-  { key: "architect", label: "Architect", description: "Design the implementation plan" },
-  { key: "developer", label: "Developer", description: "Build the feature" },
-  { key: "reviewer", label: "Reviewer", description: "Code review & QA" },
-  { key: "ship", label: "Ship", description: "Deploy to production" },
-];
-
-export const DEMO_PHASE_MAP: PhaseMap = {
-  architect: "done",
-  developer: "done",
-  reviewer: "running",
-  ship: "idle",
-};
 
 // ─── Project Health (OpenClaw) ───────────────────────────────
 
@@ -191,51 +173,3 @@ export const DEMO_JOBS_ACME: JobSummary[] = [
   { id: "job-14", command: "/sr:implement", started_at: "2026-03-20T18:00:00Z", finished_at: "2026-03-20T18:35:00Z", status: "completed", total_cost_usd: 0.0923 },
 ];
 
-// ─── Pipeline (acme-api) ────────────────────────────────────
-
-export const DEMO_PHASE_MAP_ACME: PhaseMap = {
-  architect: "done",
-  developer: "failed",
-  reviewer: "idle",
-  ship: "idle",
-};
-
-// ─── Analytics KPI (OpenClaw) ────────────────────────────────
-
-export const DEMO_KPI: AnalyticsKpi = {
-  totalCostUsd: 0.4921,
-  totalJobs: 23,
-  successRate: 0.913,
-  avgDurationMs: 684_000,
-  totalTokens: 1_247_000,
-};
-
-export const DEMO_COST_TIMELINE = [
-  { date: "Mon", costUsd: 0.084 },
-  { date: "Tue", costUsd: 0.132 },
-  { date: "Wed", costUsd: 0.051 },
-  { date: "Thu", costUsd: 0.148 },
-  { date: "Fri", costUsd: 0.042 },
-  { date: "Sat", costUsd: 0.012 },
-  { date: "Sun", costUsd: 0.024 },
-];
-
-// ─── Analytics KPI (acme-api) ────────────────────────────────
-
-export const DEMO_KPI_ACME: AnalyticsKpi = {
-  totalCostUsd: 0.2301,
-  totalJobs: 11,
-  successRate: 0.727,
-  avgDurationMs: 912_000,
-  totalTokens: 634_000,
-};
-
-export const DEMO_COST_TIMELINE_ACME = [
-  { date: "Mon", costUsd: 0.014 },
-  { date: "Tue", costUsd: 0.053 },
-  { date: "Wed", costUsd: 0.092 },
-  { date: "Thu", costUsd: 0.028 },
-  { date: "Fri", costUsd: 0.067 },
-  { date: "Sat", costUsd: 0.003 },
-  { date: "Sun", costUsd: 0.015 },
-];
