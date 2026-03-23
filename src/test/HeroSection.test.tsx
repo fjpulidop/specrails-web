@@ -85,20 +85,20 @@ describe("HeroSection", () => {
     expect(container.textContent).toContain("Open Source");
   });
 
-  it("renders the tagline", () => {
+  it("renders the Hub-first tagline", () => {
     renderHero();
     expect(screen.getByText(/your ai development team/i)).toBeInTheDocument();
-    expect(screen.getByText(/from idea to production code/i)).toBeInTheDocument();
+    expect(screen.getByText(/one hub to rule them all/i)).toBeInTheDocument();
   });
 
-  it("renders the supporting description", () => {
+  it("renders the supporting description mentioning Hub", () => {
     renderHero();
-    expect(screen.getByText(/12 specialized agents/i)).toBeInTheDocument();
+    expect(screen.getByText(/specrails-hub is your ai control center/i)).toBeInTheDocument();
   });
 
-  it("renders the install command", () => {
+  it("renders the Hub install command", () => {
     renderHero();
-    expect(screen.getByText("npx specrails-core@latest init")).toBeInTheDocument();
+    expect(screen.getByText("npm install -g specrails-hub")).toBeInTheDocument();
   });
 
   it("renders the copy button with aria-label", () => {
@@ -127,15 +127,34 @@ describe("HeroSection", () => {
     expect(docsLink?.textContent).toContain("Read the docs");
   });
 
-  it("renders both terminal previews (npx and git clone)", () => {
+  it("renders three product cards (Core, Hub, MCP)", () => {
     const { container } = renderHero();
-    expect(container.textContent).toContain("Option A");
-    expect(container.textContent).toContain("Option B");
+    expect(container.querySelector("[data-testid='product-card-specrails-core']")).toBeInTheDocument();
+    expect(container.querySelector("[data-testid='product-card-specrails-hub']")).toBeInTheDocument();
+    expect(container.querySelector("[data-testid='product-card-specrails-mcp']")).toBeInTheDocument();
+  });
+
+  it("renders Hub as the recommended product", () => {
+    const { container } = renderHero();
+    expect(container.textContent).toContain("Recommended");
+  });
+
+  it("renders Hub terminal preview", () => {
+    const { container } = renderHero();
+    expect(container.textContent).toContain("Get started");
+    expect(container.textContent).toContain("Hub install");
   });
 
   it("renders the canvas element for particle background", () => {
     const { container } = renderHero();
     expect(container.querySelector("canvas")).toBeInTheDocument();
+  });
+
+  it("renders Dashboard badge", () => {
+    const { container } = renderHero();
+    expect(container.textContent).toContain("Dashboard");
+    expect(container.textContent).toContain("Multi-Project");
+    expect(container.textContent).toContain("Analytics");
   });
 
   // --- Copy button interaction ---
@@ -159,7 +178,7 @@ describe("HeroSection", () => {
       fireEvent.click(btn);
     });
 
-    expect(writeText).toHaveBeenCalledWith("npx specrails-core@latest init");
+    expect(writeText).toHaveBeenCalledWith("npm install -g specrails-hub");
     expect(btn.textContent).toContain("Copied!");
   });
 

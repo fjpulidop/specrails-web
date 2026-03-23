@@ -1,24 +1,62 @@
 import { useEffect, useState, useRef } from "react";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Terminal, LayoutDashboard, Network } from "lucide-react";
 import { GitHubStarsButton } from "@/components/GitHubStarsButton";
 
-const INSTALL_COMMAND = "npx specrails-core@latest init";
+const INSTALL_COMMAND = "npm install -g specrails-hub";
 
-const gitCloneLines = [
-  { text: "$ git clone https://github.com/fjpulidop/specrails-core.git", color: "text-dracula-green", delay: 0 },
-  { text: "$ ./specrails/install.sh --root-dir <your-project>", color: "text-dracula-green", delay: 800 },
-  { text: "", color: "text-foreground", delay: 1200 },
-  { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1600 },
-  { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 2000 },
-  { text: "🚀 Ready! Run /setup in Claude Code or Codex", color: "text-dracula-pink", delay: 2400 },
+const hubInstallLines = [
+  { text: "$ npm install -g specrails-hub", color: "text-dracula-green", delay: 0 },
+  { text: "", color: "text-foreground", delay: 600 },
+  { text: "$ specrails-hub", color: "text-dracula-green", delay: 1000 },
+  { text: "", color: "text-foreground", delay: 1400 },
+  { text: "\u2713 Dashboard ready at localhost:4200", color: "text-dracula-cyan", delay: 1800 },
+  { text: "$ # Your projects, pipeline & analytics \u2014 all here", color: "text-dracula-pink", delay: 2200 },
 ];
 
-const npxLines = [
-  { text: "$ npx specrails-core@latest init --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
-  { text: "", color: "text-foreground", delay: 600 },
-  { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
-  { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
-  { text: "🚀 Ready! Run /setup in Claude Code or Codex", color: "text-dracula-pink", delay: 1800 },
+interface ProductCard {
+  name: string;
+  tagline: string;
+  icon: typeof Terminal;
+  accent: string;
+  border: string;
+  glow: string;
+  command: string;
+  featured?: boolean;
+  badges: string[];
+}
+
+const products: ProductCard[] = [
+  {
+    name: "specrails-core",
+    tagline: "The engine. 12 agents in your terminal.",
+    icon: Terminal,
+    accent: "text-dracula-cyan",
+    border: "border-dracula-cyan/30",
+    glow: "",
+    command: "npx specrails-core@latest init",
+    badges: ["Terminal", "12 Agents", "CLI"],
+  },
+  {
+    name: "specrails-hub",
+    tagline: "Your control center. The star product.",
+    icon: LayoutDashboard,
+    accent: "text-dracula-green",
+    border: "border-dracula-green/60",
+    glow: "shadow-[0_0_30px_rgba(80,250,123,0.15)]",
+    command: "npm install -g specrails-hub",
+    featured: true,
+    badges: ["Dashboard", "Multi-Project", "Analytics"],
+  },
+  {
+    name: "specrails-mcp",
+    tagline: "Connect with any AI.",
+    icon: Network,
+    accent: "text-dracula-purple",
+    border: "border-dracula-purple/30",
+    glow: "",
+    command: "npm install -g specrails-mcp",
+    badges: ["MCP", "8 Tools", "15+ Resources"],
+  },
 ];
 
 const ParticleBackground = () => {
@@ -77,7 +115,6 @@ const ParticleBackground = () => {
       animationId = requestAnimationFrame(draw);
     };
 
-    // Observe the parent section — absolute canvas gets its size from there
     const parent = canvas.parentElement;
     if (!parent) return;
 
@@ -116,7 +153,7 @@ const ParticleBackground = () => {
   );
 };
 
-const AnimatedTerminal = ({ lines, label }: { lines: typeof gitCloneLines; label: string }) => {
+const AnimatedTerminal = ({ lines, label }: { lines: typeof hubInstallLines; label: string }) => {
   const [visibleLines, setVisibleLines] = useState(0);
 
   useEffect(() => {
@@ -191,6 +228,46 @@ const InstallCommand = () => {
   );
 };
 
+const ProductCardComponent = ({ product }: { product: ProductCard }) => {
+  const Icon = product.icon;
+  return (
+    <div
+      data-testid={`product-card-${product.name}`}
+      className={`glass-card border ${product.border} ${product.glow} p-6 rounded-xl backdrop-blur-sm bg-background/30 transition-all duration-300 hover:scale-[1.02] ${
+        product.featured ? "md:scale-110 md:z-10 md:py-8" : ""
+      }`}
+    >
+      {product.featured && (
+        <div className="text-xs font-mono text-dracula-green mb-3 uppercase tracking-wider">
+          Recommended
+        </div>
+      )}
+      <div className={`flex items-center gap-2 mb-3 ${product.accent}`}>
+        <Icon className="w-5 h-5" />
+        <span className="font-mono font-bold text-sm">{product.name}</span>
+      </div>
+      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+        {product.tagline}
+      </p>
+      <code className="text-xs font-mono text-muted-foreground block mb-3 bg-background/50 px-2 py-1.5 rounded">
+        $ {product.command}
+      </code>
+      <div className="flex flex-wrap gap-1.5">
+        {product.badges.map((badge) => (
+          <span
+            key={badge}
+            className={`text-[10px] font-mono px-2 py-0.5 rounded-full border border-border/30 ${
+              product.featured ? "text-dracula-green border-dracula-green/30" : "text-muted-foreground"
+            }`}
+          >
+            {badge}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-20 overflow-hidden">
@@ -205,29 +282,34 @@ const HeroSection = () => {
           <span>rails</span>
         </h1>
 
-        {/* Open source badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/30 bg-background/30 backdrop-blur-sm text-xs font-mono text-muted-foreground mb-8 animate-fade-up">
-          <span className="w-1.5 h-1.5 rounded-full bg-dracula-green animate-pulse" />
-          Open Source &middot; MIT License
+        {/* Open source badges */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8 animate-fade-up">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/30 bg-background/30 backdrop-blur-sm text-xs font-mono text-muted-foreground">
+            <span className="w-1.5 h-1.5 rounded-full bg-dracula-green animate-pulse" />
+            Open Source &middot; MIT &middot; Free
+          </div>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-dracula-green/30 bg-background/30 backdrop-blur-sm text-xs font-mono text-dracula-green">
+            Dashboard &middot; Multi-Project &middot; Analytics
+          </div>
         </div>
 
-        {/* Tagline — large, bold, two lines */}
+        {/* Tagline */}
         <p className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6 animate-fade-up delay-100 leading-tight">
           Your AI Development Team.<br />
-          <span className="gradient-text">From Idea to Production Code.</span>
+          <span className="gradient-text">One Hub to Rule Them All.</span>
         </p>
 
         {/* Supporting line */}
         <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
-          A system of 12 specialized agents that works with Claude Code and OpenAI Codex — from
-          Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
+          specrails-hub is your AI control center &mdash; 12 specialized agents, real-time pipeline, cost analytics and AI chat, all from your browser.
+          Prefer the terminal? specrails-core is still there.
         </p>
 
         {/* Install command — primary CTA */}
         <div className="mb-6 animate-fade-up delay-300">
           <InstallCommand />
           <p className="text-xs text-muted-foreground mt-2.5 font-mono">
-            No account required &middot; Runs locally
+            No account required &middot; Runs locally &middot; Includes specrails-core
           </p>
         </div>
 
@@ -240,20 +322,19 @@ const HeroSection = () => {
           </a>
         </div>
 
-        {/* Terminal previews */}
-        <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-500">
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-              <span className="text-dracula-purple">Option A</span> &mdash; npx
-            </p>
-            <AnimatedTerminal lines={npxLines} label="npx" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-              <span className="text-dracula-cyan">Option B</span> &mdash; git clone
-            </p>
-            <AnimatedTerminal lines={gitCloneLines} label="git clone" />
-          </div>
+        {/* Three product cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 animate-fade-up delay-500 md:items-center">
+          {products.map((product) => (
+            <ProductCardComponent key={product.name} product={product} />
+          ))}
+        </div>
+
+        {/* Terminal preview — Hub install flow */}
+        <div className="max-w-2xl mx-auto animate-fade-up delay-500">
+          <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
+            <span className="text-dracula-green">Get started</span> &mdash; Hub install
+          </p>
+          <AnimatedTerminal lines={hubInstallLines} label="specrails-hub" />
         </div>
       </div>
     </section>
