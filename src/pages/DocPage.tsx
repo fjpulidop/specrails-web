@@ -1,9 +1,34 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, Server, Plug } from "lucide-react";
 import { getDocBySlug, getAdjacentDocs } from "@/lib/docs-registry";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { useSeo } from "@/hooks/useSeo";
+import type { DocEntry } from "@/lib/docs-registry";
+
+const PRODUCT_META: Record<
+  NonNullable<DocEntry["product"]>,
+  { label: string; Icon: React.ElementType; color: string; slug: string }
+> = {
+  hub: {
+    label: "specrails-hub",
+    Icon: Server,
+    color: "text-dracula-green",
+    slug: "hub-getting-started",
+  },
+  core: {
+    label: "specrails-core",
+    Icon: BookOpen,
+    color: "text-dracula-cyan",
+    slug: "getting-started",
+  },
+  mcp: {
+    label: "specrails-mcp",
+    Icon: Plug,
+    color: "text-dracula-purple",
+    slug: "mcp-getting-started",
+  },
+};
 
 function NotFoundContent(): JSX.Element {
   return (
@@ -19,6 +44,29 @@ function NotFoundContent(): JSX.Element {
         Back to Documentation
       </Link>
     </div>
+  );
+}
+
+function ProductBreadcrumb({ doc }: { doc: DocEntry }): JSX.Element | null {
+  if (!doc.product) return null;
+  const meta = PRODUCT_META[doc.product];
+  const { Icon, label, color, slug } = meta;
+  return (
+    <nav className="flex items-center gap-2 text-xs text-muted-foreground mb-8" aria-label="Breadcrumb">
+      <Link to="/docs" className="hover:text-foreground transition-colors">
+        Docs
+      </Link>
+      <span>/</span>
+      <Link
+        to={`/docs/${slug}`}
+        className={`flex items-center gap-1 hover:text-foreground transition-colors ${color}`}
+      >
+        <Icon className="w-3 h-3" />
+        {label}
+      </Link>
+      <span>/</span>
+      <span className="text-foreground">{doc.title}</span>
+    </nav>
   );
 }
 
@@ -46,7 +94,8 @@ export default function DocPage(): JSX.Element {
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
-      <MarkdownRenderer content={doc.content} />
+      <ProductBreadcrumb doc={doc} />
+      <MarkdownRenderer content={doc.content} product={doc.product} />
 
       {/* Prev/Next navigation */}
       <nav className="mt-16 pt-8 border-t border-border/20 flex justify-between gap-4">
