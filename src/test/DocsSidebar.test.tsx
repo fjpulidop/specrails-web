@@ -54,30 +54,26 @@ describe("DocsSidebar", () => {
 
   it("renders collapsible section groups", () => {
     renderSidebar();
-    // All sections should render as group headers
     const buttons = screen.getAllByRole("button");
-    // Each section group has a collapsible trigger button
-    expect(buttons.length).toBeGreaterThanOrEqual(4);
+    // 5 sections: specrails-core, specrails-hub, specrails-mcp, Playbooks, Reference
+    expect(buttons.length).toBeGreaterThanOrEqual(5);
   });
 
   it("renders product section headers", () => {
     renderSidebar();
     expect(screen.getByText("specrails-core")).toBeInTheDocument();
     expect(screen.getByText("specrails-hub")).toBeInTheDocument();
+    expect(screen.getByText("specrails-mcp")).toBeInTheDocument();
   });
 
   it("renders non-product section headers", () => {
     renderSidebar();
-    // "Getting Started" appears as both section header and a link title,
-    // so use getAllByText and check at least one exists as a section trigger
-    expect(screen.getAllByText("Getting Started").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText("Playbooks")).toBeInTheDocument();
     expect(screen.getByText("Reference")).toBeInTheDocument();
   });
 
   it("renders product color indicators for product sections", () => {
     renderSidebar();
-    // Product sections have colored dots (span with inline backgroundColor)
     const coreHeader = screen.getByText("specrails-core");
     const coreDot = coreHeader.parentElement?.querySelector(
       "span.rounded-full"
@@ -87,6 +83,10 @@ describe("DocsSidebar", () => {
     const hubHeader = screen.getByText("specrails-hub");
     const hubDot = hubHeader.parentElement?.querySelector("span.rounded-full");
     expect(hubDot).toBeInTheDocument();
+
+    const mcpHeader = screen.getByText("specrails-mcp");
+    const mcpDot = mcpHeader.parentElement?.querySelector("span.rounded-full");
+    expect(mcpDot).toBeInTheDocument();
   });
 
   it("does not render color indicators for non-product sections", () => {

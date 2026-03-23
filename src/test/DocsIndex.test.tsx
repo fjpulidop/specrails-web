@@ -18,24 +18,24 @@ describe("DocsIndex", () => {
     expect(screen.getByRole("heading", { name: /documentation/i })).toBeInTheDocument();
   });
 
-  it("renders the Core section", () => {
+  it("renders product section headers", () => {
     renderDocsIndex();
-    expect(screen.getByText("Core")).toBeInTheDocument();
+    expect(screen.getByText("specrails-core")).toBeInTheDocument();
+    expect(screen.getByText("specrails-hub")).toBeInTheDocument();
+    expect(screen.getByText("specrails-mcp")).toBeInTheDocument();
   });
 
-  it("renders the Playbook section when playbook entries exist", () => {
+  it("renders the Playbooks section when playbook entries exist", () => {
     const hasPlaybooks = DOC_ENTRIES.some((e) => e.section === "Playbooks");
     if (!hasPlaybooks) return;
     renderDocsIndex();
-    expect(screen.getByText("Playbook")).toBeInTheDocument();
+    expect(screen.getByText("Playbooks")).toBeInTheDocument();
   });
 
-  it("renders a link for each non-index core entry", () => {
+  it("renders links for core entries (excluding index)", () => {
     renderDocsIndex();
     const coreEntries = DOC_ENTRIES.filter(
-      (e) =>
-        e.slug !== "" &&
-        (e.section === "Getting Started" || e.section === "specrails-core")
+      (e) => e.slug !== "" && e.section === "specrails-core"
     );
     const links = screen.getAllByRole("link");
     expect(links.length).toBeGreaterThanOrEqual(coreEntries.length);

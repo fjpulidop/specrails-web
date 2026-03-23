@@ -25,6 +25,16 @@ import hubOpenspecWorkflowRaw from "specrails-hub/docs/product/openspec-workflow
 import hubApiReferenceRaw from "specrails-hub/docs/engineering/api-reference.md?raw";
 import hubConfigurationRaw from "specrails-hub/docs/engineering/configuration.md?raw";
 
+// Hub per-platform getting started (local content)
+import hubGettingStartedClaudeRaw from "../content/hub-getting-started-claude.md?raw";
+import hubGettingStartedCodexRaw from "../content/hub-getting-started-codex.md?raw";
+
+// MCP docs (local content)
+import mcpGettingStartedRaw from "../content/mcp-getting-started.md?raw";
+
+// MCP README (specrails-mcp)
+import mcpReadmeRaw from "specrails-mcp/README.md?raw";
+
 export interface DocEntry {
   slug: string;
   title: string;
@@ -35,37 +45,39 @@ export interface DocEntry {
 }
 
 export const DOC_ENTRIES: DocEntry[] = [
-  // ── Getting Started ──────────────────────────────────────
+  // ── specrails-core ───────────────────────────────────────
   {
     slug: "",
     title: "Documentation",
     description: "Overview and reading guide",
     content: readmeRaw,
-    section: "Getting Started",
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "getting-started",
-    title: "Getting Started",
-    description: "Install and run your first workflow in 5 minutes",
+    title: "Getting Started with Claude",
+    description: "Install and run your first workflow with Claude Code in 5 minutes",
     content: gettingStartedRaw,
-    section: "Getting Started",
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "tutorial-quickstart",
     title: "Quick Start (5 min)",
     description: "Zero to first agent-generated PR in 5 minutes",
     content: tutorialQuickstartRaw,
-    section: "Getting Started",
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "codex-getting-started",
     title: "Getting Started with Codex",
     description: "Install and run specrails using OpenAI Codex — full feature parity with Claude Code",
     content: codexGettingStartedRaw,
-    section: "Getting Started",
+    section: "specrails-core",
+    product: "core",
   },
-
-  // ── specrails-core ───────────────────────────────────────
   {
     slug: "concepts",
     title: "Core Concepts",
@@ -117,6 +129,22 @@ export const DOC_ENTRIES: DocEntry[] = [
     product: "hub",
   },
   {
+    slug: "hub-getting-started-claude",
+    title: "Getting Started with Claude",
+    description: "Set up specrails-hub with Claude Code for multi-project management",
+    content: hubGettingStartedClaudeRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+  {
+    slug: "hub-getting-started-codex",
+    title: "Getting Started with Codex",
+    description: "Set up specrails-hub with OpenAI Codex for multi-project management",
+    content: hubGettingStartedCodexRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+  {
     slug: "hub-platform-overview",
     title: "Platform Overview",
     description: "Mental model behind specrails-hub and how pieces fit together",
@@ -163,6 +191,24 @@ export const DOC_ENTRIES: DocEntry[] = [
     content: hubConfigurationRaw,
     section: "specrails-hub",
     product: "hub",
+  },
+
+  // ── specrails-mcp ────────────────────────────────────────
+  {
+    slug: "mcp-getting-started",
+    title: "Getting Started",
+    description: "Install and configure specrails-mcp for any MCP-compatible client",
+    content: mcpGettingStartedRaw,
+    section: "specrails-mcp",
+    product: "mcp",
+  },
+  {
+    slug: "mcp-overview",
+    title: "Overview",
+    description: "Architecture, resources, and tools provided by the specrails-mcp server",
+    content: mcpReadmeRaw,
+    section: "specrails-mcp",
+    product: "mcp",
   },
 
   // ── Playbooks ────────────────────────────────────────────

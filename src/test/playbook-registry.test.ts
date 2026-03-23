@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("playbook registry entries", () => {
-  it("has 24 total entries in DOC_ENTRIES", () => {
-    expect(DOC_ENTRIES).toHaveLength(24);
+  it("has 28 total entries in DOC_ENTRIES", () => {
+    expect(DOC_ENTRIES).toHaveLength(28);
   });
 
   it("getDocBySlug returns a result for each playbook slug", () => {
@@ -16,9 +16,9 @@ describe("playbook registry entries", () => {
     expect(getDocBySlug("playbook-oss-maintainer")).toBeDefined();
   });
 
-  it("playbook-product-discovery prev is the hub-configuration entry", () => {
+  it("playbook-product-discovery prev is the mcp-overview entry", () => {
     const { prev } = getAdjacentDocs("playbook-product-discovery");
-    expect(prev?.slug).toBe("hub-configuration");
+    expect(prev?.slug).toBe("mcp-overview");
   });
 
   it("playbook-oss-maintainer next entry is changelog", () => {
