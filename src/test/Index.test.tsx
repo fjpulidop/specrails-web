@@ -1,8 +1,36 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "@/pages/Index";
+
+// jsdom stubs required by child components (recharts, canvas, IntersectionObserver)
+let observerCb: IntersectionObserverCallback | null = null;
+
+class MockIntersectionObserver {
+  constructor(cb: IntersectionObserverCallback) { observerCb = cb; }
+  observe(el: Element) {
+    observerCb?.([{ isIntersecting: true, target: el } as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+  }
+  unobserve() {}
+  disconnect() {}
+}
+class MockResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+beforeEach(() => {
+  vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
+  vi.stubGlobal("ResizeObserver", MockResizeObserver);
+  // canvas stub for HeroSection particles
+  HTMLCanvasElement.prototype.getContext = (() => null) as never;
+});
+afterEach(() => {
+  vi.restoreAllMocks();
+  observerCb = null;
+});
 
 function makeQueryClient() {
   return new QueryClient({ defaultOptions: { queries: { retry: false } } });

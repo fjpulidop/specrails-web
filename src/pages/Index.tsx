@@ -8,7 +8,7 @@ import EcosystemSection from "@/components/EcosystemSection";
 import HubShowcaseSection from "@/components/HubShowcaseSection";
 import AgentsSection from "@/components/AgentsSection";
 import PipelineSection from "@/components/PipelineSection";
-import DemoSection from "@/components/DemoSection";
+import HubDemoSection from "@/components/HubDemoSection";
 import McpSection from "@/components/McpSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import CliCompatibilitySection from "@/components/CliCompatibilitySection";
@@ -47,10 +47,10 @@ const Index = () => {
       <ProblemSection />
       <EcosystemSection />
       <HubShowcaseSection />
+      <HubDemoSection />
       <AgentsSection />
       <PipelineSection />
       <McpSection />
-      <DemoSection />
       <FeaturesSection />
       <CliCompatibilitySection />
       <InstallSection />
@@ -58,7 +58,7 @@ const Index = () => {
       <PrinciplesSection />
       <RoadmapSection />
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","ecosystem","hub-showcase","agents","pipeline","mcp","demo","features","cli-compat","install","commands","principles","roadmap","footer"]} />
+      <SectionNav sectionIds={["hero","problem","ecosystem","hub-showcase","hub-demo","agents","pipeline","mcp","features","cli-compat","install","commands","principles","roadmap","footer"]} />
       <AnimatedLogo />
     </div>
   );
