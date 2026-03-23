@@ -64,19 +64,19 @@ describe("HubDemoSection", () => {
     expect(screen.getByText("Ship")).toBeInTheDocument();
   });
 
-  it("renders command grid with Spec and Rails categories", () => {
+  it("renders command grid with Discovery and Delivery categories", () => {
     render(<HubDemoSection />);
-    expect(screen.getByText("Spec (Discovery)")).toBeInTheDocument();
-    expect(screen.getByText("Rails (Delivery)")).toBeInTheDocument();
+    expect(screen.getByText("Discovery")).toBeInTheDocument();
+    expect(screen.getByText("Delivery")).toBeInTheDocument();
   });
 
-  it("renders spec commands", () => {
+  it("renders discovery commands", () => {
     render(<HubDemoSection />);
     expect(screen.getByText("explore")).toBeInTheDocument();
-    expect(screen.getByText("ff")).toBeInTheDocument();
+    expect(screen.getByText("propose-spec")).toBeInTheDocument();
   });
 
-  it("renders rails commands", () => {
+  it("renders delivery commands", () => {
     render(<HubDemoSection />);
     expect(screen.getByText("implement")).toBeInTheDocument();
     expect(screen.getByText("ship")).toBeInTheDocument();
@@ -84,9 +84,9 @@ describe("HubDemoSection", () => {
 
   it("renders dashboard section headers", () => {
     render(<HubDemoSection />);
-    expect(screen.getByText("Pipeline Progress")).toBeInTheDocument();
-    expect(screen.getByText("Command Grid")).toBeInTheDocument();
-    expect(screen.getByText("Cost Analytics")).toBeInTheDocument();
+    expect(screen.getByText("Pipeline")).toBeInTheDocument();
+    expect(screen.getByText("CommandGrid")).toBeInTheDocument();
+    expect(screen.getByText("Analytics")).toBeInTheDocument();
     expect(screen.getByText("Project Health")).toBeInTheDocument();
   });
 

@@ -42,7 +42,7 @@ interface Project {
 
 const PROJECTS: Project[] = [
   { id: "openclaw", name: "openclaw", hasActiveJob: true },
-  { id: "acme-api", name: "acme-api", hasActiveJob: false },
+  { id: "acme-api", name: "acme-api", hasActiveJob: true },
 ];
 
 const PIPELINE_STAGES = ["Architect", "Developer", "Reviewer", "Ship"];
@@ -50,50 +50,82 @@ const PIPELINE_STAGES = ["Architect", "Developer", "Reviewer", "Ship"];
 interface DemoCommand {
   name: string;
   label: string;
-  category: "spec" | "rails";
+  category: "discovery" | "delivery";
 }
 
 const COMMANDS: DemoCommand[] = [
-  { name: "explore", label: "Explore ideas", category: "spec" },
-  { name: "new", label: "New change", category: "spec" },
-  { name: "continue", label: "Continue work", category: "spec" },
-  { name: "ff", label: "Fast-forward", category: "spec" },
-  { name: "implement", label: "Build features", category: "rails" },
-  { name: "review", label: "Code review", category: "rails" },
-  { name: "ship", label: "Deploy", category: "rails" },
-  { name: "health", label: "Health check", category: "rails" },
+  { name: "propose-spec", label: "Propose a spec change", category: "discovery" },
+  { name: "auto-propose", label: "Auto-propose specs", category: "discovery" },
+  { name: "auto-select", label: "Auto-select specs", category: "discovery" },
+  { name: "explore", label: "Explore ideas", category: "discovery" },
+  { name: "implement", label: "Build features", category: "delivery" },
+  { name: "batch-implement", label: "Batch implementation", category: "delivery" },
+  { name: "review", label: "Code review", category: "delivery" },
+  { name: "ship", label: "Deploy to production", category: "delivery" },
 ];
 
-const COST_DATA_7D = [
-  { day: "Mon", cost: 2.4 },
-  { day: "Tue", cost: 3.1 },
-  { day: "Wed", cost: 1.8 },
-  { day: "Thu", cost: 4.2 },
-  { day: "Fri", cost: 2.9 },
-  { day: "Sat", cost: 0.6 },
-  { day: "Sun", cost: 1.2 },
-];
+// ─── Per-project mock data ──────────────────────────────────
 
-const COST_DATA_30D = [
-  { day: "W1", cost: 14.2 },
-  { day: "W2", cost: 18.7 },
-  { day: "W3", cost: 12.1 },
-  { day: "W4", cost: 21.4 },
-];
+interface ProjectData {
+  costData: Record<string, { day: string; cost: number }[]>;
+  health: { score: number; done: number; running: number; failed: number; queued: number };
+  pipelineLabel: string;
+}
 
-const COST_DATA_90D = [
-  { day: "Jan", cost: 48.3 },
-  { day: "Feb", cost: 62.1 },
-  { day: "Mar", cost: 41.7 },
-];
-
-const COST_DATA: Record<string, typeof COST_DATA_7D> = {
-  "7d": COST_DATA_7D,
-  "30d": COST_DATA_30D,
-  "90d": COST_DATA_90D,
+const PROJECT_DATA: Record<string, ProjectData> = {
+  openclaw: {
+    costData: {
+      "7d": [
+        { day: "Mon", cost: 2.4 },
+        { day: "Tue", cost: 3.1 },
+        { day: "Wed", cost: 1.8 },
+        { day: "Thu", cost: 4.2 },
+        { day: "Fri", cost: 2.9 },
+        { day: "Sat", cost: 0.6 },
+        { day: "Sun", cost: 1.2 },
+      ],
+      "30d": [
+        { day: "W1", cost: 14.2 },
+        { day: "W2", cost: 18.7 },
+        { day: "W3", cost: 12.1 },
+        { day: "W4", cost: 21.4 },
+      ],
+      "90d": [
+        { day: "Jan", cost: 48.3 },
+        { day: "Feb", cost: 62.1 },
+        { day: "Mar", cost: 41.7 },
+      ],
+    },
+    health: { score: 87, done: 14, running: 2, failed: 0, queued: 1 },
+    pipelineLabel: "openclaw/feat/auth-flow",
+  },
+  "acme-api": {
+    costData: {
+      "7d": [
+        { day: "Mon", cost: 1.1 },
+        { day: "Tue", cost: 0.8 },
+        { day: "Wed", cost: 3.6 },
+        { day: "Thu", cost: 2.0 },
+        { day: "Fri", cost: 5.1 },
+        { day: "Sat", cost: 0.3 },
+        { day: "Sun", cost: 0.9 },
+      ],
+      "30d": [
+        { day: "W1", cost: 9.8 },
+        { day: "W2", cost: 22.4 },
+        { day: "W3", cost: 15.6 },
+        { day: "W4", cost: 11.3 },
+      ],
+      "90d": [
+        { day: "Jan", cost: 35.2 },
+        { day: "Feb", cost: 44.8 },
+        { day: "Mar", cost: 58.1 },
+      ],
+    },
+    health: { score: 72, done: 9, running: 1, failed: 2, queued: 3 },
+    pipelineLabel: "acme-api/fix/rate-limiter",
+  },
 };
-
-const HEALTH = { score: 87, done: 14, running: 2, failed: 0, queued: 1 };
 
 // ─── Sub-components ─────────────────────────────────────────
 
@@ -189,8 +221,8 @@ const DemoPipeline = ({ activeStage }: { activeStage: number }) => (
 );
 
 const DemoCommandGrid = () => {
-  const specCmds = COMMANDS.filter((c) => c.category === "spec");
-  const railsCmds = COMMANDS.filter((c) => c.category === "rails");
+  const discoveryCmds = COMMANDS.filter((c) => c.category === "discovery");
+  const deliveryCmds = COMMANDS.filter((c) => c.category === "delivery");
 
   return (
     <div className="grid grid-cols-2 gap-3">
@@ -198,10 +230,10 @@ const DemoCommandGrid = () => {
         <span
           className="text-[10px] font-mono text-dracula-purple uppercase tracking-wider mb-2 block"
         >
-          Spec (Discovery)
+          Discovery
         </span>
         <div className="grid grid-cols-2 gap-1.5">
-          {specCmds.map((cmd) => (
+          {discoveryCmds.map((cmd) => (
             <div
               key={cmd.name}
               className="px-2 py-1.5 rounded text-[11px] font-mono text-dracula-fg cursor-default transition-all hover:scale-[1.02]"
@@ -210,7 +242,6 @@ const DemoCommandGrid = () => {
                 border: "1px solid hsl(var(--dracula-purple) / 0.2)",
               }}
             >
-              <span className="text-dracula-purple">/spec:</span>
               {cmd.name}
             </div>
           ))}
@@ -220,10 +251,10 @@ const DemoCommandGrid = () => {
         <span
           className="text-[10px] font-mono text-dracula-cyan uppercase tracking-wider mb-2 block"
         >
-          Rails (Delivery)
+          Delivery
         </span>
         <div className="grid grid-cols-2 gap-1.5">
-          {railsCmds.map((cmd) => (
+          {deliveryCmds.map((cmd) => (
             <div
               key={cmd.name}
               className="px-2 py-1.5 rounded text-[11px] font-mono text-dracula-fg cursor-default transition-all hover:scale-[1.02]"
@@ -232,7 +263,6 @@ const DemoCommandGrid = () => {
                 border: "1px solid hsl(var(--dracula-cyan) / 0.2)",
               }}
             >
-              <span className="text-dracula-cyan">/rails:</span>
               {cmd.name}
             </div>
           ))}
@@ -245,11 +275,14 @@ const DemoCommandGrid = () => {
 const DemoAnalytics = ({
   period,
   onPeriodChange,
+  projectId,
 }: {
   period: string;
   onPeriodChange: (p: string) => void;
+  projectId: string;
 }) => {
-  const data = COST_DATA[period] ?? COST_DATA_7D;
+  const projectCostData = PROJECT_DATA[projectId]?.costData ?? PROJECT_DATA.openclaw.costData;
+  const data = projectCostData[period] ?? projectCostData["7d"];
   const total = data.reduce((s, d) => s + d.cost, 0);
 
   return (
@@ -318,54 +351,60 @@ const DemoAnalytics = ({
   );
 };
 
-const DemoProjectHealth = () => (
-  <div className="flex items-center gap-4 flex-wrap">
-    <div className="relative w-12 h-12">
-      <svg viewBox="0 0 36 36" className="w-12 h-12 -rotate-90">
-        <circle
-          cx="18"
-          cy="18"
-          r="15.5"
-          fill="none"
-          stroke="hsl(var(--dracula-current))"
-          strokeWidth="3"
-        />
-        <circle
-          cx="18"
-          cy="18"
-          r="15.5"
-          fill="none"
-          stroke="hsl(135, 94%, 65%)"
-          strokeWidth="3"
-          strokeDasharray={`${HEALTH.score} ${100 - HEALTH.score}`}
-          strokeLinecap="round"
-        />
-      </svg>
-      <span className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-dracula-green">
-        {HEALTH.score}
-      </span>
-    </div>
-    <div className="flex gap-4 text-[11px] font-mono">
-      <div>
-        <span className="text-dracula-green">{HEALTH.done}</span>{" "}
-        <span className="text-muted-foreground">done</span>
-      </div>
-      <div>
-        <span className="text-dracula-yellow">{HEALTH.running}</span>{" "}
-        <span className="text-muted-foreground">running</span>
-      </div>
-      <div>
-        <span className="text-dracula-red">{HEALTH.failed}</span>{" "}
-        <span className="text-muted-foreground">failed</span>
-      </div>
-      <div>
-        <span className="text-muted-foreground">
-          {HEALTH.queued} queued
+const DemoProjectHealth = ({ projectId }: { projectId: string }) => {
+  const health = PROJECT_DATA[projectId]?.health ?? PROJECT_DATA.openclaw.health;
+  const scoreColor = health.score >= 80 ? "text-dracula-green" : health.score >= 60 ? "text-dracula-yellow" : "text-dracula-red";
+  const strokeColor = health.score >= 80 ? "hsl(135, 94%, 65%)" : health.score >= 60 ? "hsl(var(--dracula-yellow))" : "hsl(var(--dracula-red))";
+
+  return (
+    <div className="flex items-center gap-4 flex-wrap">
+      <div className="relative w-12 h-12">
+        <svg viewBox="0 0 36 36" className="w-12 h-12 -rotate-90">
+          <circle
+            cx="18"
+            cy="18"
+            r="15.5"
+            fill="none"
+            stroke="hsl(var(--dracula-current))"
+            strokeWidth="3"
+          />
+          <circle
+            cx="18"
+            cy="18"
+            r="15.5"
+            fill="none"
+            stroke={strokeColor}
+            strokeWidth="3"
+            strokeDasharray={`${health.score} ${100 - health.score}`}
+            strokeLinecap="round"
+          />
+        </svg>
+        <span className={`absolute inset-0 flex items-center justify-center text-[11px] font-bold ${scoreColor}`}>
+          {health.score}
         </span>
       </div>
+      <div className="flex gap-4 text-[11px] font-mono">
+        <div>
+          <span className="text-dracula-green">{health.done}</span>{" "}
+          <span className="text-muted-foreground">done</span>
+        </div>
+        <div>
+          <span className="text-dracula-yellow">{health.running}</span>{" "}
+          <span className="text-muted-foreground">running</span>
+        </div>
+        <div>
+          <span className="text-dracula-red">{health.failed}</span>{" "}
+          <span className="text-muted-foreground">failed</span>
+        </div>
+        <div>
+          <span className="text-muted-foreground">
+            {health.queued} queued
+          </span>
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const DashboardSection = ({
   title,
@@ -412,21 +451,21 @@ const DemoCommandPalette = ({
     <CommandInput placeholder="Type a command or search..." />
     <CommandList>
       <CommandEmpty>No results found.</CommandEmpty>
-      <CommandGroup heading="Spec (Discovery)">
-        {COMMANDS.filter((c) => c.category === "spec").map((cmd) => (
+      <CommandGroup heading="Discovery">
+        {COMMANDS.filter((c) => c.category === "discovery").map((cmd) => (
           <CommandItem key={cmd.name} onSelect={() => onOpenChange(false)}>
             <span className="font-mono text-dracula-purple mr-2">
-              /spec:{cmd.name}
+              {cmd.name}
             </span>
             <span className="text-muted-foreground">{cmd.label}</span>
           </CommandItem>
         ))}
       </CommandGroup>
-      <CommandGroup heading="Rails (Delivery)">
-        {COMMANDS.filter((c) => c.category === "rails").map((cmd) => (
+      <CommandGroup heading="Delivery">
+        {COMMANDS.filter((c) => c.category === "delivery").map((cmd) => (
           <CommandItem key={cmd.name} onSelect={() => onOpenChange(false)}>
             <span className="font-mono text-dracula-cyan mr-2">
-              /rails:{cmd.name}
+              {cmd.name}
             </span>
             <span className="text-muted-foreground">{cmd.label}</span>
           </CommandItem>
@@ -484,12 +523,16 @@ const HubDemoSection = () => {
           command palette.
         </p>
         <p
-          className={`text-center text-xs text-muted-foreground mb-12 transition-all duration-700 delay-150 ${
+          className={`text-center text-sm text-muted-foreground mb-12 max-w-xl mx-auto transition-all duration-700 delay-150 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Demo &mdash; example data. Install specrails-hub for your real
-          projects.
+          This is a small preview of the dashboard &mdash; specrails-hub
+          includes{" "}
+          <span className="text-dracula-fg font-medium">
+            activity feed, AI chat, job logs, docs portal, settings,
+          </span>{" "}
+          and much more. Install it to explore the full experience.
         </p>
 
         {/* Dashboard mockup */}
@@ -521,20 +564,20 @@ const HubDemoSection = () => {
 
           {/* Dashboard sections */}
           <div className="divide-y divide-border/10">
-            <DashboardSection title="Pipeline Progress" icon={Activity}>
+            <DashboardSection title="Pipeline" icon={Activity}>
               <DemoPipeline activeStage={activeStage} />
             </DashboardSection>
 
-            <DashboardSection title="Command Grid" icon={Grid3X3}>
+            <DashboardSection title="CommandGrid" icon={Grid3X3}>
               <DemoCommandGrid />
             </DashboardSection>
 
-            <DashboardSection title="Cost Analytics" icon={BarChart3}>
-              <DemoAnalytics period={period} onPeriodChange={setPeriod} />
+            <DashboardSection title="Analytics" icon={BarChart3}>
+              <DemoAnalytics period={period} onPeriodChange={setPeriod} projectId={activeProject} />
             </DashboardSection>
 
             <DashboardSection title="Project Health" icon={Heart}>
-              <DemoProjectHealth />
+              <DemoProjectHealth projectId={activeProject} />
             </DashboardSection>
           </div>
         </div>
