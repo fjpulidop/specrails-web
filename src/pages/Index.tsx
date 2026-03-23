@@ -24,9 +24,9 @@ const Index = () => {
   const { hash } = useLocation();
 
   useSeo({
-    title: "specrails — AI Coding Assistant for Dev Teams",
+    title: "specrails — AI Development Hub. Dashboard, Pipeline & Analytics for Your AI Team",
     description:
-      "specrails is the AI coding assistant that turns Claude Code and OpenAI Codex into your full dev team — architect, engineers, QA, and release manager. From idea to production code.",
+      "specrails-hub is your AI development control center — 12 agents, real-time pipeline, cost analytics, and multi-project management in one dashboard. Plus terminal-only (Core) and universal AI connectivity (MCP).",
     canonical: "https://specrails.dev/",
   });
 
