@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const REPO = "fjpulidop/specrails";
+const REPO = "fjpulidop/specrails-hub";
 
 export const GitHubStarsButton = () => {
   const { data } = useQuery({
