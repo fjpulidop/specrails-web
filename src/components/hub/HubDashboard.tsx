@@ -15,6 +15,7 @@ import { ProjectHealthWidget } from "./ProjectHealthWidget";
 import { CommandPalette } from "./CommandPalette";
 import { TabBar } from "./TabBar";
 import { RecentJobs } from "./RecentJobs";
+import { RailsList } from "./RailsList";
 import {
   DEMO_PROJECTS,
   DEMO_COMMANDS,
@@ -23,7 +24,7 @@ import {
   DEMO_JOBS,
   DEMO_JOBS_ACME,
 } from "./mock-data";
-import type { SectionId, CommandInfo } from "./types";
+import type { SectionId } from "./types";
 
 type SectionPrefs = Record<SectionId, { expanded: boolean; pinned: boolean }>;
 
@@ -33,19 +34,6 @@ const DEFAULT_PREFS: SectionPrefs = {
   jobs: { expanded: true, pinned: false },
   health: { expanded: true, pinned: true },
 };
-
-// Split commands into Spec (discovery) and Rails (delivery + others)
-const SPEC_SLUGS = new Set(["propose-spec", "update-product-driven-backlog", "product-backlog"]);
-const RAILS_SLUGS = new Set(["implement", "batch-implement"]);
-
-function splitCommands(commands: CommandInfo[]) {
-  const spec = commands.filter((c) => SPEC_SLUGS.has(c.slug));
-  const rails = commands.filter((c) => RAILS_SLUGS.has(c.slug));
-  const others = commands.filter(
-    (c) => !SPEC_SLUGS.has(c.slug) && !RAILS_SLUGS.has(c.slug)
-  );
-  return { spec, rails: [...rails, ...others] };
-}
 
 export function HubDashboard() {
   const [activeProjectId, setActiveProjectId] = useState("openclaw");
@@ -68,9 +56,6 @@ export function HubDashboard() {
   const isAcme = activeProjectId === "acme-api";
   const metrics = isAcme ? DEMO_METRICS_ACME : DEMO_METRICS;
   const jobs = isAcme ? DEMO_JOBS_ACME : DEMO_JOBS;
-
-  const { spec: specCommands, rails: railsCommands } =
-    splitCommands(DEMO_COMMANDS);
 
   const healthColor =
     metrics.healthScore >= 80
@@ -127,12 +112,12 @@ export function HubDashboard() {
           onToggleExpand={() => toggleExpand("spec")}
           onTogglePin={() => togglePin("spec")}
           indicator={
-            <span className="text-[10px] font-mono text-dracula-cyan/60">
-              {specCommands.length} commands
+            <span className="text-[10px] font-mono text-muted-foreground/60">
+              {DEMO_COMMANDS.length} installed
             </span>
           }
         >
-          <CommandGrid commands={specCommands} />
+          <CommandGrid commands={DEMO_COMMANDS} />
         </CollapsibleSection>
 
         <CollapsibleSection
@@ -143,12 +128,12 @@ export function HubDashboard() {
           onToggleExpand={() => toggleExpand("rails")}
           onTogglePin={() => togglePin("rails")}
           indicator={
-            <span className="text-[10px] font-mono text-dracula-purple/60">
-              {railsCommands.length} commands
+            <span className="text-[10px] font-mono text-dracula-cyan/60">
+              3 saved
             </span>
           }
         >
-          <CommandGrid commands={railsCommands} />
+          <RailsList />
         </CollapsibleSection>
 
         <CollapsibleSection
