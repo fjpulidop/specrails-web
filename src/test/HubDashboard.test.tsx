@@ -39,12 +39,12 @@ describe("HubDashboard", () => {
     expect(screen.getByText("acme-api")).toBeInTheDocument();
   });
 
-  it("renders all four dashboard sections", () => {
+  it("renders all four dashboard sections (Spec, Rails, Jobs, Health)", () => {
     renderDashboard();
+    expect(screen.getByTestId("section-spec")).toBeInTheDocument();
+    expect(screen.getByTestId("section-rails")).toBeInTheDocument();
+    expect(screen.getByTestId("section-jobs")).toBeInTheDocument();
     expect(screen.getByTestId("section-health")).toBeInTheDocument();
-    expect(screen.getByTestId("section-pipeline")).toBeInTheDocument();
-    expect(screen.getByTestId("section-commands")).toBeInTheDocument();
-    expect(screen.getByTestId("section-analytics")).toBeInTheDocument();
   });
 
   it("renders health score indicator", () => {
@@ -53,62 +53,52 @@ describe("HubDashboard", () => {
     expect(within(healthSection).getAllByText("87").length).toBeGreaterThanOrEqual(1);
   });
 
-  it("renders pipeline phase labels", () => {
-    renderDashboard();
-    expect(screen.getByText("Architect")).toBeInTheDocument();
-    expect(screen.getByText("Developer")).toBeInTheDocument();
-    expect(screen.getByText("Reviewer")).toBeInTheDocument();
-    expect(screen.getByText("Ship")).toBeInTheDocument();
-  });
-
-  it("renders Discovery and Delivery command sections", () => {
-    renderDashboard();
-    expect(screen.getByText("Discovery")).toBeInTheDocument();
-    expect(screen.getByText("Delivery")).toBeInTheDocument();
-  });
-
-  it("renders command cards with names", () => {
+  it("renders Discovery commands in Spec section", () => {
     renderDashboard();
     expect(screen.getByText("Custom-Propose")).toBeInTheDocument();
+    expect(screen.getByText("Auto-propose")).toBeInTheDocument();
+  });
+
+  it("renders Delivery commands in Rails section", () => {
+    renderDashboard();
     expect(screen.getByText("Implement")).toBeInTheDocument();
     expect(screen.getByText("Batch Implement")).toBeInTheDocument();
   });
 
-  it("renders KPI cards in analytics section", () => {
+  it("renders recent jobs in Jobs section", () => {
     renderDashboard();
-    expect(screen.getByText("Total Cost")).toBeInTheDocument();
-    expect(screen.getByText("Total Jobs")).toBeInTheDocument();
-    expect(screen.getByText("Success Rate")).toBeInTheDocument();
-    expect(screen.getByText("Avg Duration")).toBeInTheDocument();
-    expect(screen.getByText("Total Tokens")).toBeInTheDocument();
+    const jobsSection = screen.getByTestId("section-jobs");
+    expect(within(jobsSection).getAllByText(/\/sr:implement/).length).toBeGreaterThanOrEqual(1);
+    expect(within(jobsSection).getByText("/sr:propose-spec")).toBeInTheDocument();
   });
 
   it("collapses a section when toggle is clicked", async () => {
     const user = userEvent.setup();
     renderDashboard();
 
-    const pipelineToggle = screen.getByTestId("toggle-pipeline");
-    expect(screen.getByTestId("content-pipeline")).toBeInTheDocument();
+    const specToggle = screen.getByTestId("toggle-spec");
+    expect(screen.getByTestId("content-spec")).toBeInTheDocument();
 
-    await user.click(pipelineToggle);
-    expect(screen.queryByTestId("content-pipeline")).not.toBeInTheDocument();
+    await user.click(specToggle);
+    expect(screen.queryByTestId("content-spec")).not.toBeInTheDocument();
   });
 
   it("re-expands a section when toggle is clicked again", async () => {
     const user = userEvent.setup();
     renderDashboard();
 
-    const pipelineToggle = screen.getByTestId("toggle-pipeline");
-    await user.click(pipelineToggle);
-    expect(screen.queryByTestId("content-pipeline")).not.toBeInTheDocument();
+    const specToggle = screen.getByTestId("toggle-spec");
+    await user.click(specToggle);
+    expect(screen.queryByTestId("content-spec")).not.toBeInTheDocument();
 
-    await user.click(pipelineToggle);
-    expect(screen.getByTestId("content-pipeline")).toBeInTheDocument();
+    await user.click(specToggle);
+    expect(screen.getByTestId("content-spec")).toBeInTheDocument();
   });
 
-  it("renders the Others collapsible with correct count", () => {
+  it("renders Others collapsible in Rails section", () => {
     renderDashboard();
-    // 8 commands total, 3 discovery + 2 delivery = 5, so 3 others
+    // 8 commands total, 3 discovery in Spec, so Rails = 2 delivery + 3 others = 5
+    // Others group shows the 3 non-discovery/non-delivery commands
     expect(screen.getByText(/Others \(3\)/)).toBeInTheDocument();
   });
 

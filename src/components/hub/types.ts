@@ -74,7 +74,7 @@ export interface DemoProject {
   slug: string;
 }
 
-export type SectionId = "health" | "commands" | "pipeline" | "analytics";
+export type SectionId = "spec" | "rails" | "jobs" | "health";
 
 export interface AnalyticsKpi {
   totalCostUsd: number;
