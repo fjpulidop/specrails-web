@@ -1,13 +1,59 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Monitor, Terminal, Plug } from "lucide-react";
 
-type Method = "npx" | "git";
-type Cli = "claude" | "codex";
+type Product = "hub" | "core" | "mcp";
+
+const products: {
+  id: Product;
+  label: string;
+  tagline: string;
+  icon: typeof Monitor;
+  color: string;
+  borderColor: string;
+  recommended?: boolean;
+  command: string;
+  postInstall?: string[];
+}[] = [
+  {
+    id: "hub",
+    label: "specrails-hub",
+    tagline: "Full dashboard experience. Analytics, chat, multi-project.",
+    icon: Monitor,
+    color: "text-dracula-green",
+    borderColor: "border-dracula-green/60",
+    recommended: true,
+    command: "npm install -g specrails-hub",
+    postInstall: [
+      "specrails-hub",
+      "# Dashboard ready at localhost:4200",
+    ],
+  },
+  {
+    id: "core",
+    label: "specrails-core",
+    tagline: "12 AI agents in your terminal. For power users.",
+    icon: Terminal,
+    color: "text-dracula-purple",
+    borderColor: "border-dracula-purple/60",
+    command: "npx specrails-core@latest init --root-dir <your-project>",
+  },
+  {
+    id: "mcp",
+    label: "specrails-mcp",
+    tagline: "Connect with Cursor, Windsurf, and more.",
+    icon: Plug,
+    color: "text-dracula-cyan",
+    borderColor: "border-dracula-cyan/60",
+    command: "npm install -g specrails-mcp",
+  },
+];
 
 const InstallSection = () => {
   const { ref, isVisible } = useScrollAnimation();
-  const [method, setMethod] = useState<Method>("npx");
-  const [cli, setCli] = useState<Cli>("claude");
+  const [selected, setSelected] = useState<Product>("hub");
+
+  const active = products.find((p) => p.id === selected)!;
 
   return (
     <section id="install" className="py-24 px-6 section-darker" ref={ref}>
@@ -17,7 +63,7 @@ const InstallSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Installation in <span className="gradient-text">2 Steps</span>
+          Choose Your <span className="gradient-text">Experience</span>
         </h2>
 
         <p
@@ -25,124 +71,67 @@ const InstallSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          Two methods, same result. Pick your style.
+          Hub includes Core as a dependency — install once, get everything.
         </p>
 
-        {/* Method tabs */}
+        {/* Product selector */}
         <div
-          className={`flex justify-center mb-8 transition-all duration-700 ${
+          className={`grid grid-cols-3 gap-3 mb-8 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex rounded-lg bg-muted p-1 gap-1">
+          {products.map((p) => (
             <button
-              onClick={() => setMethod("npx")}
-              className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
-                method === "npx"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
+              key={p.id}
+              onClick={() => setSelected(p.id)}
+              className={`relative p-4 rounded-lg border text-left transition-all ${
+                selected === p.id
+                  ? `bg-dracula-current/40 ${p.borderColor} shadow-lg`
+                  : "border-border/20 hover:border-border/40"
               }`}
             >
-              npx
+              {p.recommended && (
+                <span className="absolute -top-2.5 left-3 text-[10px] font-bold px-2 py-0.5 rounded-full bg-dracula-green text-dracula-bg">
+                  ★ Recommended
+                </span>
+              )}
+              <p.icon className={`w-5 h-5 mb-2 ${p.color}`} />
+              <h3 className="font-semibold text-sm">{p.label}</h3>
+              <p className="text-muted-foreground text-xs mt-1">{p.tagline}</p>
             </button>
-            <button
-              onClick={() => setMethod("git")}
-              className={`px-5 py-2 rounded-md text-sm font-medium transition-all ${
-                method === "git"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              Git Clone
-            </button>
-          </div>
+          ))}
         </div>
 
-        <div className="space-y-6">
-          {/* Step 1 */}
-          <div
-            className={`transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-8 h-8 rounded-full gradient-btn flex items-center justify-center text-sm font-bold">1</span>
-              <h3 className="font-semibold">Install the templates</h3>
+        {/* Terminal */}
+        <div
+          className={`transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="terminal p-0">
+            <div className="flex items-center gap-2 px-4 py-2 border-b border-border/20">
+              <div className="terminal-dot bg-dracula-red" />
+              <div className="terminal-dot bg-dracula-yellow" />
+              <div className="terminal-dot bg-dracula-green" />
+              <span className="text-xs text-muted-foreground ml-2 font-mono">
+                {active.label}
+              </span>
             </div>
-            <div className="terminal p-0">
-              <div className="flex items-center gap-2 px-4 py-2 border-b border-border/20">
-                <div className="terminal-dot bg-dracula-red" />
-                <div className="terminal-dot bg-dracula-yellow" />
-                <div className="terminal-dot bg-dracula-green" />
-                <span className="text-xs text-muted-foreground ml-2">
-                  {method === "npx" ? "npx" : "git clone"}
-                </span>
+            <div className="p-4 text-sm font-mono space-y-1">
+              <div>
+                <span className="text-dracula-green">$</span> {active.command}
               </div>
-              <div className="p-4 text-sm font-mono space-y-1">
-                {method === "npx" ? (
-                  <div><span className="text-dracula-green">$</span> npx specrails-core@latest init --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
-                ) : (
-                  <>
-                    <div><span className="text-dracula-green">$</span> git clone https://github.com/fjpulidop/specrails-core.git</div>
-                    <div><span className="text-dracula-green">$</span> ./specrails/install.sh --root-dir <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
-                  </>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Step 2 */}
-          <div
-            className={`transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <span className="w-8 h-8 rounded-full gradient-btn flex items-center justify-center text-sm font-bold">2</span>
-              <h3 className="font-semibold">Configure with the wizard</h3>
-            </div>
-
-            {/* CLI tabs */}
-            <div className="flex gap-1 mb-3">
-              <button
-                onClick={() => setCli("claude")}
-                className={`px-3 py-1 rounded text-xs font-mono transition-all ${
-                  cli === "claude"
-                    ? "bg-dracula-purple/20 text-dracula-purple border border-dracula-purple/40"
-                    : "text-muted-foreground hover:text-foreground border border-transparent"
-                }`}
-              >
-                Claude Code
-              </button>
-              <button
-                onClick={() => setCli("codex")}
-                className={`px-3 py-1 rounded text-xs font-mono transition-all ${
-                  cli === "codex"
-                    ? "bg-dracula-cyan/20 text-dracula-cyan border border-dracula-cyan/40"
-                    : "text-muted-foreground hover:text-foreground border border-transparent"
-                }`}
-              >
-                OpenAI Codex
-              </button>
-            </div>
-
-            <div className="terminal p-0">
-              <div className="flex items-center gap-2 px-4 py-2 border-b border-border/20">
-                <div className="terminal-dot bg-dracula-red" />
-                <div className="terminal-dot bg-dracula-yellow" />
-                <div className="terminal-dot bg-dracula-green" />
-                <span className="text-xs text-muted-foreground ml-2 font-mono">
-                  {cli === "claude" ? "claude" : "codex"}
-                </span>
-              </div>
-              <div className="p-4 text-sm font-mono space-y-1">
-                <div><span className="text-dracula-green">$</span> cd <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
-                <div>
-                  <span className="text-dracula-green">$</span>{" "}
-                  {cli === "claude" ? "claude" : "codex"}
+              {active.postInstall?.map((line, i) => (
+                <div key={i}>
+                  {line.startsWith("#") ? (
+                    <span className="text-dracula-comment">{line}</span>
+                  ) : (
+                    <>
+                      <span className="text-dracula-green">$</span> {line}
+                    </>
+                  )}
                 </div>
-                <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/setup</span></div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -152,7 +141,9 @@ const InstallSection = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          Requirements: <span className="text-dracula-green">git</span> + <span className="text-dracula-cyan">Claude Code</span> or <span className="text-dracula-purple">OpenAI Codex</span>. Optional: npm, GitHub CLI, JIRA CLI
+          Requirements: <span className="text-dracula-green">Node.js ≥ 18</span> +{" "}
+          <span className="text-dracula-cyan">Claude Code</span> or{" "}
+          <span className="text-dracula-purple">OpenAI Codex</span>
         </p>
 
         <p
@@ -160,10 +151,16 @@ const InstallSection = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          Estimated install time: ~15 minutes (may vary depending on your project).
-          <br />
           This project does not collect telemetry or access your source code. All code is{" "}
-          <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer" className="text-dracula-purple hover:underline">open source on GitHub</a>.
+          <a
+            href="https://github.com/fjpulidop/specrails-core"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-dracula-purple hover:underline"
+          >
+            open source on GitHub
+          </a>
+          .
         </p>
       </div>
     </section>

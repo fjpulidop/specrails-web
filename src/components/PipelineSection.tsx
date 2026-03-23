@@ -27,11 +27,20 @@ const PipelineSection = () => {
           Pipeline: <span className="gradient-text">From Idea to Code</span>
         </h2>
         <p
-          className={`text-muted-foreground text-center mb-16 transition-all duration-700 delay-100 ${
+          className={`text-muted-foreground text-center mb-4 transition-all duration-700 delay-100 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           The <span className="font-mono text-dracula-cyan">/sr:implement</span> command orchestrates the full pipeline.
+        </p>
+        <p
+          className={`text-center text-xs text-muted-foreground mb-16 transition-all duration-700 delay-150 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="text-dracula-green">★ Hub</span> monitors every phase in real time via WebSocket.{" "}
+          <span className="text-dracula-purple">Core</span> and{" "}
+          <span className="text-dracula-cyan">MCP</span> supported.
         </p>
 
         <div className="relative">

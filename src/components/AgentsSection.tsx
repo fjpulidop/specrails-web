@@ -30,8 +30,23 @@ const AgentsSection = () => {
           12 specialized agents working in concert, each with a distinct role and
           the right model for the job.
         </p>
+        <p
+          className={`text-center text-xs text-muted-foreground mb-4 transition-all duration-700 delay-150 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dracula-current text-dracula-green text-[11px] font-mono">
+            ★ Hub
+          </span>{" "}
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dracula-current text-dracula-purple text-[11px] font-mono">
+            Core
+          </span>{" "}
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dracula-current text-dracula-cyan text-[11px] font-mono">
+            MCP
+          </span>
+        </p>
         <div
-          className={`text-center mb-12 transition-all duration-700 delay-150 ${
+          className={`text-center mb-12 transition-all duration-700 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >

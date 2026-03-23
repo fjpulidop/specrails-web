@@ -26,12 +26,22 @@ const FeaturesSection = () => {
     <section id="features" className="py-24 px-6" ref={ref}>
       <div className="container mx-auto max-w-6xl">
         <h2
-          className={`text-3xl md:text-4xl font-bold text-center mb-16 transition-all duration-700 ${
+          className={`text-3xl md:text-4xl font-bold text-center mb-4 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           Key <span className="gradient-text">Features</span>
         </h2>
+        <p
+          className={`text-muted-foreground text-center text-sm mb-16 transition-all duration-700 delay-100 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          Available in{" "}
+          <span className="text-dracula-green font-medium">★ Hub</span> (recommended),{" "}
+          <span className="text-dracula-purple font-medium">Core</span>, and{" "}
+          <span className="text-dracula-cyan font-medium">MCP</span>.
+        </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map((f, i) => (
