@@ -38,7 +38,7 @@ const FeaturesSection = () => {
           }`}
         >
           Available in{" "}
-          <span className="text-dracula-green font-medium">★ Hub</span> (recommended),{" "}
+          <span className="text-dracula-green font-medium">Hub</span> (recommended),{" "}
           <span className="text-dracula-purple font-medium">Core</span>, and{" "}
           <span className="text-dracula-cyan font-medium">MCP</span>.
         </p>

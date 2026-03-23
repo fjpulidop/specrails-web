@@ -4,14 +4,14 @@ import { Check, Minus } from "lucide-react";
 const rows: { feature: string; hub: boolean; claudeCode: boolean; codex: boolean; mcp: boolean }[] = [
   { feature: "Installation via npx", hub: true, claudeCode: true, codex: true, mcp: false },
   { feature: "Installation via npm", hub: true, claudeCode: false, codex: false, mcp: true },
-  { feature: "Agent pipeline (architect → dev → review → PR)", hub: true, claudeCode: true, codex: true, mcp: true },
+  { feature: "Agent pipeline (architect → dev → review → PR)", hub: true, claudeCode: true, codex: true, mcp: false },
   { feature: "/setup wizard", hub: true, claudeCode: true, codex: true, mcp: false },
   { feature: "Spec-Driven Development (OpenSpec)", hub: true, claudeCode: true, codex: true, mcp: true },
-  { feature: "Parallel git worktrees", hub: true, claudeCode: true, codex: true, mcp: true },
+  { feature: "Parallel git worktrees", hub: true, claudeCode: true, codex: true, mcp: false },
   { feature: "Institutional memory", hub: true, claudeCode: true, codex: true, mcp: true },
-  { feature: "VPC product discovery", hub: true, claudeCode: true, codex: true, mcp: true },
+  { feature: "VPC product discovery", hub: true, claudeCode: true, codex: true, mcp: false },
   { feature: "Skills / slash commands", hub: true, claudeCode: true, codex: true, mcp: false },
-  { feature: "Security gate (OWASP scan)", hub: true, claudeCode: true, codex: true, mcp: true },
+  { feature: "Security gate (OWASP scan)", hub: true, claudeCode: true, codex: true, mcp: false },
   { feature: "doctor diagnostics", hub: true, claudeCode: true, codex: true, mcp: true },
   { feature: "Dashboard & analytics", hub: true, claudeCode: false, codex: false, mcp: false },
   { feature: "Multi-project management", hub: true, claudeCode: false, codex: false, mcp: true },
@@ -46,7 +46,7 @@ const CliCompatibilitySection = () => {
           }`}
         >
           specrails is LLM-agnostic.{" "}
-          <span className="text-dracula-green font-medium">★ Hub</span> supports all providers per project.
+          <span className="text-dracula-green font-medium">Hub</span> supports all providers per project.
         </p>
 
         <div
@@ -59,7 +59,7 @@ const CliCompatibilitySection = () => {
               <tr className="border-b border-border/20">
                 <th className="text-left px-5 py-4 text-muted-foreground font-medium">Feature</th>
                 <th className="text-center px-3 py-4 font-semibold text-dracula-green w-24">
-                  ★ Hub
+                  Hub
                 </th>
                 <th className="text-center px-3 py-4 font-semibold text-dracula-purple w-28">
                   Claude Code

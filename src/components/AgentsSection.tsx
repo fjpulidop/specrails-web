@@ -36,7 +36,7 @@ const AgentsSection = () => {
           }`}
         >
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dracula-current text-dracula-green text-[11px] font-mono">
-            ★ Hub
+            Hub
           </span>{" "}
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-dracula-current text-dracula-purple text-[11px] font-mono">
             Core

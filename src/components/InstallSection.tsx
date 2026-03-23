@@ -92,7 +92,7 @@ const InstallSection = () => {
             >
               {p.recommended && (
                 <span className="absolute -top-2.5 left-3 text-[10px] font-bold px-2 py-0.5 rounded-full bg-dracula-green text-dracula-bg">
-                  ★ Recommended
+                  Recommended
                 </span>
               )}
               <p.icon className={`w-5 h-5 mb-2 ${p.color}`} />

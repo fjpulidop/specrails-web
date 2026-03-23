@@ -39,7 +39,7 @@ describe("InstallSection", () => {
 
   it("shows recommended badge on Hub", () => {
     renderInstallSection();
-    expect(screen.getByText("★ Recommended")).toBeInTheDocument();
+    expect(screen.getByText("Recommended")).toBeInTheDocument();
   });
 
   it("defaults to Hub and shows hub install command", () => {

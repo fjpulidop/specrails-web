@@ -70,6 +70,12 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <Link
+            to="/demo"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Demo
+          </Link>
           <DocsDropdown />
           <a
             href="https://github.com/fjpulidop/specrails-core"

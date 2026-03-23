@@ -217,7 +217,7 @@ const HubShowcaseSection = () => {
             specrails-core
           </p>
           <a
-            href="#demo"
+            href="/demo"
             className="inline-flex items-center gap-1 text-sm text-dracula-green hover:text-dracula-green/80 transition-colors mt-4 group"
           >
             See the interactive demo

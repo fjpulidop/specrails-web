@@ -33,7 +33,7 @@ describe("McpSection", () => {
   it("renders the section heading", () => {
     render(<McpSection />);
     expect(screen.getAllByText("specrails-mcp").length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText(/Conecta specrails con cualquier IA/)).toBeInTheDocument();
+    expect(screen.getByText(/Connect specrails with any AI/)).toBeInTheDocument();
   });
 
   it("has the correct section id", () => {

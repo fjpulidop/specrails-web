@@ -45,7 +45,7 @@ describe("EcosystemSection", () => {
 
   it("highlights Hub as recommended", () => {
     render(<EcosystemSection />);
-    expect(screen.getByText(/\u2605 Recommended/)).toBeInTheDocument();
+    expect(screen.getAllByText(/Recommended/).length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders the ecosystem diagram with all three product names", () => {
@@ -67,7 +67,7 @@ describe("EcosystemSection", () => {
   it("renders subtitles for each product", () => {
     render(<EcosystemSection />);
     expect(screen.getByText("The Engine")).toBeInTheDocument();
-    expect(screen.getByText("\u2605 The Control Center")).toBeInTheDocument();
+    expect(screen.getByText("The Control Center")).toBeInTheDocument();
     expect(screen.getByText("The Universal Connection")).toBeInTheDocument();
   });
 

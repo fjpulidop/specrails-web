@@ -28,14 +28,14 @@ const ecosystemProducts: EcosystemProduct[] = [
   },
   {
     name: "specrails-hub",
-    subtitle: "\u2605 The Control Center",
+    subtitle: "The Control Center",
     copy: "specrails-hub is the recommended way to use specrails. A real-time local dashboard with customizable sections (drag, collapse, pin), command palette (\u2318K), cost analytics, live pipeline, AI chat per project \u2014 all without leaving your browser.",
     audience: "Everyone. Teams, leads, and developers who want maximum productivity.",
     icon: LayoutDashboard,
     accent: "text-dracula-green",
     border: "border-dracula-green/60",
     glow: "shadow-[0_0_30px_rgba(80,250,123,0.15)]",
-    badge: "\u2605 Recommended \u00b7 Dashboard \u00b7 Multi-project",
+    badge: "Recommended \u00b7 Dashboard \u00b7 Multi-project",
     featured: true,
   },
   {
@@ -59,7 +59,7 @@ const EcosystemDiagram = ({ isVisible }: { isVisible: boolean }) => (
   >
     <span className="font-mono text-xs sm:text-sm text-dracula-cyan">specrails-core</span>
     <ArrowLeftRight className="w-4 h-4 text-muted-foreground shrink-0" />
-    <span className="font-mono text-sm sm:text-base text-dracula-green font-bold">\u2605 specrails-hub \u2605</span>
+    <span className="font-mono text-sm sm:text-base text-dracula-green font-bold">specrails-hub</span>
     <ArrowLeftRight className="w-4 h-4 text-muted-foreground shrink-0" />
     <span className="font-mono text-xs sm:text-sm text-dracula-purple">specrails-mcp</span>
   </div>
@@ -85,7 +85,7 @@ const EcosystemCard = ({
     >
       {product.featured && (
         <div className="text-xs font-mono text-dracula-green mb-3 uppercase tracking-wider">
-          \u2605 Recommended
+          Recommended
         </div>
       )}
 

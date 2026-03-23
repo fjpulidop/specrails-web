@@ -89,7 +89,7 @@ const ConnectivityDiagram = ({ isVisible }: { isVisible: boolean }) => (
     {/* Hub + Core row */}
     <div className="flex items-center gap-4">
       <span className="font-mono text-sm font-bold text-dracula-green px-4 py-2 rounded-xl border-2 border-dracula-green/50 bg-dracula-green/10 shadow-[0_0_20px_rgba(80,250,123,0.15)]">
-        &#9733; Hub
+        Hub
       </span>
       <span className="text-xs text-muted-foreground">&amp;</span>
       <span className="font-mono text-sm text-dracula-cyan px-4 py-2 rounded-xl border border-dracula-cyan/30 bg-dracula-cyan/5">
@@ -186,7 +186,7 @@ const McpSection = () => {
         >
           <span className="font-mono text-dracula-purple">specrails-mcp</span>
           {": "}
-          <span className="gradient-text">Conecta specrails con cualquier IA</span>
+          <span className="gradient-text">Connect specrails with any AI</span>
         </h2>
 
         <p

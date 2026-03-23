@@ -38,7 +38,7 @@ const PipelineSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <span className="text-dracula-green">★ Hub</span> monitors every phase in real time via WebSocket.{" "}
+          <span className="text-dracula-green">Hub</span> monitors every phase in real time via WebSocket.{" "}
           <span className="text-dracula-purple">Core</span> and{" "}
           <span className="text-dracula-cyan">MCP</span> supported.
         </p>
