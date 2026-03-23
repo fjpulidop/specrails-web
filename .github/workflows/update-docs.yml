@@ -1,8 +1,11 @@
-name: Update Docs from specrails-core
+name: Update Docs from Package Release
 
 on:
   repository_dispatch:
-    types: [specrails-core-released]
+    types:
+      - specrails-core-released
+      - specrails-hub-released
+      - specrails-mcp-released
 
 permissions:
   contents: write
@@ -19,11 +22,33 @@ jobs:
           node-version: 20
           cache: npm
 
+      - name: Resolve package metadata from dispatch type
+        id: meta
+        run: |
+          case "${{ github.event.action }}" in
+            specrails-core-released)
+              echo "package=specrails-core" >> $GITHUB_OUTPUT
+              echo "version=${{ github.event.client_payload.core_version }}" >> $GITHUB_OUTPUT
+              ;;
+            specrails-hub-released)
+              echo "package=specrails-hub" >> $GITHUB_OUTPUT
+              echo "version=${{ github.event.client_payload.hub_version }}" >> $GITHUB_OUTPUT
+              ;;
+            specrails-mcp-released)
+              echo "package=specrails-mcp" >> $GITHUB_OUTPUT
+              echo "version=${{ github.event.client_payload.mcp_version }}" >> $GITHUB_OUTPUT
+              ;;
+            *)
+              echo "Unknown dispatch type: ${{ github.event.action }}"
+              exit 1
+              ;;
+          esac
+
       - name: Install dependencies
         run: npm ci
 
-      - name: Update specrails-core
-        run: npm update specrails-core
+      - name: Update ${{ steps.meta.outputs.package }}
+        run: npm update ${{ steps.meta.outputs.package }}
 
       - name: Check for changes
         id: changes
@@ -39,16 +64,17 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION="${{ github.event.client_payload.core_version }}"
-          BRANCH="chore/update-specrails-core-${VERSION}"
+          PACKAGE="${{ steps.meta.outputs.package }}"
+          VERSION="${{ steps.meta.outputs.version }}"
+          BRANCH="chore/update-${PACKAGE}-${VERSION}"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -b "$BRANCH"
           git add package.json package-lock.json
-          git commit -m "chore(deps): update specrails-core to ${VERSION}"
+          git commit -m "chore(deps): update ${PACKAGE} to ${VERSION}"
           git push -u origin "$BRANCH"
           gh pr create \
-            --title "chore(deps): update specrails-core to ${VERSION}" \
-            --body "Automated dependency update triggered by specrails-core release ${VERSION}. Merging will trigger deployment via the Release workflow." \
+            --title "chore(deps): update ${PACKAGE} to ${VERSION}" \
+            --body "Automated dependency update triggered by ${PACKAGE} release ${VERSION}. Merging will trigger deployment via the Release workflow." \
             --base main \
             --head "$BRANCH"
