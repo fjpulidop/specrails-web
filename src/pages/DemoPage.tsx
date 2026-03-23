@@ -39,9 +39,13 @@ export default function DemoPage(): JSX.Element {
               </kbd>{" "}
               to open the command palette.
             </p>
-            <p className="text-center text-xs text-muted-foreground mb-12">
-              Demo &mdash; example data. Install specrails-hub for your real
-              projects.
+            <p className="text-center text-sm text-muted-foreground mb-12 max-w-xl mx-auto">
+              This is a small preview of the dashboard &mdash; specrails-hub
+              includes{" "}
+              <span className="text-foreground font-medium">
+                activity feed, AI chat, job logs, docs portal, settings,
+              </span>{" "}
+              and much more. Install it to explore the full experience.
             </p>
 
             <HubDashboard />

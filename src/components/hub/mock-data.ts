@@ -139,7 +139,39 @@ export const DEMO_METRICS: ProjectMetrics = {
   failurePatterns: [],
 };
 
-// ─── Recent Jobs ─────────────────────────────────────────────
+// ─── Project Health (acme-api) ──────────────────────────────
+
+export const DEMO_METRICS_ACME: ProjectMetrics = {
+  coverage: {
+    pct: 62.1,
+    lines: 68.4,
+    statements: 63.9,
+    functions: 55.2,
+    branches: 48.7,
+    source: "jest",
+  },
+  healthScore: 72,
+  healthFactors: {
+    hasCoverage: true,
+    coverageGood: false,
+    pipelineHealthy: false,
+    hasRecentActivity: true,
+  },
+  recentCommits: [
+    { hash: "a3c8f21", message: "fix: rate limiter bypass on batch endpoints", author: "specrails", date: "2026-03-22T19:30:00Z" },
+    { hash: "b7e2d09", message: "feat: add pagination to /api/v2/users", author: "specrails", date: "2026-03-22T15:12:00Z" },
+    { hash: "c1f4a88", message: "chore: upgrade express to 4.19.2", author: "specrails", date: "2026-03-21T22:45:00Z" },
+  ],
+  pipeline: {
+    lastJobId: "job-18",
+    lastJobStatus: "failed",
+    lastJobCommand: "/sr:implement",
+    lastJobAt: "2026-03-22T19:30:00Z",
+  },
+  failurePatterns: ["Test timeout in integration suite", "Rate limiter config mismatch"],
+};
+
+// ─── Recent Jobs (OpenClaw) ──────────────────────────────────
 
 export const DEMO_JOBS: JobSummary[] = [
   { id: "job-42", command: "/sr:implement", started_at: "2026-03-23T01:45:00Z", finished_at: "2026-03-23T02:00:00Z", status: "completed", total_cost_usd: 0.0842 },
@@ -149,7 +181,26 @@ export const DEMO_JOBS: JobSummary[] = [
   { id: "job-38", command: "/sr:batch-implement", started_at: "2026-03-21T16:00:00Z", finished_at: "2026-03-21T16:45:00Z", status: "failed", total_cost_usd: 0.0512 },
 ];
 
-// ─── Analytics KPI ───────────────────────────────────────────
+// ─── Recent Jobs (acme-api) ─────────────────────────────────
+
+export const DEMO_JOBS_ACME: JobSummary[] = [
+  { id: "job-18", command: "/sr:implement", started_at: "2026-03-22T19:15:00Z", finished_at: "2026-03-22T19:30:00Z", status: "failed", total_cost_usd: 0.0671 },
+  { id: "job-17", command: "/sr:implement", started_at: "2026-03-22T15:00:00Z", finished_at: "2026-03-22T15:12:00Z", status: "completed", total_cost_usd: 0.0534 },
+  { id: "job-16", command: "/sr:health-check", started_at: "2026-03-21T22:30:00Z", finished_at: "2026-03-21T22:32:00Z", status: "completed", total_cost_usd: 0.0028 },
+  { id: "job-15", command: "/sr:propose-spec", started_at: "2026-03-21T14:00:00Z", finished_at: "2026-03-21T14:08:00Z", status: "completed", total_cost_usd: 0.0145 },
+  { id: "job-14", command: "/sr:implement", started_at: "2026-03-20T18:00:00Z", finished_at: "2026-03-20T18:35:00Z", status: "completed", total_cost_usd: 0.0923 },
+];
+
+// ─── Pipeline (acme-api) ────────────────────────────────────
+
+export const DEMO_PHASE_MAP_ACME: PhaseMap = {
+  architect: "done",
+  developer: "failed",
+  reviewer: "idle",
+  ship: "idle",
+};
+
+// ─── Analytics KPI (OpenClaw) ────────────────────────────────
 
 export const DEMO_KPI: AnalyticsKpi = {
   totalCostUsd: 0.4921,
@@ -167,4 +218,24 @@ export const DEMO_COST_TIMELINE = [
   { date: "Fri", costUsd: 0.042 },
   { date: "Sat", costUsd: 0.012 },
   { date: "Sun", costUsd: 0.024 },
+];
+
+// ─── Analytics KPI (acme-api) ────────────────────────────────
+
+export const DEMO_KPI_ACME: AnalyticsKpi = {
+  totalCostUsd: 0.2301,
+  totalJobs: 11,
+  successRate: 0.727,
+  avgDurationMs: 912_000,
+  totalTokens: 634_000,
+};
+
+export const DEMO_COST_TIMELINE_ACME = [
+  { date: "Mon", costUsd: 0.014 },
+  { date: "Tue", costUsd: 0.053 },
+  { date: "Wed", costUsd: 0.092 },
+  { date: "Thu", costUsd: 0.028 },
+  { date: "Fri", costUsd: 0.067 },
+  { date: "Sat", costUsd: 0.003 },
+  { date: "Sun", costUsd: 0.015 },
 ];

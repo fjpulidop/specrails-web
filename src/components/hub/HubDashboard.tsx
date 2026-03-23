@@ -20,10 +20,15 @@ import {
   DEMO_COMMANDS,
   DEMO_PHASE_DEFINITIONS,
   DEMO_PHASE_MAP,
+  DEMO_PHASE_MAP_ACME,
   DEMO_METRICS,
+  DEMO_METRICS_ACME,
   DEMO_JOBS,
+  DEMO_JOBS_ACME,
   DEMO_KPI,
+  DEMO_KPI_ACME,
   DEMO_COST_TIMELINE,
+  DEMO_COST_TIMELINE_ACME,
 } from "./mock-data";
 import type { SectionId } from "./types";
 
@@ -53,6 +58,31 @@ export function HubDashboard() {
       [id]: { ...prev[id], pinned: !prev[id].pinned },
     }));
   }
+
+  const isAcme = activeProjectId === "acme-api";
+  const metrics = isAcme ? DEMO_METRICS_ACME : DEMO_METRICS;
+  const phaseMap = isAcme ? DEMO_PHASE_MAP_ACME : DEMO_PHASE_MAP;
+  const jobs = isAcme ? DEMO_JOBS_ACME : DEMO_JOBS;
+  const kpi = isAcme ? DEMO_KPI_ACME : DEMO_KPI;
+  const costTimeline = isAcme ? DEMO_COST_TIMELINE_ACME : DEMO_COST_TIMELINE;
+
+  // Derive pipeline status label from phase map
+  const pipelineLabel = (() => {
+    const entries = Object.entries(phaseMap);
+    const running = entries.find(([, s]) => s === "running");
+    if (running) return running[0];
+    const failed = entries.find(([, s]) => s === "failed");
+    if (failed) return `${failed[0]} failed`;
+    const allDone = entries.every(([, s]) => s === "done");
+    if (allDone) return "shipped";
+    return "idle";
+  })();
+
+  const healthColor = metrics.healthScore >= 80 ? "text-dracula-green" : metrics.healthScore >= 60 ? "text-dracula-yellow" : "text-dracula-red";
+  const healthBg = metrics.healthScore >= 80 ? "bg-dracula-green/10" : metrics.healthScore >= 60 ? "bg-dracula-yellow/10" : "bg-dracula-red/10";
+  const pipelineFailed = pipelineLabel.includes("failed");
+  const pipelineColor = pipelineFailed ? "text-dracula-red" : "text-blue-400";
+  const pipelineBg = pipelineFailed ? "bg-dracula-red/10" : "bg-blue-400/10";
 
   return (
     <div className="glass-card overflow-hidden border border-dracula-green/30">
@@ -90,12 +120,12 @@ export function HubDashboard() {
           onToggleExpand={() => toggleExpand("health")}
           onTogglePin={() => togglePin("health")}
           indicator={
-            <span className="text-[10px] font-mono text-dracula-green bg-dracula-green/10 px-1.5 py-0.5 rounded">
-              {DEMO_METRICS.healthScore}
+            <span className={`text-[10px] font-mono ${healthColor} ${healthBg} px-1.5 py-0.5 rounded`}>
+              {metrics.healthScore}
             </span>
           }
         >
-          <ProjectHealthWidget metrics={DEMO_METRICS} />
+          <ProjectHealthWidget metrics={metrics} />
         </CollapsibleSection>
 
         <CollapsibleSection
@@ -106,14 +136,14 @@ export function HubDashboard() {
           onToggleExpand={() => toggleExpand("pipeline")}
           onTogglePin={() => togglePin("pipeline")}
           indicator={
-            <span className="text-[10px] font-mono text-blue-400 bg-blue-400/10 px-1.5 py-0.5 rounded">
-              reviewing
+            <span className={`text-[10px] font-mono ${pipelineColor} ${pipelineBg} px-1.5 py-0.5 rounded`}>
+              {pipelineLabel}
             </span>
           }
         >
           <div className="flex justify-center py-2">
             <PipelineProgress
-              phases={DEMO_PHASE_MAP}
+              phases={phaseMap}
               phaseDefinitions={DEMO_PHASE_DEFINITIONS}
             />
           </div>
@@ -144,12 +174,12 @@ export function HubDashboard() {
           onTogglePin={() => togglePin("analytics")}
         >
           <div className="space-y-4">
-            <KpiCards kpi={DEMO_KPI} />
+            <KpiCards kpi={kpi} />
             <div>
               <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-2">
                 Cost Timeline (7d)
               </p>
-              <CostTimeline data={DEMO_COST_TIMELINE} />
+              <CostTimeline data={costTimeline} />
             </div>
           </div>
         </CollapsibleSection>
@@ -160,7 +190,7 @@ export function HubDashboard() {
         projects={DEMO_PROJECTS}
         activeProjectId={activeProjectId}
         commands={DEMO_COMMANDS}
-        recentJobs={DEMO_JOBS}
+        recentJobs={jobs}
       />
     </div>
   );
