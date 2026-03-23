@@ -4,6 +4,7 @@ import { useSeo } from "@/hooks/useSeo";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
+import EcosystemSection from "@/components/EcosystemSection";
 import AgentsSection from "@/components/AgentsSection";
 import PipelineSection from "@/components/PipelineSection";
 import DemoSection from "@/components/DemoSection";
@@ -42,6 +43,7 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ProblemSection />
+      <EcosystemSection />
       <AgentsSection />
       <PipelineSection />
       <DemoSection />
@@ -52,7 +54,7 @@ const Index = () => {
       <PrinciplesSection />
       <RoadmapSection />
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","agents","pipeline","demo","features","cli-compat","install","commands","principles","roadmap","footer"]} />
+      <SectionNav sectionIds={["hero","problem","ecosystem","agents","pipeline","demo","features","cli-compat","install","commands","principles","roadmap","footer"]} />
       <AnimatedLogo />
     </div>
   );
