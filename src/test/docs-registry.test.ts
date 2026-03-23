@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 17 entries", () => {
-    expect(DOC_ENTRIES).toHaveLength(17);
+  it("has 24 entries (17 core + 7 hub)", () => {
+    expect(DOC_ENTRIES).toHaveLength(24);
   });
 
   it("getDocBySlug returns correct entry", () => {
@@ -23,10 +23,39 @@ describe("docs-registry", () => {
   });
 
   it("getAdjacentDocs: last entry has no next", () => {
-    expect(getAdjacentDocs("deployment").next).toBeNull();
+    expect(getAdjacentDocs("hub-configuration").next).toBeNull();
   });
 
   it("content is non-empty for all entries", () => {
     DOC_ENTRIES.forEach((d) => expect(d.content.length).toBeGreaterThan(0));
+  });
+
+  it("all hub entries use hub- slug prefix", () => {
+    const hubEntries = DOC_ENTRIES.filter((d) => d.section === "Hub");
+    expect(hubEntries).toHaveLength(7);
+    hubEntries.forEach((d) => expect(d.slug).toMatch(/^hub-/));
+  });
+
+  it("getDocBySlug returns hub entries", () => {
+    expect(getDocBySlug("hub-getting-started")?.title).toBe(
+      "Hub: Getting Started"
+    );
+    expect(getDocBySlug("hub-api-reference")?.title).toBe(
+      "Hub: API Reference"
+    );
+  });
+
+  it("existing core doc slugs are unchanged", () => {
+    const coreSlugs = [
+      "",
+      "getting-started",
+      "concepts",
+      "agents",
+      "workflows",
+      "cli-reference",
+      "api-reference",
+      "deployment",
+    ];
+    coreSlugs.forEach((slug) => expect(getDocBySlug(slug)).toBeDefined());
   });
 });

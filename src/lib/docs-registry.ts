@@ -16,6 +16,15 @@ import changelogRaw from "specrails-core/docs/changelog.md?raw";
 import apiReferenceRaw from "specrails-core/docs/api-reference.md?raw";
 import deploymentRaw from "specrails-core/docs/deployment.md?raw";
 
+// Hub docs (specrails-hub)
+import hubGettingStartedRaw from "specrails-hub/docs/general/getting-started.md?raw";
+import hubPlatformOverviewRaw from "specrails-hub/docs/general/platform-overview.md?raw";
+import hubFeaturesRaw from "specrails-hub/docs/product/features.md?raw";
+import hubWorkflowsRaw from "specrails-hub/docs/product/workflows.md?raw";
+import hubOpenspecWorkflowRaw from "specrails-hub/docs/product/openspec-workflow.md?raw";
+import hubApiReferenceRaw from "specrails-hub/docs/engineering/api-reference.md?raw";
+import hubConfigurationRaw from "specrails-hub/docs/engineering/configuration.md?raw";
+
 export interface DocEntry {
   slug: string;
   title: string;
@@ -134,6 +143,56 @@ export const DOC_ENTRIES: DocEntry[] = [
     description: "Local, Docker, and CI/CD deployment options",
     content: deploymentRaw,
     section: "Reference",
+  },
+  // Hub docs
+  {
+    slug: "hub-getting-started",
+    title: "Hub: Getting Started",
+    description: "Install and run specrails-hub to manage multiple projects",
+    content: hubGettingStartedRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-platform-overview",
+    title: "Hub: Platform Overview",
+    description: "Mental model behind specrails-hub and how pieces fit together",
+    content: hubPlatformOverviewRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-features",
+    title: "Hub: Features",
+    description: "Reference guide to every feature in the specrails-hub dashboard",
+    content: hubFeaturesRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-workflows",
+    title: "Hub: Workflows",
+    description: "Step-by-step guides for common tasks in specrails-hub",
+    content: hubWorkflowsRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-openspec-workflow",
+    title: "Hub: OpenSpec Workflow",
+    description: "Structured change management lifecycle with OpenSpec artifacts",
+    content: hubOpenspecWorkflowRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-api-reference",
+    title: "Hub: API Reference",
+    description: "Complete reference for specrails-hub local API endpoints",
+    content: hubApiReferenceRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-configuration",
+    title: "Hub: Configuration",
+    description: "Hub-level settings, project settings, environment variables, and CLI flags",
+    content: hubConfigurationRaw,
+    section: "Hub",
   },
 ];
 
