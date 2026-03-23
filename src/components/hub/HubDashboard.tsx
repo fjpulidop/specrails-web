@@ -114,7 +114,7 @@ export function HubDashboard() {
       <div className="p-3 space-y-3">
         <CollapsibleSection
           id="health"
-          title="Project Health"
+          title="Health"
           expanded={sections.health.expanded}
           pinned={sections.health.pinned}
           onToggleExpand={() => toggleExpand("health")}
@@ -130,7 +130,7 @@ export function HubDashboard() {
 
         <CollapsibleSection
           id="pipeline"
-          title="Pipeline Progress"
+          title="Pipeline"
           expanded={sections.pipeline.expanded}
           pinned={sections.pipeline.pinned}
           onToggleExpand={() => toggleExpand("pipeline")}
