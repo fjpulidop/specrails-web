@@ -20,9 +20,15 @@ describe("DocsIndex", () => {
 
   it("renders product section headers", () => {
     renderDocsIndex();
-    expect(screen.getByText("specrails-core")).toBeInTheDocument();
-    expect(screen.getByText("specrails-hub")).toBeInTheDocument();
-    expect(screen.getByText("specrails-mcp")).toBeInTheDocument();
+    expect(screen.getAllByText("specrails-core").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("specrails-hub").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("specrails-mcp").length).toBeGreaterThanOrEqual(1);
+  });
+
+  it("renders ecosystem overview product cards", () => {
+    renderDocsIndex();
+    expect(screen.getByText("Recommended")).toBeInTheDocument();
+    expect(screen.getByLabelText("Ecosystem overview")).toBeInTheDocument();
   });
 
   it("renders the Playbooks section when playbook entries exist", () => {

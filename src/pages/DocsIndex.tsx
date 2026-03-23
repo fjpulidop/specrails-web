@@ -3,6 +3,62 @@ import { useSeo } from "@/hooks/useSeo";
 import { ArrowRight, BookOpen, Layers, Server, Plug } from "lucide-react";
 import { DOC_ENTRIES } from "@/lib/docs-registry";
 
+const PRODUCT_CARDS = [
+  {
+    id: "hub",
+    name: "specrails-hub",
+    tagline: "Multi-project dashboard for AI-driven development teams",
+    recommended: true,
+    icon: Server,
+    color: "dracula-green",
+    borderColor: "border-dracula-green/40",
+    bgColor: "bg-dracula-green/5",
+    badgeBg: "bg-dracula-green/10",
+    hoverBorder: "hover:border-dracula-green/60",
+    linkColor: "text-dracula-green",
+    quickLinks: [
+      { slug: "hub-getting-started", label: "Getting Started" },
+      { slug: "hub-platform-overview", label: "Platform Overview" },
+      { slug: "hub-openspec-workflow", label: "OpenSpec Workflow" },
+    ],
+  },
+  {
+    id: "core",
+    name: "specrails-core",
+    tagline: "The foundation agent engine powering all specrails products",
+    recommended: false,
+    icon: BookOpen,
+    color: "dracula-cyan",
+    borderColor: "border-dracula-cyan/20",
+    bgColor: "",
+    badgeBg: "",
+    hoverBorder: "hover:border-dracula-cyan/40",
+    linkColor: "text-dracula-cyan",
+    quickLinks: [
+      { slug: "getting-started", label: "Getting Started" },
+      { slug: "concepts", label: "Core Concepts" },
+      { slug: "workflows", label: "Workflows" },
+    ],
+  },
+  {
+    id: "mcp",
+    name: "specrails-mcp",
+    tagline: "MCP bridge connecting AI clients to specrails capabilities",
+    recommended: false,
+    icon: Plug,
+    color: "dracula-purple",
+    borderColor: "border-dracula-purple/20",
+    bgColor: "",
+    badgeBg: "",
+    hoverBorder: "hover:border-dracula-purple/40",
+    linkColor: "text-dracula-purple",
+    quickLinks: [
+      { slug: "mcp-getting-started", label: "Getting Started" },
+      { slug: "mcp-overview", label: "Overview" },
+    ],
+  },
+];
+
 export default function DocsIndex(): JSX.Element {
   useSeo({
     title: "Documentation — specrails",
@@ -29,28 +85,49 @@ export default function DocsIndex(): JSX.Element {
         </p>
       </div>
 
-      {/* specrails-core */}
-      <section className="mb-12">
-        <div className="flex items-center gap-2 mb-4">
-          <BookOpen className="w-4 h-4 text-dracula-cyan" />
-          <h2 className="font-mono text-xs uppercase tracking-wider text-dracula-comment">specrails-core</h2>
-        </div>
-        <div className="space-y-2">
-          {coreEntries.map((entry) => (
-            <Link
-              key={entry.slug}
-              to={`/docs/${entry.slug}`}
-              className="group flex items-start justify-between gap-4 rounded-lg border border-border/20 px-5 py-4 hover:border-dracula-cyan/40 hover:bg-dracula-current/20 transition-colors"
-            >
-              <div className="min-w-0">
-                <div className="font-medium text-foreground group-hover:text-dracula-cyan transition-colors mb-0.5">
-                  {entry.title}
+      {/* Ecosystem Overview */}
+      <section className="mb-14" aria-label="Ecosystem overview">
+        <h2 className="font-mono text-xs uppercase tracking-wider text-dracula-comment mb-5">Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {PRODUCT_CARDS.map((product) => {
+            const Icon = product.icon;
+            const primaryLink = product.quickLinks[0];
+            return (
+              <div
+                key={product.id}
+                className={`rounded-lg border p-5 transition-colors ${product.borderColor} ${product.bgColor} ${product.hoverBorder}`}
+              >
+                <div className="flex items-start justify-between mb-3">
+                  <Icon className={`w-5 h-5 text-${product.color}`} />
+                  {product.recommended && (
+                    <span className={`text-xs font-medium ${product.linkColor} ${product.badgeBg} px-2 py-0.5 rounded`}>
+                      Recommended
+                    </span>
+                  )}
                 </div>
-                <div className="text-sm text-muted-foreground">{entry.description}</div>
+                <Link
+                  to={`/docs/${primaryLink.slug}`}
+                  className={`block font-semibold text-foreground hover:${product.linkColor} transition-colors mb-1`}
+                >
+                  {product.name}
+                </Link>
+                <p className="text-xs text-muted-foreground mb-4 leading-relaxed">{product.tagline}</p>
+                <ul className="space-y-1.5">
+                  {product.quickLinks.map((link) => (
+                    <li key={link.slug}>
+                      <Link
+                        to={`/docs/${link.slug}`}
+                        className={`flex items-center gap-1.5 text-xs text-muted-foreground hover:${product.linkColor} transition-colors group`}
+                      >
+                        <ArrowRight className="w-3 h-3 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ArrowRight className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0 group-hover:text-dracula-cyan group-hover:translate-x-0.5 transition-all" />
-            </Link>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -74,6 +151,31 @@ export default function DocsIndex(): JSX.Element {
                 <div className="text-sm text-muted-foreground">{entry.description}</div>
               </div>
               <ArrowRight className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0 group-hover:text-dracula-green group-hover:translate-x-0.5 transition-all" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* specrails-core */}
+      <section className="mb-12">
+        <div className="flex items-center gap-2 mb-4">
+          <BookOpen className="w-4 h-4 text-dracula-cyan" />
+          <h2 className="font-mono text-xs uppercase tracking-wider text-dracula-comment">specrails-core</h2>
+        </div>
+        <div className="space-y-2">
+          {coreEntries.map((entry) => (
+            <Link
+              key={entry.slug}
+              to={`/docs/${entry.slug}`}
+              className="group flex items-start justify-between gap-4 rounded-lg border border-border/20 px-5 py-4 hover:border-dracula-cyan/40 hover:bg-dracula-current/20 transition-colors"
+            >
+              <div className="min-w-0">
+                <div className="font-medium text-foreground group-hover:text-dracula-cyan transition-colors mb-0.5">
+                  {entry.title}
+                </div>
+                <div className="text-sm text-muted-foreground">{entry.description}</div>
+              </div>
+              <ArrowRight className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0 group-hover:text-dracula-cyan group-hover:translate-x-0.5 transition-all" />
             </Link>
           ))}
         </div>
