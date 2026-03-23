@@ -6,7 +6,7 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 24 entries (17 core + 7 hub)", () => {
+  it("has 24 entries (17 core/general + 7 hub)", () => {
     expect(DOC_ENTRIES).toHaveLength(24);
   });
 
@@ -23,7 +23,8 @@ describe("docs-registry", () => {
   });
 
   it("getAdjacentDocs: last entry has no next", () => {
-    expect(getAdjacentDocs("hub-configuration").next).toBeNull();
+    const lastEntry = DOC_ENTRIES[DOC_ENTRIES.length - 1];
+    expect(getAdjacentDocs(lastEntry.slug).next).toBeNull();
   });
 
   it("content is non-empty for all entries", () => {
@@ -31,18 +32,14 @@ describe("docs-registry", () => {
   });
 
   it("all hub entries use hub- slug prefix", () => {
-    const hubEntries = DOC_ENTRIES.filter((d) => d.section === "Hub");
+    const hubEntries = DOC_ENTRIES.filter((d) => d.section === "specrails-hub");
     expect(hubEntries).toHaveLength(7);
     hubEntries.forEach((d) => expect(d.slug).toMatch(/^hub-/));
   });
 
   it("getDocBySlug returns hub entries", () => {
-    expect(getDocBySlug("hub-getting-started")?.title).toBe(
-      "Hub: Getting Started"
-    );
-    expect(getDocBySlug("hub-api-reference")?.title).toBe(
-      "Hub: API Reference"
-    );
+    expect(getDocBySlug("hub-getting-started")?.title).toBe("Getting Started");
+    expect(getDocBySlug("hub-api-reference")?.title).toBe("API Reference");
   });
 
   it("existing core doc slugs are unchanged", () => {

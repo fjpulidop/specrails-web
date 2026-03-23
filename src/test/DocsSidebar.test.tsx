@@ -29,9 +29,8 @@ describe("DocsSidebar", () => {
   });
 
   it("marks the active doc entry as active (border style)", () => {
-    // /docs/agents → the Agents entry should be active
     renderSidebar("/docs/agents");
-    const agentsLink = screen.getByRole("link", { name: /agents/i });
+    const agentsLink = screen.getByRole("link", { name: /^agents$/i });
     expect(agentsLink.className).toMatch(/border-dracula-purple/);
   });
 
@@ -53,9 +52,49 @@ describe("DocsSidebar", () => {
     expect(onNavigate).toHaveBeenCalledOnce();
   });
 
-  it("renders section headers for entries with a section field", () => {
+  it("renders collapsible section groups", () => {
     renderSidebar();
-    // "Playbook" is a section in DOC_ENTRIES
-    expect(screen.getByText("Playbook")).toBeInTheDocument();
+    // All sections should render as group headers
+    const buttons = screen.getAllByRole("button");
+    // Each section group has a collapsible trigger button
+    expect(buttons.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("renders product section headers", () => {
+    renderSidebar();
+    expect(screen.getByText("specrails-core")).toBeInTheDocument();
+    expect(screen.getByText("specrails-hub")).toBeInTheDocument();
+  });
+
+  it("renders non-product section headers", () => {
+    renderSidebar();
+    // "Getting Started" appears as both section header and a link title,
+    // so use getAllByText and check at least one exists as a section trigger
+    expect(screen.getAllByText("Getting Started").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText("Playbooks")).toBeInTheDocument();
+    expect(screen.getByText("Reference")).toBeInTheDocument();
+  });
+
+  it("renders product color indicators for product sections", () => {
+    renderSidebar();
+    // Product sections have colored dots (span with inline backgroundColor)
+    const coreHeader = screen.getByText("specrails-core");
+    const coreDot = coreHeader.parentElement?.querySelector(
+      "span.rounded-full"
+    );
+    expect(coreDot).toBeInTheDocument();
+
+    const hubHeader = screen.getByText("specrails-hub");
+    const hubDot = hubHeader.parentElement?.querySelector("span.rounded-full");
+    expect(hubDot).toBeInTheDocument();
+  });
+
+  it("does not render color indicators for non-product sections", () => {
+    renderSidebar();
+    const playbooksHeader = screen.getByText("Playbooks");
+    const dot = playbooksHeader.parentElement?.querySelector(
+      "span.rounded-full"
+    );
+    expect(dot).toBeNull();
   });
 });

@@ -11,8 +11,12 @@ export default function DocsIndex(): JSX.Element {
     canonical: "https://specrails.dev/docs",
   });
 
-  const coreEntries = DOC_ENTRIES.filter((e) => e.slug !== "" && !e.section);
-  const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbook");
+  const coreEntries = DOC_ENTRIES.filter(
+    (e) =>
+      e.slug !== "" &&
+      (e.section === "Getting Started" || e.section === "specrails-core")
+  );
+  const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbooks");
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">

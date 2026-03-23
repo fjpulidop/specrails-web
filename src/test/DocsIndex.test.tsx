@@ -24,7 +24,7 @@ describe("DocsIndex", () => {
   });
 
   it("renders the Playbook section when playbook entries exist", () => {
-    const hasPlaybooks = DOC_ENTRIES.some((e) => e.section === "Playbook");
+    const hasPlaybooks = DOC_ENTRIES.some((e) => e.section === "Playbooks");
     if (!hasPlaybooks) return;
     renderDocsIndex();
     expect(screen.getByText("Playbook")).toBeInTheDocument();
@@ -32,9 +32,12 @@ describe("DocsIndex", () => {
 
   it("renders a link for each non-index core entry", () => {
     renderDocsIndex();
-    const coreEntries = DOC_ENTRIES.filter((e) => e.slug !== "" && !e.section);
+    const coreEntries = DOC_ENTRIES.filter(
+      (e) =>
+        e.slug !== "" &&
+        (e.section === "Getting Started" || e.section === "specrails-core")
+    );
     const links = screen.getAllByRole("link");
-    // Each core entry and each playbook entry gets a link
     expect(links.length).toBeGreaterThanOrEqual(coreEntries.length);
   });
 

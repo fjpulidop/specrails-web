@@ -16,9 +16,9 @@ describe("playbook registry entries", () => {
     expect(getDocBySlug("playbook-oss-maintainer")).toBeDefined();
   });
 
-  it("playbook-product-discovery prev is the updating entry", () => {
+  it("playbook-product-discovery prev is the hub-configuration entry", () => {
     const { prev } = getAdjacentDocs("playbook-product-discovery");
-    expect(prev?.slug).toBe("updating");
+    expect(prev?.slug).toBe("hub-configuration");
   });
 
   it("playbook-oss-maintainer next entry is changelog", () => {
@@ -26,13 +26,13 @@ describe("playbook registry entries", () => {
     expect(next?.slug).toBe("changelog");
   });
 
-  it("deployment next entry is hub-getting-started", () => {
-    const { next } = getAdjacentDocs("deployment");
-    expect(next?.slug).toBe("hub-getting-started");
+  it("changelog next entry is cli-reference", () => {
+    const { next } = getAdjacentDocs("changelog");
+    expect(next?.slug).toBe("cli-reference");
   });
 
-  it("all playbook entries have section set to Playbook", () => {
-    const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbook");
+  it("all playbook entries have section set to Playbooks", () => {
+    const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbooks");
     expect(playbookEntries).toHaveLength(3);
   });
 });

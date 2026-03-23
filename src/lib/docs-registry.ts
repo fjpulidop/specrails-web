@@ -31,97 +31,170 @@ export interface DocEntry {
   description: string;
   content: string;
   section?: string;
+  product?: 'core' | 'hub' | 'mcp';
 }
 
 export const DOC_ENTRIES: DocEntry[] = [
+  // ── Getting Started ──────────────────────────────────────
   {
     slug: "",
     title: "Documentation",
     description: "Overview and reading guide",
     content: readmeRaw,
+    section: "Getting Started",
   },
   {
     slug: "getting-started",
     title: "Getting Started",
     description: "Install and run your first workflow in 5 minutes",
     content: gettingStartedRaw,
+    section: "Getting Started",
   },
   {
     slug: "tutorial-quickstart",
-    title: "Getting Started in 5 Minutes",
+    title: "Quick Start (5 min)",
     description: "Zero to first agent-generated PR in 5 minutes",
     content: tutorialQuickstartRaw,
-    section: "Tutorials",
+    section: "Getting Started",
   },
   {
     slug: "codex-getting-started",
-    title: "Getting Started with OpenAI Codex",
+    title: "Getting Started with Codex",
     description: "Install and run specrails using OpenAI Codex — full feature parity with Claude Code",
     content: codexGettingStartedRaw,
-    section: "Tutorials",
+    section: "Getting Started",
   },
+
+  // ── specrails-core ───────────────────────────────────────
   {
     slug: "concepts",
     title: "Core Concepts",
     description: "The pipeline, agents, and product-driven approach",
     content: conceptsRaw,
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "installation",
     title: "Installation & Setup",
     description: "Detailed setup, prerequisites, and the /setup wizard",
     content: installationRaw,
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "agents",
     title: "Agents",
     description: "Every agent explained — role, model, and scope",
     content: agentsRaw,
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "workflows",
     title: "Workflows & Commands",
     description: "How to use /implement, /product-backlog, and more",
     content: workflowsRaw,
+    section: "specrails-core",
+    product: "core",
   },
   {
     slug: "customization",
     title: "Customization",
     description: "Adapt agents, rules, personas, and conventions",
     content: customizationRaw,
+    section: "specrails-core",
+    product: "core",
+  },
+
+  // ── specrails-hub ────────────────────────────────────────
+  {
+    slug: "hub-getting-started",
+    title: "Getting Started",
+    description: "Install and run specrails-hub to manage multiple projects",
+    content: hubGettingStartedRaw,
+    section: "specrails-hub",
+    product: "hub",
   },
   {
-    slug: "updating",
-    title: "Updating",
-    description: "Keep SpecRails current without losing customizations",
-    content: updatingRaw,
+    slug: "hub-platform-overview",
+    title: "Platform Overview",
+    description: "Mental model behind specrails-hub and how pieces fit together",
+    content: hubPlatformOverviewRaw,
+    section: "specrails-hub",
+    product: "hub",
   },
+  {
+    slug: "hub-features",
+    title: "Features",
+    description: "Reference guide to every feature in the specrails-hub dashboard",
+    content: hubFeaturesRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+  {
+    slug: "hub-workflows",
+    title: "Workflows",
+    description: "Step-by-step guides for common tasks in specrails-hub",
+    content: hubWorkflowsRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+  {
+    slug: "hub-openspec-workflow",
+    title: "OpenSpec Workflow",
+    description: "Structured change management lifecycle with OpenSpec artifacts",
+    content: hubOpenspecWorkflowRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+  {
+    slug: "hub-api-reference",
+    title: "API Reference",
+    description: "Complete reference for specrails-hub local API endpoints",
+    content: hubApiReferenceRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+  {
+    slug: "hub-configuration",
+    title: "Configuration",
+    description: "Hub-level settings, project settings, environment variables, and CLI flags",
+    content: hubConfigurationRaw,
+    section: "specrails-hub",
+    product: "hub",
+  },
+
+  // ── Playbooks ────────────────────────────────────────────
   {
     slug: "playbook-product-discovery",
     title: "Product Discovery",
     description: "Write specs that produce reliable implementations",
     content: playbookProductDiscoveryRaw,
-    section: "Playbook",
+    section: "Playbooks",
   },
   {
     slug: "playbook-parallel-dev",
     title: "Parallel Development",
     description: "Run multiple features in parallel without merge conflicts",
     content: playbookParallelDevRaw,
-    section: "Playbook",
+    section: "Playbooks",
   },
   {
     slug: "playbook-oss-maintainer",
     title: "OSS Maintainer Workflow",
     description: "Review gates, confidence thresholds, and convention enforcement",
     content: playbookOssMaintainerRaw,
-    section: "Playbook",
+    section: "Playbooks",
   },
+
+  // ── Reference ────────────────────────────────────────────
   {
     slug: "changelog",
     title: "Changelog",
     description: "What's new in each SpecRails release",
     content: changelogRaw,
+    section: "Reference",
   },
   {
     slug: "cli-reference",
@@ -144,55 +217,12 @@ export const DOC_ENTRIES: DocEntry[] = [
     content: deploymentRaw,
     section: "Reference",
   },
-  // Hub docs
   {
-    slug: "hub-getting-started",
-    title: "Hub: Getting Started",
-    description: "Install and run specrails-hub to manage multiple projects",
-    content: hubGettingStartedRaw,
-    section: "Hub",
-  },
-  {
-    slug: "hub-platform-overview",
-    title: "Hub: Platform Overview",
-    description: "Mental model behind specrails-hub and how pieces fit together",
-    content: hubPlatformOverviewRaw,
-    section: "Hub",
-  },
-  {
-    slug: "hub-features",
-    title: "Hub: Features",
-    description: "Reference guide to every feature in the specrails-hub dashboard",
-    content: hubFeaturesRaw,
-    section: "Hub",
-  },
-  {
-    slug: "hub-workflows",
-    title: "Hub: Workflows",
-    description: "Step-by-step guides for common tasks in specrails-hub",
-    content: hubWorkflowsRaw,
-    section: "Hub",
-  },
-  {
-    slug: "hub-openspec-workflow",
-    title: "Hub: OpenSpec Workflow",
-    description: "Structured change management lifecycle with OpenSpec artifacts",
-    content: hubOpenspecWorkflowRaw,
-    section: "Hub",
-  },
-  {
-    slug: "hub-api-reference",
-    title: "Hub: API Reference",
-    description: "Complete reference for specrails-hub local API endpoints",
-    content: hubApiReferenceRaw,
-    section: "Hub",
-  },
-  {
-    slug: "hub-configuration",
-    title: "Hub: Configuration",
-    description: "Hub-level settings, project settings, environment variables, and CLI flags",
-    content: hubConfigurationRaw,
-    section: "Hub",
+    slug: "updating",
+    title: "Updating",
+    description: "Keep SpecRails current without losing customizations",
+    content: updatingRaw,
+    section: "Reference",
   },
 ];
 
