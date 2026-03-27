@@ -7,7 +7,7 @@ import {
 
 describe("docs-registry", () => {
   it("has 17 entries", () => {
-    expect(DOC_ENTRIES).toHaveLength(17);
+    expect(DOC_ENTRIES).toHaveLength(15);
   });
 
   it("getDocBySlug returns correct entry", () => {

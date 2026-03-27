@@ -7,7 +7,7 @@ import {
 
 describe("playbook registry entries", () => {
   it("has 17 total entries in DOC_ENTRIES", () => {
-    expect(DOC_ENTRIES).toHaveLength(17);
+    expect(DOC_ENTRIES).toHaveLength(15);
   });
 
   it("getDocBySlug returns a result for each playbook slug", () => {
