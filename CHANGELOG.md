@@ -113,7 +113,7 @@
 
 ### ⚠ BREAKING CHANGES
 
-* All commands renamed from /<name> to /sr:<name>.
+* All commands renamed from /<name> to /specrails:<name>.
 
 ### Features
 
@@ -145,7 +145,7 @@
 * remove duplicate Compare link from navbar ([9e0137a](https://github.com/fjpulidop/specrails-web/commit/9e0137a3ac920cedbc8d5e0ff116b917a4ed5380))
 * remove duplicate Compare link from navbar ([bb8d188](https://github.com/fjpulidop/specrails-web/commit/bb8d1883297fab237ea5c68051970251d33cd07e))
 * render em-dash correctly in demo terminal title ([fcc6bbb](https://github.com/fjpulidop/specrails-web/commit/fcc6bbbb96384cea72a272d817d9d3c3343940ce))
-* replace remaining /implement references with /sr:implement in sr/ templates ([ab4b29d](https://github.com/fjpulidop/specrails-web/commit/ab4b29d0ecbcb3e4b74029e742ae4eabb5b4cf07))
+* replace remaining /implement references with /specrails:implement in sr/ templates ([ab4b29d](https://github.com/fjpulidop/specrails-web/commit/ab4b29d0ecbcb3e4b74029e742ae4eabb5b4cf07))
 * resolve SPA 404 on direct URL access (Hostinger/LiteSpeed) ([aecb6ac](https://github.com/fjpulidop/specrails-web/commit/aecb6ac44792e9194f2d1a06a9f986d1a1b13efd))
 * scroll to top when navigating between doc pages ([01bc6a0](https://github.com/fjpulidop/specrails-web/commit/01bc6a0b2c810bd9a436d727bb73d9a017db9831))
 * update repo references from specrails to specrails-core ([ec51047](https://github.com/fjpulidop/specrails-web/commit/ec5104772add9e1d90ac222a13f979f9912ddd3d))

@@ -48,9 +48,9 @@ const installTabs: InstallTab[] = [
       { text: "$ claude plugin install sr", color: "text-dracula-green", delay: 0 },
       { text: "\u2713 Plugin installed successfully", color: "text-dracula-cyan", delay: 700 },
       { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ /sr:setup", color: "text-dracula-green", delay: 1100 },
+      { text: "$ /specrails:setup", color: "text-dracula-green", delay: 1100 },
       { text: "\u2713 specrails plugin active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Ready to use /sr:* commands", color: "text-dracula-pink", delay: 2100 },
+      { text: "$ # Ready to use /specrails:* commands", color: "text-dracula-pink", delay: 2100 },
     ],
   },
 ];

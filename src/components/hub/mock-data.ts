@@ -115,7 +115,7 @@ export const DEMO_METRICS: ProjectMetrics = {
   pipeline: {
     lastJobId: "job-42",
     lastJobStatus: "completed",
-    lastJobCommand: "/sr:implement",
+    lastJobCommand: "/specrails:implement",
     lastJobAt: "2026-03-23T02:00:00Z",
   },
   failurePatterns: [],
@@ -147,7 +147,7 @@ export const DEMO_METRICS_ACME: ProjectMetrics = {
   pipeline: {
     lastJobId: "job-18",
     lastJobStatus: "failed",
-    lastJobCommand: "/sr:implement",
+    lastJobCommand: "/specrails:implement",
     lastJobAt: "2026-03-22T19:30:00Z",
   },
   failurePatterns: ["Test timeout in integration suite", "Rate limiter config mismatch"],
@@ -156,20 +156,20 @@ export const DEMO_METRICS_ACME: ProjectMetrics = {
 // ─── Recent Jobs (OpenClaw) ──────────────────────────────────
 
 export const DEMO_JOBS: JobSummary[] = [
-  { id: "job-42", command: "/sr:implement", started_at: "2026-03-23T01:45:00Z", finished_at: "2026-03-23T02:00:00Z", status: "completed", total_cost_usd: 0.0842 },
-  { id: "job-41", command: "/sr:propose-spec", started_at: "2026-03-22T14:30:00Z", finished_at: "2026-03-22T14:35:00Z", status: "completed", total_cost_usd: 0.0123 },
-  { id: "job-40", command: "/sr:implement", started_at: "2026-03-22T10:00:00Z", finished_at: "2026-03-22T10:28:00Z", status: "completed", total_cost_usd: 0.1204 },
-  { id: "job-39", command: "/sr:health-check", started_at: "2026-03-22T09:00:00Z", finished_at: "2026-03-22T09:02:00Z", status: "completed", total_cost_usd: 0.0034 },
-  { id: "job-38", command: "/sr:batch-implement", started_at: "2026-03-21T16:00:00Z", finished_at: "2026-03-21T16:45:00Z", status: "failed", total_cost_usd: 0.0512 },
+  { id: "job-42", command: "/specrails:implement", started_at: "2026-03-23T01:45:00Z", finished_at: "2026-03-23T02:00:00Z", status: "completed", total_cost_usd: 0.0842 },
+  { id: "job-41", command: "/specrails:propose-spec", started_at: "2026-03-22T14:30:00Z", finished_at: "2026-03-22T14:35:00Z", status: "completed", total_cost_usd: 0.0123 },
+  { id: "job-40", command: "/specrails:implement", started_at: "2026-03-22T10:00:00Z", finished_at: "2026-03-22T10:28:00Z", status: "completed", total_cost_usd: 0.1204 },
+  { id: "job-39", command: "/specrails:health-check", started_at: "2026-03-22T09:00:00Z", finished_at: "2026-03-22T09:02:00Z", status: "completed", total_cost_usd: 0.0034 },
+  { id: "job-38", command: "/specrails:batch-implement", started_at: "2026-03-21T16:00:00Z", finished_at: "2026-03-21T16:45:00Z", status: "failed", total_cost_usd: 0.0512 },
 ];
 
 // ─── Recent Jobs (acme-api) ─────────────────────────────────
 
 export const DEMO_JOBS_ACME: JobSummary[] = [
-  { id: "job-18", command: "/sr:implement", started_at: "2026-03-22T19:15:00Z", finished_at: "2026-03-22T19:30:00Z", status: "failed", total_cost_usd: 0.0671 },
-  { id: "job-17", command: "/sr:implement", started_at: "2026-03-22T15:00:00Z", finished_at: "2026-03-22T15:12:00Z", status: "completed", total_cost_usd: 0.0534 },
-  { id: "job-16", command: "/sr:health-check", started_at: "2026-03-21T22:30:00Z", finished_at: "2026-03-21T22:32:00Z", status: "completed", total_cost_usd: 0.0028 },
-  { id: "job-15", command: "/sr:propose-spec", started_at: "2026-03-21T14:00:00Z", finished_at: "2026-03-21T14:08:00Z", status: "completed", total_cost_usd: 0.0145 },
-  { id: "job-14", command: "/sr:implement", started_at: "2026-03-20T18:00:00Z", finished_at: "2026-03-20T18:35:00Z", status: "completed", total_cost_usd: 0.0923 },
+  { id: "job-18", command: "/specrails:implement", started_at: "2026-03-22T19:15:00Z", finished_at: "2026-03-22T19:30:00Z", status: "failed", total_cost_usd: 0.0671 },
+  { id: "job-17", command: "/specrails:implement", started_at: "2026-03-22T15:00:00Z", finished_at: "2026-03-22T15:12:00Z", status: "completed", total_cost_usd: 0.0534 },
+  { id: "job-16", command: "/specrails:health-check", started_at: "2026-03-21T22:30:00Z", finished_at: "2026-03-21T22:32:00Z", status: "completed", total_cost_usd: 0.0028 },
+  { id: "job-15", command: "/specrails:propose-spec", started_at: "2026-03-21T14:00:00Z", finished_at: "2026-03-21T14:08:00Z", status: "completed", total_cost_usd: 0.0145 },
+  { id: "job-14", command: "/specrails:implement", started_at: "2026-03-20T18:00:00Z", finished_at: "2026-03-20T18:35:00Z", status: "completed", total_cost_usd: 0.0923 },
 ];
 

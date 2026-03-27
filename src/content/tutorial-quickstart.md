@@ -49,7 +49,7 @@ claude plugin install sr
 Then configure your project:
 
 ```
-> /sr:setup
+> /specrails:setup
 ```
 
 ### Option B — Claude Code Project (scaffold)
@@ -63,7 +63,7 @@ npx specrails-core@latest init
 Then open Claude Code in your project:
 
 ```
-> /sr:setup
+> /specrails:setup
 ```
 
 ### Option C — OpenAI Codex (scaffold)
@@ -77,7 +77,7 @@ npx specrails-core@latest init --codex
 Then open Codex in your project:
 
 ```
-> /sr:setup
+> /specrails:setup
 ```
 
 ---
@@ -101,8 +101,8 @@ After setup, you will see:
 ✅ SpecRails ready.
 
 Try your first spec:
-  > /sr:product-backlog       ← new projects
-  > /sr:implement "..."       ← implement a feature
+  > /specrails:product-backlog       ← new projects
+  > /specrails:implement "..."       ← implement a feature
 ```
 
 > First run downloads dependencies. Expect 2–4 minutes on the initial install. Subsequent starts are instant.

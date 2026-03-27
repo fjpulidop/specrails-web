@@ -2,7 +2,7 @@
 
 <!-- specrails-web: docs slug=cli-reference -->
 
-Command reference for `specrails-core`. All commands are run via `npx specrails-core`, via `claude plugin` for the plugin installation, or inside Claude Code / OpenAI Codex as `/sr:*` slash commands.
+Command reference for `specrails-core`. All commands are run via `npx specrails-core`, via `claude plugin` for the plugin installation, or inside Claude Code / OpenAI Codex as `/specrails:*` slash commands.
 
 ---
 
@@ -24,7 +24,7 @@ claude plugin list
 claude plugin uninstall sr
 ```
 
-The plugin name is `sr`. All commands use the `/sr:*` namespace.
+The plugin name is `sr`. All commands use the `/specrails:*` namespace.
 
 ---
 
@@ -76,7 +76,7 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
 
 ## `specrails setup`
 
-**Synopsis:** `/sr:setup [--advanced]`
+**Synopsis:** `/specrails:setup [--advanced]`
 
 **Description:** Configures your SpecRails team. Run inside Claude Code or Codex after `init` (scaffold) or `claude plugin install sr` (plugin). Defaults to Quick Start mode (3 questions). Use `--advanced` for the full 5-phase wizard.
 
@@ -108,8 +108,8 @@ After setup, the wizard suggests your first command based on project type:
 ✅ Setup complete.
 
 Try your first spec:
-  > /sr:product-backlog       ← new projects
-  > /sr:tech-audit            ← existing codebases
+  > /specrails:product-backlog       ← new projects
+  > /specrails:tech-audit            ← existing codebases
 ```
 
 **Advanced mode**
@@ -132,10 +132,10 @@ Runs the full 5-phase wizard:
 
 ```bash
 # Inside Claude Code or Codex — Quick Start (recommended for new users)
-/sr:setup
+/specrails:setup
 
 # Inside Claude Code or Codex — full wizard
-/sr:setup --advanced
+/specrails:setup --advanced
 ```
 
 **See also:** [`init`](#specrails-init), [`doctor`](#specrails-doctor)
@@ -168,8 +168,8 @@ npx specrails-core doctor --verbose
 
 ## `specrails implement`
 
-**Synopsis:** `/sr:implement "<description>" [options]`
-**Alias:** `/sr:run "<description>" [options]`
+**Synopsis:** `/specrails:implement "<description>" [options]`
+**Alias:** `/specrails:run "<description>" [options]`
 
 **Description:** Runs the full agent pipeline for a feature. The pipeline goes: architect → developer → test writer → security reviewer → reviewer → pull request. Accepts a plain-language description or GitHub issue numbers.
 
@@ -183,16 +183,16 @@ npx specrails-core doctor --verbose
 
 ```bash
 # Implement from a plain description
-/sr:implement "add a health check endpoint"
+/specrails:implement "add a health check endpoint"
 
 # Implement from GitHub issues
-/sr:implement #42, #43
+/specrails:implement #42, #43
 
 # Multiple issues in one run
-/sr:implement #42 #43 #44
+/specrails:implement #42 #43 #44
 
 # Preview what the pipeline would produce — no code written to working tree
-/sr:implement "add dark mode" --dry-run
+/specrails:implement "add dark mode" --dry-run
 ```
 
 **Pipeline stages:**
@@ -220,7 +220,7 @@ npx specrails-core doctor --verbose
 
 ## `specrails preview`
 
-**Synopsis:** `/sr:implement "<description>" --dry-run`
+**Synopsis:** `/specrails:implement "<description>" --dry-run`
 
 **Description:** Runs the full agent pipeline in dry-run mode. Output is written to `.claude/.dry-run/` instead of your working tree. No branches are created, no PRs are opened. Use this to review what SpecRails would produce before committing.
 
@@ -234,7 +234,7 @@ npx specrails-core doctor --verbose
 
 ```bash
 # Preview a feature before applying
-/sr:implement "add dark mode" --dry-run
+/specrails:implement "add dark mode" --dry-run
 
 # Inspect the dry-run output
 ls .claude/.dry-run/
@@ -246,7 +246,7 @@ After reviewing the dry-run output, run the same command without `--dry-run` to 
 
 ```bash
 # Apply the same feature for real
-/sr:implement "add dark mode"
+/specrails:implement "add dark mode"
 ```
 
 **See also:** [`implement`](#specrails-implement)
@@ -290,18 +290,18 @@ npx specrails-core doctor
 
 ## OpenSpec commands
 
-The `sr` plugin includes the full OpenSpec workflow for structured change management. All commands use the `/sr:*` namespace:
+The `sr` plugin includes the full OpenSpec workflow for structured change management. All commands use the `/specrails:*` namespace:
 
 | Command | What it does |
 |---------|-------------|
-| `/sr:new-change` | Start a new OpenSpec change with artifacts |
-| `/sr:ff-change` | Fast-forward through artifact creation |
-| `/sr:apply-change` | Implement tasks from an OpenSpec change |
-| `/sr:verify-change` | Verify implementation matches change artifacts |
-| `/sr:archive-change` | Archive a completed change |
-| `/sr:sync-specs` | Sync delta specs from a change to main specs |
-| `/sr:explore` | Enter explore mode — think through ideas before a change |
-| `/sr:continue-change` | Continue working on an in-progress change |
+| `/specrails:new-change` | Start a new OpenSpec change with artifacts |
+| `/specrails:ff-change` | Fast-forward through artifact creation |
+| `/specrails:apply-change` | Implement tasks from an OpenSpec change |
+| `/specrails:verify-change` | Verify implementation matches change artifacts |
+| `/specrails:archive-change` | Archive a completed change |
+| `/specrails:sync-specs` | Sync delta specs from a change to main specs |
+| `/specrails:explore` | Enter explore mode — think through ideas before a change |
+| `/specrails:continue-change` | Continue working on an in-progress change |
 
 OpenSpec organizes development work into explicit artifacts (spec → plan → tasks → review) before writing any code. See [OpenSpec Workflow](hub-openspec-workflow) for the full lifecycle.
 
@@ -315,14 +315,14 @@ OpenSpec organizes development work into explicit artifacts (spec → plan → t
 | Plugin update | `claude plugin update sr` | Update the sr plugin |
 | `init` | `npx specrails-core@latest init` | Scaffold SpecRails into a project (Claude Code) |
 | `init --codex` | `npx specrails-core@latest init --codex` | Scaffold SpecRails into a project (Codex) |
-| `setup` | `/sr:setup` (Claude Code / Codex) | Configure your agent team |
+| `setup` | `/specrails:setup` (Claude Code / Codex) | Configure your agent team |
 | `doctor` | `npx specrails-core doctor` | Run diagnostics |
-| `implement` | `/sr:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
-| `preview` | `/sr:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |
+| `implement` | `/specrails:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
+| `preview` | `/specrails:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |
 | `update` | `npx specrails-core@latest update` | Update scaffold to the latest release |
-| `product-backlog` | `/sr:product-backlog` | View prioritized backlog |
-| `new-change` | `/sr:new-change` | Start a new OpenSpec change |
-| `apply-change` | `/sr:apply-change` | Implement tasks from a change |
+| `product-backlog` | `/specrails:product-backlog` | View prioritized backlog |
+| `new-change` | `/specrails:new-change` | Start a new OpenSpec change |
+| `apply-change` | `/specrails:apply-change` | Implement tasks from a change |
 
 ---
 

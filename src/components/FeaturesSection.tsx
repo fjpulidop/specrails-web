@@ -16,7 +16,7 @@ const features = [
   { title: "Confidence Scoring", desc: "Reviewer agents self-assess output quality across 5 aspects (correctness, security, tests, docs, performance). A configurable gate blocks shipping below threshold.", icon: Gauge, accent: "text-dracula-yellow", hoverGlow: "hover:glow-yellow" },
   { title: "Failure Learning Loop", desc: "When the reviewer flags a failure, a post-mortem record is written to memory. Future developer agents load these records as guardrails, preventing repeated mistakes.", icon: AlertTriangle, accent: "text-dracula-orange", hoverGlow: "hover:glow-orange" },
   { title: "Layer-Specific Reviews", desc: "Dedicated frontend and backend reviewer agents run in parallel, applying domain expertise to UI patterns and API contracts independently.", icon: Users, accent: "text-dracula-cyan", hoverGlow: "hover:glow-cyan" },
-  { title: "Dependency-Aware Ordering", desc: "/sr:product-backlog parses Prerequisites fields, builds a dependency DAG, and topological-sorts features so the safest implementation order is always chosen.", icon: ListOrdered, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
+  { title: "Dependency-Aware Ordering", desc: "/specrails:product-backlog parses Prerequisites fields, builds a dependency DAG, and topological-sorts features so the safest implementation order is always chosen.", icon: ListOrdered, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
 ];
 
 const FeaturesSection = () => {

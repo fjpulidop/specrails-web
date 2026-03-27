@@ -26,9 +26,9 @@ const DEMO_RAILS: Rail[] = [
     name: "Full Feature Pipeline",
     description: "Propose a spec, implement it, then run a health check",
     steps: [
-      { type: "command", value: "/sr:propose-spec" },
-      { type: "command", value: "/sr:implement" },
-      { type: "command", value: "/sr:health-check" },
+      { type: "command", value: "/specrails:propose-spec" },
+      { type: "command", value: "/specrails:implement" },
+      { type: "command", value: "/specrails:health-check" },
     ],
   },
   {
@@ -36,9 +36,9 @@ const DEMO_RAILS: Rail[] = [
     name: "Batch Ship & Verify",
     description: "Batch implement pending specs and verify project health",
     steps: [
-      { type: "command", value: "/sr:batch-implement" },
-      { type: "command", value: "/sr:health-check" },
-      { type: "command", value: "/sr:compat-check" },
+      { type: "command", value: "/specrails:batch-implement" },
+      { type: "command", value: "/specrails:health-check" },
+      { type: "command", value: "/specrails:compat-check" },
     ],
   },
   {
@@ -46,8 +46,8 @@ const DEMO_RAILS: Rail[] = [
     name: "Discovery Cycle",
     description: "Run full product discovery: auto-propose, select, and review",
     steps: [
-      { type: "command", value: "/sr:update-product-driven-backlog" },
-      { type: "command", value: "/sr:product-backlog" },
+      { type: "command", value: "/specrails:update-product-driven-backlog" },
+      { type: "command", value: "/specrails:product-backlog" },
       { type: "prompt", value: "Summarize the top 3 proposed specs" },
     ],
   },

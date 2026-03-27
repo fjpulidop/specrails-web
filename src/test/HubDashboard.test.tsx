@@ -68,8 +68,8 @@ describe("HubDashboard", () => {
   it("renders recent jobs in Jobs section", () => {
     renderDashboard();
     const jobsSection = screen.getByTestId("section-jobs");
-    expect(within(jobsSection).getAllByText(/\/sr:implement/).length).toBeGreaterThanOrEqual(1);
-    expect(within(jobsSection).getByText("/sr:propose-spec")).toBeInTheDocument();
+    expect(within(jobsSection).getAllByText(/\/specrails:implement/).length).toBeGreaterThanOrEqual(1);
+    expect(within(jobsSection).getByText("/specrails:propose-spec")).toBeInTheDocument();
   });
 
   it("collapses a section when toggle is clicked", async () => {

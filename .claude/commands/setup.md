@@ -531,8 +531,8 @@ Store the full configuration in `.claude/backlog-config.json`:
 
 #### If None
 
-- Skip `/sr:product-backlog` and `/sr:update-product-driven-backlog` commands.
-- The `/sr:implement` command will still work with text descriptions.
+- Skip `/specrails:product-backlog` and `/specrails:update-product-driven-backlog` commands.
+- The `/specrails:implement` command will still work with text descriptions.
 
 ### 3.3 Git & shipping workflow
 
@@ -561,14 +561,14 @@ If automatic, also check if `gh` is authenticated (for PR creation). If not, war
 
 | Command | Purpose | Requires |
 |---------|---------|----------|
-| /sr:implement | Full pipeline: sr-architect → sr-developer → sr-reviewer → ship | sr-architect + sr-developer + sr-reviewer |
-| /sr:batch-implement | Orchestrate multiple features in dependency-aware waves | sr-architect + sr-developer + sr-reviewer |
-| /sr:product-backlog | View prioritized backlog with VPC scores | sr-product-analyst + Backlog provider |
-| /sr:update-product-driven-backlog | Generate new feature ideas via product discovery | sr-product-manager + Backlog provider |
-| /sr:health-check | Run tests, linting, coverage, complexity, and dependency audit | None |
-| /sr:compat-check | Snapshot API surface and detect breaking changes | None |
-| /sr:refactor-recommender | Scan for refactoring opportunities ranked by impact/effort | None |
-| /sr:why | Search past architectural decisions from agent memory | None |
+| /specrails:implement | Full pipeline: sr-architect → sr-developer → sr-reviewer → ship | sr-architect + sr-developer + sr-reviewer |
+| /specrails:batch-implement | Orchestrate multiple features in dependency-aware waves | sr-architect + sr-developer + sr-reviewer |
+| /specrails:product-backlog | View prioritized backlog with VPC scores | sr-product-analyst + Backlog provider |
+| /specrails:update-product-driven-backlog | Generate new feature ideas via product discovery | sr-product-manager + Backlog provider |
+| /specrails:health-check | Run tests, linting, coverage, complexity, and dependency audit | None |
+| /specrails:compat-check | Snapshot API surface and detect breaking changes | None |
+| /specrails:refactor-recommender | Scan for refactoring opportunities ranked by impact/effort | None |
+| /specrails:why | Search past architectural decisions from agent memory | None |
 
 [All] [Custom selection]
 ```
@@ -830,14 +830,14 @@ Display the complete installation summary:
 ### Commands Installed
 | Command | File |
 |---------|------|
-| /sr:implement | .claude/commands/sr/implement.md |
-| /sr:batch-implement | .claude/commands/sr/batch-implement.md |
-| /sr:product-backlog | .claude/commands/sr/product-backlog.md |
-| /sr:update-product-driven-backlog | .claude/commands/sr/update-product-driven-backlog.md |
-| /sr:health-check | .claude/commands/sr/health-check.md |
-| /sr:compat-check | .claude/commands/sr/compat-check.md |
-| /sr:refactor-recommender | .claude/commands/sr/refactor-recommender.md |
-| /sr:why | .claude/commands/sr/why.md |
+| /specrails:implement | .claude/commands/sr/implement.md |
+| /specrails:batch-implement | .claude/commands/sr/batch-implement.md |
+| /specrails:product-backlog | .claude/commands/sr/product-backlog.md |
+| /specrails:update-product-driven-backlog | .claude/commands/sr/update-product-driven-backlog.md |
+| /specrails:health-check | .claude/commands/sr/health-check.md |
+| /specrails:compat-check | .claude/commands/sr/compat-check.md |
+| /specrails:refactor-recommender | .claude/commands/sr/refactor-recommender.md |
+| /specrails:why | .claude/commands/sr/why.md |
 
 Note: Only commands selected during setup are shown. Backlog commands are excluded if no backlog provider was configured.
 
@@ -856,13 +856,13 @@ Note: Only commands selected during setup are shown. Backlog commands are exclud
 
 ### Next Steps
 1. Review the generated files in .claude/
-2. Run `/sr:product-backlog` to see your backlog (if GitHub Issues exist)
-3. Run `/sr:update-product-driven-backlog` to generate feature ideas
-4. Run `/sr:implement #issue-number` to implement a feature
+2. Run `/specrails:product-backlog` to see your backlog (if GitHub Issues exist)
+3. Run `/specrails:update-product-driven-backlog` to generate feature ideas
+4. Run `/specrails:implement #issue-number` to implement a feature
 5. Commit the .claude/ directory to version control
 
 ### Quick Start
-- `/sr:implement "describe a feature"` — implement something right now
-- `/sr:product-backlog` — see prioritized feature ideas
-- `/sr:update-product-driven-backlog` — discover new features using VPC
+- `/specrails:implement "describe a feature"` — implement something right now
+- `/specrails:product-backlog` — see prioritized feature ideas
+- `/specrails:update-product-driven-backlog` — discover new features using VPC
 ```

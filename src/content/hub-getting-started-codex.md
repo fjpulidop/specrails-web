@@ -65,7 +65,7 @@ From the dashboard, click **Implement →** and select a spec or enter a task de
 Alternatively, use Codex directly in your project:
 
 ```
-> /sr:implement "add user avatar upload"
+> /specrails:implement "add user avatar upload"
 ```
 
 The Hub tracks the job in real-time — you can monitor progress, costs, and results from the dashboard.

@@ -28,7 +28,7 @@ function buildLines(): TermLine[] {
     add(text, color, TABLE_LINE_PAUSE);
 
   // Command
-  add("$ /sr:implement #7, #11, #9", "text-dracula-green", 600);
+  add("$ /specrails:implement #7, #11, #9", "text-dracula-green", 600);
   add("", "text-dracula-fg", 200);
   add(
     "Implementation Pipeline \u2014 sr-architect \u2192 sr-developer \u2192 sr-reviewer across 3 features in parallel.",
@@ -272,7 +272,7 @@ const DemoSection = () => {
             <div className="terminal-dot bg-dracula-yellow" />
             <div className="terminal-dot bg-dracula-green" />
             <span className="text-xs text-muted-foreground ml-2">
-              specrails — /sr:implement
+              specrails — /specrails:implement
             </span>
           </div>
 

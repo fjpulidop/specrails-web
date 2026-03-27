@@ -274,7 +274,7 @@ function CommandCard({ cmd }: { cmd: CommandInfo }) {
         </div>
       </TooltipTrigger>
       <TooltipContent side="bottom" className="max-w-[240px]">
-        <p className="font-medium font-mono text-[11px]">/sr:{cmd.slug}</p>
+        <p className="font-medium font-mono text-[11px]">/specrails:{cmd.slug}</p>
         {cmd.description && (
           <p className="text-muted-foreground mt-0.5">{cmd.description}</p>
         )}
