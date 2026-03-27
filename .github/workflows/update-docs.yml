@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Update specrails-core
-        run: npm update specrails-core
+        run: npm install specrails-core@latest
 
       - name: Check for changes
         id: changes
