@@ -1,61 +1,57 @@
 import { useEffect, useState, useRef } from "react";
-import { Copy, Check, Terminal, LayoutDashboard, Network } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { GitHubStarsButton } from "@/components/GitHubStarsButton";
 
 const INSTALL_COMMAND = "npm install -g specrails-hub";
 
-const hubInstallLines = [
-  { text: "$ npm install -g specrails-hub", color: "text-dracula-green", delay: 0 },
-  { text: "", color: "text-foreground", delay: 600 },
-  { text: "$ specrails-hub", color: "text-dracula-green", delay: 1000 },
-  { text: "", color: "text-foreground", delay: 1400 },
-  { text: "\u2713 Dashboard ready at localhost:4200", color: "text-dracula-cyan", delay: 1800 },
-  { text: "$ # Your projects, pipeline & analytics \u2014 all here", color: "text-dracula-pink", delay: 2200 },
-];
-
-interface ProductCard {
-  name: string;
-  tagline: string;
-  icon: typeof Terminal;
-  accent: string;
-  border: string;
-  glow: string;
-  command: string;
-  featured?: boolean;
-  badges: string[];
+interface TabLine {
+  text: string;
+  color: string;
+  delay: number;
 }
 
-const products: ProductCard[] = [
+interface InstallTab {
+  id: string;
+  label: string;
+  lines: TabLine[];
+}
+
+const installTabs: InstallTab[] = [
   {
-    name: "specrails-core",
-    tagline: "The engine. 12 agents in your terminal.",
-    icon: Terminal,
-    accent: "text-dracula-cyan",
-    border: "border-dracula-cyan/30",
-    glow: "",
-    command: "npx specrails-core@latest init",
-    badges: ["Terminal", "12 Agents", "CLI"],
+    id: "claude",
+    label: "Claude Code",
+    lines: [
+      { text: "$ npx specrails-core@latest init", color: "text-dracula-green", delay: 0 },
+      { text: "\u2713 Agents configured for Claude Code", color: "text-dracula-cyan", delay: 700 },
+      { text: "", color: "text-foreground", delay: 900 },
+      { text: "$ /setup", color: "text-dracula-green", delay: 1100 },
+      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
+      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+    ],
   },
   {
-    name: "specrails-hub",
-    tagline: "Your control center. The star product.",
-    icon: LayoutDashboard,
-    accent: "text-dracula-green",
-    border: "border-dracula-green/60",
-    glow: "shadow-[0_0_30px_rgba(80,250,123,0.15)]",
-    command: "npm install -g specrails-hub",
-    featured: true,
-    badges: ["Dashboard", "Multi-Project", "Analytics"],
+    id: "codex",
+    label: "Codex",
+    lines: [
+      { text: "$ npx specrails-core@latest init --codex", color: "text-dracula-green", delay: 0 },
+      { text: "\u2713 Agents configured for Codex", color: "text-dracula-cyan", delay: 700 },
+      { text: "", color: "text-foreground", delay: 900 },
+      { text: "$ codex /setup", color: "text-dracula-green", delay: 1100 },
+      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
+      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+    ],
   },
   {
-    name: "specrails-mcp",
-    tagline: "Connect with any AI.",
-    icon: Network,
-    accent: "text-dracula-purple",
-    border: "border-dracula-purple/30",
-    glow: "",
-    command: "npm install -g specrails-mcp",
-    badges: ["MCP", "8 Tools", "15+ Resources"],
+    id: "plugin",
+    label: "Plugin",
+    lines: [
+      { text: "$ claude plugin install sr", color: "text-dracula-green", delay: 0 },
+      { text: "\u2713 Plugin installed successfully", color: "text-dracula-cyan", delay: 700 },
+      { text: "", color: "text-foreground", delay: 900 },
+      { text: "$ /sr:setup", color: "text-dracula-green", delay: 1100 },
+      { text: "\u2713 specrails plugin active", color: "text-dracula-cyan", delay: 1700 },
+      { text: "$ # Ready to use /sr:* commands", color: "text-dracula-pink", delay: 2100 },
+    ],
   },
 ];
 
@@ -153,31 +149,65 @@ const ParticleBackground = () => {
   );
 };
 
-const AnimatedTerminal = ({ lines, label }: { lines: typeof hubInstallLines; label: string }) => {
+const TabbedTerminal = () => {
+  const [activeTab, setActiveTab] = useState(0);
   const [visibleLines, setVisibleLines] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
+
+  const currentTab = installTabs[activeTab];
 
   useEffect(() => {
-    const timers = lines.map((line, i) =>
+    setVisibleLines(0);
+    const timers = currentTab.lines.map((line, i) =>
       setTimeout(() => setVisibleLines(i + 1), line.delay)
     );
     return () => timers.forEach(clearTimeout);
-  }, [lines]);
+  }, [animKey, currentTab]);
+
+  const handleTabClick = (index: number) => {
+    if (index !== activeTab) {
+      setActiveTab(index);
+      setAnimKey((k) => k + 1);
+    }
+  };
 
   return (
-    <div className="terminal p-0 flex-1 min-w-0">
+    <div className="terminal p-0 max-w-2xl mx-auto w-full" data-testid="tabbed-terminal">
+      {/* Terminal chrome */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20">
         <div className="terminal-dot bg-dracula-red" />
         <div className="terminal-dot bg-dracula-yellow" />
         <div className="terminal-dot bg-dracula-green" />
-        <span className="text-xs text-muted-foreground ml-2">{label}</span>
+        <span className="text-xs text-muted-foreground ml-2 font-mono">Terminal</span>
       </div>
-      <div className="p-4 text-left text-sm leading-relaxed h-[200px] overflow-hidden">
-        {lines.slice(0, visibleLines).map((line, i) => (
+
+      {/* Tab bar */}
+      <div className="flex border-b border-border/20">
+        {installTabs.map((tab, index) => (
+          <button
+            key={tab.id}
+            data-testid={`tab-${tab.id}`}
+            onClick={() => handleTabClick(index)}
+            aria-selected={index === activeTab}
+            className={`px-4 py-2.5 text-xs font-mono transition-colors border-b-2 -mb-px ${
+              index === activeTab
+                ? "text-dracula-green border-dracula-green"
+                : "text-muted-foreground border-transparent hover:text-foreground"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Terminal content */}
+      <div className="p-4 text-left text-sm leading-relaxed h-[180px] overflow-hidden">
+        {currentTab.lines.slice(0, visibleLines).map((line, i) => (
           <div key={i} className={`${line.color} animate-fade-up`}>
             {line.text || "\u00A0"}
           </div>
         ))}
-        {visibleLines < lines.length && (
+        {visibleLines < currentTab.lines.length && (
           <span className="inline-block w-2 h-4 bg-dracula-green animate-pulse" />
         )}
       </div>
@@ -223,46 +253,6 @@ const InstallCommand = () => {
           )}
           <span>{copied ? "Copied!" : "Copy"}</span>
         </button>
-      </div>
-    </div>
-  );
-};
-
-const ProductCardComponent = ({ product }: { product: ProductCard }) => {
-  const Icon = product.icon;
-  return (
-    <div
-      data-testid={`product-card-${product.name}`}
-      className={`glass-card border ${product.border} ${product.glow} p-6 rounded-xl backdrop-blur-sm bg-background/30 transition-all duration-300 hover:scale-[1.02] ${
-        product.featured ? "md:scale-110 md:z-10 md:py-8" : ""
-      }`}
-    >
-      {product.featured && (
-        <div className="text-xs font-mono text-dracula-green mb-3 uppercase tracking-wider">
-          Recommended
-        </div>
-      )}
-      <div className={`flex items-center gap-2 mb-3 ${product.accent}`}>
-        <Icon className="w-5 h-5" />
-        <span className="font-mono font-bold text-sm">{product.name}</span>
-      </div>
-      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-        {product.tagline}
-      </p>
-      <code className="text-xs font-mono text-muted-foreground block mb-3 bg-background/50 px-2 py-1.5 rounded">
-        $ {product.command}
-      </code>
-      <div className="flex flex-wrap gap-1.5">
-        {product.badges.map((badge) => (
-          <span
-            key={badge}
-            className={`text-[10px] font-mono px-2 py-0.5 rounded-full border border-border/30 ${
-              product.featured ? "text-dracula-green border-dracula-green/30" : "text-muted-foreground"
-            }`}
-          >
-            {badge}
-          </span>
-        ))}
       </div>
     </div>
   );
@@ -322,19 +312,12 @@ const HeroSection = () => {
           </a>
         </div>
 
-        {/* Three product cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-12 animate-fade-up delay-500 md:items-center">
-          {products.map((product) => (
-            <ProductCardComponent key={product.name} product={product} />
-          ))}
-        </div>
-
-        {/* Terminal preview — Hub install flow */}
-        <div className="max-w-2xl mx-auto animate-fade-up delay-500">
-          <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-            <span className="text-dracula-green">Get started</span> &mdash; Hub install
+        {/* Single tabbed terminal — 3 installation methods */}
+        <div className="animate-fade-up delay-500">
+          <p className="text-xs text-muted-foreground mb-3 font-mono uppercase tracking-wider">
+            <span className="text-dracula-green">Get started</span> &mdash; choose your setup
           </p>
-          <AnimatedTerminal lines={hubInstallLines} label="specrails-hub" />
+          <TabbedTerminal />
         </div>
       </div>
     </section>

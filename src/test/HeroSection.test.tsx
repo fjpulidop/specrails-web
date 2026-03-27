@@ -127,24 +127,6 @@ describe("HeroSection", () => {
     expect(docsLink?.textContent).toContain("Read the docs");
   });
 
-  it("renders three product cards (Core, Hub, MCP)", () => {
-    const { container } = renderHero();
-    expect(container.querySelector("[data-testid='product-card-specrails-core']")).toBeInTheDocument();
-    expect(container.querySelector("[data-testid='product-card-specrails-hub']")).toBeInTheDocument();
-    expect(container.querySelector("[data-testid='product-card-specrails-mcp']")).toBeInTheDocument();
-  });
-
-  it("renders Hub as the recommended product", () => {
-    const { container } = renderHero();
-    expect(container.textContent).toContain("Recommended");
-  });
-
-  it("renders Hub terminal preview", () => {
-    const { container } = renderHero();
-    expect(container.textContent).toContain("Get started");
-    expect(container.textContent).toContain("Hub install");
-  });
-
   it("renders the canvas element for particle background", () => {
     const { container } = renderHero();
     expect(container.querySelector("canvas")).toBeInTheDocument();
@@ -155,6 +137,49 @@ describe("HeroSection", () => {
     expect(container.textContent).toContain("Dashboard");
     expect(container.textContent).toContain("Multi-Project");
     expect(container.textContent).toContain("Analytics");
+  });
+
+  // --- Tabbed terminal ---
+
+  it("renders the tabbed terminal component", () => {
+    const { container } = renderHero();
+    expect(container.querySelector("[data-testid='tabbed-terminal']")).toBeInTheDocument();
+  });
+
+  it("renders three installation tabs: Claude Code, Codex, Plugin", () => {
+    const { container } = renderHero();
+    expect(container.querySelector("[data-testid='tab-claude']")).toBeInTheDocument();
+    expect(container.querySelector("[data-testid='tab-codex']")).toBeInTheDocument();
+    expect(container.querySelector("[data-testid='tab-plugin']")).toBeInTheDocument();
+  });
+
+  it("Claude Code tab is active by default", () => {
+    const { container } = renderHero();
+    const claudeTab = container.querySelector("[data-testid='tab-claude']");
+    expect(claudeTab?.getAttribute("aria-selected")).toBe("true");
+    const codexTab = container.querySelector("[data-testid='tab-codex']");
+    expect(codexTab?.getAttribute("aria-selected")).toBe("false");
+  });
+
+  it("clicking Codex tab makes it active", () => {
+    const { container } = renderHero();
+    const codexTab = container.querySelector("[data-testid='tab-codex']")!;
+    fireEvent.click(codexTab);
+    expect(codexTab.getAttribute("aria-selected")).toBe("true");
+    const claudeTab = container.querySelector("[data-testid='tab-claude']");
+    expect(claudeTab?.getAttribute("aria-selected")).toBe("false");
+  });
+
+  it("clicking Plugin tab makes it active", () => {
+    const { container } = renderHero();
+    const pluginTab = container.querySelector("[data-testid='tab-plugin']")!;
+    fireEvent.click(pluginTab);
+    expect(pluginTab.getAttribute("aria-selected")).toBe("true");
+  });
+
+  it("renders get started label for tabbed terminal", () => {
+    const { container } = renderHero();
+    expect(container.textContent).toContain("Get started");
   });
 
   // --- Copy button interaction ---
