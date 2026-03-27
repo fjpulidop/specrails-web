@@ -36,24 +36,74 @@ git commit -m "initial commit"
 
 ## Minute 1 — Install
 
-From your project directory, run:
+Choose the installation method that fits your workflow:
+
+### Option A — Claude Code Plugin (recommended)
+
+Install once, works across all your projects. The plugin stays in Claude Code and auto-updates:
+
+```bash
+claude plugin install sr
+```
+
+Then configure your project:
+
+```
+> /sr:setup
+```
+
+### Option B — Claude Code Project (scaffold)
+
+Copies agents and commands directly into your project. Best when you want full control and offline access:
 
 ```bash
 npx specrails-core@latest init
 ```
 
-The initializer runs automatically. You will see:
+Then open Claude Code in your project:
 
 ```
-✅ SpecRails initialized
-   Dashboard: http://localhost:3001
-   Board:     http://localhost:3001/board
-   Docs:      http://localhost:3001/docs
-
-Your team is ready. Create your first task to get started.
+> /sr:setup
 ```
 
-**What was installed:** SpecRails downloaded and configured the agent system, set up a local task board, and launched a dashboard server. Nothing in your codebase was modified.
+### Option C — OpenAI Codex (scaffold)
+
+Identical to Option B but targets Codex. Use this flag to generate Codex-compatible command files:
+
+```bash
+npx specrails-core@latest init --codex
+```
+
+Then open Codex in your project:
+
+```
+> /sr:setup
+```
+
+---
+
+### Plugin vs Scaffold — which should you pick?
+
+| | Plugin (`claude plugin install sr`) | Scaffold (`npx specrails-core@latest init`) |
+|---|---|---|
+| **Where logic lives** | Inside the plugin — never touches your repo | Copied into `.claude/` in your project |
+| **Updates** | Automatic — `claude plugin update sr` | Manual — re-run `npx specrails-core@latest init` |
+| **Customization** | Limited to plugin settings | Full — edit any agent or command file |
+| **Works offline** | No (fetches from Claude Code) | Yes (files are local) |
+| **Codex support** | Claude Code only | Yes — use `--codex` flag |
+| **Best for** | Most users starting fresh | Teams needing custom agents or offline CI |
+
+---
+
+After setup, you will see:
+
+```
+✅ SpecRails ready.
+
+Try your first spec:
+  > /sr:product-backlog       ← new projects
+  > /sr:implement "..."       ← implement a feature
+```
 
 > First run downloads dependencies. Expect 2–4 minutes on the initial install. Subsequent starts are instant.
 

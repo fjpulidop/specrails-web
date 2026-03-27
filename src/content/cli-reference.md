@@ -2,7 +2,29 @@
 
 <!-- specrails-web: docs slug=cli-reference -->
 
-Command reference for `specrails-core`. All commands are run via `npx specrails-core` or inside Claude Code / OpenAI Codex as slash commands.
+Command reference for `specrails-core`. All commands are run via `npx specrails-core`, via `claude plugin` for the plugin installation, or inside Claude Code / OpenAI Codex as `/sr:*` slash commands.
+
+---
+
+## Plugin management
+
+SpecRails can be installed as a Claude Code plugin. Use these commands to manage it:
+
+```bash
+# Install the sr plugin for Claude Code
+claude plugin install sr
+
+# Update to the latest version
+claude plugin update sr
+
+# List installed plugins
+claude plugin list
+
+# Remove the plugin
+claude plugin uninstall sr
+```
+
+The plugin name is `sr`. All commands use the `/sr:*` namespace.
 
 ---
 
@@ -54,9 +76,9 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
 
 ## `specrails setup`
 
-**Synopsis:** `/setup [--advanced]`
+**Synopsis:** `/sr:setup [--advanced]`
 
-**Description:** Configures your SpecRails team. Run inside Claude Code or Codex after `init`. Defaults to Quick Start mode (3 questions). Use `--advanced` for the full 5-phase wizard.
+**Description:** Configures your SpecRails team. Run inside Claude Code or Codex after `init` (scaffold) or `claude plugin install sr` (plugin). Defaults to Quick Start mode (3 questions). Use `--advanced` for the full 5-phase wizard.
 
 **Options:**
 
@@ -110,10 +132,10 @@ Runs the full 5-phase wizard:
 
 ```bash
 # Inside Claude Code or Codex — Quick Start (recommended for new users)
-/setup
+/sr:setup
 
 # Inside Claude Code or Codex — full wizard
-/setup --advanced
+/sr:setup --advanced
 ```
 
 **See also:** [`init`](#specrails-init), [`doctor`](#specrails-doctor)
@@ -266,16 +288,41 @@ npx specrails-core doctor
 
 ---
 
+## OpenSpec commands
+
+The `sr` plugin includes the full OpenSpec workflow for structured change management. All commands use the `/sr:*` namespace:
+
+| Command | What it does |
+|---------|-------------|
+| `/sr:new-change` | Start a new OpenSpec change with artifacts |
+| `/sr:ff-change` | Fast-forward through artifact creation |
+| `/sr:apply-change` | Implement tasks from an OpenSpec change |
+| `/sr:verify-change` | Verify implementation matches change artifacts |
+| `/sr:archive-change` | Archive a completed change |
+| `/sr:sync-specs` | Sync delta specs from a change to main specs |
+| `/sr:explore` | Enter explore mode — think through ideas before a change |
+| `/sr:continue-change` | Continue working on an in-progress change |
+
+OpenSpec organizes development work into explicit artifacts (spec → plan → tasks → review) before writing any code. See [OpenSpec Workflow](hub-openspec-workflow) for the full lifecycle.
+
+---
+
 ## Command summary
 
 | Command | How to invoke | What it does |
 |---------|--------------|-------------|
-| `init` | `npx specrails-core@latest init` | Install SpecRails into a project |
-| `setup` | `/setup` (Claude Code / Codex) | Configure your agent team |
+| Plugin install | `claude plugin install sr` | Install the sr plugin for Claude Code |
+| Plugin update | `claude plugin update sr` | Update the sr plugin |
+| `init` | `npx specrails-core@latest init` | Scaffold SpecRails into a project (Claude Code) |
+| `init --codex` | `npx specrails-core@latest init --codex` | Scaffold SpecRails into a project (Codex) |
+| `setup` | `/sr:setup` (Claude Code / Codex) | Configure your agent team |
 | `doctor` | `npx specrails-core doctor` | Run diagnostics |
 | `implement` | `/sr:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
 | `preview` | `/sr:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |
-| `update` | `npx specrails-core@latest update` | Update to the latest release |
+| `update` | `npx specrails-core@latest update` | Update scaffold to the latest release |
+| `product-backlog` | `/sr:product-backlog` | View prioritized backlog |
+| `new-change` | `/sr:new-change` | Start a new OpenSpec change |
+| `apply-change` | `/sr:apply-change` | Implement tasks from a change |
 
 ---
 
