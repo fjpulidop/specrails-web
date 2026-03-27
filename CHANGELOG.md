@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/fjpulidop/specrails-web/compare/v1.4.2...v1.4.3) (2026-03-27)
+
+
+### Bug Fixes
+
+* **ci:** use npm install [@latest](https://github.com/latest) to cross major versions ([#109](https://github.com/fjpulidop/specrails-web/issues/109)) ([fa02cba](https://github.com/fjpulidop/specrails-web/commit/fa02cbae899131b97985c7b332147cf34dd85c1f))
+
 ## [1.4.2](https://github.com/fjpulidop/specrails-web/compare/v1.4.1...v1.4.2) (2026-03-21)
 
 
