@@ -171,11 +171,13 @@ const TabbedTerminal = () => {
   return (
     <div className="terminal p-0 max-w-2xl mx-auto w-full" data-testid="tabbed-terminal">
       {/* Terminal chrome */}
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20 relative">
         <div className="terminal-dot bg-dracula-red" />
         <div className="terminal-dot bg-dracula-yellow" />
         <div className="terminal-dot bg-dracula-green" />
-        <span className="text-xs text-muted-foreground ml-2 font-mono">Terminal</span>
+        <span className="absolute left-1/2 -translate-x-1/2 text-xs font-mono text-muted-foreground uppercase tracking-wider">
+          <span className="text-dracula-green">Get started</span> &mdash; choose your setup
+        </span>
       </div>
 
       {/* Tab bar */}
@@ -233,27 +235,24 @@ const HeroSection = () => {
         </div>
 
         {/* Tagline */}
-        <p className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-6 animate-fade-up delay-100 leading-tight">
+        <p className="text-xl md:text-3xl font-bold tracking-tight text-foreground mb-4 animate-fade-up delay-100 leading-tight">
           Your AI Development Team.<br />
           <span className="gradient-text">From Idea to Production Code.</span>
         </p>
 
         {/* Supporting line */}
-        <p className="text-muted-foreground text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 animate-fade-up delay-200">
-          A system of 12 specialized agents that works with Claude Code and OpenAI Codex — from
-          Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
+        <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-4xl mx-auto mb-6 animate-fade-up delay-200">
+          A system of 12 specialized agents that works with Claude Code and OpenAI Codex<br />
+          From Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
         </p>
 
         {/* Tabbed terminal — 3 installation methods */}
         <div className="animate-fade-up delay-300">
-          <p className="text-xs text-muted-foreground mb-3 font-mono uppercase tracking-wider">
-            <span className="text-dracula-green">Get started</span> &mdash; choose your setup
-          </p>
           <TabbedTerminal />
         </div>
 
         {/* GitHub stars */}
-        <div className="mt-8 animate-fade-up delay-400">
+        <div className="mt-3 animate-fade-up delay-400">
           <GitHubStarsButton />
         </div>
       </div>
