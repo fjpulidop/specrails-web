@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/fjpulidop/specrails-web/compare/v1.5.1...v1.5.2) (2026-03-28)
+
+
+### Bug Fixes
+
+* restore hero section UI adjustments lost in rebase ([#120](https://github.com/fjpulidop/specrails-web/issues/120)) ([eb68ba4](https://github.com/fjpulidop/specrails-web/commit/eb68ba4171f796d7db742911ada193373cb1802a))
+
 ## [1.5.1](https://github.com/fjpulidop/specrails-web/compare/v1.5.0...v1.5.1) (2026-03-28)
 
 
