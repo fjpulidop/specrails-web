@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { DOC_ENTRIES } from "@/lib/docs-registry";
+import { DOCS } from "@/lib/docs-registry";
 import { cn } from "@/lib/utils";
 
 interface DocsSidebarProps {
@@ -17,7 +17,7 @@ export function DocsSidebar({ onNavigate }: DocsSidebarProps): JSX.Element {
       <ul className="space-y-1">
         {(() => {
           let currentSection: string | undefined = undefined;
-          return DOC_ENTRIES.map((entry) => {
+          return DOCS.map((entry) => {
             const showSectionHeader =
               entry.section !== undefined && entry.section !== currentSection;
             if (showSectionHeader) currentSection = entry.section;
