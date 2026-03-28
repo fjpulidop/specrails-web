@@ -148,4 +148,9 @@ describe("HeroSection", () => {
     fireEvent.click(codexTab);
     expect(codexTab.getAttribute("aria-selected")).toBe("true");
   });
+
+  it("renders the GitHub stars button", () => {
+    renderHero();
+    expect(screen.getByText("Star on GitHub")).toBeInTheDocument();
+  });
 });

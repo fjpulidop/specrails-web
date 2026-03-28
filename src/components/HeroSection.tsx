@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { GitHubStarsButton } from "./GitHubStarsButton";
 
 interface TabLine {
   text: string;
@@ -249,6 +250,11 @@ const HeroSection = () => {
             <span className="text-dracula-green">Get started</span> &mdash; choose your setup
           </p>
           <TabbedTerminal />
+        </div>
+
+        {/* GitHub stars */}
+        <div className="mt-8 animate-fade-up delay-400">
+          <GitHubStarsButton />
         </div>
       </div>
     </section>
