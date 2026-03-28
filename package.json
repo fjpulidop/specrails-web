@@ -1,7 +1,7 @@
 {
   "name": "specrails-web",
   "private": true,
-  "version": "1.4.2",
+  "version": "1.4.3",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -95,7 +95,7 @@
     "jsdom": "^20.0.3",
     "lovable-tagger": "^1.1.13",
     "postcss": "^8.5.6",
-    "specrails-core": "^1.7.1",
+    "specrails-core": "^3.4.0",
     "specrails-hub": "^1.20.2",
     "specrails-mcp": "^1.0.0",
     "tailwindcss": "^3.4.17",

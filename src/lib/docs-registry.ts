@@ -6,14 +6,12 @@ import cliReferenceRaw from "../content/cli-reference.md?raw";
 import conceptsRaw from "specrails-core/docs/concepts.md?raw";
 import installationRaw from "specrails-core/docs/installation.md?raw";
 import agentsRaw from "specrails-core/docs/agents.md?raw";
-import workflowsRaw from "specrails-core/docs/workflows.md?raw";
 import customizationRaw from "specrails-core/docs/customization.md?raw";
 import updatingRaw from "specrails-core/docs/updating.md?raw";
 import playbookProductDiscoveryRaw from "specrails-core/docs/playbook-product-discovery.md?raw";
 import playbookParallelDevRaw from "specrails-core/docs/playbook-parallel-dev.md?raw";
 import playbookOssMaintainerRaw from "specrails-core/docs/playbook-oss-maintainer.md?raw";
 import changelogRaw from "specrails-core/docs/changelog.md?raw";
-import apiReferenceRaw from "specrails-core/docs/api-reference.md?raw";
 import deploymentRaw from "specrails-core/docs/deployment.md?raw";
 
 // Hub docs (specrails-hub)
@@ -100,14 +98,6 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "Agents",
     description: "Every agent explained — role, model, and scope",
     content: agentsRaw,
-    section: "specrails-core",
-    product: "core",
-  },
-  {
-    slug: "workflows",
-    title: "Workflows & Commands",
-    description: "How to use /implement, /product-backlog, and more",
-    content: workflowsRaw,
     section: "specrails-core",
     product: "core",
   },
@@ -256,13 +246,6 @@ export const DOC_ENTRIES: DocEntry[] = [
     title: "CLI Reference",
     description: "All specrails-core commands — init, setup, doctor, implement, preview, update",
     content: cliReferenceRaw,
-    section: "Reference",
-  },
-  {
-    slug: "api-reference",
-    title: "API Reference",
-    description: "Complete reference for the specrails-hub local API endpoints",
-    content: apiReferenceRaw,
     section: "Reference",
   },
   {

@@ -48,7 +48,7 @@ jobs:
         run: npm ci
 
       - name: Update ${{ steps.meta.outputs.package }}
-        run: npm update ${{ steps.meta.outputs.package }}
+        run: npm install ${{ steps.meta.outputs.package }}@latest
 
       - name: Check for changes
         id: changes

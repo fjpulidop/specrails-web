@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 29 entries (9 core + 9 hub + 3 mcp + 3 playbooks + 5 reference)", () => {
-    expect(DOC_ENTRIES).toHaveLength(29);
+  it("has 27 entries (8 core + 9 hub + 3 mcp + 3 playbooks + 4 reference)", () => {
+    expect(DOC_ENTRIES).toHaveLength(27);
   });
 
   it("getDocBySlug returns correct entry", () => {
