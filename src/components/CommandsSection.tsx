@@ -5,7 +5,7 @@ const commands = [
   { cmd: "/specrails:setup", desc: "5-phase interactive wizard. Analyzes your codebase, generates personas, configures the workflow, and renders all files.", badge: "23.4 KB of intelligence", icon: Settings, color: "text-dracula-purple" },
   { cmd: "/specrails:implement", desc: "The flagship command. 7-phase pipeline from input to deploy with parallel agents.", badge: "21.6 KB of orchestration", icon: Rocket, color: "text-dracula-pink" },
   { cmd: "/specrails:batch-implement", desc: "Multi-feature orchestrator. Computes dependency graphs, detects cycles, and executes in waves (Kahn's algorithm).", badge: "Multi-feature", icon: Layers, color: "text-dracula-cyan" },
-  { cmd: "/specrails:product-backlog", desc: "Backlog management prioritized by VPC scoring against user personas. Parses prerequisites and topological-sorts features for safe ordering.", badge: "Product-driven", icon: ClipboardList, color: "text-dracula-green" },
+  { cmd: "/specrails:get-backlog-specs", desc: "Backlog management prioritized by VPC scoring against user personas. Parses prerequisites and topological-sorts features for safe ordering.", badge: "Product-driven", icon: ClipboardList, color: "text-dracula-green" },
   { cmd: "/specrails:compat-check", desc: "Backwards compatibility analyzer. Detects breaking API, schema, and contract changes, then generates a migration guide with a recommended rollout strategy.", badge: "Compatibility", icon: ShieldCheck, color: "text-dracula-orange" },
   { cmd: "/specrails:why", desc: "AI-powered in-context help. Search agent decision rationale and architectural explanations recorded throughout the pipeline.", badge: "Decision search", icon: HelpCircle, color: "text-dracula-yellow" },
 ];

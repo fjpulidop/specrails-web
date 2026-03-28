@@ -129,7 +129,7 @@ describe("Section components in visible state (isVisible=true)", () => {
     expect(screen.getByText("/specrails:setup")).toBeInTheDocument();
     expect(screen.getByText("/specrails:implement")).toBeInTheDocument();
     expect(screen.getByText("/specrails:batch-implement")).toBeInTheDocument();
-    expect(screen.getByText("/specrails:product-backlog")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:get-backlog-specs")).toBeInTheDocument();
     expect(screen.getByText("/specrails:compat-check")).toBeInTheDocument();
     expect(screen.getByText("/specrails:why")).toBeInTheDocument();
   });
