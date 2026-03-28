@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
-import { DOC_ENTRIES } from "@/lib/docs-registry";
+import { DOCS } from "@/lib/docs-registry";
 
 export function DocsDropdown(): JSX.Element {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const entries = DOC_ENTRIES;
+  const entries = DOCS;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

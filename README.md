@@ -124,7 +124,7 @@ src/
 ## Features
 
 - **Dracula Theme** — Dark color scheme with glassmorphism effects and gradient accents
-- **Animated Terminal Demo** — Realistic line-by-line simulation of the `/sr:implement` command
+- **Animated Terminal Demo** — Realistic line-by-line simulation of the `/specrails:implement` command
 - **Particle Background** — Canvas-based particle network animation in the hero section
 - **Scroll Animations** — Intersection Observer-based fade-in and slide-up transitions
 - **Live Roadmap** — Dynamically fetches open issues from the specrails GitHub repository

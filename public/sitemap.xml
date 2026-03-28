@@ -17,12 +17,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://specrails.dev/docs/getting-started</loc>
+    <loc>https://specrails.dev/docs/claude-getting-started</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://specrails.dev/docs/tutorial-quickstart</loc>
+    <loc>https://specrails.dev/docs/codex-getting-started</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -38,11 +38,6 @@
   </url>
   <url>
     <loc>https://specrails.dev/docs/agents</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://specrails.dev/docs/workflows</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -78,11 +73,6 @@
   </url>
   <url>
     <loc>https://specrails.dev/docs/cli-reference</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://specrails.dev/docs/api-reference</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

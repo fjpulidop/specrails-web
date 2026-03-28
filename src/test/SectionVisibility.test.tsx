@@ -126,12 +126,12 @@ describe("Section components in visible state (isVisible=true)", () => {
 
   it("CommandsSection renders all command cards", () => {
     withProviders(<CommandsSection />);
-    expect(screen.getByText("/setup")).toBeInTheDocument();
-    expect(screen.getByText("/sr:implement")).toBeInTheDocument();
-    expect(screen.getByText("/sr:batch-implement")).toBeInTheDocument();
-    expect(screen.getByText("/sr:product-backlog")).toBeInTheDocument();
-    expect(screen.getByText("/sr:compat-check")).toBeInTheDocument();
-    expect(screen.getByText("/sr:why")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:setup")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:implement")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:batch-implement")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:product-backlog")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:compat-check")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:why")).toBeInTheDocument();
   });
 
   it("FeaturesSection renders with visible classes", () => {
@@ -201,7 +201,7 @@ describe("Section components in visible state (isVisible=true)", () => {
 
   it("DemoSection renders terminal header", () => {
     withProviders(<DemoSection />);
-    expect(screen.getByText(/specrails — \/sr:implement/)).toBeInTheDocument();
+    expect(screen.getByText(/specrails — \/specrails:implement/)).toBeInTheDocument();
   });
 
   it("FooterSection renders footer content", () => {

@@ -31,7 +31,7 @@ const PipelineSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          The <span className="font-mono text-dracula-cyan">/sr:implement</span> command orchestrates the full pipeline.
+          The <span className="font-mono text-dracula-cyan">/specrails:implement</span> command orchestrates the full pipeline.
         </p>
 
         <div className="relative">

@@ -76,6 +76,6 @@ describe("GitHubStarsButton", () => {
     fetchMock.mockResolvedValueOnce({ ok: true, json: () => Promise.resolve({ stargazers_count: 0 }) });
     renderButton();
     const link = screen.getByRole("link");
-    expect(link).toHaveAttribute("href", "https://github.com/fjpulidop/specrails");
+    expect(link).toHaveAttribute("href", "https://github.com/fjpulidop/specrails-core");
   });
 });

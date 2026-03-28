@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeAll, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HeroSection from "@/components/HeroSection";
@@ -96,41 +96,23 @@ describe("HeroSection", () => {
     expect(screen.getByText(/12 specialized agents/i)).toBeInTheDocument();
   });
 
-  it("renders the install command", () => {
+  it("renders the tabbed terminal", () => {
     renderHero();
-    expect(screen.getByText("npx specrails-core@latest init")).toBeInTheDocument();
+    expect(screen.getByTestId("tabbed-terminal")).toBeInTheDocument();
   });
 
-  it("renders the copy button with aria-label", () => {
-    const { container } = renderHero();
-    const btn = container.querySelector("button[aria-label='Copy install command']");
-    expect(btn).toBeInTheDocument();
+  it("renders all three install tabs", () => {
+    renderHero();
+    expect(screen.getByTestId("tab-claude")).toBeInTheDocument();
+    expect(screen.getByTestId("tab-plugin")).toBeInTheDocument();
+    expect(screen.getByTestId("tab-codex")).toBeInTheDocument();
   });
 
-  it("renders 'No account required' text", () => {
+  it("renders tab labels for Claude Code CLI, Claude Code Plugin, and Codex CLI", () => {
     const { container } = renderHero();
-    expect(container.textContent).toContain("No account required");
-  });
-
-  it("renders Star on GitHub button", () => {
-    const { container } = renderHero();
-    expect(container.textContent).toContain("Star on GitHub");
-  });
-
-  it("renders Read the docs link", () => {
-    const { container } = renderHero();
-    const links = container.querySelectorAll("a");
-    const docsLink = Array.from(links).find(
-      (a) => a.getAttribute("href") === "/docs"
-    );
-    expect(docsLink).toBeDefined();
-    expect(docsLink?.textContent).toContain("Read the docs");
-  });
-
-  it("renders both terminal previews (npx and git clone)", () => {
-    const { container } = renderHero();
-    expect(container.textContent).toContain("Option A");
-    expect(container.textContent).toContain("Option B");
+    expect(container.textContent).toContain("Claude Code CLI");
+    expect(container.textContent).toContain("Claude Code Plugin");
+    expect(container.textContent).toContain("Codex CLI");
   });
 
   it("renders the canvas element for particle background", () => {
@@ -138,48 +120,37 @@ describe("HeroSection", () => {
     expect(container.querySelector("canvas")).toBeInTheDocument();
   });
 
-  // --- Copy button interaction ---
-
-  it("shows 'Copy' text by default on copy button", () => {
+  it("renders 'Get started' text", () => {
     const { container } = renderHero();
-    const btn = container.querySelector("button[aria-label='Copy install command']");
-    expect(btn?.textContent).toContain("Copy");
+    expect(container.textContent).toContain("Get started");
   });
 
-  it("shows 'Copied!' after clicking copy button when clipboard is available", async () => {
-    const writeText = vi.fn().mockResolvedValue(undefined);
-    Object.assign(navigator, {
-      clipboard: { writeText },
-    });
+  // --- Tab interaction ---
 
-    const { container } = renderHero();
-    const btn = container.querySelector("button[aria-label='Copy install command']")!;
-
-    await act(async () => {
-      fireEvent.click(btn);
-    });
-
-    expect(writeText).toHaveBeenCalledWith("npx specrails-core@latest init");
-    expect(btn.textContent).toContain("Copied!");
+  it("shows Claude Code CLI tab as active by default", () => {
+    renderHero();
+    const claudeTab = screen.getByTestId("tab-claude");
+    expect(claudeTab.getAttribute("aria-selected")).toBe("true");
   });
 
-  it("handles clipboard error gracefully", async () => {
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn().mockRejectedValue(new Error("Not allowed")),
-      },
-    });
+  it("switches to Plugin tab when clicked", () => {
+    renderHero();
+    const pluginTab = screen.getByTestId("tab-plugin");
+    fireEvent.click(pluginTab);
+    expect(pluginTab.getAttribute("aria-selected")).toBe("true");
+    const claudeTab = screen.getByTestId("tab-claude");
+    expect(claudeTab.getAttribute("aria-selected")).toBe("false");
+  });
 
-    const { container } = renderHero();
-    const btn = container.querySelector("button[aria-label='Copy install command']")!;
+  it("switches to Codex tab when clicked", () => {
+    renderHero();
+    const codexTab = screen.getByTestId("tab-codex");
+    fireEvent.click(codexTab);
+    expect(codexTab.getAttribute("aria-selected")).toBe("true");
+  });
 
-    await act(async () => {
-      fireEvent.click(btn);
-      // Wait for the rejected promise to settle
-      await new Promise((r) => setTimeout(r, 0));
-    });
-
-    // Should still show "Copy" (not "Copied!")
-    expect(btn.textContent).toContain("Copy");
+  it("renders the GitHub stars button", () => {
+    renderHero();
+    expect(screen.getByText("Star on GitHub")).toBeInTheDocument();
   });
 });

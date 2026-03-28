@@ -1,6 +1,5 @@
 import readmeRaw from "specrails-core/docs/README.md?raw";
-import gettingStartedRaw from "specrails-core/docs/getting-started.md?raw";
-import tutorialQuickstartRaw from "../content/tutorial-quickstart.md?raw";
+import claudeGettingStartedRaw from "../content/getting-started.md?raw";
 import codexGettingStartedRaw from "../content/codex-getting-started.md?raw";
 import cliReferenceRaw from "../content/cli-reference.md?raw";
 import conceptsRaw from "specrails-core/docs/concepts.md?raw";
@@ -30,16 +29,10 @@ export const DOC_ENTRIES: DocEntry[] = [
     content: readmeRaw,
   },
   {
-    slug: "getting-started",
-    title: "Getting Started",
+    slug: "claude-getting-started",
+    title: "Getting Started with Claude Code",
     description: "Install and run your first workflow in 5 minutes",
-    content: gettingStartedRaw,
-  },
-  {
-    slug: "tutorial-quickstart",
-    title: "Getting Started in 5 Minutes",
-    description: "Zero to first agent-generated PR in 5 minutes",
-    content: tutorialQuickstartRaw,
+    content: claudeGettingStartedRaw,
     section: "Tutorials",
   },
   {
@@ -122,17 +115,32 @@ export const DOC_ENTRIES: DocEntry[] = [
   },
 ];
 
+// Strip inline markdown navigation lines (e.g. "[← Back to Docs](...) · [Next →](...)")
+// that come from source docs — DocPage renders its own prev/next navigation.
+function stripMarkdownNav(content: string): string {
+  return content
+    .split("\n")
+    .filter((line) => !/^\[←[^\]]*\]\([^)]*\)/.test(line.trim()))
+    .join("\n")
+    .trimEnd();
+}
+
+export const DOCS = DOC_ENTRIES.map((entry) => ({
+  ...entry,
+  content: stripMarkdownNav(entry.content),
+}));
+
 export function getDocBySlug(slug: string): DocEntry | undefined {
-  return DOC_ENTRIES.find((d) => d.slug === slug);
+  return DOCS.find((d) => d.slug === slug);
 }
 
 export function getAdjacentDocs(slug: string): {
   prev: DocEntry | null;
   next: DocEntry | null;
 } {
-  const idx = DOC_ENTRIES.findIndex((d) => d.slug === slug);
+  const idx = DOCS.findIndex((d) => d.slug === slug);
   return {
-    prev: idx > 0 ? DOC_ENTRIES[idx - 1] : null,
-    next: idx < DOC_ENTRIES.length - 1 ? DOC_ENTRIES[idx + 1] : null,
+    prev: idx > 0 ? DOCS[idx - 1] : null,
+    next: idx < DOCS.length - 1 ? DOCS[idx + 1] : null,
   };
 }

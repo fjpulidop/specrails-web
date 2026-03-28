@@ -86,8 +86,8 @@ After setup, the wizard suggests your first command based on project type:
 ✅ Setup complete.
 
 Try your first spec:
-  > /sr:product-backlog       ← new projects
-  > /sr:tech-audit            ← existing codebases
+  > /specrails:product-backlog       ← new projects
+  > /specrails:tech-audit            ← existing codebases
 ```
 
 **Advanced mode**
@@ -146,8 +146,8 @@ npx specrails-core doctor --verbose
 
 ## `specrails implement`
 
-**Synopsis:** `/sr:implement "<description>" [options]`
-**Alias:** `/sr:run "<description>" [options]`
+**Synopsis:** `/specrails:implement "<description>" [options]`
+**Alias:** `/specrails:run "<description>" [options]`
 
 **Description:** Runs the full agent pipeline for a feature. The pipeline goes: architect → developer → test writer → security reviewer → reviewer → pull request. Accepts a plain-language description or GitHub issue numbers.
 
@@ -161,16 +161,16 @@ npx specrails-core doctor --verbose
 
 ```bash
 # Implement from a plain description
-/sr:implement "add a health check endpoint"
+/specrails:implement "add a health check endpoint"
 
 # Implement from GitHub issues
-/sr:implement #42, #43
+/specrails:implement #42, #43
 
 # Multiple issues in one run
-/sr:implement #42 #43 #44
+/specrails:implement #42 #43 #44
 
 # Preview what the pipeline would produce — no code written to working tree
-/sr:implement "add dark mode" --dry-run
+/specrails:implement "add dark mode" --dry-run
 ```
 
 **Pipeline stages:**
@@ -198,7 +198,7 @@ npx specrails-core doctor --verbose
 
 ## `specrails preview`
 
-**Synopsis:** `/sr:implement "<description>" --dry-run`
+**Synopsis:** `/specrails:implement "<description>" --dry-run`
 
 **Description:** Runs the full agent pipeline in dry-run mode. Output is written to `.claude/.dry-run/` instead of your working tree. No branches are created, no PRs are opened. Use this to review what SpecRails would produce before committing.
 
@@ -212,7 +212,7 @@ npx specrails-core doctor --verbose
 
 ```bash
 # Preview a feature before applying
-/sr:implement "add dark mode" --dry-run
+/specrails:implement "add dark mode" --dry-run
 
 # Inspect the dry-run output
 ls .claude/.dry-run/
@@ -224,7 +224,7 @@ After reviewing the dry-run output, run the same command without `--dry-run` to 
 
 ```bash
 # Apply the same feature for real
-/sr:implement "add dark mode"
+/specrails:implement "add dark mode"
 ```
 
 **See also:** [`implement`](#specrails-implement)
@@ -273,8 +273,8 @@ npx specrails-core doctor
 | `init` | `npx specrails-core@latest init` | Install SpecRails into a project |
 | `setup` | `/setup` (Claude Code / Codex) | Configure your agent team |
 | `doctor` | `npx specrails-core doctor` | Run diagnostics |
-| `implement` | `/sr:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
-| `preview` | `/sr:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |
+| `implement` | `/specrails:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
+| `preview` | `/specrails:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |
 | `update` | `npx specrails-core@latest update` | Update to the latest release |
 
 ---
