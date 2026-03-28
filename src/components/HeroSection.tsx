@@ -1,8 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { Copy, Check } from "lucide-react";
-import { GitHubStarsButton } from "@/components/GitHubStarsButton";
-
-const INSTALL_COMMAND = "npm install -g specrails-hub";
 
 interface TabLine {
   text: string;
@@ -215,49 +211,6 @@ const TabbedTerminal = () => {
   );
 };
 
-const InstallCommand = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(INSTALL_COMMAND);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // clipboard not available in test/SSR environments
-    }
-  };
-
-  return (
-    <div className="terminal p-0 max-w-lg mx-auto w-full">
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border/20">
-        <div className="terminal-dot bg-dracula-red" />
-        <div className="terminal-dot bg-dracula-yellow" />
-        <div className="terminal-dot bg-dracula-green" />
-        <span className="text-xs text-muted-foreground ml-2 font-mono">Terminal</span>
-      </div>
-      <div className="flex items-center justify-between px-4 py-3.5 gap-4">
-        <code className="font-mono text-sm md:text-base text-left">
-          <span className="text-muted-foreground select-none">$ </span>
-          <span className="text-dracula-green">{INSTALL_COMMAND}</span>
-        </code>
-        <button
-          onClick={handleCopy}
-          aria-label="Copy install command"
-          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0 px-2 py-1 rounded border border-border/20 hover:border-border/50"
-        >
-          {copied ? (
-            <Check className="w-3.5 h-3.5 text-dracula-green" />
-          ) : (
-            <Copy className="w-3.5 h-3.5" />
-          )}
-          <span>{copied ? "Copied!" : "Copy"}</span>
-        </button>
-      </div>
-    </div>
-  );
-};
-
 const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-20 overflow-hidden">
@@ -294,23 +247,6 @@ const HeroSection = () => {
           specrails-hub is your AI control center &mdash; 12 specialized agents, real-time pipeline, cost analytics and AI chat, all from your browser.
           Prefer the terminal? specrails-core is still there.
         </p>
-
-        {/* Install command — primary CTA */}
-        <div className="mb-6 animate-fade-up delay-300">
-          <InstallCommand />
-          <p className="text-xs text-muted-foreground mt-2.5 font-mono">
-            No account required &middot; Runs locally &middot; Includes specrails-core
-          </p>
-        </div>
-
-        {/* Secondary CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-16 animate-fade-up delay-400">
-          <GitHubStarsButton />
-          <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group">
-            Read the docs
-            <span className="transition-transform group-hover:translate-x-0.5 inline-block">&rarr;</span>
-          </a>
-        </div>
 
         {/* Single tabbed terminal — 3 installation methods */}
         <div className="animate-fade-up delay-500">
