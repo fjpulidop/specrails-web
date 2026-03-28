@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/fjpulidop/specrails-web/compare/v1.4.3...v1.5.0) (2026-03-28)
+
+
+### Features
+
+* hero tabbed terminal + namespace migration /sr: → /specrails: ([#114](https://github.com/fjpulidop/specrails-web/issues/114)) ([cbe88cf](https://github.com/fjpulidop/specrails-web/commit/cbe88cfacb2c73ae258b28107868a1d9165e5239))
+
 ## [1.4.3](https://github.com/fjpulidop/specrails-web/compare/v1.4.2...v1.4.3) (2026-03-27)
 
 
