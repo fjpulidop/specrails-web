@@ -18,7 +18,6 @@ const Navbar = () => {
   const links = [
     { label: "Pipeline", href: "/#pipeline" },
     { label: "Features", href: "/#features" },
-    { label: "Install", href: "/#install" },
     { label: "Commands", href: "/#commands" },
   ];
 
