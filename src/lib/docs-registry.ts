@@ -1,6 +1,5 @@
 import readmeRaw from "specrails-core/docs/README.md?raw";
-import gettingStartedRaw from "../content/getting-started.md?raw";
-import tutorialQuickstartRaw from "../content/tutorial-quickstart.md?raw";
+import claudeGettingStartedRaw from "../content/getting-started.md?raw";
 import codexGettingStartedRaw from "../content/codex-getting-started.md?raw";
 import cliReferenceRaw from "../content/cli-reference.md?raw";
 import conceptsRaw from "specrails-core/docs/concepts.md?raw";
@@ -30,16 +29,10 @@ export const DOC_ENTRIES: DocEntry[] = [
     content: readmeRaw,
   },
   {
-    slug: "getting-started",
+    slug: "claude-getting-started",
     title: "Getting Started with Claude Code",
     description: "Install and run your first workflow in 5 minutes",
-    content: gettingStartedRaw,
-  },
-  {
-    slug: "tutorial-quickstart",
-    title: "Getting Started in 5 Minutes",
-    description: "Zero to first agent-generated PR in 5 minutes",
-    content: tutorialQuickstartRaw,
+    content: claudeGettingStartedRaw,
     section: "Tutorials",
   },
   {

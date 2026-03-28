@@ -105,4 +105,3 @@ Now that you're running, learn how the system thinks:
 
 - [Core Concepts](/docs/concepts) — understand the pipeline architecture and product-driven approach
 - [Agents](/docs/agents) — meet each agent and understand their role
-- [Getting Started in 5 Minutes](/docs/tutorial-quickstart) — step-by-step walkthrough of your first feature
