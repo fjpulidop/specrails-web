@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/fjpulidop/specrails-web/compare/v1.5.0...v1.5.1) (2026-03-28)
+
+
+### Bug Fixes
+
+* **navbar:** remove Install link ([#118](https://github.com/fjpulidop/specrails-web/issues/118)) ([7e6db36](https://github.com/fjpulidop/specrails-web/commit/7e6db36899faa9a70acb1d47943c2f64d109b496))
+
 ## [1.5.0](https://github.com/fjpulidop/specrails-web/compare/v1.4.3...v1.5.0) (2026-03-28)
 
 
