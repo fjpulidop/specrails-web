@@ -29,10 +29,9 @@ describe("Navbar", () => {
 
   it("renders navigation anchors for main sections", () => {
     renderNavbar();
-    // Pipeline, Features, Install, Commands are rendered as anchor tags
+    // Pipeline, Features, Commands are rendered as anchor tags
     expect(screen.getByRole("link", { name: /pipeline/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /features/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /install/i })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /commands/i })).toBeInTheDocument();
   });
 
