@@ -50,7 +50,7 @@ The wizard analyzes your codebase, generates personas, and configures your agent
 ## Step 3 — Run your first task
 
 ```
-> /sr:implement "add a health check endpoint"
+> /specrails:implement "add a health check endpoint"
 ```
 
 The full pipeline runs: Architect → Developer → Security Reviewer → Reviewer → PR.
@@ -80,7 +80,7 @@ All specrails features work with both CLIs:
 
 **Can I switch between Claude Code and Codex on the same installation?**
 
-Yes. specrails installs into `.claude/` — a directory it creates in your project root. The name comes from historical convention; it is not tied to the Claude Code binary. You can run `/setup` or any `/sr:*` command from either CLI at any time.
+Yes. specrails installs into `.claude/` — a directory it creates in your project root. The name comes from historical convention; it is not tied to the Claude Code binary. You can run `/setup` or any `/specrails:*` command from either CLI at any time.
 
 ---
 

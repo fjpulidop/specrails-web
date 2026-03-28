@@ -1,24 +1,54 @@
 import { useEffect, useState, useRef } from "react";
-import { Copy, Check } from "lucide-react";
-import { GitHubStarsButton } from "@/components/GitHubStarsButton";
 
-const INSTALL_COMMAND = "npx specrails-core@latest init";
+interface TabLine {
+  text: string;
+  color: string;
+  delay: number;
+}
 
-const gitCloneLines = [
-  { text: "$ git clone https://github.com/fjpulidop/specrails-core.git", color: "text-dracula-green", delay: 0 },
-  { text: "$ ./specrails/install.sh --root-dir <your-project>", color: "text-dracula-green", delay: 800 },
-  { text: "", color: "text-foreground", delay: 1200 },
-  { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1600 },
-  { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 2000 },
-  { text: "🚀 Ready! Run /setup in Claude Code or Codex", color: "text-dracula-pink", delay: 2400 },
-];
+interface InstallTab {
+  id: string;
+  label: string;
+  lines: TabLine[];
+}
 
-const npxLines = [
-  { text: "$ npx specrails-core@latest init --root-dir <your-project>", color: "text-dracula-green", delay: 0 },
-  { text: "", color: "text-foreground", delay: 600 },
-  { text: "✅ Templates installed", color: "text-dracula-cyan", delay: 1000 },
-  { text: "✅ Commands installed", color: "text-dracula-cyan", delay: 1400 },
-  { text: "🚀 Ready! Run /setup in Claude Code or Codex", color: "text-dracula-pink", delay: 1800 },
+const installTabs: InstallTab[] = [
+  {
+    id: "claude",
+    label: "Claude Code CLI",
+    lines: [
+      { text: "$ npx specrails-core@latest init", color: "text-dracula-green", delay: 0 },
+      { text: "\u2713 Agents configured for Claude Code", color: "text-dracula-cyan", delay: 700 },
+      { text: "", color: "text-foreground", delay: 900 },
+      { text: "$ /specrails:setup", color: "text-dracula-green", delay: 1100 },
+      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
+      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+    ],
+  },
+  {
+    id: "plugin",
+    label: "Claude Code Plugin",
+    lines: [
+      { text: "$ claude plugin install specrails", color: "text-dracula-green", delay: 0 },
+      { text: "\u2713 Plugin installed successfully", color: "text-dracula-cyan", delay: 700 },
+      { text: "", color: "text-foreground", delay: 900 },
+      { text: "$ /specrails:setup", color: "text-dracula-green", delay: 1100 },
+      { text: "\u2713 specrails plugin active", color: "text-dracula-cyan", delay: 1700 },
+      { text: "$ # Ready to use /specrails:* commands", color: "text-dracula-pink", delay: 2100 },
+    ],
+  },
+  {
+    id: "codex",
+    label: "Codex CLI",
+    lines: [
+      { text: "$ npx specrails-core@latest init --codex", color: "text-dracula-green", delay: 0 },
+      { text: "\u2713 Agents configured for Codex", color: "text-dracula-cyan", delay: 700 },
+      { text: "", color: "text-foreground", delay: 900 },
+      { text: "$ codex /specrails:setup", color: "text-dracula-green", delay: 1100 },
+      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
+      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+    ],
+  },
 ];
 
 const ParticleBackground = () => {
@@ -77,7 +107,6 @@ const ParticleBackground = () => {
       animationId = requestAnimationFrame(draw);
     };
 
-    // Observe the parent section — absolute canvas gets its size from there
     const parent = canvas.parentElement;
     if (!parent) return;
 
@@ -116,76 +145,67 @@ const ParticleBackground = () => {
   );
 };
 
-const AnimatedTerminal = ({ lines, label }: { lines: typeof gitCloneLines; label: string }) => {
+const TabbedTerminal = () => {
+  const [activeTab, setActiveTab] = useState(0);
   const [visibleLines, setVisibleLines] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
+
+  const currentTab = installTabs[activeTab];
 
   useEffect(() => {
-    const timers = lines.map((line, i) =>
+    setVisibleLines(0);
+    const timers = currentTab.lines.map((line, i) =>
       setTimeout(() => setVisibleLines(i + 1), line.delay)
     );
     return () => timers.forEach(clearTimeout);
-  }, [lines]);
+  }, [animKey, currentTab]);
 
-  return (
-    <div className="terminal p-0 flex-1 min-w-0">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20">
-        <div className="terminal-dot bg-dracula-red" />
-        <div className="terminal-dot bg-dracula-yellow" />
-        <div className="terminal-dot bg-dracula-green" />
-        <span className="text-xs text-muted-foreground ml-2">{label}</span>
-      </div>
-      <div className="p-4 text-left text-sm leading-relaxed h-[200px] overflow-hidden">
-        {lines.slice(0, visibleLines).map((line, i) => (
-          <div key={i} className={`${line.color} animate-fade-up`}>
-            {line.text || "\u00A0"}
-          </div>
-        ))}
-        {visibleLines < lines.length && (
-          <span className="inline-block w-2 h-4 bg-dracula-green animate-pulse" />
-        )}
-      </div>
-    </div>
-  );
-};
-
-const InstallCommand = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(INSTALL_COMMAND);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      // clipboard not available in test/SSR environments
+  const handleTabClick = (index: number) => {
+    if (index !== activeTab) {
+      setActiveTab(index);
+      setAnimKey((k) => k + 1);
     }
   };
 
   return (
-    <div className="terminal p-0 max-w-lg mx-auto w-full">
-      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border/20">
+    <div className="terminal p-0 max-w-2xl mx-auto w-full" data-testid="tabbed-terminal">
+      {/* Terminal chrome */}
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/20">
         <div className="terminal-dot bg-dracula-red" />
         <div className="terminal-dot bg-dracula-yellow" />
         <div className="terminal-dot bg-dracula-green" />
         <span className="text-xs text-muted-foreground ml-2 font-mono">Terminal</span>
       </div>
-      <div className="flex items-center justify-between px-4 py-3.5 gap-4">
-        <code className="font-mono text-sm md:text-base text-left">
-          <span className="text-muted-foreground select-none">$ </span>
-          <span className="text-dracula-green">{INSTALL_COMMAND}</span>
-        </code>
-        <button
-          onClick={handleCopy}
-          aria-label="Copy install command"
-          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors shrink-0 px-2 py-1 rounded border border-border/20 hover:border-border/50"
-        >
-          {copied ? (
-            <Check className="w-3.5 h-3.5 text-dracula-green" />
-          ) : (
-            <Copy className="w-3.5 h-3.5" />
-          )}
-          <span>{copied ? "Copied!" : "Copy"}</span>
-        </button>
+
+      {/* Tab bar */}
+      <div className="flex border-b border-border/20">
+        {installTabs.map((tab, index) => (
+          <button
+            key={tab.id}
+            data-testid={`tab-${tab.id}`}
+            onClick={() => handleTabClick(index)}
+            aria-selected={index === activeTab}
+            className={`px-4 py-2.5 text-xs font-mono transition-colors border-b-2 -mb-px ${
+              index === activeTab
+                ? "text-dracula-green border-dracula-green"
+                : "text-muted-foreground border-transparent hover:text-foreground"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Terminal content */}
+      <div className="p-4 text-left text-sm leading-relaxed h-[180px] overflow-hidden">
+        {currentTab.lines.slice(0, visibleLines).map((line, i) => (
+          <div key={i} className={`${line.color} animate-fade-up`}>
+            {line.text || "\u00A0"}
+          </div>
+        ))}
+        {visibleLines < currentTab.lines.length && (
+          <span className="inline-block w-2 h-4 bg-dracula-green animate-pulse" />
+        )}
       </div>
     </div>
   );
@@ -211,7 +231,7 @@ const HeroSection = () => {
           Open Source &middot; MIT License
         </div>
 
-        {/* Tagline — large, bold, two lines */}
+        {/* Tagline */}
         <p className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6 animate-fade-up delay-100 leading-tight">
           Your AI Development Team.<br />
           <span className="gradient-text">From Idea to Production Code.</span>
@@ -223,37 +243,12 @@ const HeroSection = () => {
           Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
         </p>
 
-        {/* Install command — primary CTA */}
-        <div className="mb-6 animate-fade-up delay-300">
-          <InstallCommand />
-          <p className="text-xs text-muted-foreground mt-2.5 font-mono">
-            No account required &middot; Runs locally
+        {/* Tabbed terminal — 3 installation methods */}
+        <div className="animate-fade-up delay-300">
+          <p className="text-xs text-muted-foreground mb-3 font-mono uppercase tracking-wider">
+            <span className="text-dracula-green">Get started</span> &mdash; choose your setup
           </p>
-        </div>
-
-        {/* Secondary CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-16 animate-fade-up delay-400">
-          <GitHubStarsButton />
-          <a href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1 group">
-            Read the docs
-            <span className="transition-transform group-hover:translate-x-0.5 inline-block">&rarr;</span>
-          </a>
-        </div>
-
-        {/* Terminal previews */}
-        <div className="flex flex-col md:flex-row gap-4 animate-fade-up delay-500">
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-              <span className="text-dracula-purple">Option A</span> &mdash; npx
-            </p>
-            <AnimatedTerminal lines={npxLines} label="npx" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-muted-foreground mb-2 font-mono uppercase tracking-wider">
-              <span className="text-dracula-cyan">Option B</span> &mdash; git clone
-            </p>
-            <AnimatedTerminal lines={gitCloneLines} label="git clone" />
-          </div>
+          <TabbedTerminal />
         </div>
       </div>
     </section>
