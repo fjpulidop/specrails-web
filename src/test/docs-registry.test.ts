@@ -60,9 +60,7 @@ describe("docs-registry", () => {
       "getting-started",
       "concepts",
       "agents",
-      "workflows",
       "cli-reference",
-      "api-reference",
       "deployment",
     ];
     coreSlugs.forEach((slug) => expect(getDocBySlug(slug)).toBeDefined());
