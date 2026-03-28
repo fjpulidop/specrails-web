@@ -531,7 +531,7 @@ Store the full configuration in `.claude/backlog-config.json`:
 
 #### If None
 
-- Skip `/sr:product-backlog` and `/sr:update-product-driven-backlog` commands.
+- Skip `/sr:get-backlog-specs` and `/sr:auto-propose-backlog-specs` commands.
 - The `/sr:implement` command will still work with text descriptions.
 
 ### 3.3 Git & shipping workflow
@@ -563,8 +563,8 @@ If automatic, also check if `gh` is authenticated (for PR creation). If not, war
 |---------|---------|----------|
 | /sr:implement | Full pipeline: sr-architect → sr-developer → sr-reviewer → ship | sr-architect + sr-developer + sr-reviewer |
 | /sr:batch-implement | Orchestrate multiple features in dependency-aware waves | sr-architect + sr-developer + sr-reviewer |
-| /sr:product-backlog | View prioritized backlog with VPC scores | sr-product-analyst + Backlog provider |
-| /sr:update-product-driven-backlog | Generate new feature ideas via product discovery | sr-product-manager + Backlog provider |
+| /sr:get-backlog-specs | View prioritized backlog with VPC scores | sr-product-analyst + Backlog provider |
+| /sr:auto-propose-backlog-specs | Generate new feature ideas via product discovery | sr-product-manager + Backlog provider |
 | /sr:health-check | Run tests, linting, coverage, complexity, and dependency audit | None |
 | /sr:compat-check | Snapshot API surface and detect breaking changes | None |
 | /sr:refactor-recommender | Scan for refactoring opportunities ranked by impact/effort | None |
@@ -660,8 +660,8 @@ Write each persona to `.claude/agents/personas/`:
 For each selected command, read the template and adapt:
 - `setup-templates/commands/sr/implement.md` → `.claude/commands/sr/implement.md`
 - `setup-templates/commands/sr/batch-implement.md` → `.claude/commands/sr/batch-implement.md`
-- `setup-templates/commands/sr/product-backlog.md` → `.claude/commands/sr/product-backlog.md` (if `BACKLOG_PROVIDER != none`)
-- `setup-templates/commands/sr/update-product-driven-backlog.md` → `.claude/commands/sr/update-product-driven-backlog.md` (if `BACKLOG_PROVIDER != none`)
+- `setup-templates/commands/sr/get-backlog-specs.md` → `.claude/commands/sr/get-backlog-specs.md` (if `BACKLOG_PROVIDER != none`)
+- `setup-templates/commands/sr/auto-propose-backlog-specs.md` → `.claude/commands/sr/auto-propose-backlog-specs.md` (if `BACKLOG_PROVIDER != none`)
 - `setup-templates/commands/sr/health-check.md` → `.claude/commands/sr/health-check.md`
 - `setup-templates/commands/sr/compat-check.md` → `.claude/commands/sr/compat-check.md`
 - `setup-templates/commands/sr/refactor-recommender.md` → `.claude/commands/sr/refactor-recommender.md`
@@ -832,8 +832,8 @@ Display the complete installation summary:
 |---------|------|
 | /sr:implement | .claude/commands/sr/implement.md |
 | /sr:batch-implement | .claude/commands/sr/batch-implement.md |
-| /sr:product-backlog | .claude/commands/sr/product-backlog.md |
-| /sr:update-product-driven-backlog | .claude/commands/sr/update-product-driven-backlog.md |
+| /sr:get-backlog-specs | .claude/commands/sr/get-backlog-specs.md |
+| /sr:auto-propose-backlog-specs | .claude/commands/sr/auto-propose-backlog-specs.md |
 | /sr:health-check | .claude/commands/sr/health-check.md |
 | /sr:compat-check | .claude/commands/sr/compat-check.md |
 | /sr:refactor-recommender | .claude/commands/sr/refactor-recommender.md |
@@ -856,13 +856,13 @@ Note: Only commands selected during setup are shown. Backlog commands are exclud
 
 ### Next Steps
 1. Review the generated files in .claude/
-2. Run `/sr:product-backlog` to see your backlog (if GitHub Issues exist)
-3. Run `/sr:update-product-driven-backlog` to generate feature ideas
+2. Run `/sr:get-backlog-specs` to see your backlog (if GitHub Issues exist)
+3. Run `/sr:auto-propose-backlog-specs` to generate feature ideas
 4. Run `/sr:implement #issue-number` to implement a feature
 5. Commit the .claude/ directory to version control
 
 ### Quick Start
 - `/sr:implement "describe a feature"` — implement something right now
-- `/sr:product-backlog` — see prioritized feature ideas
-- `/sr:update-product-driven-backlog` — discover new features using VPC
+- `/sr:get-backlog-specs` — see prioritized feature ideas
+- `/sr:auto-propose-backlog-specs` — discover new features using VPC
 ```

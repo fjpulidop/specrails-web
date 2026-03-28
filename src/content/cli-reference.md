@@ -86,7 +86,7 @@ After setup, the wizard suggests your first command based on project type:
 ✅ Setup complete.
 
 Try your first spec:
-  > /specrails:product-backlog       ← new projects
+  > /specrails:get-backlog-specs      ← new projects
   > /specrails:tech-audit            ← existing codebases
 ```
 

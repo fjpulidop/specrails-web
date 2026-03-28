@@ -1,0 +1,151 @@
+{
+  "schema_version": "1",
+  "provider": "github",
+  "last_updated": "2026-03-21T23:10:25.908990",
+  "written_by": "get-backlog-specs",
+  "issues": {
+    "26": {
+      "number": 26,
+      "title": "Success Stories / Testimonials Section",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:community",
+        "product-driven-backlog"
+      ],
+      "body_sha": "440d492e94cf6ce460dd9384b0ec007aba13e67a062d7294b5b2453be4b079a5",
+      "updated_at": "2026-03-15T10:06:59Z",
+      "captured_at": "2026-03-21T23:10:25.908741"
+    },
+    "25": {
+      "number": 25,
+      "title": "Copy-Paste Workflow Templates / Runbooks",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:dx",
+        "product-driven-backlog"
+      ],
+      "body_sha": "293f46f311eb246160d4e3c91aaeb5cdfff47f354a1e3d2769dcd5275e89ca64",
+      "updated_at": "2026-03-15T10:06:57Z",
+      "captured_at": "2026-03-21T23:10:25.908788"
+    },
+    "24": {
+      "number": 24,
+      "title": "Agent Skills Heatmap / Capability Matrix",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:ui",
+        "product-driven-backlog"
+      ],
+      "body_sha": "e8473f2daa22619218f598110a9a6b4a63574266a1b36c76a8b47e550316a3e4",
+      "updated_at": "2026-03-15T10:06:55Z",
+      "captured_at": "2026-03-21T23:10:25.908802"
+    },
+    "23": {
+      "number": 23,
+      "title": "Troubleshooting / FAQ Guide",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:docs",
+        "product-driven-backlog"
+      ],
+      "body_sha": "73602ff1d5e0e7cb8e8d0971ac2c0dce25c1f1c642d141983aba98f617b3c035",
+      "updated_at": "2026-03-15T10:06:53Z",
+      "captured_at": "2026-03-21T23:10:25.908814"
+    },
+    "22": {
+      "number": 22,
+      "title": "Quick-Start GIFs / Animated Guides",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:dx",
+        "product-driven-backlog"
+      ],
+      "body_sha": "e7b4ff382b1fe53195d877ffa0005b86538cfa8c89ebc85d8189c6853da86631",
+      "updated_at": "2026-03-15T10:01:24Z",
+      "captured_at": "2026-03-21T23:10:25.908826"
+    },
+    "21": {
+      "number": 21,
+      "title": "Persona Journey Carousel on Hero Section",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:landing",
+        "product-driven-backlog"
+      ],
+      "body_sha": "d99bfae3131b644eef800321b7f37c098955eaa32b8179b42b60504813e54158",
+      "updated_at": "2026-03-15T10:01:12Z",
+      "captured_at": "2026-03-21T23:10:25.908839"
+    },
+    "15": {
+      "number": 15,
+      "title": "Project Readiness Checklist",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:docs",
+        "product-driven-backlog"
+      ],
+      "body_sha": "a59f266ed66f5059402862adf256ceae7b407ca7a12f5d2c931426be926f6db8",
+      "updated_at": "2026-03-14T22:31:15Z",
+      "captured_at": "2026-03-21T23:10:25.908862"
+    },
+    "12": {
+      "number": 12,
+      "title": "Agent Collaboration Visualization",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:ui",
+        "product-driven-backlog"
+      ],
+      "body_sha": "64823b95e6eb67c26d3161b1cd0663b2627444c7086135e53992ce3c55fefded",
+      "updated_at": "2026-03-14T22:30:55Z",
+      "captured_at": "2026-03-21T23:10:25.908945"
+    },
+    "10": {
+      "number": 10,
+      "title": "\"How It Compares\" Competitive Positioning Page",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:content",
+        "product-driven-backlog"
+      ],
+      "body_sha": "92d63fb4e0dd2560c62d974a38974f50045edabe6d19980b0aba656127d61d00",
+      "updated_at": "2026-03-14T22:25:39Z",
+      "captured_at": "2026-03-21T23:10:25.908961"
+    },
+    "7": {
+      "number": 7,
+      "title": "\"Built with specrails\" Showcase Gallery",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:content",
+        "product-driven-backlog"
+      ],
+      "body_sha": "fc26bb7e133b90a05a6e026413f7f280888b5471bd722fe13a07e09c70d3aaf2",
+      "updated_at": "2026-03-14T22:25:22Z",
+      "captured_at": "2026-03-21T23:10:25.908973"
+    },
+    "6": {
+      "number": 6,
+      "title": "\"Day in the Life\" Persona Guides",
+      "state": "open",
+      "assignees": [],
+      "labels": [
+        "area:docs",
+        "product-driven-backlog"
+      ],
+      "body_sha": "01b4c7482e16f394f4a8a2693b5560ba38b74733effe3a44efe9d7b0559d6dd0",
+      "updated_at": "2026-03-14T22:25:15Z",
+      "captured_at": "2026-03-21T23:10:25.908985"
+    }
+  }
+}
