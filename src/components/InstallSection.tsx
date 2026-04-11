@@ -99,7 +99,7 @@ const InstallSection = () => {
           >
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-8 rounded-full gradient-btn flex items-center justify-center text-sm font-bold">2</span>
-              <h3 className="font-semibold">Configure with the TUI installer</h3>
+              <h3 className="font-semibold">Start using your agents</h3>
             </div>
 
             {/* CLI tabs */}
@@ -141,7 +141,8 @@ const InstallSection = () => {
                   <span className="text-dracula-green">$</span>{" "}
                   {cli === "claude" ? "claude" : "codex"}
                 </div>
-                <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/specrails:enrich</span></div>
+                <div className="text-muted-foreground">{cli === "claude" ? "# Agents are ready — start building" : "# Agents are ready — start building"}</div>
+                <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/specrails:implement</span> <span className="text-dracula-orange">&quot;add dark mode&quot;</span></div>
               </div>
             </div>
           </div>
@@ -160,7 +161,7 @@ const InstallSection = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          Estimated install time: ~15 minutes (may vary depending on your project).
+          Quick install: under a minute. Full enrichment: ~15 minutes.
           <br />
           This project does not collect telemetry or access your source code. All code is{" "}
           <a href="https://github.com/fjpulidop/specrails-core" target="_blank" rel="noopener noreferrer" className="text-dracula-purple hover:underline">open source on GitHub</a>.

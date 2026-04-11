@@ -41,37 +41,43 @@ npx specrails-core@latest init --root-dir <your-project>
 
 See [Installation & Setup](/docs/installation) for full details on both methods and when to use each.
 
-## Configure Your Team
+## Installation Tiers
 
-Open Claude Code in your project and run:
+### Quick Install (default)
+
+The TUI installer walks you through agent selection and model configuration. When you choose **Quick** tier, agents are placed directly — no AI interaction required:
+
+1. **Select agents** — pick from 14 specialized agents
+2. **Choose model preset** — balanced (recommended), budget, or max
+3. **Quick context** — product description and target users
+
+Agents, commands, rules, and settings are installed immediately. Open Claude Code and start working.
+
+> Quick install excludes VPC personas and persona-dependent artifacts (sr-product-manager, sr-product-analyst). These require the full enrichment process.
+
+### Full Install (via `/specrails:enrich`)
+
+For deeper customization, choose **Full** tier or run `/specrails:enrich` after a Quick install:
 
 ```
 /specrails:enrich
 ```
 
-`/specrails:enrich` launches the **interactive TUI installer** — select your agents, choose your model, and configure your workflow in a step-by-step terminal UI.
+The full wizard analyzes your codebase, researches competitors, and generates adapted agents:
 
-| Step | What happens |
-|------|-------------|
-| **1. Detect** | Reads your stack, CI config, and conventions automatically |
-| **2. Select agents** | TUI checklist — pick which agents to enable for your project |
-| **3. Select model** | Choose the Claude or Codex model each agent will use |
-| **4. Configure** | Backlog provider, git workflow, and PR settings |
-| **5. Generate** | Writes `install-config.yaml` and project data files to `.specrails/` |
+| Phase | What happens |
+|-------|-------------|
+| **1. Analyze** | Detects your tech stack, architecture, CI commands, and conventions |
+| **2. Personas** | Researches competitive landscape and generates VPC user personas |
+| **3. Configure** | Backlog provider, git workflow, and agent settings |
+| **4. Generate** | Writes project-specific context to all agents and commands |
+| **5. Cleanup** | Removes wizard scaffolding, leaving only your tailored files |
 
-**In a hurry?** Run `/specrails:enrich --quick` for the fast path: three questions, sensible defaults, done in under a minute.
+Full install adds VPC personas, sr-product-manager, sr-product-analyst, and persona-dependent commands (`/specrails:auto-propose-backlog-specs`, `/specrails:get-backlog-specs`).
 
-| Question | What it configures |
-|----------|-------------------|
-| What is this project? | Agent context and CLAUDE.md |
-| Who are the target users? | Persona stubs for product discovery |
-| Git access — read-only or read-write? | Whether agents can commit |
+**Already have an `install-config.yaml`?** Run `/specrails:enrich --from-config` to apply it non-interactively — ideal for team onboarding.
 
-Quick mode installs the four core agents (architect, developer, reviewer, product manager), all workflow commands, and local ticket storage. You can re-run `/specrails:enrich` at any time to change agent selection or model settings.
-
-**Already have an `install-config.yaml`?** Run `/specrails:enrich --from-config` to apply it non-interactively — ideal for team onboarding or CI environments.
-
-After any mode, your project data files are ready to use and your `/specrails:*` commands are live.
+After either tier, your `/specrails:*` commands are live.
 
 ## Your first feature
 
