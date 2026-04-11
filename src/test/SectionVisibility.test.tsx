@@ -126,7 +126,7 @@ describe("Section components in visible state (isVisible=true)", () => {
 
   it("CommandsSection renders all command cards", () => {
     withProviders(<CommandsSection />);
-    expect(screen.getByText("/specrails:setup")).toBeInTheDocument();
+    expect(screen.getByText("/specrails:enrich")).toBeInTheDocument();
     expect(screen.getByText("/specrails:implement")).toBeInTheDocument();
     expect(screen.getByText("/specrails:batch-implement")).toBeInTheDocument();
     expect(screen.getByText("/specrails:get-backlog-specs")).toBeInTheDocument();

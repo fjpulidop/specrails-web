@@ -2,7 +2,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Settings, Rocket, Layers, ClipboardList, ShieldCheck, HelpCircle } from "lucide-react";
 
 const commands = [
-  { cmd: "/specrails:setup", desc: "5-phase interactive wizard. Analyzes your codebase, generates personas, configures the workflow, and renders all files.", badge: "23.4 KB of intelligence", icon: Settings, color: "text-dracula-purple" },
+  { cmd: "/specrails:enrich", desc: "Interactive TUI installer. Select agents, choose models, configure your workflow — or run --from-config for non-interactive team setup.", badge: "TUI + install-config.yaml", icon: Settings, color: "text-dracula-purple" },
   { cmd: "/specrails:implement", desc: "The flagship command. 7-phase pipeline from input to deploy with parallel agents.", badge: "21.6 KB of orchestration", icon: Rocket, color: "text-dracula-pink" },
   { cmd: "/specrails:batch-implement", desc: "Multi-feature orchestrator. Computes dependency graphs, detects cycles, and executes in waves (Kahn's algorithm).", badge: "Multi-feature", icon: Layers, color: "text-dracula-cyan" },
   { cmd: "/specrails:get-backlog-specs", desc: "Backlog management prioritized by VPC scoring against user personas. Parses prerequisites and topological-sorts features for safe ordering.", badge: "Product-driven", icon: ClipboardList, color: "text-dracula-green" },
