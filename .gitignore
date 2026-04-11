@@ -35,3 +35,4 @@ specrails/
 
 # Web manager tool (separate utility)
 .claude/web-manager/
+coverage/
