@@ -119,7 +119,7 @@ describe("InstallSection", () => {
   it("renders step 2 heading", () => {
     renderInstallSection();
     expect(
-      screen.getByText("Configure with the TUI installer")
+      screen.getByText("Start using your agents")
     ).toBeInTheDocument();
   });
 
@@ -134,10 +134,10 @@ describe("InstallSection", () => {
     expect(reqParagraph).toBeDefined();
   });
 
-  it("renders estimated install time text", () => {
+  it("renders install time text", () => {
     renderInstallSection();
     expect(
-      screen.getByText(/estimated install time/i)
+      screen.getByText(/Quick install: under a minute/i)
     ).toBeInTheDocument();
   });
 
