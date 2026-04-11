@@ -10,7 +10,7 @@ Command reference for `specrails-core`. All commands are run via `npx specrails-
 
 **Synopsis:** `npx specrails-core@latest init [options]`
 
-**Description:** Installs SpecRails into your project directory. Copies agent definitions, templates, and the `/setup` wizard into `.claude/`. Does not modify your source code.
+**Description:** Installs SpecRails into your project directory. Copies agent definitions, templates, and the `/specrails:enrich` TUI installer into `.claude/`. Does not modify your source code.
 
 **Options:**
 
@@ -34,7 +34,7 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
 2. If Claude Code CLI is missing, prints the install URL and exits (no stack trace)
 3. If no API key is configured, prints exact fix instructions and exits
 4. Copies templates and agent definitions into `.claude/`
-5. Prints next step: `Open Claude Code or Codex and run /setup`
+5. Prints next step: `Open Claude Code or Codex and run /specrails:enrich`
 
 **Expected output:**
 
@@ -45,34 +45,37 @@ npx specrails-core@latest init --root-dir ~/projects/my-app
   ✔ npm found
 ✔ Installing SpecRails artifacts into .claude/
 ✔ Installed version 1.7.0
-✔ Ready. Open Claude Code or Codex and run /setup to complete configuration.
+✔ Ready. Open Claude Code or Codex and run /specrails:enrich to complete configuration.
 ```
 
-**See also:** [`setup`](#specrails-setup), [`doctor`](#specrails-doctor)
+**See also:** [`enrich`](#specrails-enrich), [`doctor`](#specrails-doctor)
 
 ---
 
-## `specrails setup`
+## `specrails enrich`
 
-**Synopsis:** `/setup [--advanced]`
+**Synopsis:** `/specrails:enrich [--from-config] [--quick]`
 
-**Description:** Configures your SpecRails team. Run inside Claude Code or Codex after `init`. Defaults to Quick Start mode (3 questions). Use `--advanced` for the full 5-phase wizard.
+**Description:** Configures your SpecRails team via an interactive TUI installer. Run inside Claude Code or Codex after `init`. Defaults to the full TUI with agent and model selection. Use `--quick` for a fast 3-question setup, or `--from-config` to apply an existing `install-config.yaml` non-interactively.
 
 **Options:**
 
 | Flag | Type | Default | Description |
 |------|------|---------|-------------|
-| `--advanced` | boolean | `false` | Run the full 5-phase configuration wizard instead of Quick Start |
+| `--quick` | boolean | `false` | Fast path — asks 3 questions, applies sensible defaults, done in under a minute |
+| `--from-config` | boolean | `false` | Non-interactive — reads `install-config.yaml` from the project root and applies it directly |
 
-**Quick Start mode (default)**
+**TUI mode (default)**
 
-Asks exactly 3 questions, then auto-configures everything else with sensible defaults:
+Launches a step-by-step terminal UI:
 
-1. **What is this project?** (one sentence)
-2. **Who are the target users?**
-3. **Git access for agents?** (`read-only` or `read-write`)
+1. **Detect** — reads your stack, CI config, and conventions automatically
+2. **Select agents** — checklist of available agents; toggle each on or off
+3. **Select model** — choose the Claude or Codex model per agent
+4. **Configure** — backlog provider, git workflow, PR settings
+5. **Generate** — writes `install-config.yaml` and project data files to `.specrails/`
 
-Default configuration applied automatically:
+Default configuration applied automatically when not overridden in the TUI:
 
 | Setting | Value |
 |---------|-------|
@@ -80,40 +83,63 @@ Default configuration applied automatically:
 | CLAUDE.md template | Minimal template populated from your answers |
 | OpenSpec | Enabled if CLI detected, disabled otherwise |
 
-After setup, the wizard suggests your first command based on project type:
+After setup, the installer suggests your first command based on project type:
 
 ```
-✅ Setup complete.
+✅ Configuration complete.
 
 Try your first spec:
   > /specrails:get-backlog-specs      ← new projects
   > /specrails:tech-audit            ← existing codebases
 ```
 
-**Advanced mode**
+**Quick mode**
 
 ```
-/setup --advanced
+/specrails:enrich --quick
 ```
 
-Runs the full 5-phase wizard:
+Asks exactly 3 questions, then auto-configures everything else with sensible defaults:
 
-| Phase | What happens |
-|-------|-------------|
-| 1. Codebase Analysis | Reads file extensions, dependencies, CI config — builds a stack profile |
-| 2. User Personas | Creates 2–4 fictional-but-realistic user personas for feature scoring |
-| 3. Configuration | Backlog provider, git workflow, agent selection |
-| 4. File Generation | Fills all templates with your project data — no placeholder strings remain |
-| 5. Cleanup | Removes the wizard itself, leaves only final production files |
+1. **What is this project?** (one sentence)
+2. **Who are the target users?**
+3. **Git access for agents?** (`read-only` or `read-write`)
+
+**Config-driven mode**
+
+```
+/specrails:enrich --from-config
+```
+
+Reads `install-config.yaml` from the project root and applies it without any prompts. Useful for team onboarding scripts or CI pipelines where you want repeatable, non-interactive setup.
+
+**`install-config.yaml` schema**
+
+```yaml
+agents:
+  enabled: [architect, developer, reviewer, product-manager]
+  model: claude-opus-4-5          # default model for all agents
+git:
+  access: read-write              # read-only | read-write
+backlog:
+  provider: github                # github | jira | linear | local
+project:
+  name: "My Project"
+  description: "One sentence summary"
+  users: "Developers building web apps"
+```
 
 **Examples:**
 
 ```bash
-# Inside Claude Code or Codex — Quick Start (recommended for new users)
-/setup
+# Inside Claude Code or Codex — full TUI (recommended for new users)
+/specrails:enrich
 
-# Inside Claude Code or Codex — full wizard
-/setup --advanced
+# Quick setup — 3 questions, sensible defaults
+/specrails:enrich --quick
+
+# Non-interactive — apply install-config.yaml
+/specrails:enrich --from-config
 ```
 
 **See also:** [`init`](#specrails-init), [`doctor`](#specrails-doctor)
@@ -192,7 +218,7 @@ npx specrails-core doctor --verbose
   3 files changed, 42 additions
 ```
 
-**See also:** [`preview`](#specrails-preview), [`setup`](#specrails-setup)
+**See also:** [`preview`](#specrails-preview), [`enrich`](#specrails-enrich)
 
 ---
 
@@ -247,7 +273,7 @@ npx specrails-core@latest update
 **What is preserved:**
 
 - `specrails.config.json` — your agent configuration is not overwritten
-- Project-specific content generated by `/setup` — personas, stack profile, custom agent instructions
+- Project-specific content generated by `/specrails:enrich` — personas, stack profile, custom agent instructions
 - Any local changes you have made to agent files
 
 **What is updated:**
@@ -271,7 +297,7 @@ npx specrails-core doctor
 | Command | How to invoke | What it does |
 |---------|--------------|-------------|
 | `init` | `npx specrails-core@latest init` | Install SpecRails into a project |
-| `setup` | `/setup` (Claude Code / Codex) | Configure your agent team |
+| `enrich` | `/specrails:enrich` (Claude Code / Codex) | Configure your agent team via TUI |
 | `doctor` | `npx specrails-core doctor` | Run diagnostics |
 | `implement` | `/specrails:implement` (Claude Code / Codex) | Run the full pipeline for a feature |
 | `preview` | `/specrails:implement ... --dry-run` (Claude Code / Codex) | Dry-run the pipeline — no code committed |

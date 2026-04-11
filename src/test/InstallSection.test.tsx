@@ -119,7 +119,7 @@ describe("InstallSection", () => {
   it("renders step 2 heading", () => {
     renderInstallSection();
     expect(
-      screen.getByText("Configure with the wizard")
+      screen.getByText("Configure with the TUI installer")
     ).toBeInTheDocument();
   });
 

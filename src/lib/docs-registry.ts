@@ -51,7 +51,7 @@ export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "installation",
     title: "Installation & Setup",
-    description: "Detailed setup, prerequisites, and the /setup wizard",
+    description: "Detailed setup, prerequisites, and the /specrails:enrich TUI installer",
     content: installationRaw,
   },
   {
@@ -102,7 +102,7 @@ export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "cli-reference",
     title: "CLI Reference",
-    description: "All specrails-core commands — init, setup, doctor, implement, preview, update",
+    description: "All specrails-core commands — init, enrich, doctor, implement, preview, update",
     content: cliReferenceRaw,
     section: "Reference",
   },

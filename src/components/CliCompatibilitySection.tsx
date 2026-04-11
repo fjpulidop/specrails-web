@@ -5,7 +5,7 @@ const rows: { feature: string; claudeCode: boolean; codex: boolean }[] = [
   { feature: "Installation via npx", claudeCode: true, codex: true },
   { feature: "Installation via git clone", claudeCode: true, codex: true },
   { feature: "Agent pipeline (architect → dev → review → PR)", claudeCode: true, codex: true },
-  { feature: "/setup wizard", claudeCode: true, codex: true },
+  { feature: "/specrails:enrich TUI", claudeCode: true, codex: true },
   { feature: "Spec-Driven Development (OpenSpec)", claudeCode: true, codex: true },
   { feature: "Parallel git worktrees", claudeCode: true, codex: true },
   { feature: "Institutional memory", claudeCode: true, codex: true },

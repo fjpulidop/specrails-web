@@ -41,25 +41,25 @@ npx specrails-core@latest init --root-dir <your-project>
 
 See [Installation & Setup](/docs/installation) for full details on both methods and when to use each.
 
-## Run the Setup Wizard
+## Configure Your Team
 
 Open Claude Code in your project and run:
 
 ```
-/specrails:setup
+/specrails:enrich
 ```
 
-By default, `/specrails:setup` runs the **full 5-phase wizard** — deep stack analysis, researched user personas, and fully adapted agents.
+`/specrails:enrich` launches the **interactive TUI installer** — select your agents, choose your model, and configure your workflow in a step-by-step terminal UI.
 
-| Phase | What happens |
-|-------|-------------|
-| **1. Analyze** | Detects your tech stack, architecture layers, CI commands, and conventions |
-| **2. Personas** | Researches your competitive landscape and generates full VPC user personas |
-| **3. Configure** | Asks about your backlog provider, git workflow, and which agents to enable |
-| **4. Generate** | Generates your project data files (`.specrails/`) with project-specific context |
-| **5. Cleanup** | Removes the wizard scaffolding, leaving only your tailored workflow files |
+| Step | What happens |
+|------|-------------|
+| **1. Detect** | Reads your stack, CI config, and conventions automatically |
+| **2. Select agents** | TUI checklist — pick which agents to enable for your project |
+| **3. Select model** | Choose the Claude or Codex model each agent will use |
+| **4. Configure** | Backlog provider, git workflow, and PR settings |
+| **5. Generate** | Writes `install-config.yaml` and project data files to `.specrails/` |
 
-**In a hurry?** Run `/specrails:setup --lite` for the quick version: three questions, sensible defaults, done in under a minute.
+**In a hurry?** Run `/specrails:enrich --quick` for the fast path: three questions, sensible defaults, done in under a minute.
 
 | Question | What it configures |
 |----------|-------------------|
@@ -67,9 +67,11 @@ By default, `/specrails:setup` runs the **full 5-phase wizard** — deep stack a
 | Who are the target users? | Persona stubs for product discovery |
 | Git access — read-only or read-write? | Whether agents can commit |
 
-Lite mode installs the four core agents (architect, developer, reviewer, product manager), all workflow commands, and local ticket storage. You can run the full wizard later to deepen the configuration.
+Quick mode installs the four core agents (architect, developer, reviewer, product manager), all workflow commands, and local ticket storage. You can re-run `/specrails:enrich` at any time to change agent selection or model settings.
 
-After either mode, your project data files are ready to use and your `/specrails:*` commands are live.
+**Already have an `install-config.yaml`?** Run `/specrails:enrich --from-config` to apply it non-interactively — ideal for team onboarding or CI environments.
+
+After any mode, your project data files are ready to use and your `/specrails:*` commands are live.
 
 ## Your first feature
 

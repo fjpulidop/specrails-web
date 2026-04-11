@@ -99,7 +99,7 @@ const InstallSection = () => {
           >
             <div className="flex items-center gap-3 mb-3">
               <span className="w-8 h-8 rounded-full gradient-btn flex items-center justify-center text-sm font-bold">2</span>
-              <h3 className="font-semibold">Configure with the wizard</h3>
+              <h3 className="font-semibold">Configure with the TUI installer</h3>
             </div>
 
             {/* CLI tabs */}
@@ -141,7 +141,7 @@ const InstallSection = () => {
                   <span className="text-dracula-green">$</span>{" "}
                   {cli === "claude" ? "claude" : "codex"}
                 </div>
-                <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/setup</span></div>
+                <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/specrails:enrich</span></div>
               </div>
             </div>
           </div>
