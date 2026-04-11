@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.0](https://github.com/fjpulidop/specrails-web/compare/v1.5.2...v1.6.0) (2026-03-28)
+
+
+### Features
+
+* rename product-backlog and update-product-driven-backlog commands (SPEA-720) ([#122](https://github.com/fjpulidop/specrails-web/issues/122)) ([aee19d9](https://github.com/fjpulidop/specrails-web/commit/aee19d9739a91ef3beec6a93f4004f59c79ac523))
+* rename product-backlog and update-product-driven-backlog commands in specrails-web (SPEA-720) ([aee19d9](https://github.com/fjpulidop/specrails-web/commit/aee19d9739a91ef3beec6a93f4004f59c79ac523))
+
+
+### Bug Fixes
+
+* update missed product-backlog command reference in getting-started docs ([64b2b95](https://github.com/fjpulidop/specrails-web/commit/64b2b953a7c8a21e9a237b3c76fbcce78a3c301a))
+
 ## [1.5.2](https://github.com/fjpulidop/specrails-web/compare/v1.5.1...v1.5.2) (2026-03-28)
 
 
