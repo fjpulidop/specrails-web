@@ -15,27 +15,28 @@ interface InstallTab {
 
 const installTabs: InstallTab[] = [
   {
-    id: "claude",
-    label: "Claude Code CLI",
+    id: "quick",
+    label: "Quick Setup",
     lines: [
       { text: "$ npx specrails-core@latest init", color: "text-dracula-green", delay: 0 },
-      { text: "\u2713 Agents configured for Claude Code", color: "text-dracula-cyan", delay: 700 },
-      { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ /specrails:enrich", color: "text-dracula-green", delay: 1100 },
-      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+      { text: "\u2192 Provider: claude (auto-detected)", color: "text-dracula-foreground", delay: 600 },
+      { text: "\u2192 Tier: quick | Agents: 8/14 | Preset: balanced", color: "text-dracula-foreground", delay: 1000 },
+      { text: "\u2713 8 agents \u2192 .claude/agents/", color: "text-dracula-cyan", delay: 1500 },
+      { text: "\u2713 12 commands \u2192 .claude/commands/specrails/", color: "text-dracula-cyan", delay: 1900 },
+      { text: "$ # Ready to use \u2014 no additional setup needed", color: "text-dracula-pink", delay: 2400 },
     ],
   },
   {
-    id: "codex",
-    label: "Codex CLI",
+    id: "full",
+    label: "Full Setup",
     lines: [
-      { text: "$ npx specrails-core@latest init --codex", color: "text-dracula-green", delay: 0 },
-      { text: "\u2713 Agents configured for Codex", color: "text-dracula-cyan", delay: 700 },
-      { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ codex /specrails:enrich", color: "text-dracula-green", delay: 1100 },
-      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+      { text: "$ npx specrails-core@latest init", color: "text-dracula-green", delay: 0 },
+      { text: "\u2192 Provider: claude | Tier: full", color: "text-dracula-foreground", delay: 600 },
+      { text: "\u2713 Templates installed", color: "text-dracula-cyan", delay: 1000 },
+      { text: "$ /specrails:enrich", color: "text-dracula-green", delay: 1400 },
+      { text: "\u2713 Codebase analyzed \u00b7 VPC personas generated", color: "text-dracula-cyan", delay: 2000 },
+      { text: "\u2713 14 agents configured for your stack", color: "text-dracula-cyan", delay: 2400 },
+      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2900 },
     ],
   },
 ];
@@ -169,7 +170,7 @@ const TabbedTerminal = () => {
       </div>
 
       {/* Tab bar */}
-      <div className="flex border-b border-border/20">
+      <div className="flex justify-center border-b border-border/20">
         {installTabs.map((tab, index) => (
           <button
             key={tab.id}
@@ -188,7 +189,7 @@ const TabbedTerminal = () => {
       </div>
 
       {/* Terminal content */}
-      <div className="p-4 text-left text-sm leading-relaxed h-[180px] overflow-hidden">
+      <div className="p-4 text-left text-sm leading-relaxed h-[196px] overflow-hidden">
         {currentTab.lines.slice(0, visibleLines).map((line, i) => (
           <div key={i} className={`${line.color} animate-fade-up`}>
             {line.text || "\u00A0"}
