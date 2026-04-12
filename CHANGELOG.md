@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/fjpulidop/specrails-web/compare/v1.6.0...v1.6.1) (2026-04-12)
+
+
+### Bug Fixes
+
+* remove Claude Code Plugin install tab from hero ([#134](https://github.com/fjpulidop/specrails-web/issues/134)) ([2e7b325](https://github.com/fjpulidop/specrails-web/commit/2e7b3252100770a5be0a218b3cbb917d4cbfce7d))
+
 ## [1.6.0](https://github.com/fjpulidop/specrails-web/compare/v1.5.2...v1.6.0) (2026-03-28)
 
 
