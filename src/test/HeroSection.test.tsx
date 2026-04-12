@@ -88,12 +88,14 @@ describe("HeroSection", () => {
   it("renders the tagline", () => {
     renderHero();
     expect(screen.getByText(/your ai development team/i)).toBeInTheDocument();
-    expect(screen.getByText(/from idea to production code/i)).toBeInTheDocument();
+    // "From Idea to Production Code" appears in both tagline and supporting line
+    expect(screen.getAllByText(/from idea to production code/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders the supporting description", () => {
     renderHero();
-    expect(screen.getByText(/12 specialized agents/i)).toBeInTheDocument();
+    expect(screen.getByText(/specrails-core/i)).toBeInTheDocument();
+    expect(screen.getByText(/specrails-hub/i)).toBeInTheDocument();
   });
 
   it("renders the tabbed terminal", () => {
@@ -101,18 +103,16 @@ describe("HeroSection", () => {
     expect(screen.getByTestId("tabbed-terminal")).toBeInTheDocument();
   });
 
-  it("renders all three install tabs", () => {
+  it("renders both install tabs", () => {
     renderHero();
-    expect(screen.getByTestId("tab-claude")).toBeInTheDocument();
-    expect(screen.getByTestId("tab-plugin")).toBeInTheDocument();
-    expect(screen.getByTestId("tab-codex")).toBeInTheDocument();
+    expect(screen.getByTestId("tab-quick")).toBeInTheDocument();
+    expect(screen.getByTestId("tab-full")).toBeInTheDocument();
   });
 
-  it("renders tab labels for Claude Code CLI, Claude Code Plugin, and Codex CLI", () => {
+  it("renders tab labels for Quick Setup and Full Setup", () => {
     const { container } = renderHero();
-    expect(container.textContent).toContain("Claude Code CLI");
-    expect(container.textContent).toContain("Claude Code Plugin");
-    expect(container.textContent).toContain("Codex CLI");
+    expect(container.textContent).toContain("Quick Setup");
+    expect(container.textContent).toContain("Full Setup");
   });
 
   it("renders the canvas element for particle background", () => {
@@ -127,26 +127,17 @@ describe("HeroSection", () => {
 
   // --- Tab interaction ---
 
-  it("shows Claude Code CLI tab as active by default", () => {
+  it("shows Quick Setup tab as active by default", () => {
     renderHero();
-    const claudeTab = screen.getByTestId("tab-claude");
-    expect(claudeTab.getAttribute("aria-selected")).toBe("true");
+    const quickTab = screen.getByTestId("tab-quick");
+    expect(quickTab.getAttribute("aria-selected")).toBe("true");
   });
 
-  it("switches to Plugin tab when clicked", () => {
+  it("switches to Full Setup tab when clicked", () => {
     renderHero();
-    const pluginTab = screen.getByTestId("tab-plugin");
-    fireEvent.click(pluginTab);
-    expect(pluginTab.getAttribute("aria-selected")).toBe("true");
-    const claudeTab = screen.getByTestId("tab-claude");
-    expect(claudeTab.getAttribute("aria-selected")).toBe("false");
-  });
-
-  it("switches to Codex tab when clicked", () => {
-    renderHero();
-    const codexTab = screen.getByTestId("tab-codex");
-    fireEvent.click(codexTab);
-    expect(codexTab.getAttribute("aria-selected")).toBe("true");
+    const fullTab = screen.getByTestId("tab-full");
+    fireEvent.click(fullTab);
+    expect(fullTab.getAttribute("aria-selected")).toBe("true");
   });
 
   it("renders the GitHub stars button", () => {

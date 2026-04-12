@@ -206,9 +206,12 @@ describe("Section components in visible state (isVisible=true)", () => {
 
   it("FooterSection renders footer content", () => {
     withProviders(<FooterSection />);
-    expect(screen.getByText("GitHub")).toBeInTheDocument();
-    expect(screen.getByText("Documentation")).toBeInTheDocument();
-    expect(screen.getByText("Issues")).toBeInTheDocument();
+    // Both Core and Hub columns have GitHub + Documentation links
+    expect(screen.getAllByText("GitHub").length).toBeGreaterThanOrEqual(2);
+    expect(screen.getAllByText("Documentation").length).toBeGreaterThanOrEqual(2);
     expect(screen.getByText("MIT License")).toBeInTheDocument();
+    // Section headings
+    expect(screen.getByText("Core")).toBeInTheDocument();
+    expect(screen.getByText("Hub")).toBeInTheDocument();
   });
 });

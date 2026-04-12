@@ -14,6 +14,15 @@ const AgentsSection = () => {
   return (
     <section id="agents" className="py-24 px-6" ref={ref}>
       <div className="container mx-auto max-w-6xl">
+        <div
+          className={`flex justify-center mb-4 transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-dracula-cyan/20 bg-dracula-cyan/5 text-xs font-mono text-dracula-cyan/70">
+            Powered by specrails-core
+          </span>
+        </div>
         <h2
           className={`text-3xl md:text-4xl font-bold text-center mb-4 transition-all duration-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"

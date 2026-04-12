@@ -15,39 +15,28 @@ interface InstallTab {
 
 const installTabs: InstallTab[] = [
   {
-    id: "claude",
-    label: "Claude Code CLI",
+    id: "quick",
+    label: "Quick Setup",
     lines: [
       { text: "$ npx specrails-core@latest init", color: "text-dracula-green", delay: 0 },
-      { text: "\u2713 Agents configured for Claude Code", color: "text-dracula-cyan", delay: 700 },
-      { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ /specrails:enrich", color: "text-dracula-green", delay: 1100 },
-      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+      { text: "\u2192 Provider: claude (auto-detected)", color: "text-dracula-foreground", delay: 600 },
+      { text: "\u2192 Tier: quick | Agents: 8/14 | Preset: balanced", color: "text-dracula-foreground", delay: 1000 },
+      { text: "\u2713 8 agents \u2192 .claude/agents/", color: "text-dracula-cyan", delay: 1500 },
+      { text: "\u2713 12 commands \u2192 .claude/commands/specrails/", color: "text-dracula-cyan", delay: 1900 },
+      { text: "$ # Ready to use \u2014 no additional setup needed", color: "text-dracula-pink", delay: 2400 },
     ],
   },
   {
-    id: "plugin",
-    label: "Claude Code Plugin",
+    id: "full",
+    label: "Full Setup",
     lines: [
-      { text: "$ claude plugin install specrails", color: "text-dracula-green", delay: 0 },
-      { text: "\u2713 Plugin installed successfully", color: "text-dracula-cyan", delay: 700 },
-      { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ /specrails:enrich", color: "text-dracula-green", delay: 1100 },
-      { text: "\u2713 specrails plugin active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Ready to use /specrails:* commands", color: "text-dracula-pink", delay: 2100 },
-    ],
-  },
-  {
-    id: "codex",
-    label: "Codex CLI",
-    lines: [
-      { text: "$ npx specrails-core@latest init --codex", color: "text-dracula-green", delay: 0 },
-      { text: "\u2713 Agents configured for Codex", color: "text-dracula-cyan", delay: 700 },
-      { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ codex /specrails:enrich", color: "text-dracula-green", delay: 1100 },
-      { text: "\u2713 12 agents active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2100 },
+      { text: "$ npx specrails-core@latest init", color: "text-dracula-green", delay: 0 },
+      { text: "\u2192 Provider: claude | Tier: full", color: "text-dracula-foreground", delay: 600 },
+      { text: "\u2713 Templates installed", color: "text-dracula-cyan", delay: 1000 },
+      { text: "$ /specrails:enrich", color: "text-dracula-green", delay: 1400 },
+      { text: "\u2713 Codebase analyzed \u00b7 VPC personas generated", color: "text-dracula-cyan", delay: 2000 },
+      { text: "\u2713 14 agents configured for your stack", color: "text-dracula-cyan", delay: 2400 },
+      { text: "$ # Your AI development team is live", color: "text-dracula-pink", delay: 2900 },
     ],
   },
 ];
@@ -181,7 +170,7 @@ const TabbedTerminal = () => {
       </div>
 
       {/* Tab bar */}
-      <div className="flex border-b border-border/20">
+      <div className="flex justify-center border-b border-border/20">
         {installTabs.map((tab, index) => (
           <button
             key={tab.id}
@@ -200,7 +189,7 @@ const TabbedTerminal = () => {
       </div>
 
       {/* Terminal content */}
-      <div className="p-4 text-left text-sm leading-relaxed h-[180px] overflow-hidden">
+      <div className="p-4 text-left text-sm leading-relaxed h-[196px] overflow-hidden">
         {currentTab.lines.slice(0, visibleLines).map((line, i) => (
           <div key={i} className={`${line.color} animate-fade-up`}>
             {line.text || "\u00A0"}
@@ -242,13 +231,29 @@ const HeroSection = () => {
 
         {/* Supporting line */}
         <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-4xl mx-auto mb-6 animate-fade-up delay-200">
-          A system of 12 specialized agents that works with Claude Code and OpenAI Codex<br />
-          From Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
+          From idea to production code with <span className="text-dracula-cyan">specrails-core</span>.
+          Visualize everything with <span className="text-dracula-purple">specrails-hub</span>.
         </p>
 
         {/* Tabbed terminal — 3 installation methods */}
         <div className="animate-fade-up delay-300">
           <TabbedTerminal />
+        </div>
+
+        {/* Dual CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 animate-fade-up delay-400">
+          <a
+            href="#hero"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-dracula-cyan/10 border border-dracula-cyan/30 text-dracula-cyan text-sm font-medium hover:bg-dracula-cyan/20 transition-colors"
+          >
+            Get Started with Core
+          </a>
+          <a
+            href="#hub-showcase"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-dracula-purple/10 border border-dracula-purple/30 text-dracula-purple text-sm font-medium hover:bg-dracula-purple/20 transition-colors"
+          >
+            Explore the Hub
+          </a>
         </div>
 
         {/* GitHub stars */}

@@ -12,6 +12,9 @@ import playbookParallelDevRaw from "specrails-core/docs/playbook-parallel-dev.md
 import playbookOssMaintainerRaw from "specrails-core/docs/playbook-oss-maintainer.md?raw";
 import changelogRaw from "specrails-core/docs/changelog.md?raw";
 import deploymentRaw from "specrails-core/docs/deployment.md?raw";
+import hubInstallationRaw from "../content/hub-installation.md?raw";
+import hubFeaturesRaw from "../content/hub-features.md?raw";
+import coreVsHubRaw from "../content/core-vs-hub.md?raw";
 
 export interface DocEntry {
   slug: string;
@@ -112,6 +115,27 @@ export const DOC_ENTRIES: DocEntry[] = [
     description: "Local, Docker, and CI/CD deployment options",
     content: deploymentRaw,
     section: "Reference",
+  },
+  {
+    slug: "hub-installation",
+    title: "Hub Installation",
+    description: "Install and start specrails-hub — your local AI pipeline dashboard",
+    content: hubInstallationRaw,
+    section: "Hub",
+  },
+  {
+    slug: "hub-features",
+    title: "Hub Features",
+    description: "Dashboard, tickets, analytics, logs, chat, and keyboard navigation",
+    content: hubFeaturesRaw,
+    section: "Hub",
+  },
+  {
+    slug: "core-vs-hub",
+    title: "Core vs Hub",
+    description: "Feature comparison and when to use each product",
+    content: coreVsHubRaw,
+    section: "Hub",
   },
 ];
 

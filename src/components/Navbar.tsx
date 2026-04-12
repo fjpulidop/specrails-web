@@ -17,6 +17,7 @@ const Navbar = () => {
 
   const links = [
     { label: "Pipeline", href: "/#pipeline" },
+    { label: "Hub", href: "/#hub-showcase" },
     { label: "Features", href: "/#features" },
     { label: "Commands", href: "/#commands" },
   ];
