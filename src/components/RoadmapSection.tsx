@@ -33,21 +33,25 @@ const RoadmapSection = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`${REPO_URL}?state=open&per_page=20&sort=created&direction=desc`)
+    const controller = new AbortController();
+    fetch(`${REPO_URL}?state=open&per_page=20&sort=created&direction=desc`, {
+      signal: controller.signal,
+    })
       .then((res) => {
         if (res.status === 429) throw new Error("GitHub API rate limit exceeded");
         if (!res.ok) throw new Error("GitHub API error");
         return res.json();
       })
       .then((data: GitHubIssue[]) => {
-        // Filter out pull requests (GitHub API returns PRs as issues too)
         setIssues(data.filter((issue) => !("pull_request" in issue)));
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        if (err.name === "AbortError") return;
         setError(true);
         setLoading(false);
       });
+    return () => controller.abort();
   }, []);
 
   return (
