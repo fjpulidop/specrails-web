@@ -6,7 +6,6 @@ import { DOCS } from "@/lib/docs-registry";
 export function DocsDropdown(): JSX.Element {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const entries = DOCS;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -17,6 +16,18 @@ export function DocsDropdown(): JSX.Element {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Group entries by section for visual grouping
+  const grouped: { section: string | undefined; entries: typeof DOCS }[] = [];
+  let lastSection: string | undefined = "__INIT__";
+
+  for (const entry of DOCS) {
+    if (entry.section !== lastSection) {
+      lastSection = entry.section;
+      grouped.push({ section: entry.section, entries: [] });
+    }
+    grouped[grouped.length - 1].entries.push(entry);
+  }
 
   return (
     <div ref={ref} className="relative">
@@ -32,20 +43,28 @@ export function DocsDropdown(): JSX.Element {
 
       {open && (
         <ul className="absolute right-0 top-full mt-2 w-80 grid gap-1 p-3 bg-popover border border-border/30 rounded-xl shadow-xl z-50 max-h-[70vh] overflow-y-auto">
-          {entries.map((entry) => (
-            <li key={entry.slug}>
-              <Link
-                to={entry.slug ? `/docs/${entry.slug}` : "/docs"}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2 hover:bg-dracula-current transition-colors group"
-              >
-                <div className="text-sm font-medium text-foreground group-hover:text-dracula-purple transition-colors">
-                  {entry.title}
+          {grouped.map((group) => (
+            <li key={group.section ?? "__default"}>
+              {group.section && (
+                <div className="px-3 pt-3 pb-1 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  {group.section}
                 </div>
-                <div className="text-xs text-muted-foreground mt-0.5">
-                  {entry.description}
-                </div>
-              </Link>
+              )}
+              {group.entries.map((entry) => (
+                <Link
+                  key={entry.slug}
+                  to={entry.slug ? `/docs/${entry.slug}` : "/docs"}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-lg px-3 py-2 hover:bg-dracula-current transition-colors group"
+                >
+                  <div className="text-sm font-medium text-foreground group-hover:text-dracula-purple transition-colors">
+                    {entry.title}
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">
+                    {entry.description}
+                  </div>
+                </Link>
+              ))}
             </li>
           ))}
         </ul>

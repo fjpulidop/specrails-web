@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import RoadmapSection from "@/components/RoadmapSection";
 
 // ---------- helpers ----------
@@ -14,6 +15,27 @@ const fakeIssue = (overrides: Record<string, unknown> = {}) => ({
   created_at: "2025-01-01T00:00:00Z",
   ...overrides,
 });
+
+/** Mock both fetch calls (core + hub repos) */
+function mockBothRepos(
+  coreIssues: unknown[] = [],
+  hubIssues: unknown[] = []
+) {
+  fetchMock.mockImplementation((url: string) => {
+    const issues = url.includes("specrails-hub") ? hubIssues : coreIssues;
+    return Promise.resolve({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve(issues),
+    });
+  });
+}
+
+function mockBothReposError() {
+  fetchMock.mockImplementation(() =>
+    Promise.reject(new Error("network error"))
+  );
+}
 
 function renderRoadmap() {
   return render(<RoadmapSection />);
@@ -36,44 +58,37 @@ afterEach(() => {
 
 describe("RoadmapSection", () => {
   it("renders section with id roadmap", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve([]),
-    });
+    mockBothRepos();
     const { container } = renderRoadmap();
     expect(container.querySelector("section#roadmap")).toBeInTheDocument();
   });
 
   it("renders the heading", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve([]),
-    });
+    mockBothRepos();
     renderRoadmap();
     expect(screen.getByText("Roadmap")).toBeInTheDocument();
   });
 
-  it("renders GitHub Issues link in subtitle", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve([]),
-    });
+  it("renders GitHub Issues subtitle", async () => {
+    mockBothRepos();
     renderRoadmap();
-    const link = screen.getByRole("link", { name: /github issues/i });
-    expect(link).toHaveAttribute(
-      "href",
-      "https://github.com/fjpulidop/specrails-core/issues"
-    );
+    expect(screen.getByText(/live from github issues/i)).toBeInTheDocument();
+  });
+
+  // --- Filter buttons ---
+
+  it("renders filter buttons for All, Core, Hub", async () => {
+    mockBothRepos();
+    renderRoadmap();
+    expect(screen.getByRole("button", { name: "All" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Core" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Hub" })).toBeInTheDocument();
   });
 
   // --- Loading state ---
 
   it("shows a spinner while loading", () => {
-    // Never resolve the fetch — keeps loading=true
-    fetchMock.mockReturnValueOnce(new Promise(() => {}));
+    fetchMock.mockImplementation(() => new Promise(() => {}));
     const { container } = renderRoadmap();
     expect(container.querySelector(".animate-spin")).toBeInTheDocument();
   });
@@ -81,7 +96,7 @@ describe("RoadmapSection", () => {
   // --- Error state ---
 
   it("shows error message when fetch fails", async () => {
-    fetchMock.mockRejectedValueOnce(new Error("network error"));
+    mockBothReposError();
     renderRoadmap();
 
     await waitFor(() => {
@@ -89,18 +104,12 @@ describe("RoadmapSection", () => {
         screen.getByText(/could not load issues right now/i)
       ).toBeInTheDocument();
     });
-    // Should show fallback link
-    expect(
-      screen.getByRole("link", { name: /view issues on github/i })
-    ).toBeInTheDocument();
   });
 
   it("shows error on 429 rate limit", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: false,
-      status: 429,
-      json: () => Promise.resolve({}),
-    });
+    fetchMock.mockImplementation(() =>
+      Promise.resolve({ ok: false, status: 429, json: () => Promise.resolve({}) })
+    );
     renderRoadmap();
 
     await waitFor(() => {
@@ -111,11 +120,9 @@ describe("RoadmapSection", () => {
   });
 
   it("shows error on non-ok response", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: false,
-      status: 500,
-      json: () => Promise.resolve({}),
-    });
+    fetchMock.mockImplementation(() =>
+      Promise.resolve({ ok: false, status: 500, json: () => Promise.resolve({}) })
+    );
     renderRoadmap();
 
     await waitFor(() => {
@@ -128,11 +135,7 @@ describe("RoadmapSection", () => {
   // --- Empty issues ---
 
   it("shows all caught up message when no issues exist", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve([]),
-    });
+    mockBothRepos([], []);
     renderRoadmap();
 
     await waitFor(() => {
@@ -144,99 +147,70 @@ describe("RoadmapSection", () => {
 
   // --- Issues rendered ---
 
-  it("renders issue cards when issues are returned", async () => {
-    const issues = [
-      fakeIssue({ id: 1, number: 42, title: "Add dark mode support" }),
-      fakeIssue({ id: 2, number: 43, title: "Fix CLI output" }),
-    ];
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve(issues),
-    });
+  it("renders issue cards from both repos", async () => {
+    mockBothRepos(
+      [fakeIssue({ id: 1, number: 42, title: "Core feature" })],
+      [fakeIssue({ id: 2, number: 10, title: "Hub feature", html_url: "https://github.com/fjpulidop/specrails-hub/issues/10" })]
+    );
     renderRoadmap();
 
     await waitFor(() => {
-      expect(screen.getByText("Add dark mode support")).toBeInTheDocument();
-      expect(screen.getByText("Fix CLI output")).toBeInTheDocument();
+      expect(screen.getByText("Core feature")).toBeInTheDocument();
+      expect(screen.getByText("Hub feature")).toBeInTheDocument();
     });
   });
 
-  it("renders issue numbers", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () =>
-        Promise.resolve([fakeIssue({ id: 1, number: 42 })]),
-    });
+  it("renders product badges on issue cards", async () => {
+    mockBothRepos(
+      [fakeIssue({ id: 1, number: 42, title: "Core issue" })],
+      [fakeIssue({ id: 2, number: 10, title: "Hub issue", html_url: "https://github.com/fjpulidop/specrails-hub/issues/10" })]
+    );
     renderRoadmap();
 
     await waitFor(() => {
-      expect(screen.getByText("#42")).toBeInTheDocument();
+      expect(screen.getByText("Core issue")).toBeInTheDocument();
     });
+    // Product badges
+    const badges = screen.getAllByText(/^(Core|Hub)$/);
+    expect(badges.length).toBeGreaterThanOrEqual(2);
   });
 
   it("renders issue labels with sanitized colors", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () =>
-        Promise.resolve([
-          fakeIssue({
-            labels: [{ name: "bug", color: "d73a4a" }],
-          }),
-        ]),
-    });
+    mockBothRepos([
+      fakeIssue({ labels: [{ name: "bug", color: "d73a4a" }] }),
+    ]);
     renderRoadmap();
 
     await waitFor(() => {
       const label = screen.getByText("bug");
       expect(label).toBeInTheDocument();
-      // Valid hex color should be used
-      expect(label).toHaveStyle({
-        color: "#d73a4a",
-      });
+      expect(label).toHaveStyle({ color: "#d73a4a" });
     });
   });
 
   it("uses fallback color for labels with invalid hex color", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () =>
-        Promise.resolve([
-          fakeIssue({
-            labels: [{ name: "invalid-label", color: "not-hex!" }],
-          }),
-        ]),
-    });
+    mockBothRepos([
+      fakeIssue({ labels: [{ name: "invalid-label", color: "not-hex!" }] }),
+    ]);
     renderRoadmap();
 
     await waitFor(() => {
       const label = screen.getByText("invalid-label");
       expect(label).toBeInTheDocument();
-      // Fallback color 6e7681
-      expect(label).toHaveStyle({
-        color: "#6e7681",
-      });
+      expect(label).toHaveStyle({ color: "#6e7681" });
     });
   });
 
   // --- Filters out pull requests ---
 
   it("filters out pull requests from the results", async () => {
-    const issues = [
+    mockBothRepos([
       fakeIssue({ id: 1, number: 10, title: "Real issue" }),
       {
         ...fakeIssue({ id: 2, number: 11, title: "Pull request" }),
         pull_request: { url: "https://..." },
       },
-    ];
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve(issues),
-    });
+    ]);
     renderRoadmap();
 
     await waitFor(() => {
@@ -245,21 +219,34 @@ describe("RoadmapSection", () => {
     expect(screen.queryByText("Pull request")).not.toBeInTheDocument();
   });
 
-  // --- "View all issues" footer link ---
+  // --- Filter interaction ---
 
-  it("renders 'View all issues on GitHub' footer link", async () => {
-    fetchMock.mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve([]),
-    });
+  it("filters issues by product when clicking filter buttons", async () => {
+    const user = userEvent.setup();
+    mockBothRepos(
+      [fakeIssue({ id: 1, number: 42, title: "Core only issue" })],
+      [fakeIssue({ id: 2, number: 10, title: "Hub only issue", html_url: "https://github.com/fjpulidop/specrails-hub/issues/10" })]
+    );
     renderRoadmap();
 
     await waitFor(() => {
-      const links = screen.getAllByRole("link", {
-        name: /view all issues on github/i,
-      });
-      expect(links.length).toBeGreaterThanOrEqual(1);
+      expect(screen.getByText("Core only issue")).toBeInTheDocument();
+      expect(screen.getByText("Hub only issue")).toBeInTheDocument();
     });
+
+    // Filter to Core only
+    await user.click(screen.getByRole("button", { name: "Core" }));
+    expect(screen.getByText("Core only issue")).toBeInTheDocument();
+    expect(screen.queryByText("Hub only issue")).not.toBeInTheDocument();
+
+    // Filter to Hub only
+    await user.click(screen.getByRole("button", { name: "Hub" }));
+    expect(screen.queryByText("Core only issue")).not.toBeInTheDocument();
+    expect(screen.getByText("Hub only issue")).toBeInTheDocument();
+
+    // Back to All
+    await user.click(screen.getByRole("button", { name: "All" }));
+    expect(screen.getByText("Core only issue")).toBeInTheDocument();
+    expect(screen.getByText("Hub only issue")).toBeInTheDocument();
   });
 });

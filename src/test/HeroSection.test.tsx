@@ -88,12 +88,14 @@ describe("HeroSection", () => {
   it("renders the tagline", () => {
     renderHero();
     expect(screen.getByText(/your ai development team/i)).toBeInTheDocument();
-    expect(screen.getByText(/from idea to production code/i)).toBeInTheDocument();
+    // "From Idea to Production Code" appears in both tagline and supporting line
+    expect(screen.getAllByText(/from idea to production code/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders the supporting description", () => {
     renderHero();
-    expect(screen.getByText(/12 specialized agents/i)).toBeInTheDocument();
+    expect(screen.getByText(/specrails-core/i)).toBeInTheDocument();
+    expect(screen.getByText(/specrails-hub/i)).toBeInTheDocument();
   });
 
   it("renders the tabbed terminal", () => {

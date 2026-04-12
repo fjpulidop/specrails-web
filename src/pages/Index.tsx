@@ -4,8 +4,10 @@ import { useSeo } from "@/hooks/useSeo";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ProblemSection from "@/components/ProblemSection";
+import ProductsSection from "@/components/ProductsSection";
 import AgentsSection from "@/components/AgentsSection";
 import PipelineSection from "@/components/PipelineSection";
+import HubShowcase from "@/components/HubShowcase";
 import DemoSection from "@/components/DemoSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import CliCompatibilitySection from "@/components/CliCompatibilitySection";
@@ -20,9 +22,9 @@ const Index = () => {
   const { hash } = useLocation();
 
   useSeo({
-    title: "specrails — AI Coding Assistant for Dev Teams",
+    title: "specrails — AI Development Platform: Core Engine + Hub Dashboard",
     description:
-      "specrails is the AI coding assistant that turns Claude Code and OpenAI Codex into your full dev team — architect, engineers, QA, and release manager. From idea to production code.",
+      "specrails turns Claude Code and OpenAI Codex into your full dev team. specrails-core: 14 AI agents from idea to production code. specrails-hub: local dashboard for pipeline visualization, tickets, and analytics.",
     canonical: "https://specrails.dev/",
   });
 
@@ -41,8 +43,10 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <ProblemSection />
+      <ProductsSection />
       <AgentsSection />
       <PipelineSection />
+      <HubShowcase />
       <DemoSection />
       <FeaturesSection />
       <CliCompatibilitySection />
@@ -50,7 +54,7 @@ const Index = () => {
       <PrinciplesSection />
       <RoadmapSection />
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","agents","pipeline","demo","features","cli-compat","commands","principles","roadmap","footer"]} />
+      <SectionNav sectionIds={["hero","problem","products","agents","pipeline","hub-showcase","demo","features","cli-compat","commands","principles","roadmap","footer"]} />
       <AnimatedLogo />
     </div>
   );

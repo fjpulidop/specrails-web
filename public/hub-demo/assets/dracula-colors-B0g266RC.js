@@ -1,0 +1,1 @@
+var e={purple:`hsl(265 89% 78%)`,cyan:`hsl(191 97% 77%)`,green:`hsl(135 94% 65%)`,pink:`hsl(326 100% 74%)`,orange:`hsl(31 100% 71%)`,red:`hsl(0 100% 67%)`,yellow:`hsl(65 92% 76%)`,comment:`hsl(225 27% 51%)`},t={completed:e.purple,failed:e.pink,canceled:e.orange,running:e.cyan,queued:e.comment},n=[e.purple,e.cyan,e.green,e.pink,e.orange];export{e as n,t as r,n as t};

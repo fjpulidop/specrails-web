@@ -231,13 +231,29 @@ const HeroSection = () => {
 
         {/* Supporting line */}
         <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-4xl mx-auto mb-6 animate-fade-up delay-200">
-          A system of 12 specialized agents that works with Claude Code and OpenAI Codex<br />
-          From Product Discovery &rarr; Architecture &rarr; Implementation &rarr; Review &rarr; Ship
+          From idea to production code with <span className="text-dracula-cyan">specrails-core</span>.
+          Visualize everything with <span className="text-dracula-purple">specrails-hub</span>.
         </p>
 
         {/* Tabbed terminal — 3 installation methods */}
         <div className="animate-fade-up delay-300">
           <TabbedTerminal />
+        </div>
+
+        {/* Dual CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6 animate-fade-up delay-400">
+          <a
+            href="#hero"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-dracula-cyan/10 border border-dracula-cyan/30 text-dracula-cyan text-sm font-medium hover:bg-dracula-cyan/20 transition-colors"
+          >
+            Get Started with Core
+          </a>
+          <a
+            href="#hub-showcase"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-dracula-purple/10 border border-dracula-purple/30 text-dracula-purple text-sm font-medium hover:bg-dracula-purple/20 transition-colors"
+          >
+            Explore the Hub
+          </a>
         </div>
 
         {/* GitHub stars */}
