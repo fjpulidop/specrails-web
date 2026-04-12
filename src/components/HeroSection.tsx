@@ -27,18 +27,6 @@ const installTabs: InstallTab[] = [
     ],
   },
   {
-    id: "plugin",
-    label: "Claude Code Plugin",
-    lines: [
-      { text: "$ claude plugin install specrails", color: "text-dracula-green", delay: 0 },
-      { text: "\u2713 Plugin installed successfully", color: "text-dracula-cyan", delay: 700 },
-      { text: "", color: "text-foreground", delay: 900 },
-      { text: "$ /specrails:enrich", color: "text-dracula-green", delay: 1100 },
-      { text: "\u2713 specrails plugin active", color: "text-dracula-cyan", delay: 1700 },
-      { text: "$ # Ready to use /specrails:* commands", color: "text-dracula-pink", delay: 2100 },
-    ],
-  },
-  {
     id: "codex",
     label: "Codex CLI",
     lines: [

@@ -101,17 +101,15 @@ describe("HeroSection", () => {
     expect(screen.getByTestId("tabbed-terminal")).toBeInTheDocument();
   });
 
-  it("renders all three install tabs", () => {
+  it("renders both install tabs", () => {
     renderHero();
     expect(screen.getByTestId("tab-claude")).toBeInTheDocument();
-    expect(screen.getByTestId("tab-plugin")).toBeInTheDocument();
     expect(screen.getByTestId("tab-codex")).toBeInTheDocument();
   });
 
-  it("renders tab labels for Claude Code CLI, Claude Code Plugin, and Codex CLI", () => {
+  it("renders tab labels for Claude Code CLI and Codex CLI", () => {
     const { container } = renderHero();
     expect(container.textContent).toContain("Claude Code CLI");
-    expect(container.textContent).toContain("Claude Code Plugin");
     expect(container.textContent).toContain("Codex CLI");
   });
 
@@ -131,15 +129,6 @@ describe("HeroSection", () => {
     renderHero();
     const claudeTab = screen.getByTestId("tab-claude");
     expect(claudeTab.getAttribute("aria-selected")).toBe("true");
-  });
-
-  it("switches to Plugin tab when clicked", () => {
-    renderHero();
-    const pluginTab = screen.getByTestId("tab-plugin");
-    fireEvent.click(pluginTab);
-    expect(pluginTab.getAttribute("aria-selected")).toBe("true");
-    const claudeTab = screen.getByTestId("tab-claude");
-    expect(claudeTab.getAttribute("aria-selected")).toBe("false");
   });
 
   it("switches to Codex tab when clicked", () => {
