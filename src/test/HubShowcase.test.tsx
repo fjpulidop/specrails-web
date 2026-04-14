@@ -107,16 +107,9 @@ describe("HubShowcase", () => {
     expect(toolbarBtn!.className).toContain("text-dracula-purple");
   });
 
-  it("renders mobile carousel navigation", () => {
+  it("renders mobile desktop-only notice", () => {
     render(<HubShowcase />);
-    expect(screen.getByLabelText("Previous screenshot")).toBeInTheDocument();
-    expect(screen.getByLabelText("Next screenshot")).toBeInTheDocument();
-  });
-
-  it("renders mobile dot indicators", () => {
-    render(<HubShowcase />);
-    expect(screen.getByLabelText("Go to Dashboard")).toBeInTheDocument();
-    expect(screen.getByLabelText("Go to Analytics")).toBeInTheDocument();
-    expect(screen.getByLabelText("Go to Activity")).toBeInTheDocument();
+    expect(screen.getByText(/demo best viewed on desktop/i)).toBeInTheDocument();
+    expect(screen.getByText(/requires a wider screen/i)).toBeInTheDocument();
   });
 });

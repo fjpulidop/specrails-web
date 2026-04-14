@@ -2,13 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const REPO = "fjpulidop/specrails-core";
+interface GitHubStarsButtonProps {
+  repo?: string;
+}
 
-export const GitHubStarsButton = () => {
+export const GitHubStarsButton = ({
+  repo = "fjpulidop/specrails-core",
+}: GitHubStarsButtonProps) => {
   const { data } = useQuery({
-    queryKey: ["github-stars"],
+    queryKey: ["github-stars", repo],
     queryFn: async () => {
-      const res = await fetch(`https://api.github.com/repos/${REPO}`);
+      const res = await fetch(`https://api.github.com/repos/${repo}`);
       if (!res.ok) return null;
       return res.json() as Promise<{ stargazers_count: number }>;
     },
@@ -19,7 +23,7 @@ export const GitHubStarsButton = () => {
   const stars = data?.stargazers_count;
 
   return (
-    <a href={`https://github.com/${REPO}`} target="_blank" rel="noopener noreferrer">
+    <a href={`https://github.com/${repo}`} target="_blank" rel="noopener noreferrer">
       <Button variant="outline" size="lg" className="text-base px-8 py-6">
         <Star className="w-5 h-5 mr-2" />
         Star on GitHub

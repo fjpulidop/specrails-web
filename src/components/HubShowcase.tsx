@@ -4,8 +4,7 @@ import {
   LayoutDashboard,
   BarChart3,
   Activity,
-  ChevronLeft,
-  ChevronRight,
+  Monitor,
   Info,
 } from "lucide-react";
 
@@ -15,21 +14,12 @@ const navButtons = [
   { label: "Activity", route: "/activity", icon: Activity },
 ];
 
-const mobileScreenshots = [
-  { label: "Dashboard", src: "/hub-demo/screenshots/dashboard.png" },
-  { label: "Analytics", src: "/hub-demo/screenshots/analytics.png" },
-  { label: "Activity", src: "/hub-demo/screenshots/activity.png" },
-];
-
 const HubShowcase = () => {
   const { ref, isVisible } = useScrollAnimation(0.05);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [activeNav, setActiveNav] = useState(0);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeError, setIframeError] = useState(false);
-
-  // Carousel state for mobile
-  const [carouselIndex, setCarouselIndex] = useState(0);
 
   // Load iframe once section becomes visible, but only if the demo build exists.
   // We probe a manifest file that the hub demo build creates — Vite's SPA fallback
@@ -165,76 +155,27 @@ const HubShowcase = () => {
           </div>
         </div>
 
-        {/* Mobile: screenshot carousel */}
+        {/* Mobile: desktop-only notice */}
         <div
           className={`lg:hidden transition-all duration-700 delay-200 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="relative rounded-xl border border-border/30 overflow-hidden shadow-xl">
-            {/* Fake browser bar */}
-            <div className="flex items-center gap-2 px-3 py-2 bg-dracula-current border-b border-border/20">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-dracula-red/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-dracula-yellow/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-dracula-green/60" />
-              </div>
-              <span className="text-xs font-mono text-muted-foreground mx-auto">
-                {mobileScreenshots[carouselIndex].label}
-              </span>
-            </div>
-
-            {/* Screenshot area */}
-            <div
-              className="relative bg-dracula-bg"
-              style={{ aspectRatio: "16/10" }}
+          <div className="rounded-xl border border-border/30 bg-dracula-current/40 p-10 flex flex-col items-center text-center gap-4">
+            <Monitor className="w-12 h-12 text-dracula-purple/40" />
+            <p className="text-base font-semibold text-foreground/80">
+              Demo best viewed on Desktop
+            </p>
+            <p className="text-sm text-muted-foreground max-w-xs">
+              The interactive specrails-hub demo requires a wider screen. Open
+              this page on a laptop or desktop to explore it.
+            </p>
+            <a
+              href="/docs/hub-installation"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-dracula-purple/10 border border-dracula-purple/30 text-dracula-purple text-sm font-medium hover:bg-dracula-purple/20 transition-colors"
             >
-              <img
-                src={mobileScreenshots[carouselIndex].src}
-                alt={`specrails-hub ${mobileScreenshots[carouselIndex].label}`}
-                className="w-full h-full object-cover"
-              />
-              {/* Nav arrows */}
-              <button
-                onClick={() =>
-                  setCarouselIndex(
-                    (carouselIndex - 1 + mobileScreenshots.length) %
-                      mobileScreenshots.length
-                  )
-                }
-                className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center text-foreground"
-                aria-label="Previous screenshot"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() =>
-                  setCarouselIndex(
-                    (carouselIndex + 1) % mobileScreenshots.length
-                  )
-                }
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center text-foreground"
-                aria-label="Next screenshot"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-4">
-            {mobileScreenshots.map((s, i) => (
-              <button
-                key={s.label}
-                onClick={() => setCarouselIndex(i)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  i === carouselIndex
-                    ? "bg-dracula-purple w-6"
-                    : "bg-muted-foreground/30"
-                }`}
-                aria-label={`Go to ${s.label}`}
-              />
-            ))}
+              Install specrails-hub locally
+            </a>
           </div>
         </div>
 

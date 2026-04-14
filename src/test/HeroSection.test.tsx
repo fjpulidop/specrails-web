@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeAll, beforeEach, afterEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import HeroSection from "@/components/HeroSection";
@@ -94,8 +94,8 @@ describe("HeroSection", () => {
 
   it("renders the supporting description", () => {
     renderHero();
-    expect(screen.getByText(/specrails-core/i)).toBeInTheDocument();
-    expect(screen.getByText(/specrails-hub/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/specrails-core/i).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText(/specrails-hub/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders the tabbed terminal", () => {
@@ -143,5 +143,20 @@ describe("HeroSection", () => {
   it("renders the GitHub stars button", () => {
     renderHero();
     expect(screen.getByText("Star on GitHub")).toBeInTheDocument();
+  });
+
+  it("renders product switcher with core and hub buttons", () => {
+    renderHero();
+    expect(screen.getByTestId("product-core")).toBeInTheDocument();
+    expect(screen.getByTestId("product-hub")).toBeInTheDocument();
+  });
+
+  it("shows hub terminal tabs after switching to hub product", async () => {
+    renderHero();
+    fireEvent.click(screen.getByTestId("product-hub"));
+    await waitFor(() => {
+      expect(screen.getByTestId("tab-install")).toBeInTheDocument();
+      expect(screen.getByTestId("tab-add-project")).toBeInTheDocument();
+    });
   });
 });
