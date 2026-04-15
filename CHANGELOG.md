@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/fjpulidop/specrails-web/compare/v1.6.1...v1.7.0) (2026-04-15)
+
+
+### Features
+
+* hero product switcher for core/hub with mobile demo fix ([#139](https://github.com/fjpulidop/specrails-web/issues/139)) ([3150a0f](https://github.com/fjpulidop/specrails-web/commit/3150a0fa383bb570a4503e310c447096bdd58e4b))
+
 ## [1.6.1](https://github.com/fjpulidop/specrails-web/compare/v1.6.0...v1.6.1) (2026-04-12)
 
 
