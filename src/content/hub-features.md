@@ -146,7 +146,6 @@ Per-project state stays in your repo:
 ```
 .specrails/
   local-tickets.json          # specs
-  changes/                    # OpenSpec change artefacts
   backlog-config.json         # optional issue-tracker config
 ```
 
