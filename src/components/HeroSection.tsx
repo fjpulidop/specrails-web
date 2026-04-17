@@ -259,8 +259,8 @@ const HeroSection = () => {
 
         {/* Supporting line */}
         <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-10 animate-fade-up delay-200">
-          A local desktop dashboard for managing your AI pipelines, powered by{" "}
-          <span className="text-dracula-cyan">specrails-core</span> underneath.
+          Agentic development, orchestrated by specs — powered by{" "}
+          <span className="text-dracula-cyan">specrails-core</span>.
         </p>
 
         {/* Demo frame (iframe on desktop, screenshot on mobile) */}
