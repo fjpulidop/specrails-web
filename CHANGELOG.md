@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/fjpulidop/specrails-web/compare/v1.7.0...v1.8.0) (2026-04-17)
+
+
+### Features
+
+* hero-first redesign · /core page · useReleaseManifest hook ([#142](https://github.com/fjpulidop/specrails-web/issues/142)) ([36b6ee3](https://github.com/fjpulidop/specrails-web/commit/36b6ee3864bbab4220bfbc991f148023be53bf3b))
+
 ## [1.7.0](https://github.com/fjpulidop/specrails-web/compare/v1.6.1...v1.7.0) (2026-04-15)
 
 
