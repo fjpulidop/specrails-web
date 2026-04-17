@@ -4,13 +4,22 @@ Reference guide to every feature inside specrails-hub.
 
 ---
 
-## Sidebar
+## Two sidebars
 
-Collapsible left rail, hover to expand and pin to lock.
+The app uses two collapsible sidebars.
+
+**ArcSidebar (left)** — hub-level navigation.
 
 - Lists every registered project — click to switch active project.
 - **+ Add project** button at the bottom of the project list.
 - Bottom section: Docs · Hub Analytics · Hub Settings.
+- Hover to expand, pin icon at the top to lock open.
+
+**ProjectRightSidebar (right)** — per-project navigation.
+
+- Dashboard · Jobs · Analytics · Settings for the active project.
+- Same hover-to-expand + pin behaviour as the left sidebar.
+- Hidden while a project is still in the setup wizard.
 
 ---
 
