@@ -219,8 +219,8 @@ const HeroSection = () => {
 
   const versionLabel =
     version !== null
-      ? `v${version} · Apple Silicon only`
-      : "Apple Silicon only";
+      ? `v${version} · Apple Silicon only (more platforms coming)`
+      : "Apple Silicon only (more platforms coming)";
 
   return (
     <section
