@@ -10,7 +10,7 @@ specrails-hub is a local desktop app for running and visualising AI development 
 
 The fastest path. One signed `.dmg`, no Node required.
 
-[**↓ Download for Mac (Apple Silicon)**](https://specrails.dev/downloads/specrails-hub/latest/) — latest build from the public release channel.
+[**↓ Download for Mac (Apple Silicon)**](https://specrails.dev/#hero) — the homepage "Download for Mac" button resolves the newest build from the public release channel automatically.
 
 1. Open the `.dmg`.
 2. Drag **specrails-hub** into `/Applications`.
