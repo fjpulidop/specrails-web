@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Github } from "lucide-react";
+import { Github, Coffee } from "lucide-react";
 import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
 
+// openspec: hero-redesign-hub-primary
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
@@ -17,7 +18,6 @@ const Navbar = () => {
 
   const links = [
     { label: "Pipeline", href: "/#pipeline" },
-    { label: "Hub", href: "/#hub-showcase" },
     { label: "Features", href: "/#features" },
     { label: "Commands", href: "/#commands" },
   ];
@@ -45,9 +45,20 @@ const Navbar = () => {
             </Link>
           )}
           <a
-            href="https://github.com/fjpulidop/specrails-core"
+            href="https://ko-fi.com/D1D81Y002C"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Donate on Ko-fi"
+            title="Donate on Ko-fi"
+            className="text-muted-foreground hover:text-dracula-pink transition-colors"
+          >
+            <Coffee className="w-5 h-5" />
+          </a>
+          <a
+            href="https://github.com/fjpulidop/specrails-hub"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="specrails-hub on GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />
@@ -70,11 +81,29 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
+          <Link
+            to="/core"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Core
+          </Link>
           <DocsDropdown />
           <a
-            href="https://github.com/fjpulidop/specrails-core"
+            href="https://ko-fi.com/D1D81Y002C"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Donate on Ko-fi"
+            title="Donate on Ko-fi"
+            className="group inline-flex items-center gap-1.5 text-muted-foreground hover:text-dracula-pink transition-colors"
+          >
+            <Coffee className="w-4 h-4" />
+            <span className="text-sm">Donate</span>
+          </a>
+          <a
+            href="https://github.com/fjpulidop/specrails-hub"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="specrails-hub on GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />

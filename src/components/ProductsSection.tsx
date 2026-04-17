@@ -33,7 +33,7 @@ const products: Product[] = [
       "Parallel execution in git worktrees",
       "Confidence scoring & security gate",
     ],
-    cta: { label: "Get Started with Core", href: "#hero" },
+    cta: { label: "Get Started with Core", href: "/core" },
   },
   {
     name: "specrails-hub",
@@ -52,7 +52,7 @@ const products: Product[] = [
       "Analytics & cost tracking",
       "Streaming logs & activity feed",
     ],
-    cta: { label: "Explore the Hub", href: "#hub-showcase" },
+    cta: { label: "Explore the Hub", href: "#hero" },
   },
 ];
 

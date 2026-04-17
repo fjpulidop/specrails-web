@@ -4,36 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>specrails — Hub Demo</title>
-    <script>
-      // Hide chat panel, status bar, and toasts in demo mode.
-      addEventListener('load', () => setTimeout(() => {
-        // Chat panel: the narrow sidebar strip next to <main>
-        const main = document.querySelector('main');
-        if (main && main.nextElementSibling) main.nextElementSibling.style.display = 'none';
-        // Status bar footer
-        document.querySelectorAll('footer').forEach(el => el.style.display = 'none');
-        // Toast container
-        document.querySelectorAll('[data-sonner-toaster]').forEach(el => el.style.display = 'none');
-        // CLI badge ("Claude Code v1.0.0")
-        document.querySelectorAll('span').forEach(el => {
-          if (el.textContent && el.textContent.includes('Claude Code')) el.style.display = 'none';
-        });
-        // "/ manager" text next to logo
-        document.querySelectorAll('span').forEach(el => {
-          if (el.textContent && el.textContent.trim() === '/ manager') el.style.display = 'none';
-        });
-      }, 500));
-    </script>
-    <script type="module" crossorigin src="/hub-demo/assets/main-DnoolCgN.js"></script>
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/createLucideIcon-j4o5em8U.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/react-dom-CzrF8Nvy.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/dist-Bg9oO_mh.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/utils-DSsSbmuB.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/en-US-DUO_uYan.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/x-C53vXlx8.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/useSharedWebSocket-j0gqXR8o.js">
-    <link rel="modulepreload" crossorigin href="/hub-demo/assets/useHub-BC5DrRzX.js">
-    <link rel="stylesheet" crossorigin href="/hub-demo/assets/main-P9xBf2eQ.css">
+    <script type="module" crossorigin src="/hub-demo/assets/main-BdEj66ZA.js"></script>
+    <link rel="modulepreload" crossorigin href="/hub-demo/assets/react-CYzKIDNi.js">
+    <link rel="modulepreload" crossorigin href="/hub-demo/assets/createLucideIcon-DiFUwvEC.js">
+    <link rel="modulepreload" crossorigin href="/hub-demo/assets/react-dom-CI6wT8dZ.js">
+    <link rel="modulepreload" crossorigin href="/hub-demo/assets/dist-CqhONET6.js">
+    <link rel="modulepreload" crossorigin href="/hub-demo/assets/utils-CUQjs3iv.js">
+    <link rel="modulepreload" crossorigin href="/hub-demo/assets/dist-D60yXpP4.js">
+    <link rel="stylesheet" crossorigin href="/hub-demo/assets/main-B894LK54.css">
   </head>
   <body>
     <div id="root"></div>

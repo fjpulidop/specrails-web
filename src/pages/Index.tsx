@@ -7,7 +7,6 @@ import ProblemSection from "@/components/ProblemSection";
 import ProductsSection from "@/components/ProductsSection";
 import AgentsSection from "@/components/AgentsSection";
 import PipelineSection from "@/components/PipelineSection";
-import HubShowcase from "@/components/HubShowcase";
 import DemoSection from "@/components/DemoSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import CliCompatibilitySection from "@/components/CliCompatibilitySection";
@@ -46,7 +45,6 @@ const Index = () => {
       <ProductsSection />
       <AgentsSection />
       <PipelineSection />
-      <HubShowcase />
       <DemoSection />
       <FeaturesSection />
       <CliCompatibilitySection />
@@ -54,7 +52,7 @@ const Index = () => {
       <PrinciplesSection />
       <RoadmapSection />
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","products","agents","pipeline","hub-showcase","demo","features","cli-compat","commands","principles","roadmap","footer"]} />
+      <SectionNav sectionIds={["hero","problem","products","agents","pipeline","demo","features","cli-compat","commands","principles","roadmap","footer"]} />
       <AnimatedLogo />
     </div>
   );

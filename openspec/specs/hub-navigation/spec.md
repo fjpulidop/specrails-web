@@ -21,7 +21,7 @@ The system SHALL update the HeroSection to reflect the dual-product positioning.
 
 #### Scenario: Hero displays dual-product messaging
 - **WHEN** the hero section renders
-- **THEN** the tagline reflects the umbrella brand: "Your AI Development Team"
+- **THEN** the tagline reflects the umbrella brand: "Your Agentic Development Team"
 - **AND** a subtitle mentions both products: "From idea to production code with specrails-core. Visualize everything with specrails-hub."
 
 #### Scenario: Dual CTA buttons

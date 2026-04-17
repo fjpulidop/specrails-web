@@ -305,4 +305,70 @@
   .delay-500 { animation-delay: 500ms; }
   .delay-600 { animation-delay: 600ms; }
   .delay-700 { animation-delay: 700ms; }
+
+  /*
+   * Hero breathing glow + CTA shimmer sweep + browser-chrome glow ring.
+   * openspec: hero-redesign-hub-primary
+   */
+  @keyframes hero-breath {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+  }
+  .animate-hero-breath {
+    animation: hero-breath 6s ease-in-out infinite;
+  }
+
+  @keyframes hero-shimmer {
+    0% { background-position: -180% 0; }
+    60%, 100% { background-position: 220% 0; }
+  }
+  .animate-hero-shimmer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      110deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.28) 45%,
+      transparent 70%
+    );
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    background-position: -180% 0;
+    animation: hero-shimmer 4.2s ease-in-out infinite;
+  }
+
+  .hero-chrome-ring {
+    position: relative;
+    box-shadow:
+      0 25px 60px -20px rgba(189, 147, 249, 0.35),
+      0 0 0 1px hsl(var(--border) / 0.3);
+  }
+  .hero-chrome-ring::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(189, 147, 249, 0.45),
+      rgba(139, 233, 253, 0.0) 40%,
+      rgba(255, 121, 198, 0.35)
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .hero-noise {
+    background-image: url("/noise.webp");
+    background-repeat: repeat;
+    opacity: 0.025;
+    mix-blend-mode: overlay;
+  }
 }
