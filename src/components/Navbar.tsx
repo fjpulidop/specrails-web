@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Github } from "lucide-react";
+import { Github, Coffee } from "lucide-react";
 import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
 
@@ -45,6 +45,16 @@ const Navbar = () => {
             </Link>
           )}
           <a
+            href="https://ko-fi.com/D1D81Y002C"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Support on Ko-fi"
+            title="Support on Ko-fi"
+            className="text-muted-foreground hover:text-dracula-pink transition-colors"
+          >
+            <Coffee className="w-5 h-5" />
+          </a>
+          <a
             href="https://github.com/fjpulidop/specrails-hub"
             target="_blank"
             rel="noopener noreferrer"
@@ -78,6 +88,17 @@ const Navbar = () => {
             Core
           </Link>
           <DocsDropdown />
+          <a
+            href="https://ko-fi.com/D1D81Y002C"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Support on Ko-fi"
+            title="Support on Ko-fi"
+            className="group inline-flex items-center gap-1.5 text-muted-foreground hover:text-dracula-pink transition-colors"
+          >
+            <Coffee className="w-4 h-4" />
+            <span className="text-sm">Ko-fi</span>
+          </a>
           <a
             href="https://github.com/fjpulidop/specrails-hub"
             target="_blank"
