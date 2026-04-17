@@ -148,11 +148,6 @@ const HubDemoFrame = ({ isDesktop }: HubDemoFrameProps) => {
           <span className="w-3 h-3 rounded-full bg-dracula-yellow/60" />
           <span className="w-3 h-3 rounded-full bg-dracula-green/60" />
         </div>
-        <div className="flex-1 flex justify-center">
-          <div className="px-4 py-1 rounded-md bg-background/50 text-xs font-mono text-muted-foreground">
-            localhost:4200
-          </div>
-        </div>
       </div>
 
       {/* content — iframe on desktop, screenshot on mobile */}
