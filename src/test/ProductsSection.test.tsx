@@ -59,8 +59,8 @@ describe("ProductsSection", () => {
     render(<ProductsSection />);
     const coreCta = screen.getByText("Get Started with Core");
     const hubCta = screen.getByText("Explore the Hub");
-    expect(coreCta.closest("a")).toHaveAttribute("href", "#hero");
-    expect(hubCta.closest("a")).toHaveAttribute("href", "#hub-showcase");
+    expect(coreCta.closest("a")).toHaveAttribute("href", "/core");
+    expect(hubCta.closest("a")).toHaveAttribute("href", "#hero");
   });
 
   it("renders with visible classes when intersecting", () => {
