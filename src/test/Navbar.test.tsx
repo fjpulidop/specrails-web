@@ -1,17 +1,7 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-
-beforeEach(() => {
-  vi.stubGlobal(
-    "fetch",
-    vi.fn(() => Promise.reject(new Error("network error in test"))),
-  );
-});
-afterEach(() => {
-  vi.restoreAllMocks();
-});
 
 function renderNavbar(initialPath = "/") {
   return render(
@@ -50,12 +40,6 @@ describe("Navbar", () => {
       .getAllByRole("link", { name: /^core$/i })
       .filter((el) => el.getAttribute("href") === "/core");
     expect(coreLinks.length).toBeGreaterThan(0);
-  });
-
-  it("renders a Download entry", () => {
-    renderNavbar();
-    const downloadLinks = screen.getAllByRole("link", { name: /download/i });
-    expect(downloadLinks.length).toBeGreaterThan(0);
   });
 
   it("does not render a Hub nav link pointing to #hub-showcase", () => {

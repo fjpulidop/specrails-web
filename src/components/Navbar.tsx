@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Github, Download } from "lucide-react";
+import { Github } from "lucide-react";
 import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
-import {
-  useReleaseManifest,
-  downloadFromState,
-} from "@/hooks/useReleaseManifest";
 
 // openspec: hero-redesign-hub-primary
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const isDocsPage = pathname.startsWith("/docs");
-
-  const releaseState = useReleaseManifest();
-  const { href: downloadHref, disabled: downloadDisabled } = downloadFromState(releaseState);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -52,17 +45,6 @@ const Navbar = () => {
             </Link>
           )}
           <a
-            href={downloadHref ?? "#"}
-            download
-            aria-disabled={downloadDisabled}
-            className={`inline-flex items-center gap-1 px-3 py-1 rounded-full border border-dracula-purple/40 bg-dracula-purple/10 text-dracula-purple text-xs font-medium ${
-              downloadDisabled ? "pointer-events-none opacity-60" : "hover:bg-dracula-purple/20"
-            } transition-colors`}
-          >
-            <Download className="w-3 h-3" />
-            Download
-          </a>
-          <a
             href="https://github.com/fjpulidop/specrails-hub"
             target="_blank"
             rel="noopener noreferrer"
@@ -96,17 +78,6 @@ const Navbar = () => {
             Core
           </Link>
           <DocsDropdown />
-          <a
-            href={downloadHref ?? "#"}
-            download
-            aria-disabled={downloadDisabled}
-            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-dracula-purple/40 bg-dracula-purple/10 text-dracula-purple text-sm font-medium ${
-              downloadDisabled ? "pointer-events-none opacity-60" : "hover:bg-dracula-purple/20 hover:border-dracula-purple/60"
-            } transition-colors`}
-          >
-            <Download className="w-4 h-4" />
-            Download
-          </a>
           <a
             href="https://github.com/fjpulidop/specrails-hub"
             target="_blank"
