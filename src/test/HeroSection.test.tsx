@@ -83,7 +83,7 @@ describe("HeroSection", () => {
 
   it("renders the tagline", () => {
     renderHero();
-    expect(screen.getByText(/your ai development team/i)).toBeInTheDocument();
+    expect(screen.getByText(/your agentic development team/i)).toBeInTheDocument();
     expect(screen.getAllByText(/from idea to production code/i).length).toBeGreaterThanOrEqual(1);
   });
 

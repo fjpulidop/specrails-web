@@ -252,7 +252,7 @@ const HeroSection = () => {
 
         {/* Tagline */}
         <p className="text-xl md:text-3xl font-bold tracking-tight text-foreground mb-4 animate-fade-up delay-100 leading-tight">
-          Your AI Development Team.
+          Your Agentic Development Team.
           <br />
           <span className="gradient-text">From Idea to Production Code.</span>
         </p>
