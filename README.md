@@ -140,6 +140,12 @@ Contributions are welcome! Whether it's fixing a typo, improving animations, or 
 4. Push to the branch (`git push origin feat/your-feature`)
 5. Open a Pull Request
 
+## Support
+
+If specrails is useful to you, you can donate on [Ko-fi](https://ko-fi.com/D1D81Y002C) ☕ to support ongoing development.
+
+[![Donate on Ko-fi](https://img.shields.io/badge/Donate-Ko--fi-FF5E5B?logo=kofi&logoColor=white&style=flat-square)](https://ko-fi.com/D1D81Y002C)
+
 ## License
 
 This project is open source. See the specrails [repository](https://github.com/fjpulidop/specrails-core) for license details.

@@ -48,8 +48,8 @@ const Navbar = () => {
             href="https://ko-fi.com/D1D81Y002C"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Support on Ko-fi"
-            title="Support on Ko-fi"
+            aria-label="Donate on Ko-fi"
+            title="Donate on Ko-fi"
             className="text-muted-foreground hover:text-dracula-pink transition-colors"
           >
             <Coffee className="w-5 h-5" />
@@ -92,12 +92,12 @@ const Navbar = () => {
             href="https://ko-fi.com/D1D81Y002C"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Support on Ko-fi"
-            title="Support on Ko-fi"
+            aria-label="Donate on Ko-fi"
+            title="Donate on Ko-fi"
             className="group inline-flex items-center gap-1.5 text-muted-foreground hover:text-dracula-pink transition-colors"
           >
             <Coffee className="w-4 h-4" />
-            <span className="text-sm">Ko-fi</span>
+            <span className="text-sm">Donate</span>
           </a>
           <a
             href="https://github.com/fjpulidop/specrails-hub"
