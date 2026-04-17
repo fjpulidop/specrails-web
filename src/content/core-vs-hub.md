@@ -1,91 +1,69 @@
-# Core vs Hub
+# Hub vs Core — which should I use?
 
-specrails is two products that work better together. Here's how they compare and when to use each.
+**specrails** ships as two products that share the same pipeline. Pick one, or use both.
 
-## Overview
+## TL;DR
 
-**specrails-core** is the **engine** — a system of 14 specialized AI agents that transforms Claude Code (or OpenAI Codex) into a complete development team. It runs in your terminal, inside your repo.
+- **Hub** — download the macOS app, manage projects visually, see every pipeline run in real time. **Start here if you're new.**
+- **Core** — install the CLI in your repo, drive the pipeline from your terminal, zero GUI. **For terminal-first devs.**
 
-**specrails-hub** is the **control center** — a local dashboard for managing multiple specrails-core projects, visualizing pipeline progress, tracking tickets, and monitoring analytics.
+You can install Core alone. You can install Hub alone — the Hub's setup wizard runs `npx specrails-core@latest init` for any project that doesn't have Core yet. Everything composes.
 
-## Feature Comparison
+---
 
-| Capability | Core | Hub |
+## Side by side
+
+|  | specrails-hub | specrails-core |
 |---|---|---|
-| AI agent pipeline | 14 agents (architect → developer → reviewer → ship) | — |
-| Spec-driven development | OpenSpec workflow | Specs board visualization |
-| Parallel execution | Isolated git worktrees | Job queue management |
-| Institutional memory | Per-agent persistent memory | — |
-| Confidence scoring | Configurable quality gates | Analytics dashboard |
-| Security scanning | Built-in credential + OWASP scan | — |
-| Multi-project management | — | Manage all projects from one interface |
-| Pipeline visualization | — | Real-time phase indicators |
-| Ticket management | — | List, Kanban, and Post-it views |
-| Analytics & cost tracking | — | KPIs, charts, cost per feature |
-| Streaming logs | Terminal output | Browser-based log viewer with search |
-| Command execution | CLI commands | GUI command launcher |
-| Chat interface | — | Per-project chat |
-| Keyboard shortcuts | — | Full keyboard nav + Cmd+K palette |
+| What you download | `.dmg` (macOS app) or `npm i -g specrails-hub` | `npx specrails-core@latest init` (per-project) |
+| Interface | Desktop app + web dashboard at `localhost:4200` | Claude Code / Codex CLI |
+| Best for | Visual overview, multiple projects, non-dev stakeholders | Keyboard-heavy solo devs |
+| Manages multiple projects | ✅ Out of the box | ⚠️ One project per repo install |
+| Real-time log streaming | ✅ | Through Claude CLI stdout |
+| Local ticket board (Specs) | ✅ List / Kanban / Post-it | ✅ JSON file + slash commands |
+| Pipeline visualisation | ✅ Animated phases | Through log lines |
+| Analytics & cost tracking | ✅ Charts + KPI cards | Raw data in SQLite |
+| Keyboard shortcuts | ✅ `⌘K` palette, full nav | CLI-native |
+| Platform | macOS today; Windows + Linux coming soon | Any OS with Node 18+ |
+| License | MIT | MIT |
 
-## When to Use Each
+---
 
-### Core Only
+## How they relate
 
-Use specrails-core alone when you:
-
-- Work on a **single project**
-- Prefer a **terminal-first** workflow
-- Want the AI pipeline without any dashboard overhead
-- Are getting started and want the **simplest setup**
-
-### Hub Only
-
-specrails-hub requires at least one project with specrails-core installed. It doesn't run agents — it provides the UI layer on top.
-
-### Core + Hub (Recommended)
-
-Use both when you:
-
-- Manage **multiple projects** with specrails
-- Want to **visualize** pipeline progress in real time
-- Need **ticket management** for tracking features
-- Want **analytics** on agent performance and costs
-- Prefer a **browser-based** interface alongside CLI
-
-## How They Work Together
+Hub **uses** Core under the hood. When you click **Play** on a Rail, the hub spawns a Claude Code process running Core's pipeline commands inside your project directory. The agents, rules, personas and config all come from Core.
 
 ```
-You ──→ specrails-hub (dashboard) ──→ specrails-core (per project)
-              │                              │
-              ├─ Visualize pipeline           ├─ Run AI agents
-              ├─ Manage tickets               ├─ Write code
-              ├─ Track analytics              ├─ Review & test
-              └─ Stream logs                  └─ Ship PRs
+Hub (desktop app)                Core (per-project)
+┌──────────────────┐             ┌───────────────────────────┐
+│  Sidebar         │   spawns →  │  .claude/agents/          │
+│  Specs + Rails   │ ←─ logs ──  │  .claude/commands/        │
+│  Jobs · Analytics│             │  .specrails/ (tickets,    │
+└──────────────────┘             │    personas, rules,       │
+                                 │    agent-memory)          │
+                                 └───────────────────────────┘
 ```
 
-1. **Core implements, Hub visualizes** — Core's agents do the work; Hub shows you what's happening
-2. **Core learns, Hub reports** — Core accumulates institutional memory; Hub surfaces insights in analytics
-3. **Core ships PRs, Hub tracks progress** — Core creates branches and PRs; Hub tracks every feature from idea to merge
-4. **Core runs agents, Hub streams logs** — Core orchestrates agents; Hub streams their output in real time
+If you only use Core, you still get:
+- the 14 agents
+- the `/specrails:*` slash commands
+- the local-tickets board (through `/specrails:get-backlog-specs`)
 
-## Installation
+If you only use Hub, the Hub auto-bootstraps Core in each project the first time you add it.
 
-### Install Core
+---
 
-```bash
-npx specrails-core@latest init
-```
+## Recommended path
 
-### Install Hub
+1. **Download the Hub** — [Install Hub](/docs/hub-installation).
+2. Add your repo as a project. The Hub's setup wizard runs `npx specrails-core@latest init` for you if Core isn't there yet.
+3. Click **Play**. Watch the pipeline run.
+4. Once comfortable, open a terminal and use Core's commands directly if you prefer keyboard-first.
 
-```bash
-npm install -g specrails-hub
-specrails-hub start
-specrails-hub add /path/to/your/project
-```
+---
 
-## Next Steps
+## Next steps
 
-- [Getting Started with Core](/docs/claude-getting-started) — Set up specrails-core
-- [Hub Installation](/docs/hub-installation) — Set up specrails-hub
-- [Hub Features](/docs/hub-features) — Deep dive into hub capabilities
+- [Install Hub](/docs/hub-installation)
+- [Install specrails-core](/docs/installation)
+- [Hub Features](/docs/hub-features)

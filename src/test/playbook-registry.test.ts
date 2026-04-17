@@ -26,9 +26,9 @@ describe("playbook registry entries", () => {
     expect(next?.slug).toBe("changelog");
   });
 
-  it("deployment next entry is hub-installation", () => {
+  it("deployment is the last entry (Hub-first order)", () => {
     const { next } = getAdjacentDocs("deployment");
-    expect(next?.slug).toBe("hub-installation");
+    expect(next).toBeNull();
   });
 
   it("all playbook entries have section set to Playbook", () => {

@@ -1,92 +1,164 @@
 # Hub Features
 
-A complete guide to every capability in specrails-hub v1.25.0.
+Reference guide to every feature inside specrails-hub.
 
-## Dashboard
+---
 
-The main dashboard gives you a bird's-eye view of each project:
+## Two sidebars
 
-- **Specs Board** — See all specs (proposals, designs, tasks) for the active project
-- **Rails** — Visual representation of your development pipeline phases
-- **Pipeline** — Real-time pipeline phase indicator showing which agent is active
-- **Jobs** — History of all Claude CLI invocations with status, duration, token usage, and cost
+The app uses two collapsible sidebars.
 
-Switch between projects using the **project selector** in the top navigation bar.
+**ArcSidebar (left)** — hub-level navigation.
 
-## Ticket Management
+- Lists every registered project — click to switch active project.
+- **+ Add project** button at the bottom of the project list.
+- Bottom section: Docs · Hub Analytics · Hub Settings.
+- Hover to expand, pin icon at the top to lock open.
 
-Three complementary views for managing development work:
+**ProjectRightSidebar (right)** — per-project navigation.
 
-### List View
-A sortable, filterable table of all tickets. Columns include title, status, priority, labels, and creation date. Supports bulk operations and inline status changes.
+- Dashboard · Jobs · Analytics · Settings for the active project.
+- Same hover-to-expand + pin behaviour as the left sidebar.
+- Hidden while a project is still in the setup wizard.
 
-### Kanban View
-Drag-and-drop board with columns for each status (Backlog, In Progress, Review, Done). Cards show title, priority badge, and labels. Move tickets between columns to update status.
+---
 
-### Post-it View
-Freeform sticky-note layout for brainstorming. Create, move, and color-code notes. Ideal for product discovery and early-stage ideation.
+## Desktop app
 
-All three views share the same underlying data — changes in one view are immediately reflected in the others.
+The native macOS app (Tauri) bundles the server as a sidecar — launch the app and the hub is up. Windows and Linux builds are on the roadmap.
 
-## Analytics & Cost Tracking
+macOS: native traffic lights with a custom drag region replace the standard titlebar; a centred search pill lives where the URL would go.
 
-The analytics dashboard provides:
+If you prefer npm, `specrails-hub start` opens the same UI in the browser at `http://127.0.0.1:4200`.
 
-- **KPI Cards** — Total jobs, success rate, average duration, total cost
-- **Jobs Over Time** — Bar chart showing daily/weekly job counts
-- **Cost Breakdown** — Token usage and cost per feature, per agent, per project
-- **Success Rate Trends** — Line chart tracking improvement over time
-- **Agent Performance** — Which agents produce the best results and at what cost
+---
 
-All data is stored locally in SQLite — nothing leaves your machine.
+## Home (per project)
 
-## Activity Feed
+The landing page for the active project. Two panels.
 
-A real-time stream of everything happening across your projects:
+### Specs
 
-- Job starts, completions, and failures
-- Pipeline phase transitions
-- Ticket status changes
-- Command executions
+Local tickets backed by `.specrails/local-tickets.json`.
+
+- **+ Add Spec** — create with a title, description, priority, labels.
+- List, Grid (Kanban), and Post-it view modes.
+- Real-time sync — changes from CLI agents or file edits appear instantly via WebSocket.
+- Click any spec to edit. Drag cards in Grid view to change status.
+- Spec-generation state persists across page refreshes via localStorage — in-progress generation is not lost on navigation.
+
+### Rails
+
+Execution lanes. Drag a spec into a Rail and click **Play** to run the pipeline.
+
+Phases: **Architect → Developer → Reviewer → Ship**. Each phase spawns a dedicated Claude Code agent in your project directory.
+
+Rails give you parallelism: each Rail runs independently inside its own git worktree, so two features implement side by side without touching each other's files.
+
+---
+
+## Jobs (per project)
+
+Every pipeline run. Filterable by status (queued / running / completed / failed).
+
+- Real-time log streaming — output appears as Claude writes it.
+- Cost tracking — tokens + USD per job, per agent, per phase.
+- Duration, exit code, timestamps.
+- Click any job to open the detail view with the full log, pipeline progress, and a Re-execute button.
+
+---
+
+## Analytics (per project)
+
+Per-project dashboard:
+
+- **KPI cards** — total jobs, success rate, average duration, total cost.
+- **Jobs over time** — daily/weekly bar chart.
+- **Cost breakdown** — tokens and USD per feature, per agent, per phase.
+- **Success-rate trend** — line chart over time.
+- **Agent performance** — which agents produce the best results and at what cost.
+
+All data stays local in SQLite. Nothing leaves your machine.
+
+---
+
+## Hub Analytics
+
+Cross-project roll-up. Same shape as the per-project analytics page but aggregates every project the hub manages.
+
+---
+
+## Activity feed
+
+Live stream of everything happening across the hub:
+
+- Job starts, completions, failures.
+- Pipeline phase transitions.
+- Ticket created / updated / deleted.
+- Command executions.
 
 Filter by project, event type, or time range.
 
-## Streaming Logs
+---
 
-Watch agent output in real time as jobs execute:
+## Command launcher
 
-- **Live streaming** via WebSocket — see output as it's produced
-- **Filter** by agent name, log level, or pipeline phase
-- **Search** across all log output with full-text search
-- **Replay** completed job logs from the job history
+Run specrails commands from the dashboard instead of opening a terminal:
 
-## Command Launcher
+- `implement` — the full implementation pipeline.
+- `batch-implement` — multiple features in parallel.
+- `get-backlog-specs` — view and prioritise the backlog.
+- `auto-propose-backlog-specs` — AI product discovery.
 
-Execute specrails commands directly from the dashboard:
+Jobs queue and execute sequentially per project. Monitor progress on the Jobs page.
 
-- `implement` — Run the full implementation pipeline
-- `batch-implement` — Process multiple features in parallel
-- `get-backlog-specs` — View and prioritize the backlog
-- `auto-propose-backlog-specs` — Generate new feature ideas
+---
 
-Jobs are queued and executed sequentially per project. Monitor progress in real time.
+## Keyboard shortcuts
 
-## Keyboard-First UX
-
-Full keyboard navigation throughout the dashboard:
+Full keyboard navigation across the app.
 
 | Shortcut | Action |
 |----------|--------|
-| `Cmd+K` | Open command palette |
-| `Cmd+1-5` | Switch between main views |
-| `Cmd+P` | Switch project |
-| `Cmd+L` | Focus log search |
-| `Cmd+N` | Create new ticket |
-| `Esc` | Close modal / go back |
+| `⌘K` | Command palette |
+| `⌘1`–`⌘5` | Switch between main views |
+| `⌘P` | Switch project |
+| `⌘L` | Focus log search |
+| `⌘N` | Create ticket |
+| `Esc` | Close modal / back |
 
-The command palette (`Cmd+K`) provides access to every action — navigate, create, search, and execute without touching the mouse.
+The command palette (`⌘K`) is the fastest path to every action — navigate, create, search, execute.
 
-## Next Steps
+---
 
-- [Hub Installation](/docs/hub-installation) — Get specrails-hub running
-- [Core vs Hub](/docs/core-vs-hub) — How the two products work together
+## Data layout
+
+```
+~/.specrails/
+  hub.sqlite                  # project registry
+  manager.pid                 # server PID
+  hub.token                   # Bearer token used by the CLI
+  projects/<slug>/jobs.sqlite # per-project jobs + events
+```
+
+Per-project state stays in your repo:
+
+```
+.specrails/
+  local-tickets.json          # specs
+  backlog-config.json         # optional issue-tracker config
+```
+
+---
+
+## Authentication
+
+The hub generates a Bearer token at `~/.specrails/hub.token` on first start. Every `/api/*` request requires it. The CLI reads the token automatically — nothing to configure.
+
+---
+
+## Next steps
+
+- [Install Hub](/docs/hub-installation)
+- [Core vs Hub](/docs/core-vs-hub)
+- [Install specrails-core](/docs/installation) — terminal-first alternative
