@@ -98,9 +98,13 @@ export function useReleaseManifest(): ReleaseManifestState {
   return state;
 }
 
-/** GitHub Releases fallback URL when manifest is unreachable. */
+/**
+ * Fallback URL when the release manifest can't be fetched (network error,
+ * CORS, etc). Points directly at the Hostinger `latest/` folder so viewers
+ * still land on the newest `.dmg` rather than bouncing to GitHub.
+ */
 export const RELEASES_FALLBACK_URL =
-  "https://github.com/fjpulidop/specrails-hub/releases/latest";
+  "https://specrails.dev/downloads/specrails-hub/latest/";
 
 /** Compute the best download URL + label for the current state. */
 export function downloadFromState(
