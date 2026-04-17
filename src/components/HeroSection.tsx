@@ -258,18 +258,13 @@ const HeroSection = () => {
         </p>
 
         {/* Supporting line */}
-        <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-10 animate-fade-up delay-200">
+        <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-8 animate-fade-up delay-200">
           Agentic development, orchestrated by specs — powered by{" "}
           <span className="text-dracula-cyan">specrails-core</span>.
         </p>
 
-        {/* Demo frame (iframe on desktop, screenshot on mobile) */}
-        <div className="animate-fade-up delay-300 mb-8">
-          <HubDemoFrame isDesktop={isDesktop} />
-        </div>
-
-        {/* Primary CTA pair */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up delay-400">
+        {/* Primary CTA pair (ABOVE the demo, voicebox-style) */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up delay-300">
           <a
             href={downloadHref ?? "#"}
             download={!downloadDisabled && downloadHref !== RELEASES_FALLBACK_URL}
@@ -304,13 +299,18 @@ const HeroSection = () => {
         </div>
 
         {/* Version pill */}
-        <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-orange/25 bg-dracula-orange/5 text-xs font-mono text-dracula-orange animate-fade-up delay-500">
+        <div className="mt-3 mb-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-orange/25 bg-dracula-orange/5 text-xs font-mono text-dracula-orange animate-fade-up delay-400">
           <Apple className="w-3 h-3" />
           {versionLabel}
         </div>
 
+        {/* Demo frame (iframe on desktop, screenshot on mobile) */}
+        <div className="animate-fade-up delay-500">
+          <HubDemoFrame isDesktop={isDesktop} />
+        </div>
+
         {/* Core text link */}
-        <div className="mt-10 animate-fade-up delay-500">
+        <div className="mt-8 animate-fade-up delay-500">
           <Link
             to="/core"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1.5"
