@@ -247,7 +247,7 @@ const HeroSection = () => {
         {/* Open source badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/30 bg-background/30 backdrop-blur-sm text-xs font-mono text-muted-foreground mb-6 animate-fade-up">
           <span className="w-1.5 h-1.5 rounded-full bg-dracula-green animate-pulse" />
-          Open Source · MIT License{version ? ` · v${version}` : ""}
+          Open Source · MIT License
         </div>
 
         {/* Tagline */}
