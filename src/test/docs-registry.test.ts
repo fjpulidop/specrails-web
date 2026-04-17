@@ -23,7 +23,12 @@ describe("docs-registry", () => {
   });
 
   it("getAdjacentDocs: last entry has no next", () => {
-    expect(getAdjacentDocs("core-vs-hub").next).toBeNull();
+    expect(getAdjacentDocs("deployment").next).toBeNull();
+  });
+
+  it("Hub Installation is the first section entry (Hub-first order)", () => {
+    const { next } = getAdjacentDocs("");
+    expect(next?.slug).toBe("hub-installation");
   });
 
   it("content is non-empty for all entries", () => {
