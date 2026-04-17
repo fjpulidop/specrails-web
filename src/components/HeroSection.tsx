@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Download, Github, ArrowRight, Apple } from "lucide-react";
+import { Download, Github, ArrowRight, Apple, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   useReleaseManifest,
@@ -308,6 +308,14 @@ const HeroSection = () => {
         <div className="animate-fade-up delay-500">
           <HubDemoFrame isDesktop={isDesktop} />
         </div>
+
+        {/* "This is just a taste" caption */}
+        <p className="mt-4 inline-flex items-center gap-1.5 text-xs text-muted-foreground/80 animate-fade-up delay-500">
+          <Sparkles className="w-3.5 h-3.5 text-dracula-purple/70" />
+          <span>
+            A slice of the app — plenty more features and views waiting inside.
+          </span>
+        </p>
 
         {/* Core text link */}
         <div className="mt-8 animate-fade-up delay-500">
