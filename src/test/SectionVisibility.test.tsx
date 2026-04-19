@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Components under test
 import AgentsSection from "@/components/AgentsSection";
-import CliCompatibilitySection from "@/components/CliCompatibilitySection";
 import PipelineSection from "@/components/PipelineSection";
 import CommandsSection from "@/components/CommandsSection";
 import FeaturesSection from "@/components/FeaturesSection";
@@ -84,22 +83,6 @@ describe("Section components in visible state (isVisible=true)", () => {
     expect(screen.getByText("Compare all agents →")).toBeInTheDocument();
   });
 
-  it("CliCompatibilitySection renders with visible classes", () => {
-    const { container } = withProviders(<CliCompatibilitySection />);
-    const section = container.querySelector("section#cli-compat")!;
-    expect(section).toBeInTheDocument();
-    const h2 = section.querySelector("h2");
-    expect(h2?.className).toContain("opacity-100");
-  });
-
-  it("CliCompatibilitySection renders feature rows and Tick icons", () => {
-    withProviders(<CliCompatibilitySection />);
-    expect(screen.getByText("Installation via npx")).toBeInTheDocument();
-    // All features are supported for both CLIs
-    const supported = screen.getAllByLabelText("Supported");
-    expect(supported.length).toBeGreaterThan(0);
-  });
-
   it("PipelineSection renders with visible classes", () => {
     const { container } = withProviders(<PipelineSection />);
     const section = container.querySelector("section#pipeline")!;
@@ -144,7 +127,7 @@ describe("Section components in visible state (isVisible=true)", () => {
 
   it("FeaturesSection renders all feature cards", () => {
     withProviders(<FeaturesSection />);
-    expect(screen.getByText("CLI Agnostic")).toBeInTheDocument();
+    expect(screen.getByText("Built on Claude Code")).toBeInTheDocument();
     expect(screen.getByText("Value Proposition Canvas")).toBeInTheDocument();
     expect(screen.getByText("Security Gate")).toBeInTheDocument();
     expect(screen.getByText("Failure Learning Loop")).toBeInTheDocument();

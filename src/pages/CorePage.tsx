@@ -59,8 +59,7 @@ const CorePage = () => {
             />
           </div>
           <p className="text-xs text-muted-foreground text-center">
-            Works with <span className="text-dracula-orange">Claude Code</span>{" "}
-            and <span className="text-dracula-green">OpenAI Codex</span>.
+            Works with <span className="text-dracula-orange">Claude Code</span>.
           </p>
         </section>
 
@@ -87,7 +86,7 @@ const CorePage = () => {
         <section id="agents-teaser" className="space-y-6">
           <SectionHeading icon={Box} title="Agents catalog" />
           <p className="text-muted-foreground">
-            Each agent is a focused Claude/Codex sub-process with a sharp
+            Each agent is a focused Claude Code sub-process with a sharp
             system prompt and scoped tool access. See the full list:
           </p>
           <Link

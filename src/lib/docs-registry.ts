@@ -75,8 +75,8 @@ export const DOC_ENTRIES: DocEntry[] = [
   },
   {
     slug: "codex-getting-started",
-    title: "Getting Started with OpenAI Codex",
-    description: "Run specrails using Codex — full feature parity with Claude Code",
+    title: "Getting Started with OpenAI Codex (Coming Soon)",
+    description: "🧪 Coming Soon — Codex support is currently being tested in our lab",
     content: codexGettingStartedRaw,
     section: "Core",
   },

@@ -64,43 +64,22 @@ describe("InstallSection", () => {
     expect(terminals[0].textContent).toContain("npx specrails-core@latest init");
   });
 
-  // --- CLI tabs (Claude Code vs OpenAI Codex) ---
+  // --- CLI (Claude Code — Codex coming soon, removed from UI) ---
 
-  it("defaults to Claude Code CLI", () => {
+  it("uses Claude Code as the only CLI in step 2", () => {
     const { container } = renderInstallSection();
     // The second terminal shows "claude" as the terminal label
     const terminals = container.querySelectorAll(".terminal");
     expect(terminals[1].textContent).toContain("claude");
   });
 
-  it("shows codex when OpenAI Codex tab is clicked", () => {
+  it("does not render an OpenAI Codex CLI tab (coming soon — in lab)", () => {
     const { container } = renderInstallSection();
     const buttons = container.querySelectorAll("button");
     const codexBtn = Array.from(buttons).find(
       (b) => b.textContent === "OpenAI Codex"
     );
-    expect(codexBtn).toBeDefined();
-    fireEvent.click(codexBtn!);
-
-    const terminals = container.querySelectorAll(".terminal");
-    expect(terminals[1].textContent).toContain("codex");
-  });
-
-  it("switches back to claude CLI after selecting codex", () => {
-    const { container } = renderInstallSection();
-    const buttons = container.querySelectorAll("button");
-    const codexBtn = Array.from(buttons).find(
-      (b) => b.textContent === "OpenAI Codex"
-    );
-    const claudeBtn = Array.from(buttons).find(
-      (b) => b.textContent === "Claude Code"
-    );
-
-    fireEvent.click(codexBtn!);
-    fireEvent.click(claudeBtn!);
-
-    const terminals = container.querySelectorAll(".terminal");
-    expect(terminals[1].textContent).toContain("claude");
+    expect(codexBtn).toBeUndefined();
   });
 
   // --- Step indicators ---
@@ -153,23 +132,19 @@ describe("InstallSection", () => {
     expect(ghLink?.textContent).toContain("open source on GitHub");
   });
 
-  // --- Combined state: method=git + cli=codex ---
+  // --- Combined state: method=git + claude CLI (codex coming soon) ---
 
-  it("can have both git method and codex CLI selected simultaneously", () => {
+  it("keeps Claude Code in step 2 when Git Clone method is active", () => {
     const { container } = renderInstallSection();
     const buttons = container.querySelectorAll("button");
     const gitBtn = Array.from(buttons).find((b) => b.textContent === "Git Clone");
-    const codexBtn = Array.from(buttons).find(
-      (b) => b.textContent === "OpenAI Codex"
-    );
 
     fireEvent.click(gitBtn!);
-    fireEvent.click(codexBtn!);
 
     const terminals = container.querySelectorAll(".terminal");
     // git clone commands visible in step 1 terminal
     expect(terminals[0].textContent).toContain("./specrails/install.sh");
-    // codex CLI visible in step 2 terminal
-    expect(terminals[1].textContent).toContain("codex");
+    // Claude Code visible in step 2 terminal
+    expect(terminals[1].textContent).toContain("claude");
   });
 });

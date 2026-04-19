@@ -2,11 +2,16 @@
 
 The CLI half of specrails. If you want the desktop app, see [Install Hub](/docs/hub-installation).
 
+> ## 🧪 Codex (OpenAI) Support — Coming Soon (in Lab)
+>
+> OpenAI Codex integration is currently being **tested in our lab** and **cannot be installed yet**. The installer will refuse any attempt to install with `--provider codex` and will guide you to use Claude Code. Codex-specific sections below describe the **planned behaviour** for when the feature ships.
+
 ## Prerequisites
 
 | Tool | Required | Why |
 |------|----------|-----|
-| **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** or **[Codex CLI](https://github.com/openai/codex)** | One of them | The model runtime that executes the agents |
+| **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** | Yes | The model runtime that executes the agents |
+| **[Codex CLI](https://github.com/openai/codex)** 🧪 _Coming Soon (in lab)_ | Not yet | OpenAI Codex support is being tested in our lab and will be available shortly |
 | **Git** | Yes | specrails operates on git repositories |
 | **Node.js 18+** | Yes | Needed for the `npx` installer |
 | **GitHub CLI** (`gh`) | Optional | Auto-create PRs, manage issues |

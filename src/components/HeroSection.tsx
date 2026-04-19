@@ -259,8 +259,11 @@ const HeroSection = () => {
 
         {/* Supporting line */}
         <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-3xl mx-auto mb-8 animate-fade-up delay-200">
-          Agentic development, orchestrated by specs — powered by{" "}
-          <span className="text-dracula-cyan">specrails-core</span>.
+          <span className="text-dracula-green">Spec-driven</span> +{" "}
+          <span className="text-dracula-pink">test-driven</span> agents, powered by{" "}
+          <span className="text-dracula-cyan">specrails-core</span> on{" "}
+          <span className="text-dracula-purple">Claude Code</span>{" "}
+          <span className="text-muted-foreground/70 text-xs">(more CLIs coming)</span>.
         </p>
 
         {/* Primary CTA pair (ABOVE the demo, voicebox-style) */}

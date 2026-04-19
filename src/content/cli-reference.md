@@ -2,7 +2,9 @@
 
 <!-- specrails-web: docs slug=cli-reference -->
 
-Command reference for `specrails-core`. All commands are run via `npx specrails-core` or inside Claude Code / OpenAI Codex as slash commands.
+> **🧪 Codex (OpenAI) Support — Coming Soon (in Lab).** Any Codex-specific behaviour below describes the planned setup. Codex installation is currently disabled; only Claude Code is available today.
+
+Command reference for `specrails-core`. All commands are run via `npx specrails-core` or inside Claude Code as slash commands. OpenAI Codex support is being tested in our lab and will ship shortly.
 
 ---
 
