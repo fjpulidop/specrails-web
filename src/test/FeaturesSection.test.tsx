@@ -50,7 +50,7 @@ describe("FeaturesSection", () => {
     render(<FeaturesSection />);
     const coreTab = screen.getByRole("tab", { name: "Core" });
     expect(coreTab).toHaveAttribute("data-state", "active");
-    expect(screen.getByText("CLI Agnostic")).toBeInTheDocument();
+    expect(screen.getByText("Built on Claude Code")).toBeInTheDocument();
     expect(screen.getByText("Security Gate")).toBeInTheDocument();
   });
 
@@ -85,6 +85,6 @@ describe("FeaturesSection", () => {
 
     // Switch back to Core
     await user.click(screen.getByRole("tab", { name: "Core" }));
-    expect(screen.getByText("CLI Agnostic")).toBeInTheDocument();
+    expect(screen.getByText("Built on Claude Code")).toBeInTheDocument();
   });
 });

@@ -2,12 +2,10 @@ import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 type Method = "npx" | "git";
-type Cli = "claude" | "codex";
 
 const InstallSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [method, setMethod] = useState<Method>("npx");
-  const [cli, setCli] = useState<Cli>("claude");
 
   return (
     <section id="install" className="py-24 px-6 section-darker" ref={ref}>
@@ -102,45 +100,16 @@ const InstallSection = () => {
               <h3 className="font-semibold">Configure with the TUI installer</h3>
             </div>
 
-            {/* CLI tabs */}
-            <div className="flex gap-1 mb-3">
-              <button
-                onClick={() => setCli("claude")}
-                className={`px-3 py-1 rounded text-xs font-mono transition-all ${
-                  cli === "claude"
-                    ? "bg-dracula-purple/20 text-dracula-purple border border-dracula-purple/40"
-                    : "text-muted-foreground hover:text-foreground border border-transparent"
-                }`}
-              >
-                Claude Code
-              </button>
-              <button
-                onClick={() => setCli("codex")}
-                className={`px-3 py-1 rounded text-xs font-mono transition-all ${
-                  cli === "codex"
-                    ? "bg-dracula-cyan/20 text-dracula-cyan border border-dracula-cyan/40"
-                    : "text-muted-foreground hover:text-foreground border border-transparent"
-                }`}
-              >
-                OpenAI Codex
-              </button>
-            </div>
-
             <div className="terminal p-0">
               <div className="flex items-center gap-2 px-4 py-2 border-b border-border/20">
                 <div className="terminal-dot bg-dracula-red" />
                 <div className="terminal-dot bg-dracula-yellow" />
                 <div className="terminal-dot bg-dracula-green" />
-                <span className="text-xs text-muted-foreground ml-2 font-mono">
-                  {cli === "claude" ? "claude" : "codex"}
-                </span>
+                <span className="text-xs text-muted-foreground ml-2 font-mono">claude</span>
               </div>
               <div className="p-4 text-sm font-mono space-y-1">
                 <div><span className="text-dracula-green">$</span> cd <span className="text-dracula-orange">&lt;your-project&gt;</span></div>
-                <div>
-                  <span className="text-dracula-green">$</span>{" "}
-                  {cli === "claude" ? "claude" : "codex"}
-                </div>
+                <div><span className="text-dracula-green">$</span> claude</div>
                 <div><span className="text-dracula-purple">&gt;</span> <span className="text-dracula-cyan">/specrails:enrich</span></div>
               </div>
             </div>
@@ -152,7 +121,7 @@ const InstallSection = () => {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          Requirements: <span className="text-dracula-green">git</span> + <span className="text-dracula-cyan">Claude Code</span> or <span className="text-dracula-purple">OpenAI Codex</span>. Optional: npm, GitHub CLI, JIRA CLI
+          Requirements: <span className="text-dracula-green">git</span> + <span className="text-dracula-cyan">Claude Code</span>. Optional: npm, GitHub CLI, JIRA CLI
         </p>
 
         <p

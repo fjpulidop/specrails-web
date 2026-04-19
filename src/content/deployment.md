@@ -1,5 +1,7 @@
 # Deployment
 
+> **🧪 Codex (OpenAI) Support — Coming Soon (in Lab).** Any Codex-specific reference below describes the planned behaviour. Codex installation is currently disabled across all deployment options — only Claude Code is available today.
+
 specrails is designed to run **locally** — in your dev environment, not on a production server. This page covers the places the pipeline typically runs and how to wire them up.
 
 ## Where specrails runs

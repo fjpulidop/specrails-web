@@ -1,6 +1,12 @@
 # Getting Started with OpenAI Codex
 
-specrails is CLI-agnostic — you can run the full agent pipeline with **OpenAI Codex** just as easily as with Claude Code. Both CLIs are first-class citizens.
+> # 🧪 Coming Soon — Currently in Lab
+>
+> **OpenAI Codex support is being tested in our lab and is not yet available for installation.** The specrails installer currently refuses Codex installs and asks you to use Claude Code instead. Hub's "Codex" provider button is disabled with a "Coming Soon" label.
+>
+> This page describes the **planned behaviour** and will be activated when the feature ships. For now, please use the [standard Claude Code installation](/docs/installation).
+
+specrails is designed to be CLI-agnostic — when Codex support ships, you will be able to run the full agent pipeline with **OpenAI Codex** just as easily as with Claude Code. Both CLIs will be first-class citizens.
 
 ---
 
