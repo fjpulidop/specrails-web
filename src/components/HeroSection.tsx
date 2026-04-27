@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Download, Github, ArrowRight, Apple, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   useReleaseManifest,
   downloadFromState,
+  detectPlatform,
+  PLATFORM_SHORT,
   RELEASES_FALLBACK_URL,
 } from "@/hooks/useReleaseManifest";
 
@@ -214,13 +216,21 @@ const useIsDesktop = () => {
 const HeroSection = () => {
   const isDesktop = useIsDesktop();
   const releaseState = useReleaseManifest();
-  const { href: downloadHref, disabled: downloadDisabled, version } =
-    downloadFromState(releaseState);
+  const detected = useMemo(() => detectPlatform(), []);
+  const { href: downloadHref, disabled: downloadDisabled, version, platform } =
+    downloadFromState(releaseState, detected);
 
+  const platformShort = PLATFORM_SHORT[platform];
+  const platformPill =
+    platform === "darwin-arm64"
+      ? "Apple Silicon"
+      : platform === "windows-x64"
+        ? "Windows x64"
+        : "Windows ARM64";
   const versionLabel =
     version !== null
-      ? `v${version} · Apple Silicon only (more platforms coming)`
-      : "Apple Silicon only (more platforms coming)";
+      ? `v${version} · ${platformPill} · macOS, Windows x64 & ARM64`
+      : `${platformPill} · macOS, Windows x64 & ARM64`;
 
   return (
     <section
@@ -272,7 +282,7 @@ const HeroSection = () => {
             href={downloadHref ?? "#"}
             download={!downloadDisabled && downloadHref !== RELEASES_FALLBACK_URL}
             aria-disabled={downloadDisabled}
-            aria-label="Download specrails-hub for macOS Apple Silicon"
+            aria-label={`Download specrails-hub for ${platformPill}`}
             className={cn(
               "group relative inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold",
               "transition-all duration-200",
@@ -287,7 +297,7 @@ const HeroSection = () => {
             <Download className="w-4 h-4" />
             {releaseState.status === "loading"
               ? "Preparing download…"
-              : "Download for Mac"}
+              : `Download for ${platformShort}`}
           </a>
 
           <a
@@ -303,7 +313,7 @@ const HeroSection = () => {
 
         {/* Version pill */}
         <div className="mt-3 mb-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-orange/25 bg-dracula-orange/5 text-xs font-mono text-dracula-orange animate-fade-up delay-400">
-          <Apple className="w-3 h-3" />
+          {platform === "darwin-arm64" && <Apple className="w-3 h-3" />}
           {versionLabel}
         </div>
 

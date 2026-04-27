@@ -97,9 +97,9 @@ describe("HeroSection", () => {
     expect(screen.getByText(/view on github/i)).toBeInTheDocument();
   });
 
-  it("renders the version pill mentioning Apple Silicon", () => {
+  it("renders the version pill mentioning supported platforms", () => {
     const { container } = renderHero();
-    expect(container.textContent).toContain("Apple Silicon only");
+    expect(container.textContent).toContain("macOS, Windows x64 & ARM64");
   });
 
   it("renders the Core text link", () => {
