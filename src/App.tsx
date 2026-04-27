@@ -10,6 +10,7 @@ import DocPage from "./pages/DocPage.tsx";
 import DocsIndex from "./pages/DocsIndex.tsx";
 import AgentsPage from "./pages/AgentsPage.tsx";
 import CorePage from "./pages/CorePage.tsx";
+import DownloadPage from "./pages/DownloadPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           </Route>
           <Route path="/agents" element={<AgentsPage />} />
           <Route path="/core" element={<CorePage />} />
+          <Route path="/download" element={<DownloadPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

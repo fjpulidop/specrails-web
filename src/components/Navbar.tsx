@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Github, Coffee } from "lucide-react";
+import { Github, Coffee, Download } from "lucide-react";
 import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
 
@@ -44,6 +44,13 @@ const Navbar = () => {
               Docs
             </Link>
           )}
+          <Link
+            to="/download"
+            aria-label="Download specrails-hub"
+            className="text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Download className="w-5 h-5" />
+          </Link>
           <a
             href="https://ko-fi.com/D1D81Y002C"
             target="_blank"
@@ -86,6 +93,12 @@ const Navbar = () => {
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             Core
+          </Link>
+          <Link
+            to="/download"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Download
           </Link>
           <DocsDropdown />
           <a
