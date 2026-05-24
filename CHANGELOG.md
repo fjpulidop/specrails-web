@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.9.0](https://github.com/fjpulidop/specrails-web/compare/v1.8.0...v1.9.0) (2026-05-24)
+
+
+### Features
+
+* premium /download page with per-platform CTAs and Ko-fi pitch ([#160](https://github.com/fjpulidop/specrails-web/issues/160)) ([4653183](https://github.com/fjpulidop/specrails-web/commit/465318309edd6e9a58e320405a6abb9ce7b14132))
+* surface Codex as first-class provider across landing and docs ([#167](https://github.com/fjpulidop/specrails-web/issues/167)) ([5db5e2a](https://github.com/fjpulidop/specrails-web/commit/5db5e2a5f894f729c80a9e18ce9941a3f77e086f))
+
 ## [1.8.0](https://github.com/fjpulidop/specrails-web/compare/v1.7.0...v1.8.0) (2026-04-17)
 
 
