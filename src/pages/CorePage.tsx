@@ -59,7 +59,7 @@ const CorePage = () => {
             />
           </div>
           <p className="text-xs text-muted-foreground text-center">
-            Works with <span className="text-dracula-orange">Claude Code</span>.
+            Works with <span className="text-dracula-orange">Claude Code</span> &amp; <span className="text-dracula-orange">Codex</span>.
           </p>
         </section>
 
