@@ -11,7 +11,6 @@ import DemoSection from "@/components/DemoSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import CommandsSection from "@/components/CommandsSection";
 import PrinciplesSection from "@/components/PrinciplesSection";
-import RoadmapSection from "@/components/RoadmapSection";
 import FooterSection from "@/components/FooterSection";
 import SectionNav from "@/components/SectionNav";
 import AnimatedLogo from "@/components/AnimatedLogo";
@@ -22,7 +21,7 @@ const Index = () => {
   useSeo({
     title: "specrails — AI Development Platform: Core Engine + Hub Dashboard",
     description:
-      "specrails turns Claude Code into your full dev team. specrails-core: 14 AI agents from idea to production code. specrails-hub: local dashboard for pipeline visualization, tickets, and analytics.",
+      "specrails turns Claude Code & Codex into your full dev team. specrails-core: 14 AI agents from idea to production code. specrails-hub: local dashboard for pipeline visualization, tickets, and analytics.",
     canonical: "https://specrails.dev/",
   });
 
@@ -48,9 +47,8 @@ const Index = () => {
       <FeaturesSection />
       <CommandsSection />
       <PrinciplesSection />
-      <RoadmapSection />
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","products","agents","pipeline","demo","features","commands","principles","roadmap","footer"]} />
+      <SectionNav sectionIds={["hero","problem","products","agents","pipeline","demo","features","commands","principles","footer"]} />
       <AnimatedLogo />
     </div>
   );

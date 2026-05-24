@@ -17,7 +17,7 @@ interface FeatureCard {
 }
 
 const coreFeatures: FeatureCard[] = [
-  { title: "Built on Claude Code", desc: "Native Claude Code integration — the full agent pipeline, skills, and slash commands run directly inside Anthropic's CLI.", icon: Terminal, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
+  { title: "Claude Code & Codex", desc: "Native integration with both Anthropic's Claude Code and OpenAI's Codex CLI — pick your provider per project; the full agent pipeline, skills, and slash commands run on either.", icon: Terminal, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
   { title: "Value Proposition Canvas", desc: "Integrated VPC framework. Evaluates features by mapping Products & Services, Pain Relievers, and Gain Creators against Customer Jobs, Pains, and Gains. Scoring 0-5 per persona.", icon: BarChart3, accent: "text-dracula-purple", hoverGlow: "hover:glow-purple" },
   { title: "Parallel Execution", desc: "Multiple features are implemented simultaneously in isolated git worktrees. Conflict-aware merge with intelligent resolution.", icon: GitBranch, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
   { title: "Spec-Driven Development", desc: "Each agent is specialized in one part of the software development process using SDD with OpenSpec.", icon: Eye, accent: "text-dracula-cyan", hoverGlow: "hover:glow-cyan" },

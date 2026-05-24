@@ -1,7 +1,5 @@
 # Hub vs Core — which should I use?
 
-> **🧪 Codex (OpenAI) Support — Coming Soon (in Lab).** Both products currently support **Claude Code** as the agent runtime. OpenAI Codex integration is being tested in our lab and will ship shortly — any row mentioning "Codex" below describes the planned setup.
-
 **specrails** ships as two products that share the same pipeline. Pick one, or use both.
 
 ## TL;DR

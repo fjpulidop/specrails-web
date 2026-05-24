@@ -64,7 +64,7 @@ describe("InstallSection", () => {
     expect(terminals[0].textContent).toContain("npx specrails-core@latest init");
   });
 
-  // --- CLI (Claude Code — Codex coming soon, removed from UI) ---
+  // --- CLI (Claude Code is the only CLI tab in this section; Codex install path lives in docs) ---
 
   it("uses Claude Code as the only CLI in step 2", () => {
     const { container } = renderInstallSection();
@@ -73,7 +73,7 @@ describe("InstallSection", () => {
     expect(terminals[1].textContent).toContain("claude");
   });
 
-  it("does not render an OpenAI Codex CLI tab (coming soon — in lab)", () => {
+  it("does not render an OpenAI Codex CLI tab (Codex install path lives in /docs/codex-getting-started)", () => {
     const { container } = renderInstallSection();
     const buttons = container.querySelectorAll("button");
     const codexBtn = Array.from(buttons).find(
@@ -132,7 +132,7 @@ describe("InstallSection", () => {
     expect(ghLink?.textContent).toContain("open source on GitHub");
   });
 
-  // --- Combined state: method=git + claude CLI (codex coming soon) ---
+  // --- Combined state: method=git + claude CLI ---
 
   it("keeps Claude Code in step 2 when Git Clone method is active", () => {
     const { container } = renderInstallSection();

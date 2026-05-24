@@ -127,7 +127,7 @@ describe("Section components in visible state (isVisible=true)", () => {
 
   it("FeaturesSection renders all feature cards", () => {
     withProviders(<FeaturesSection />);
-    expect(screen.getByText("Built on Claude Code")).toBeInTheDocument();
+    expect(screen.getByText("Claude Code & Codex")).toBeInTheDocument();
     expect(screen.getByText("Value Proposition Canvas")).toBeInTheDocument();
     expect(screen.getByText("Security Gate")).toBeInTheDocument();
     expect(screen.getByText("Failure Learning Loop")).toBeInTheDocument();
