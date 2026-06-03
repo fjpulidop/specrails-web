@@ -1,5 +1,6 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Terminal, LayoutDashboard, ArrowRight, Zap } from "lucide-react";
+import { AGENTS } from "@/data/agents";
 
 interface Product {
   name: string;
@@ -27,7 +28,7 @@ const products: Product[] = [
     ctaClass: "text-dracula-cyan",
     hoverBorder: "hover:border-dracula-cyan/50",
     capabilities: [
-      "14 specialized AI agents",
+      `${AGENTS.length} specialized AI agents`,
       "Structured pipeline (idea → ship)",
       "Institutional memory across sessions",
       "Parallel execution in git worktrees",

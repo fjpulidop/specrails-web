@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import ProductsSection from "@/components/ProductsSection";
+import { AGENTS } from "@/data/agents";
 
 let observerCallback: IntersectionObserverCallback | null = null;
 
@@ -43,7 +44,9 @@ describe("ProductsSection", () => {
     render(<ProductsSection />);
     expect(screen.getByText("The Engine")).toBeInTheDocument();
     expect(screen.getByText("specrails-core")).toBeInTheDocument();
-    expect(screen.getByText(/14 specialized ai agents/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(new RegExp(`${AGENTS.length} specialized ai agents`, "i")),
+    ).toBeInTheDocument();
     expect(screen.getByText(/institutional memory/i)).toBeInTheDocument();
   });
 

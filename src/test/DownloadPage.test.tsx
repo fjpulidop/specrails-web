@@ -1,0 +1,81 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DownloadPage from "@/pages/DownloadPage";
+
+beforeEach(() => {
+  vi.stubGlobal(
+    "matchMedia",
+    vi.fn((q: string) => ({
+      matches: false,
+      media: q,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  );
+  // Force the manifest into its fallback path so download links still render.
+  vi.stubGlobal(
+    "fetch",
+    vi.fn(() => Promise.reject(new Error("network error in test"))),
+  );
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+});
+
+function renderPage() {
+  const qc = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+  return render(
+    <QueryClientProvider client={qc}>
+      <MemoryRouter>
+        <DownloadPage />
+      </MemoryRouter>
+    </QueryClientProvider>,
+  );
+}
+
+describe("DownloadPage", () => {
+  it("renders the download heading", () => {
+    renderPage();
+    const h1 = screen.getByRole("heading", { level: 1 });
+    expect(h1.textContent?.toLowerCase()).toContain("download");
+    expect(h1.textContent?.toLowerCase()).toContain("specrails-hub");
+  });
+
+  it("renders all three platform cards", () => {
+    renderPage();
+    expect(screen.getAllByText("macOS").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("Windows").length).toBeGreaterThanOrEqual(2);
+  });
+
+  it("renders per-platform download buttons", () => {
+    renderPage();
+    expect(
+      screen.getAllByRole("link", { name: /download specrails-hub for/i }).length,
+    ).toBe(3);
+  });
+
+  it("renders the Ko-fi support card", () => {
+    renderPage();
+    expect(screen.getByText(/support on ko-fi/i)).toBeInTheDocument();
+  });
+
+  it("renders the info cards", () => {
+    renderPage();
+    expect(screen.getByText(/open documentation/i)).toBeInTheDocument();
+    expect(screen.getByText(/join the discussion/i)).toBeInTheDocument();
+    expect(screen.getByText(/browse the source/i)).toBeInTheDocument();
+  });
+
+  it("links back to home", () => {
+    renderPage();
+    const back = screen.getByText(/back to home/i).closest("a");
+    expect(back).toHaveAttribute("href", "/");
+  });
+});

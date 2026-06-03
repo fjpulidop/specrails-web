@@ -6,43 +6,44 @@
 
 @layer base {
   :root {
-    --background: 231 15% 18%;
-    --background-darker: 234 16% 14%;
-    --foreground: 60 30% 96%;
+    /* Prototype palette: near-black cool bg (#06060c) + cool white text (#eeeef5) */
+    --background: 240 33% 4%;
+    --background-darker: 240 40% 2%;
+    --foreground: 240 26% 95%;
 
-    --card: 232 14% 31%;
-    --card-foreground: 60 30% 96%;
+    --card: 240 28% 10%;
+    --card-foreground: 240 26% 95%;
 
-    --popover: 231 15% 18%;
-    --popover-foreground: 60 30% 96%;
+    --popover: 240 33% 6%;
+    --popover-foreground: 240 26% 95%;
 
     --primary: 187 100% 41%;
-    --primary-foreground: 231 15% 18%;
+    --primary-foreground: 240 33% 4%;
 
     --secondary: 326 100% 74%;
-    --secondary-foreground: 231 15% 18%;
+    --secondary-foreground: 240 33% 4%;
 
-    --muted: 232 14% 31%;
-    --muted-foreground: 225 27% 51%;
+    --muted: 240 26% 10%;
+    --muted-foreground: 240 9% 57%;
 
     --accent: 191 97% 77%;
-    --accent-foreground: 231 15% 18%;
+    --accent-foreground: 240 33% 4%;
 
     --destructive: 0 100% 67%;
-    --destructive-foreground: 60 30% 96%;
+    --destructive-foreground: 240 26% 95%;
 
-    --border: 225 27% 51%;
-    --input: 232 14% 31%;
+    --border: 240 14% 44%;
+    --input: 240 26% 12%;
     --ring: 187 100% 41%;
 
     --radius: 0.75rem;
 
     /* Dracula semantic tokens */
-    --dracula-bg: 231 15% 18%;
-    --dracula-darker: 234 16% 14%;
-    --dracula-current: 232 14% 31%;
-    --dracula-fg: 60 30% 96%;
-    --dracula-comment: 225 27% 51%;
+    --dracula-bg: 240 33% 4%;
+    --dracula-darker: 240 40% 2%;
+    --dracula-current: 240 26% 12%;
+    --dracula-fg: 240 26% 95%;
+    --dracula-comment: 240 11% 56%;
     --dracula-cyan: 191 97% 77%;
     --dracula-green: 135 94% 65%;
     --dracula-orange: 31 100% 71%;
@@ -55,16 +56,16 @@
     --gradient-primary: linear-gradient(135deg, hsl(187 100% 41%), hsl(199 100% 38%));
     --gradient-primary-hover: linear-gradient(135deg, hsl(187 100% 36%), hsl(199 100% 33%));
 
-    --glass-bg: 232 14% 31% / 0.3;
-    --glass-border: 225 27% 51% / 0.3;
+    --glass-bg: 240 28% 12% / 0.4;
+    --glass-border: 240 14% 44% / 0.3;
 
-    --sidebar-background: 231 15% 18%;
-    --sidebar-foreground: 60 30% 96%;
+    --sidebar-background: 240 33% 4%;
+    --sidebar-foreground: 240 26% 95%;
     --sidebar-primary: 187 100% 41%;
-    --sidebar-primary-foreground: 231 15% 18%;
-    --sidebar-accent: 232 14% 31%;
-    --sidebar-accent-foreground: 60 30% 96%;
-    --sidebar-border: 225 27% 51%;
+    --sidebar-primary-foreground: 240 33% 4%;
+    --sidebar-accent: 240 26% 12%;
+    --sidebar-accent-foreground: 240 26% 95%;
+    --sidebar-border: 240 14% 44%;
     --sidebar-ring: 187 100% 41%;
   }
 
@@ -209,13 +210,27 @@
     background: hsl(var(--dracula-comment) / 0.6);
   }
 
+  /*
+   * Keep fenced code blocks / terminals dark in light mode — but readable.
+   * Instead of forcing a black box (which left white text on a light .hljs
+   * background), re-scope the dracula tokens to their DARK values inside the
+   * block so every descendant (bg, base text, syntax spans) renders as the
+   * intended light-on-dark Dracula theme. Inline code stays light.
+   */
   :root[data-theme="light"] .terminal,
   :root[data-theme="light"] .docs-prose pre {
-    background-color: hsl(231 15% 18%) !important;
-    border-color: hsl(225 27% 51% / 0.3) !important;
-  }
-  :root[data-theme="light"] .docs-prose pre code {
-    color: hsl(60 30% 96%) !important;
+    --dracula-darker: 240 30% 8%;
+    --dracula-current: 240 26% 14%;
+    --dracula-fg: 240 26% 95%;
+    --dracula-comment: 240 11% 60%;
+    --dracula-cyan: 191 97% 77%;
+    --dracula-green: 135 94% 65%;
+    --dracula-orange: 31 100% 71%;
+    --dracula-pink: 326 100% 74%;
+    --dracula-purple: 265 89% 78%;
+    --dracula-red: 0 100% 67%;
+    --dracula-yellow: 65 92% 76%;
+    border-color: hsl(240 14% 44% / 0.3);
   }
 
   /* ── HTTP method badges (API Reference docs) ── */
@@ -392,7 +407,7 @@
   .hero-chrome-ring {
     position: relative;
     box-shadow:
-      0 25px 60px -20px rgba(189, 147, 249, 0.35),
+      0 25px 60px -20px hsl(var(--accent-cyan) / 0.35),
       0 0 0 1px hsl(var(--border) / 0.3);
   }
   .hero-chrome-ring::after {
@@ -403,9 +418,9 @@
     padding: 1px;
     background: linear-gradient(
       135deg,
-      rgba(189, 147, 249, 0.45),
-      rgba(139, 233, 253, 0.0) 40%,
-      rgba(255, 121, 198, 0.35)
+      hsl(var(--accent-cyan) / 0.5),
+      hsl(var(--dracula-cyan) / 0.0) 40%,
+      hsl(var(--dracula-cyan) / 0.35)
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
@@ -420,5 +435,51 @@
     background-repeat: repeat;
     opacity: 0.025;
     mix-blend-mode: overlay;
+  }
+
+  /*
+   * "Chip-seating" flash: when the logo docks into the navbar its rail edge
+   * ignites and a light beam races once around the perimeter — a fast, technical
+   * lock-in cue. Drawn inside the SVG so it traces the real rounded-rect rail.
+   */
+  .logo-seat-rim {
+    opacity: 0;
+    animation: logo-seat-rim 1.45s ease-out forwards;
+  }
+  .logo-seat-glow {
+    opacity: 0;
+    animation: logo-seat-glow 1.45s ease-out forwards;
+  }
+  .logo-seat-beam {
+    opacity: 0;
+    animation: logo-seat-beam 1.3s cubic-bezier(0.3, 0.55, 0.2, 1) forwards;
+  }
+
+  @keyframes logo-seat-glow {
+    0%   { opacity: 0; }
+    18%  { opacity: 1; }
+    55%  { opacity: 0.8; }
+    100% { opacity: 0; }
+  }
+  @keyframes logo-seat-rim {
+    0%   { opacity: 0; }
+    15%  { opacity: 1; }
+    60%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes logo-seat-beam {
+    0%   { stroke-dashoffset: 100; opacity: 0; }
+    10%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-seat-rim,
+    .logo-seat-glow,
+    .logo-seat-beam {
+      animation: none;
+      opacity: 0;
+    }
   }
 }

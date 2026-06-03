@@ -15,6 +15,9 @@ export default defineConfig({
       include: ["src/**/*.{ts,tsx}"],
       exclude: [
         "src/components/ui/**",
+        // Procedural <canvas> animation engine (RAF loop + draw calls) — not
+        // meaningfully unit-testable; covered by a smoke test in HeroMesh.test.ts.
+        "src/components/HeroMesh.tsx",
         "src/main.tsx",
         "src/test/**",
         "**/*.d.ts",

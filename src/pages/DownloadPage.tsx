@@ -162,10 +162,10 @@ const PlatformCard = ({
           aria-label={`Download specrails-hub for ${PLATFORM_LABELS[config.key]}`}
           className={cn(
             "relative mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 overflow-hidden",
-            "bg-dracula-purple text-dracula-background shadow-[0_10px_28px_-12px_rgba(189,147,249,0.6)]",
+            "bg-primary text-primary-foreground shadow-[0_10px_28px_-12px_rgba(0,195,210,0.6)]",
             disabled
               ? "pointer-events-none opacity-60"
-              : "hover:bg-dracula-purple/90 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-12px_rgba(189,147,249,0.75)]",
+              : "hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-12px_rgba(0,195,210,0.75)]",
           )}
         >
           <Download className="w-4 h-4" />

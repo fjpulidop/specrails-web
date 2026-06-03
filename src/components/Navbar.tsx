@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Github, Coffee, Download, Sun, Moon } from "lucide-react";
+import { Github, Coffee, Sun, Moon } from "lucide-react";
 import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
 import { useTheme } from "@/hooks/useTheme";
@@ -45,33 +45,36 @@ const Navbar = () => {
       <div className="container mx-auto px-6 h-16 flex items-center justify-center md:justify-between relative">
         <a href="/" data-logo="nav" className="flex items-center" aria-label="specrails home">
           <svg
-            viewBox="0 0 360 96"
-            height="42"
+            viewBox="0 0 188 64"
+            height="48"
             width="auto"
             aria-hidden="true"
             focusable="false"
             style={{ display: 'block' }}
           >
-            <rect x="6" y="14" width="348" height="9" rx="4.5"
+            <rect x="4" y="6" width="180" height="6" rx="3"
                   fill="hsl(var(--foreground))" opacity="0.16" />
-            <rect x="6" y="33" width="348" height="30" rx="15"
+            <rect x="4" y="18" width="180" height="28" rx="14"
                   fill="hsl(var(--foreground))" />
             <text
-              x="180" y="48.5"
+              x="94" y="32.5"
               fontFamily="'JetBrains Mono', monospace"
-              fontWeight="500"
+              fontWeight="600"
               fontSize="20"
               textAnchor="middle"
               dominantBaseline="central"
               fill="hsl(var(--background))"
-              letterSpacing="1.5"
+              letterSpacing="0.5"
             >specrails</text>
-            <rect x="6" y="73" width="348" height="9" rx="4.5"
+            <rect x="4" y="52" width="180" height="6" rx="3"
                   fill="hsl(var(--foreground))" opacity="0.16" />
           </svg>
         </a>
-        <div className="flex md:hidden items-center gap-4 absolute right-6">
+        {/* Mobile: theme toggle pinned left to free up the right cluster */}
+        <div className="md:hidden absolute left-6 inset-y-0 flex items-center">
           <ThemeToggleBtn />
+        </div>
+        <div className="flex md:hidden items-center gap-4 absolute right-6">
           {!isDocsPage && (
             <Link
               to="/docs"
@@ -80,13 +83,6 @@ const Navbar = () => {
               Docs
             </Link>
           )}
-          <Link
-            to="/download"
-            aria-label="Download specrails-hub"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Download className="w-5 h-5" />
-          </Link>
           <a
             href="https://ko-fi.com/D1D81Y002C"
             target="_blank"

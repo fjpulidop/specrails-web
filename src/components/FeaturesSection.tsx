@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { AGENTS } from "@/data/agents";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   BarChart3, GitBranch, Eye, Brain, ShieldCheck, Layers, Wand2,
@@ -22,7 +23,7 @@ const coreFeatures: FeatureCard[] = [
   { title: "Parallel Execution", desc: "Multiple features are implemented simultaneously in isolated git worktrees. Conflict-aware merge with intelligent resolution.", icon: GitBranch, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
   { title: "Spec-Driven Development", desc: "Each agent is specialized in one part of the software development process using SDD with OpenSpec.", icon: Eye, accent: "text-dracula-cyan", hoverGlow: "hover:glow-cyan" },
   { title: "Institutional Memory", desc: "Each agent maintains persistent memory. Learned patterns, architectural decisions, and recurring fixes accumulate across sessions.", icon: Brain, accent: "text-dracula-pink", hoverGlow: "hover:glow-pink" },
-  { title: "Security Gate", desc: "The Security Reviewer scans credentials (11 patterns) and OWASP vulnerabilities before every deploy. BLOCKED status prevents shipping.", icon: ShieldCheck, accent: "text-dracula-red", hoverGlow: "hover:glow-red" },
+  { title: "Security Gate", desc: "The Security Reviewer scans credentials (11 patterns) and OWASP vulnerabilities before every ship. BLOCKED status prevents shipping.", icon: ShieldCheck, accent: "text-dracula-red", hoverGlow: "hover:glow-red" },
   { title: "Multi-Stack", desc: "Python, Node, Go, Rust, Java, Ruby, .NET, React, Vue, Angular, Svelte, Next.js, PostgreSQL, MongoDB, Redis, and more.", icon: Layers, accent: "text-dracula-orange", hoverGlow: "hover:glow-orange" },
   { title: "Smart Setup", desc: "Analyzes your real codebase (imports, patterns, conventions, CI) instead of applying generic templates. Self-cleans after installation.", icon: Wand2, accent: "text-dracula-purple", hoverGlow: "hover:glow-purple" },
   { title: "Confidence Scoring", desc: "Reviewer agents self-assess output quality across 5 aspects (correctness, security, tests, docs, performance). A configurable gate blocks shipping below threshold.", icon: Gauge, accent: "text-dracula-yellow", hoverGlow: "hover:glow-yellow" },
@@ -46,7 +47,7 @@ const togetherFeatures: FeatureCard[] = [
   { title: "Core Implements, Hub Visualizes", desc: "Core's agents do the heavy lifting — writing code, running tests, shipping PRs. Hub gives you a live dashboard showing every step as it happens.", icon: ArrowRightLeft, accent: "text-dracula-pink", hoverGlow: "hover:glow-pink" },
   { title: "Core Learns, Hub Reports", desc: "Core's institutional memory accumulates patterns and decisions. Hub surfaces those insights in analytics dashboards and activity feeds.", icon: Activity, accent: "text-dracula-orange", hoverGlow: "hover:glow-orange" },
   { title: "Core Ships PRs, Hub Tracks Progress", desc: "Core creates branches, writes code, and opens pull requests. Hub's ticket management tracks every feature from idea through merge.", icon: FileCheck, accent: "text-dracula-green", hoverGlow: "hover:glow-green" },
-  { title: "Core Runs Agents, Hub Streams Logs", desc: "Core orchestrates 14 agents across your pipeline. Hub streams their output in real time — filter, search, and monitor from one screen.", icon: Radio, accent: "text-dracula-purple", hoverGlow: "hover:glow-purple" },
+  { title: "Core Runs Agents, Hub Streams Logs", desc: `Core orchestrates ${AGENTS.length} specialized agents across your pipeline. Hub streams their output in real time — filter, search, and monitor from one screen.`, icon: Radio, accent: "text-dracula-purple", hoverGlow: "hover:glow-purple" },
 ];
 
 const FeatureGrid = ({ features }: { features: FeatureCard[] }) => {

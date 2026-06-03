@@ -3,16 +3,17 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import AgentComparisonMatrix from "@/components/AgentComparisonMatrix";
+import { AGENTS } from "@/data/agents";
 
 function renderWithRouter(ui: React.ReactElement) {
   return render(<MemoryRouter>{ui}</MemoryRouter>);
 }
 
 describe("AgentComparisonMatrix", () => {
-  it("renders all 12 agents by default", () => {
+  it("renders all agents by default", () => {
     renderWithRouter(<AgentComparisonMatrix />);
-    // 12 data rows + 1 header row = 13
-    expect(screen.getAllByRole("row")).toHaveLength(13);
+    // one data row per agent + 1 header row
+    expect(screen.getAllByRole("row")).toHaveLength(AGENTS.length + 1);
   });
 
   it("search by name filters results", async () => {
@@ -66,8 +67,8 @@ describe("AgentComparisonMatrix", () => {
     const clearBtn = screen.getByRole("button", { name: /clear filters/i });
     expect(clearBtn).toBeInTheDocument();
     await user.click(clearBtn);
-    // All 12 agents should be back
-    expect(screen.getAllByRole("row")).toHaveLength(13);
+    // All agents should be back
+    expect(screen.getAllByRole("row")).toHaveLength(AGENTS.length + 1);
   });
 
   it("zero state shown when no agents match", async () => {

@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Download, Github, ArrowRight, Apple, Sparkles } from "lucide-react";
+import { Download, Github, ArrowRight, Apple } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { HeroMesh } from "@/components/HeroMesh";
 import {
@@ -11,122 +11,9 @@ import {
   RELEASES_FALLBACK_URL,
 } from "@/hooks/useReleaseManifest";
 
-// ---------- browser chrome frame (desktop) + screenshot (mobile) ----------
-
-interface HubDemoFrameProps {
-  isDesktop: boolean;
-}
-
-const HubDemoFrame = ({ isDesktop }: HubDemoFrameProps) => {
-  const frameRef = useRef<HTMLDivElement>(null);
-  const [shouldLoadIframe, setShouldLoadIframe] = useState(false);
-  const [iframeLoaded, setIframeLoaded] = useState(false);
-  const [iframeMissing, setIframeMissing] = useState(false);
-
-  // Lazy-load the iframe only after the hero is in view, and only if the
-  // hub-demo build actually exists. Probe via manifest content-type so SPA
-  // fallback HTML doesn't give us a false positive.
-  useEffect(() => {
-    if (!isDesktop || !frameRef.current) return;
-    const el = frameRef.current;
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting) return;
-        fetch("/hub-demo/manifest.json", { method: "GET" })
-          .then((res) => {
-            const ct = res.headers.get("content-type") ?? "";
-            if (res.ok && ct.includes("application/json")) {
-              setShouldLoadIframe(true);
-            } else {
-              setIframeMissing(true);
-            }
-          })
-          .catch(() => setIframeMissing(true));
-        io.disconnect();
-      },
-      { rootMargin: "0px 0px 200px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [isDesktop]);
-
-  return (
-    <div
-      ref={frameRef}
-      className="hero-chrome-ring relative mx-auto w-full max-w-[1100px] rounded-xl overflow-hidden glass-card"
-    >
-      {/* content — iframe on desktop, screenshot on mobile (frameless) */}
-      <div className="relative" style={{ aspectRatio: "16/10" }}>
-        {isDesktop ? (
-          <>
-            {(!iframeLoaded || !shouldLoadIframe) && !iframeMissing && (
-              <div className="absolute inset-0 bg-dracula-bg flex items-center justify-center">
-                <div className="w-8 h-8 border-2 border-dracula-purple border-t-transparent rounded-full animate-spin" />
-              </div>
-            )}
-            {iframeMissing && <HubDemoFallback />}
-            {shouldLoadIframe && !iframeMissing && (
-              <iframe
-                src="/hub-demo/index.html"
-                title="specrails-hub demo"
-                className="absolute inset-0 w-full h-full border-0"
-                onLoad={() => setIframeLoaded(true)}
-                sandbox="allow-scripts allow-same-origin"
-              />
-            )}
-          </>
-        ) : (
-          <img
-            src="/hero-hub-screenshot.webp"
-            alt="specrails-hub dashboard screenshot"
-            loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={(e) => {
-              // Screenshot asset missing — fall back to a subtle placeholder
-              (e.currentTarget as HTMLImageElement).style.display = "none";
-            }}
-          />
-        )}
-      </div>
-    </div>
-  );
-};
-
-const HubDemoFallback = () => (
-  <div className="absolute inset-0 bg-dracula-bg flex items-center justify-center">
-    <div className="text-center max-w-md px-6">
-      <p className="text-lg font-semibold text-foreground/80 mb-2">
-        Interactive demo coming soon
-      </p>
-      <p className="text-sm text-muted-foreground">
-        Download the desktop app below to run specrails-hub locally.
-      </p>
-    </div>
-  </div>
-);
-
 // ---------- hero section ----------
 
-const DESKTOP_BREAKPOINT = 1024;
-
-const useIsDesktop = () => {
-  const [isDesktop, setIsDesktop] = useState(() =>
-    typeof window !== "undefined"
-      ? window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`).matches
-      : true,
-  );
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mq = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
-    const handler = () => setIsDesktop(mq.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
-  return isDesktop;
-};
-
 const HeroSection = () => {
-  const isDesktop = useIsDesktop();
   const releaseState = useReleaseManifest();
   const detected = useMemo(() => detectPlatform(), []);
   const { href: downloadHref, disabled: downloadDisabled, version, platform } =
@@ -197,14 +84,14 @@ const HeroSection = () => {
             aria-disabled={downloadDisabled}
             aria-label={`Download specrails-hub for ${platformPill}`}
             className={cn(
-              "group relative inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold",
+              "group relative hidden sm:inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold",
               "transition-all duration-200",
-              "bg-dracula-purple text-dracula-background",
-              "shadow-[0_12px_30px_-10px_rgba(189,147,249,0.55)]",
+              "bg-primary text-primary-foreground",
+              "shadow-[0_12px_30px_-10px_rgba(0,195,210,0.55)]",
               "motion-safe:animate-hero-shimmer overflow-hidden",
               downloadDisabled
                 ? "pointer-events-none opacity-60"
-                : "hover:bg-dracula-purple/90 hover:-translate-y-0.5 hover:shadow-[0_18px_38px_-10px_rgba(189,147,249,0.7)]",
+                : "hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[0_18px_38px_-10px_rgba(0,195,210,0.7)]",
             )}
           >
             <Download className="w-4 h-4" />
@@ -225,23 +112,10 @@ const HeroSection = () => {
         </div>
 
         {/* Version pill */}
-        <div className="mt-3 mb-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-orange/25 bg-dracula-orange/5 text-xs font-mono text-dracula-orange animate-fade-up delay-400">
+        <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-orange/25 bg-dracula-orange/5 text-xs font-mono text-dracula-orange animate-fade-up delay-400">
           {platform === "darwin-arm64" && <Apple className="w-3 h-3" />}
           {versionLabel}
         </div>
-
-        {/* Demo frame (iframe on desktop, screenshot on mobile) */}
-        <div className="animate-fade-up delay-500">
-          <HubDemoFrame isDesktop={isDesktop} />
-        </div>
-
-        {/* "This is just a taste" caption */}
-        <p className="mt-4 inline-flex items-center gap-1.5 text-xs text-muted-foreground/80 animate-fade-up delay-500">
-          <Sparkles className="w-3.5 h-3.5 text-dracula-purple/70" />
-          <span>
-            A slice of the app — plenty more features and views waiting inside.
-          </span>
-        </p>
 
         {/* Core text link */}
         <div className="mt-8 animate-fade-up delay-500">

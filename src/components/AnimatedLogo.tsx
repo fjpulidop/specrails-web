@@ -15,6 +15,10 @@ const AnimatedLogo = () => {
   const rafId = useRef(0);
   const [fadeIn, setFadeIn] = useState(false);
 
+  // One-shot "chip-seating" flash, replayed each time the logo re-docks.
+  const [seatFlare, setSeatFlare] = useState(0);
+  const docked = useRef(false);
+
   // Hero doc-relative position
   const heroDocTop = useRef(0);
   const heroCenterX = useRef(0);
@@ -57,7 +61,11 @@ const AnimatedLogo = () => {
       const progress = Math.max(0, Math.min(1, scrollY / TRANSITION_PX));
       const t = easeInOutCubic(progress);
 
-      const scale = lerp(1, navWidth.current / heroWidth.current, t);
+      // Scale relative to the logo's OWN native width so it lands at exactly
+      // the nav placeholder size. (heroWidth is the big invisible <h1>; using it
+      // here would shrink the logo far below the navbar slot.)
+      const nativeWidth = el.offsetWidth || navWidth.current;
+      const scale = lerp(1, navWidth.current / nativeWidth, t);
 
       // Hero position in viewport
       const heroViewTop = heroDocTop.current - scrollY;
@@ -72,6 +80,17 @@ const AnimatedLogo = () => {
       el.style.top = `${top}px`;
       el.style.left = `${centerX}px`;
       el.style.transform = `translateX(-50%) scale(${scale})`;
+
+      // Fire the seat flash once the logo fully settles into the navbar slot;
+      // arm it again after scrolling back up so it can replay on re-dock.
+      if (progress > 0.992) {
+        if (!docked.current) {
+          docked.current = true;
+          setSeatFlare((n) => n + 1);
+        }
+      } else if (progress < 0.5) {
+        docked.current = false;
+      }
     };
 
     const onScroll = () => {
@@ -128,29 +147,66 @@ const AnimatedLogo = () => {
       }}
     >
       <svg
-        viewBox="0 0 360 96"
+        viewBox="0 0 188 64"
         height="56"
         width="auto"
         aria-hidden="true"
         focusable="false"
+        overflow="visible"
         style={{ display: 'block' }}
       >
-        <rect x="6" y="14" width="348" height="9" rx="4.5"
+        <defs>
+          <filter id="logo-seat-glow" x="-30%" y="-150%" width="160%" height="400%">
+            <feGaussianBlur stdDeviation="3.4" />
+          </filter>
+        </defs>
+        <rect x="4" y="6" width="180" height="6" rx="3"
               fill="hsl(var(--foreground))" opacity="0.16" />
-        <rect x="6" y="33" width="348" height="30" rx="15"
+        <rect x="4" y="18" width="180" height="28" rx="14"
               fill="hsl(var(--foreground))" />
         <text
-          x="180" y="48.5"
+          x="94" y="32.5"
           fontFamily="'JetBrains Mono', monospace"
-          fontWeight="500"
+          fontWeight="600"
           fontSize="20"
           textAnchor="middle"
           dominantBaseline="central"
           fill="hsl(var(--background))"
-          letterSpacing="1.5"
+          letterSpacing="0.5"
         >specrails</text>
-        <rect x="6" y="73" width="348" height="9" rx="4.5"
+        <rect x="4" y="52" width="180" height="6" rx="3"
               fill="hsl(var(--foreground))" opacity="0.16" />
+
+        {/* Chip-seating flash — replays via key on each re-dock */}
+        {seatFlare > 0 && (
+          <g key={seatFlare}>
+            <rect
+              x="4" y="18" width="180" height="28" rx="14"
+              fill="none"
+              stroke="hsl(var(--accent-cyan))"
+              strokeWidth="5"
+              filter="url(#logo-seat-glow)"
+              className="logo-seat-glow"
+            />
+            <rect
+              x="4" y="18" width="180" height="28" rx="14"
+              fill="none"
+              stroke="hsl(var(--dracula-cyan))"
+              strokeWidth="2"
+              className="logo-seat-rim"
+            />
+            <rect
+              x="4" y="18" width="180" height="28" rx="14"
+              fill="none"
+              stroke="hsl(var(--dracula-cyan))"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              pathLength={100}
+              strokeDasharray="16 84"
+              className="logo-seat-beam"
+            />
+          </g>
+        )}
       </svg>
     </div>
   );
