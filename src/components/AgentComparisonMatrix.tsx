@@ -177,6 +177,7 @@ export default function AgentComparisonMatrix(): JSX.Element {
           <TableHeader>
             <TableRow>
               <TableHead>Agent</TableHead>
+              <TableHead>Core</TableHead>
               <TableHead>Model</TableHead>
               <TableHead>Primary Job</TableHead>
               <TableHead>Stage</TableHead>
@@ -194,6 +195,11 @@ export default function AgentComparisonMatrix(): JSX.Element {
                   </div>
                 </TableCell>
                 <TableCell>
+                  {a.core && (
+                    <Badge className="bg-primary/20 text-primary border-0">Core</Badge>
+                  )}
+                </TableCell>
+                <TableCell>
                   <Badge className={modelColors[a.model]}>{a.model}</Badge>
                 </TableCell>
                 <TableCell>
@@ -208,7 +214,7 @@ export default function AgentComparisonMatrix(): JSX.Element {
                 <TableCell>
                   <Link
                     to="/docs/agents"
-                    className="text-xs text-dracula-purple hover:text-dracula-pink transition-colors"
+                    className="text-xs text-primary hover:text-dracula-cyan transition-colors"
                   >
                     Learn more →
                   </Link>
@@ -230,6 +236,9 @@ export default function AgentComparisonMatrix(): JSX.Element {
                   <span className="font-semibold text-sm">{a.name}</span>
                 </div>
                 <Badge className={modelColors[a.model]}>{a.model}</Badge>
+                {a.core && (
+                  <Badge className="bg-primary/20 text-primary border-0">Core</Badge>
+                )}
               </div>
               <p className="text-sm text-muted-foreground mb-2">{a.primaryJob}</p>
               <div className="flex items-center gap-2 mb-2 flex-wrap">
@@ -238,7 +247,7 @@ export default function AgentComparisonMatrix(): JSX.Element {
               </div>
               <Link
                 to="/docs/agents"
-                className="text-xs text-dracula-purple hover:text-dracula-pink transition-colors"
+                className="text-xs text-primary hover:text-dracula-cyan transition-colors"
               >
                 Learn more →
               </Link>

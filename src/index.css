@@ -16,7 +16,7 @@
     --popover: 231 15% 18%;
     --popover-foreground: 60 30% 96%;
 
-    --primary: 265 89% 78%;
+    --primary: 187 100% 41%;
     --primary-foreground: 231 15% 18%;
 
     --secondary: 326 100% 74%;
@@ -33,7 +33,7 @@
 
     --border: 225 27% 51%;
     --input: 232 14% 31%;
-    --ring: 265 89% 78%;
+    --ring: 187 100% 41%;
 
     --radius: 0.75rem;
 
@@ -50,21 +50,62 @@
     --dracula-purple: 265 89% 78%;
     --dracula-red: 0 100% 67%;
     --dracula-yellow: 65 92% 76%;
+    --accent-cyan: 187 100% 41%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(265 89% 78%), hsl(326 100% 74%));
-    --gradient-primary-hover: linear-gradient(135deg, hsl(265 89% 72%), hsl(326 100% 68%));
+    --gradient-primary: linear-gradient(135deg, hsl(187 100% 41%), hsl(199 100% 38%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(187 100% 36%), hsl(199 100% 33%));
 
     --glass-bg: 232 14% 31% / 0.3;
     --glass-border: 225 27% 51% / 0.3;
 
     --sidebar-background: 231 15% 18%;
     --sidebar-foreground: 60 30% 96%;
-    --sidebar-primary: 265 89% 78%;
+    --sidebar-primary: 187 100% 41%;
     --sidebar-primary-foreground: 231 15% 18%;
     --sidebar-accent: 232 14% 31%;
     --sidebar-accent-foreground: 60 30% 96%;
     --sidebar-border: 225 27% 51%;
-    --sidebar-ring: 265 89% 78%;
+    --sidebar-ring: 187 100% 41%;
+  }
+
+  :root[data-theme="light"] {
+    --background:          220 30% 98%;
+    --background-darker:   220 22% 96%;
+    --foreground:          240 15% 14%;
+    --card:                0 0% 100%;
+    --card-foreground:     240 15% 14%;
+    --popover:             0 0% 100%;
+    --popover-foreground:  240 15% 14%;
+    --primary:             187 100% 30%;
+    --primary-foreground:  0 0% 100%;
+    --secondary:           220 22% 92%;
+    --secondary-foreground: 240 15% 14%;
+    --muted:               220 22% 92%;
+    --muted-foreground:    240 8% 40%;
+    --accent:              187 100% 30%;
+    --accent-foreground:   0 0% 100%;
+    --accent-cyan:         187 100% 30%;
+    --border:              240 6% 82%;
+    --input:               220 22% 92%;
+    --ring:                187 100% 30%;
+    --glass-bg:            220 30% 96% / 0.7;
+    --glass-border:        0 0% 0% / 0.08;
+    --sidebar-primary:     187 100% 30%;
+    --sidebar-ring:        187 100% 30%;
+    --gradient-primary:    linear-gradient(135deg, hsl(187 100% 30%), hsl(199 100% 35%));
+    --gradient-primary-hover: linear-gradient(135deg, hsl(187 100% 26%), hsl(199 100% 31%));
+    --dracula-bg:          220 30% 98%;
+    --dracula-darker:      220 22% 96%;
+    --dracula-current:     220 15% 88%;
+    --dracula-fg:          240 15% 14%;
+    --dracula-comment:     225 27% 36%;
+    --dracula-cyan:        191 97% 35%;
+    --dracula-green:       135 94% 28%;
+    --dracula-orange:      31 100% 38%;
+    --dracula-pink:        326 100% 42%;
+    --dracula-purple:      265 89% 52%;
+    --dracula-red:         0 100% 42%;
+    --dracula-yellow:      65 92% 32%;
   }
 }
 
@@ -74,7 +115,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
     font-family: 'Inter', sans-serif;
   }
 
@@ -113,14 +154,14 @@
 
   .gradient-btn:hover {
     background: var(--gradient-primary-hover);
-    box-shadow: 0 0 30px hsl(var(--dracula-purple) / 0.3);
+    box-shadow: 0 0 30px hsl(var(--accent-cyan) / 0.3);
   }
 
   .hero-glow {
     background:
-      radial-gradient(ellipse 90% 60% at 50% -5%, hsl(var(--dracula-purple) / 0.20), transparent 65%),
+      radial-gradient(ellipse 90% 60% at 50% -5%, hsl(var(--accent-cyan) / 0.18), transparent 65%),
       radial-gradient(ellipse 50% 35% at 75% 25%, hsl(var(--dracula-cyan) / 0.09), transparent 55%),
-      radial-gradient(ellipse 40% 30% at 25% 30%, hsl(var(--dracula-pink) / 0.06), transparent 50%);
+      radial-gradient(ellipse 40% 30% at 25% 30%, hsl(var(--dracula-purple) / 0.04), transparent 50%);
   }
 
   /* Generous section spacing */
@@ -168,6 +209,15 @@
     background: hsl(var(--dracula-comment) / 0.6);
   }
 
+  :root[data-theme="light"] .terminal,
+  :root[data-theme="light"] .docs-prose pre {
+    background-color: hsl(231 15% 18%) !important;
+    border-color: hsl(225 27% 51% / 0.3) !important;
+  }
+  :root[data-theme="light"] .docs-prose pre code {
+    color: hsl(60 30% 96%) !important;
+  }
+
   /* ── HTTP method badges (API Reference docs) ── */
   .badge-get    { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-cyan/10 text-dracula-cyan border border-dracula-cyan/30; }
   .badge-post   { @apply inline-flex px-2 py-0.5 rounded text-xs font-mono font-bold bg-dracula-green/10 text-dracula-green border border-dracula-green/30; }
@@ -189,7 +239,7 @@
   .docs-prose p { @apply mb-4 text-foreground/90; }
 
   .docs-prose a, .docs-link {
-    @apply text-dracula-purple hover:text-dracula-pink underline underline-offset-2 transition-colors;
+    @apply text-primary hover:text-dracula-cyan underline underline-offset-2 transition-colors;
   }
 
   .docs-prose :not(pre) > code {

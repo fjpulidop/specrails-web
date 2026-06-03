@@ -42,6 +42,8 @@ export interface AgentEntry {
   color: string;
   border: string;
   glow: string;
+  core?: boolean;
+  note?: string;
 }
 
 export const AGENTS: AgentEntry[] = [
@@ -83,6 +85,7 @@ export const AGENTS: AgentEntry[] = [
     color: "text-dracula-orange",
     border: "border-dracula-orange",
     glow: "glow-orange",
+    core: true,
   },
   {
     name: "Developer",
@@ -96,6 +99,8 @@ export const AGENTS: AgentEntry[] = [
     color: "text-dracula-green",
     border: "border-dracula-green",
     glow: "glow-green",
+    core: true,
+    note: "Dynamically dispatched — implement detects specialized Developer agents by keywords and routes each task to the best match.",
   },
   {
     name: "Backend Developer",
@@ -148,6 +153,8 @@ export const AGENTS: AgentEntry[] = [
     color: "text-dracula-orange",
     border: "border-dracula-orange",
     glow: "glow-orange",
+    core: true,
+    note: "Sub-specializes on demand — delegates to Frontend or Backend Reviewers when those agents are installed.",
   },
   {
     name: "Frontend Reviewer",

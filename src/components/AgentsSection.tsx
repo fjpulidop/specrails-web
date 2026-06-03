@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { AGENTS } from "@/data/agents";
+import { cn } from "@/lib/utils";
 
 const modelColors: Record<string, string> = {
   Opus: "bg-dracula-purple/20 text-dracula-purple",
@@ -36,8 +37,13 @@ const AgentsSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          12 specialized agents working in concert, each with a distinct role and
-          the right model for the job.
+          Three agents are core and always run — Architect, Developer, and Reviewer.
+          The rest are optional specialists. The{" "}
+          <code className="font-mono text-sm px-1 rounded bg-dracula-current text-dracula-cyan">
+            implement
+          </code>{" "}
+          command dispatches the right Developer dynamically by task keywords, and the
+          Reviewer sub-specializes into Frontend or Backend reviewers when installed.
         </p>
         <div
           className={`text-center mb-12 transition-all duration-700 delay-150 ${
@@ -46,7 +52,7 @@ const AgentsSection = () => {
         >
           <Link
             to="/agents"
-            className="text-sm text-dracula-purple hover:text-dracula-pink transition-colors"
+            className="text-sm text-primary hover:text-dracula-cyan transition-colors"
           >
             Compare all agents →
           </Link>
@@ -56,13 +62,16 @@ const AgentsSection = () => {
           {AGENTS.map((a, i) => (
             <div
               key={a.name}
-              className={`glass-card p-5 transition-all duration-500 hover:${a.glow} hover:border-opacity-60 ${
+              className={cn(
+                "glass-card p-5 transition-all duration-500",
+                a.core && "border-primary/40",
+                `hover:${a.glow} hover:border-opacity-60`,
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${i * 80}ms`, borderColor: undefined }}
+              )}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div className="flex items-start gap-3 mb-3">
-                <div className={`p-2 rounded-lg bg-dracula-current`}>
+                <div className="p-2 rounded-lg bg-dracula-current">
                   <a.icon className={`w-5 h-5 ${a.color}`} />
                 </div>
                 <div className="flex-1">
@@ -71,10 +80,18 @@ const AgentsSection = () => {
                     <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${modelColors[a.model]}`}>
                       {a.model}
                     </span>
+                    {a.core && (
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-primary/20 text-primary border border-primary/30">
+                        Core
+                      </span>
+                    )}
                   </div>
                 </div>
               </div>
               <p className="text-muted-foreground text-xs leading-relaxed">{a.desc}</p>
+              {a.note && (
+                <p className="mt-2 text-[11px] text-primary/80 font-mono leading-relaxed">{a.note}</p>
+              )}
             </div>
           ))}
         </div>

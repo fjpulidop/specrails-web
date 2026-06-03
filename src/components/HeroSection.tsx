@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Download, Github, ArrowRight, Apple, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { HeroMesh } from "@/components/HeroMesh";
 import {
   useReleaseManifest,
   downloadFromState,
@@ -9,95 +10,6 @@ import {
   PLATFORM_SHORT,
   RELEASES_FALLBACK_URL,
 } from "@/hooks/useReleaseManifest";
-
-// ---------- particle background (canvas, decorative) ----------
-
-const ParticleBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationId: number;
-    let particles: { x: number; y: number; vx: number; vy: number }[] = [];
-    let running = false;
-
-    const initParticles = (w: number, h: number) => {
-      particles = [];
-      for (let i = 0; i < 50; i++) {
-        particles.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-        });
-      }
-    };
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(189, 147, 249, 0.15)";
-        ctx.fill();
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dist = Math.hypot(p.x - q.x, p.y - q.y);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(139, 233, 253, ${0.08 * (1 - dist / 150)})`;
-            ctx.stroke();
-          }
-        }
-      }
-      animationId = requestAnimationFrame(draw);
-    };
-
-    const parent = canvas.parentElement;
-    if (!parent) return;
-
-    const ro = new ResizeObserver(() => {
-      const w = parent.clientWidth;
-      const h = parent.clientHeight;
-      if (w === 0 || h === 0) return;
-      canvas.width = w;
-      canvas.height = h;
-      if (!running) {
-        initParticles(w, h);
-        running = true;
-        draw();
-      } else {
-        for (const p of particles) {
-          p.x = Math.min(p.x, w);
-          p.y = Math.min(p.y, h);
-        }
-      }
-    });
-    ro.observe(parent);
-    return () => {
-      cancelAnimationFrame(animationId);
-      ro.disconnect();
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-    />
-  );
-};
 
 // ---------- browser chrome frame (desktop) + screenshot (mobile) ----------
 
@@ -234,10 +146,11 @@ const HeroSection = () => {
 
   return (
     <section
+      data-hero
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-20 overflow-hidden"
     >
-      <ParticleBackground />
+      <HeroMesh />
 
       {/* Ambient radial glow with motion-safe breathing loop */}
       <div className="absolute inset-0 hero-glow motion-safe:animate-hero-breath pointer-events-none" />

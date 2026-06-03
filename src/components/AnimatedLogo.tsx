@@ -119,7 +119,7 @@ const AnimatedLogo = () => {
   return (
     <div
       ref={ref}
-      className="fixed z-[60] pointer-events-none font-mono font-bold whitespace-nowrap text-5xl md:text-7xl"
+      className="fixed z-[60] pointer-events-none"
       style={{
         transformOrigin: "top center",
         willChange: "transform",
@@ -127,8 +127,31 @@ const AnimatedLogo = () => {
         transition: "opacity 0.6s ease-out",
       }}
     >
-      <span className="text-dracula-purple">spec</span>
-      <span className="text-dracula-pink">rails</span>
+      <svg
+        viewBox="0 0 360 96"
+        height="56"
+        width="auto"
+        aria-hidden="true"
+        focusable="false"
+        style={{ display: 'block' }}
+      >
+        <rect x="6" y="14" width="348" height="9" rx="4.5"
+              fill="hsl(var(--foreground))" opacity="0.16" />
+        <rect x="6" y="33" width="348" height="30" rx="15"
+              fill="hsl(var(--foreground))" />
+        <text
+          x="180" y="48.5"
+          fontFamily="'JetBrains Mono', monospace"
+          fontWeight="500"
+          fontSize="20"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="hsl(var(--background))"
+          letterSpacing="1.5"
+        >specrails</text>
+        <rect x="6" y="73" width="348" height="9" rx="4.5"
+              fill="hsl(var(--foreground))" opacity="0.16" />
+      </svg>
     </div>
   );
 };

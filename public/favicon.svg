@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#282a36"/>
-  <text x="16" y="23" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="18">
-    <tspan fill="#bd93f9">S</tspan><tspan fill="#ff79c6">R</tspan>
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#080808"></rect>
+  <rect x="80" y="182" width="352" height="18" rx="9" fill="white" fill-opacity="0.14"></rect>
+  <rect x="80" y="220" width="352" height="72" rx="36" fill="#EEEEF5"></rect>
+  <text x="256" y="257" font-family="'JetBrains Mono', 'Courier New', monospace" font-weight="500" font-size="44" text-anchor="middle" dominant-baseline="central" fill="#080808" letter-spacing="2">specrails</text>
+  <rect x="80" y="314" width="352" height="18" rx="9" fill="white" fill-opacity="0.14"></rect>
 </svg>
