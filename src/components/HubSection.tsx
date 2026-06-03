@@ -37,13 +37,11 @@ const HubSection = () => {
               </span>
 
               <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
-                {/* Headline placeholder — final copy from SPEA-134 */}
                 Your AI team,{" "}
                 <span className="gradient-text">at a glance</span>
               </h2>
 
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                {/* Body placeholder — final copy from SPEA-134 */}
                 specrails-hub gives you a real-time local dashboard to monitor your
                 agents, track tasks, and manage your development pipeline — all
                 without leaving your machine.

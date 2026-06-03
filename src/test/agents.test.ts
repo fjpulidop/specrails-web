@@ -21,8 +21,8 @@ const VALID_CATEGORIES: JobCategory[] = [
 const VALID_MODELS = ["Opus", "Sonnet", "Haiku"] as const;
 
 describe("AGENTS data", () => {
-  it("contains exactly 12 agents", () => {
-    expect(AGENTS).toHaveLength(12);
+  it("contains exactly 14 agents", () => {
+    expect(AGENTS).toHaveLength(14);
   });
 
   it("every agent has a non-empty name", () => {
