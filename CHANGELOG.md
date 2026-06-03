@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.10.0](https://github.com/fjpulidop/specrails-web/compare/v1.9.0...v1.10.0) (2026-06-03)
+
+
+### Features
+
+* cyan palette retone, system theme, logo dock animation, content accuracy ([#171](https://github.com/fjpulidop/specrails-web/issues/171)) ([3b0a4f7](https://github.com/fjpulidop/specrails-web/commit/3b0a4f711440a0e1839aa796ba07725c79eb60cc))
+* visual redesign — cyan palette, light mode, hero mesh, SVG logo, agents update ([2f01ab2](https://github.com/fjpulidop/specrails-web/commit/2f01ab2001e13dc8b6f755bf7a3e9d2bb14d1e98))
+
 ## [1.9.0](https://github.com/fjpulidop/specrails-web/compare/v1.8.0...v1.9.0) (2026-05-24)
 
 
