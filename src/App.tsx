@@ -11,6 +11,7 @@ import DocsIndex from "./pages/DocsIndex.tsx";
 import AgentsPage from "./pages/AgentsPage.tsx";
 import CorePage from "./pages/CorePage.tsx";
 import DownloadPage from "./pages/DownloadPage.tsx";
+import PrivacyPage from "./pages/PrivacyPage.tsx";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/agents" element={<AgentsPage />} />
           <Route path="/core" element={<CorePage />} />
           <Route path="/download" element={<DownloadPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
