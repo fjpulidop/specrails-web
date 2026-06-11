@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.11.0](https://github.com/fjpulidop/specrails-web/compare/v1.10.0...v1.11.0) (2026-06-11)
+
+
+### Features
+
+* add /privacy page (privacy policy for App Store listing) ([#177](https://github.com/fjpulidop/specrails-web/issues/177)) ([b877072](https://github.com/fjpulidop/specrails-web/commit/b877072f74b3f6605acc3a4afa60c342dde5e4f9))
+
 ## [1.10.0](https://github.com/fjpulidop/specrails-web/compare/v1.9.0...v1.10.0) (2026-06-03)
 
 
