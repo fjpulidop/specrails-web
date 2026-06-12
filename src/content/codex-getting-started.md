@@ -7,7 +7,7 @@ This page covers first-time setup for both surfaces:
 1. The **core CLI** workflow (run specrails inside Codex directly).
 2. The **hub** workflow (Add a Codex project from the desktop app).
 
-If you want the deep architecture / adapter pointers, head to the canonical reference at [`specrails-hub/docs/codex.md`](https://github.com/fjpulidop/specrails-hub/blob/main/docs/codex.md).
+If you want the deep architecture / adapter pointers, head to the canonical reference at [`specrails-desktop/docs/codex.md`](https://github.com/fjpulidop/specrails-desktop/blob/main/docs/codex.md).
 
 ---
 
@@ -94,7 +94,7 @@ Codex is a fully supported provider, but a few behaviours diverge from Claude Co
 
 ## Troubleshooting
 
-**"codex binary not found" when adding a project.** Install the Codex CLI and restart the hub so PATH refreshes. The hub's `/api/hub/setup-prerequisites` endpoint surfaces the absolute path it resolved, useful for diagnosing Homebrew-vs-npm install collisions.
+**"codex binary not found" when adding a project.** Install the Codex CLI and restart the hub so PATH refreshes. The hub's `/api/setup-prerequisites` endpoint surfaces the absolute path it resolved, useful for diagnosing Homebrew-vs-npm install collisions.
 
 **"codex 0.120.0 is older than required 0.128.0".** Upgrade Codex. The adapter pins the minimum because earlier versions don't support `exec --json` or `exec resume`.
 
@@ -122,4 +122,4 @@ npx specrails-core doctor
 
 ---
 
-*Something not working? Open an issue at [github.com/fjpulidop/specrails-core/issues](https://github.com/fjpulidop/specrails-core/issues) or [github.com/fjpulidop/specrails-hub/issues](https://github.com/fjpulidop/specrails-hub/issues).*
+*Something not working? Open an issue at [github.com/fjpulidop/specrails-core/issues](https://github.com/fjpulidop/specrails-core/issues) or [github.com/fjpulidop/specrails-desktop/issues](https://github.com/fjpulidop/specrails-desktop/issues).*

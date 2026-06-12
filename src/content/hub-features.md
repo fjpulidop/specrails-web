@@ -1,6 +1,6 @@
 # Hub Features
 
-Reference guide to every feature inside specrails-hub.
+Reference guide to every feature inside specrails-desktop.
 
 ---
 
@@ -8,11 +8,11 @@ Reference guide to every feature inside specrails-hub.
 
 The app uses two collapsible sidebars.
 
-**ArcSidebar (left)** — hub-level navigation.
+**ArcSidebar (left)** — app-level navigation.
 
 - Lists every registered project — click to switch active project.
 - **+ Add project** button at the bottom of the project list.
-- Bottom section: Docs · Hub Analytics · Hub Settings.
+- Bottom section: Docs · Analytics · Settings.
 - Hover to expand, pin icon at the top to lock open.
 
 **ProjectRightSidebar (right)** — per-project navigation.
@@ -25,11 +25,11 @@ The app uses two collapsible sidebars.
 
 ## Desktop app
 
-The native macOS app (Tauri) bundles the server as a sidecar — launch the app and the hub is up. Windows and Linux builds are on the roadmap.
+The native macOS app (Tauri) bundles the server as a sidecar — launch the app and the server is up. Windows and Linux builds are on the roadmap.
 
 macOS: native traffic lights with a custom drag region replace the standard titlebar; a centred search pill lives where the URL would go.
 
-If you prefer npm, `specrails-hub start` opens the same UI in the browser at `http://127.0.0.1:4200`.
+If you prefer npm, `specrails-desktop start` opens the same UI in the browser at `http://127.0.0.1:4200`.
 
 ---
 
@@ -82,9 +82,9 @@ All data stays local in SQLite. Nothing leaves your machine.
 
 ---
 
-## Hub Analytics
+## Desktop Analytics
 
-Cross-project roll-up. Same shape as the per-project analytics page but aggregates every project the hub manages.
+Cross-project roll-up. Same shape as the per-project analytics page but aggregates every project the app manages.
 
 ---
 
@@ -135,11 +135,13 @@ The command palette (`⌘K`) is the fastest path to every action — navigate, c
 
 ```
 ~/.specrails/
-  hub.sqlite                  # project registry
+  desktop.sqlite              # project registry
   manager.pid                 # server PID
-  hub.token                   # Bearer token used by the CLI
+  desktop.token               # Bearer token used by the CLI
   projects/<slug>/jobs.sqlite # per-project jobs + events
 ```
+
+> Upgrading from a pre-rebrand install? The old `hub.sqlite` / `hub.token` files are migrated to the new names automatically on first start.
 
 Per-project state stays in your repo:
 
@@ -153,7 +155,7 @@ Per-project state stays in your repo:
 
 ## Authentication
 
-The hub generates a Bearer token at `~/.specrails/hub.token` on first start. Every `/api/*` request requires it. The CLI reads the token automatically — nothing to configure.
+The hub generates a Bearer token at `~/.specrails/desktop.token` on first start. Every `/api/*` request requires it. The CLI reads the token automatically — nothing to configure.
 
 ---
 

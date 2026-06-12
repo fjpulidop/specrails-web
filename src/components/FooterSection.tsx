@@ -33,7 +33,7 @@ const FooterSection = () => (
             Hub
           </h4>
           <div className="flex flex-col gap-2">
-            <a href="https://github.com/fjpulidop/specrails-hub" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm justify-center sm:justify-start">
+            <a href="https://github.com/fjpulidop/specrails-desktop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm justify-center sm:justify-start">
               <Github className="w-4 h-4" /> GitHub
             </a>
             <a href="/docs/hub-features" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors text-sm justify-center sm:justify-start">

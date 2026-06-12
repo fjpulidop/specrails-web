@@ -42,6 +42,6 @@ In return, we commit to:
 
 ## Scope
 
-This policy covers the specrails-web frontend application. It does not cover third-party services linked from the site or the specrails-hub backend.
+This policy covers the specrails-web frontend application. It does not cover third-party services linked from the site or the specrails-desktop backend.
 
-For vulnerabilities in specrails-hub, please see [specrails-hub's security policy](https://github.com/fjpulidop/specrails-hub/blob/main/SECURITY.md).
+For vulnerabilities in specrails-desktop, please see [specrails-desktop's security policy](https://github.com/fjpulidop/specrails-desktop/blob/main/SECURITY.md).

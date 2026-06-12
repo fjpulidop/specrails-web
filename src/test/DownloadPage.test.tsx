@@ -45,7 +45,7 @@ describe("DownloadPage", () => {
     renderPage();
     const h1 = screen.getByRole("heading", { level: 1 });
     expect(h1.textContent?.toLowerCase()).toContain("download");
-    expect(h1.textContent?.toLowerCase()).toContain("specrails-hub");
+    expect(h1.textContent?.toLowerCase()).toContain("specrails-desktop");
   });
 
   it("renders all three platform cards", () => {
@@ -57,7 +57,7 @@ describe("DownloadPage", () => {
   it("renders per-platform download buttons", () => {
     renderPage();
     expect(
-      screen.getAllByRole("link", { name: /download specrails-hub for/i }).length,
+      screen.getAllByRole("link", { name: /download specrails-desktop for/i }).length,
     ).toBe(3);
   });
 

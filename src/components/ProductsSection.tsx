@@ -37,7 +37,7 @@ const products: Product[] = [
     cta: { label: "Get Started with Core", href: "/core" },
   },
   {
-    name: "specrails-hub",
+    name: "specrails-desktop",
     tagline: "The Control Center",
     icon: LayoutDashboard,
     iconClass: "text-dracula-purple",

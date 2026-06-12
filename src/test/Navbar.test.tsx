@@ -19,10 +19,10 @@ describe("Navbar", () => {
     expect(logo?.textContent).toContain("specrails");
   });
 
-  it("renders a GitHub link pointing to specrails-hub", () => {
+  it("renders a GitHub link pointing to specrails-desktop", () => {
     renderNavbar();
     const githubLinks = screen.getAllByRole("link").filter((el) =>
-      el.getAttribute("href")?.includes("github.com/fjpulidop/specrails-hub"),
+      el.getAttribute("href")?.includes("github.com/fjpulidop/specrails-desktop"),
     );
     expect(githubLinks.length).toBeGreaterThan(0);
   });

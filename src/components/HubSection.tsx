@@ -42,7 +42,7 @@ const HubSection = () => {
               </h2>
 
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                specrails-hub gives you a real-time local dashboard to monitor your
+                specrails-desktop gives you a real-time local dashboard to monitor your
                 agents, track tasks, and manage your development pipeline — all
                 without leaving your machine.
               </p>
@@ -61,7 +61,7 @@ const HubSection = () => {
                 <div className="glass-card p-4 border-dracula-purple/30 hover:glow-purple">
                   <div className="flex items-center gap-2 mb-2">
                     <LayoutDashboard className="w-4 h-4 text-dracula-purple" />
-                    <span className="text-sm font-semibold text-dracula-purple font-mono">specrails-hub</span>
+                    <span className="text-sm font-semibold text-dracula-purple font-mono">specrails-desktop</span>
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     Local dashboard UI. Monitor, assign tasks, review runs.
@@ -73,7 +73,7 @@ const HubSection = () => {
                 href="/docs/hub"
                 className="inline-flex items-center gap-2 text-sm text-dracula-purple hover:text-dracula-pink transition-colors"
               >
-                Learn more about specrails-hub →
+                Learn more about specrails-desktop →
               </a>
             </div>
           </div>
@@ -104,7 +104,7 @@ const HubSection = () => {
                   {/* Sidebar */}
                   <div className="w-44 border-r border-white/5 p-3 flex flex-col gap-1">
                     <p className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider mb-2 px-2">
-                      specrails-hub
+                      specrails-desktop
                     </p>
                     {[
                       { icon: Activity, label: "Dashboard", active: true },
@@ -149,7 +149,7 @@ const HubSection = () => {
               </div>
             </div>
             <p className="text-center text-xs text-muted-foreground mt-3 font-mono">
-              ↑ specrails-hub running locally
+              ↑ specrails-desktop running locally
             </p>
           </div>
 

@@ -9,7 +9,7 @@ import { useSeo } from "@/hooks/useSeo";
 
 const CorePage = () => {
   useSeo({
-    title: "specrails-core — The CLI behind specrails-hub",
+    title: "specrails-core — The CLI behind specrails-desktop",
     description:
       "specrails-core is the terminal-first CLI for spec-driven AI development. Quick setup, 14 agents, and a structured pipeline from idea to shipped code.",
     canonical: "https://specrails.dev/core",
@@ -34,7 +34,7 @@ const CorePage = () => {
             <span className="font-mono text-dracula-cyan">specrails-core</span>
             <br />
             <span className="text-muted-foreground text-2xl md:text-3xl">
-              The CLI behind specrails-hub
+              The CLI behind specrails-desktop
             </span>
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -144,7 +144,7 @@ const CorePage = () => {
           >
             Want the dashboard?
             <ArrowLeft className="w-4 h-4 rotate-180" />
-            <span className="font-medium">specrails-hub</span>
+            <span className="font-medium">specrails-desktop</span>
           </Link>
         </section>
       </main>

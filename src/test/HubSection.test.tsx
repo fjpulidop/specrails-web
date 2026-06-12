@@ -24,10 +24,10 @@ describe("HubSection", () => {
     expect(screen.getByText(/at a glance/i)).toBeInTheDocument();
   });
 
-  it("renders specrails-core and specrails-hub comparison cards", () => {
+  it("renders specrails-core and specrails-desktop comparison cards", () => {
     renderHubSection();
     expect(screen.getByText("specrails-core")).toBeInTheDocument();
-    expect(screen.getAllByText("specrails-hub").length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText("specrails-desktop").length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders all four mock task items", () => {
@@ -40,7 +40,7 @@ describe("HubSection", () => {
 
   it("renders the learn more link", () => {
     renderHubSection();
-    const link = screen.getByRole("link", { name: /learn more about specrails-hub/i });
+    const link = screen.getByRole("link", { name: /learn more about specrails-desktop/i });
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "/docs/hub");
   });

@@ -29,11 +29,11 @@ The system SHALL replace the current single-grid FeaturesSection with a tabbed i
 - **THEN** the previously selected tab remains active
 
 ### Requirement: Updated roadmap section with dual repos
-The system SHALL update the RoadmapSection to display GitHub issues from both specrails-core and specrails-hub repositories.
+The system SHALL update the RoadmapSection to display GitHub issues from both specrails-core and specrails-desktop repositories.
 
 #### Scenario: Roadmap shows issues from both repos
 - **WHEN** the Roadmap section renders
-- **THEN** it fetches issues from both `fjpulidop/specrails-core` and `fjpulidop/specrails-hub`
+- **THEN** it fetches issues from both `fjpulidop/specrails-core` and `fjpulidop/specrails-desktop`
 - **AND** each issue card displays a product badge ("Core" or "Hub") with the respective accent color
 
 #### Scenario: Roadmap allows filtering by product
