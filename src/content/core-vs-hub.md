@@ -13,9 +13,9 @@ You can install Core alone. You can install Hub alone — the Hub's setup wizard
 
 ## Side by side
 
-|  | specrails-hub | specrails-core |
+|  | specrails-desktop | specrails-core |
 |---|---|---|
-| What you download | `.dmg` (macOS app) or `npm i -g specrails-hub` | `npx specrails-core@latest init` (per-project) |
+| What you download | `.dmg` (macOS app) or `npm i -g specrails-desktop` | `npx specrails-core@latest init` (per-project) |
 | Interface | Desktop app + web dashboard at `localhost:4200` | Claude Code / Codex CLI |
 | Best for | Visual overview, multiple projects, non-dev stakeholders | Keyboard-heavy solo devs |
 | Manages multiple projects | ✅ Out of the box | ⚠️ One project per repo install |

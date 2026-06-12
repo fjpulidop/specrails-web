@@ -5,7 +5,7 @@ The system SHALL add hub documentation entries to `src/lib/docs-registry.ts` so 
 
 #### Scenario: Hub installation doc is accessible
 - **WHEN** the user navigates to `/docs/hub-installation`
-- **THEN** the DocPage renders hub installation documentation covering: prerequisites, installation command (`npm install -g specrails-hub`), starting the server, adding projects, and first-run experience
+- **THEN** the DocPage renders hub installation documentation covering: prerequisites, installation command (`npm install -g specrails-desktop`), starting the server, adding projects, and first-run experience
 
 #### Scenario: Hub features doc is accessible
 - **WHEN** the user navigates to `/docs/hub-features`
@@ -29,5 +29,5 @@ The system SHALL include markdown content for hub documentation either as static
 
 #### Scenario: Documentation content is accurate
 - **WHEN** any hub documentation page renders
-- **THEN** the content accurately reflects specrails-hub v1.25.0 features and installation process
+- **THEN** the content accurately reflects specrails-desktop v1.25.0 features and installation process
 - **AND** code examples use current CLI commands and configuration syntax

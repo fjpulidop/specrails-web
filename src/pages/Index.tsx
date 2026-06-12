@@ -21,7 +21,7 @@ const Index = () => {
   useSeo({
     title: "specrails — AI Development Platform: Core Engine + Hub Dashboard",
     description:
-      "specrails turns Claude Code & Codex into your full dev team. specrails-core: 14 AI agents from idea to production code. specrails-hub: local dashboard for pipeline visualization, tickets, and analytics.",
+      "specrails turns Claude Code & Codex into your full dev team. specrails-core: 14 AI agents from idea to production code. specrails-desktop: local dashboard for pipeline visualization, tickets, and analytics.",
     canonical: "https://specrails.dev/",
   });
 

@@ -82,7 +82,7 @@ const HeroSection = () => {
             href={downloadHref ?? "#"}
             download={!downloadDisabled && downloadHref !== RELEASES_FALLBACK_URL}
             aria-disabled={downloadDisabled}
-            aria-label={`Download specrails-hub for ${platformPill}`}
+            aria-label={`Download specrails-desktop for ${platformPill}`}
             className={cn(
               "group relative hidden sm:inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold",
               "transition-all duration-200",
@@ -101,7 +101,7 @@ const HeroSection = () => {
           </a>
 
           <a
-            href="https://github.com/fjpulidop/specrails-hub"
+            href="https://github.com/fjpulidop/specrails-desktop"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium bg-foreground/5 border border-border/30 text-foreground hover:bg-foreground/10 transition-colors"

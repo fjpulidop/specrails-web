@@ -22,7 +22,7 @@ The system SHALL update the HeroSection to reflect the dual-product positioning.
 #### Scenario: Hero displays dual-product messaging
 - **WHEN** the hero section renders
 - **THEN** the tagline reflects the umbrella brand: "Your Agentic Development Team"
-- **AND** a subtitle mentions both products: "From idea to production code with specrails-core. Visualize everything with specrails-hub."
+- **AND** a subtitle mentions both products: "From idea to production code with specrails-core. Visualize everything with specrails-desktop."
 
 #### Scenario: Dual CTA buttons
 - **WHEN** the hero section renders
@@ -31,7 +31,7 @@ The system SHALL update the HeroSection to reflect the dual-product positioning.
 - **AND** the secondary CTA "Explore the Hub" scrolls to the hub-showcase section
 
 ### Requirement: Updated footer with hub links
-The system SHALL update the FooterSection to include specrails-hub links alongside existing specrails-core links.
+The system SHALL update the FooterSection to include specrails-desktop links alongside existing specrails-core links.
 
 #### Scenario: Footer shows both product links
 - **WHEN** the footer renders

@@ -93,7 +93,7 @@ src/
 │   ├── FooterSection.tsx          # Footer with links
 │   ├── GitHubStarsButton.tsx      # Live GitHub star count button
 │   ├── HeroSection.tsx            # Hero with particle animation
-│   ├── HubSection.tsx             # specrails-hub product section
+│   ├── HubSection.tsx             # specrails-desktop product section
 │   ├── InstallSection.tsx         # Installation instructions
 │   ├── MarkdownRenderer.tsx       # Syntax-highlighted markdown renderer
 │   ├── Navbar.tsx                 # Navigation bar

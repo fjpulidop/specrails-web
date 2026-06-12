@@ -19,7 +19,7 @@ describe("CorePage", () => {
   it("renders the banner identifying specrails-core", () => {
     renderCore();
     expect(screen.getAllByText(/specrails-core/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/the cli behind specrails-hub/i)).toBeInTheDocument();
+    expect(screen.getByText(/the cli behind specrails-desktop/i)).toBeInTheDocument();
   });
 
   it("renders the install block with quick and full setup commands", () => {

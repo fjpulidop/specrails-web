@@ -1,7 +1,7 @@
 ## ADDED Requirements
 
 ### Requirement: Hub showcase section with interactive iframe demo
-The system SHALL render a HubShowcase section on the home page after PipelineSection. The section SHALL embed an iframe pointing to `/hub-demo/index.html` which contains a static build of the real specrails-hub client with mock data. The iframe SHALL be read-only (no write operations).
+The system SHALL render a HubShowcase section on the home page after PipelineSection. The section SHALL embed an iframe pointing to `/hub-demo/index.html` which contains a static build of the real specrails-desktop client with mock data. The iframe SHALL be read-only (no write operations).
 
 #### Scenario: Desktop renders interactive iframe with toolbar
 - **WHEN** the user views the hub-showcase section on a viewport >= 1024px
@@ -29,11 +29,11 @@ The system SHALL render a HubShowcase section on the home page after PipelineSec
 #### Scenario: Section heading and context
 - **WHEN** the hub-showcase section renders
 - **THEN** a heading "The Control Center" with gradient text is displayed
-- **AND** a subtitle explains "See your AI pipeline in action — real specrails-hub interface with live data visualization"
-- **AND** a "Powered by specrails-hub" badge appears
+- **AND** a subtitle explains "See your AI pipeline in action — real specrails-desktop interface with live data visualization"
+- **AND** a "Powered by specrails-desktop" badge appears
 
 ### Requirement: Hub demo static build
-The system SHALL include a self-contained static build of the specrails-hub client in `public/hub-demo/`. This build SHALL use mock data fixtures instead of a backend API. All mutation operations (create, update, delete) SHALL be disabled with a tooltip "Available in full installation".
+The system SHALL include a self-contained static build of the specrails-desktop client in `public/hub-demo/`. This build SHALL use mock data fixtures instead of a backend API. All mutation operations (create, update, delete) SHALL be disabled with a tooltip "Available in full installation".
 
 #### Scenario: Demo loads without backend
 - **WHEN** the hub demo iframe loads

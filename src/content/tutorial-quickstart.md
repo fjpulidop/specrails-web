@@ -136,8 +136,8 @@ Expected output:
 ```
 ✔ Node.js 18+ found
 ✔ Git found
-✔ specrails-hub running on :3001
-✔ SpecRails Hub connected
+✔ specrails-desktop running on :4200
+✔ Specrails Desktop connected
 ✔ Agent configs loaded (6 agents)
 ✔ GitHub CLI authenticated
 ✔ Anthropic API key present

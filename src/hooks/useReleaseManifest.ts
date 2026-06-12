@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 
 /**
  * Release manifest hook — fetches the public release manifest published by
- * specrails-hub (openspec: add-latest-release-channel) and returns it for
+ * specrails-desktop (openspec: add-latest-release-channel) and returns it for
  * download CTAs (hero + /download page).
  *
  * Module-level promise cache so multiple mounts share ONE network call.
  */
 
 const MANIFEST_URL =
-  "https://specrails.dev/downloads/specrails-hub/latest/manifest.json";
+  "https://specrails.dev/downloads/specrails-desktop/latest/manifest.json";
 
 export type PlatformKey = "darwin-arm64" | "windows-x64" | "windows-arm64";
 
@@ -99,7 +99,7 @@ export function useReleaseManifest(): ReleaseManifestState {
 }
 
 export const RELEASES_FALLBACK_URL =
-  "https://specrails.dev/downloads/specrails-hub/latest/";
+  "https://specrails.dev/downloads/specrails-desktop/latest/";
 
 export const PLATFORM_LABELS: Record<PlatformKey, string> = {
   "darwin-arm64": "macOS · Apple Silicon",

@@ -94,10 +94,10 @@ const Navbar = () => {
             <Coffee className="w-5 h-5" />
           </a>
           <a
-            href="https://github.com/fjpulidop/specrails-hub"
+            href="https://github.com/fjpulidop/specrails-desktop"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="specrails-hub on GitHub"
+            aria-label="specrails-desktop on GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />
@@ -146,10 +146,10 @@ const Navbar = () => {
             <span className="text-sm">Donate</span>
           </a>
           <a
-            href="https://github.com/fjpulidop/specrails-hub"
+            href="https://github.com/fjpulidop/specrails-desktop"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="specrails-hub on GitHub"
+            aria-label="specrails-desktop on GitHub"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />

@@ -15,7 +15,7 @@ specrails is designed to run **locally** — in your dev environment, not on a p
 
 This is the common path. Install Hub and/or Core and you're done:
 
-- [Install Hub](/docs/hub-installation) — download the `.dmg` or run `npm install -g specrails-hub`.
+- [Install Hub](/docs/hub-installation) — download the `.dmg` or run `npm install -g specrails-desktop`.
 - [Install specrails-core](/docs/installation) — `npx specrails-core@latest init`.
 
 Data is written to `~/.specrails/` (hub) and `.specrails/` inside each repo (core). Nothing leaves the machine.

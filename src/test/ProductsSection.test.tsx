@@ -53,7 +53,7 @@ describe("ProductsSection", () => {
   it("renders Hub card with tagline and capabilities", () => {
     render(<ProductsSection />);
     expect(screen.getByText("The Control Center")).toBeInTheDocument();
-    expect(screen.getByText("specrails-hub")).toBeInTheDocument();
+    expect(screen.getByText("specrails-desktop")).toBeInTheDocument();
     expect(screen.getByText(/multi-project dashboard/i)).toBeInTheDocument();
     expect(screen.getByText(/analytics & cost tracking/i)).toBeInTheDocument();
   });

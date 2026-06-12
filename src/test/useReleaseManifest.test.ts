@@ -13,11 +13,11 @@ describe("downloadFromState", () => {
         schemaVersion: 1,
         version: "1.30.0",
         releasedAt: "2026-04-17T00:00:00Z",
-        releaseUrl: "https://github.com/fjpulidop/specrails-hub/releases/tag/v1.30.0",
+        releaseUrl: "https://github.com/fjpulidop/specrails-desktop/releases/tag/v1.30.0",
         platforms: {
           "darwin-arm64": {
-            filename: "specrails-hub-1.30.0-aarch64.dmg",
-            url: "https://specrails.dev/downloads/specrails-hub/latest/specrails-hub-1.30.0-aarch64.dmg",
+            filename: "specrails-desktop-1.30.0-aarch64.dmg",
+            url: "https://specrails.dev/downloads/specrails-desktop/latest/specrails-desktop-1.30.0-aarch64.dmg",
             sha256: "abc",
             size: 1000,
           },
@@ -34,7 +34,7 @@ describe("downloadFromState", () => {
     const state: ReleaseManifestState = { status: "error", reason: "boom" };
     const { href, disabled, version } = downloadFromState(state);
     expect(href).toBe(RELEASES_FALLBACK_URL);
-    expect(href).toContain("specrails.dev/downloads/specrails-hub/latest");
+    expect(href).toContain("specrails.dev/downloads/specrails-desktop/latest");
     expect(disabled).toBe(false);
     expect(version).toBeNull();
   });

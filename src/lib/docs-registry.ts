@@ -40,7 +40,7 @@ export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "hub-installation",
     title: "Install Hub",
-    description: "Download the macOS app or install via npm — get specrails-hub running locally",
+    description: "Download the macOS app or install via npm — get specrails-desktop running locally",
     content: hubInstallationRaw,
     section: "Hub",
   },
