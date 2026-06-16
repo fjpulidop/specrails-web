@@ -4,9 +4,23 @@
 
   # If the request is for an existing file or directory, serve it directly
   RewriteRule ^index\.html$ - [L]
+
+  # The companion PWA (Flutter web) lives at /companion-app. Real asset / wasm /
+  # service-worker files exist on disk and are served directly by the !-f rule
+  # below; any in-app deep link falls back to the COMPANION shell, never the
+  # React marketing SPA.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^companion-app(/.*)?$ /companion-app/index.html [L]
+
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.html [L]
+</IfModule>
+
+# Flutter web ships .wasm (canvaskit/skwasm); some hosts default to octet-stream.
+<IfModule mod_mime.c>
+  AddType application/wasm .wasm
 </IfModule>
 
 # Fallback: use index.html as the custom 404 page (LiteSpeed/Apache)
