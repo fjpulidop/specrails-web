@@ -1,0 +1,35 @@
+{
+    "name": "Specrails Companion",
+    "short_name": "Specrails",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#07070E",
+    "theme_color": "#07070E",
+    "description": "Control your Specrails Desktop AI pipeline from your phone — paired peer-to-peer, no server.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
