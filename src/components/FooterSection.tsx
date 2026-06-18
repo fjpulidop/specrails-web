@@ -56,8 +56,14 @@ const COLUMNS: Column[] = [
     heading: "Docs",
     links: [
       { label: "Documentation", icon: BookOpen, to: "/docs" },
+      { label: "What is a Spec?", icon: FileText, to: "/docs/what-is-a-spec" },
       { label: "Install Desktop", icon: Download, to: "/docs/hub-installation" },
       { label: "Install Core", icon: Download, to: "/docs/installation" },
+      {
+        label: "How to use Specrails Companion",
+        icon: Smartphone,
+        to: "/docs/companion-tutorial",
+      },
       { label: "CLI reference", icon: FileText, to: "/docs/cli-reference" },
     ],
   },

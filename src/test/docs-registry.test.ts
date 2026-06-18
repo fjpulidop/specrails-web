@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 17 entries", () => {
-    expect(DOC_ENTRIES).toHaveLength(17);
+  it("has 19 entries", () => {
+    expect(DOC_ENTRIES).toHaveLength(19);
   });
 
   it("getDocBySlug returns correct entry", () => {
@@ -26,9 +26,9 @@ describe("docs-registry", () => {
     expect(getAdjacentDocs("deployment").next).toBeNull();
   });
 
-  it("Hub Installation is the first section entry (Hub-first order)", () => {
+  it("What is a Spec? is the first section entry (Concepts-first order)", () => {
     const { next } = getAdjacentDocs("");
-    expect(next?.slug).toBe("hub-installation");
+    expect(next?.slug).toBe("what-is-a-spec");
   });
 
   it("content is non-empty for all entries", () => {

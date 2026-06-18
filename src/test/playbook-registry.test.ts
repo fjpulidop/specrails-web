@@ -6,8 +6,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("playbook registry entries", () => {
-  it("has 17 total entries in DOC_ENTRIES", () => {
-    expect(DOC_ENTRIES).toHaveLength(17);
+  it("has 19 total entries in DOC_ENTRIES", () => {
+    expect(DOC_ENTRIES).toHaveLength(19);
   });
 
   it("getDocBySlug returns a result for each playbook slug", () => {

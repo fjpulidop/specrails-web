@@ -18,6 +18,8 @@ import changelogRaw from "specrails-core/docs/changelog.md?raw";
 import hubInstallationRaw from "../content/hub-installation.md?raw";
 import hubFeaturesRaw from "../content/hub-features.md?raw";
 import coreVsHubRaw from "../content/core-vs-hub.md?raw";
+import whatIsASpecRaw from "../content/what-is-a-spec.md?raw";
+import companionTutorialRaw from "../content/companion-tutorial.md?raw";
 
 export interface DocEntry {
   slug: string;
@@ -27,8 +29,8 @@ export interface DocEntry {
   section?: string;
 }
 
-// Hub-first ordering: the desktop app is the recommended entry point;
-// the CLI (specrails-core) is grouped after it for terminal-first devs.
+// Desktop-first ordering: Specrails (Desktop) is the recommended entry point;
+// the CLI (Specrails (Core)) is grouped after it for terminal-first devs.
 export const DOC_ENTRIES: DocEntry[] = [
   {
     slug: "",
@@ -36,32 +38,47 @@ export const DOC_ENTRIES: DocEntry[] = [
     description: "Overview and reading guide",
     content: readmeRaw,
   },
-  // ── Hub (desktop app) — recommended path ────────────────────────────
+  // ── Concepts — start here ───────────────────────────────────────────
+  {
+    slug: "what-is-a-spec",
+    title: "What is a Spec?",
+    description: "The unit of work in specrails — what a Spec captures, how you generate one, and how it powers SDD and TDD",
+    content: whatIsASpecRaw,
+    section: "Concepts",
+  },
+  // ── Specrails (Desktop) — recommended path ──────────────────────────
   {
     slug: "hub-installation",
-    title: "Install Hub",
-    description: "Download the macOS app or install via npm — get specrails-desktop running locally",
+    title: "Install Specrails (Desktop)",
+    description: "Download the macOS app or install via npm — get Specrails (Desktop) running locally",
     content: hubInstallationRaw,
-    section: "Hub",
+    section: "Desktop",
   },
   {
     slug: "hub-features",
-    title: "Hub Features",
+    title: "Specrails (Desktop) Features",
     description: "Specs, Rails, Jobs, Analytics, Activity, Command Launcher, keyboard shortcuts",
     content: hubFeaturesRaw,
-    section: "Hub",
+    section: "Desktop",
   },
   {
     slug: "core-vs-hub",
-    title: "Hub vs Core",
+    title: "Desktop vs Core",
     description: "Which to use and when — they compose",
     content: coreVsHubRaw,
-    section: "Hub",
+    section: "Desktop",
+  },
+  {
+    slug: "companion-tutorial",
+    title: "How to use Specrails (Companion)",
+    description: "Pair your phone with Specrails (Desktop) and watch your pipelines on the go — peer-to-peer, zero-knowledge",
+    content: companionTutorialRaw,
+    section: "Desktop",
   },
   // ── Core (CLI) — terminal-first alternative ─────────────────────────
   {
     slug: "installation",
-    title: "Install specrails-core",
+    title: "Install Specrails (Core)",
     description: "One command installs 14 AI agents and the workflow commands into your repo",
     content: installationRaw,
     section: "Core",

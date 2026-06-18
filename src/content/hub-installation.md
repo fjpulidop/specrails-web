@@ -1,6 +1,6 @@
-# Install specrails-desktop
+# Install Specrails (Desktop)
 
-specrails-desktop is a local desktop app for running and visualising AI development pipelines. Ships as a signed macOS `.dmg` today; Windows and Linux builds are in the roadmap.
+Specrails (Desktop) is a local desktop app for running and visualising AI development pipelines. It ships as a signed macOS `.dmg` today; Windows and Linux builds are on the roadmap.
 
 > Want the CLI-only workflow instead? Head to [Install specrails-core](/docs/installation).
 
@@ -24,7 +24,7 @@ macOS Gatekeeper may ask for confirmation the first time. The app is notarised b
 
 ## Option 2 — Install via npm (cross-platform)
 
-If you're on Linux, Intel Mac, or prefer to run the hub as a plain CLI, install from npm:
+If you're on Linux, Intel Mac, or prefer to run Specrails (Desktop) as a plain CLI, install from npm:
 
 ```bash
 npm install -g specrails-desktop
@@ -85,13 +85,13 @@ The app has **two sidebars** — a narrow one on the left for switching between 
 
 - **ArcSidebar (left)** — collapsed to a narrow strip by default. Hover to expand and see project names; pin it open with the pin icon at the top. Lists every registered project plus the app-level entries (Docs, Analytics, Settings).
 - **ProjectRightSidebar (right)** — page-level nav for the active project. Dashboard (Specs + Rails), Jobs (pipeline runs with live logs), Analytics (per-project KPIs + cost), Settings (project-specific config).
-- **Main content** — whichever page the right sidebar points to. Default landing is the Dashboard (Specs panel + Rails).
+- **Main content** — whichever page the right sidebar points to. The default landing is the Dashboard (Specs panel + Rails).
 
 ---
 
 ## Install specrails-core inside the project
 
-Before you can run a pipeline, the project needs specrails-core. The hub makes this one click.
+Before you can run a pipeline, the project needs specrails-core. Specrails (Desktop) makes this one click.
 
 1. In the ArcSidebar (left), the project you just added appears with a setup badge.
 2. Click it — a setup wizard opens.
@@ -101,6 +101,8 @@ Before you can run a pipeline, the project needs specrails-core. The hub makes t
 > Feeling adventurous? The wizard also exposes the **Full Install** tier (runs `/specrails:enrich` — stack detection, VPC personas, competitive research) and a custom agent picker. Start with Quick to confirm the pipeline works end to end, then re-run the wizard later to experiment with the extra agents and model presets. See [Install specrails-core](/docs/installation) for the full tier reference.
 
 ## Run your first pipeline
+
+A **Spec** is the unit of work the agents build from — it captures what to build, why it matters to a real user, and the acceptance criteria. You don't hand-write it; you generate it from a prompt and Specrails (Desktop) turns it into a contract the pipeline can execute.
 
 1. On **Dashboard**, click **+ Add Spec** to create a spec — give it a title and a short description.
 2. Drag the spec card into **Rail 1**.

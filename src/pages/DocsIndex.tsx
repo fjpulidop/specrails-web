@@ -46,8 +46,15 @@ interface SectionMeta {
 
 const SECTION_META: SectionMeta[] = [
   {
-    key: "Hub",
-    label: "Hub",
+    key: "Concepts",
+    label: "Concepts",
+    blurb: "Start here — what a Spec is, why it matters, and how spec-driven & test-driven development work.",
+    icon: BookOpen,
+    accent: "violet",
+  },
+  {
+    key: "Desktop",
+    label: "Specrails (Desktop)",
     blurb: "The local-first desktop dashboard — draft, organize, and run specs on rails.",
     icon: LayoutDashboard,
     accent: "cyan",
@@ -158,8 +165,8 @@ export default function DocsIndex(): JSX.Element {
             </h1>
             <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
               From first install to a fully autonomous, product-driven development
-              workflow. Start with the Hub desktop app, or wire the open-source CLI
-              straight into your repo.
+              workflow. Start with the Specrails (Desktop) app, or wire the
+              open-source CLI straight into your repo.
             </p>
 
             {/* Quick start command */}
@@ -178,7 +185,7 @@ export default function DocsIndex(): JSX.Element {
                 to="/docs/hub-installation"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-colors hover:text-brand-cyan"
               >
-                Get started with Hub
+                Get started with Specrails (Desktop)
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>

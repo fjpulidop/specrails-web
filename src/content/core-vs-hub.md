@@ -1,19 +1,19 @@
-# Hub vs Core — which should I use?
+# Specrails (Desktop) vs Core — which should I use?
 
 **specrails** ships as two products that share the same pipeline. Pick one, or use both.
 
 ## TL;DR
 
-- **Hub** — download the macOS app, manage projects visually, see every pipeline run in real time. **Start here if you're new.**
+- **Specrails (Desktop)** — download the macOS app, manage projects visually, see every pipeline run in real time. **Start here if you're new.**
 - **Core** — install the CLI in your repo, drive the pipeline from your terminal, zero GUI. **For terminal-first devs.**
 
-You can install Core alone. You can install Hub alone — the Hub's setup wizard runs `npx specrails-core@latest init` for any project that doesn't have Core yet. Everything composes.
+You can install Core alone. You can install Specrails (Desktop) alone — its setup wizard runs `npx specrails-core@latest init` for any project that doesn't have Core yet. Everything composes.
 
 ---
 
 ## Side by side
 
-|  | specrails-desktop | specrails-core |
+|  | Specrails (Desktop) | Specrails (Core) |
 |---|---|---|
 | What you download | `.dmg` (macOS app) or `npm i -g specrails-desktop` | `npx specrails-core@latest init` (per-project) |
 | Interface | Desktop app + web dashboard at `localhost:4200` | Claude Code / Codex CLI |
@@ -31,10 +31,12 @@ You can install Core alone. You can install Hub alone — the Hub's setup wizard
 
 ## How they relate
 
-Hub **uses** Core under the hood. When you click **Play** on a Rail, the hub spawns a Claude Code process running Core's pipeline commands inside your project directory. The agents, rules, personas and config all come from Core.
+Specrails (Desktop) **uses** Core under the hood. When you click **Play** on a Rail, the Desktop app spawns a Claude Code process running Core's pipeline commands inside your project directory. The agents, rules, personas, and config all come from Core.
+
+A **Spec** is the source of truth: it captures what to build, why it matters to a real user, and the acceptance criteria the agents will build against. Both products work from the same Specs — Core stores them as local JSON tickets, while Desktop gives you a visual board to manage them.
 
 ```
-Hub (desktop app)                Core (per-project)
+Desktop app                      Core (per-project)
 ┌──────────────────┐             ┌───────────────────────────┐
 │  Sidebar         │   spawns →  │  .claude/agents/          │
 │  Specs + Rails   │ ←─ logs ──  │  .claude/commands/        │
@@ -49,14 +51,14 @@ If you only use Core, you still get:
 - the `/specrails:*` slash commands
 - the local-tickets board (through `/specrails:get-backlog-specs`)
 
-If you only use Hub, the Hub auto-bootstraps Core in each project the first time you add it.
+If you only use Specrails (Desktop), it auto-bootstraps Core in each project the first time you add it.
 
 ---
 
 ## Recommended path
 
-1. **Download the Hub** — [Install Hub](/docs/hub-installation).
-2. Add your repo as a project. The Hub's setup wizard runs `npx specrails-core@latest init` for you if Core isn't there yet.
+1. **Download Specrails (Desktop)** — [Install Specrails (Desktop)](/docs/hub-installation).
+2. Add your repo as a project. The setup wizard runs `npx specrails-core@latest init` for you if Core isn't there yet.
 3. Click **Play**. Watch the pipeline run.
 4. Once comfortable, open a terminal and use Core's commands directly if you prefer keyboard-first.
 
@@ -64,6 +66,6 @@ If you only use Hub, the Hub auto-bootstraps Core in each project the first time
 
 ## Next steps
 
-- [Install Hub](/docs/hub-installation)
+- [Install Specrails (Desktop)](/docs/hub-installation)
 - [Install specrails-core](/docs/installation)
-- [Hub Features](/docs/hub-features)
+- [Desktop Features](/docs/hub-features)

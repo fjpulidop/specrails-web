@@ -1,6 +1,6 @@
-# Hub Features
+# Specrails (Desktop) Features
 
-Reference guide to every feature inside specrails-desktop.
+Reference guide to every feature inside Specrails (Desktop).
 
 ---
 
@@ -39,7 +39,7 @@ The landing page for the active project. Two panels.
 
 ### Specs
 
-Local tickets backed by `.specrails/local-tickets.json`.
+A **Spec** is the unit of work and the source of truth: what to build, why it matters to a real user, and acceptance criteria. Specs are stored locally in `.specrails/local-tickets.json` — you never hand-write them, you generate them with specrails and then let the agents build from them.
 
 - **+ Add Spec** — create with a title, description, priority, labels.
 - List, Grid (Kanban), and Post-it view modes.
@@ -49,9 +49,9 @@ Local tickets backed by `.specrails/local-tickets.json`.
 
 ### Rails
 
-Execution lanes. Drag a spec into a Rail and click **Play** to run the pipeline.
+Execution lanes. Drag a spec into a Rail and click **Play** to run the pipeline against that spec.
 
-Phases: **Architect → Developer → Reviewer → Ship**. Each phase spawns a dedicated Claude Code agent in your project directory.
+Phases: **Architect → Developer → Reviewer → Ship**. Each phase spawns a dedicated Claude Code agent in your project directory, all working from the same spec as their source of truth.
 
 Rails give you parallelism: each Rail runs independently inside its own git worktree, so two features implement side by side without touching each other's files.
 
@@ -84,13 +84,13 @@ All data stays local in SQLite. Nothing leaves your machine.
 
 ## Desktop Analytics
 
-Cross-project roll-up. Same shape as the per-project analytics page but aggregates every project the app manages.
+Cross-project roll-up. Same shape as the per-project analytics page but aggregates every project Specrails (Desktop) manages.
 
 ---
 
 ## Activity feed
 
-Live stream of everything happening across the hub:
+Live stream of everything happening across Specrails (Desktop):
 
 - Job starts, completions, failures.
 - Pipeline phase transitions.
@@ -155,7 +155,7 @@ Per-project state stays in your repo:
 
 ## Authentication
 
-The hub generates a Bearer token at `~/.specrails/desktop.token` on first start. Every `/api/*` request requires it. The CLI reads the token automatically — nothing to configure.
+Specrails (Desktop) generates a Bearer token at `~/.specrails/desktop.token` on first start. Every `/api/*` request requires it. The CLI reads the token automatically — nothing to configure.
 
 ---
 

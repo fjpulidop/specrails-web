@@ -2,7 +2,7 @@
 
 Get specrails running in your project in under 5 minutes.
 
-> Want the visual option? [Install Hub](/docs/hub-installation) to run the pipeline from a desktop app instead of the terminal.
+> Want a visual cockpit? [Install Specrails (Desktop)](/docs/hub-installation) to run the pipeline from a desktop app instead of the terminal.
 
 ## What is specrails?
 
@@ -69,7 +69,7 @@ Pick a ticket from your backlog, or describe a feature:
 /specrails:implement "add a health check endpoint"
 ```
 
-specrails will:
+specrails turns your request into a **Spec** — a structured source of truth that captures what to build, why it matters, and its acceptance criteria. The agent pipeline then works from that Spec automatically:
 
 1. **Architect** analyses the request and designs the implementation.
 2. **Developer** writes the code across all layers.
@@ -89,10 +89,10 @@ That's it. One command, full pipeline.
 
 ## Want a dashboard?
 
-Install [Hub](/docs/hub-installation) to drive the same pipeline from a desktop app with real-time log streaming, analytics, and a visual spec + rail board. Hub uses the Core you just installed under the hood.
+Install [Specrails (Desktop)](/docs/hub-installation) to drive the same pipeline from a desktop app with real-time log streaming, analytics, and a visual spec + rail board. Specrails (Desktop) uses the Core you just installed under the hood.
 
 ## What's next?
 
 - [Core Concepts](/docs/concepts) — pipeline architecture and product-driven approach.
 - [Agents](/docs/agents) — meet each agent and its role.
-- [Core vs Hub](/docs/core-vs-hub) — when to use each product.
+- [Core vs Desktop](/docs/core-vs-hub) — when to use each product.
