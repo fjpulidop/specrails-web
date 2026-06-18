@@ -268,7 +268,7 @@ const ProductsSection = () => {
                 </div>
               </div>
 
-              <ProductFrame chrome="mac" label="specrails-desktop — local">
+              <ProductFrame chrome="mac" label="Specrails (Desktop) — local">
                 <div className="flex gap-3 p-5">
                   {/* mini sidebar */}
                   <div className="hidden w-24 shrink-0 flex-col gap-1.5 sm:flex">
@@ -368,7 +368,7 @@ const ProductsSection = () => {
               <Button
                 asChild
                 variant="cyan"
-                className="mt-5 w-full sm:w-auto sm:self-start"
+                className="mt-5 w-full motion-safe:animate-download-pulse sm:w-auto sm:self-start"
               >
                 <Link to="/download">
                   Download for desktop
@@ -409,20 +409,24 @@ const ProductsSection = () => {
               </div>
             </div>
 
-            <ProductFrame
-              chrome="mac"
-              label="Specrails (Companion)"
-              aspectRatio="13 / 10"
-              bodyClassName="h-full"
-            >
-              <img
-                src="/companion/pairing.png"
-                alt="Specrails Companion — pair your phone with Specrails Desktop"
-                className="h-full w-full object-cover object-top"
-                loading="lazy"
-                decoding="async"
-              />
-            </ProductFrame>
+            {/* the real companion app, shown on a phone */}
+            <div className="mx-auto w-full max-w-[12rem]">
+              <div className="relative rounded-[2rem] border border-border/70 bg-surface-1 p-2 shadow-glow-elevated">
+                <span
+                  className="absolute left-1/2 top-2.5 z-10 h-1 w-10 -translate-x-1/2 rounded-full bg-border"
+                  aria-hidden="true"
+                />
+                <div className="overflow-hidden rounded-[1.5rem] bg-surface-0">
+                  <img
+                    src="/companion/pairing.png"
+                    alt="Specrails Companion — pair your phone with Specrails Desktop"
+                    className="block w-full select-none"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
 
             <ul className="mt-4 space-y-2">
               {COMPANION_CAPABILITIES.map(({ icon: Icon, label }) => (

@@ -63,8 +63,8 @@ describe("ProductsSection", () => {
 
   it("renders the Desktop product with name and cockpit subtitle", () => {
     renderSection();
-    // specrails-desktop appears in the mono label and the window chrome label
-    expect(screen.getAllByText(/specrails-desktop/i).length).toBeGreaterThan(0);
+    // renamed display label appears in the sublabel and the window chrome label
+    expect(screen.getAllByText(/Specrails \(Desktop\)/i).length).toBeGreaterThan(0);
     // h3 subtitle changed from "The local cockpit" to "mission control"
     expect(screen.getByText("mission control")).toBeInTheDocument();
     expect(screen.getByText(/drag specs onto parallel rails/i)).toBeInTheDocument();
@@ -96,7 +96,7 @@ describe("ProductsSection", () => {
   it("renders both product frames with their window labels", () => {
     renderSection();
     expect(screen.getByText("zsh — specrails-core")).toBeInTheDocument();
-    expect(screen.getByText("specrails-desktop — local")).toBeInTheDocument();
+    expect(screen.getByText("Specrails (Desktop) — local")).toBeInTheDocument();
     // companion frame now embeds the real app screenshot; window label renamed
     expect(screen.getAllByText("Specrails (Companion)").length).toBeGreaterThan(0);
   });

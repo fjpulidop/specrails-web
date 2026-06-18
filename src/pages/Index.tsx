@@ -9,7 +9,6 @@ import ProblemSection from "@/components/ProblemSection";
 import ProductsSection from "@/components/ProductsSection";
 import FooterSection from "@/components/FooterSection";
 import SectionNav from "@/components/SectionNav";
-import AnimatedLogo from "@/components/AnimatedLogo";
 
 const SECTION_IDS = [
   "hero",
@@ -59,7 +58,6 @@ const Index = () => {
       </main>
       <FooterSection />
       <SectionNav sectionIds={SECTION_IDS} />
-      <AnimatedLogo />
     </div>
   );
 };

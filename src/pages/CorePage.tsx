@@ -438,7 +438,7 @@ const CorePage = () => {
                 to="/download"
                 className="inline-flex min-h-[44px] items-center gap-1.5 text-sm font-medium text-brand-violet transition-colors hover:text-brand-cyan"
               >
-                Prefer a dashboard? Get specrails-desktop
+                Prefer a dashboard? Get Specrails (Desktop)
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>

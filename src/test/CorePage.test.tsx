@@ -95,7 +95,7 @@ describe("CorePage", () => {
     renderCore();
     // The Hub cross-sell now lives in the closing CTA and points at /download.
     const hubLink = screen.getByRole("link", {
-      name: /get specrails-desktop/i,
+      name: /get specrails \(desktop\)/i,
     });
     expect(hubLink).toHaveAttribute("href", "/download");
   });

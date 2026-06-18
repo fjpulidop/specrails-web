@@ -106,7 +106,7 @@ describe("HeroSection", () => {
     renderHero();
     // The primary CTA exposes a stable aria-label regardless of manifest state.
     const downloadCta = screen.getByRole("link", {
-      name: /download specrails-desktop for/i,
+      name: /download specrails \(desktop\) for/i,
     });
     expect(downloadCta).toBeInTheDocument();
   });
@@ -136,14 +136,13 @@ describe("HeroSection", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the Star on GitHub button", () => {
+  it("renders Star on GitHub buttons for both repos", () => {
     renderHero();
-    // GitHub link moved into the trust row (was the old "View on GitHub" CTA).
-    const githubLink = screen.getByRole("link", { name: /star on github/i });
-    expect(githubLink).toHaveAttribute(
-      "href",
-      "https://github.com/fjpulidop/specrails-core",
-    );
+    // One star button per product card (Desktop + Core).
+    const githubLinks = screen.getAllByRole("link", { name: /star .* on github/i });
+    const hrefs = githubLinks.map((l) => l.getAttribute("href"));
+    expect(hrefs).toContain("https://github.com/fjpulidop/specrails-core");
+    expect(hrefs).toContain("https://github.com/fjpulidop/specrails-desktop");
   });
 
   it("does not render any ProductSwitcher or TabbedTerminal", () => {

@@ -74,7 +74,7 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-6 h-16 flex items-center justify-between gap-4">
-        {/* Logo — AnimatedLogo docks onto this anchor. Markup preserved. */}
+        {/* Logo — permanent specrails wordmark (always visible). */}
         <a
           href="/"
           data-logo="nav"
@@ -163,14 +163,19 @@ const Navbar = () => {
             href="https://github.com/fjpulidop/specrails-desktop"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="specrails-desktop on GitHub"
+            aria-label="Specrails (Desktop) on GitHub"
             className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />
           </a>
 
           {/* Group 5: the ONE primary CTA */}
-          <Button asChild variant="gradient" size="sm" className="ml-1 cta-sheen">
+          <Button
+            asChild
+            variant="gradient"
+            size="sm"
+            className="ml-1 cta-sheen motion-safe:animate-download-pulse"
+          >
             <Link to="/download">
               <DownloadIcon className="w-4 h-4" />
               Download

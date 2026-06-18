@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Download } from "lucide-react";
+import { Download, LayoutDashboard, Terminal } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { DemoVideo } from "@/components/DemoVideo";
 import { Reveal } from "@/components/Reveal";
@@ -38,17 +38,6 @@ const HeroSection = () => {
       <div className="absolute inset-0 hero-noise pointer-events-none" aria-hidden="true" />
 
       <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center text-center">
-        {/* Wordmark sizing/docking anchor — AnimatedLogo measures this element's
-            box to seat the docking wordmark. Kept invisible (occupies layout);
-            the real accessible headline is the <h1> below. */}
-        <div
-          data-logo="hero"
-          aria-hidden="true"
-          className="font-mono text-5xl md:text-7xl font-bold mb-8 invisible select-none"
-        >
-          specrails
-        </div>
-
         {/* Eyebrow — static, no pulsing "online" dot */}
         <Reveal>
           <span className="eyebrow inline-flex items-center gap-2 rounded-pill border border-border/70 bg-surface-2/70 px-3 py-1 backdrop-blur-sm">
@@ -69,50 +58,122 @@ const HeroSection = () => {
         {/* Subhead — brand + neutral only */}
         <Reveal delay={200}>
           <p className="mt-6 max-w-2xl text-balance text-base md:text-lg leading-relaxed text-muted-foreground">
-            specrails is an agentic software development system. Describe what you want; a team of AI agents — running on <span className="text-brand-cyan">Claude, Codex, or Gemini</span> — turns it into a spec and ships the PR.
+            specrails is an agentic software development system. Describe what you
+            want; a team of AI agents turns it into a spec and ships the PR.
           </p>
         </Reveal>
 
-        {/* CTA pair */}
-        <Reveal delay={300} className="w-full">
-          <div className="mt-9 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
-            <a
-              href={downloadHref ?? RELEASES_FALLBACK_URL}
-              download={!downloadDisabled && downloadHref !== RELEASES_FALLBACK_URL}
-              aria-disabled={downloadDisabled}
-              aria-label={`Download specrails-desktop for ${platformShort}`}
-              className={cn(
-                "gradient-btn cta-sheen group inline-flex w-full items-center justify-center gap-2.5",
-                "rounded-pill px-7 py-3.5 text-sm font-semibold sm:w-auto",
-                "transition-transform duration-200",
-                downloadDisabled
-                  ? "pointer-events-none opacity-60"
-                  : "hover:-translate-y-0.5",
-              )}
-            >
-              <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
-              {downloadLabel}
-            </a>
-
-            <div className="inline-flex items-center gap-2 rounded-pill border border-border/70 bg-surface-2/60 pl-4 pr-1.5 py-2.5 font-mono text-xs text-foreground/80">
-              <code>npx specrails-core@latest init</code>
-              <CopyButton value="npx specrails-core@latest init" label="Copy CLI command" />
+        {/* Compatibility — premium glass bar with a lit gradient hairline */}
+        <Reveal delay={250}>
+          <div className="mt-7 inline-block rounded-full bg-gradient-brand p-px shadow-[0_8px_30px_-12px_hsl(var(--brand-violet)/0.55)]">
+            <div className="flex flex-wrap items-center justify-center gap-2.5 rounded-full bg-surface-1/90 px-3.5 py-2 backdrop-blur-md">
+              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/80">
+                Works with
+              </span>
+              <span className="hidden h-3.5 w-px bg-border/70 sm:inline-block" aria-hidden="true" />
+              {["Claude", "Codex", "Gemini"].map((p) => (
+                <span
+                  key={p}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2/70 px-2.5 py-1 font-mono text-xs text-foreground/90 [box-shadow:inset_0_1px_0_hsl(0_0%_100%_/_0.06)]"
+                >
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-gradient-brand shadow-glow-brand"
+                    aria-hidden="true"
+                  />
+                  {p}
+                </span>
+              ))}
             </div>
           </div>
-          <div className="mt-3 flex justify-center">
-            <a href="#pipeline" className="text-xs text-muted-foreground hover:text-foreground transition-colors">See how it works ↓</a>
+        </Reveal>
+
+        {/* Two ways to start — the Desktop app vs the Core CLI, each in a lit card */}
+        <Reveal delay={300} className="w-full">
+          <div className="mx-auto mt-10 grid w-full max-w-3xl items-stretch gap-4 sm:grid-cols-2">
+            {/* ── Specrails (Desktop) — download the app ── */}
+            <div className="rounded-2xl bg-gradient-brand p-px shadow-[0_14px_50px_-20px_hsl(var(--brand-violet)/0.6)]">
+              <div className="flex h-full flex-col gap-4 rounded-2xl bg-surface-1/95 p-5 text-left backdrop-blur">
+                <div className="flex items-center gap-2.5">
+                  <span className="grid h-8 w-8 place-items-center rounded-lg border border-brand-violet/40 bg-brand-violet/10 text-brand-violet">
+                    <LayoutDashboard className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold leading-none">Specrails (Desktop)</p>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                      the app
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  The local cockpit — download, drag specs onto rails, and watch
+                  them ship.
+                </p>
+                <div className="mt-auto flex flex-col gap-2.5">
+                  <a
+                    href={downloadHref ?? RELEASES_FALLBACK_URL}
+                    download={!downloadDisabled && downloadHref !== RELEASES_FALLBACK_URL}
+                    aria-disabled={downloadDisabled}
+                    aria-label={`Download Specrails (Desktop) for ${platformShort}`}
+                    className={cn(
+                      "gradient-btn cta-sheen group inline-flex w-full items-center justify-center gap-2.5 rounded-pill px-6 py-3 text-sm font-semibold transition-transform duration-200",
+                      downloadDisabled
+                        ? "pointer-events-none opacity-60"
+                        : "hover:-translate-y-0.5 motion-safe:animate-download-pulse",
+                    )}
+                  >
+                    <Download className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    {downloadLabel}
+                  </a>
+                  <GitHubStarsButton repo="fjpulidop/specrails-desktop" className="w-full" />
+                </div>
+              </div>
+            </div>
+
+            {/* ── Specrails (Core) — the open-source CLI ── */}
+            <div className="rounded-2xl bg-gradient-brand p-px shadow-[0_14px_50px_-20px_hsl(var(--brand-cyan)/0.55)]">
+              <div className="flex h-full flex-col gap-4 rounded-2xl bg-surface-1/95 p-5 text-left backdrop-blur">
+                <div className="flex items-center gap-2.5">
+                  <span className="grid h-8 w-8 place-items-center rounded-lg border border-brand-cyan/40 bg-brand-cyan/10 text-brand-cyan">
+                    <Terminal className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold leading-none">Specrails (Core)</p>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70">
+                      the CLI
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  Open source. One command drops the agent pipeline into any git
+                  repo.
+                </p>
+                <div className="mt-auto flex flex-col gap-2.5">
+                  <div className="inline-flex w-full items-center gap-2 rounded-pill border border-border/70 bg-surface-2/60 py-2.5 pl-4 pr-1.5 font-mono text-xs text-foreground/80">
+                    <code className="flex-1 truncate">npx specrails-core@latest init</code>
+                    <CopyButton value="npx specrails-core@latest init" label="Copy CLI command" />
+                  </div>
+                  <GitHubStarsButton repo="fjpulidop/specrails-core" className="w-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-5 flex justify-center">
+            <a
+              href="#pipeline"
+              className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+            >
+              See how it works ↓
+            </a>
           </div>
         </Reveal>
 
         {/* Trust row */}
         <Reveal delay={400}>
-          <div className="mt-8 flex flex-col items-center gap-4">
-            <GitHubStarsButton />
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-mono text-muted-foreground">
-              <span>MIT licensed</span>
-              <span className="hidden h-3 w-px bg-border/70 sm:inline-block" aria-hidden="true" />
-              <span>macOS &amp; Windows · signed builds</span>
-            </div>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-mono text-muted-foreground">
+            <span>MIT licensed</span>
+            <span className="hidden h-3 w-px bg-border/70 sm:inline-block" aria-hidden="true" />
+            <span>macOS &amp; Windows · signed builds</span>
           </div>
         </Reveal>
 
@@ -120,7 +181,7 @@ const HeroSection = () => {
         <Reveal delay={500} className="mt-14 w-full">
           <div className="mx-auto w-full max-w-4xl">
             <DemoVideo
-              label="specrails-desktop — localhost:4200"
+              label="Specrails (Desktop) — localhost:4200"
               poster="/hub/hub-dashboard.png"
               srcBase="/demos/hero"
               ready={false}

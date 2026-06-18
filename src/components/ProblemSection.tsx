@@ -113,7 +113,7 @@ const ProblemSection = () => {
               <p className="mt-3 text-sm font-medium text-foreground">Same models. A system around them that turns vibes into certainty.</p>
 
               <div className="mt-6">
-                <Button asChild variant="cyan">
+                <Button asChild variant="cyan" className="motion-safe:animate-download-pulse">
                   <Link to="/download">Download specrails <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
               </div>

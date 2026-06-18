@@ -159,7 +159,7 @@ const PlatformCard = ({
           href={href ?? "#"}
           download={!disabled && href !== RELEASES_FALLBACK_URL}
           aria-disabled={disabled}
-          aria-label={`Download specrails-desktop for ${PLATFORM_LABELS[config.key]}`}
+          aria-label={`Download Specrails (Desktop) for ${PLATFORM_LABELS[config.key]}`}
           className={cn(
             "relative mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 overflow-hidden",
             "bg-primary text-primary-foreground shadow-[0_10px_28px_-12px_rgba(0,195,210,0.6)]",
@@ -297,7 +297,7 @@ const INFO_CARDS: InfoCard[] = [
     Icon: Github,
     title: "Source on GitHub",
     description:
-      "Read the code, star the repos, send a PR. specrails-desktop (desktop app) and specrails-core (the agent engine) are both fully open.",
+      "Read the code, star the repos, send a PR. Specrails (Desktop) and Specrails (Core) are both fully open.",
     href: "https://github.com/fjpulidop/specrails-desktop",
     cta: "Browse the source",
     external: true,
@@ -370,9 +370,9 @@ const InfoCardView = ({ card }: { card: InfoCard }) => {
 
 const DownloadPage = () => {
   useSeo({
-    title: "Download specrails-desktop — macOS, Windows x64 & ARM64",
+    title: "Download Specrails (Desktop) — macOS, Windows x64 & ARM64",
     description:
-      "Download the specrails-desktop desktop app for macOS (Apple Silicon), Windows x64 and Windows ARM64. Free, open source, no telemetry. Always the latest release.",
+      "Download the Specrails (Desktop) app for macOS (Apple Silicon), Windows x64 and Windows ARM64. Free, open source, no telemetry. Always the latest release.",
     canonical: "https://specrails.dev/download",
   });
 
@@ -399,7 +399,7 @@ const DownloadPage = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 animate-fade-up delay-100">
-            Download <span className="gradient-text">specrails-desktop</span>
+            Download <span className="gradient-text">Specrails (Desktop)</span>
           </h1>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-6 animate-fade-up delay-200">
             The local dashboard for your agentic dev team. Pick your platform —
