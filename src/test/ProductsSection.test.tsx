@@ -73,9 +73,10 @@ describe("ProductsSection", () => {
 
   it("renders the Companion product with name and 'your phone' subtitle", () => {
     renderSection();
-    expect(screen.getByText("specrails-companion")).toBeInTheDocument();
+    // renamed display label; appears in both the sublabel and the window chrome
+    expect(screen.getAllByText("Specrails (Companion)").length).toBeGreaterThan(0);
     expect(screen.getByText("your phone")).toBeInTheDocument();
-    // "WebRTC (DTLS)" appears in both the prose block and the capabilities list
+    // "WebRTC (DTLS)" appears in the capabilities list
     expect(screen.getAllByText(/WebRTC \(DTLS\)/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/never sees your data/i)).toBeInTheDocument();
   });
@@ -96,6 +97,7 @@ describe("ProductsSection", () => {
     renderSection();
     expect(screen.getByText("zsh — specrails-core")).toBeInTheDocument();
     expect(screen.getByText("specrails-desktop — local")).toBeInTheDocument();
-    expect(screen.getByText("specrails-companion — web")).toBeInTheDocument();
+    // companion frame now embeds the real app screenshot; window label renamed
+    expect(screen.getAllByText("Specrails (Companion)").length).toBeGreaterThan(0);
   });
 });

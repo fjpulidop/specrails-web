@@ -140,12 +140,12 @@ const ProductsSection = () => {
         <Reveal className="mx-auto max-w-3xl text-center">
           <p className="eyebrow text-brand-cyan">The ecosystem</p>
           <h2 className="section-heading mt-3">
-            specrails-desktop is{" "}
+            Specrails (Desktop) is{" "}
             <span className="gradient-text">mission control.</span>
           </h2>
           <p className="mt-4 text-muted-foreground">
-            The cockpit where you run everything — powered by the specrails-core
-            agent engine, and mirrored to specrails-companion on your phone.
+            The cockpit where you run everything — powered by the Specrails (Core)
+            agent engine, and mirrored to Specrails (Companion) on your phone.
           </p>
         </Reveal>
 
@@ -155,17 +155,17 @@ const ProductsSection = () => {
           Core and companion are intentionally smaller/lighter, desktop is the anchor.
           Mobile stacks vertically: core → desktop → companion.
         */}
-        <div className="mt-14 grid items-stretch gap-8 lg:grid-cols-[0.85fr_auto_1.3fr_auto_0.85fr]">
+        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[0.9fr_auto_1.25fr_auto_0.9fr]">
 
           {/* ── specrails-core: the engine (LEFT, secondary) ────────────── */}
-          <Reveal delay={100} className="flex flex-col opacity-90">
+          <Reveal delay={100} className="flex min-w-0 flex-col opacity-90">
             <div className="mb-4 flex items-center gap-2.5">
               <span className="grid h-8 w-8 place-items-center rounded-card border border-border/60 bg-surface-2 text-brand-cyan">
                 <Terminal className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <div>
                 <p className="font-mono text-xs text-muted-foreground">
-                  specrails-core
+                  Specrails (Core)
                 </p>
                 <h3 className="text-base font-semibold tracking-tight text-foreground/80">
                   the engine
@@ -238,10 +238,10 @@ const ProductsSection = () => {
           {/* ── Connector 1: core POWERS desktop ────────────────────────── */}
           <Reveal
             delay={200}
-            className="flex items-center justify-center lg:px-1"
+            className="flex min-w-0 items-center justify-center lg:px-1"
           >
             {/* desktop: horizontal bridge */}
-            <div className="hidden w-28 lg:flex lg:flex-col lg:items-center">
+            <div className="hidden w-20 lg:flex lg:flex-col lg:items-center">
               <RailConnector orientation="horizontal" reduced={reduced} label="powers" />
             </div>
             {/* mobile / tablet: vertical flow */}
@@ -251,7 +251,7 @@ const ProductsSection = () => {
           </Reveal>
 
           {/* ── specrails-desktop: mission control (CENTER, dominant) ────── */}
-          <Reveal delay={300} className="flex flex-col">
+          <Reveal delay={300} className="flex min-w-0 flex-col">
             {/* Subtle highlight ring to visually elevate the center column */}
             <div className="flex flex-col rounded-xl border border-brand-violet/20 bg-surface-1/40 p-4 shadow-glow-brand/5 ring-1 ring-brand-violet/10 lg:-mx-1 lg:p-5">
               <div className="mb-5 flex items-center gap-3">
@@ -260,7 +260,7 @@ const ProductsSection = () => {
                 </span>
                 <div>
                   <p className="font-mono text-xs text-brand-violet/70">
-                    specrails-desktop
+                    Specrails (Desktop)
                   </p>
                   <h3 className="text-xl font-bold tracking-tight">
                     mission control
@@ -381,10 +381,10 @@ const ProductsSection = () => {
           {/* ── Connector 2: desktop MIRRORS to companion ────────────────── */}
           <Reveal
             delay={400}
-            className="flex items-center justify-center lg:px-1"
+            className="flex min-w-0 items-center justify-center lg:px-1"
           >
             {/* desktop: horizontal bridge */}
-            <div className="hidden w-28 lg:flex lg:flex-col lg:items-center">
+            <div className="hidden w-20 lg:flex lg:flex-col lg:items-center">
               <RailConnector orientation="horizontal" reduced={reduced} label="mirror" />
             </div>
             {/* mobile / tablet: vertical flow */}
@@ -394,14 +394,14 @@ const ProductsSection = () => {
           </Reveal>
 
           {/* ── specrails-companion: your phone (RIGHT, secondary) ───────── */}
-          <Reveal delay={500} className="flex flex-col opacity-90">
+          <Reveal delay={500} className="flex min-w-0 flex-col opacity-90">
             <div className="mb-4 flex items-center gap-2.5">
               <span className="grid h-8 w-8 place-items-center rounded-card border border-border/60 bg-surface-2 text-brand-cyan">
                 <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               <div>
                 <p className="font-mono text-xs text-muted-foreground">
-                  specrails-companion
+                  Specrails (Companion)
                 </p>
                 <h3 className="text-base font-semibold tracking-tight text-foreground/80">
                   your phone
@@ -409,21 +409,19 @@ const ProductsSection = () => {
               </div>
             </div>
 
-            <ProductFrame chrome="mac" label="specrails-companion — web">
-              <div className="space-y-3 p-4 text-[12px] leading-relaxed">
-                <p className="text-foreground">
-                  Control your desktop pipeline from your phone.
-                </p>
-                <p className="text-muted-foreground">
-                  Pairs to specrails-desktop peer-to-peer over WebRTC (DTLS).
-                </p>
-                <p className="text-muted-foreground">
-                  A zero-knowledge mailbox relays only the ~5-second handshake.
-                </p>
-                <p className="text-muted-foreground">
-                  Your data never leaves your devices.
-                </p>
-              </div>
+            <ProductFrame
+              chrome="mac"
+              label="Specrails (Companion)"
+              aspectRatio="13 / 10"
+              bodyClassName="h-full"
+            >
+              <img
+                src="/companion/pairing.png"
+                alt="Specrails Companion — pair your phone with Specrails Desktop"
+                className="h-full w-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
             </ProductFrame>
 
             <ul className="mt-4 space-y-2">

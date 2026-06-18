@@ -1,42 +1,69 @@
-import { ArrowRight, ShieldX, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ShieldX, CheckCircle2, Check } from "lucide-react";
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Reveal } from "@/components/Reveal";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-/** A single neutral rail with a glossy brand pill — the brand metaphor, on. */
-const RailLane = ({
-  label,
-  glideX,
-  delay,
+/** The four pipeline stages every spec rides through, left → right. */
+const STAGES = ["Idea", "Build", "Review", "Ship"] as const;
+
+/**
+ * One spec on its own rail: a row of stage nodes filled up to where the spec
+ * currently is, with its live status on the right. Different specs sit at
+ * different stages — that's the parallelism, made legible (no slider look).
+ */
+const SpecRail = ({
+  name,
+  stage,
+  status,
+  tone,
   running = false,
+  done = false,
 }: {
-  label: string;
-  glideX: string;
-  delay: string;
+  name: string;
+  stage: number; // index into STAGES the spec has reached
+  status: string;
+  tone: string; // text-color token for the status label
   running?: boolean;
+  done?: boolean;
 }) => (
-  <div
-    className={cn(
-      "relative flex items-center rounded-pill border border-border/70 bg-surface-1/70 px-2 py-1.5",
-      running && "motion-safe:animate-lane-pulse",
-    )}
-  >
-    {/* the rail */}
-    <div className="relative h-1.5 flex-1 rounded-pill bg-rail/30 overflow-hidden">
-      <div
-        className="absolute inset-y-0 left-0 w-1/2 rounded-pill bg-gradient-to-r from-transparent via-brand-cyan/40 to-transparent bg-[length:200%_100%] motion-safe:animate-rail-flow"
-        style={{ animationDelay: delay }}
-      />
+  <div className="grid grid-cols-[5rem_1fr_4.5rem] items-center gap-2.5">
+    <span className="truncate font-mono text-[11px] text-foreground/80">{name}</span>
+
+    {/* the rail: stage nodes joined by segments, filled up to `stage` */}
+    <div className="flex items-center">
+      {STAGES.map((_, i) => (
+        <Fragment key={i}>
+          <span
+            className={cn(
+              "relative z-10 h-2.5 w-2.5 shrink-0 rounded-full border",
+              i < stage && "border-brand-cyan bg-brand-cyan",
+              i === stage &&
+                cn(
+                  "border-brand-cyan bg-brand-cyan",
+                  running && "motion-safe:animate-lane-pulse",
+                ),
+              i > stage && "border-border/70 bg-surface-1",
+            )}
+          />
+          {i < STAGES.length - 1 && (
+            <span className="h-0.5 flex-1 overflow-hidden rounded-pill bg-rail/30">
+              <span
+                className={cn(
+                  "block h-full rounded-pill bg-brand-cyan/70 transition-[width]",
+                  i < stage ? "w-full" : "w-0",
+                )}
+              />
+            </span>
+          )}
+        </Fragment>
+      ))}
     </div>
-    {/* the glossy spec pill riding the rail */}
-    <span
-      className="absolute left-3 h-3.5 w-3.5 rounded-full bg-gradient-brand shadow-glow-brand motion-safe:animate-rail-glide"
-      style={{ ["--glide-x" as string]: glideX, animationDelay: delay }}
-      aria-hidden="true"
-    />
-    <span className="ml-3 font-mono text-[10px] text-muted-foreground whitespace-nowrap">
-      {label}
+
+    <span className={cn("inline-flex items-center justify-end gap-1 text-right font-mono text-[10px]", tone)}>
+      {done && <Check className="h-3 w-3" />}
+      {status}
     </span>
   </div>
 );
@@ -184,11 +211,27 @@ const ProblemSection = () => {
                   </span>
                 </div>
 
-                {/* three parallel lanes — each spec on its own rail */}
-                <div className="space-y-2.5">
-                  <RailLane label="auth-spec" glideX="90px" delay="0s" running />
-                  <RailLane label="billing-spec" glideX="120px" delay="0.5s" />
-                  <RailLane label="docs-spec" glideX="70px" delay="1s" />
+                {/* three specs, each on its own rail, at a different stage */}
+                <div className="space-y-3">
+                  {/* stage axis — labels the four nodes below */}
+                  <div className="grid grid-cols-[5rem_1fr_4.5rem] items-center gap-2.5">
+                    <span />
+                    <div className="flex items-center justify-between px-0.5">
+                      {STAGES.map((s) => (
+                        <span
+                          key={s}
+                          className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground/60"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                    <span />
+                  </div>
+
+                  <SpecRail name="auth-spec" stage={3} status="Shipped" tone="text-accent-success" done />
+                  <SpecRail name="billing-spec" stage={2} status="Review" tone="text-brand-cyan" running />
+                  <SpecRail name="docs-spec" stage={1} status="Building" tone="text-accent-warning" />
                 </div>
 
                 {/* the security gate footer */}
