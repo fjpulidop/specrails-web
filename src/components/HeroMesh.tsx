@@ -9,33 +9,26 @@ interface MeshNode {
 // Projected position (reused per-frame)
 export interface NP { sx: number; sy: number; scale: number; }
 
-interface SpecBeam {
-  row: number; x: number; speed: number;
+// Ambient light pulse riding a single rail row.
+interface RailPulse {
+  row: number;          // which horizontal rail it travels along
+  x: number;            // base-space x position of the pulse head
+  speed: number;        // px/s in base space
+  len: number;          // tail length in base-space px
   r: number; g: number; b: number;
-  label: string;
-  lit: boolean; litTimer: number; litPerimT: number;
-}
-
-interface AgentBolt {
-  path: { r: number; c: number }[];
-  agent: string;
-  alpha: number; peakReached: boolean; decay: number;
-  agentProgress: number; agentSpeed: number;
-  perimT: number; perimRate: number;
-  r: number; g: number; b: number;
+  intensity: number;    // 0..1 brightness multiplier
 }
 
 // ── Constants ──────────────────────────────────────────────────────────────
 const PAD = 2;
-const SPACING = 36;
+const SPACING_BASE = 36;       // desktop node spacing
+const SPACING_MOBILE = 48;     // sparser on narrow screens
+const MOBILE_W = 640;
 const SPHERE_R = 420, SPHERE_D = 150, PERSP = 900;
-const N_BEAMS = 18, TAIL_PX = 110;
-const N_BOLTS = 3, BOLT_SPAWN_RATE = 0.7;
+const DPR_CAP = 1.5;
 
-const AGENT_NAMES = [
-  'Full-Stack Dev', 'Architect', 'Reviewer', 'Security',
-  'Backend Dev', 'Frontend Dev', 'Merger', 'Product Mgr', 'Product Analyst',
-];
+const N_PULSES_DESKTOP = 7;
+const N_PULSES_MOBILE = 4;
 
 // ── Exported projection function (testable) ────────────────────────────────
 export function computePositions(
@@ -74,33 +67,46 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
     if (!ctx) return;
 
     // All mutable engine state lives here — never in React state
-    let W = 1, H = 1, COLS = 1, ROWS = 1;
+    let W = 1, H = 1, COLS = 1, ROWS = 1, SPACING = SPACING_BASE;
+    let dpr = 1;
     let nodes: MeshNode[] = [], np: { sx: number; sy: number; scale: number }[] = [];
-    let beams: SpecBeam[] = [], bolts: AgentBolt[] = [];
-    const activeAgents = new Set<string>();
+    let pulses: RailPulse[] = [];
     let lastT = 0, mx = -9999, my = -9999, tmx = -9999, tmy = -9999;
     let running = false, inView = true, rafId = 0;
 
-    // palette read from CSS tokens at runtime
-    function readPalette(): [number, number, number][] {
+    // Cached theme-derived state — re-read only on theme change / visibility / resize.
+    let palette: [number, number, number][] = [
+      [28, 203, 226],   // brand-cyan fallback
+      [163, 116, 219],  // brand-violet fallback
+    ];
+    let rail: [number, number, number] = [122, 127, 150]; // --rail #7a7f96 fallback
+    let isLight = false;
+
+    // HSL triplet ("188 78% 52%") → RGB. Tokens are authored as CSS HSL components.
+    function hslTripletToRgb(raw: string): [number, number, number] {
+      const parts = raw.split(/\s+/);
+      const h = parseFloat(parts[0]);
+      const sat = parseFloat(parts[1]);
+      const l = parseFloat(parts[2]);
+      if (!Number.isFinite(h) || !Number.isFinite(sat) || !Number.isFinite(l)) {
+        return [128, 128, 128];
+      }
+      const a = (sat / 100) * Math.min(l / 100, 1 - l / 100);
+      const f = (n: number): number => {
+        const k = (n + h / 30) % 12;
+        return l / 100 - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+      };
+      return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)];
+    }
+
+    // Read brand + rail tokens once; called only on theme/visibility/resize changes.
+    function readPalette(): void {
       const s = getComputedStyle(document.documentElement);
-      return [
-        '--dracula-cyan', '--dracula-green', '--dracula-purple',
-        '--dracula-pink', '--dracula-yellow',
-      ].map((v) => {
-        const raw = s.getPropertyValue(v).trim(); // e.g. "191 97% 77%"
-        const parts = raw.split(' ');
-        const h = parseFloat(parts[0]);
-        const sat = parseFloat(parts[1]);
-        const l = parseFloat(parts[2]);
-        // Convert HSL → approximate RGB
-        const a = (sat / 100) * Math.min(l / 100, 1 - l / 100);
-        const f = (n: number) => {
-          const k = (n + h / 30) % 12;
-          return l / 100 - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
-        };
-        return [Math.round(f(0) * 255), Math.round(f(8) * 255), Math.round(f(4) * 255)] as [number, number, number];
-      });
+      const cyan = hslTripletToRgb(s.getPropertyValue('--brand-cyan').trim());
+      const violet = hslTripletToRgb(s.getPropertyValue('--brand-violet').trim());
+      palette = [cyan, violet];
+      rail = hslTripletToRgb(s.getPropertyValue('--rail').trim());
+      isLight = document.documentElement.dataset.theme === 'light';
     }
 
     function buildNodes(): void {
@@ -120,79 +126,53 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       }
     }
 
-    function spawnBeam(initX?: number): SpecBeam {
-      const palette = readPalette();
+    function spawnPulse(seeded: boolean): RailPulse {
       const col = palette[Math.floor(Math.random() * palette.length)];
       return {
         row: Math.floor(Math.random() * ROWS),
-        x: initX !== undefined ? initX : -(220 + Math.random() * 120),
-        speed: 50 + Math.random() * 130,
+        x: seeded ? Math.random() * W : -(80 + Math.random() * 200),
+        speed: 60 + Math.random() * 120,
+        len: 70 + Math.random() * 90,
         r: col[0], g: col[1], b: col[2],
-        label: 'Spec ' + (Math.floor(Math.random() * 400) + 1),
-        lit: false, litTimer: 0, litPerimT: 0,
+        intensity: 0.55 + Math.random() * 0.45,
       };
     }
 
-    function initBeams(): void {
-      beams = [];
-      for (let i = 0; i < N_BEAMS; i++) beams.push(spawnBeam(Math.random() * (W + TAIL_PX)));
-    }
-
-    function makeBoltPath(startCol: number): { r: number; c: number }[] {
-      const path: { r: number; c: number }[] = [];
-      let r = 0, c = Math.max(PAD, Math.min(COLS - PAD - 1, startCol));
-      path.push({ r, c });
-      while (r < ROWS - 1) {
-        if (Math.random() < 0.38) {
-          const dir = Math.random() < 0.5 ? -1 : 1;
-          const steps = 1 + Math.floor(Math.random() * 2);
-          for (let s = 0; s < steps; s++) {
-            const nc = Math.max(PAD, Math.min(COLS - PAD - 1, c + dir));
-            if (nc !== c) { c = nc; path.push({ r, c }); }
-          }
-        }
-        r++; path.push({ r, c });
-      }
-      return path;
-    }
-
-    function newBolt(): AgentBolt | null {
-      const av = AGENT_NAMES.filter((a) => !activeAgents.has(a));
-      if (!av.length) return null;
-      const agent = av[Math.floor(Math.random() * av.length)];
-      activeAgents.add(agent);
-      const palette = readPalette();
+    function resetPulse(p: RailPulse): void {
       const col = palette[Math.floor(Math.random() * palette.length)];
-      const visMin = PAD + 1, visMax = COLS - PAD - 2;
-      const startCol = visMin + Math.floor(Math.random() * (visMax - visMin));
-      return {
-        path: makeBoltPath(startCol),
-        agent, alpha: 0, peakReached: false,
-        decay: 0.32 + Math.random() * 0.28,
-        agentProgress: 0, agentSpeed: 1.5 + Math.random() * 1.8,
-        perimT: 0, perimRate: 0.45 + Math.random() * 0.3,
-        r: col[0], g: col[1], b: col[2],
-      };
+      p.row = Math.floor(Math.random() * ROWS);
+      p.x = -(80 + Math.random() * 200);
+      p.speed = 60 + Math.random() * 120;
+      p.len = 70 + Math.random() * 90;
+      p.r = col[0]; p.g = col[1]; p.b = col[2];
+      p.intensity = 0.55 + Math.random() * 0.45;
     }
 
-    function initBolts(): void {
-      bolts = []; activeAgents.clear();
-      for (let i = 0; i < 2; i++) {
-        const b = newBolt();
-        if (b) { b.agentProgress = Math.random() * b.path.length * 0.5; bolts.push(b); }
-      }
+    function initPulses(): void {
+      const count = W < MOBILE_W ? N_PULSES_MOBILE : N_PULSES_DESKTOP;
+      pulses = [];
+      for (let i = 0; i < count; i++) pulses.push(spawnPulse(true));
     }
 
     function resize(): void {
       const heroEl = canvas.parentElement;
       if (!heroEl) return;
-      W = canvas.width = heroEl.clientWidth || window.innerWidth;
-      H = canvas.height = heroEl.clientHeight || window.innerHeight;
+      readPalette();
+      const cssW = heroEl.clientWidth || window.innerWidth;
+      const cssH = heroEl.clientHeight || window.innerHeight;
+      dpr = Math.min(DPR_CAP, window.devicePixelRatio || 1);
+      // CSS size stays at 100% via the class; back the canvas with a capped DPR buffer.
+      canvas.width = Math.max(1, Math.round(cssW * dpr));
+      canvas.height = Math.max(1, Math.round(cssH * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      W = cssW; H = cssH;
+      SPACING = cssW < MOBILE_W ? SPACING_MOBILE : SPACING_BASE;
       COLS = Math.ceil(W / SPACING) + 1 + PAD * 2;
       ROWS = Math.ceil(H / SPACING) + 1 + PAD * 2;
-      buildNodes(); initBeams(); initBolts();
+      buildNodes(); initPulses();
     }
 
+    // Interpolated screen position of a point on a horizontal rail row.
     function railPos(row: number, px: number): { x: number; y: number } | null {
       if (row < 0 || row >= ROWS) return null;
       const base = row * COLS;
@@ -205,73 +185,11 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       return { x: pa.sx + (pb.sx - pa.sx) * frac, y: pa.sy + (pb.sy - pa.sy) * frac };
     }
 
-    function pathPosAt(path: { r: number; c: number }[], progress: number): { x: number; y: number } | null {
-      const i = Math.min(Math.floor(progress), path.length - 2);
-      const f = Math.max(0, Math.min(1, progress - i));
-      const a = path[i], b2 = path[i + 1];
-      const pa = np[a.r * COLS + a.c], pb = np[b2.r * COLS + b2.c];
-      if (!pa || !pb) return null;
-      return { x: pa.sx + (pb.sx - pa.sx) * f, y: pa.sy + (pb.sy - pa.sy) * f };
-    }
-
-    function smoothPosAt(path: { r: number; c: number }[], progress: number, win = 8): { x: number; y: number } | null {
-      let sx = 0, sy = 0, sw = 0;
-      for (let i = -win; i <= win; i++) {
-        const pp = Math.max(0, Math.min(path.length - 2, progress + i));
-        const pos = pathPosAt(path, pp); if (!pos) continue;
-        const w = Math.exp(-(i * i) / (win * win * 0.38));
-        sx += pos.x * w; sy += pos.y * w; sw += w;
-      }
-      return sw > 0 ? { x: sx / sw, y: sy / sw } : null;
-    }
-
-    function perimPos(bx: number, by: number, bw: number, bh: number, d: number): { x: number; y: number } {
-      const perim = 2 * (bw + bh);
-      d = ((d % perim) + perim) % perim;
-      if (d < bw) return { x: bx + d, y: by };
-      d -= bw;
-      if (d < bh) return { x: bx + bw, y: by + d };
-      d -= bh;
-      if (d < bw) return { x: bx + bw - d, y: by + bh };
-      d -= bw;
-      return { x: bx, y: by + bh - d };
-    }
-
-    function updateBeams(dt: number): void {
-      const palette = readPalette();
-      for (const b of beams) {
-        if (b.litTimer > 0) { b.litTimer = Math.max(0, b.litTimer - dt); }
-        b.lit = b.litTimer > 0;
-        if (b.lit) b.litPerimT = (b.litPerimT + 0.7 * dt) % 1;
-        b.x += b.speed * dt;
-        if (b.x > W + 200) {
-          const col = palette[Math.floor(Math.random() * palette.length)];
-          b.row = Math.floor(Math.random() * ROWS);
-          b.x = -(220 + Math.random() * 140);
-          b.speed = 50 + Math.random() * 130;
-          b.r = col[0]; b.g = col[1]; b.b = col[2];
-          b.label = 'Spec ' + (Math.floor(Math.random() * 400) + 1);
-        }
-      }
-    }
-
-    function updateBolts(dt: number): void {
-      for (let i = bolts.length - 1; i >= 0; i--) {
-        const b = bolts[i];
-        if (!b.peakReached) {
-          b.alpha = Math.min(1, b.alpha + 1.2 * dt);
-          if (b.alpha >= 1) b.peakReached = true;
-        } else {
-          b.alpha = Math.max(0, b.alpha - b.decay * dt);
-        }
-        b.agentProgress = Math.min(b.path.length - 1, b.agentProgress + b.agentSpeed * dt);
-        b.perimT += b.perimRate * dt;
-        if (b.alpha <= 0 && b.agentProgress >= b.path.length - 1) {
-          activeAgents.delete(b.agent); bolts.splice(i, 1);
-        }
-      }
-      if (bolts.length < N_BOLTS && Math.random() < BOLT_SPAWN_RATE * dt) {
-        const b = newBolt(); if (b) bolts.push(b);
+    function updatePulses(dt: number): void {
+      const offRight = W + 240;
+      for (const p of pulses) {
+        p.x += p.speed * dt;
+        if (p.x - p.len > offRight) resetPulse(p);
       }
     }
 
@@ -280,7 +198,7 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       ctx.globalAlpha = 1;
 
       const nodeCount = nodes.length;
-      // Project positions
+      // Project positions (inlined for the hot path)
       const cx = W / 2, cy = H / 2;
       for (let i = 0; i < nodeCount; i++) {
         const n = nodes[i];
@@ -296,12 +214,13 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
         p.scale = z < 0 ? -z / SPHERE_D : 0;
       }
 
-      const isLight = document.documentElement.dataset.theme === 'light';
-      const lc = isLight ? '0,0,0' : '255,255,255';
-      const baseAlpha = isLight ? 0.15 : 0.08;
+      // Neutral graphic rails sourced from the --rail token, theme-tuned alpha.
+      const rc = `${rail[0]},${rail[1]},${rail[2]}`;
+      const lineAlpha = isLight ? 0.2 : 0.12;
+      const dotAlpha = isLight ? 0.26 : 0.16;
 
       // Batched rail lines
-      ctx.strokeStyle = `rgba(${lc},${baseAlpha})`;
+      ctx.strokeStyle = `rgba(${rc},${lineAlpha})`;
       ctx.lineWidth = 0.5;
       ctx.beginPath();
       for (let r = 0; r < ROWS; r++) {
@@ -314,7 +233,7 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       ctx.stroke();
 
       // Batched node dots
-      ctx.fillStyle = `rgba(${lc},${isLight ? 0.18 : 0.1})`;
+      ctx.fillStyle = `rgba(${rc},${dotAlpha})`;
       ctx.beginPath();
       for (let i = 0; i < nodeCount; i++) {
         const p = np[i];
@@ -323,102 +242,46 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       }
       ctx.fill();
 
-      // Draw agent bolts (sets beam.lit collision)
-      for (const b of bolts) {
-        const agPos = smoothPosAt(b.path, b.agentProgress, 9);
-        if (agPos && agPos.y >= -10 && agPos.y <= H + 10) {
-          ctx.font = '600 10px "JetBrains Mono",monospace';
-          ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
-          ctx.save(); ctx.globalAlpha = 1;
-          const nx = Math.min(W - 160, Math.max(8, agPos.x + 8));
-          const tw = ctx.measureText(b.agent).width;
-          const pad = 7, bh = 16;
-          const rx = nx - pad, ry = agPos.y - bh / 2 - pad, rw = tw + pad * 2, rht = bh + pad * 2;
-          ctx.strokeStyle = `rgba(${b.r},${b.g},${b.b},0.2)`;
-          ctx.lineWidth = 0.8; ctx.shadowBlur = 0;
-          ctx.strokeRect(rx, ry, rw, rht);
-          const perim = 2 * (rw + rht);
-          const trail = perim * 0.32;
-          const headD = (b.perimT % 1) * perim;
-          const STEPS = 18;
-          ctx.shadowColor = `rgb(${b.r},${b.g},${b.b})`;
-          ctx.shadowBlur = 7; ctx.lineWidth = 1.8;
-          for (let s2 = 0; s2 < STEPS; s2++) {
-            const d0 = headD - trail * (s2 / STEPS);
-            const d1 = headD - trail * ((s2 + 1) / STEPS);
-            const p0 = perimPos(rx, ry, rw, rht, d0);
-            const p1 = perimPos(rx, ry, rw, rht, d1);
-            const a = (1 - s2 / STEPS) * 0.9;
-            ctx.strokeStyle = `rgba(${b.r},${b.g},${b.b},${a.toFixed(3)})`;
-            ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
-          }
-          ctx.shadowColor = `rgb(${b.r},${b.g},${b.b})`;
-          ctx.shadowBlur = 10;
-          ctx.fillStyle = `rgba(${b.r},${b.g},${b.b},0.95)`;
-          ctx.fillText(b.agent, nx, agPos.y);
-          ctx.restore();
+      // Ambient light pulses gliding along the rails.
+      // Each pulse = a soft glowing head with a short fading tail traced along
+      // the (mouse-distorted) rail, sampled in base space and re-projected.
+      const TAIL_SEGS = 10;
+      const headBoost = isLight ? 0.85 : 1;
+      ctx.save();
+      ctx.lineCap = 'round';
+      for (const p of pulses) {
+        const col = `${p.r},${p.g},${p.b}`;
+        // Tail: from behind the head up to the head, fading out toward the back.
+        ctx.shadowColor = `rgb(${col})`;
+        for (let seg = 0; seg < TAIL_SEGS; seg++) {
+          const x0 = p.x - p.len * (seg / TAIL_SEGS);
+          const x1 = p.x - p.len * ((seg + 1) / TAIL_SEGS);
+          const a0 = railPos(p.row, x0);
+          const a1 = railPos(p.row, x1);
+          if (!a0 || !a1) continue;
+          if (a0.x < -p.len || a0.x > W + p.len) continue;
+          const fade = 1 - seg / TAIL_SEGS;       // brightest at the head
+          const alpha = fade * fade * 0.5 * p.intensity * headBoost;
+          if (alpha <= 0.004) continue;
+          ctx.strokeStyle = `rgba(${col},${alpha.toFixed(3)})`;
+          ctx.lineWidth = 0.8 + fade * 1.6;
+          ctx.shadowBlur = 4 + fade * 8;
+          ctx.beginPath();
+          ctx.moveTo(a0.x, a0.y);
+          ctx.lineTo(a1.x, a1.y);
+          ctx.stroke();
         }
-
-        // Collision detection
-        ctx.font = '500 11px "JetBrains Mono",monospace';
-        ctx.textBaseline = 'middle';
-        const agNow = smoothPosAt(b.path, b.agentProgress, 9);
-        if (agNow) {
-          for (const sp of beams) {
-            const spos = railPos(sp.row, sp.x);
-            if (!spos) continue;
-            const stw = ctx.measureText(sp.label).width;
-            const scx = spos.x + stw / 2;
-            if (Math.abs(agNow.y - spos.y) < 22 && Math.abs(agNow.x - scx) < 90) {
-              sp.litTimer = 3.0;
-            }
-          }
+        // Glowing head dot.
+        const head = railPos(p.row, p.x);
+        if (head && head.x >= -8 && head.x <= W + 8) {
+          ctx.shadowBlur = 14;
+          ctx.fillStyle = `rgba(${col},${(0.9 * p.intensity * headBoost).toFixed(3)})`;
+          ctx.beginPath();
+          ctx.arc(head.x, head.y, 2.1, 0, Math.PI * 2);
+          ctx.fill();
         }
       }
-
-      // Draw spec beams
-      ctx.font = '500 11px "JetBrains Mono",monospace';
-      ctx.textBaseline = 'middle'; ctx.textAlign = 'left';
-      for (const b of beams) {
-        const pos = railPos(b.row, b.x); if (!pos) continue;
-        const tw = ctx.measureText(b.label).width;
-        const envIn = Math.min(1, (b.x + tw + 60) / 80);
-        const envOut = Math.min(1, (W - b.x) / 80);
-        const env = Math.max(0, Math.min(envIn, envOut));
-        if (env <= 0.01) continue;
-        ctx.save(); ctx.globalAlpha = env;
-        ctx.shadowColor = `rgb(${b.r},${b.g},${b.b})`;
-        if (b.lit) {
-          ctx.shadowBlur = 24; ctx.fillStyle = `rgba(${b.r},${b.g},${b.b},0.95)`;
-          ctx.fillText(b.label, pos.x, pos.y);
-          ctx.shadowBlur = 8; ctx.fillStyle = `rgb(${b.r},${b.g},${b.b})`;
-          ctx.fillText(b.label, pos.x, pos.y);
-          const sp = 6, sh = 14;
-          const rx = pos.x - sp, ry = pos.y - sh / 2 - sp, rw = tw + sp * 2, rht = sh + sp * 2;
-          ctx.strokeStyle = `rgba(${b.r},${b.g},${b.b},0.22)`;
-          ctx.lineWidth = 0.8; ctx.shadowBlur = 0; ctx.strokeRect(rx, ry, rw, rht);
-          const perim = 2 * (rw + rht), trail = perim * 0.32;
-          const headD = b.litPerimT * perim;
-          const STEPS = 16;
-          ctx.shadowColor = `rgb(${b.r},${b.g},${b.b})`;
-          ctx.shadowBlur = 6; ctx.lineWidth = 1.6;
-          for (let s2 = 0; s2 < STEPS; s2++) {
-            const d0 = headD - trail * (s2 / STEPS);
-            const d1 = headD - trail * ((s2 + 1) / STEPS);
-            const p0 = perimPos(rx, ry, rw, rht, d0);
-            const p1 = perimPos(rx, ry, rw, rht, d1);
-            const a = (1 - s2 / STEPS) * 0.85;
-            ctx.strokeStyle = `rgba(${b.r},${b.g},${b.b},${a.toFixed(3)})`;
-            ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
-          }
-        } else {
-          ctx.shadowBlur = 12; ctx.fillStyle = `rgba(${b.r},${b.g},${b.b},0.45)`;
-          ctx.fillText(b.label, pos.x, pos.y);
-          ctx.shadowBlur = 5; ctx.fillStyle = `rgb(${b.r},${b.g},${b.b})`;
-          ctx.fillText(b.label, pos.x, pos.y);
-        }
-        ctx.restore();
-      }
+      ctx.restore();
     }
 
     // ── Lifecycle ──
@@ -436,7 +299,7 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       const now = performance.now() / 1000;
       const dt = Math.min(0.05, lastT > 0 ? now - lastT : 0.016); lastT = now;
       mx += (tmx - mx) * 0.06; my += (tmy - my) * 0.06;
-      updateBeams(dt); updateBolts(dt);
+      updatePulses(dt);
       draw(now);
       rafId = requestAnimationFrame(loop);
     }
@@ -446,7 +309,10 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       tmx = e.clientX - rc.left; tmy = e.clientY - rc.top;
     }
     function onMouseLeave(): void { tmx = -9999; tmy = -9999; }
-    function onVisibility(): void { if (document.hidden) { stop(); } else { start(); } }
+    function onVisibility(): void {
+      if (document.hidden) { stop(); }
+      else { readPalette(); start(); }
+    }
     function onResize(): void { resize(); }
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -455,6 +321,16 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       (es) => { inView = es[0].isIntersecting; if (inView) { start(); } else { stop(); } },
       { threshold: 0.01 },
     );
+
+    // Re-read the palette whenever the theme toggles (data-theme on <html>).
+    const themeObserver = new MutationObserver(() => {
+      readPalette();
+      if (reducedMotion && !running) draw(0);
+    });
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme', 'class'],
+    });
 
     const timeoutId = setTimeout(() => {
       resize();
@@ -475,6 +351,7 @@ export function HeroMesh(_props: Record<string, never>): JSX.Element {
       clearTimeout(timeoutId);
       stop();
       io.disconnect();
+      themeObserver.disconnect();
       heroEl?.removeEventListener('mousemove', onMouseMove);
       heroEl?.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('visibilitychange', onVisibility);

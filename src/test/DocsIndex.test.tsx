@@ -13,9 +13,13 @@ function renderDocsIndex() {
 }
 
 describe("DocsIndex", () => {
-  it("renders the Documentation heading", () => {
+  it("renders the documentation header heading", () => {
     renderDocsIndex();
-    expect(screen.getByRole("heading", { name: /documentation/i })).toBeInTheDocument();
+    // Branded header band: the h1 carries the headline; "Documentation" is the eyebrow.
+    expect(
+      screen.getByRole("heading", { level: 1, name: /specrails/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Documentation")).toBeInTheDocument();
   });
 
   it("renders the Core section", () => {
@@ -23,11 +27,11 @@ describe("DocsIndex", () => {
     expect(screen.getByText("Core")).toBeInTheDocument();
   });
 
-  it("renders the Playbook section when playbook entries exist", () => {
+  it("renders the Playbooks section when playbook entries exist", () => {
     const hasPlaybooks = DOC_ENTRIES.some((e) => e.section === "Playbook");
     if (!hasPlaybooks) return;
     renderDocsIndex();
-    expect(screen.getByText("Playbook")).toBeInTheDocument();
+    expect(screen.getByText("Playbooks")).toBeInTheDocument();
   });
 
   it("renders a link for each non-index core entry", () => {

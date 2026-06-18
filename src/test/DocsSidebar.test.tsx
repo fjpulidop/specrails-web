@@ -32,14 +32,14 @@ describe("DocsSidebar", () => {
     // /docs/agents → the Agents entry should be active
     renderSidebar("/docs/agents");
     const agentsLink = screen.getByRole("link", { name: /agents/i });
-    expect(agentsLink.className).toMatch(/border-dracula-purple/);
+    expect(agentsLink.className).toMatch(/border-brand-cyan/);
   });
 
   it("non-active entries do not have active border style", () => {
     renderSidebar("/docs/agents");
     const links = screen.getAllByRole("link");
     const inactive = links.filter(
-      (l) => !l.className.includes("border-dracula-purple")
+      (l) => !l.className.includes("border-brand-cyan")
     );
     expect(inactive.length).toBeGreaterThan(0);
   });

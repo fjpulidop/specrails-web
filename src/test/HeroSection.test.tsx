@@ -13,8 +13,16 @@ const mockCtx = {
   moveTo: vi.fn(),
   lineTo: vi.fn(),
   stroke: vi.fn(),
+  save: vi.fn(),
+  restore: vi.fn(),
+  setTransform: vi.fn(),
   fillStyle: "",
   strokeStyle: "",
+  lineWidth: 0,
+  lineCap: "",
+  globalAlpha: 1,
+  shadowColor: "",
+  shadowBlur: 0,
 };
 
 function applyCanvasMock() {
@@ -81,30 +89,61 @@ describe("HeroSection", () => {
     expect(container.querySelector("section#hero")).toBeInTheDocument();
   });
 
-  it("renders the tagline", () => {
+  it("renders the new headline", () => {
     renderHero();
-    expect(screen.getByText(/your agentic development team/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/from idea to production code/i).length).toBeGreaterThanOrEqual(1);
+    // New H1: "Describe it. / A team of agents ships it." (br between the two sentences)
+    const heading = screen.getByRole("heading", { level: 1 });
+    expect(heading).toHaveTextContent(/describe it/i);
+    expect(heading).toHaveTextContent(/a team of agents ships it/i);
   });
 
-  it("renders the Download CTA", () => {
-    const { container } = renderHero();
-    expect(container.textContent?.toLowerCase()).toContain("download");
-  });
-
-  it("renders the View on GitHub CTA", () => {
+  it("renders the subhead describing the agentic pipeline", () => {
     renderHero();
-    expect(screen.getByText(/view on github/i)).toBeInTheDocument();
+    expect(screen.getByText(/agentic software development system/i)).toBeInTheDocument();
   });
 
-  it("renders the version pill mentioning supported platforms", () => {
-    const { container } = renderHero();
-    expect(container.textContent).toContain("macOS, Windows x64 & ARM64");
-  });
-
-  it("renders the Core text link", () => {
+  it("renders the Download CTA for the detected platform", () => {
     renderHero();
-    expect(screen.getByText(/prefer the cli/i)).toBeInTheDocument();
+    // The primary CTA exposes a stable aria-label regardless of manifest state.
+    const downloadCta = screen.getByRole("link", {
+      name: /download specrails-desktop for/i,
+    });
+    expect(downloadCta).toBeInTheDocument();
+  });
+
+  it("renders the See how it works CTA", () => {
+    renderHero();
+    const demoCta = screen.getByRole("link", { name: /see how it works/i });
+    expect(demoCta).toBeInTheDocument();
+    expect(demoCta).toHaveAttribute("href", "#pipeline");
+  });
+
+  it("renders the npx CLI command in the hero", () => {
+    renderHero();
+    expect(screen.getByText(/npx specrails-core@latest init/i)).toBeInTheDocument();
+  });
+
+  it("renders the trust row with platform and license info", () => {
+    renderHero();
+    expect(screen.getByText(/macOS & Windows · signed builds/i)).toBeInTheDocument();
+    expect(screen.getByText(/MIT licensed/i)).toBeInTheDocument();
+  });
+
+  it("renders the eyebrow trust badge", () => {
+    renderHero();
+    expect(
+      screen.getByText(/MIT · Local-first · Open source/i),
+    ).toBeInTheDocument();
+  });
+
+  it("renders the Star on GitHub button", () => {
+    renderHero();
+    // GitHub link moved into the trust row (was the old "View on GitHub" CTA).
+    const githubLink = screen.getByRole("link", { name: /star on github/i });
+    expect(githubLink).toHaveAttribute(
+      "href",
+      "https://github.com/fjpulidop/specrails-core",
+    );
   });
 
   it("does not render any ProductSwitcher or TabbedTerminal", () => {
@@ -119,8 +158,9 @@ describe("HeroSection", () => {
     expect(container.querySelector("#hub-showcase")).toBeNull();
   });
 
-  it("renders a canvas for the particle background", () => {
+  it("renders the static brand glow (no animated canvas background)", () => {
     const { container } = renderHero();
-    expect(container.querySelector("canvas")).toBeInTheDocument();
+    expect(container.querySelector("canvas")).toBeNull();
+    expect(container.querySelector(".hero-glow")).toBeInTheDocument();
   });
 });

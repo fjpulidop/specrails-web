@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
@@ -29,9 +30,9 @@ describe("Navbar", () => {
 
   it("renders navigation anchors for main sections", () => {
     renderNavbar();
-    expect(screen.getByRole("link", { name: /pipeline/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /features/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /commands/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /how it works/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /^why$/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /ecosystem/i })).toBeInTheDocument();
   });
 
   it("renders a Core link to /core", () => {
@@ -47,15 +48,26 @@ describe("Navbar", () => {
     expect(container.querySelector('[href="/#hub-showcase"]')).toBeNull();
   });
 
-  it("shows Docs link on mobile when not on a docs page", () => {
+  it("exposes a mobile hamburger that reveals the Docs link in the drawer", async () => {
+    const user = userEvent.setup();
     renderNavbar("/");
-    const docsLinks = screen.getAllByRole("link", { name: /docs/i });
-    expect(docsLinks.length).toBeGreaterThan(0);
+
+    // Docs now lives inside the mobile Sheet drawer, not in the top bar.
+    const menuButton = screen.getByRole("button", { name: /open menu/i });
+    expect(menuButton).toBeInTheDocument();
+
+    await user.click(menuButton);
+
+    const drawer = await screen.findByRole("dialog");
+    const docsLink = within(drawer).getByRole("link", { name: /^docs$/i });
+    expect(docsLink).toHaveAttribute("href", "/docs");
   });
 
-  it("hides Docs mobile link on docs pages", () => {
-    renderNavbar("/docs/agents");
-    const allLinks = screen.queryAllByRole("link", { name: /^docs$/i });
-    expect(allLinks).toHaveLength(0);
+  it("offers a Download CTA pointing to /download", () => {
+    renderNavbar();
+    const downloadLinks = screen
+      .getAllByRole("link", { name: /download/i })
+      .filter((el) => el.getAttribute("href") === "/download");
+    expect(downloadLinks.length).toBeGreaterThan(0);
   });
 });

@@ -63,7 +63,19 @@ describe("DownloadPage", () => {
 
   it("renders the Ko-fi support card", () => {
     renderPage();
-    expect(screen.getByText(/support on ko-fi/i)).toBeInTheDocument();
+    // The support card headline is unique to the DownloadPage SupportCard.
+    expect(screen.getByText(/free, forever\./i)).toBeInTheDocument();
+    expect(screen.getByText(/built by one developer\./i)).toBeInTheDocument();
+    // A Ko-fi CTA link points at the Ko-fi donation page. Multiple links
+    // labelled "Support on Ko-fi" exist (support card + footer), so assert at
+    // least one resolves to the Ko-fi URL.
+    const kofiLinks = screen.getAllByRole("link", { name: /support on ko-fi/i });
+    expect(kofiLinks.length).toBeGreaterThanOrEqual(1);
+    expect(
+      kofiLinks.some((a) =>
+        a.getAttribute("href")?.includes("ko-fi.com"),
+      ),
+    ).toBe(true);
   });
 
   it("renders the info cards", () => {

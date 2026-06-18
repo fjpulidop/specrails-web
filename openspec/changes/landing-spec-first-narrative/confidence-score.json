@@ -1,0 +1,25 @@
+{
+  "schema_version": "1",
+  "change": "landing-spec-first-narrative",
+  "agent": "reviewer",
+  "scored_at": "2026-06-18T14:55:21Z",
+  "overall": 91,
+  "aspects": {
+    "type_correctness": 97,
+    "pattern_adherence": 93,
+    "test_coverage": 88,
+    "security": 95,
+    "architectural_alignment": 96
+  },
+  "notes": {
+    "type_correctness": "All components use TypeScript strictly. CSSProperties used correctly for CSS custom property glide variables. No implicit any. tsc --noEmit exits clean.",
+    "pattern_adherence": "One deviation found and fixed: companion product h3 label was 'The mobile remote' instead of the brief-mandated 'your phone'. All other sections follow established Reveal/ProductFrame/shadcn Button patterns. Tailwind tokens throughout — no arbitrary color values.",
+    "test_coverage": "All 208 tests pass across 36 test files. Tests cover headline copy, CTA hrefs, section IDs, and component rendering. Minor gap: no test verifies that AgentsSection, FeaturesSection, CommandsSection and PrinciplesSection are absent from Index; but the implementation is clearly correct by reading Index.tsx.",
+    "security": "Companion link has rel='noopener noreferrer' and target='_blank'. Hash-based scroll in Index uses a sanitizing allowlist regex to prevent CSS selector injection. No new attack surface.",
+    "architectural_alignment": "Index.tsx collapses to exactly 6 sections (Hero, Pipeline, Demo, Problem, Products, Footer) as specified. SECTION_IDS matches the brief's IA. No backend calls added. The ApiMcpSection and HubShowcaseSection components remain as unreferenced files — their unique content (MCP server setup, Hub showcase) is not reachable via any route, but this is pre-existing orphan status not introduced by this change."
+  },
+  "flags": [
+    "orphaned-api-mcp-content",
+    "hub-showcase-content-unreachable"
+  ]
+}

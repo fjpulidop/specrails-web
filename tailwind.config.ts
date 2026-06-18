@@ -19,10 +19,13 @@ export default {
       },
       colors: {
         border: "hsl(var(--border))",
+        hairline: "hsl(var(--hairline))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
+        "background-darker": "hsl(var(--background-darker))",
         foreground: "hsl(var(--foreground))",
+        rail: "hsl(var(--rail))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -51,6 +54,34 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // ── Surface ladder ──
+        surface: {
+          0: "hsl(var(--surface-0))",
+          1: "hsl(var(--surface-1))",
+          2: "hsl(var(--surface-2))",
+          3: "hsl(var(--surface-3))",
+        },
+        // ── Brand pair ──
+        "brand-cyan": "hsl(var(--brand-cyan))",
+        "brand-violet": "hsl(var(--brand-violet))",
+        // ── Semantic ──
+        "accent-success": "hsl(var(--accent-success))",
+        "accent-warning": "hsl(var(--accent-warning))",
+        "accent-danger": "hsl(var(--accent-danger))",
+        "accent-info": "hsl(var(--accent-info))",
+        // ── Deprecated dracula aliases (still referenced widely) ──
+        "dracula-bg": "hsl(var(--dracula-bg))",
+        "dracula-darker": "hsl(var(--dracula-darker))",
+        "dracula-current": "hsl(var(--dracula-current))",
+        "dracula-fg": "hsl(var(--dracula-fg))",
+        "dracula-comment": "hsl(var(--dracula-comment))",
+        "dracula-cyan": "hsl(var(--dracula-cyan))",
+        "dracula-green": "hsl(var(--dracula-green))",
+        "dracula-orange": "hsl(var(--dracula-orange))",
+        "dracula-pink": "hsl(var(--dracula-pink))",
+        "dracula-purple": "hsl(var(--dracula-purple))",
+        "dracula-red": "hsl(var(--dracula-red))",
+        "dracula-yellow": "hsl(var(--dracula-yellow))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -66,6 +97,18 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        card: "var(--radius-card)",
+        frame: "var(--radius-frame)",
+        pill: "9999px",
+      },
+      boxShadow: {
+        "glow-brand": "var(--glow-brand)",
+        "glow-violet": "var(--glow-violet)",
+        "glow-elevated": "var(--glow-elevated)",
+      },
+      backgroundImage: {
+        "gradient-brand": "var(--gradient-primary)",
+        "gradient-brand-soft": "var(--gradient-brand-soft)",
       },
       keyframes: {
         "accordion-down": {

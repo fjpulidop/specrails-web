@@ -159,23 +159,29 @@ const AnimatedLogo = () => {
           <filter id="logo-seat-glow" x="-30%" y="-150%" width="160%" height="400%">
             <feGaussianBlur stdDeviation="3.4" />
           </filter>
+          <linearGradient id="wmGradLogo" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#1ccbe2" />
+            <stop offset="100%" stopColor="#a374db" />
+          </linearGradient>
         </defs>
         <rect x="4" y="6" width="180" height="6" rx="3"
-              fill="hsl(var(--foreground))" opacity="0.16" />
+              fill="hsl(var(--rail))" opacity="0.6" />
         <rect x="4" y="18" width="180" height="28" rx="14"
-              fill="hsl(var(--foreground))" />
+              fill="url(#wmGradLogo)" />
+        <rect x="14" y="21" width="160" height="9" rx="4.5"
+              fill="#ffffff" opacity="0.18" />
         <text
           x="94" y="32.5"
           fontFamily="'JetBrains Mono', monospace"
-          fontWeight="600"
+          fontWeight="700"
           fontSize="20"
           textAnchor="middle"
           dominantBaseline="central"
-          fill="hsl(var(--background))"
+          fill="#0a0e1a"
           letterSpacing="0.5"
         >specrails</text>
         <rect x="4" y="52" width="180" height="6" rx="3"
-              fill="hsl(var(--foreground))" opacity="0.16" />
+              fill="hsl(var(--rail))" opacity="0.6" />
 
         {/* Chip-seating flash — replays via key on each re-dock */}
         {seatFlare > 0 && (
