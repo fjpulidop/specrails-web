@@ -14,6 +14,7 @@ const DocPage = lazy(() => import("./pages/DocPage.tsx"));
 const DocsIndex = lazy(() => import("./pages/DocsIndex.tsx"));
 const AgentsPage = lazy(() => import("./pages/AgentsPage.tsx"));
 const CorePage = lazy(() => import("./pages/CorePage.tsx"));
+const DesktopPage = lazy(() => import("./pages/DesktopPage.tsx"));
 const DownloadPage = lazy(() => import("./pages/DownloadPage.tsx"));
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
             </Route>
             <Route path="/agents" element={<AgentsPage />} />
             <Route path="/core" element={<CorePage />} />
+            <Route path="/desktop" element={<DesktopPage />} />
             <Route path="/download" element={<DownloadPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -24,6 +24,7 @@ const SECTION_LINKS = [
 
 /** Product route links. */
 const PRODUCT_LINKS = [
+  { label: "Desktop", to: "/desktop" },
   { label: "Core", to: "/core" },
   { label: "Agents", to: "/agents" },
 ] as const;
@@ -118,6 +119,9 @@ const Navbar = () => {
         {/* Desktop nav — tidy groups + single gradient CTA */}
         <div className="hidden md:flex items-center gap-1 lg:gap-2">
           {/* Group 1: products — Core link + Agents dropdown */}
+          <Link to="/desktop" className={cn(navLinkClass, "px-2")}>
+            Desktop
+          </Link>
           <Link to="/core" className={cn(navLinkClass, "px-2")}>
             Core
           </Link>
