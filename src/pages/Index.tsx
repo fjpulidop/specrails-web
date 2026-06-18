@@ -26,7 +26,7 @@ const Index = () => {
   useSeo({
     title: "specrails — Describe it. A team of agents ships it.",
     description:
-      "specrails is an agentic software development system. You write a spec — what to build and why. A team of AI agents designs, builds, reviews, and ships the PR. Compatible with Claude, Codex, and Gemini.",
+      "specrails is an agentic software development system. Describe what you want; a team of AI agents — running on Claude, Codex, or Gemini — generates the spec and ships the PR.",
     canonical: "https://specrails.dev/",
   });
 

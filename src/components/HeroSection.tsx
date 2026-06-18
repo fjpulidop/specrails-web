@@ -69,7 +69,7 @@ const HeroSection = () => {
         {/* Subhead — brand + neutral only */}
         <Reveal delay={200}>
           <p className="mt-6 max-w-2xl text-balance text-base md:text-lg leading-relaxed text-muted-foreground">
-            specrails is an agentic software development system. You write a spec — what to build and why. A team of AI agents designs, builds, reviews, and ships the PR.
+            specrails is an agentic software development system. Describe what you want; a team of AI agents — running on <span className="text-brand-cyan">Claude, Codex, or Gemini</span> — turns it into a spec and ships the PR.
           </p>
         </Reveal>
 

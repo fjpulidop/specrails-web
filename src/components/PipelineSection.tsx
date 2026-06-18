@@ -66,32 +66,30 @@ const PipelineSection = () => {
         <Reveal className="text-center">
           <p className="eyebrow mb-3">How it works</p>
           <h2 className="section-heading">
-            It starts with a spec, <span className="gradient-text">not a prompt.</span>
+            You don't write the spec.{" "}
+            <span className="gradient-text">specrails generates it.</span>
           </h2>
           <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-            A spec is the unit of work — and the source of truth. It says what to build,
-            why it matters to a real user, and how you'll know it's done. You write it
-            before any code. A prompt is a wish; a spec is a contract the work has to honor.
+            Describe a feature. specrails turns your prompt into a spec — the source of truth
+            your agents build from. You choose how hands-on:
           </p>
-          <ul className="mt-6 max-w-2xl mx-auto text-sm text-muted-foreground space-y-2 text-left">
-            <li>→ What to build, in plain words.</li>
-            <li>→ Why it matters to a real user.</li>
-            <li>→ Acceptance criteria, written before code.</li>
-            <li>→ One source of truth the team shares.</li>
-          </ul>
-          <p className="mt-6 text-sm font-medium text-foreground text-center">
-            You write the contract. Then a team shows up to honor it.
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2 px-4 py-1.5 text-sm">
+              <span className="font-semibold text-foreground">Quick</span>
+              <span className="text-muted-foreground">— defaults, one shot.</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2 px-4 py-1.5 text-sm">
+              <span className="font-semibold text-foreground">Interactive</span>
+              <span className="text-muted-foreground">— refine it together.</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2 px-4 py-1.5 text-sm">
+              <span className="font-semibold text-foreground">Raw</span>
+              <span className="text-muted-foreground">— freeform, you steer.</span>
+            </span>
+          </div>
+          <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
+            From there, a team of agents designs, builds, reviews, and ships it — each with one job.
           </p>
-          <p className="mt-4 max-w-2xl mx-auto text-sm text-muted-foreground text-center">
-            The spec is the star. The agents are the crew that executes it — each with one job.
-            You don't manage them; you approve the spec.
-          </p>
-          <ul className="mt-4 max-w-2xl mx-auto text-sm text-muted-foreground space-y-2 text-center list-none">
-            <li>→ A product manager pressure-tests the value.</li>
-            <li>→ An architect plans it; developers build it.</li>
-            <li>→ Reviewers and a security scan guard the merge.</li>
-            <li>→ Out comes a PR — reviewed, not guessed.</li>
-          </ul>
           <div className="mt-6">
             <Link
               to="/core"

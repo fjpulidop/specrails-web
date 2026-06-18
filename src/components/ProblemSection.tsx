@@ -54,14 +54,14 @@ const ProblemSection = () => {
 
             <Reveal delay={100}>
               <h2 className="section-heading lg:text-[2.75rem]">
-                Raw AI guesses.{" "}
-                <span className="gradient-text">specrails commits.</span>
+                You already have the AI.{" "}
+                <span className="gradient-text">This is the team around it.</span>
               </h2>
             </Reveal>
 
             <Reveal delay={200}>
               <p className="mt-5 text-muted-foreground leading-relaxed">
-                You already have the AI — Claude, Codex, or Gemini. This is the team around it. Used raw, it&apos;s one prompt and one agent, guessing. specrails turns that same model into a disciplined team.
+                Claude, Codex, or Gemini, used raw, is one prompt and one agent — guessing. specrails turns the same model into a disciplined team.
               </p>
 
               <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
@@ -69,7 +69,7 @@ const ProblemSection = () => {
                 <p className="font-mono text-brand-cyan">specrails</p>
 
                 <p className="text-muted-foreground">One prompt — it guesses what you meant.</p>
-                <p className="text-foreground">One spec — the intent is written down.</p>
+                <p className="text-foreground">One spec — generated from your prompt.</p>
 
                 <p className="text-muted-foreground">One agent doing everything alone.</p>
                 <p className="text-foreground">A team of agents, each with a job.</p>

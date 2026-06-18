@@ -424,10 +424,12 @@
 
   /* A glossy spec "pill" gliding along a rail */
   @keyframes rail-pill-glide {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(var(--glide-x, 220px)); }
+    0%   { transform: translateX(0);                     opacity: 0; }
+    12%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateX(var(--glide-x, 220px)); opacity: 0; }
   }
-  .animate-rail-glide { animation: rail-pill-glide 2.4s var(--ease-out-soft) infinite alternate; }
+  .animate-rail-glide { animation: rail-pill-glide 2.6s var(--ease-out-soft) infinite; }
 
   /* Energy flowing down the rails (dashed beam) */
   @keyframes rail-flow { from { background-position: 0 0; } to { background-position: 200% 0; } }

@@ -44,22 +44,29 @@ describe("ProductsSection", () => {
   it("renders the updated section heading", () => {
     renderSection();
     expect(screen.getByText(/the ecosystem/i)).toBeInTheDocument();
-    expect(screen.getByText(/three ways to/i)).toBeInTheDocument();
-    expect(screen.getByText(/ride the rails/i)).toBeInTheDocument();
+    // H2: "specrails-desktop is mission control."
+    // "mission control" also appears in the desktop product h3, so use getAllByText
+    expect(screen.getAllByText(/mission control/i).length).toBeGreaterThan(0);
+    // The gradient span in the H2 carries the full stop
+    expect(screen.getByText(/mission control\./i)).toBeInTheDocument();
   });
 
   it("renders the Core product with name and engine subtitle", () => {
     renderSection();
-    expect(screen.getByText("specrails-core")).toBeInTheDocument();
-    expect(screen.getByText("The open-source engine")).toBeInTheDocument();
+    // specrails-core appears in both the mono label and the window chrome label
+    expect(screen.getAllByText(/specrails-core/i).length).toBeGreaterThan(0);
+    // h3 subtitle changed from "The open-source engine" to "the engine"
+    expect(screen.getByText("the engine")).toBeInTheDocument();
     expect(screen.getByText(/spec-driven pipeline, idea → pr/i)).toBeInTheDocument();
     expect(screen.getByText(/parallel builds in git worktrees/i)).toBeInTheDocument();
   });
 
   it("renders the Desktop product with name and cockpit subtitle", () => {
     renderSection();
-    expect(screen.getByText("specrails-desktop")).toBeInTheDocument();
-    expect(screen.getByText("The local cockpit")).toBeInTheDocument();
+    // specrails-desktop appears in the mono label and the window chrome label
+    expect(screen.getAllByText(/specrails-desktop/i).length).toBeGreaterThan(0);
+    // h3 subtitle changed from "The local cockpit" to "mission control"
+    expect(screen.getByText("mission control")).toBeInTheDocument();
     expect(screen.getByText(/drag specs onto parallel rails/i)).toBeInTheDocument();
     expect(screen.getByText(/track every ai cost, 100% local/i)).toBeInTheDocument();
   });
