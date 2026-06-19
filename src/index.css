@@ -454,6 +454,18 @@
   }
   .animate-download-pulse { animation: download-pulse 2.6s ease-in-out infinite; }
 
+  /* Connector arrows — gentle directional loop */
+  @keyframes arrow-nudge-x {
+    0%, 100% { transform: translateX(-2px); opacity: 0.5; }
+    50%      { transform: translateX(3px);  opacity: 1; }
+  }
+  .animate-arrow-x { animation: arrow-nudge-x 1.7s ease-in-out infinite; }
+  @keyframes arrow-nudge-y {
+    0%, 100% { transform: translateY(-2px); opacity: 0.5; }
+    50%      { transform: translateY(3px);  opacity: 1; }
+  }
+  .animate-arrow-y { animation: arrow-nudge-y 1.7s ease-in-out infinite; }
+
   /* Synthetic cursor click ring (showcase tours) */
   @keyframes cursor-ping { 0% { transform: scale(0.4); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
   .animate-cursor-ping { animation: cursor-ping 0.6s ease-out forwards; }

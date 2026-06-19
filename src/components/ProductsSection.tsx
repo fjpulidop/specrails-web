@@ -1,10 +1,10 @@
-import { type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import {
   Terminal,
   LayoutDashboard,
   ArrowRight,
-  ArrowDown,
+  ChevronsRight,
+  ChevronsDown,
   Cpu,
   GitBranch,
   ShieldCheck,
@@ -40,12 +40,9 @@ const COMPANION_CAPABILITIES = [
 ] as const;
 
 /**
- * The single glossy "spec" object riding rails between products.
- * Desktop: a horizontal track bridging two frames. Mobile: a vertical
- * flow connector. Decorative — aria-hidden, gated by reduced-motion.
- *
- * `label` renders a small mono caption beneath the connector on desktop
- * to express the relationship (e.g. "powers", "mirror").
+ * Connector between products: a brand-tinted directional arrow that nudges in a
+ * loop, with a small relationship caption ("powers", "mirror"). Decorative —
+ * aria-hidden, gated by reduced-motion.
  */
 function RailConnector({
   orientation,
@@ -56,74 +53,18 @@ function RailConnector({
   reduced: boolean;
   label?: string;
 }) {
-  if (orientation === "vertical") {
-    const vGlide = { "--glide-x": "calc(100% - 2.5rem)" } as CSSProperties;
-    return (
-      <div className="flex flex-col items-center gap-1" aria-hidden="true">
-        <div className="relative mx-auto h-16 w-12">
-          {/* twin rails running down */}
-          <span className="absolute inset-y-0 left-[38%] w-px -translate-x-1/2 bg-rail/50" />
-          <span className="absolute inset-y-0 left-[62%] w-px -translate-x-1/2 bg-rail/50" />
-          {/* energy flowing down */}
-          <span
-            className={cn(
-              "absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-[length:100%_200%]",
-              "bg-gradient-to-b from-transparent via-brand-cyan/70 to-transparent",
-              !reduced && "animate-rail-flow",
-            )}
-          />
-          {/* rotated lane so the horizontal glide reads as downward travel */}
-          <div className="absolute left-1/2 top-0 h-full w-px origin-top-left [transform:rotate(90deg)]">
-            <span
-              className={cn(
-                "absolute left-0 top-0 -translate-y-1/2 h-4 w-9 rounded-pill",
-                "bg-gradient-brand shadow-glow-brand",
-                "[box-shadow:inset_0_1px_0_hsl(0_0%_100%_/_0.45)]",
-                !reduced && "animate-rail-glide",
-              )}
-              style={vGlide}
-            />
-          </div>
-          <ArrowDown className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-4 w-4 text-rail" />
-        </div>
-        {label && (
-          <span className="font-mono text-[10px] text-muted-foreground/60 tracking-widest uppercase">
-            {label}
-          </span>
-        )}
-      </div>
-    );
-  }
-
-  const hGlide = { "--glide-x": "calc(100% - 2.5rem)" } as CSSProperties;
+  const isVertical = orientation === "vertical";
+  const Icon = isVertical ? ChevronsDown : ChevronsRight;
   return (
     <div className="flex flex-col items-center gap-1.5" aria-hidden="true">
-      <div className="relative h-12 w-full">
-        {/* twin parallel rails */}
-        <span className="absolute inset-x-0 top-[40%] h-px -translate-y-1/2 bg-rail/50" />
-        <span className="absolute inset-x-0 top-[60%] h-px -translate-y-1/2 bg-rail/50" />
-        {/* energy flowing along */}
-        <span
-          className={cn(
-            "absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-[length:200%_100%]",
-            "bg-gradient-to-r from-transparent via-brand-cyan/70 to-transparent",
-            !reduced && "animate-rail-flow",
-          )}
-        />
-        {/* the glossy spec pill, gliding across */}
-        <span
-          className={cn(
-            "absolute left-0 top-1/2 -translate-y-1/2 h-4 w-9 rounded-pill",
-            "bg-gradient-brand shadow-glow-brand",
-            "[box-shadow:inset_0_1px_0_hsl(0_0%_100%_/_0.45)]",
-            !reduced && "animate-rail-glide",
-          )}
-          style={hGlide}
-        />
-        <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-rail" />
-      </div>
+      <Icon
+        className={cn(
+          "h-7 w-7 text-brand-cyan [filter:drop-shadow(0_0_6px_hsl(var(--brand-cyan)/0.45))]",
+          !reduced && (isVertical ? "animate-arrow-y" : "animate-arrow-x"),
+        )}
+      />
       {label && (
-        <span className="font-mono text-[10px] text-muted-foreground/60 tracking-widest uppercase">
+        <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground/60">
           {label}
         </span>
       )}
