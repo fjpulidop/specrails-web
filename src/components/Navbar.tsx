@@ -125,6 +125,14 @@ const Navbar = () => {
           <Link to="/core" className={cn(navLinkClass, "px-2")}>
             Core
           </Link>
+          <a
+            href="https://specrails.dev/companion-app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(navLinkClass, "px-2")}
+          >
+            Companion
+          </a>
           <AgentsDropdown />
 
           {/* divider */}
@@ -223,6 +231,16 @@ const Navbar = () => {
                     </Link>
                   </SheetClose>
                 ))}
+                <SheetClose asChild>
+                  <a
+                    href="https://specrails.dev/companion-app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-surface-2 transition-colors"
+                  >
+                    Companion
+                  </a>
+                </SheetClose>
 
                 {/* Explore */}
                 <div className="px-3 pt-5 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">

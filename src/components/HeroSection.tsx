@@ -31,7 +31,7 @@ const HeroSection = () => {
     <section
       data-hero
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-28 pb-20 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-24 pb-12 overflow-hidden"
     >
       {/* Static brand glow — no animated canvas */}
       <div className="absolute inset-0 hero-glow pointer-events-none" aria-hidden="true" />
@@ -57,15 +57,15 @@ const HeroSection = () => {
 
         {/* Subhead — brand + neutral only */}
         <Reveal delay={200}>
-          <p className="mt-6 max-w-2xl text-balance text-base md:text-lg leading-relaxed text-muted-foreground">
-            specrails is an agentic software development system. Describe what you
+          <p className="mt-5 max-w-2xl text-balance text-base md:text-lg leading-relaxed text-muted-foreground">
+            Specrails is an agentic software development system. Describe what you
             want; a team of AI agents turns it into a spec and ships the PR.
           </p>
         </Reveal>
 
         {/* Compatibility — premium glass bar with a lit gradient hairline */}
         <Reveal delay={250}>
-          <div className="mt-7 inline-block rounded-full bg-gradient-brand p-px shadow-[0_8px_30px_-12px_hsl(var(--brand-violet)/0.55)]">
+          <div className="mt-6 inline-block rounded-full bg-gradient-brand p-px shadow-[0_8px_30px_-12px_hsl(var(--brand-violet)/0.55)]">
             <div className="flex flex-wrap items-center justify-center gap-2.5 rounded-full bg-surface-1/90 px-3.5 py-2 backdrop-blur-md">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/80">
                 Works with
@@ -89,10 +89,10 @@ const HeroSection = () => {
 
         {/* Two ways to start — the Desktop app vs the Core CLI, each in a lit card */}
         <Reveal delay={300} className="w-full">
-          <div className="mx-auto mt-10 grid w-full max-w-3xl items-stretch gap-4 sm:grid-cols-2">
+          <div className="mx-auto mt-7 grid w-full max-w-3xl items-stretch gap-4 sm:grid-cols-2">
             {/* ── Specrails (Desktop) — download the app ── */}
             <div className="rounded-2xl bg-gradient-brand p-px shadow-[0_14px_50px_-20px_hsl(var(--brand-violet)/0.6)]">
-              <div className="flex h-full flex-col gap-4 rounded-2xl bg-surface-1/95 p-5 text-left backdrop-blur">
+              <div className="flex h-full flex-col gap-3.5 rounded-2xl bg-surface-1/95 p-4 text-left backdrop-blur">
                 <div className="flex items-center gap-2.5">
                   <span className="grid h-8 w-8 place-items-center rounded-lg border border-brand-violet/40 bg-brand-violet/10 text-brand-violet">
                     <LayoutDashboard className="h-4 w-4" aria-hidden="true" />
@@ -131,7 +131,7 @@ const HeroSection = () => {
 
             {/* ── Specrails (Core) — the open-source CLI ── */}
             <div className="rounded-2xl bg-gradient-brand p-px shadow-[0_14px_50px_-20px_hsl(var(--brand-cyan)/0.55)]">
-              <div className="flex h-full flex-col gap-4 rounded-2xl bg-surface-1/95 p-5 text-left backdrop-blur">
+              <div className="flex h-full flex-col gap-3.5 rounded-2xl bg-surface-1/95 p-4 text-left backdrop-blur">
                 <div className="flex items-center gap-2.5">
                   <span className="grid h-8 w-8 place-items-center rounded-lg border border-brand-cyan/40 bg-brand-cyan/10 text-brand-cyan">
                     <Terminal className="h-4 w-4" aria-hidden="true" />
@@ -158,19 +158,20 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <div className="mt-5 flex justify-center">
+          <div className="mt-6 flex justify-center">
             <a
               href="#pipeline"
-              className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur transition-colors hover:border-border hover:text-foreground"
             >
-              See how it works ↓
+              See how it works
+              <span className="motion-safe:animate-bounce" aria-hidden="true">↓</span>
             </a>
           </div>
         </Reveal>
 
         {/* Trust row */}
         <Reveal delay={400}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-mono text-muted-foreground">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-mono text-muted-foreground">
             <span>MIT licensed</span>
             <span className="hidden h-3 w-px bg-border/70 sm:inline-block" aria-hidden="true" />
             <span>macOS &amp; Windows</span>
@@ -178,7 +179,7 @@ const HeroSection = () => {
         </Reveal>
 
         {/* Hero product frame — the Rails showcase, with the one hero glow */}
-        <Reveal delay={500} className="mt-14 w-full">
+        <Reveal delay={500} className="mt-12 w-full">
           <div className="mx-auto w-full max-w-4xl">
             <DemoVideo
               label="Specrails (Desktop) — localhost:4200"
