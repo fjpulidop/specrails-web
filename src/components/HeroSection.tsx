@@ -58,8 +58,7 @@ const HeroSection = () => {
         {/* Subhead — brand + neutral only */}
         <Reveal delay={200}>
           <p className="mt-5 max-w-2xl text-balance text-base md:text-lg leading-relaxed text-muted-foreground">
-            Specrails is an agentic software development system. Describe what you
-            want; a team of AI agents turns it into a spec and ships the PR.
+            Specrails is an agentic software development system.
           </p>
         </Reveal>
 
@@ -160,10 +159,10 @@ const HeroSection = () => {
 
           <div className="mt-6 flex justify-center">
             <a
-              href="#pipeline"
+              href="#hero-demo"
               className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur transition-colors hover:border-border hover:text-foreground"
             >
-              See how it works
+              See it in action
               <span className="motion-safe:animate-bounce" aria-hidden="true">↓</span>
             </a>
           </div>
@@ -180,7 +179,7 @@ const HeroSection = () => {
 
         {/* Hero product frame — the Rails showcase, with the one hero glow */}
         <Reveal delay={500} className="mt-12 w-full">
-          <div className="mx-auto w-full max-w-4xl">
+          <div id="hero-demo" className="mx-auto w-full max-w-4xl scroll-mt-24">
             <DemoVideo
               label="Specrails (Desktop) — localhost:4200"
               poster="/hub/hub-dashboard.png"
@@ -190,6 +189,20 @@ const HeroSection = () => {
               aspectRatio="16 / 9"
               placeholderText="Watch one spec go from idea to a shipped pull request — press play."
             />
+          </div>
+          <div className="mt-6 flex justify-center">
+            <a
+              href="#pipeline"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-surface-2/50 px-4 py-1.5 text-sm text-muted-foreground backdrop-blur transition-colors hover:border-border hover:text-foreground"
+            >
+              How it works
+              <span
+                aria-hidden="true"
+                className="transition-transform group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </a>
           </div>
         </Reveal>
       </div>

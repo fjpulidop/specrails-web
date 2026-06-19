@@ -111,11 +111,12 @@ describe("HeroSection", () => {
     expect(downloadCta).toBeInTheDocument();
   });
 
-  it("renders the See how it works CTA", () => {
+  it("renders the in-action and how-it-works CTAs", () => {
     renderHero();
-    const demoCta = screen.getByRole("link", { name: /see how it works/i });
-    expect(demoCta).toBeInTheDocument();
-    expect(demoCta).toHaveAttribute("href", "#pipeline");
+    const inAction = screen.getByRole("link", { name: /see it in action/i });
+    expect(inAction).toHaveAttribute("href", "#hero-demo");
+    const howItWorks = screen.getByRole("link", { name: /how it works/i });
+    expect(howItWorks).toHaveAttribute("href", "#pipeline");
   });
 
   it("renders the npx CLI command in the hero", () => {
