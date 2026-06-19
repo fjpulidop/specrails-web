@@ -125,7 +125,7 @@ describe("HeroSection", () => {
 
   it("renders the trust row with platform and license info", () => {
     renderHero();
-    expect(screen.getByText(/macOS & Windows · signed builds/i)).toBeInTheDocument();
+    expect(screen.getByText(/macOS & Windows/i)).toBeInTheDocument();
     expect(screen.getByText(/MIT licensed/i)).toBeInTheDocument();
   });
 

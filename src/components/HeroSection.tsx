@@ -173,7 +173,7 @@ const HeroSection = () => {
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-mono text-muted-foreground">
             <span>MIT licensed</span>
             <span className="hidden h-3 w-px bg-border/70 sm:inline-block" aria-hidden="true" />
-            <span>macOS &amp; Windows · signed builds</span>
+            <span>macOS &amp; Windows</span>
           </div>
         </Reveal>
 
