@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.12.0](https://github.com/fjpulidop/specrails-web/compare/v1.11.1...v1.12.0) (2026-07-06)
+
+
+### Features
+
+* companion-app hosting + spec-first landing narrative rebuild ([#187](https://github.com/fjpulidop/specrails-web/issues/187)) ([809a1d0](https://github.com/fjpulidop/specrails-web/commit/809a1d0db490b1ad08a85ed56f2fbe92d8110e41))
+
+
+### Bug Fixes
+
+* **ci:** allow a bare IP in FTP_SERVER (skip nslookup for IPs) ([#192](https://github.com/fjpulidop/specrails-web/issues/192)) ([8683586](https://github.com/fjpulidop/specrails-web/commit/868358631d6c02c696c2e16bf63ec0cf1075a995))
+
 ## [1.11.1](https://github.com/fjpulidop/specrails-web/compare/v1.11.0...v1.11.1) (2026-06-12)
 
 
