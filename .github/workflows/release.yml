@@ -61,14 +61,20 @@ jobs:
             echo "::error::Expected format: ftp.yourdomain.com (plain hostname, no ftp:// prefix)"
             exit 1
           fi
-          echo "Resolving FTP server hostname: $FTP_SERVER"
-          if ! nslookup "$FTP_SERVER" > /dev/null 2>&1; then
+          echo "Resolving FTP server host: $FTP_SERVER"
+          if echo "$FTP_SERVER" | grep -qE '^[0-9]{1,3}(\.[0-9]{1,3}){3}$'; then
+            # A bare IPv4 needs no DNS resolution. Hostinger hands out an IP in
+            # hPanel that often has NO reverse-DNS (PTR) record, so `nslookup`
+            # would wrongly reject a perfectly valid server — skip it for IPs.
+            echo "FTP_SERVER is an IP address — skipping DNS resolution."
+          elif ! nslookup "$FTP_SERVER" > /dev/null 2>&1; then
             echo "::error::Cannot resolve hostname '$FTP_SERVER'."
-            echo "::error::Check that FTP_SERVER is set to the plain hostname provided by Hostinger (hPanel > FTP Accounts)."
-            echo "::error::Common mistake: including the 'ftp://' prefix. The secret should contain only the hostname."
+            echo "::error::Check that FTP_SERVER is set to the plain host provided by Hostinger (hPanel > FTP Accounts)."
+            echo "::error::Common mistake: including the 'ftp://' prefix. The secret should contain only the host/IP."
             exit 1
+          else
+            echo "FTP server hostname resolved successfully."
           fi
-          echo "FTP server hostname resolved successfully."
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
 

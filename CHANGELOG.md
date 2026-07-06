@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.11.1](https://github.com/fjpulidop/specrails-web/compare/v1.11.0...v1.11.1) (2026-06-12)
+
+
+### Bug Fixes
+
+* update specrails-hub references to specrails-desktop ([#179](https://github.com/fjpulidop/specrails-web/issues/179)) ([d48bef6](https://github.com/fjpulidop/specrails-web/commit/d48bef6132e26865065e6c27231881d7ec21f855))
+
+## [1.11.0](https://github.com/fjpulidop/specrails-web/compare/v1.10.0...v1.11.0) (2026-06-11)
+
+
+### Features
+
+* add /privacy page (privacy policy for App Store listing) ([#177](https://github.com/fjpulidop/specrails-web/issues/177)) ([b877072](https://github.com/fjpulidop/specrails-web/commit/b877072f74b3f6605acc3a4afa60c342dde5e4f9))
+
 ## [1.10.0](https://github.com/fjpulidop/specrails-web/compare/v1.9.0...v1.10.0) (2026-06-03)
 
 

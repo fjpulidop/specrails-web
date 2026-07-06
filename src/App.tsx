@@ -14,6 +14,7 @@ const DocsLayout = lazy(() => import("./pages/DocsLayout.tsx"));
 const DocPage = lazy(() => import("./pages/DocPage.tsx"));
 const DocsIndex = lazy(() => import("./pages/DocsIndex.tsx"));
 const DownloadPage = lazy(() => import("./pages/DownloadPage.tsx"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/core" element={<Navigate to="/" replace />} />
               <Route path="/desktop" element={<Navigate to="/" replace />} />
               <Route path="/download" element={<DownloadPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
