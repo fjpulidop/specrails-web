@@ -7,9 +7,9 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: "What our apps do",
     body: (
       <p>
-        SpecRails Hub runs entirely on your own computer. The Specrails mobile app is a companion
+        Specrails runs entirely on your own computer. The Specrails mobile app is a companion
         that connects <strong>directly</strong> to that computer over your local Wi-Fi network.
-        There is no SpecRails cloud, no relay server, and no account system.
+        There is no Specrails cloud, no relay server, and no account system.
       </p>
     ),
   },
@@ -17,7 +17,7 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: "Data we collect",
     body: (
       <p>
-        <strong>None.</strong> Neither SpecRails Hub nor the Specrails mobile app collects, stores,
+        <strong>None.</strong> Neither Specrails nor the Specrails mobile app collects, stores,
         or transmits any personal data to us or to any third party. There are no analytics,
         tracking, or advertising SDKs in our apps.
       </p>
@@ -57,9 +57,9 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
     title: "Third-party AI providers",
     body: (
       <p>
-        SpecRails Hub orchestrates AI CLI tools (such as Claude Code or Codex) that{" "}
+        Specrails orchestrates AI CLI tools (such as Claude Code or Codex) that{" "}
         <em>you</em> install and authenticate on your own computer. Any data those tools send to
-        their providers is governed by the provider&apos;s own terms and privacy policy — SpecRails
+        their providers is governed by the provider&apos;s own terms and privacy policy — Specrails
         does not add, intercept, or store any of it.
       </p>
     ),
@@ -71,7 +71,7 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
         If this policy ever changes, the updated version will be published on this page. Questions?
         Open an issue on{" "}
         <a
-          href="https://github.com/fjpulidop/specrails-hub"
+          href="https://github.com/fjpulidop/specrails-desktop"
           target="_blank"
           rel="noreferrer"
           className="text-primary underline-offset-4 hover:underline"
@@ -86,9 +86,9 @@ const SECTIONS: { title: string; body: React.ReactNode }[] = [
 
 const PrivacyPage = () => {
   useSeo({
-    title: "Privacy Policy — SpecRails",
+    title: "Privacy Policy — Specrails",
     description:
-      "SpecRails collects no personal data. Everything runs locally on your own machine and network.",
+      "Specrails collects no personal data. Everything runs locally on your own machine and network.",
     canonical: "https://specrails.dev/privacy",
   });
 
@@ -99,7 +99,7 @@ const PrivacyPage = () => {
         <h1 className="text-4xl font-bold tracking-tight">Privacy Policy</h1>
         <p className="mt-3 text-sm text-muted-foreground">Last updated: June 11, 2026</p>
         <p className="mt-6 text-lg text-muted-foreground">
-          SpecRails does not collect, store, or transmit any personal data. Everything runs locally
+          Specrails does not collect, store, or transmit any personal data. Everything runs locally
           — on your machine, on your network.
         </p>
         <div className="mt-12 space-y-10">
