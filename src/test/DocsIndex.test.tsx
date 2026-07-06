@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import DocsIndex from "@/pages/DocsIndex";
-import { DOC_ENTRIES } from "@/lib/docs-registry";
+import { DOCS } from "@/lib/docs-registry";
 
 function renderDocsIndex() {
   return render(
@@ -13,29 +13,30 @@ function renderDocsIndex() {
 }
 
 describe("DocsIndex", () => {
-  it("renders the Documentation heading", () => {
+  it("renders the documentation header heading", () => {
     renderDocsIndex();
-    expect(screen.getByRole("heading", { name: /documentation/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 1, name: /learn specrails/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Documentation")).toBeInTheDocument();
   });
 
-  it("renders the Core section", () => {
+  it("renders the getting started section", () => {
     renderDocsIndex();
-    expect(screen.getByText("Core")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Getting started" })).toBeInTheDocument();
   });
 
-  it("renders the Playbook section when playbook entries exist", () => {
-    const hasPlaybooks = DOC_ENTRIES.some((e) => e.section === "Playbook");
-    if (!hasPlaybooks) return;
+  it("renders the integrations section", () => {
     renderDocsIndex();
-    expect(screen.getByText("Playbook")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Integrations" })).toBeInTheDocument();
   });
 
-  it("renders a link for each non-index core entry", () => {
+  it("renders a link for each guide entry plus the start CTA", () => {
     renderDocsIndex();
-    const coreEntries = DOC_ENTRIES.filter((e) => e.slug !== "" && !e.section);
-    const links = screen.getAllByRole("link");
-    // Each core entry and each playbook entry gets a link
-    expect(links.length).toBeGreaterThanOrEqual(coreEntries.length);
+    const docLinks = screen
+      .getAllByRole("link")
+      .filter((link) => link.getAttribute("href")?.startsWith("/docs/"));
+    expect(docLinks.length).toBeGreaterThanOrEqual(DOCS.length);
   });
 
   it("each link href points to /docs/<slug>", () => {

@@ -13,7 +13,6 @@ import {
   MessageSquare,
   ShieldCheck,
   Sparkles,
-  Terminal,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
@@ -159,7 +158,7 @@ const PlatformCard = ({
           href={href ?? "#"}
           download={!disabled && href !== RELEASES_FALLBACK_URL}
           aria-disabled={disabled}
-          aria-label={`Download specrails-desktop for ${PLATFORM_LABELS[config.key]}`}
+          aria-label={`Download Specrails (Desktop) for ${PLATFORM_LABELS[config.key]}`}
           className={cn(
             "relative mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 overflow-hidden",
             "bg-primary text-primary-foreground shadow-[0_10px_28px_-12px_rgba(0,195,210,0.6)]",
@@ -276,7 +275,7 @@ const INFO_CARDS: InfoCard[] = [
     Icon: BookOpen,
     title: "While you wait, read the docs",
     description:
-      "Pipeline phases, agent profiles, hub features. Everything you need to make the most of specrails from minute one.",
+      "Mission Control, Specrails Board, specs, loops and providers. Everything you need to make the most of Specrails from minute one.",
     href: "/docs",
     cta: "Open documentation",
     accent: "text-dracula-cyan",
@@ -297,7 +296,7 @@ const INFO_CARDS: InfoCard[] = [
     Icon: Github,
     title: "Source on GitHub",
     description:
-      "Read the code, star the repos, send a PR. specrails-desktop (desktop app) and specrails-core (the agent engine) are both fully open.",
+      "Read the desktop app code, star the repo, send a PR, or follow the work behind Mission Control and Board.",
     href: "https://github.com/fjpulidop/specrails-desktop",
     cta: "Browse the source",
     external: true,
@@ -308,7 +307,6 @@ const INFO_CARDS: InfoCard[] = [
 
 const InfoCardView = ({ card }: { card: InfoCard }) => {
   const { Icon } = card;
-  const isCore = card.Icon === Github;
   return (
     <div className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-border/40 to-border/10 hover:from-dracula-purple/30 hover:to-dracula-cyan/20 transition-all duration-300">
       <div className="relative h-full rounded-2xl bg-background/90 backdrop-blur-xl p-6 flex flex-col overflow-hidden">
@@ -333,36 +331,22 @@ const InfoCardView = ({ card }: { card: InfoCard }) => {
           {card.description}
         </p>
 
-        <div className="relative flex flex-col gap-2">
-          <a
-            href={card.href}
-            target={card.external ? "_blank" : undefined}
-            rel={card.external ? "noopener noreferrer" : undefined}
-            className={cn(
-              "inline-flex items-center gap-1.5 text-sm font-medium hover:gap-2.5 transition-all",
-              card.accent,
-            )}
-          >
-            {card.cta}
-            {card.external ? (
-              <ExternalLink className="w-3.5 h-3.5" />
-            ) : (
-              <ArrowRight className="w-3.5 h-3.5" />
-            )}
-          </a>
-          {isCore && (
-            <a
-              href="https://github.com/fjpulidop/specrails-core"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-dracula-cyan transition-colors"
-            >
-              <Terminal className="w-3 h-3" />
-              specrails-core (CLI)
-              <ExternalLink className="w-3 h-3" />
-            </a>
+        <a
+          href={card.href}
+          target={card.external ? "_blank" : undefined}
+          rel={card.external ? "noopener noreferrer" : undefined}
+          className={cn(
+            "relative inline-flex items-center gap-1.5 text-sm font-medium hover:gap-2.5 transition-all",
+            card.accent,
           )}
-        </div>
+        >
+          {card.cta}
+          {card.external ? (
+            <ExternalLink className="w-3.5 h-3.5" />
+          ) : (
+            <ArrowRight className="w-3.5 h-3.5" />
+          )}
+        </a>
       </div>
     </div>
   );
@@ -370,9 +354,9 @@ const InfoCardView = ({ card }: { card: InfoCard }) => {
 
 const DownloadPage = () => {
   useSeo({
-    title: "Download specrails-desktop — macOS, Windows x64 & ARM64",
+    title: "Download Specrails (Desktop) — macOS, Windows x64 & ARM64",
     description:
-      "Download the specrails-desktop desktop app for macOS (Apple Silicon), Windows x64 and Windows ARM64. Free, open source, no telemetry. Always the latest release.",
+      "Download the Specrails (Desktop) app for macOS (Apple Silicon), Windows x64 and Windows ARM64. Free, open source, no telemetry. Always the latest release.",
     canonical: "https://specrails.dev/download",
   });
 
@@ -399,7 +383,7 @@ const DownloadPage = () => {
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 animate-fade-up delay-100">
-            Download <span className="gradient-text">specrails-desktop</span>
+            Download <span className="gradient-text">Specrails (Desktop)</span>
           </h1>
           <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-6 animate-fade-up delay-200">
             The local dashboard for your agentic dev team. Pick your platform —

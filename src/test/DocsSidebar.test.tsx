@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { DocsSidebar } from "@/components/DocsSidebar";
-import { DOC_ENTRIES } from "@/lib/docs-registry";
+import { DOCS } from "@/lib/docs-registry";
 
 function renderSidebar(
   initialPath = "/docs",
@@ -25,21 +25,20 @@ describe("DocsSidebar", () => {
   it("renders a link for every doc entry", () => {
     renderSidebar();
     const links = screen.getAllByRole("link");
-    expect(links).toHaveLength(DOC_ENTRIES.length);
+    expect(links).toHaveLength(DOCS.length);
   });
 
   it("marks the active doc entry as active (border style)", () => {
-    // /docs/agents → the Agents entry should be active
-    renderSidebar("/docs/agents");
-    const agentsLink = screen.getByRole("link", { name: /agents/i });
-    expect(agentsLink.className).toMatch(/border-dracula-purple/);
+    renderSidebar("/docs/agents-meet-the-agents");
+    const agentsLink = screen.getByRole("link", { name: /meet the agents/i });
+    expect(agentsLink.className).toMatch(/border-brand-cyan/);
   });
 
   it("non-active entries do not have active border style", () => {
-    renderSidebar("/docs/agents");
+    renderSidebar("/docs/agents-meet-the-agents");
     const links = screen.getAllByRole("link");
     const inactive = links.filter(
-      (l) => !l.className.includes("border-dracula-purple")
+      (l) => !l.className.includes("border-brand-cyan")
     );
     expect(inactive.length).toBeGreaterThan(0);
   });
@@ -55,7 +54,7 @@ describe("DocsSidebar", () => {
 
   it("renders section headers for entries with a section field", () => {
     renderSidebar();
-    // "Playbook" is a section in DOC_ENTRIES
-    expect(screen.getByText("Playbook")).toBeInTheDocument();
+    expect(screen.getByText("Getting started")).toBeInTheDocument();
+    expect(screen.getByText("Specs")).toBeInTheDocument();
   });
 });

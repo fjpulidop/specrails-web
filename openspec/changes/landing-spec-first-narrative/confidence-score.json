@@ -1,0 +1,26 @@
+{
+  "schema_version": "1",
+  "change": "landing-spec-first-narrative",
+  "agent": "reviewer",
+  "scored_at": "2026-06-18T20:12:00Z",
+  "overall": 92,
+  "aspects": {
+    "type_correctness": 97,
+    "pattern_adherence": 93,
+    "test_coverage": 88,
+    "security": 95,
+    "architectural_alignment": 94
+  },
+  "notes": {
+    "type_correctness": "All components use TypeScript strictly. CSSProperties used correctly for CSS custom property glide variables. No implicit any. tsc --noEmit exits clean across 5 touched files plus Index.tsx fix.",
+    "pattern_adherence": "rail-pill-glide is single-direction with opacity fade and no alternate — confirmed. RailConnector label prop is optional string, aria-hidden on both orientations. useReducedMotion gates PipelineSection and ProductsSection; ProblemSection uses motion-safe: Tailwind variant (both patterns acceptable). All imports active, no dead code.",
+    "test_coverage": "All 208 tests pass across 36 test files. Tests cover headline copy, CTA hrefs, section IDs, and component rendering. SEO meta description fix in Index.tsx has no dedicated test — acceptable for a meta string.",
+    "security": "Companion link has rel='noopener noreferrer' and target='_blank'. Hash-based scroll in Index uses a sanitizing allowlist regex to prevent CSS selector injection. No new attack surface.",
+    "architectural_alignment": "Founder revision round: 5 components updated (HeroSection, PipelineSection, ProblemSection, ProductsSection, index.css) plus reviewer-caught SEO description fix in Index.tsx. Desktop-centered flanked layout, opacity-90 dimming on flanks, single-direction rail animation, and truthful spec-generation narrative are all consistent. Closing line 'Powered by core. Driven from desktop. Watched from your phone.' matches spec verbatim."
+  },
+  "flags": [
+    "orphaned-api-mcp-content",
+    "hub-showcase-content-unreachable",
+    "seo-meta-truthfulness-fixed-by-reviewer"
+  ]
+}

@@ -29,6 +29,9 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  optimizeDeps: {
+    include: ["react-markdown", "remark-gfm", "rehype-highlight", "rehype-slug"],
+  },
   plugins: [
     react(),
     mode === "development" && componentTagger(),

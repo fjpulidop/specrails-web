@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import ProductsSection from "@/components/ProductsSection";
-import { AGENTS } from "@/data/agents";
 
 let observerCallback: IntersectionObserverCallback | null = null;
 
@@ -28,50 +28,60 @@ afterEach(() => {
   observerCallback = null;
 });
 
+const renderSection = () =>
+  render(
+    <MemoryRouter>
+      <ProductsSection />
+    </MemoryRouter>,
+  );
+
 describe("ProductsSection", () => {
-  it("renders section with id products", () => {
-    const { container } = render(<ProductsSection />);
-    expect(container.querySelector("section#products")).toBeInTheDocument();
+  it("renders section with id product", () => {
+    const { container } = renderSection();
+    expect(container.querySelector("section#product")).toBeInTheDocument();
   });
 
-  it("renders the section heading", () => {
-    render(<ProductsSection />);
-    expect(screen.getByText(/two products/i)).toBeInTheDocument();
-    expect(screen.getByText(/one platform/i)).toBeInTheDocument();
+  it("renders the Specrails modes heading", () => {
+    renderSection();
+    expect(screen.getByText(/Specrails has two modes/i)).toBeInTheDocument();
+    expect(screen.getByText(/Mission Control comes first/i)).toBeInTheDocument();
   });
 
-  it("renders Core card with tagline and capabilities", () => {
-    render(<ProductsSection />);
-    expect(screen.getByText("The Engine")).toBeInTheDocument();
-    expect(screen.getByText("specrails-core")).toBeInTheDocument();
+  it("renders Mission Control as the primary mode", () => {
+    renderSection();
+    expect(screen.getByText("Primary mode")).toBeInTheDocument();
+    expect(screen.getAllByText("Mission Control").length).toBeGreaterThan(0);
+    expect(screen.getByText(/Direct MCP control over specs, rails, loops/i)).toBeInTheDocument();
+  });
+
+  it("renders Specrails Board as the manual mode", () => {
+    renderSection();
+    expect(screen.getByText("Manual mode")).toBeInTheDocument();
+    expect(screen.getAllByText("Specrails Board").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Human-operated specs and rails/i).length).toBeGreaterThan(0);
+  });
+
+  it("renders local-first and runtime product details", () => {
+    renderSection();
+    expect(screen.getByText("Local-first")).toBeInTheDocument();
+    expect(screen.getByText("Bundled runtime")).toBeInTheDocument();
+    expect(screen.getByText(/No account system, no cloud workspace/i)).toBeInTheDocument();
+  });
+
+  it("renders CTAs linking to download and docs", () => {
+    renderSection();
+    const downloadCta = screen.getByRole("link", { name: /download specrails/i });
+    expect(downloadCta).toHaveAttribute("href", "/download");
+
+    const docsCta = screen.getByRole("link", { name: /docs/i });
+    expect(docsCta).toHaveAttribute("href", "/docs/getting-started");
+  });
+
+  it("renders the Board video expand control", () => {
+    renderSection();
+    expect(screen.getByRole("button", { name: /expand video/i })).toBeInTheDocument();
     expect(
-      screen.getByText(new RegExp(`${AGENTS.length} specialized ai agents`, "i")),
+      screen.getByLabelText(/Real Specrails Board flow creating a spec/i),
     ).toBeInTheDocument();
-    expect(screen.getByText(/institutional memory/i)).toBeInTheDocument();
-  });
-
-  it("renders Hub card with tagline and capabilities", () => {
-    render(<ProductsSection />);
-    expect(screen.getByText("The Control Center")).toBeInTheDocument();
-    expect(screen.getByText("specrails-desktop")).toBeInTheDocument();
-    expect(screen.getByText(/multi-project dashboard/i)).toBeInTheDocument();
-    expect(screen.getByText(/analytics & cost tracking/i)).toBeInTheDocument();
-  });
-
-  it("renders CTA buttons for both products", () => {
-    render(<ProductsSection />);
-    const coreCta = screen.getByText("Get Started with Core");
-    const hubCta = screen.getByText("Explore the Hub");
-    expect(coreCta.closest("a")).toHaveAttribute("href", "/core");
-    expect(hubCta.closest("a")).toHaveAttribute("href", "#hero");
-  });
-
-  it("renders with visible classes when intersecting", () => {
-    const { container } = render(<ProductsSection />);
-    const cards = container.querySelectorAll(".glass-card");
-    expect(cards.length).toBe(2);
-    cards.forEach((card) => {
-      expect(card.className).toContain("opacity-100");
-    });
   });
 });

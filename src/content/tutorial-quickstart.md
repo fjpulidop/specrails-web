@@ -8,7 +8,7 @@ You are 5 minutes away from having a full AI engineering team working on your co
 
 By the end of this tutorial you will have:
 
-- SpecRails installed and running locally
+- Specrails installed and running locally
 - A dashboard showing your AI team and task board
 - Your first task delegated to an agent — and a PR waiting for your review
 
@@ -53,7 +53,7 @@ The initializer runs automatically. You will see:
 Your team is ready. Create your first task to get started.
 ```
 
-**What was installed:** SpecRails downloaded and configured the agent system, set up a local task board, and launched a dashboard server. Nothing in your codebase was modified.
+**What was installed:** Specrails downloaded and configured the agent system, set up a local task board, and launched a dashboard server. Nothing in your codebase was modified.
 
 > First run downloads dependencies. Expect 2–4 minutes on the initial install. Subsequent starts are instant.
 
@@ -65,7 +65,7 @@ Your team is ready. Create your first task to get started.
 open http://localhost:3001
 ```
 
-You will see your **SpecRails dashboard** — a local task management interface where your AI agents live and take assignments.
+You will see your **Specrails dashboard** — a local task management interface where your AI agents live and take assignments.
 
 The left panel lists your agent team. By default you get:
 
@@ -80,7 +80,7 @@ The left panel lists your agent team. By default you get:
 
 ## Minute 3 — Create your first task
 
-Click **New Task** on the board and describe what you want to build. Be specific — the more context you give, the better the output:
+Click **New Task** on the board and describe what you want to build. Be specific — the more context you give, the better the output. Specrails turns your description into a **Spec**: a structured source of truth that captures what to build, why it matters, and the acceptance criteria the agents will work from.
 
 ```
 Add a health check endpoint:
@@ -96,7 +96,7 @@ Click **Create**. The CEO agent picks up the task immediately.
 
 ## Minutes 4–5 — Watch the pipeline run
 
-The CEO creates a plan and delegates work:
+The CEO creates a plan, generates the Spec, and delegates work:
 
 ```
 CEO: Analyzing request...
@@ -183,7 +183,7 @@ Disabling agents reduces API costs and keeps the task board focused.
 
 **Dashboard does not open after `init`**
 
-The hub server may not have started. Check:
+The dashboard server may not have started. Check:
 
 ```bash
 npx specrails-core doctor

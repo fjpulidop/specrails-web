@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
@@ -29,33 +30,43 @@ describe("Navbar", () => {
 
   it("renders navigation anchors for main sections", () => {
     renderNavbar();
-    expect(screen.getByRole("link", { name: /pipeline/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /features/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /commands/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /^product$/i })).toHaveAttribute("href", "/#product");
+    expect(screen.getByRole("link", { name: /^specs$/i })).toHaveAttribute("href", "/#specs");
+    expect(screen.getByRole("link", { name: /^loops$/i })).toHaveAttribute("href", "/#loops");
+    expect(screen.getByRole("link", { name: /vibe engineering/i })).toHaveAttribute("href", "/#engineering");
   });
 
-  it("renders a Core link to /core", () => {
-    renderNavbar();
-    const coreLinks = screen
-      .getAllByRole("link", { name: /^core$/i })
-      .filter((el) => el.getAttribute("href") === "/core");
-    expect(coreLinks.length).toBeGreaterThan(0);
-  });
-
-  it("does not render a Hub nav link pointing to #hub-showcase", () => {
+  it("does not render legacy Core or Hub nav links", () => {
     const { container } = renderNavbar();
+    expect(container.querySelector('[href="/core"]')).toBeNull();
     expect(container.querySelector('[href="/#hub-showcase"]')).toBeNull();
   });
 
-  it("shows Docs link on mobile when not on a docs page", () => {
-    renderNavbar("/");
-    const docsLinks = screen.getAllByRole("link", { name: /docs/i });
-    expect(docsLinks.length).toBeGreaterThan(0);
+  it("renders a desktop Docs dropdown trigger", () => {
+    renderNavbar();
+    expect(screen.getByRole("button", { name: /^docs$/i })).toBeInTheDocument();
   });
 
-  it("hides Docs mobile link on docs pages", () => {
-    renderNavbar("/docs/agents");
-    const allLinks = screen.queryAllByRole("link", { name: /^docs$/i });
-    expect(allLinks).toHaveLength(0);
+  it("exposes a mobile hamburger that reveals the Docs link in the drawer", async () => {
+    const user = userEvent.setup();
+    renderNavbar("/");
+
+    // Docs now lives inside the mobile Sheet drawer, not in the top bar.
+    const menuButton = screen.getByRole("button", { name: /open menu/i });
+    expect(menuButton).toBeInTheDocument();
+
+    await user.click(menuButton);
+
+    const drawer = await screen.findByRole("dialog");
+    const docsLink = within(drawer).getByRole("link", { name: /^docs$/i });
+    expect(docsLink).toHaveAttribute("href", "/docs");
+  });
+
+  it("offers a Download CTA pointing to /download", () => {
+    renderNavbar();
+    const downloadLinks = screen
+      .getAllByRole("link", { name: /download/i })
+      .filter((el) => el.getAttribute("href") === "/download");
+    expect(downloadLinks.length).toBeGreaterThan(0);
   });
 });

@@ -6,23 +6,23 @@ specrails is designed to run **locally** — in your dev environment, not on a p
 
 | Environment | Who uses it | Notes |
 |-------------|-------------|-------|
-| **Developer laptop** | You, day to day | Default. Hub app or CLI + Claude Code. |
-| **Hub desktop app** | Team, visual workflows | Wraps the same CLI in a native app. macOS today; Windows + Linux on the roadmap. |
+| **Developer laptop** | You, day to day | Default. Specrails (Desktop) app or CLI + Claude Code. |
+| **Specrails (Desktop) app** | Team, visual workflows | Wraps the same CLI in a native app. macOS today; Windows + Linux on the roadmap. |
 | **CI pipeline** | Automated bots | Run `/specrails:implement` in GitHub Actions (or similar) for backlog triage or nightly refactors. |
 | **Server / container** | Rare | Needs a credentialed Claude Code (or Codex) runtime. Treat like any other AI bot — one set of credentials, scoped permissions, sandboxed filesystem. |
 
 ## Local setup
 
-This is the common path. Install Hub and/or Core and you're done:
+This is the common path. Install Specrails (Desktop) and/or Core and you're done:
 
-- [Install Hub](/docs/hub-installation) — download the `.dmg` or run `npm install -g specrails-desktop`.
+- [Install Specrails (Desktop)](/docs/hub-installation) — download the `.dmg` or run `npm install -g specrails-desktop`.
 - [Install specrails-core](/docs/installation) — `npx specrails-core@latest init`.
 
-Data is written to `~/.specrails/` (hub) and `.specrails/` inside each repo (core). Nothing leaves the machine.
+Data is written to `~/.specrails/` (Desktop) and `.specrails/` inside each repo (Core). Nothing leaves the machine.
 
 ## Running in CI
 
-Use the same CLI you'd use locally, plus your AI provider credential:
+Use the same CLI you'd use locally, plus your AI provider credential. The pipeline works from a **Spec** — a structured source of truth that describes what to build and why — so the agents know exactly what to do without any human in the loop:
 
 ```yaml
 # .github/workflows/specrails-triage.yml
@@ -46,7 +46,7 @@ jobs:
 
 Every agent call counts against your provider credential. Guardrails:
 
-- Set a daily budget per project in Hub → **Settings → Daily Budget**. Jobs auto-pause when hit.
+- Set a daily budget per project in Specrails (Desktop) → **Settings → Daily Budget**. Jobs auto-pause when hit.
 - Use Quick tier agents for simple specs; the Full tier (Opus product-manager) is only needed for product-discovery work.
 - `/specrails:implement --dry-run` runs the pipeline without touching git or spending on the ship phase — good for previewing scope.
 
@@ -54,7 +54,7 @@ Every agent call counts against your provider credential. Guardrails:
 
 - specrails reads **your local files only**. No source upload to external servers beyond the model provider you authenticated.
 - Agents run with the same filesystem permissions as your user. Don't run the pipeline as root.
-- The Hub binds to `127.0.0.1` only. Don't expose port 4200 to the network.
+- Specrails (Desktop) binds to `127.0.0.1` only. Don't expose port 4200 to the network.
 - The `sr-security-reviewer` agent scans every pipeline run for secrets and OWASP violations before shipping.
 
 ## Data that stays local
@@ -66,5 +66,5 @@ If your organisation restricts AI tooling, talk to your security team about the 
 
 ## Next steps
 
-- [Hub Features](/docs/hub-features) — budget controls and analytics details.
+- [Desktop Features](/docs/hub-features) — budget controls and analytics details.
 - [Core Concepts](/docs/concepts) — how the pipeline decides what to run.

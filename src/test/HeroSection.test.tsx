@@ -13,8 +13,16 @@ const mockCtx = {
   moveTo: vi.fn(),
   lineTo: vi.fn(),
   stroke: vi.fn(),
+  save: vi.fn(),
+  restore: vi.fn(),
+  setTransform: vi.fn(),
   fillStyle: "",
   strokeStyle: "",
+  lineWidth: 0,
+  lineCap: "",
+  globalAlpha: 1,
+  shadowColor: "",
+  shadowBlur: 0,
 };
 
 function applyCanvasMock() {
@@ -81,30 +89,63 @@ describe("HeroSection", () => {
     expect(container.querySelector("section#hero")).toBeInTheDocument();
   });
 
-  it("renders the tagline", () => {
+  it("renders the new headline", () => {
     renderHero();
-    expect(screen.getByText(/your agentic development team/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/from idea to production code/i).length).toBeGreaterThanOrEqual(1);
+    const heading = screen.getByRole("heading", { level: 1 });
+    expect(heading).toHaveTextContent(/build with prompts/i);
+    expect(heading).toHaveTextContent(/ship with specs/i);
   });
 
-  it("renders the Download CTA", () => {
-    const { container } = renderHero();
-    expect(container.textContent?.toLowerCase()).toContain("download");
-  });
-
-  it("renders the View on GitHub CTA", () => {
+  it("renders the subhead describing Vibe Engineering", () => {
     renderHero();
-    expect(screen.getByText(/view on github/i)).toBeInTheDocument();
+    expect(screen.getByText(/turns vibe coding into Vibe Engineering/i)).toBeInTheDocument();
   });
 
-  it("renders the version pill mentioning supported platforms", () => {
-    const { container } = renderHero();
-    expect(container.textContent).toContain("macOS, Windows x64 & ARM64");
-  });
-
-  it("renders the Core text link", () => {
+  it("renders the Download CTA for the detected platform", () => {
     renderHero();
-    expect(screen.getByText(/prefer the cli/i)).toBeInTheDocument();
+    const downloadCta = screen.getByRole("link", {
+      name: /download specrails|preparing download/i,
+    });
+    expect(downloadCta).toBeInTheDocument();
+    expect(downloadCta).toHaveAttribute(
+      "href",
+      expect.stringContaining("/downloads/specrails-desktop/latest/"),
+    );
+  });
+
+  it("renders docs and product CTAs", () => {
+    renderHero();
+    const docs = screen.getByRole("link", { name: /read the docs/i });
+    expect(docs).toHaveAttribute("href", "/docs");
+    const product = screen.getByRole("link", { name: /product/i });
+    expect(product).toHaveAttribute("href", "#product");
+  });
+
+  it("renders the trust row with platform and license info", () => {
+    renderHero();
+    expect(screen.getByText(/macOS & Windows/i)).toBeInTheDocument();
+    expect(screen.getByText(/No accounts · local data/i)).toBeInTheDocument();
+  });
+
+  it("renders the eyebrow trust badge", () => {
+    renderHero();
+    expect(
+      screen.getByText(/Local-first · Spec-driven · Mission Control/i),
+    ).toBeInTheDocument();
+  });
+
+  it("renders provider chips", () => {
+    renderHero();
+    expect(screen.getByText("Claude")).toBeInTheDocument();
+    expect(screen.getByText("Codex")).toBeInTheDocument();
+    expect(screen.getByText("Gemini")).toBeInTheDocument();
+  });
+
+  it("renders Star on GitHub button for specrails-desktop", () => {
+    renderHero();
+    const githubLinks = screen.getAllByRole("link", { name: /star .* on github/i });
+    const hrefs = githubLinks.map((l) => l.getAttribute("href"));
+    expect(hrefs).toContain("https://github.com/fjpulidop/specrails-desktop");
   });
 
   it("does not render any ProductSwitcher or TabbedTerminal", () => {
@@ -119,8 +160,9 @@ describe("HeroSection", () => {
     expect(container.querySelector("#hub-showcase")).toBeNull();
   });
 
-  it("renders a canvas for the particle background", () => {
+  it("renders the static brand glow (no animated canvas background)", () => {
     const { container } = renderHero();
-    expect(container.querySelector("canvas")).toBeInTheDocument();
+    expect(container.querySelector("canvas")).toBeNull();
+    expect(container.querySelector(".hero-glow")).toBeInTheDocument();
   });
 });

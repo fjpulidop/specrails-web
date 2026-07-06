@@ -3,25 +3,30 @@ import { useLocation } from "react-router-dom";
 import { useSeo } from "@/hooks/useSeo";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ProblemSection from "@/components/ProblemSection";
-import ProductsSection from "@/components/ProductsSection";
-import AgentsSection from "@/components/AgentsSection";
 import PipelineSection from "@/components/PipelineSection";
 import DemoSection from "@/components/DemoSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import CommandsSection from "@/components/CommandsSection";
-import PrinciplesSection from "@/components/PrinciplesSection";
+import ProblemSection from "@/components/ProblemSection";
+import ProductsSection from "@/components/ProductsSection";
 import FooterSection from "@/components/FooterSection";
 import SectionNav from "@/components/SectionNav";
-import AnimatedLogo from "@/components/AnimatedLogo";
+import { useI18n } from "@/lib/i18n";
+
+const SECTION_IDS = [
+  "hero",
+  "product",
+  "specs",
+  "loops",
+  "engineering",
+  "footer",
+];
 
 const Index = () => {
   const { hash } = useLocation();
+  const { content } = useI18n();
 
   useSeo({
-    title: "specrails — AI Development Platform: Core Engine + Hub Dashboard",
-    description:
-      "specrails turns Claude Code & Codex into your full dev team. specrails-core: 14 AI agents from idea to production code. specrails-desktop: local dashboard for pipeline visualization, tickets, and analytics.",
+    title: content.seo.title,
+    description: content.seo.description,
     canonical: "https://specrails.dev/",
   });
 
@@ -36,20 +41,23 @@ const Index = () => {
   }, [hash]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      <a
+        href="#hero"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-surface-2 focus:px-4 focus:py-2 focus:text-foreground focus:shadow-glow-elevated"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <HeroSection />
-      <ProblemSection />
-      <ProductsSection />
-      <AgentsSection />
-      <PipelineSection />
-      <DemoSection />
-      <FeaturesSection />
-      <CommandsSection />
-      <PrinciplesSection />
+      <main>
+        <HeroSection />
+        <ProductsSection />
+        <PipelineSection />
+        <DemoSection />
+        <ProblemSection />
+      </main>
       <FooterSection />
-      <SectionNav sectionIds={["hero","problem","products","agents","pipeline","demo","features","commands","principles","footer"]} />
-      <AnimatedLogo />
+      <SectionNav sectionIds={SECTION_IDS} />
     </div>
   );
 };

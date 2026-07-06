@@ -1,0 +1,9 @@
+{
+  "error_type": "copy-deviation-from-approved-brief",
+  "first_seen": "2026-06-18",
+  "file_pattern": "src/components/*.tsx",
+  "severity": "warning",
+  "root_cause": "ProductsSection.tsx line 380: companion product h3 label was set to 'The mobile remote' by the developer, but the approved brief (openspec/landing-rebuild-brief.md) explicitly specifies 'your phone' as the layer label (styled as 'specrails-companion — your phone'). The pattern for core is 'the engine' → h3 'The open-source engine' and desktop is 'the cockpit' → h3 'The local cockpit' — the companion should follow 'your phone' → h3 'your phone'. The test at src/test/ProductsSection.test.tsx line 70 also asserted the incorrect label.",
+  "prevention_rule": "Always cross-reference the approved brief in openspec/landing-rebuild-brief.md section by section before marking a task done. Product layer labels (the part after the em-dash in 'specrails-X — label') must be used verbatim as the product card h3 subtitle.",
+  "example_fix": "Changed h3 from 'The mobile remote' to 'your phone' in ProductsSection.tsx and updated the matching assertion in ProductsSection.test.tsx"
+}

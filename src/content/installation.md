@@ -1,10 +1,10 @@
 # Install specrails-core
 
-The CLI half of specrails. If you want the desktop app, see [Install Hub](/docs/hub-installation).
+The CLI half of specrails. If you want the desktop app, see [Install Specrails (Desktop)](/docs/hub-installation).
 
 ## Prerequisites
 
-specrails works with either Claude Code **or** the OpenAI Codex CLI — pick whichever you have. Both are supported.
+specrails works with Claude Code **or** the OpenAI Codex CLI — pick whichever you have. Both are supported.
 
 | Tool | Required | Why |
 |------|----------|-----|
@@ -21,9 +21,9 @@ specrails works with either Claude Code **or** the OpenAI Codex CLI — pick whi
 npx specrails-core@latest init
 ```
 
-Run it from inside your project directory. The installer:
+Run this from inside your project directory. The installer:
 
-1. Checks prerequisites (Git, Claude Code or Codex) and offers to install missing ones.
+1. Checks prerequisites (Git, Claude Code or Codex) and offers to install any that are missing.
 2. Launches an interactive TUI.
 3. Copies `.claude/agents/`, `.claude/commands/specrails/`, `.claude/commands/opsx/` and `.specrails/` into your repo.
 
@@ -31,8 +31,8 @@ Run it from inside your project directory. The installer:
 
 | Tier | What you get | Time |
 |------|--------------|------|
-| **Quick** (default) | 8 of 14 agents + all workflow commands + local tickets. No AI interaction during install. | ~30 s |
-| **Full** | Quick + `/specrails:enrich` runs automatically — stack detection, VPC personas, competitive research. | ~5 min |
+| **Quick** (default) | 8 of 14 agents + all workflow commands + local tickets. No AI interaction during install. Generates a **Spec** — the source-of-truth document the pipeline builds from — for your first feature. | ~30 s |
+| **Full** | Quick + `/specrails:enrich` runs automatically — stack detection, VPC personas, competitive research. Produces richer Specs from the start. | ~5 min |
 
 Run Quick if you want to kick the tyres; upgrade to Full later by running:
 
@@ -77,10 +77,12 @@ From inside your repo, in Claude Code:
 ```
 /specrails:enrich                         # re-run wizard to tune agents/model
 /specrails:get-backlog-specs              # show the prioritised backlog
-/specrails:implement "add dark mode"      # full pipeline from a description
-/specrails:implement #42                  # from a ticket ID
+/specrails:implement "add dark mode"      # generate a Spec, then run the full pipeline
+/specrails:implement #42                  # run the pipeline from a ticket ID
 /specrails:why "why did we pick X?"       # search agent explanation records
 ```
+
+`/specrails:implement` first turns your description into a **Spec** — a precise contract capturing what to build, why it matters to a real user, and the acceptance criteria — then hands that Spec to the agent pipeline. A prompt is a wish; a Spec is what the agents actually build from.
 
 ## Using Codex instead of Claude
 
@@ -106,4 +108,4 @@ Your code is untouched — these directories are the entirety of specrails' foot
 
 - [Getting Started with Claude Code](/docs/claude-getting-started) — your first pipeline run.
 - [Core Concepts](/docs/concepts) — how the pipeline thinks.
-- [Install Hub](/docs/hub-installation) — desktop app that drives the same pipeline visually.
+- [Install Specrails (Desktop)](/docs/hub-installation) — the desktop app that drives the same pipeline with a visual interface.

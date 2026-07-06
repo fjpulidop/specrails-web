@@ -1,74 +1,86 @@
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import {
-  FileInput, ListChecks, PenTool, Code, ShieldCheck, Rocket,
-} from "lucide-react";
+import { ArrowRight, FileText, GitPullRequest, MessageSquareText, PenLine, RefreshCw, Route } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import { useI18n } from "@/lib/i18n";
 
-const phases = [
-  { phase: "0", label: "Input", desc: "A ticket from a GitHub Issue, a local file, or free text — handled one at a time or in batches", icon: FileInput, color: "text-dracula-fg", bg: "bg-dracula-current" },
-  { phase: "1", label: "Environment Setup", desc: "Preflight checks on the toolchain and dependencies, plus conflict-check and snapshots before any work starts", icon: ListChecks, color: "text-dracula-cyan", bg: "bg-dracula-cyan/10" },
-  { phase: "2", label: "Architecture", desc: "The Architect agent designs the change as spec artifacts, then validates them before handoff", icon: PenTool, color: "text-dracula-orange", bg: "bg-dracula-orange/10" },
-  { phase: "3", label: "Implementation", desc: "The Developer is dispatched dynamically to the best-matching specialist by task type. Lint, type-check, build and tests must all pass", icon: Code, color: "text-dracula-green", bg: "bg-dracula-green/10" },
-  { phase: "4", label: "Review", desc: "The Reviewer inspects each layer of the change, sub-specializing on demand and gated by a confidence score and a security scan", icon: ShieldCheck, color: "text-dracula-purple", bg: "bg-dracula-purple/10" },
-  { phase: "5", label: "Ship", desc: "Conflict-aware commit, push and ticket-status update — closed out with a full pipeline report (CI, confidence, security)", icon: Rocket, color: "text-dracula-pink", bg: "bg-dracula-pink/10" },
-];
+const stageIcons = [MessageSquareText, FileText, Route, RefreshCw, GitPullRequest] as const;
 
 const PipelineSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const { content } = useI18n();
+  const { pipeline } = content;
 
   return (
-    <section id="pipeline" className="py-24 px-6 section-darker" ref={ref}>
-      <div className="container mx-auto max-w-3xl">
-        <div
-          className={`flex justify-center mb-4 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-dracula-cyan/20 bg-dracula-cyan/5 text-xs font-mono text-dracula-cyan/70">
-            Powered by specrails-core
-          </span>
-        </div>
-        <h2
-          className={`text-3xl md:text-4xl font-bold text-center mb-4 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          Pipeline: <span className="gradient-text">From Idea to Code</span>
-        </h2>
-        <p
-          className={`text-muted-foreground text-center mb-16 transition-all duration-700 delay-100 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          The <span className="font-mono text-dracula-cyan">/specrails:implement</span> command orchestrates the full pipeline.
-        </p>
+    <section id="specs" className="section-spacious">
+      <div className="mx-auto max-w-6xl">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow mb-3">{pipeline.eyebrow}</p>
+          <h2 className="section-heading">
+            {pipeline.title}{" "}
+            <span className="gradient-text">{pipeline.gradient}</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            {pipeline.intro}
+          </p>
+        </Reveal>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-dracula-purple/40 via-dracula-pink/40 to-dracula-green/40 hidden md:block" />
-
-          <div className="space-y-6">
-            {phases.map((p, i) => (
+        <Reveal delay={100}>
+          <div className="mt-10 grid gap-3 md:grid-cols-3">
+            {pipeline.modes.map((mode) => (
               <div
-                key={p.phase}
-                className={`flex gap-4 md:gap-6 items-start transition-all duration-700 ${
-                  isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-                }`}
-                style={{ transitionDelay: `${i * 120}ms` }}
+                key={mode.title}
+                className="rounded-card border border-border/60 bg-surface-2/45 p-5"
               >
-                <div className={`shrink-0 w-12 h-12 rounded-xl ${p.bg} flex items-center justify-center relative z-10`}>
-                  <p.icon className={`w-5 h-5 ${p.color}`} />
-                </div>
-                <div className="glass-card p-4 flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-mono text-xs text-muted-foreground">Phase {p.phase}</span>
-                    <h3 className={`font-semibold text-sm ${p.color}`}>{p.label}</h3>
-                  </div>
-                  <p className="text-muted-foreground text-xs">{p.desc}</p>
-                </div>
+                <PenLine className="h-5 w-5 text-brand-cyan" aria-hidden="true" />
+                <h3 className="mt-3 text-lg font-semibold tracking-tight">{mode.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {mode.body}
+                </p>
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <ol className="mt-14 grid gap-4 md:grid-cols-5">
+            {pipeline.stages.map((stage, index) => {
+              const Icon = stageIcons[index] ?? FileText;
+              return (
+                <li key={stage.label} className="relative">
+                  {index < pipeline.stages.length - 1 && (
+                    <ArrowRight
+                      className="absolute -right-4 top-8 hidden h-4 w-4 text-border md:block"
+                      aria-hidden="true"
+                    />
+                  )}
+                  <div className="h-full rounded-card border border-border/60 bg-surface-1/60 p-4">
+                    <span className="grid h-10 w-10 place-items-center rounded-card border border-brand-violet/30 bg-brand-violet/10 text-brand-violet">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-brand-cyan">
+                      {stage.phase}
+                    </p>
+                    <h3 className="mt-1 font-semibold text-foreground">{stage.label}</h3>
+                    <p className="mt-1 text-xs font-medium text-muted-foreground">
+                      {stage.actor}
+                    </p>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                      {stage.desc}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
+          </ol>
+        </Reveal>
+
+        <Reveal delay={300} className="mt-10 text-center">
+          <a
+            href="#loops"
+            className="inline-flex items-center gap-2 text-sm font-medium text-brand-cyan transition-colors hover:text-brand-violet"
+          >
+            {pipeline.cta}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </Reveal>
       </div>
     </section>
   );
