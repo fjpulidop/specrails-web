@@ -36,68 +36,52 @@ const renderSection = () =>
   );
 
 describe("ProductsSection", () => {
-  it("renders section with id products", () => {
+  it("renders section with id product", () => {
     const { container } = renderSection();
-    expect(container.querySelector("section#products")).toBeInTheDocument();
+    expect(container.querySelector("section#product")).toBeInTheDocument();
   });
 
-  it("renders the updated section heading", () => {
+  it("renders the Specrails modes heading", () => {
     renderSection();
-    expect(screen.getByText(/the ecosystem/i)).toBeInTheDocument();
-    // H2: "specrails-desktop is mission control."
-    // "mission control" also appears in the desktop product h3, so use getAllByText
-    expect(screen.getAllByText(/mission control/i).length).toBeGreaterThan(0);
-    // The gradient span in the H2 carries the full stop
-    expect(screen.getByText(/mission control\./i)).toBeInTheDocument();
+    expect(screen.getByText(/Specrails has two modes/i)).toBeInTheDocument();
+    expect(screen.getByText(/Mission Control comes first/i)).toBeInTheDocument();
   });
 
-  it("renders the Core product with name and engine subtitle", () => {
+  it("renders Mission Control as the primary mode", () => {
     renderSection();
-    // specrails-core appears in both the mono label and the window chrome label
-    expect(screen.getAllByText(/specrails-core/i).length).toBeGreaterThan(0);
-    // h3 subtitle changed from "The open-source engine" to "the engine"
-    expect(screen.getByText("the engine")).toBeInTheDocument();
-    expect(screen.getByText(/spec-driven pipeline, idea → pr/i)).toBeInTheDocument();
-    expect(screen.getByText(/parallel builds in git worktrees/i)).toBeInTheDocument();
+    expect(screen.getByText("Primary mode")).toBeInTheDocument();
+    expect(screen.getAllByText("Mission Control").length).toBeGreaterThan(0);
+    expect(screen.getByText(/Direct MCP control over specs, rails, loops/i)).toBeInTheDocument();
   });
 
-  it("renders the Desktop product with name and cockpit subtitle", () => {
+  it("renders Specrails Board as the manual mode", () => {
     renderSection();
-    // renamed display label appears in the sublabel and the window chrome label
-    expect(screen.getAllByText(/Specrails \(Desktop\)/i).length).toBeGreaterThan(0);
-    // h3 subtitle changed from "The local cockpit" to "mission control"
-    expect(screen.getByText("mission control")).toBeInTheDocument();
-    expect(screen.getByText(/drag specs onto parallel rails/i)).toBeInTheDocument();
-    expect(screen.getByText(/track every ai cost, 100% local/i)).toBeInTheDocument();
+    expect(screen.getByText("Manual mode")).toBeInTheDocument();
+    expect(screen.getAllByText("Specrails Board").length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Human-operated specs and rails/i).length).toBeGreaterThan(0);
   });
 
-  it("renders the Companion product with name and 'your phone' subtitle", () => {
+  it("renders local-first and runtime product details", () => {
     renderSection();
-    // renamed display label; appears in both the sublabel and the window chrome
-    expect(screen.getAllByText("Specrails (Companion)").length).toBeGreaterThan(0);
-    expect(screen.getByText("your phone")).toBeInTheDocument();
-    // "WebRTC (DTLS)" appears in the capabilities list
-    expect(screen.getAllByText(/WebRTC \(DTLS\)/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/never sees your data/i)).toBeInTheDocument();
+    expect(screen.getByText("Local-first")).toBeInTheDocument();
+    expect(screen.getByText("Bundled runtime")).toBeInTheDocument();
+    expect(screen.getByText(/No account system, no cloud workspace/i)).toBeInTheDocument();
   });
 
-  it("renders CTAs linking to Core, download, and companion app", () => {
+  it("renders CTAs linking to download and docs", () => {
     renderSection();
-    const coreCta = screen.getByRole("link", { name: /get the cli/i });
-    expect(coreCta).toHaveAttribute("href", "/core");
-
-    const downloadCta = screen.getByRole("link", { name: /download for desktop/i });
+    const downloadCta = screen.getByRole("link", { name: /download specrails/i });
     expect(downloadCta).toHaveAttribute("href", "/download");
 
-    const companionCta = screen.getByRole("link", { name: /open the companion/i });
-    expect(companionCta).toHaveAttribute("href", "https://specrails.dev/companion-app");
+    const docsCta = screen.getByRole("link", { name: /docs/i });
+    expect(docsCta).toHaveAttribute("href", "/docs/getting-started");
   });
 
-  it("renders both product frames with their window labels", () => {
+  it("renders the Board video expand control", () => {
     renderSection();
-    expect(screen.getByText("zsh — specrails-core")).toBeInTheDocument();
-    expect(screen.getByText("Specrails (Desktop) — local")).toBeInTheDocument();
-    // companion frame now embeds the real app screenshot; window label renamed
-    expect(screen.getAllByText("Specrails (Companion)").length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: /expand video/i })).toBeInTheDocument();
+    expect(
+      screen.getByLabelText(/Real Specrails Board flow creating a spec/i),
+    ).toBeInTheDocument();
   });
 });

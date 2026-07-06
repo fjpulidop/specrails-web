@@ -1,38 +1,35 @@
 import { describe, it, expect } from "vitest";
 import {
-  DOC_ENTRIES,
+  getDocs,
   getDocBySlug,
   getAdjacentDocs,
 } from "@/lib/docs-registry";
+import { LANGUAGE_IDS } from "@/lib/i18n";
 
-describe("playbook registry entries", () => {
-  it("has 19 total entries in DOC_ENTRIES", () => {
-    expect(DOC_ENTRIES).toHaveLength(19);
+describe("localized guide registry entries", () => {
+  it("has the same guide count in every supported language", () => {
+    for (const language of LANGUAGE_IDS) {
+      expect(getDocs(language), language).toHaveLength(30);
+    }
   });
 
-  it("getDocBySlug returns a result for each playbook slug", () => {
-    expect(getDocBySlug("playbook-product-discovery")).toBeDefined();
-    expect(getDocBySlug("playbook-parallel-dev")).toBeDefined();
-    expect(getDocBySlug("playbook-oss-maintainer")).toBeDefined();
+  it("getDocBySlug returns a result for core guide slugs", () => {
+    expect(getDocBySlug("getting-started")).toBeDefined();
+    expect(getDocBySlug("specs-specs-and-the-backlog")).toBeDefined();
+    expect(getDocBySlug("pipeline-the-loop-builder")).toBeDefined();
   });
 
-  it("playbook-product-discovery prev is the updating entry", () => {
-    const { prev } = getAdjacentDocs("playbook-product-discovery");
-    expect(prev?.slug).toBe("updating");
+  it("keeps adjacent docs inside the guide order", () => {
+    const { prev, next } = getAdjacentDocs("specs-specs-and-the-backlog");
+    expect(prev?.slug).toBe("getting-started-the-dashboard-tour");
+    expect(next?.slug).toBe("specs-add-spec-quick-mode");
   });
 
-  it("playbook-oss-maintainer next entry is changelog", () => {
-    const { next } = getAdjacentDocs("playbook-oss-maintainer");
-    expect(next?.slug).toBe("changelog");
+  it("localizes section names", () => {
+    expect(getDocBySlug("integrations-ai-providers", "es")?.section).toBe("Integraciones");
   });
 
-  it("deployment is the last entry (Hub-first order)", () => {
-    const { next } = getAdjacentDocs("deployment");
-    expect(next).toBeNull();
-  });
-
-  it("all playbook entries have section set to Playbook", () => {
-    const playbookEntries = DOC_ENTRIES.filter((e) => e.section === "Playbook");
-    expect(playbookEntries).toHaveLength(3);
+  it("does not expose legacy playbook slugs", () => {
+    expect(getDocBySlug("playbook-product-discovery")).toBeUndefined();
   });
 });

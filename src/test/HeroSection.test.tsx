@@ -91,58 +91,60 @@ describe("HeroSection", () => {
 
   it("renders the new headline", () => {
     renderHero();
-    // New H1: "Describe it. / A team of agents ships it." (br between the two sentences)
     const heading = screen.getByRole("heading", { level: 1 });
-    expect(heading).toHaveTextContent(/describe it/i);
-    expect(heading).toHaveTextContent(/a team of agents ships it/i);
+    expect(heading).toHaveTextContent(/build with prompts/i);
+    expect(heading).toHaveTextContent(/ship with specs/i);
   });
 
-  it("renders the subhead describing the agentic pipeline", () => {
+  it("renders the subhead describing Vibe Engineering", () => {
     renderHero();
-    expect(screen.getByText(/agentic software development system/i)).toBeInTheDocument();
+    expect(screen.getByText(/turns vibe coding into Vibe Engineering/i)).toBeInTheDocument();
   });
 
   it("renders the Download CTA for the detected platform", () => {
     renderHero();
-    // The primary CTA exposes a stable aria-label regardless of manifest state.
     const downloadCta = screen.getByRole("link", {
-      name: /download specrails \(desktop\) for/i,
+      name: /download specrails|preparing download/i,
     });
     expect(downloadCta).toBeInTheDocument();
+    expect(downloadCta).toHaveAttribute(
+      "href",
+      expect.stringContaining("/downloads/specrails-desktop/latest/"),
+    );
   });
 
-  it("renders the in-action and how-it-works CTAs", () => {
+  it("renders docs and product CTAs", () => {
     renderHero();
-    const inAction = screen.getByRole("link", { name: /see it in action/i });
-    expect(inAction).toHaveAttribute("href", "#hero-demo");
-    const howItWorks = screen.getByRole("link", { name: /how it works/i });
-    expect(howItWorks).toHaveAttribute("href", "#pipeline");
-  });
-
-  it("renders the npx CLI command in the hero", () => {
-    renderHero();
-    expect(screen.getByText(/npx specrails-core@latest init/i)).toBeInTheDocument();
+    const docs = screen.getByRole("link", { name: /read the docs/i });
+    expect(docs).toHaveAttribute("href", "/docs");
+    const product = screen.getByRole("link", { name: /product/i });
+    expect(product).toHaveAttribute("href", "#product");
   });
 
   it("renders the trust row with platform and license info", () => {
     renderHero();
     expect(screen.getByText(/macOS & Windows/i)).toBeInTheDocument();
-    expect(screen.getByText(/MIT licensed/i)).toBeInTheDocument();
+    expect(screen.getByText(/No accounts · local data/i)).toBeInTheDocument();
   });
 
   it("renders the eyebrow trust badge", () => {
     renderHero();
     expect(
-      screen.getByText(/MIT · Local-first · Open source/i),
+      screen.getByText(/Local-first · Spec-driven · Mission Control/i),
     ).toBeInTheDocument();
   });
 
-  it("renders Star on GitHub buttons for both repos", () => {
+  it("renders provider chips", () => {
     renderHero();
-    // One star button per product card (Desktop + Core).
+    expect(screen.getByText("Claude")).toBeInTheDocument();
+    expect(screen.getByText("Codex")).toBeInTheDocument();
+    expect(screen.getByText("Gemini")).toBeInTheDocument();
+  });
+
+  it("renders Star on GitHub button for specrails-desktop", () => {
+    renderHero();
     const githubLinks = screen.getAllByRole("link", { name: /star .* on github/i });
     const hrefs = githubLinks.map((l) => l.getAttribute("href"));
-    expect(hrefs).toContain("https://github.com/fjpulidop/specrails-core");
     expect(hrefs).toContain("https://github.com/fjpulidop/specrails-desktop");
   });
 

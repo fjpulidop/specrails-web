@@ -30,22 +30,21 @@ describe("Navbar", () => {
 
   it("renders navigation anchors for main sections", () => {
     renderNavbar();
-    expect(screen.getByRole("link", { name: /how it works/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /^why$/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /ecosystem/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /^product$/i })).toHaveAttribute("href", "/#product");
+    expect(screen.getByRole("link", { name: /^specs$/i })).toHaveAttribute("href", "/#specs");
+    expect(screen.getByRole("link", { name: /^loops$/i })).toHaveAttribute("href", "/#loops");
+    expect(screen.getByRole("link", { name: /vibe engineering/i })).toHaveAttribute("href", "/#engineering");
   });
 
-  it("renders a Core link to /core", () => {
-    renderNavbar();
-    const coreLinks = screen
-      .getAllByRole("link", { name: /^core$/i })
-      .filter((el) => el.getAttribute("href") === "/core");
-    expect(coreLinks.length).toBeGreaterThan(0);
-  });
-
-  it("does not render a Hub nav link pointing to #hub-showcase", () => {
+  it("does not render legacy Core or Hub nav links", () => {
     const { container } = renderNavbar();
+    expect(container.querySelector('[href="/core"]')).toBeNull();
     expect(container.querySelector('[href="/#hub-showcase"]')).toBeNull();
+  });
+
+  it("renders a desktop Docs dropdown trigger", () => {
+    renderNavbar();
+    expect(screen.getByRole("button", { name: /^docs$/i })).toBeInTheDocument();
   });
 
   it("exposes a mobile hamburger that reveals the Docs link in the drawer", async () => {

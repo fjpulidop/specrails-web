@@ -10,10 +10,10 @@ import Index from "@/pages/Index";
 // Mirrors SECTION_IDS in src/pages/Index.tsx.
 const EXPECTED_SECTION_IDS = [
   "hero",
-  "pipeline",
-  "demo",
-  "problem",
-  "products",
+  "product",
+  "specs",
+  "loops",
+  "engineering",
   "footer",
 ] as const;
 

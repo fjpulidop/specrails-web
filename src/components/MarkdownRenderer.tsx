@@ -239,12 +239,40 @@ const customComponents: Components = {
 };
 
 export function MarkdownRenderer({ content, doc }: MarkdownRendererProps): JSX.Element {
+  const components: Components = {
+    ...customComponents,
+    a: ({ href, children }) => {
+      const resolvedHref = href ? resolveDocHref(href, doc) : undefined;
+      const isInternal = resolvedHref?.startsWith("/");
+      const isSamePageAnchor = resolvedHref?.startsWith("#");
+
+      if (isInternal && resolvedHref) {
+        return (
+          <Link to={resolvedHref} className="docs-link">
+            {children}
+          </Link>
+        );
+      }
+
+      return (
+        <a
+          href={resolvedHref}
+          target={isSamePageAnchor ? undefined : "_blank"}
+          rel={isSamePageAnchor ? undefined : "noopener noreferrer"}
+          className="docs-link"
+        >
+          {children}
+        </a>
+      );
+    },
+  };
+
   return (
     <div className="docs-prose">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSlug, rehypeHighlight]}
-        components={customComponents}
+        components={components}
         urlTransform={(url) => resolveDocHref(url, doc)}
       >
         {content}

@@ -16,9 +16,17 @@ describe("MarkdownRenderer", () => {
   });
 
   it("renders a link for internal .md links", () => {
-    renderWithRouter(<MarkdownRenderer content="[Agents](agents.md)" />);
-    const link = screen.getByRole("link", { name: "Agents" });
-    expect(link).toHaveAttribute("href", "/docs/agents");
+    renderWithRouter(
+      <MarkdownRenderer
+        content="[First run](installing-and-first-run.md)"
+        doc={{ category: "getting-started", sourceSlug: "what-is-specrails" }}
+      />,
+    );
+    const link = screen.getByRole("link", { name: "First run" });
+    expect(link).toHaveAttribute(
+      "href",
+      "/docs/getting-started-installing-and-first-run",
+    );
   });
 
   it("renders external links with target blank", () => {
