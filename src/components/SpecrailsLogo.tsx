@@ -19,7 +19,7 @@ export function SpecrailsLogo({
     <svg
       viewBox="0 0 188 64"
       height={height}
-      width="auto"
+      width={Math.round(height * 188 / 64)}
       aria-hidden="true"
       focusable="false"
       className={className}

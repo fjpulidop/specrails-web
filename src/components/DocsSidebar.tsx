@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { DOCS } from "@/lib/docs-registry";
+import { getDocs } from "@/lib/docs-registry";
+import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 interface DocsSidebarProps {
@@ -8,16 +9,18 @@ interface DocsSidebarProps {
 
 export function DocsSidebar({ onNavigate }: DocsSidebarProps): JSX.Element {
   const location = useLocation();
+  const { content, languageId } = useI18n();
+  const docs = getDocs(languageId);
 
   return (
     <nav className="p-4" aria-label="Documentation">
       <div className="eyebrow mb-4 px-3 text-muted-foreground/70">
-        Documentation
+        {content.nav.docs}
       </div>
       <ul className="space-y-1">
         {(() => {
           let currentSection: string | undefined = undefined;
-          return DOCS.map((entry) => {
+          return docs.map((entry) => {
             const showSectionHeader =
               entry.section !== undefined && entry.section !== currentSection;
             if (showSectionHeader) currentSection = entry.section;

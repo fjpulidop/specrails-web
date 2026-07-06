@@ -1,177 +1,197 @@
-import readmeRaw from "specrails-core/docs/README.md?raw";
-import claudeGettingStartedRaw from "../content/getting-started.md?raw";
-import codexGettingStartedRaw from "../content/codex-getting-started.md?raw";
-import cliReferenceRaw from "../content/cli-reference.md?raw";
-import conceptsRaw from "specrails-core/docs/concepts.md?raw";
-// Local overrides — the external copies still carry Claude Code plugin
-// references; the local versions drop them in favour of the npx install
-// flow and match the Hub-first structure of the docs.
-import installationRaw from "../content/installation.md?raw";
-import deploymentRaw from "../content/deployment.md?raw";
-import agentsRaw from "specrails-core/docs/agents.md?raw";
-import customizationRaw from "specrails-core/docs/customization.md?raw";
-import updatingRaw from "specrails-core/docs/updating.md?raw";
-import playbookProductDiscoveryRaw from "specrails-core/docs/playbook-product-discovery.md?raw";
-import playbookParallelDevRaw from "specrails-core/docs/playbook-parallel-dev.md?raw";
-import playbookOssMaintainerRaw from "specrails-core/docs/playbook-oss-maintainer.md?raw";
-import changelogRaw from "specrails-core/docs/changelog.md?raw";
-import hubInstallationRaw from "../content/hub-installation.md?raw";
-import hubFeaturesRaw from "../content/hub-features.md?raw";
-import coreVsHubRaw from "../content/core-vs-hub.md?raw";
-import whatIsASpecRaw from "../content/what-is-a-spec.md?raw";
-import companionTutorialRaw from "../content/companion-tutorial.md?raw";
+import { type LanguageId } from "@/lib/i18n";
+
+const rawGuideDocs = import.meta.glob<string>("../content/guide/**/*.md", {
+  eager: true,
+  import: "default",
+  query: "?raw",
+});
 
 export interface DocEntry {
   slug: string;
+  sourceSlug: string;
+  category: string;
   title: string;
   description: string;
   content: string;
   section?: string;
 }
 
-// Desktop-first ordering: Specrails (Desktop) is the recommended entry point;
-// the CLI (Specrails (Core)) is grouped after it for terminal-first devs.
-export const DOC_ENTRIES: DocEntry[] = [
-  {
-    slug: "",
-    title: "Documentation",
-    description: "Overview and reading guide",
-    content: readmeRaw,
+interface GuideSpec {
+  category: string;
+  file: string;
+  order: number;
+  sourceSlug: string;
+}
+
+const DEFAULT_LANGUAGE: LanguageId = "en";
+
+const CATEGORY_LABELS: Record<LanguageId, Record<string, string>> = {
+  en: {
+    "getting-started": "Getting started",
+    specs: "Specs",
+    pipeline: "Pipeline",
+    agents: "Agents",
+    insights: "Insights",
+    integrations: "Integrations",
+    settings: "Settings",
   },
-  // ── Concepts — start here ───────────────────────────────────────────
-  {
-    slug: "what-is-a-spec",
-    title: "What is a Spec?",
-    description: "The unit of work in specrails — what a Spec captures, how you generate one, and how it powers SDD and TDD",
-    content: whatIsASpecRaw,
-    section: "Concepts",
+  es: {
+    "getting-started": "Primeros pasos",
+    specs: "Specs",
+    pipeline: "Pipeline",
+    agents: "Agentes",
+    insights: "Insights",
+    integrations: "Integraciones",
+    settings: "Ajustes",
   },
-  // ── Specrails (Desktop) — recommended path ──────────────────────────
-  {
-    slug: "hub-installation",
-    title: "Install Specrails (Desktop)",
-    description: "Download the macOS app or install via npm — get Specrails (Desktop) running locally",
-    content: hubInstallationRaw,
-    section: "Desktop",
+  fr: {
+    "getting-started": "Bien démarrer",
+    specs: "Specs",
+    pipeline: "Pipeline",
+    agents: "Agents",
+    insights: "Insights",
+    integrations: "Intégrations",
+    settings: "Réglages",
   },
-  {
-    slug: "hub-features",
-    title: "Specrails (Desktop) Features",
-    description: "Specs, Rails, Jobs, Analytics, Activity, Command Launcher, keyboard shortcuts",
-    content: hubFeaturesRaw,
-    section: "Desktop",
+  de: {
+    "getting-started": "Erste Schritte",
+    specs: "Specs",
+    pipeline: "Pipeline",
+    agents: "Agenten",
+    insights: "Insights",
+    integrations: "Integrationen",
+    settings: "Einstellungen",
   },
-  {
-    slug: "core-vs-hub",
-    title: "Desktop vs Core",
-    description: "Which to use and when — they compose",
-    content: coreVsHubRaw,
-    section: "Desktop",
+  pt: {
+    "getting-started": "Primeiros passos",
+    specs: "Specs",
+    pipeline: "Pipeline",
+    agents: "Agentes",
+    insights: "Insights",
+    integrations: "Integrações",
+    settings: "Definições",
   },
-  {
-    slug: "companion-tutorial",
-    title: "How to use Specrails (Companion)",
-    description: "Pair your phone with Specrails (Desktop) and watch your pipelines on the go — peer-to-peer, zero-knowledge",
-    content: companionTutorialRaw,
-    section: "Desktop",
+  it: {
+    "getting-started": "Primi passi",
+    specs: "Spec",
+    pipeline: "Pipeline",
+    agents: "Agenti",
+    insights: "Insights",
+    integrations: "Integrazioni",
+    settings: "Impostazioni",
   },
-  // ── Core (CLI) — terminal-first alternative ─────────────────────────
-  {
-    slug: "installation",
-    title: "Install Specrails (Core)",
-    description: "One command installs 14 AI agents and the workflow commands into your repo",
-    content: installationRaw,
-    section: "Core",
+  zh: {
+    "getting-started": "入门",
+    specs: "规格",
+    pipeline: "流水线",
+    agents: "代理",
+    insights: "洞察",
+    integrations: "集成",
+    settings: "设置",
   },
-  {
-    slug: "claude-getting-started",
-    title: "Getting Started with Claude Code",
-    description: "Install and run your first pipeline in 5 minutes",
-    content: claudeGettingStartedRaw,
-    section: "Core",
+  ja: {
+    "getting-started": "はじめに",
+    specs: "スペック",
+    pipeline: "パイプライン",
+    agents: "エージェント",
+    insights: "インサイト",
+    integrations: "連携",
+    settings: "設定",
   },
-  {
-    slug: "codex-getting-started",
-    title: "Getting Started with OpenAI Codex",
-    description: "Run the specrails pipeline with the OpenAI Codex CLI — prerequisites, setup, and differences vs Claude",
-    content: codexGettingStartedRaw,
-    section: "Core",
-  },
-  {
-    slug: "concepts",
-    title: "Core Concepts",
-    description: "The pipeline, agents, and product-driven approach",
-    content: conceptsRaw,
-    section: "Core",
-  },
-  {
-    slug: "agents",
-    title: "Agents",
-    description: "Every agent explained — role, model, and scope",
-    content: agentsRaw,
-    section: "Core",
-  },
-  {
-    slug: "customization",
-    title: "Customization",
-    description: "Adapt agents, rules, personas, and conventions",
-    content: customizationRaw,
-    section: "Core",
-  },
-  {
-    slug: "updating",
-    title: "Updating",
-    description: "Keep specrails current without losing customisations",
-    content: updatingRaw,
-    section: "Core",
-  },
-  // ── Playbooks & reference ──────────────────────────────────────────
-  {
-    slug: "playbook-product-discovery",
-    title: "Product Discovery",
-    description: "Turn rough ideas into scored, implementable specs",
-    content: playbookProductDiscoveryRaw,
-    section: "Playbook",
-  },
-  {
-    slug: "playbook-parallel-dev",
-    title: "Parallel Development",
-    description: "Run multiple features in parallel without merge conflicts",
-    content: playbookParallelDevRaw,
-    section: "Playbook",
-  },
-  {
-    slug: "playbook-oss-maintainer",
-    title: "OSS Maintainer Workflow",
-    description: "Review gates, confidence thresholds, and convention enforcement",
-    content: playbookOssMaintainerRaw,
-    section: "Playbook",
-  },
-  {
-    slug: "changelog",
-    title: "Changelog",
-    description: "What's new in each release",
-    content: changelogRaw,
-    section: "Reference",
-  },
-  {
-    slug: "cli-reference",
-    title: "CLI Reference",
-    description: "All specrails-core commands — init, enrich, doctor, implement, preview",
-    content: cliReferenceRaw,
-    section: "Reference",
-  },
-  {
-    slug: "deployment",
-    title: "Deployment",
-    description: "Running specrails locally, in CI, and on servers",
-    content: deploymentRaw,
-    section: "Reference",
-  },
+};
+
+const CATEGORY_ORDER = [
+  "getting-started",
+  "specs",
+  "pipeline",
+  "agents",
+  "insights",
+  "integrations",
+  "settings",
 ];
 
-// Strip inline markdown navigation lines (e.g. "[← Back to Docs](...) · [Next →](...)")
-// that come from source docs — DocPage renders its own prev/next navigation.
+function parseGuideKey(key: string): GuideSpec | null {
+  const match = key.match(
+    /^\.\.\/content\/guide\/en\/([^/]+)\/(\d+)-(.+)\.md$/,
+  );
+  if (!match) return null;
+  return {
+    category: match[1],
+    file: `${match[2]}-${match[3]}.md`,
+    order: Number.parseInt(match[2], 10),
+    sourceSlug: match[3],
+  };
+}
+
+const GUIDE_SPECS: GuideSpec[] = Object.keys(rawGuideDocs)
+  .map(parseGuideKey)
+  .filter((spec): spec is GuideSpec => spec !== null)
+  .sort((a, b) => {
+    const categoryDelta =
+      categoryRank(a.category) - categoryRank(b.category) ||
+      a.category.localeCompare(b.category);
+    if (categoryDelta !== 0) return categoryDelta;
+    return a.order - b.order || a.sourceSlug.localeCompare(b.sourceSlug);
+  });
+
+function categoryRank(category: string): number {
+  const index = CATEGORY_ORDER.indexOf(category);
+  return index === -1 ? Number.MAX_SAFE_INTEGER : index;
+}
+
+function categoryLabel(category: string, language: LanguageId): string {
+  return (
+    CATEGORY_LABELS[language]?.[category] ??
+    CATEGORY_LABELS[DEFAULT_LANGUAGE]?.[category] ??
+    toTitle(category)
+  );
+}
+
+function toTitle(value: string): string {
+  return value
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function routeSlug(category: string, sourceSlug: string): string {
+  if (category === "getting-started" && sourceSlug === "what-is-specrails") {
+    return "getting-started";
+  }
+  return `${category}-${sourceSlug}`;
+}
+
+function contentFor(language: LanguageId, spec: GuideSpec): string {
+  const localizedKey = `../content/guide/${language}/${spec.category}/${spec.file}`;
+  const englishKey = `../content/guide/${DEFAULT_LANGUAGE}/${spec.category}/${spec.file}`;
+  const content = rawGuideDocs[localizedKey] ?? rawGuideDocs[englishKey];
+  if (!content) {
+    throw new Error(`Missing documentation content: ${englishKey}`);
+  }
+  return stripMarkdownNav(content);
+}
+
+function extractTitle(content: string, sourceSlug: string): string {
+  const match = content.match(/^#\s+(.+)$/m);
+  return match ? match[1].trim() : toTitle(sourceSlug);
+}
+
+function extractDescription(content: string): string {
+  const body = content
+    .replace(/^#\s+.+$/m, "")
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line && !line.startsWith("#") && !line.startsWith("```"));
+
+  if (!body) return "";
+  return body
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`]/g, "")
+    .slice(0, 170)
+    .trim();
+}
+
+// Strip inline markdown navigation lines that come from source docs; DocPage
+// renders its own previous/next navigation.
 function stripMarkdownNav(content: string): string {
   return content
     .split("\n")
@@ -180,22 +200,132 @@ function stripMarkdownNav(content: string): string {
     .trimEnd();
 }
 
-export const DOCS = DOC_ENTRIES.map((entry) => ({
-  ...entry,
-  content: stripMarkdownNav(entry.content),
-}));
+const docsCache = new Map<LanguageId, DocEntry[]>();
 
-export function getDocBySlug(slug: string): DocEntry | undefined {
-  return DOCS.find((d) => d.slug === slug);
+export function getDocs(language: LanguageId = DEFAULT_LANGUAGE): DocEntry[] {
+  const cached = docsCache.get(language);
+  if (cached) return cached;
+
+  const docs = GUIDE_SPECS.map((spec) => {
+    const content = contentFor(language, spec);
+    return {
+      slug: routeSlug(spec.category, spec.sourceSlug),
+      sourceSlug: spec.sourceSlug,
+      category: spec.category,
+      title: extractTitle(content, spec.sourceSlug),
+      description: extractDescription(content),
+      content,
+      section: categoryLabel(spec.category, language),
+    };
+  });
+
+  docsCache.set(language, docs);
+  return docs;
 }
 
-export function getAdjacentDocs(slug: string): {
+export const DOCS: DocEntry[] = getDocs(DEFAULT_LANGUAGE);
+
+export function getDocBySlug(
+  slug: string,
+  language: LanguageId = DEFAULT_LANGUAGE,
+): DocEntry | undefined {
+  return getDocs(language).find((doc) => doc.slug === slug);
+}
+
+export function getAdjacentDocs(
+  slug: string,
+  language: LanguageId = DEFAULT_LANGUAGE,
+): {
   prev: DocEntry | null;
   next: DocEntry | null;
 } {
-  const idx = DOCS.findIndex((d) => d.slug === slug);
+  const docs = getDocs(language);
+  const idx = docs.findIndex((doc) => doc.slug === slug);
   return {
-    prev: idx > 0 ? DOCS[idx - 1] : null,
-    next: idx < DOCS.length - 1 ? DOCS[idx + 1] : null,
+    prev: idx > 0 ? docs[idx - 1] : null,
+    next: idx >= 0 && idx < docs.length - 1 ? docs[idx + 1] : null,
   };
+}
+
+function findSpec(category: string, sourceSlug: string): GuideSpec | undefined {
+  return GUIDE_SPECS.find(
+    (spec) => spec.category === category && spec.sourceSlug === sourceSlug,
+  );
+}
+
+function normalizeRelativePath(pathPart: string, currentCategory?: string): {
+  category: string;
+  sourceSlug: string;
+} | null {
+  const rawSegments = pathPart
+    .replace(/\.md$/, "")
+    .split("/")
+    .filter(Boolean);
+
+  const stack = currentCategory ? [currentCategory] : [];
+  for (const segment of rawSegments) {
+    if (segment === ".") continue;
+    if (segment === "..") {
+      stack.pop();
+      continue;
+    }
+    stack.push(segment);
+  }
+
+  if (stack.length === 0) return null;
+
+  const rawSourceSlug = stack.pop();
+  const category = stack.pop() ?? currentCategory;
+  if (!rawSourceSlug || !category) return null;
+
+  const sourceSlug = rawSourceSlug.replace(/^\d+-/, "");
+  return { category, sourceSlug };
+}
+
+export function resolveDocHref(
+  href: string,
+  currentDoc?: Pick<DocEntry, "category" | "sourceSlug">,
+): string {
+  if (
+    href.startsWith("http") ||
+    href.startsWith("#") ||
+    href.startsWith("mailto:") ||
+    href.startsWith("/")
+  ) {
+    return href;
+  }
+
+  const [pathPart, hashPart = ""] = href.split("#");
+  if (!pathPart) return href;
+
+  const normalized = normalizeRelativePath(pathPart, currentDoc?.category);
+  if (!normalized) return href;
+
+  let spec = findSpec(normalized.category, normalized.sourceSlug);
+  if (!spec) {
+    spec = GUIDE_SPECS.find((candidate) => candidate.sourceSlug === normalized.sourceSlug);
+  }
+  if (!spec) return href;
+
+  const hash = hashPart ? `#${hashPart}` : "";
+  return `/docs/${routeSlug(spec.category, spec.sourceSlug)}${hash}`;
+}
+
+export function docPathToSlug(path: string): string {
+  const clean = path
+    .replace(/^\.\//, "")
+    .replace(/^\.\.\//, "")
+    .replace(/^docs\/guide\/[^/]+\//, "")
+    .replace(/^docs\//, "")
+    .replace(/\.md$/, "");
+
+  const parts = clean.split("/").filter(Boolean);
+  if (parts.length >= 2) {
+    const sourceSlug = parts[parts.length - 1].replace(/^\d+-/, "");
+    return routeSlug(parts[parts.length - 2], sourceSlug);
+  }
+
+  const sourceSlug = clean.replace(/^\d+-/, "");
+  const spec = GUIDE_SPECS.find((candidate) => candidate.sourceSlug === sourceSlug);
+  return spec ? routeSlug(spec.category, spec.sourceSlug) : sourceSlug;
 }

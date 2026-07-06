@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Github, Coffee, Sun, Moon, Menu, Download as DownloadIcon } from "lucide-react";
-import { AgentsDropdown } from "@/components/AgentsDropdown";
 import { DocsDropdown } from "@/components/DocsDropdown";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import {
   Sheet,
   SheetContent,
@@ -11,28 +11,17 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
+import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 // openspec: hero-redesign-hub-primary
-
-/** Same-page section links (homepage). */
-const SECTION_LINKS = [
-  { label: "How it works", href: "/#pipeline" },
-  { label: "Why", href: "/#problem" },
-  { label: "Ecosystem", href: "/#products" },
-] as const;
-
-/** Product route links. */
-const PRODUCT_LINKS = [
-  { label: "Desktop", to: "/desktop" },
-  { label: "Core", to: "/core" },
-  { label: "Agents", to: "/agents" },
-] as const;
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggle } = useTheme();
+  const { content } = useI18n();
+  const { nav } = content;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -65,6 +54,13 @@ const Navbar = () => {
   const navLinkClass =
     "text-sm text-muted-foreground hover:text-foreground transition-colors";
 
+  const sectionLinks = [
+    { label: nav.product, href: "/#product" },
+    { label: nav.specs, href: "/#specs" },
+    { label: nav.loops, href: "/#loops" },
+    { label: nav.engineering, href: "/#engineering" },
+  ] as const;
+
   return (
     <nav
       className={cn(
@@ -85,7 +81,7 @@ const Navbar = () => {
           <svg
             viewBox="0 0 188 64"
             height="48"
-            width="auto"
+            width="141"
             aria-hidden="true"
             focusable="false"
             style={{ display: "block" }}
@@ -118,31 +114,8 @@ const Navbar = () => {
 
         {/* Desktop nav — tidy groups + single gradient CTA */}
         <div className="hidden md:flex items-center gap-1 lg:gap-2">
-          {/* Group 1: products — Core link + Agents dropdown */}
-          <Link to="/desktop" className={cn(navLinkClass, "px-2")}>
-            Desktop
-          </Link>
-          <Link to="/core" className={cn(navLinkClass, "px-2")}>
-            Core
-          </Link>
-          <a
-            href="https://specrails.dev/companion-app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(navLinkClass, "px-2")}
-          >
-            Companion
-          </a>
-          <AgentsDropdown />
-
-          {/* divider */}
-          <span
-            className="mx-1 h-4 w-px bg-border/50"
-            aria-hidden="true"
-          />
-
-          {/* Group 2: explore the landing page */}
-          {SECTION_LINKS.map((l) => (
+          {/* Product story */}
+          {sectionLinks.map((l) => (
             <a key={l.href} href={l.href} className={cn(navLinkClass, "px-2")}>
               {l.label}
             </a>
@@ -160,13 +133,14 @@ const Navbar = () => {
           />
 
           {/* Group 4: utilities (icon-only) */}
+          <LanguageSwitcher />
           <ThemeToggleBtn />
           <a
             href="https://ko-fi.com/D1D81Y002C"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Donate on Ko-fi"
-            title="Donate on Ko-fi"
+            aria-label={nav.donate}
+            title={nav.donate}
             className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-brand-violet transition-colors"
           >
             <Coffee className="w-5 h-5" />
@@ -175,7 +149,7 @@ const Navbar = () => {
             href="https://github.com/fjpulidop/specrails-desktop"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Specrails (Desktop) on GitHub"
+            aria-label={nav.github}
             className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />
@@ -190,13 +164,14 @@ const Navbar = () => {
           >
             <Link to="/download">
               <DownloadIcon className="w-4 h-4" />
-              Download
+              {nav.download}
             </Link>
           </Button>
         </div>
 
         {/* Mobile: theme toggle + hamburger */}
         <div className="flex md:hidden items-center gap-2">
+          <LanguageSwitcher />
           <ThemeToggleBtn />
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <Button
@@ -213,40 +188,15 @@ const Navbar = () => {
               className="w-[88vw] max-w-sm p-0 flex flex-col bg-surface-0"
             >
               <SheetTitle className="px-6 pt-6 pb-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                Menu
+                {nav.menu}
               </SheetTitle>
 
               <nav className="flex-1 overflow-y-auto px-3 pb-4">
-                {/* Products */}
+                {/* Sections */}
                 <div className="px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Product
+                  {nav.sections}
                 </div>
-                {PRODUCT_LINKS.map((l) => (
-                  <SheetClose asChild key={l.to}>
-                    <Link
-                      to={l.to}
-                      className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-surface-2 transition-colors"
-                    >
-                      {l.label}
-                    </Link>
-                  </SheetClose>
-                ))}
-                <SheetClose asChild>
-                  <a
-                    href="https://specrails.dev/companion-app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-surface-2 transition-colors"
-                  >
-                    Companion
-                  </a>
-                </SheetClose>
-
-                {/* Explore */}
-                <div className="px-3 pt-5 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Explore
-                </div>
-                {SECTION_LINKS.map((l) => (
+                {sectionLinks.map((l) => (
                   <SheetClose asChild key={l.href}>
                     <a
                       href={l.href}
@@ -259,14 +209,14 @@ const Navbar = () => {
 
                 {/* Docs */}
                 <div className="px-3 pt-5 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  Resources
+                  {nav.resources}
                 </div>
                 <SheetClose asChild>
                   <Link
                     to="/docs"
                     className="flex items-center rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-surface-2 transition-colors"
                   >
-                    Docs
+                    {nav.docs}
                   </Link>
                 </SheetClose>
                 <a
@@ -276,7 +226,7 @@ const Navbar = () => {
                   className="flex items-center gap-2 rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-surface-2 transition-colors"
                 >
                   <Github className="w-5 h-5" />
-                  GitHub
+                  {nav.github}
                 </a>
                 <a
                   href="https://ko-fi.com/D1D81Y002C"
@@ -285,7 +235,7 @@ const Navbar = () => {
                   className="flex items-center gap-2 rounded-lg px-3 py-3 text-base font-medium text-foreground hover:bg-surface-2 transition-colors"
                 >
                   <Coffee className="w-5 h-5" />
-                  Donate on Ko-fi
+                  {nav.donate}
                 </a>
               </nav>
 
@@ -312,7 +262,7 @@ const Navbar = () => {
                   >
                     <Link to="/download">
                       <DownloadIcon className="w-4 h-4" />
-                      Download
+                      {nav.download}
                     </Link>
                   </Button>
                 </SheetClose>

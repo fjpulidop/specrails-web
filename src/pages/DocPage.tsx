@@ -10,6 +10,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { useSeo } from "@/hooks/useSeo";
+import { useI18n } from "@/lib/i18n";
 
 function NotFoundContent(): JSX.Element {
   return (
@@ -30,7 +31,8 @@ function NotFoundContent(): JSX.Element {
 
 export default function DocPage(): JSX.Element {
   const { slug = "" } = useParams<{ slug?: string }>();
-  const doc = getDocBySlug(slug);
+  const { content, languageId } = useI18n();
+  const doc = getDocBySlug(slug, languageId);
 
   useSeo({
     title: doc ? `${doc.title} — specrails` : "Not Found — specrails",
@@ -48,7 +50,7 @@ export default function DocPage(): JSX.Element {
     return <NotFoundContent />;
   }
 
-  const { prev, next } = getAdjacentDocs(slug);
+  const { prev, next } = getAdjacentDocs(slug, languageId);
 
   return (
     <div className="mx-auto flex w-full max-w-6xl gap-10 px-6 py-10 md:py-12">
@@ -64,7 +66,7 @@ export default function DocPage(): JSX.Element {
             className="inline-flex items-center gap-1 transition-colors hover:text-foreground"
           >
             <Home className="h-3.5 w-3.5" aria-hidden="true" />
-            Docs
+            {content.nav.docs}
           </Link>
           {doc.section && (
             <>
@@ -104,7 +106,7 @@ export default function DocPage(): JSX.Element {
           </Collapsible>
         </div>
 
-        <MarkdownRenderer content={doc.content} />
+        <MarkdownRenderer content={doc.content} doc={doc} />
 
         {/* Prev/Next navigation */}
         <nav className="mt-16 grid gap-4 border-t border-border/30 pt-8 sm:grid-cols-2">

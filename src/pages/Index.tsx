@@ -9,23 +9,24 @@ import ProblemSection from "@/components/ProblemSection";
 import ProductsSection from "@/components/ProductsSection";
 import FooterSection from "@/components/FooterSection";
 import SectionNav from "@/components/SectionNav";
+import { useI18n } from "@/lib/i18n";
 
 const SECTION_IDS = [
   "hero",
-  "pipeline",
-  "demo",
-  "problem",
-  "products",
+  "product",
+  "specs",
+  "loops",
+  "engineering",
   "footer",
 ];
 
 const Index = () => {
   const { hash } = useLocation();
+  const { content } = useI18n();
 
   useSeo({
-    title: "specrails — Describe it. A team of agents ships it.",
-    description:
-      "specrails is an agentic software development system. Describe what you want; a team of AI agents — running on Claude, Codex, or Gemini — generates the spec and ships the PR.",
+    title: content.seo.title,
+    description: content.seo.description,
     canonical: "https://specrails.dev/",
   });
 
@@ -49,12 +50,11 @@ const Index = () => {
       </a>
       <Navbar />
       <main>
-        {/* Comprehension → desire → download: hero → how it works → demo proof → why specrails → the ecosystem → footer. */}
         <HeroSection />
+        <ProductsSection />
         <PipelineSection />
         <DemoSection />
         <ProblemSection />
-        <ProductsSection />
       </main>
       <FooterSection />
       <SectionNav sectionIds={SECTION_IDS} />

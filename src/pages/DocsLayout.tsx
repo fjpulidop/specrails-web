@@ -6,9 +6,11 @@ import { DocsSidebar } from "@/components/DocsSidebar";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import SectionNav from "@/components/SectionNav";
+import { useI18n } from "@/lib/i18n";
 
 export default function DocsLayout(): JSX.Element {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { content } = useI18n();
 
   return (
     <div className="min-h-screen bg-surface-0">
@@ -41,7 +43,7 @@ export default function DocsLayout(): JSX.Element {
             </Button>
             <span className="inline-flex items-center gap-1.5 font-mono text-sm text-muted-foreground">
               <PanelLeft className="h-4 w-4" aria-hidden="true" />
-              Documentation
+              {content.nav.docs}
             </span>
           </div>
           <Outlet />

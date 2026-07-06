@@ -7,25 +7,12 @@ import { Link } from "react-router-dom";
 import { Info, Lightbulb, AlertTriangle, Link2 } from "lucide-react";
 import type { Components } from "react-markdown";
 import { CopyButton } from "@/components/CopyButton";
+import { resolveDocHref, type DocEntry } from "@/lib/docs-registry";
 import { cn } from "@/lib/utils";
 
 interface MarkdownRendererProps {
   content: string;
-}
-
-function transformUrl(url: string): string {
-  // External links and anchors: pass through unchanged
-  if (url.startsWith("http") || url.startsWith("#")) return url;
-
-  // Transform relative .md links → /docs/slug
-  const mdMatch = url.match(/^(?:\.\/)?([a-zA-Z-]+)\.md(#.*)?$/);
-  if (mdMatch) {
-    const slug = mdMatch[1] === "README" ? "" : mdMatch[1];
-    const hash = mdMatch[2] ?? "";
-    return `/docs/${slug}${hash}`;
-  }
-
-  return url;
+  doc?: Pick<DocEntry, "category" | "sourceSlug">;
 }
 
 /** Recursively flatten React children into plain text (for copy + slugs). */
@@ -251,14 +238,14 @@ const customComponents: Components = {
   },
 };
 
-export function MarkdownRenderer({ content }: MarkdownRendererProps): JSX.Element {
+export function MarkdownRenderer({ content, doc }: MarkdownRendererProps): JSX.Element {
   return (
     <div className="docs-prose">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSlug, rehypeHighlight]}
         components={customComponents}
-        urlTransform={transformUrl}
+        urlTransform={(url) => resolveDocHref(url, doc)}
       >
         {content}
       </ReactMarkdown>
