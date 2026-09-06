@@ -29,6 +29,13 @@ beforeEach(() => {
   );
 });
 
+function intersection(isIntersecting: boolean): IntersectionObserverEntry {
+  const target = document.createElement("div");
+  const bounds = target.getBoundingClientRect();
+  return { target, isIntersecting, time: 0, intersectionRatio: isIntersecting ? 1 : 0,
+    boundingClientRect: bounds, intersectionRect: bounds, rootBounds: null };
+}
+
 describe("useScrollAnimation", () => {
   it("starts with isVisible = false", () => {
     const { result } = renderHook(() => useScrollAnimation());
@@ -47,7 +54,7 @@ describe("useScrollAnimation", () => {
     act(() => {
       if (observerCallback) {
         observerCallback([
-          { isIntersecting: true, target: document.createElement("div") } as IntersectionObserverEntry,
+          intersection(true),
         ]);
       }
     });
@@ -61,7 +68,7 @@ describe("useScrollAnimation", () => {
     act(() => {
       if (observerCallback) {
         observerCallback([
-          { isIntersecting: false, target: document.createElement("div") } as IntersectionObserverEntry,
+          intersection(false),
         ]);
       }
     });

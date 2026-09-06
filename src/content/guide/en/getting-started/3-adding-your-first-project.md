@@ -1,58 +1,19 @@
-# Adding your first project
+<!-- guide-revision: mission-first-v1 -->
 
-A project is just a folder on your computer that contains a codebase. Let's connect one.
+# Add a project and its repositories
 
-## Open the Add Project dialog
+A project is a logical product with one shared backlog. It can contain one repository, several repositories or extra folders used as context.
 
-Click **Add your first project** on the welcome screen (or the **Add project** button in the left sidebar later on). A small dialog appears.
+## Create the project
 
-## Fill in the details
+Open Add Project, choose the primary folder and give the project a recognizable name. Add the other folders that belong to the product, then complete the prerequisite and Core setup checks.
 
-**Project folder** *(required)*
+For an existing project, use **Project settings → General → Repositories and folders**. Repository names help distinguish paths such as `frontend/src/index.ts` and `api/src/index.ts`; stable membership IDs keep their context separate.
 
-Point specrails at the folder that holds your code. On the desktop app you can click the folder icon to browse and pick it visually, or paste the full path. This should be the root of your repository — the folder that contains your code and (usually) a `.git` directory.
+## Select implementation scope
 
-**Project name** *(optional)*
+A spec without an explicit selection targets the primary repository. Select every repository required by a change before launching it. Reading another folder does not grant it implementation scope. Secondary non-Git folders provide context but cannot be additional isolated implementation targets.
 
-A friendly label shown in the sidebar. If you leave it blank, specrails uses the folder name.
+The project owns its backlog and integrations. Adding a folder already used elsewhere does not import that other project's tickets or Jira ownership.
 
-**Providers**
-
-Choose which AI provider(s) this project should use. Specrails shows you the ones it detected on your machine:
-
-- 🤖 **Claude**
-- ⚡ **Codex**
-- ✨ **Gemini**
-
-Providers it didn't find are greyed out and marked *not found* — install and sign in to one, then re-open the dialog. By default every available provider is pre-selected, but you can deselect down to just the one you want. If you pick more than one, the **first** becomes the project's default; you'll be able to choose per task later.
-
-> A quick check runs in the background to confirm the required tools are present. If something essential is missing, the **Add** button stays disabled and a **More info** link gives you exact install commands.
-
-Click **Add** to continue.
-
-## Setup that runs in seconds
-
-If the folder already has specrails configured, you're done — the project appears in your sidebar instantly.
-
-If it's a fresh project, a short **setup wizard** runs. It has three steps:
-
-1. **Configure** — confirm the basics for each provider you chose.
-2. **Install** — specrails sets up the project automatically. This is the *quick* install: ready-to-use template agents that are in place within seconds. You'll see a live log as it runs.
-3. **Done** — a summary confirming everything's ready.
-
-For a multi-provider project, the install runs once per provider, one after another, and the Done step shows a card for each.
-
-## What gets installed
-
-Setup is deliberately light and **non-invasive**. Specrails adds a small amount of configuration to your project so the pipeline knows how to run:
-
-- A `.specrails/` folder holding your project's agent profiles and local settings.
-- Agent definitions under `.claude/agents/` that power the Architect → Developer → Reviewer → Ship pipeline.
-
-That's it — specrails won't rewrite your source code during setup, and these files are safe to commit if you want to share the configuration with your team.
-
-> **Want the deep setup instead?** The app ships the fast template install on purpose. If you'd prefer the AI-enriched flow (codebase analysis and custom agent personas), you can run `npx specrails-core@latest init` from your project folder in a terminal.
-
-## You're in
-
-Once setup finishes, specrails drops you into your project's dashboard. Time for the tour — see [The dashboard tour](the-dashboard-tour).
+Next: [multi-repository work](/docs/getting-started-multiple-repositories) and [your first mission](/docs/missions-first-mission).

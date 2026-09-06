@@ -22,18 +22,30 @@ describe("Navbar", () => {
 
   it("renders a GitHub link pointing to specrails-desktop", () => {
     renderNavbar();
-    const githubLinks = screen.getAllByRole("link").filter((el) =>
-      el.getAttribute("href")?.includes("github.com/fjpulidop/specrails-desktop"),
-    );
+    const githubLinks = screen
+      .getAllByRole("link")
+      .filter((el) =>
+        el
+          .getAttribute("href")
+          ?.includes("github.com/fjpulidop/specrails-desktop"),
+      );
     expect(githubLinks.length).toBeGreaterThan(0);
   });
 
   it("renders navigation anchors for main sections", () => {
     renderNavbar();
-    expect(screen.getByRole("link", { name: /^product$/i })).toHaveAttribute("href", "/#product");
-    expect(screen.getByRole("link", { name: /^specs$/i })).toHaveAttribute("href", "/#specs");
-    expect(screen.getByRole("link", { name: /^loops$/i })).toHaveAttribute("href", "/#loops");
-    expect(screen.getByRole("link", { name: /vibe engineering/i })).toHaveAttribute("href", "/#engineering");
+    expect(screen.getByRole("link", { name: /^product$/i })).toHaveAttribute(
+      "href",
+      "/#product",
+    );
+    expect(screen.getByRole("link", { name: /^workflow$/i })).toHaveAttribute(
+      "href",
+      "/#specs",
+    );
+    expect(screen.getByRole("link", { name: /^companion$/i })).toHaveAttribute(
+      "href",
+      "/companion",
+    );
   });
 
   it("does not render legacy Core or Hub nav links", () => {

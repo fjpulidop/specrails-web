@@ -16,7 +16,13 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage --maxWorkers=2",
+    "docs:sync": "node scripts/sync-guide.mjs",
+    "docs:check": "node scripts/sync-guide.mjs --check",
+    "test:docs-sync": "node --test scripts/sync-guide.test.mjs",
+    "prebuild": "npm run docs:check",
+    "prebuild:dev": "npm run docs:check",
+    "check:types": "tsc -p tsconfig.app.json --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

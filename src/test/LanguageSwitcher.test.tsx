@@ -39,8 +39,12 @@ describe("LanguageSwitcher", () => {
 
     await user.click(screen.getByRole("button", { name: /change language/i }));
 
-    expect(screen.getByRole("button", { name: /English/i })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /Español/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /English/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Español/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /日本語/i })).toBeInTheDocument();
   });
 
@@ -53,11 +57,12 @@ describe("LanguageSwitcher", () => {
 
     expect(window.localStorage.getItem("specrails-web:language")).toBe("es");
     expect(document.documentElement.lang).toBe("es");
-    expect(screen.getByRole("button", { name: /cambiar idioma/i })).toHaveAttribute(
-      "title",
-      "Idioma: Español",
-    );
-    expect(screen.queryByRole("button", { name: /English/i })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /cambiar idioma/i }),
+    ).toHaveAttribute("title", "Idioma: Español");
+    expect(
+      screen.queryByRole("button", { name: /English/i }),
+    ).not.toBeInTheDocument();
   });
 
   it("closes when clicking outside the menu", async () => {
@@ -67,6 +72,20 @@ describe("LanguageSwitcher", () => {
     await user.click(screen.getByRole("button", { name: /change language/i }));
     fireEvent.mouseDown(document.body);
 
-    expect(screen.queryByRole("button", { name: /Español/i })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /Español/i }),
+    ).not.toBeInTheDocument();
+  });
+
+  it("closes with Escape and restores keyboard focus", async () => {
+    const user = userEvent.setup();
+    renderSwitcher();
+    const trigger = screen.getByRole("button", { name: /change language/i });
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    await user.tab();
+    await user.keyboard("{Escape}");
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(trigger).toHaveFocus();
   });
 });

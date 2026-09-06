@@ -1,257 +1,53 @@
-import { type LanguageId } from "@/lib/i18n";
+import type { LanguageId } from "@/lib/i18n";
+import index from "@/lib/docs-generated.json";
+import { categoryLabel } from "@/lib/docs-copy";
 
-const rawGuideDocs = import.meta.glob<string>("../content/guide/**/*.md", {
-  eager: true,
-  import: "default",
-  query: "?raw",
-});
-
+interface Translation { title: string; description: string; headings: string[] }
+interface GuideSpec { key: string; slug: string; sourceSlug: string; category: string; translations: Partial<Record<LanguageId, Translation>> }
 export interface DocEntry {
-  slug: string;
-  sourceSlug: string;
-  category: string;
-  title: string;
-  description: string;
-  content: string;
-  section?: string;
+  key: string; slug: string; sourceSlug: string; category: string; title: string; description: string;
+  headings: string[]; section: string; language: LanguageId; contentLanguage: LanguageId; isFallback: boolean;
 }
-
-interface GuideSpec {
-  category: string;
-  file: string;
-  order: number;
-  sourceSlug: string;
-}
-
-const DEFAULT_LANGUAGE: LanguageId = "en";
-
-const CATEGORY_LABELS: Record<LanguageId, Record<string, string>> = {
-  en: {
-    "getting-started": "Getting started",
-    specs: "Specs",
-    pipeline: "Pipeline",
-    agents: "Agents",
-    insights: "Insights",
-    integrations: "Integrations",
-    settings: "Settings",
-  },
-  es: {
-    "getting-started": "Primeros pasos",
-    specs: "Specs",
-    pipeline: "Pipeline",
-    agents: "Agentes",
-    insights: "Insights",
-    integrations: "Integraciones",
-    settings: "Ajustes",
-  },
-  fr: {
-    "getting-started": "Bien démarrer",
-    specs: "Specs",
-    pipeline: "Pipeline",
-    agents: "Agents",
-    insights: "Insights",
-    integrations: "Intégrations",
-    settings: "Réglages",
-  },
-  de: {
-    "getting-started": "Erste Schritte",
-    specs: "Specs",
-    pipeline: "Pipeline",
-    agents: "Agenten",
-    insights: "Insights",
-    integrations: "Integrationen",
-    settings: "Einstellungen",
-  },
-  pt: {
-    "getting-started": "Primeiros passos",
-    specs: "Specs",
-    pipeline: "Pipeline",
-    agents: "Agentes",
-    insights: "Insights",
-    integrations: "Integrações",
-    settings: "Definições",
-  },
-  it: {
-    "getting-started": "Primi passi",
-    specs: "Spec",
-    pipeline: "Pipeline",
-    agents: "Agenti",
-    insights: "Insights",
-    integrations: "Integrazioni",
-    settings: "Impostazioni",
-  },
-  zh: {
-    "getting-started": "入门",
-    specs: "规格",
-    pipeline: "流水线",
-    agents: "代理",
-    insights: "洞察",
-    integrations: "集成",
-    settings: "设置",
-  },
-  ja: {
-    "getting-started": "はじめに",
-    specs: "スペック",
-    pipeline: "パイプライン",
-    agents: "エージェント",
-    insights: "インサイト",
-    integrations: "連携",
-    settings: "設定",
-  },
-};
-
-const CATEGORY_ORDER = [
-  "getting-started",
-  "specs",
-  "pipeline",
-  "agents",
-  "insights",
-  "integrations",
-  "settings",
-];
-
-function parseGuideKey(key: string): GuideSpec | null {
-  const match = key.match(
-    /^\.\.\/content\/guide\/en\/([^/]+)\/(\d+)-(.+)\.md$/,
-  );
-  if (!match) return null;
-  return {
-    category: match[1],
-    file: `${match[2]}-${match[3]}.md`,
-    order: Number.parseInt(match[2], 10),
-    sourceSlug: match[3],
-  };
-}
-
-const GUIDE_SPECS: GuideSpec[] = Object.keys(rawGuideDocs)
-  .map(parseGuideKey)
-  .filter((spec): spec is GuideSpec => spec !== null)
-  .sort((a, b) => {
-    const categoryDelta =
-      categoryRank(a.category) - categoryRank(b.category) ||
-      a.category.localeCompare(b.category);
-    if (categoryDelta !== 0) return categoryDelta;
-    return a.order - b.order || a.sourceSlug.localeCompare(b.sourceSlug);
-  });
-
-function categoryRank(category: string): number {
-  const index = CATEGORY_ORDER.indexOf(category);
-  return index === -1 ? Number.MAX_SAFE_INTEGER : index;
-}
-
-function categoryLabel(category: string, language: LanguageId): string {
-  return (
-    CATEGORY_LABELS[language]?.[category] ??
-    CATEGORY_LABELS[DEFAULT_LANGUAGE]?.[category] ??
-    toTitle(category)
-  );
-}
-
-function toTitle(value: string): string {
-  return value
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (char) => char.toUpperCase());
-}
-
-function routeSlug(category: string, sourceSlug: string): string {
-  if (category === "getting-started" && sourceSlug === "what-is-specrails") {
-    return "getting-started";
-  }
-  return `${category}-${sourceSlug}`;
-}
-
-function contentFor(language: LanguageId, spec: GuideSpec): string {
-  const localizedKey = `../content/guide/${language}/${spec.category}/${spec.file}`;
-  const englishKey = `../content/guide/${DEFAULT_LANGUAGE}/${spec.category}/${spec.file}`;
-  const content = rawGuideDocs[localizedKey] ?? rawGuideDocs[englishKey];
-  if (!content) {
-    throw new Error(`Missing documentation content: ${englishKey}`);
-  }
-  return stripMarkdownNav(content);
-}
-
-function extractTitle(content: string, sourceSlug: string): string {
-  const match = content.match(/^#\s+(.+)$/m);
-  return match ? match[1].trim() : toTitle(sourceSlug);
-}
-
-function extractDescription(content: string): string {
-  const body = content
-    .replace(/^#\s+.+$/m, "")
-    .split("\n")
-    .map((line) => line.trim())
-    .find((line) => line && !line.startsWith("#") && !line.startsWith("```"));
-
-  if (!body) return "";
-  return body
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/[*_`]/g, "")
-    .slice(0, 170)
-    .trim();
-}
-
-// Strip inline markdown navigation lines that come from source docs; DocPage
-// renders its own previous/next navigation.
-function stripMarkdownNav(content: string): string {
-  return content
-    .split("\n")
-    .filter((line) => !/^\[←[^\]]*\]\([^)]*\)/.test(line.trim()))
-    .join("\n")
-    .trimEnd();
-}
-
+export interface LoadedDoc extends DocEntry { content: string }
+const GUIDE_SPECS: GuideSpec[] = index.entries;
 const docsCache = new Map<LanguageId, DocEntry[]>();
-
-export function getDocs(language: LanguageId = DEFAULT_LANGUAGE): DocEntry[] {
-  const cached = docsCache.get(language);
-  if (cached) return cached;
-
-  const docs = GUIDE_SPECS.map((spec) => {
-    const content = contentFor(language, spec);
-    return {
-      slug: routeSlug(spec.category, spec.sourceSlug),
-      sourceSlug: spec.sourceSlug,
-      category: spec.category,
-      title: extractTitle(content, spec.sourceSlug),
-      description: extractDescription(content),
-      content,
-      section: categoryLabel(spec.category, language),
-    };
+function routeSlug(category: string, sourceSlug: string) {
+  return category === 'getting-started' && sourceSlug === 'what-is-specrails' ? 'getting-started' : `${category}-${sourceSlug}`;
+}
+export function getDocs(language: LanguageId = 'en'): DocEntry[] {
+  const cached = docsCache.get(language); if (cached) return cached;
+  const docs = GUIDE_SPECS.map(spec => {
+    const contentLanguage = spec.translations[language] ? language : 'en';
+    const metadata = spec.translations[contentLanguage]!;
+    return { key: spec.key, slug: spec.slug, sourceSlug: spec.sourceSlug, category: spec.category, ...metadata,
+      section: categoryLabel(spec.category, language), language, contentLanguage, isFallback: contentLanguage !== language };
   });
-
-  docsCache.set(language, docs);
-  return docs;
+  docsCache.set(language, docs); return docs;
 }
-
-export const DOCS: DocEntry[] = getDocs(DEFAULT_LANGUAGE);
-
-export function getDocBySlug(
-  slug: string,
-  language: LanguageId = DEFAULT_LANGUAGE,
-): DocEntry | undefined {
-  return getDocs(language).find((doc) => doc.slug === slug);
+export const DOCS = getDocs();
+export function getDocBySlug(slug: string, language: LanguageId = 'en') { return getDocs(language).find(doc => doc.slug === slug); }
+export function getAdjacentDocs(slug: string, language: LanguageId = 'en') {
+  const docs = getDocs(language); const index = docs.findIndex(doc => doc.slug === slug);
+  return { prev: index > 0 ? docs[index - 1] : null, next: index >= 0 && index < docs.length - 1 ? docs[index + 1] : null };
 }
-
-export function getAdjacentDocs(
-  slug: string,
-  language: LanguageId = DEFAULT_LANGUAGE,
-): {
-  prev: DocEntry | null;
-  next: DocEntry | null;
-} {
-  const docs = getDocs(language);
-  const idx = docs.findIndex((doc) => doc.slug === slug);
-  return {
-    prev: idx > 0 ? docs[idx - 1] : null,
-    next: idx >= 0 && idx < docs.length - 1 ? docs[idx + 1] : null,
-  };
+export async function loadDocContent(doc: DocEntry): Promise<string> {
+  // Even the loader map stays out of the public landing page's dependency graph.
+  const { loadArticle } = await import('./docs-content');
+  return loadArticle(doc);
 }
-
-function findSpec(category: string, sourceSlug: string): GuideSpec | undefined {
-  return GUIDE_SPECS.find(
-    (spec) => spec.category === category && spec.sourceSlug === sourceSlug,
-  );
+function normalizeSearch(value: string) { return value.normalize('NFKD').replace(/\p{M}/gu, '').toLocaleLowerCase().trim(); }
+export function searchDocs(query: string, language: LanguageId = 'en'): DocEntry[] {
+  const terms = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  const docs = getDocs(language); if (!terms.length) return docs;
+  return docs.map((doc, order) => {
+    const title = normalizeSearch(doc.title);
+    const body = normalizeSearch([doc.description, doc.section, doc.sourceSlug, ...doc.headings].join(' '));
+    const score = terms.every(term => title.includes(term) || body.includes(term))
+      ? terms.reduce((n, term) => n + (title === term ? 8 : title.startsWith(term) ? 4 : title.includes(term) ? 2 : 1), 0) : 0;
+    return { doc, score, order };
+  }).filter(result => result.score > 0).sort((a,b) => b.score - a.score || a.order - b.order).map(result => result.doc);
 }
+function findSpec(category: string, sourceSlug: string) { return GUIDE_SPECS.find(spec => spec.category === category && spec.sourceSlug === sourceSlug); }
 
 function normalizeRelativePath(pathPart: string, currentCategory?: string): {
   category: string;

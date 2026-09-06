@@ -62,7 +62,7 @@ const HeroSection = () => {
           </p>
         </Reveal>
 
-        <Reveal delay={250}>
+        <Reveal delay={300}>
           <div className="mt-6 inline-block rounded-full bg-gradient-brand p-px shadow-[0_8px_30px_-12px_hsl(var(--brand-violet)/0.55)]">
             <div className="flex flex-wrap items-center justify-center gap-2.5 rounded-full bg-surface-1/90 px-3.5 py-2 backdrop-blur-md">
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground/80">
@@ -110,7 +110,7 @@ const HeroSection = () => {
           </div>
         </Reveal>
 
-        <Reveal delay={350}>
+        <Reveal delay={400}>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs font-mono text-muted-foreground">
             {hero.trust.map((item, index) => (
               <span key={item} className="inline-flex items-center gap-4">
@@ -123,11 +123,11 @@ const HeroSection = () => {
           </div>
         </Reveal>
 
-        <Reveal delay={450} className="mt-10 w-full">
+        <Reveal delay={500} className="mt-10 w-full">
           <MissionControlShot />
         </Reveal>
 
-        <Reveal delay={550}>
+        <Reveal delay={600}>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
             <GitHubStarsButton repo="fjpulidop/specrails-desktop" />
             <a

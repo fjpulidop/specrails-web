@@ -1,58 +1,19 @@
-# Añadir tu primer proyecto
+<!-- guide-revision: mission-first-v1 -->
 
-Un proyecto no es más que una carpeta de tu ordenador que contiene una base de código. Vamos a conectar una.
+# Añade un proyecto y sus repositorios
 
-## Abre el diálogo de Añadir proyecto
+Un proyecto representa un producto con un único backlog compartido. Puede incluir un repositorio, varios repositorios o carpetas adicionales de contexto.
 
-Haz clic en **Añadir tu primer proyecto** en la pantalla de bienvenida (o, más adelante, en el botón **Añadir proyecto** de la barra lateral izquierda). Aparece un pequeño diálogo.
+## Crea el proyecto
 
-## Rellena los datos
+Abre Añadir proyecto, elige la carpeta principal y ponle un nombre reconocible. Añade las demás carpetas del producto y completa las comprobaciones de requisitos y de Core.
 
-**Carpeta del proyecto** *(obligatorio)*
+Para un proyecto existente, usa **Ajustes del proyecto → General → Repositorios y carpetas**. Los nombres permiten distinguir rutas como `frontend/src/index.ts` y `api/src/index.ts`; los identificadores estables mantienen separado su contexto.
 
-Apunta specrails a la carpeta que contiene tu código. En la app de escritorio puedes hacer clic en el icono de carpeta para explorar y seleccionarla visualmente, o pegar la ruta completa. Debería ser la raíz de tu repositorio: la carpeta que contiene tu código y (normalmente) un directorio `.git`.
+## Selecciona dónde implementar
 
-**Nombre del proyecto** *(opcional)*
+Una spec sin selección explícita apunta al repositorio principal. Selecciona todos los repositorios que requiera el cambio antes de lanzarlo. Leer otra carpeta no la convierte en objetivo de implementación. Las carpetas secundarias sin Git aportan contexto, pero no pueden ser objetivos adicionales de implementación aislada.
 
-Una etiqueta amigable que se muestra en la barra lateral. Si lo dejas en blanco, specrails usa el nombre de la carpeta.
+El backlog y las integraciones pertenecen al proyecto. Añadir una carpeta utilizada en otro proyecto no importa sus tickets ni su relación con Jira.
 
-**Providers**
-
-Elige qué provider(s) de IA debería usar este proyecto. specrails te muestra los que ha detectado en tu máquina:
-
-- 🤖 **Claude**
-- ⚡ **Codex**
-- ✨ **Gemini**
-
-Los providers que no ha encontrado aparecen en gris y marcados como *no encontrado*: instala uno e inicia sesión, y luego vuelve a abrir el diálogo. Por defecto, todos los providers disponibles vienen preseleccionados, pero puedes deseleccionar hasta quedarte solo con el que quieras. Si eliges más de uno, el **primero** se convierte en el predeterminado del proyecto; más adelante podrás escoger según la tarea.
-
-> Una comprobación rápida se ejecuta en segundo plano para confirmar que las herramientas necesarias están presentes. Si falta algo esencial, el botón **Añadir** permanece deshabilitado y un enlace de **Más información** te da los comandos exactos de instalación.
-
-Haz clic en **Añadir** para continuar.
-
-## Una configuración que se hace en segundos
-
-Si la carpeta ya tiene specrails configurado, has terminado: el proyecto aparece en tu barra lateral al instante.
-
-Si es un proyecto nuevo, se ejecuta un breve **asistente de configuración**. Tiene tres pasos:
-
-1. **Configurar** — confirma lo básico para cada provider que hayas elegido.
-2. **Instalar** — specrails configura el proyecto automáticamente. Es la instalación *rápida*: agentes de plantilla listos para usar que quedan en su sitio en segundos. Verás un log en directo mientras se ejecuta.
-3. **Hecho** — un resumen que confirma que todo está listo.
-
-En un proyecto con varios providers, la instalación se ejecuta una vez por provider, uno tras otro, y el paso Hecho muestra una tarjeta para cada uno.
-
-## Qué se instala
-
-La configuración es deliberadamente ligera y **no invasiva**. specrails añade una pequeña cantidad de configuración a tu proyecto para que el pipeline sepa cómo ejecutarse:
-
-- Una carpeta `.specrails/` que guarda los perfiles de agente y los ajustes locales de tu proyecto.
-- Definiciones de agentes en `.claude/agents/` que dan vida al pipeline Architect → Developer → Reviewer → Ship.
-
-Eso es todo: specrails no reescribe tu código fuente durante la configuración, y estos archivos se pueden hacer commit sin problema si quieres compartir la configuración con tu equipo.
-
-> **¿Prefieres la configuración a fondo?** La app incluye a propósito la instalación rápida desde plantillas. Si prefieres el flujo enriquecido con IA (análisis de la base de código y personas de agente personalizadas), puedes ejecutar `npx specrails-core@latest init` desde la carpeta de tu proyecto en una terminal.
-
-## Ya estás dentro
-
-Cuando termine la configuración, specrails te lleva directamente al dashboard de tu proyecto. Es hora del recorrido: consulta [El recorrido por el dashboard](the-dashboard-tour).
+Continúa con [varios repositorios](/docs/getting-started-multiple-repositories) y [tu primera misión](/docs/missions-first-mission).

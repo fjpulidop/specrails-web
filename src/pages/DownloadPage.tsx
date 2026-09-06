@@ -1,479 +1,135 @@
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import {
-  Apple,
-  ArrowRight,
-  BookOpen,
-  Coffee,
-  Download,
-  ExternalLink,
-  Github,
-  HardDrive,
-  Heart,
-  MessageSquare,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
+import { Apple, ArrowLeft, ArrowRight, BookOpen, Coffee, Download, ExternalLink, Github, LoaderCircle, Monitor } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import { Button } from "@/components/ui/button";
 import { useSeo } from "@/hooks/useSeo";
-import { cn } from "@/lib/utils";
-import {
-  detectPlatform,
-  downloadForPlatform,
-  formatBytes,
-  PLATFORM_LABELS,
-  PlatformKey,
-  RELEASES_FALLBACK_URL,
-  useReleaseManifest,
-} from "@/hooks/useReleaseManifest";
+import { PLATFORM_LABELS, formatBytes, useReleaseManifest, type PlatformAsset, type PlatformKey, type ReleaseManifestState } from "@/hooks/useReleaseManifest";
+import { useI18n } from "@/lib/i18n";
+import { DOWNLOAD_COPY, type DownloadCopy } from "@/lib/download-copy";
+import { PRODUCT_COPY } from "@/lib/product-copy";
 
-interface PlatformCardConfig {
-  key: PlatformKey;
-  title: string;
-  subtitle: string;
-  badge: string;
-  Icon: typeof Apple;
-  accent: string;
-  glow: string;
-}
-
-const PLATFORMS: PlatformCardConfig[] = [
-  {
-    key: "darwin-arm64",
-    title: "macOS",
-    subtitle: "Apple Silicon · M1, M2, M3, M4",
-    badge: ".dmg · signed & notarised",
-    Icon: Apple,
-    accent: "text-dracula-cyan",
-    glow: "from-dracula-cyan/20",
-  },
-  {
-    key: "windows-x64",
-    title: "Windows",
-    subtitle: "Intel / AMD · 64-bit",
-    badge: ".exe · NSIS installer",
-    Icon: HardDrive,
-    accent: "text-dracula-purple",
-    glow: "from-dracula-purple/20",
-  },
-  {
-    key: "windows-arm64",
-    title: "Windows",
-    subtitle: "ARM64 · Snapdragon, Surface Pro X",
-    badge: ".exe · NSIS installer",
-    Icon: HardDrive,
-    accent: "text-dracula-pink",
-    glow: "from-dracula-pink/20",
-  },
+const RELEASES_URL = "https://github.com/fjpulidop/specrails-desktop/releases";
+const SOURCE_URL = "https://github.com/fjpulidop/specrails-desktop";
+const PLATFORMS: { key: PlatformKey; title: string; architecture: string; hint: "macHint" | "x64Hint" | "armHint" }[] = [
+  { key: "darwin-arm64", title: "macOS", architecture: "Apple Silicon · ARM64", hint: "macHint" },
+  { key: "windows-x64", title: "Windows", architecture: "Intel / AMD · x64", hint: "x64Hint" },
+  { key: "windows-arm64", title: "Windows", architecture: "ARM64", hint: "armHint" },
 ];
 
-const PlatformCard = ({
-  config,
-  highlighted,
-}: {
-  config: PlatformCardConfig;
-  highlighted: boolean;
-}) => {
-  const releaseState = useReleaseManifest();
-  const { href, disabled, version, size, sha256 } = downloadForPlatform(
-    releaseState,
-    config.key,
-  );
-  const { Icon } = config;
-
-  return (
-    <div
-      className={cn(
-        "group relative rounded-2xl p-[1px] transition-all duration-300",
-        highlighted
-          ? "bg-gradient-to-br from-dracula-purple/60 via-dracula-pink/40 to-dracula-cyan/40 shadow-[0_24px_60px_-20px_rgba(189,147,249,0.45)]"
-          : "bg-gradient-to-br from-border/40 to-border/10 hover:from-dracula-purple/30 hover:to-dracula-cyan/20",
-      )}
-    >
-      <div className="relative h-full rounded-2xl bg-background/90 backdrop-blur-xl p-6 flex flex-col overflow-hidden">
-        <div
-          className={cn(
-            "pointer-events-none absolute -top-24 -right-24 w-64 h-64 rounded-full blur-3xl opacity-60 bg-gradient-to-br to-transparent",
-            config.glow,
-          )}
-        />
-
-        {highlighted && (
-          <span className="absolute top-4 right-4 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-dracula-purple/20 border border-dracula-purple/40 text-[10px] font-mono uppercase tracking-wider text-dracula-purple">
-            <Sparkles className="w-3 h-3" /> Detected
-          </span>
-        )}
-
-        <div className="relative flex items-center gap-3 mb-4">
-          <div
-            className={cn(
-              "flex items-center justify-center w-11 h-11 rounded-xl bg-foreground/5 border border-border/30",
-              config.accent,
-            )}
-          >
-            <Icon className="w-5 h-5" />
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold text-foreground leading-tight">
-              {config.title}
-            </h3>
-            <p className="text-xs text-muted-foreground">{config.subtitle}</p>
-          </div>
-        </div>
-
-        <div className="relative flex flex-col gap-1.5 text-xs font-mono mb-6">
-          <div className="flex items-center gap-2 text-muted-foreground/80">
-            <span className="text-muted-foreground/50">version</span>
-            <span className="text-foreground">
-              {releaseState.status === "loading"
-                ? "…"
-                : version !== null
-                  ? `v${version}`
-                  : "latest"}
-            </span>
-          </div>
-          <div className="flex items-center gap-2 text-muted-foreground/80">
-            <span className="text-muted-foreground/50">format</span>
-            <span className={config.accent}>{config.badge}</span>
-          </div>
-          {size !== null && (
-            <div className="flex items-center gap-2 text-muted-foreground/80">
-              <span className="text-muted-foreground/50">size</span>
-              <span className="text-foreground">{formatBytes(size)}</span>
-            </div>
-          )}
-          {sha256 && (
-            <div
-              className="flex items-center gap-2 text-muted-foreground/60 truncate"
-              title={sha256}
-            >
-              <span className="text-muted-foreground/50">sha256</span>
-              <span className="truncate">{sha256.slice(0, 16)}…</span>
-            </div>
-          )}
-        </div>
-
-        <a
-          href={href ?? "#"}
-          download={!disabled && href !== RELEASES_FALLBACK_URL}
-          aria-disabled={disabled}
-          aria-label={`Download Specrails (Desktop) for ${PLATFORM_LABELS[config.key]}`}
-          className={cn(
-            "relative mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 overflow-hidden",
-            "bg-primary text-primary-foreground shadow-[0_10px_28px_-12px_rgba(0,195,210,0.6)]",
-            disabled
-              ? "pointer-events-none opacity-60"
-              : "hover:bg-primary/90 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_-12px_rgba(0,195,210,0.75)]",
-          )}
-        >
-          <Download className="w-4 h-4" />
-          {releaseState.status === "loading"
-            ? "Preparing…"
-            : `Download for ${config.title}`}
-        </a>
-
-        {config.key === "windows-x64" && (
-          <p className="relative mt-3 text-[11px] text-muted-foreground/70 leading-snug">
-            Unsigned in v1 — Windows SmartScreen will warn. Click{" "}
-            <span className="text-foreground/80">More info → Run anyway</span>.
-          </p>
-        )}
-        {config.key === "windows-arm64" && (
-          <p className="relative mt-3 text-[11px] text-muted-foreground/70 leading-snug">
-            Native ARM64 build — no x64 emulation. SmartScreen warning applies.
-          </p>
-        )}
-        {config.key === "darwin-arm64" && (
-          <p className="relative mt-3 text-[11px] text-muted-foreground/70 leading-snug">
-            Signed & notarised by Apple — opens cleanly. Intel Macs: build coming.
-          </p>
-        )}
-      </div>
-    </div>
-  );
-};
-
-const SupportCard = () => (
-  <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-dracula-pink/60 via-dracula-purple/40 to-dracula-cyan/40 shadow-[0_28px_70px_-20px_rgba(255,121,198,0.45)]">
-    <div className="relative rounded-2xl bg-background/90 backdrop-blur-xl p-8 md:p-10 overflow-hidden">
-      <div className="pointer-events-none absolute -top-32 -right-32 w-80 h-80 rounded-full blur-3xl opacity-60 bg-gradient-to-br from-dracula-pink/25 to-transparent" />
-      <div className="pointer-events-none absolute -bottom-32 -left-32 w-80 h-80 rounded-full blur-3xl opacity-50 bg-gradient-to-br from-dracula-cyan/20 to-transparent" />
-
-      <div className="relative grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center">
-        <div className="flex md:flex-col items-center gap-3">
-          <div className="w-16 h-16 rounded-2xl bg-dracula-pink/15 border border-dracula-pink/30 flex items-center justify-center">
-            <Heart className="w-7 h-7 text-dracula-pink" />
-          </div>
-          <span className="md:hidden text-sm font-semibold text-foreground">
-            Support specrails
-          </span>
-        </div>
-
-        <div className="space-y-3 text-left">
-          <h2 className="hidden md:block text-2xl md:text-3xl font-bold tracking-tight">
-            <span className="gradient-text">Free, forever.</span>{" "}
-            <span className="text-foreground">Built by one developer.</span>
-          </h2>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            I'm Javier, a software developer who loves building apps. After more
-            than <span className="text-foreground font-medium">15 years</span>{" "}
-            shipping software, specrails is my{" "}
-            <span className="text-foreground font-medium">
-              first leap into open source
-            </span>{" "}
-            — and it's a project I plan to keep that way: free, with{" "}
-            <span className="text-dracula-green">no telemetry</span>, no
-            malware, no paywalls, no dark patterns.
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            If specrails is useful to you and you'd like to help me keep it
-            alive, a coffee on Ko-fi goes a long way. No pressure — the app
-            stays free either way.
-          </p>
-          <div className="flex flex-wrap items-center gap-2 pt-1">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-dracula-green/10 border border-dracula-green/30 text-[11px] font-mono text-dracula-green">
-              <ShieldCheck className="w-3 h-3" /> No telemetry
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-dracula-cyan/10 border border-dracula-cyan/30 text-[11px] font-mono text-dracula-cyan">
-              MIT License
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-dracula-purple/10 border border-dracula-purple/30 text-[11px] font-mono text-dracula-purple">
-              100% open source
-            </span>
-          </div>
-        </div>
-
-        <a
-          href="https://ko-fi.com/D1D81Y002C"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold bg-dracula-pink text-dracula-background shadow-[0_14px_32px_-12px_rgba(255,121,198,0.7)] hover:bg-dracula-pink/90 hover:-translate-y-0.5 transition-all duration-200 whitespace-nowrap"
-        >
-          <Coffee className="w-4 h-4" />
-          Support on Ko-fi
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-        </a>
-      </div>
-    </div>
-  </div>
-);
-
-interface InfoCard {
-  Icon: typeof BookOpen;
-  title: string;
-  description: string;
-  href: string;
-  cta: string;
-  external?: boolean;
-  accent: string;
-  glow: string;
+function httpsUrl(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && !url.username && !url.password;
+  } catch { return false; }
 }
 
-const INFO_CARDS: InfoCard[] = [
-  {
-    Icon: BookOpen,
-    title: "While you wait, read the docs",
-    description:
-      "Mission Control, Specrails Board, specs, loops and providers. Everything you need to make the most of Specrails from minute one.",
-    href: "/docs",
-    cta: "Open documentation",
-    accent: "text-dracula-cyan",
-    glow: "from-dracula-cyan/20",
-  },
-  {
-    Icon: MessageSquare,
-    title: "Got questions?",
-    description:
-      "Open a discussion or file an issue on GitHub — I read every one. Bug reports, feature ideas, weird edge cases all welcome.",
-    href: "https://github.com/fjpulidop/specrails-desktop/discussions",
-    cta: "Join the discussion",
-    external: true,
-    accent: "text-dracula-pink",
-    glow: "from-dracula-pink/20",
-  },
-  {
-    Icon: Github,
-    title: "Source on GitHub",
-    description:
-      "Read the desktop app code, star the repo, send a PR, or follow the work behind Mission Control and Board.",
-    href: "https://github.com/fjpulidop/specrails-desktop",
-    cta: "Browse the source",
-    external: true,
-    accent: "text-dracula-purple",
-    glow: "from-dracula-purple/20",
-  },
-];
+// An optional platform entry may be absent or malformed even when the manifest
+// itself loaded. Only offer an actual download with usable file metadata.
+function usableAsset(value: unknown): value is PlatformAsset {
+  if (!value || typeof value !== "object") return false;
+  const asset = value as Partial<PlatformAsset>;
+  return typeof asset.filename === "string" && asset.filename.trim().length > 0 &&
+    httpsUrl(asset.url) && typeof asset.size === "number" && Number.isFinite(asset.size) && asset.size > 0 &&
+    typeof asset.sha256 === "string" && /^[a-f\d]{64}$/i.test(asset.sha256);
+}
 
-const InfoCardView = ({ card }: { card: InfoCard }) => {
-  const { Icon } = card;
+function PlatformCard({ platform, state, copy }: { platform: typeof PLATFORMS[number]; state: ReleaseManifestState; copy: DownloadCopy }) {
+  const candidate = state.status === "ready" ? state.manifest.platforms[platform.key] : undefined;
+  const asset = usableAsset(candidate) ? candidate : null;
+  const Icon = platform.key === "darwin-arm64" ? Apple : Monitor;
+  const label = PLATFORM_LABELS[platform.key];
   return (
-    <div className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-border/40 to-border/10 hover:from-dracula-purple/30 hover:to-dracula-cyan/20 transition-all duration-300">
-      <div className="relative h-full rounded-2xl bg-background/90 backdrop-blur-xl p-6 flex flex-col overflow-hidden">
-        <div
-          className={cn(
-            "pointer-events-none absolute -top-20 -right-20 w-56 h-56 rounded-full blur-3xl opacity-50 bg-gradient-to-br to-transparent",
-            card.glow,
-          )}
-        />
-        <div
-          className={cn(
-            "relative flex items-center justify-center w-11 h-11 rounded-xl bg-foreground/5 border border-border/30 mb-4",
-            card.accent,
-          )}
-        >
-          <Icon className="w-5 h-5" />
-        </div>
-        <h3 className="relative text-base font-semibold text-foreground mb-2">
-          {card.title}
-        </h3>
-        <p className="relative text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
-          {card.description}
-        </p>
-
-        <a
-          href={card.href}
-          target={card.external ? "_blank" : undefined}
-          rel={card.external ? "noopener noreferrer" : undefined}
-          className={cn(
-            "relative inline-flex items-center gap-1.5 text-sm font-medium hover:gap-2.5 transition-all",
-            card.accent,
-          )}
-        >
-          {card.cta}
-          {card.external ? (
-            <ExternalLink className="w-3.5 h-3.5" />
-          ) : (
-            <ArrowRight className="w-3.5 h-3.5" />
-          )}
-        </a>
+    <article aria-label={label} className="flex min-w-0 flex-col rounded-2xl border border-border bg-surface-1 p-6 sm:p-7">
+      <Icon className="mb-6 h-7 w-7 text-brand-cyan" aria-hidden="true" />
+      <h3 className="text-2xl font-medium tracking-tight">{platform.title}</h3>
+      <p className="mt-2 text-sm font-medium text-foreground">{platform.architecture}</p>
+      <p className="mb-7 mt-3 min-h-12 text-sm leading-relaxed text-muted-foreground">{copy[platform.hint]}</p>
+      <div className="mt-auto">
+        {state.status === "loading" ? (
+          <Button disabled className="h-auto min-h-11 w-full whitespace-normal rounded-full px-4 py-3"><LoaderCircle className="motion-safe:animate-spin" aria-hidden="true" />{copy.loading}</Button>
+        ) : asset ? (
+          <>
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+              <span>{copy.version} <strong className="font-mono font-normal text-foreground">v{state.status === "ready" ? state.manifest.version : ""}</strong></span>
+              <span>{copy.size} <strong className="font-normal text-foreground">{formatBytes(asset.size)}</strong></span>
+            </div>
+            <Button asChild className="h-auto min-h-11 w-full whitespace-normal rounded-full px-4 py-3">
+              <a href={asset.url} download={asset.filename} aria-label={`${copy.download}: ${label}`}><Download aria-hidden="true" />{copy.download} {platform.title}</a>
+            </Button>
+            <details className="mt-5 border-t border-border pt-4 text-xs text-muted-foreground">
+              <summary className="cursor-pointer rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{copy.details}</summary>
+              <dl className="mt-4 space-y-3">
+                <div><dt>{copy.file}</dt><dd className="mt-1 break-all font-mono text-foreground">{asset.filename}</dd></div>
+                <div><dt>{copy.checksum}</dt><dd className="mt-1 select-all break-all font-mono leading-relaxed text-foreground">{asset.sha256}</dd></div>
+              </dl>
+              <p className="mt-3 leading-relaxed">{copy.checksumHint}</p>
+            </details>
+          </>
+        ) : (
+          <>
+            {state.status === "ready" && <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{copy.missing}</p>}
+            <Button asChild variant="outline" className="h-auto min-h-11 w-full whitespace-normal rounded-full px-4 py-3">
+              <a href={RELEASES_URL} aria-label={`${copy.viewReleases}: ${label}`}>{copy.viewReleases}<ExternalLink aria-hidden="true" /></a>
+            </Button>
+          </>
+        )}
       </div>
-    </div>
+    </article>
   );
-};
+}
 
-const DownloadPage = () => {
-  useSeo({
-    title: "Download Specrails (Desktop) — macOS, Windows x64 & ARM64",
-    description:
-      "Download the Specrails (Desktop) app for macOS (Apple Silicon), Windows x64 and Windows ARM64. Free, open source, no telemetry. Always the latest release.",
-    canonical: "https://specrails.dev/download",
-  });
-
-  const detected = useMemo(() => detectPlatform(), []);
-  const releaseState = useReleaseManifest();
-  const version =
-    releaseState.status === "ready" ? releaseState.manifest.version : null;
-  const releasedAt =
-    releaseState.status === "ready" ? releaseState.manifest.releasedAt : null;
-
+export default function DownloadPage() {
+  const { languageId, content } = useI18n();
+  const copy = DOWNLOAD_COPY[languageId];
+  const state = useReleaseManifest();
+  useSeo({ title: `${copy.title} — macOS & Windows`, description: copy.intro, canonical: "https://specrails.dev/download" });
+  const release = state.status === "ready" ? state.manifest : null;
+  const date = release ? new Date(release.releasedAt) : null;
+  const published = date && Number.isFinite(date.getTime()) ? new Intl.DateTimeFormat(languageId, { dateStyle: "medium" }).format(date) : null;
+  const releaseUrl = httpsUrl(release?.releaseUrl) ? release.releaseUrl : RELEASES_URL;
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
+      <a href="#download-content" className="sr-only z-[100] rounded-lg bg-foreground p-4 text-background focus:not-sr-only focus:fixed focus:left-4 focus:top-4">{PRODUCT_COPY[languageId].skip}</a>
       <Navbar />
-
-      {/* Hero */}
-      <section className="relative pt-32 pb-12 px-6 overflow-hidden">
-        <div className="absolute inset-0 hero-glow motion-safe:animate-hero-breath pointer-events-none" />
-        <div className="absolute inset-0 hero-noise pointer-events-none" aria-hidden="true" />
-
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border/30 bg-background/30 backdrop-blur-sm text-xs font-mono text-muted-foreground mb-6 animate-fade-up">
-            <span className="w-1.5 h-1.5 rounded-full bg-dracula-green animate-pulse" />
-            Open Source · MIT · No telemetry
+      <main id="download-content" className="mx-auto max-w-6xl px-5 pb-20 pt-32 sm:px-8 sm:pt-40">
+        <header className="max-w-3xl">
+          <p className="eyebrow text-brand-cyan">SPECRAILS DESKTOP · MIT</p>
+          <h1 className="mt-5 text-4xl font-medium leading-tight tracking-tight sm:text-6xl">{copy.title}</h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{copy.intro}</p>
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-muted-foreground">
+            {release && <span className="font-mono text-foreground">v{release.version}</span>}
+            {published && <span>{copy.released} <time dateTime={release!.releasedAt}>{published}</time></span>}
+            <a href={RELEASES_URL} className="inline-flex items-center gap-1.5 text-brand-cyan underline-offset-4 hover:underline">{copy.allReleases}<ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></a>
+            {release && <a href={releaseUrl} className="inline-flex items-center gap-1.5 underline-offset-4 hover:underline">{copy.releaseNotes}<ArrowRight className="h-3.5 w-3.5" aria-hidden="true" /></a>}
           </div>
-
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 animate-fade-up delay-100">
-            Download <span className="gradient-text">Specrails (Desktop)</span>
-          </h1>
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-6 animate-fade-up delay-200">
-            The local dashboard for your agentic dev team. Pick your platform —
-            every download below always points at the latest release.
-          </p>
-
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 animate-fade-up delay-300">
-            {version && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-orange/25 bg-dracula-orange/5 text-xs font-mono text-dracula-orange">
-                Latest · v{version}
-              </span>
-            )}
-            {releasedAt && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-border/30 bg-background/30 text-xs font-mono text-muted-foreground">
-                Released {new Date(releasedAt).toLocaleDateString()}
-              </span>
-            )}
-            {releaseState.status === "error" && (
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-dracula-red/25 bg-dracula-red/5 text-xs font-mono text-dracula-red">
-                Manifest unreachable — fallback links active
-              </span>
-            )}
+          {state.status !== "ready" && <p role={state.status === "error" ? "alert" : "status"} className="mt-6 rounded-xl border border-border bg-surface-1 px-4 py-3 text-sm leading-relaxed text-muted-foreground">{state.status === "loading" ? copy.loading : copy.error}</p>}
+        </header>
+        <section aria-labelledby="download-platforms" className="mt-14">
+          <h2 id="download-platforms" className="text-xl font-medium tracking-tight">{copy.platforms}</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">{copy.architecture}</p>
+          <div className="mt-6 grid gap-5 md:grid-cols-3">{PLATFORMS.map(platform => <PlatformCard key={platform.key} platform={platform} state={state} copy={copy} />)}</div>
+        </section>
+        <section className="mt-12 grid gap-6 border-t border-border pt-10 md:grid-cols-2">
+          <div className="rounded-2xl border border-border bg-surface-1 p-6 sm:p-7">
+            <BookOpen className="mb-5 h-5 w-5 text-brand-cyan" aria-hidden="true" /><h2 className="text-xl font-medium">{copy.learnTitle}</h2>
+            <p className="mb-6 mt-3 text-sm leading-relaxed text-muted-foreground">{copy.learnBody}</p>
+            <Button asChild variant="outline" className="rounded-full"><Link to="/docs/getting-started">{content.nav.docs}<ArrowRight aria-hidden="true" /></Link></Button>
           </div>
-        </div>
-      </section>
-
-      {/* Platform cards */}
-      <section className="relative px-6 pb-16">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-5 animate-fade-up delay-400">
-          {PLATFORMS.map((p) => (
-            <PlatformCard
-              key={p.key}
-              config={p}
-              highlighted={detected === p.key}
-            />
-          ))}
-        </div>
-
-        <div className="max-w-6xl mx-auto mt-6 text-center text-xs text-muted-foreground/70 animate-fade-up delay-500">
-          Looking for a specific version?{" "}
-          <a
-            href="https://github.com/fjpulidop/specrails-desktop/releases"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dracula-cyan hover:underline inline-flex items-center gap-1"
-          >
-            All releases on GitHub <ExternalLink className="w-3 h-3" />
-          </a>
-        </div>
-      </section>
-
-      {/* Support / Ko-fi */}
-      <section className="relative px-6 py-12">
-        <div className="max-w-5xl mx-auto">
-          <SupportCard />
-        </div>
-      </section>
-
-      {/* Info cards */}
-      <section className="relative px-6 pb-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-2">
-              While the download finishes…
-            </h2>
-            <p className="text-muted-foreground text-sm">
-              Get oriented, ask questions, or dive into the source.
-            </p>
+          <div className="rounded-2xl border border-border bg-surface-1 p-6 sm:p-7">
+            <Github className="mb-5 h-5 w-5 text-brand-cyan" aria-hidden="true" /><h2 className="text-xl font-medium">{copy.source}</h2>
+            <p className="mb-6 mt-3 text-sm leading-relaxed text-muted-foreground">{copy.sourceBody}</p>
+            <Button asChild variant="outline" className="rounded-full"><a href={SOURCE_URL}>{content.nav.github}<ExternalLink aria-hidden="true" /></a></Button>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {INFO_CARDS.map((c) => (
-              <InfoCardView key={c.title} card={c} />
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <ArrowRight className="w-3.5 h-3.5 rotate-180" />
-              Back to home
-            </Link>
-          </div>
+        </section>
+        <div className="mt-8 flex flex-col gap-4 rounded-xl border border-border px-5 py-5 text-sm sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-muted-foreground">{copy.supportBody}</p>
+          <a href="https://ko-fi.com/D1D81Y002C" target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-2 text-brand-cyan underline-offset-4 hover:underline"><Coffee className="h-4 w-4" aria-hidden="true" />{copy.support}</a>
         </div>
-      </section>
-
+        <Link to="/" className="mt-8 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" aria-hidden="true" />{copy.back}</Link>
+      </main>
       <FooterSection />
     </div>
   );
-};
-
-export default DownloadPage;
+}

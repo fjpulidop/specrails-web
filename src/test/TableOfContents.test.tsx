@@ -58,3 +58,13 @@ describe("TableOfContents", () => {
     expect(container.querySelector("nav")).toBeNull();
   });
 });
+
+it('updates the section without discarding router history state', async()=>{
+  const {fireEvent} = await import('@testing-library/react');
+  const state = {usr:{from:'docs'},key:'reading',idx:2};
+  window.history.replaceState(state,'','/docs/getting-started');
+  render(<><ProseFixture /><TableOfContents /></>);
+  fireEvent.click(await screen.findByRole('link',{name:'Installation'}));
+  expect(window.history.state).toEqual(state); expect(window.location.hash).toBe('#installation');
+  window.history.replaceState(null,'','/');
+});

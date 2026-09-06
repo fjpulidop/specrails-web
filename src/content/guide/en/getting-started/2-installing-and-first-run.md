@@ -1,42 +1,26 @@
-# Installing & first run
+<!-- guide-revision: mission-first-v1 -->
 
-Getting specrails onto your machine takes a couple of minutes. Here's the whole flow.
+# Install and connect your provider
 
-## 1. Download and install
+Install Specrails, check its prerequisites and sign in to the provider you intend to use before asking an agent to work.
 
-Grab the installer for your platform:
+## Choose the application
 
-- **macOS (Apple Silicon)** — a `.dmg` file. Open it and drag **specrails** into your Applications folder.
-- **Windows** — a `.exe` setup installer. Run it and follow the prompts.
+Download an installer for your machine from the [download page](/download). Check the artifacts and requirements of that release: native builds target macOS Apple Silicon and Windows x64/ARM64. An available installer is not a claim that every platform feature has identical behavior.
 
-> **Heads-up on macOS and Windows security prompts**
->
-> - On **Windows**, the installer isn't code-signed yet, so SmartScreen may show a warning. Click **More info → Run anyway** to continue.
-> - On **macOS**, the app is signed and notarized, so it should open cleanly.
+The npm distribution serves Specrails in a browser and needs Node.js 20.19+, Git and an authenticated provider CLI:
 
-## 2. What you'll need (prerequisites)
+```sh
+npm install -g specrails-desktop
+specrails-desktop start
+```
 
-Specrails runs AI development pipelines by driving real command-line tools, so a few things need to be available. The good news: the desktop app **bundles most of them for you** (Node.js, npm, and Git ship inside the app), so on a fresh machine there's usually nothing to install.
+Open `http://127.0.0.1:4200`. This does not install the native app or enable separate native mission windows. Avoid running both distributions on the same port.
 
-The one thing specrails can't bundle is the **AI provider CLI** itself. You'll need at least one of:
+## Complete setup
 
-- **Claude Code**
-- **Codex CLI**
-- **Gemini CLI**
+Install and authenticate at least one supported provider using its own CLI. In Specrails, check provider availability and add your project. Core installation prepares the required workflow artifacts; it does not include a model subscription.
 
-Install whichever you plan to use, sign in to it once from your terminal, and you're set. Specrails detects which providers are present automatically.
+If setup reports a missing runtime or pending update, resolve that status before launching implementations. Keep the reported error: an empty view is not proof that your projects were deleted.
 
-> If you ever see a tool flagged as missing, the app shows a **More info** link with copy-paste install commands tailored to your operating system (Homebrew on macOS, winget on Windows, apt/dnf on Linux). You can re-check at any time without restarting.
-
-## 3. First launch — the welcome screen
-
-The first time you open specrails, you'll land on a clean **welcome screen**. There are no projects yet, so the app invites you to add your first one.
-
-You'll see:
-
-- A short description of what specrails does.
-- A single **Add your first project** button.
-
-That's the whole onboarding — no account to create, no sign-up. Specrails works entirely on your machine.
-
-Click **Add your first project** and continue to [Adding your first project](adding-your-first-project).
+Next: [add your project](/docs/getting-started-adding-your-first-project).

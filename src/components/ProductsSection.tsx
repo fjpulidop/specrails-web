@@ -33,7 +33,7 @@ const ProductsSection = () => {
           </p>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={100}>
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             {products.modes.map((mode, index) => {
               const Icon = modeIcons[index] ?? Bot;
@@ -124,7 +124,7 @@ const ProductsSection = () => {
             </div>
           </Reveal>
 
-          <Reveal delay={160}>
+          <Reveal delay={200}>
             <figure>
               <Dialog>
                 <div className="relative">
@@ -208,7 +208,7 @@ const ProductsSection = () => {
           </Reveal>
         </div>
 
-        <Reveal delay={220}>
+        <Reveal delay={300}>
           <div className="mt-10 grid gap-3 md:grid-cols-4">
             {products.capabilities.map((capability) => (
               <div key={capability.title} className="rounded-card border border-border/60 bg-surface-1/55 p-4">

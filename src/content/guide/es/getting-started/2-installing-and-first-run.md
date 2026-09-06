@@ -1,42 +1,26 @@
-# Instalación y primer arranque
+<!-- guide-revision: mission-first-v1 -->
 
-Poner specrails en tu máquina te llevará un par de minutos. Aquí tienes todo el proceso.
+# Instala y conecta tu proveedor
 
-## 1. Descarga e instala
+Instala Specrails, comprueba sus requisitos e inicia sesión en el proveedor elegido antes de pedir trabajo al agente.
 
-Hazte con el instalador para tu plataforma:
+## Elige la aplicación
 
-- **macOS (Apple Silicon)** — un archivo `.dmg`. Ábrelo y arrastra **specrails** a tu carpeta de Aplicaciones.
-- **Windows** — un instalador `.exe`. Ejecútalo y sigue los pasos.
+Descarga el instalador correspondiente desde [Descargas](/download). Comprueba los archivos y requisitos de esa versión: los builds nativos se dirigen a macOS Apple Silicon y Windows x64/ARM64. La existencia de un instalador no implica que todas las funciones se comporten igual en cada plataforma.
 
-> **Aviso sobre los avisos de seguridad de macOS y Windows**
->
-> - En **Windows**, el instalador aún no está firmado, así que SmartScreen puede mostrar una advertencia. Haz clic en **Más información → Ejecutar de todas formas** para continuar.
-> - En **macOS**, la app está firmada y notarizada, así que debería abrirse sin problemas.
+La distribución npm abre Specrails en tu navegador y necesita Node.js 20.19+, Git y una CLI de IA autenticada:
 
-## 2. Lo que vas a necesitar (requisitos previos)
+```sh
+npm install -g specrails-desktop
+specrails-desktop start
+```
 
-specrails ejecuta pipelines de desarrollo con IA controlando herramientas de línea de comandos reales, así que hay algunas cosas que deben estar disponibles. La buena noticia: la app de escritorio **incluye la mayoría por ti** (Node.js, npm y Git vienen dentro de la app), así que en una máquina recién estrenada normalmente no hay nada que instalar.
+Abre `http://127.0.0.1:4200`. Esto no instala la aplicación nativa ni habilita ventanas de misión separadas. Evita ejecutar ambas distribuciones en el mismo puerto.
 
-Lo único que specrails no puede incluir es el **CLI del provider de IA** en sí. Necesitarás al menos uno de estos:
+## Completa la configuración
 
-- **Claude Code**
-- **Codex CLI**
-- **Gemini CLI**
+Instala y autentica al menos un proveedor compatible mediante su CLI. En Specrails, comprueba su disponibilidad y añade el proyecto. La instalación de Core prepara los flujos necesarios; no incluye una suscripción a modelos.
 
-Instala el que tengas pensado usar, inicia sesión una vez desde tu terminal y listo. specrails detecta automáticamente qué providers están presentes.
+Si aparece un runtime ausente o una actualización pendiente, resuelve ese estado antes de implementar. Conserva el error mostrado: una vista vacía no demuestra que tus proyectos se hayan borrado.
 
-> Si en algún momento ves una herramienta marcada como ausente, la app muestra un enlace de **Más información** con comandos de instalación listos para copiar y pegar, adaptados a tu sistema operativo (Homebrew en macOS, winget en Windows, apt/dnf en Linux). Puedes volver a comprobarlo en cualquier momento sin reiniciar.
-
-## 3. Primer arranque — la pantalla de bienvenida
-
-La primera vez que abras specrails, llegarás a una **pantalla de bienvenida** limpia. Todavía no hay proyectos, así que la app te invita a añadir el primero.
-
-Verás:
-
-- Una breve descripción de lo que hace specrails.
-- Un único botón **Añadir tu primer proyecto**.
-
-Eso es toda la puesta en marcha: ninguna cuenta que crear, ningún registro. specrails funciona por completo en tu máquina.
-
-Haz clic en **Añadir tu primer proyecto** y continúa con [Añadir tu primer proyecto](adding-your-first-project).
+Siguiente: [añade tu proyecto](/docs/getting-started-adding-your-first-project).

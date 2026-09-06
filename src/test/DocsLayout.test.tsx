@@ -38,8 +38,8 @@ describe("DocsLayout", () => {
     const user = userEvent.setup();
     renderDocsLayout();
     // The first button in the layout is the mobile hamburger Menu button
-    const buttons = screen.getAllByRole("button");
-    await user.click(buttons[0]);
+    await user.click(screen.getByRole("button", {name:"Browse the guide"}));
+    expect(screen.getByRole("dialog", {name:"Documentation"})).toBeInTheDocument();
     // After click, at least one navigation element should be present
     const navs = screen.getAllByRole("navigation");
     expect(navs.length).toBeGreaterThanOrEqual(1);

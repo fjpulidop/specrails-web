@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { getDocsCopy } from "@/lib/docs-copy";
+import { useI18n } from "@/lib/i18n";
 import { List } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -36,6 +38,8 @@ export function TableOfContents({
   const [headings, setHeadings] = useState<TocHeading[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const reducedMotion = useReducedMotion();
+  const { languageId } = useI18n();
+  const copy = getDocsCopy(languageId);
 
   // Build the heading list from the rendered prose. Retries briefly because the
   // markdown mounts asynchronously, and re-runs whenever the page changes.
@@ -117,7 +121,7 @@ export function TableOfContents({
         block: "start",
       });
       // Reflect the anchor in the URL without a router navigation.
-      window.history.replaceState(null, "", `#${id}`);
+      window.history.replaceState(window.history.state, "", `#${id}`);
       onSelect?.();
     },
     [onSelect, reducedMotion],
@@ -127,13 +131,13 @@ export function TableOfContents({
 
   return (
     <nav
-      aria-label="On this page"
+      aria-label={copy.contents}
       className={cn("text-sm", className)}
     >
       {variant === "rail" && (
         <div className="eyebrow mb-3 flex items-center gap-2 text-muted-foreground/80">
           <List className="h-3.5 w-3.5" aria-hidden="true" />
-          On this page
+          {copy.contents}
         </div>
       )}
       <ul

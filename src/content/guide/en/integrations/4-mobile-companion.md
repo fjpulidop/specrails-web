@@ -1,38 +1,21 @@
-# The mobile companion
+<!-- guide-revision: mission-first-v1 -->
 
-Specrails has a companion phone app so you can keep an eye on your rails while you're away from your desk — watch jobs run, see them finish, and stay in the loop without sitting in front of the dashboard.
+# Continue from Companion
 
-## What it's for
+Companion connects your phone or tablet to a running Desktop. The desktop machine still owns the repositories, provider sessions and execution.
 
-The companion is a **monitoring** surface. It connects to your running Specrails desktop app over your local network and mirrors live project and job activity to your phone. Think of it as a glanceable window into the same rails you'd otherwise watch on the dashboard.
+## Pair with the right access
 
-## Pairing your phone
+Use Desktop's mobile pairing flow and grant only the access the device needs. The mobile client negotiates available capabilities rather than assuming every Desktop version supports the same controls.
 
-Pairing is built around a **QR code** so you don't have to type anything fiddly:
+Mission access currently requires an **all-projects grant**. A mission's pinned project is context, not an enforced authorization boundary: an agent can work across projects. A restricted device keeps authorized Specs and Rails access but does not receive cross-project mission transcripts or controls.
 
-1. Make sure your desktop Specrails app is running and your phone is on the **same local network** (same Wi-Fi).
-2. In the desktop app, open the pairing screen to display a QR code.
-3. In the companion app on your phone, scan that code.
-4. The phone discovers the desktop app on the network and connects.
+## Follow supported work
 
-From then on the companion keeps a live connection and streams project lists and job updates as they happen.
+On a compatible Desktop with full access, create missions with provider and autonomy settings, send text, edit or withdraw queued messages, steer and stop. Inspect live or historical processes, their logs and safe Stop controls. Repository names distinguish the scope; delivery cards are observational and integration stays in Desktop. File uploads and structured `@`/`#` reference chips are not yet part of the mobile composer. Older servers retain their supported Board features instead of presenting unavailable mission actions.
 
-## How the connection works
+After reconnecting, wait for the refreshed snapshot before interpreting status or repeating a command. Demo data is read-only. Pairing does not move execution to the phone, expose a public cloud workspace or make a disconnected desktop available.
 
-The desktop app advertises itself on your local network so the phone can find it, and the QR code carries the details the phone needs to connect securely. Everything stays on your local network — the companion talks directly to your machine, not through any cloud service.
+## Connection and privacy
 
-Because it's local-network based, the two devices need to be reachable to each other. If pairing doesn't take:
-
-- Confirm both devices are on the **same Wi-Fi** (and that the network doesn't isolate clients from each other).
-- Make sure the desktop app is **running** when you scan.
-- Re-open the pairing screen to refresh the QR code and try scanning again.
-
-## What you'll see
-
-Once paired, the companion surfaces your projects and their live job activity, so you get the same real-time rail updates that flow into the desktop dashboard — pushed to your phone as they occur. It's the easiest way to know the moment a long-running rail wraps up.
-
-## Good to know
-
-- **Monitoring first.** The companion is designed for keeping tabs on rails, not for driving the full desktop workflow from your phone.
-- **Local only.** No account, no cloud relay — your machine and your phone, on your network.
-- **Keep the desktop awake.** The companion mirrors a running desktop app; if your machine sleeps or the app closes, live updates pause until it's back.
+Pairing and connection may use signaling services; local-first does not mean that no network traffic leaves the device. Keep the pairing credentials private and revoke devices you no longer use. Read the [privacy information](/privacy) for connection data and retention.
