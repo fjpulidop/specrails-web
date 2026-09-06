@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.0](https://github.com/fjpulidop/specrails-web/compare/v1.12.0...v1.13.0) (2026-09-06)
+
+
+### Features
+
+* present mission workflows with a premium product guide ([#201](https://github.com/fjpulidop/specrails-web/issues/201)) ([f86eecd](https://github.com/fjpulidop/specrails-web/commit/f86eecd64603ee208ef8ae31008b8e990ae797c3))
+
 ## [1.12.0](https://github.com/fjpulidop/specrails-web/compare/v1.11.1...v1.12.0) (2026-07-06)
 
 
