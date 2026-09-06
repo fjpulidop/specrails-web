@@ -1,4 +1,33 @@
 import "@testing-library/jest-dom";
+import { beforeEach } from "vitest";
+
+// Node 26 also exposes localStorage, which can shadow jsdom's implementation.
+// Keep browser storage deterministic and isolated for every test.
+beforeEach(() => {
+  const values = new Map<string, string>();
+  const storage: Storage = {
+    get length() {
+      return values.size;
+    },
+    clear: () => values.clear(),
+    getItem: (key) => values.get(key) ?? null,
+    key: (index) => [...values.keys()][index] ?? null,
+    removeItem: (key) => {
+      values.delete(key);
+    },
+    setItem: (key, value) => {
+      values.set(String(key), String(value));
+    },
+  };
+  Object.defineProperty(window, "localStorage", {
+    value: storage,
+    configurable: true,
+  });
+  Object.defineProperty(globalThis, "localStorage", {
+    value: storage,
+    configurable: true,
+  });
+});
 
 // Polyfill pointer capture and scroll APIs missing in jsdom — required by Radix UI components
 if (!Element.prototype.hasPointerCapture) {
@@ -37,7 +66,9 @@ Object.defineProperty(window, "scrollTo", {
 // IntersectionObserver stub for components using useScrollAnimation
 if (!window.IntersectionObserver) {
   window.IntersectionObserver = class IntersectionObserver {
-    constructor(cb: IntersectionObserverCallback) { void cb; }
+    constructor(cb: IntersectionObserverCallback) {
+      void cb;
+    }
     observe() {}
     unobserve() {}
     disconnect() {}

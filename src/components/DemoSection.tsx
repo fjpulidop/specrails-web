@@ -20,7 +20,7 @@ const DemoSection = () => {
           </p>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={100}>
           <figure className="mt-12">
             <ProductFrame
               chrome="none"
@@ -63,7 +63,7 @@ const DemoSection = () => {
         </Reveal>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-          <Reveal delay={160}>
+          <Reveal delay={200}>
             <ProductFrame
               chrome="none"
               aspectRatio="1060 / 763"
@@ -80,7 +80,7 @@ const DemoSection = () => {
             </ProductFrame>
           </Reveal>
 
-          <Reveal delay={220}>
+          <Reveal delay={300}>
             <div className="rounded-frame border border-border/60 bg-surface-1/65 p-5 shadow-glow-elevated">
               <div className="flex items-start gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-card border border-brand-violet/40 bg-brand-violet/10 text-brand-violet">

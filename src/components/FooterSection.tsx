@@ -1,175 +1,108 @@
 import { Link } from "react-router-dom";
-import { BookOpen, Coffee, Download, Github, MessageCircle, ScrollText } from "lucide-react";
+import { ArrowDown, ArrowRight, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Reveal } from "@/components/Reveal";
+import SpecrailsLogo from "@/components/SpecrailsLogo";
 import { useI18n } from "@/lib/i18n";
+import { PRODUCT_COPY } from "@/lib/product-copy";
 
-const GITHUB_DESKTOP = "https://github.com/fjpulidop/specrails-desktop";
-const KOFI = "https://ko-fi.com/D1D81Y002C";
-
-const FooterSection = () => {
-  const { content } = useI18n();
-  const { footer, nav } = content;
-
+export default function FooterSection() {
+  const { languageId, content } = useI18n();
+  const c = PRODUCT_COPY[languageId];
+  const links = [
+    { label: content.nav.product, to: "/#product" },
+    { label: c.workflow, to: "/#specs" },
+    { label: "Companion", to: "/companion" },
+    { label: content.nav.docs, to: "/docs" },
+  ];
   return (
     <footer
       id="footer"
-      className="relative section-darker border-t border-border/40 px-6 pb-10 pt-16 md:pt-20"
+      className="border-t border-border bg-surface-1 px-5 pb-8 pt-16 sm:px-8"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-brand opacity-80"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-brand-soft opacity-40 blur-2xl"
-      />
-
-      <div className="relative mx-auto max-w-6xl">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-          <Reveal>
-            <div>
-              <h2 className="max-w-xl text-3xl font-bold tracking-[-0.02em] text-foreground md:text-4xl">
-                {footer.headline}
-              </h2>
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                {footer.body}
-              </p>
-              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-                <Button asChild variant="gradient" className="rounded-pill cta-sheen">
-                  <Link to="/download">
-                    <Download className="h-4 w-4" aria-hidden="true" />
-                    {footer.download}
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="rounded-pill">
-                  <Link to="/docs">
-                    <BookOpen className="h-4 w-4" aria-hidden="true" />
-                    {footer.docs}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <nav aria-label="Footer" className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-              <FooterGroup
-                title={nav.product}
-                links={[
-                  { label: nav.product, href: "/#product" },
-                  { label: nav.specs, href: "/#specs" },
-                  { label: nav.loops, href: "/#loops" },
-                  { label: nav.engineering, href: "/#engineering" },
-                ]}
-              />
-              <FooterGroup
-                title={nav.resources}
-                links={[
-                  { label: nav.docs, to: "/docs" },
-                  { label: "Getting started", to: "/docs/getting-started" },
-                  { label: "Creating specs", to: "/docs/creating-specs" },
-                  { label: "Running pipelines", to: "/docs/running-pipelines" },
-                ]}
-              />
-              <FooterGroup
-                title="Community"
-                links={[
-                  { label: nav.github, href: GITHUB_DESKTOP, external: true },
-                  { label: "Issues", href: `${GITHUB_DESKTOP}/issues`, external: true },
-                  { label: nav.donate, href: KOFI, external: true },
-                  { label: "MIT License", href: `${GITHUB_DESKTOP}/blob/main/LICENSE`, external: true },
-                ]}
-              />
-            </nav>
-          </Reveal>
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col gap-8 pb-12 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 className="max-w-xl text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
+              {c.closing}
+            </h2>
+            <p className="mt-4 text-sm text-muted-foreground">{c.local}</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button
+              asChild
+              className="h-12 rounded-full bg-foreground px-6 text-background hover:bg-foreground/90"
+            >
+              <Link to="/download">
+                {content.nav.download}
+                <ArrowDown className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-12 rounded-full px-6"
+            >
+              <Link to="/docs/getting-started">
+                {c.learn}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </Button>
+          </div>
         </div>
-
-        <div className="mt-14 flex flex-col-reverse items-center justify-between gap-4 border-t border-border/30 pt-6 sm:flex-row">
-          <p className="text-center text-xs text-muted-foreground/70 sm:text-left">
-            © {new Date().getFullYear()} specrails · {footer.note}
-          </p>
-
-          <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center justify-between gap-7 border-y border-border py-6">
+          <Link to="/" aria-label="Specrails">
+            <SpecrailsLogo height={36} />
+          </Link>
+          <nav
+            className="flex flex-wrap gap-x-6 gap-y-3"
+            aria-label={content.nav.sections}
+          >
+            {links.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="text-sm text-muted-foreground hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <a
+            href="https://github.com/fjpulidop/specrails-desktop"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={content.nav.github}
+            className="rounded-lg p-2 text-muted-foreground hover:text-foreground"
+          >
+            <Github className="h-5 w-5" />
+          </a>
+        </div>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground">
+          <p>© {new Date().getFullYear()} Specrails</p>
+          <div className="flex items-center gap-5">
+            <Link to="/privacy" className="hover:text-foreground">
+              {
+                {
+                  en: "Privacy",
+                  es: "Privacidad",
+                  fr: "Confidentialité",
+                  de: "Datenschutz",
+                  pt: "Privacidade",
+                  it: "Privacy",
+                  zh: "隐私",
+                  ja: "プライバシー",
+                }[languageId]
+              }
+            </Link>
             <a
-              href={KOFI}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={nav.donate}
-              title={nav.donate}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-brand-violet"
+              href="https://github.com/fjpulidop/specrails-desktop/blob/main/LICENSE"
+              className="hover:text-foreground"
             >
-              <Coffee className="h-5 w-5" />
-            </a>
-            <a
-              href={`${GITHUB_DESKTOP}/issues`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Issues"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-brand-cyan"
-            >
-              <MessageCircle className="h-5 w-5" />
-            </a>
-            <a
-              href={`${GITHUB_DESKTOP}/blob/main/LICENSE`}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="MIT License"
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-brand-cyan"
-            >
-              <ScrollText className="h-5 w-5" />
-            </a>
-            <a
-              href={GITHUB_DESKTOP}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={nav.github}
-              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
-            >
-              <Github className="h-5 w-5" />
+              MIT
             </a>
           </div>
         </div>
       </div>
     </footer>
   );
-};
-
-function FooterGroup({
-  title,
-  links,
-}: {
-  title: string;
-  links: Array<{ label: string; href?: string; to?: string; external?: boolean }>;
-}): JSX.Element {
-  return (
-    <div>
-      <h3 className="eyebrow mb-4">{title}</h3>
-      <ul className="space-y-3">
-        {links.map((link) => (
-          <li key={link.label}>
-            {link.to ? (
-              <Link
-                to={link.to}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ) : (
-              <a
-                href={link.href}
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
-              </a>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
 }
-
-export default FooterSection;

@@ -22,6 +22,7 @@ function copy404Plugin(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  cacheDir: ".cache/vite",
   server: {
     host: "::",
     port: 8080,
@@ -30,7 +31,12 @@ export default defineConfig(({ mode }) => ({
     },
   },
   optimizeDeps: {
-    include: ["react-markdown", "remark-gfm", "rehype-highlight", "rehype-slug"],
+    include: [
+      "react-markdown",
+      "remark-gfm",
+      "rehype-highlight",
+      "rehype-slug",
+    ],
   },
   plugins: [
     react(),

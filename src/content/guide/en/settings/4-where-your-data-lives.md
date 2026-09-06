@@ -1,48 +1,17 @@
-# Where your data lives
+<!-- guide-revision: mission-first-v1 -->
 
-Short version: **Specrails keeps your repositories pristine.** When you point the app at one of your projects, it does not move in, scatter config files around, or rewrite anything you didn't ask it to. Your code stays yours, and clean.
+# Know what to back up
 
-## Your repo stays clean
+Your repositories and Specrails' local records are different parts of the workspace. Back up both when protecting or moving your work.
 
-Specrails's own files — its databases, per-project state, agent definitions, settings, telemetry, summaries, and everything else it needs to run — live in a single tidy home under your home directory:
+## Keep the two layers
 
-```
-~/.specrails/
-```
+Source files remain in the folders you registered. Specs, runtime artifacts, worktrees and project history can have distinct managed locations. The default Specrails data home is `~/.specrails`; explicit environment configuration can change it.
 
-That folder is the app's private workspace. It's where the project registry, per-project databases, bundled tooling, and all the operational bits live. Your actual code repositories are never used as a dumping ground for any of it.
+A logical multi-repository project keeps one backlog and integration identity while retaining separate repository memberships. Adding a folder does not import another project's history.
 
-This means:
+## Move or remove deliberately
 
-- Your repo's `.gitignore` is **not** rewritten by the app.
-- Your repo isn't littered with tool config or hidden state directories.
-- Removing a project from Specrails doesn't leave a mess behind in your code.
+Before moving a repository or deleting a project, inspect pending runs, delivery references and saved process history. Membership removal must not silently delete your source folders, but deleting application records can remove their history.
 
-If you've used tools before that quietly added folders and files all over your project, this is a deliberate departure. Specrails is built so that pointing it at a repo is a **non-event** for that repo's git history.
-
-## The one thing that *is* committed — by design
-
-There's exactly one intentional exception, and it's the whole point of the tool: **your OpenSpec specs.**
-
-Specs live in your repository, under:
-
-```
-openspec/
-```
-
-This is on purpose. Your specs are a **deliverable** — a versioned, reviewable record of what you decided to build and why. They belong next to your code, tracked in git, visible in pull requests, shared with your team. That's the value: specs aren't disposable scratch state, they're part of your project's history.
-
-So the rule is simple and honest:
-
-- **`openspec/`** → lives in your repo, committed, by design.
-- **Everything else Specrails needs** → lives under `~/.specrails/`, out of your way.
-
-## Why it works this way
-
-Specrails runs the AI tooling from its own private workspace (under `~/.specrails/`) and reaches back into your real repository only for the things that genuinely need to touch it — reading your code, and writing the specs you asked for. The tooling, the framework definitions, and the bookkeeping all stay in the app's home folder.
-
-The upshot for you: you can add a project, run pipelines, explore specs, and try things out with confidence that your repository's working tree and git history only ever change in ways you'd expect — your committed specs, and the code your pipelines write. Nothing else sneaks in.
-
-## Removing a project
-
-When you remove a project from Specrails, the app cleans up its own per-project state under `~/.specrails/`. The specs already committed to your repo stay where they belong — in your repo — because they're yours.
+Stop the relevant app processes before manually restoring a database backup. Preserve the original backup until the restored projects and paths have been checked. Do not fix a startup error by deleting the data directory without understanding which records it contains.

@@ -1,12 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Check, Languages } from "lucide-react";
 import { LANGUAGES, LANGUAGE_IDS, useI18n, type LanguageId } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function LanguageSwitcher({ className }: { className?: string }): JSX.Element {
+export function LanguageSwitcher({
+  className,
+}: {
+  className?: string;
+}): JSX.Element {
   const { languageId, setLanguage, content } = useI18n();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const choicesId = useId();
 
   useEffect(() => {
     if (!open) return;
@@ -16,7 +22,17 @@ export function LanguageSwitcher({ className }: { className?: string }): JSX.Ele
       }
     };
     document.addEventListener("mousedown", onDown);
-    return () => document.removeEventListener("mousedown", onDown);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   const choose = (next: LanguageId) => {
@@ -27,9 +43,12 @@ export function LanguageSwitcher({ className }: { className?: string }): JSX.Ele
   return (
     <div ref={ref} className={cn("relative", className)}>
       <button
+        ref={triggerRef}
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-label={content.language.change}
+        aria-expanded={open}
+        aria-controls={open ? choicesId : undefined}
         title={`${content.language.label}: ${LANGUAGES[languageId].nativeName}`}
         className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-border/70 bg-surface-2 text-muted-foreground transition-colors hover:bg-surface-3 hover:text-foreground"
       >
@@ -37,7 +56,10 @@ export function LanguageSwitcher({ className }: { className?: string }): JSX.Ele
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border/50 bg-popover p-1.5 shadow-xl">
+        <div
+          id={choicesId}
+          className="absolute right-0 top-full z-50 mt-2 w-52 overflow-hidden rounded-xl border border-border/50 bg-popover p-1.5 shadow-xl"
+        >
           {LANGUAGE_IDS.map((id) => {
             const language = LANGUAGES[id];
             const selected = id === languageId;
@@ -56,8 +78,15 @@ export function LanguageSwitcher({ className }: { className?: string }): JSX.Ele
                 <span className="w-7 font-mono text-xs uppercase text-muted-foreground">
                   {id}
                 </span>
-                <span className="min-w-0 flex-1 truncate">{language.nativeName}</span>
-                {selected && <Check className="h-3.5 w-3.5 text-brand-cyan" aria-hidden="true" />}
+                <span className="min-w-0 flex-1 truncate">
+                  {language.nativeName}
+                </span>
+                {selected && (
+                  <Check
+                    className="h-3.5 w-3.5 text-brand-cyan"
+                    aria-hidden="true"
+                  />
+                )}
               </button>
             );
           })}

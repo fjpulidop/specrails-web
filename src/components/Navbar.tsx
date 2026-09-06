@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Github, Coffee, Sun, Moon, Menu, Download as DownloadIcon } from "lucide-react";
+import {
+  Github,
+  Coffee,
+  Sun,
+  Moon,
+  Menu,
+  Download as DownloadIcon,
+} from "lucide-react";
 import { DocsDropdown } from "@/components/DocsDropdown";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import {
@@ -13,6 +20,8 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
+import SpecrailsLogo from "@/components/SpecrailsLogo";
+import { PRODUCT_COPY } from "@/lib/product-copy";
 
 // openspec: hero-redesign-hub-primary
 
@@ -20,7 +29,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { theme, toggle } = useTheme();
-  const { content } = useI18n();
+  const { content, languageId } = useI18n();
+  const copy = PRODUCT_COPY[languageId];
   const { nav } = content;
 
   useEffect(() => {
@@ -30,8 +40,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const themeLabel =
-    theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+  const themeLabel = copy.theme;
 
   const ThemeToggleBtn = ({ className }: { className?: string }) => (
     <button
@@ -56,9 +65,8 @@ const Navbar = () => {
 
   const sectionLinks = [
     { label: nav.product, href: "/#product" },
-    { label: nav.specs, href: "/#specs" },
-    { label: nav.loops, href: "/#loops" },
-    { label: nav.engineering, href: "/#engineering" },
+    { label: copy.workflow, href: "/#specs" },
+    { label: "Companion", href: "/companion" },
   ] as const;
 
   return (
@@ -67,10 +75,10 @@ const Navbar = () => {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
           ? "bg-background/80 backdrop-blur-xl border-b border-border/20 shadow-lg"
-          : "bg-transparent",
+          : "bg-background/90 border-b border-transparent",
       )}
     >
-      <div className="container mx-auto px-6 h-16 flex items-center justify-between gap-4">
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8 xl:px-0">
         {/* Logo — permanent specrails wordmark (always visible). */}
         <a
           href="/"
@@ -78,42 +86,11 @@ const Navbar = () => {
           className="flex items-center"
           aria-label="specrails home"
         >
-          <svg
-            viewBox="0 0 188 64"
-            height="48"
-            width="141"
-            aria-hidden="true"
-            focusable="false"
-            style={{ display: "block" }}
-          >
-            <defs>
-              <linearGradient id="wmGradNav" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#1ccbe2" />
-                <stop offset="100%" stopColor="#a374db" />
-              </linearGradient>
-            </defs>
-            <rect x="4" y="6" width="180" height="6" rx="3" fill="hsl(var(--rail))" opacity="0.6" />
-            <rect x="4" y="18" width="180" height="28" rx="14" fill="url(#wmGradNav)" />
-            <rect x="14" y="21" width="160" height="9" rx="4.5" fill="#ffffff" opacity="0.18" />
-            <text
-              x="94"
-              y="32.5"
-              fontFamily="'JetBrains Mono', monospace"
-              fontWeight="700"
-              fontSize="20"
-              textAnchor="middle"
-              dominantBaseline="central"
-              fill="#0a0e1a"
-              letterSpacing="0.5"
-            >
-              specrails
-            </text>
-            <rect x="4" y="52" width="180" height="6" rx="3" fill="hsl(var(--rail))" opacity="0.6" />
-          </svg>
+          <SpecrailsLogo height={42} />
         </a>
 
         {/* Desktop nav — tidy groups + single gradient CTA */}
-        <div className="hidden md:flex items-center gap-1 lg:gap-2">
+        <div className="hidden lg:flex items-center gap-1 lg:gap-2">
           {/* Product story */}
           {sectionLinks.map((l) => (
             <a key={l.href} href={l.href} className={cn(navLinkClass, "px-2")}>
@@ -127,10 +104,7 @@ const Navbar = () => {
           </span>
 
           {/* divider */}
-          <span
-            className="mx-1 h-4 w-px bg-border/50"
-            aria-hidden="true"
-          />
+          <span className="mx-1 h-4 w-px bg-border/50" aria-hidden="true" />
 
           {/* Group 4: utilities (icon-only) */}
           <LanguageSwitcher />
@@ -160,7 +134,7 @@ const Navbar = () => {
             asChild
             variant="gradient"
             size="sm"
-            className="ml-1 cta-sheen motion-safe:animate-download-pulse"
+            className="ml-1 rounded-full"
           >
             <Link to="/download">
               <DownloadIcon className="w-4 h-4" />
@@ -170,14 +144,14 @@ const Navbar = () => {
         </div>
 
         {/* Mobile: theme toggle + hamburger */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-2">
           <LanguageSwitcher />
           <ThemeToggleBtn />
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <Button
               variant="ghost"
               size="icon"
-              aria-label="Open menu"
+              aria-label={copy.menu}
               onClick={() => setMobileOpen(true)}
               className="w-9 h-9 text-muted-foreground hover:text-foreground"
             >
@@ -252,7 +226,7 @@ const Navbar = () => {
                   ) : (
                     <Moon className="w-4 h-4" />
                   )}
-                  {theme === "dark" ? "Light" : "Dark"}
+                  {copy.theme}
                 </button>
                 <SheetClose asChild>
                   <Button

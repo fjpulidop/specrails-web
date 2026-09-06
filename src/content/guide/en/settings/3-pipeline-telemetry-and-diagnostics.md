@@ -1,46 +1,17 @@
-# Pipeline telemetry & diagnostics
+<!-- guide-revision: mission-first-v1 -->
 
-When a pipeline job doesn't go the way you expected, telemetry gives you a detailed, behind-the-scenes record of what the AI CLI actually did. It's **off by default** and entirely opt-in, per project — turn it on only when you want it.
+# Diagnose a problem with evidence
 
-## What it is
+A useful problem report identifies the application version, affected operation and observable failure without exposing unrelated project data.
 
-Telemetry captures structured diagnostic signals (traces, metrics, and logs) emitted by the AI CLI while it runs a pipeline job. Think of it as a flight recorder for your pipeline runs: timings, token usage, and step-by-step activity, captured locally so you can inspect a job after the fact.
+## Capture the relevant state
 
-It's built on **OpenTelemetry**, an open, standard format — so the data isn't locked into a proprietary box.
+Record your OS, Specrails version, provider, run or conversation identifier and the exact error. Include the failed step and relevant logs. Distinguish a disconnected interface from an empty database: first check backend and runtime status before concluding that records were lost.
 
-## Turning it on
+For delivery problems, identify the repository, branch and action. Preserve local changes and worktrees until the failure is understood. For browser problems, say whether you used the native app or a development/browser-hosted surface.
 
-Telemetry is configured **per project**:
+## Share a bounded report
 
-1. Open the project's **Settings** page (the per-project settings route).
-2. Find the **Pipeline telemetry** toggle.
-3. Switch it on.
+Remove credentials, session tokens and unrelated source from logs or screenshots. Model requests, integrations and optional diagnostic features have their own data boundaries; “local-first” is not a claim that every configured operation is offline.
 
-From that point forward, pipeline jobs in that project record telemetry. Other projects are unaffected — each project decides for itself.
-
-### What's covered
-
-Telemetry applies to **pipeline jobs** (the queued Architect → Developer → Reviewer → Ship rail runs). Interactive sessions like chat and the setup wizard are intentionally left out — telemetry is meant for the repeatable, inspectable pipeline runs, not one-off conversations.
-
-## Where the data lives
-
-Everything stays on your machine, under your home directory (`~/.specrails/`) — never in your repo. Raw recordings are stored compressed alongside their job, and older recordings are automatically condensed into compact summaries after a week to keep things tidy. You never have to manage any of this by hand.
-
-## Exporting a diagnostic bundle
-
-The most useful thing telemetry unlocks is the **diagnostic export** — a single ZIP that packages up everything about a job for troubleshooting or sharing.
-
-When a job has telemetry recorded, an **export button** appears on its job card. Click it to download a ZIP containing:
-
-- **`job-metadata.json`** — the job's identity and parameters
-- **`telemetry.ndjson`** — the raw recorded signals
-- **`logs.txt`** — the captured log output
-- **`summary.md`** — a human-readable summary of the run
-
-If the project uses plugins, the bundle also includes a snapshot of which plugins were active for that job.
-
-This is the bundle to grab when you want to understand a tricky run, keep a record, or hand details to someone helping you debug.
-
-## Turning it off
-
-Flip the toggle back off any time. New jobs stop recording immediately. Anything already captured stays on disk until it's compacted or you remove the project — nothing is sent anywhere or lost behind your back.
+Report a reproducible sequence and expected result through the project's [issue tracker](https://github.com/fjpulidop/specrails-desktop/issues).

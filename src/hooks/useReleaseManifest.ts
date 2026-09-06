@@ -64,8 +64,13 @@ function loadManifest(): Promise<ReleaseManifestState> {
   if (cachedPromise) return cachedPromise;
 
   cachedPromise = (async (): Promise<ReleaseManifestState> => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8_000);
     try {
-      const res = await fetch(MANIFEST_URL, { cache: "no-cache" });
+      const res = await fetch(MANIFEST_URL, {
+        cache: "no-cache",
+        signal: controller.signal,
+      });
       if (!res.ok) {
         return { status: "error", reason: `HTTP ${res.status}` };
       }
@@ -76,6 +81,8 @@ function loadManifest(): Promise<ReleaseManifestState> {
       return { status: "ready", manifest: data };
     } catch (err) {
       return { status: "error", reason: (err as Error).message };
+    } finally {
+      clearTimeout(timeout);
     }
   })();
 
@@ -83,7 +90,9 @@ function loadManifest(): Promise<ReleaseManifestState> {
 }
 
 export function useReleaseManifest(): ReleaseManifestState {
-  const [state, setState] = useState<ReleaseManifestState>({ status: "loading" });
+  const [state, setState] = useState<ReleaseManifestState>({
+    status: "loading",
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -177,7 +186,13 @@ export function getAsset(
 export function downloadForPlatform(
   state: ReleaseManifestState,
   platform: PlatformKey,
-): { href: string | undefined; disabled: boolean; version: string | null; size: number | null; sha256: string | null } {
+): {
+  href: string | undefined;
+  disabled: boolean;
+  version: string | null;
+  size: number | null;
+  sha256: string | null;
+} {
   if (state.status === "ready") {
     const asset = getAsset(state.manifest, platform);
     if (asset) {
@@ -206,18 +221,34 @@ export function downloadForPlatform(
       sha256: null,
     };
   }
-  return { href: undefined, disabled: true, version: null, size: null, sha256: null };
+  return {
+    href: undefined,
+    disabled: true,
+    version: null,
+    size: null,
+    sha256: null,
+  };
 }
 
 /** Hero CTA helper: download for detected platform, mac fallback if unknown. */
 export function downloadFromState(
   state: ReleaseManifestState,
   platform: DetectedPlatform = "darwin-arm64",
-): { href: string | undefined; disabled: boolean; version: string | null; platform: PlatformKey } {
+): {
+  href: string | undefined;
+  disabled: boolean;
+  version: string | null;
+  platform: PlatformKey;
+} {
   const target: PlatformKey =
     platform === "unknown" ? "darwin-arm64" : platform;
   const r = downloadForPlatform(state, target);
-  return { href: r.href, disabled: r.disabled, version: r.version, platform: target };
+  return {
+    href: r.href,
+    disabled: r.disabled,
+    version: r.version,
+    platform: target,
+  };
 }
 
 export function formatBytes(bytes: number): string {

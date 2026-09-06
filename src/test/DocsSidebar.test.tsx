@@ -25,12 +25,12 @@ describe("DocsSidebar", () => {
   it("renders a link for every doc entry", () => {
     renderSidebar();
     const links = screen.getAllByRole("link");
-    expect(links).toHaveLength(DOCS.length);
+    expect(links).toHaveLength(DOCS.length + 1);
   });
 
   it("marks the active doc entry as active (border style)", () => {
     renderSidebar("/docs/agents-meet-the-agents");
-    const agentsLink = screen.getByRole("link", { name: /meet the agents/i });
+    const agentsLink = screen.getByRole("link", { name: /understand the agent roles/i });
     expect(agentsLink.className).toMatch(/border-brand-cyan/);
   });
 

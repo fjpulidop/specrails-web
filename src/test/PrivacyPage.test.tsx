@@ -12,17 +12,30 @@ function renderPrivacyPage() {
 }
 
 describe("PrivacyPage", () => {
-  it("renders the privacy policy heading and local-first promise", () => {
+  it("describes local storage, signaling and external services without a LAN-only promise", () => {
     renderPrivacyPage();
 
     expect(
       screen.getByRole("heading", { level: 1, name: /privacy policy/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Specrails does not collect, store, or transmit any personal data/i),
+      screen.getByText(/Some features connect to external services/i),
     ).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Data we collect/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /Local network communication/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", {
+        name: /Local workspace and device storage/i,
+      }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Companion connections/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/Mailbox payloads expire after 60 seconds/i),
+    ).toBeInTheDocument();
+    expect(screen.getByText(/Plausible Analytics/i)).toBeInTheDocument();
+    expect(
+      screen.queryByText(/Nothing ever leaves your network/i),
+    ).not.toBeInTheDocument();
   });
 
   it("links contact to the Specrails desktop repository", () => {
@@ -31,7 +44,11 @@ describe("PrivacyPage", () => {
     expect(
       screen
         .getAllByRole("link", { name: "GitHub" })
-        .some((link) => link.getAttribute("href") === "https://github.com/fjpulidop/specrails-desktop"),
+        .some(
+          (link) =>
+            link.getAttribute("href") ===
+            "https://github.com/fjpulidop/specrails-desktop",
+        ),
     ).toBe(true);
   });
 });

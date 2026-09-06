@@ -1,5 +1,7 @@
 import { Children, isValidElement, type ReactNode } from "react";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { defaultUrlTransform } from "react-markdown";
+import { getDocsCopy, type DocsCopy } from "@/lib/docs-copy";
+import { useI18n } from "@/lib/i18n";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import rehypeSlug from "rehype-slug";
@@ -142,13 +144,12 @@ function detectCallout(
   return { kind, rest };
 }
 
-function HeadingAnchor({ id }: { id?: string }): JSX.Element | null {
+function HeadingAnchor({ id, label }: { id?: string; label: string }): JSX.Element | null {
   if (!id) return null;
   return (
     <a
       href={`#${id}`}
-      aria-label="Link to this section"
-      tabIndex={-1}
+      aria-label={label}
       className={cn(
         "ml-2 inline-flex items-center align-middle text-muted-foreground/60",
         "opacity-0 transition-opacity hover:text-brand-cyan group-hover:opacity-100",
@@ -160,7 +161,7 @@ function HeadingAnchor({ id }: { id?: string }): JSX.Element | null {
   );
 }
 
-const customComponents: Components = {
+function createComponents(copy: DocsCopy): Components { return {
   a: ({ href, children }) => {
     const isInternal = href?.startsWith("/");
     if (isInternal && href) {
@@ -181,19 +182,19 @@ const customComponents: Components = {
   h2: ({ id, children }) => (
     <h2 id={id} className="group">
       {children}
-      <HeadingAnchor id={id} />
+      <HeadingAnchor id={id} label={copy.link} />
     </h2>
   ),
   h3: ({ id, children }) => (
     <h3 id={id} className="group">
       {children}
-      <HeadingAnchor id={id} />
+      <HeadingAnchor id={id} label={copy.link} />
     </h3>
   ),
   h4: ({ id, children }) => (
     <h4 id={id} className="group">
       {children}
-      <HeadingAnchor id={id} />
+      <HeadingAnchor id={id} label={copy.link} />
     </h4>
   ),
 
@@ -206,8 +207,8 @@ const customComponents: Components = {
         <pre {...props}>{children}</pre>
         <CopyButton
           value={code}
-          label="Copy code"
-          className="absolute right-3 top-3 opacity-0 transition-opacity group-hover/code:opacity-100 focus-visible:opacity-100"
+          label={copy.copy}
+          className="absolute right-3 top-3 opacity-100 transition-opacity md:opacity-0 md:group-hover/code:opacity-100 focus-visible:opacity-100"
         />
       </div>
     );
@@ -218,7 +219,7 @@ const customComponents: Components = {
     const callout = detectCallout(children);
     if (!callout) return <blockquote>{children}</blockquote>;
 
-    const { label, icon: Icon, cardClass, iconClass } = CALLOUT_CONFIG[callout.kind];
+    const { icon: Icon, cardClass, iconClass } = CALLOUT_CONFIG[callout.kind];
     return (
       <div className={cn("docs-callout not-italic", cardClass)} role="note">
         <Icon
@@ -227,7 +228,7 @@ const customComponents: Components = {
         />
         <div className="min-w-0 flex-1">
           <div className={cn("mb-1 font-semibold not-italic", iconClass)}>
-            {label}
+            {copy[callout.kind]}
           </div>
           <div className="space-y-2 not-italic text-foreground/90 [&_p]:mb-0 [&>*:last-child]:mb-0">
             {callout.rest}
@@ -236,14 +237,17 @@ const customComponents: Components = {
       </div>
     );
   },
-};
+}; }
 
 export function MarkdownRenderer({ content, doc }: MarkdownRendererProps): JSX.Element {
+  const { languageId } = useI18n();
+  const copy = getDocsCopy(languageId);
   const components: Components = {
-    ...customComponents,
+    ...createComponents(copy),
+    table: ({children}) => <div className="my-6 overflow-x-auto rounded-xl border border-border/60"><table className="!my-0">{children}</table></div>,
     a: ({ href, children }) => {
       const resolvedHref = href ? resolveDocHref(href, doc) : undefined;
-      const isInternal = resolvedHref?.startsWith("/");
+      const isInternal = resolvedHref?.startsWith("/") && !resolvedHref.startsWith("//");
       const isSamePageAnchor = resolvedHref?.startsWith("#");
 
       if (isInternal && resolvedHref) {
@@ -268,12 +272,12 @@ export function MarkdownRenderer({ content, doc }: MarkdownRendererProps): JSX.E
   };
 
   return (
-    <div className="docs-prose">
+    <div className="docs-prose [&_h2]:scroll-mt-36 [&_h3]:scroll-mt-36 [&_h4]:scroll-mt-36 lg:[&_h2]:scroll-mt-24 lg:[&_h3]:scroll-mt-24 lg:[&_h4]:scroll-mt-24">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeSlug, rehypeHighlight]}
         components={components}
-        urlTransform={(url) => resolveDocHref(url, doc)}
+        urlTransform={(url) => defaultUrlTransform(resolveDocHref(url, doc))}
       >
         {content}
       </ReactMarkdown>

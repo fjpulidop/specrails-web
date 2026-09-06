@@ -6,15 +6,17 @@ import {
   getDocBySlug,
   getAdjacentDocs,
   resolveDocHref,
+  loadDocContent,
+  searchDocs,
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 30 English guide entries", () => {
-    expect(DOCS).toHaveLength(30);
+  it("has 37 English guide entries", () => {
+    expect(DOCS).toHaveLength(37);
   });
 
   it("getDocBySlug returns correct entry", () => {
-    expect(getDocBySlug("getting-started")?.title).toBe("What is specrails");
+    expect(getDocBySlug("getting-started")?.title).toBe("What is Specrails");
   });
 
   it("getDocBySlug returns undefined for unknown slug", () => {
@@ -34,14 +36,39 @@ describe("docs-registry", () => {
     expect(next?.slug).toBe("getting-started-installing-and-first-run");
   });
 
-  it("content is non-empty for all entries", () => {
-    DOCS.forEach((d) => expect(d.content.length).toBeGreaterThan(0));
+  it("keeps article bodies out of synchronous navigation metadata", () => {
+    DOCS.forEach(doc => { expect(doc).not.toHaveProperty('content'); expect(doc.description.length).toBeGreaterThan(20); });
+  });
+  it("loads complete current English and Spanish guides on demand", async () => {
+    for (const language of ['en','es'] as const) for (const doc of getDocs(language)) {
+      expect(doc.isFallback).toBe(false);
+      expect(await loadDocContent(doc)).toContain(`# ${doc.title}`);
+    }
+  });
+  it("does not serve a stale translation as current", async () => {
+    const doc = getDocBySlug('pipeline-the-loop-builder', 'fr')!;
+    expect(doc).toMatchObject({language:'fr',contentLanguage:'en',isFallback:true});
+    expect(await loadDocContent(doc)).toContain('Give every step a contract');
+    for (const language of ['fr','de','pt','it','zh','ja'] as const) {
+      for (const slug of ['getting-started','missions-first-mission','missions-review-and-delivery']) {
+        const translated = getDocBySlug(slug, language)!;
+        expect(translated.isFallback).toBe(false);
+        expect(await loadDocContent(translated)).toContain(`# ${translated.title}`);
+      }
+    }
+  });
+  it("searches normalized localized titles, summaries and headings", () => {
+    expect(searchDocs('MISION', 'es').some(doc => doc.slug === 'missions-first-mission')).toBe(true);
+    expect(searchDocs('receipts', 'en').some(doc => doc.slug === 'missions-steering-and-receipts')).toBe(true);
+    expect(searchDocs('processes')[0].title.toLowerCase()).toContain('processes');
+    expect(searchDocs('unfindable-xyz')).toEqual([]);
+    expect(searchDocs('  ', 'es')).toEqual(getDocs('es'));
   });
 
   it("returns localized entries", () => {
     const spanishDocs = getDocs("es");
-    expect(spanishDocs).toHaveLength(30);
-    expect(getDocBySlug("getting-started", "es")?.title).toBe("Qué es specrails");
+    expect(spanishDocs).toHaveLength(37);
+    expect(getDocBySlug("getting-started", "es")?.title).toBe("Qué es Specrails");
   });
 
   it("leaves non-doc links unchanged", () => {

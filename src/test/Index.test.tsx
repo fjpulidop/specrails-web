@@ -14,7 +14,7 @@ function renderIndex(hash = "") {
       <MemoryRouter initialEntries={[`/${hash}`]}>
         <Index />
       </MemoryRouter>
-    </QueryClientProvider>
+    </QueryClientProvider>,
   );
 }
 
@@ -29,15 +29,16 @@ describe("Index page", () => {
     expect(logo).toBeInTheDocument();
   });
 
-  it("renders the SectionNav with all expected section ids", () => {
+  it("leads with missions and shows real recording controls", () => {
     renderIndex();
-    // SectionNav renders two buttons (up/down) when sectionIds is non-empty
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
+      "Start with a mission.",
+    );
     expect(
-      screen.getByRole("button", { name: /previous section/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /next section/i })
-    ).toBeInTheDocument();
+      screen.getAllByRole("button", { name: /play/i }).length,
+    ).toBeGreaterThanOrEqual(3);
+    expect(document.querySelector("video")).toBeNull();
+    expect(document.querySelector("#main-content")).toBeInTheDocument();
   });
 
   it("contains elements with section ids", () => {

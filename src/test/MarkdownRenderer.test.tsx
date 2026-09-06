@@ -75,3 +75,14 @@ describe("MarkdownRenderer", () => {
     expect(heading.id).toBe("getting-started");
   });
 });
+
+it('does not restore unsafe protocols when resolving documentation links',()=>{
+  renderWithRouter(<MarkdownRenderer content={'[Unsafe](javascript:alert%281%29)\n\n[Relative external](//example.com)'} />);
+  expect(screen.getByText('Unsafe').closest('a')).not.toHaveAttribute('href','javascript:alert%281%29');
+  expect(screen.getByRole('link',{name:'Relative external'})).toHaveAttribute('target','_blank');
+});
+it('keeps wide tables inside their own scroll container and heading links keyboard accessible',()=>{
+  renderWithRouter(<MarkdownRenderer content={'## Contracts\n\n| Field | Value |\n| --- | --- |\n| scope | repository |'} />);
+  expect(screen.getByRole('table').parentElement).toHaveClass('overflow-x-auto');
+  expect(screen.getByRole('link',{name:'Link to this section'})).not.toHaveAttribute('tabindex','-1');
+});

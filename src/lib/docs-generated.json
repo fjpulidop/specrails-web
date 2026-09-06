@@ -1,0 +1,1031 @@
+{
+  "revision": "mission-first-v1",
+  "entries": [
+    {
+      "key": "getting-started/1-what-is-specrails.md",
+      "slug": "getting-started",
+      "sourceSlug": "what-is-specrails",
+      "category": "getting-started",
+      "translations": {
+        "en": {
+          "title": "What is Specrails",
+          "description": "Specrails is a local workspace for turning a software idea into a precise spec, a coordinated implementation and a reviewable delivery. Start in a mission conversation; use the Board when you want to organize the backlog and execution lanes.",
+          "headings": [
+            "Your first path",
+            "What runs where"
+          ]
+        },
+        "es": {
+          "title": "Qué es Specrails",
+          "description": "Specrails es un espacio de trabajo local para convertir una idea de software en una spec precisa, una implementación coordinada y una entrega revisable. Empieza en una conversación de misión; usa el Board cuando quieras organizar el backlog y los carriles de ejecución.",
+          "headings": [
+            "Tu primer recorrido",
+            "Dónde se ejecuta cada parte"
+          ]
+        },
+        "fr": {
+          "title": "Découvrir Specrails",
+          "description": "Specrails est un espace de travail local pour transformer une idée en spec précise, en implémentation coordonnée et en livraison vérifiable. Commencez par une mission ; le Board permet de gérer directement le même backlog.",
+          "headings": [
+            "Votre premier parcours"
+          ]
+        },
+        "de": {
+          "title": "Specrails kennenlernen",
+          "description": "Specrails ist ein lokaler Arbeitsbereich, der eine Softwareidee in eine präzise Spec, eine koordinierte Umsetzung und ein prüfbares Ergebnis überführt. Beginnen Sie mit einer Mission; im Board verwalten Sie denselben Backlog direkt.",
+          "headings": [
+            "Ihr erster Ablauf"
+          ]
+        },
+        "pt": {
+          "title": "Conheça o Specrails",
+          "description": "O Specrails é um espaço de trabalho local que transforma uma ideia numa spec precisa, numa implementação coordenada e numa entrega que pode rever. Comece por uma missão; o Board permite gerir diretamente o mesmo backlog.",
+          "headings": [
+            "O primeiro percurso"
+          ]
+        },
+        "it": {
+          "title": "Scopri Specrails",
+          "description": "Specrails è uno spazio di lavoro locale che trasforma un’idea in una spec precisa, un’implementazione coordinata e una consegna verificabile. Inizia da una missione; il Board permette di gestire direttamente lo stesso backlog.",
+          "headings": [
+            "Il primo percorso"
+          ]
+        },
+        "zh": {
+          "title": "了解 Specrails",
+          "description": "Specrails 是一个本地工作空间，可将软件想法转化为明确的规格、协调的实现以及可审查的交付。建议从任务对话开始；Board 用于直接管理同一个待办列表。",
+          "headings": [
+            "首次使用流程"
+          ]
+        },
+        "ja": {
+          "title": "Specrails を知る",
+          "description": "Specrails は、ソフトウェアのアイデアを明確なスペック、連携した実装、レビュー可能な成果物へ進めるローカルの作業環境です。まずミッションから始めましょう。Board では同じバックログを直接管理できます。",
+          "headings": [
+            "最初の流れ"
+          ]
+        }
+      }
+    },
+    {
+      "key": "getting-started/2-installing-and-first-run.md",
+      "slug": "getting-started-installing-and-first-run",
+      "sourceSlug": "installing-and-first-run",
+      "category": "getting-started",
+      "translations": {
+        "en": {
+          "title": "Install and connect your provider",
+          "description": "Install Specrails, check its prerequisites and sign in to the provider you intend to use before asking an agent to work.",
+          "headings": [
+            "Choose the application",
+            "Complete setup"
+          ]
+        },
+        "es": {
+          "title": "Instala y conecta tu proveedor",
+          "description": "Instala Specrails, comprueba sus requisitos e inicia sesión en el proveedor elegido antes de pedir trabajo al agente.",
+          "headings": [
+            "Elige la aplicación",
+            "Completa la configuración"
+          ]
+        }
+      }
+    },
+    {
+      "key": "getting-started/3-adding-your-first-project.md",
+      "slug": "getting-started-adding-your-first-project",
+      "sourceSlug": "adding-your-first-project",
+      "category": "getting-started",
+      "translations": {
+        "en": {
+          "title": "Add a project and its repositories",
+          "description": "A project is a logical product with one shared backlog. It can contain one repository, several repositories or extra folders used as context.",
+          "headings": [
+            "Create the project",
+            "Select implementation scope"
+          ]
+        },
+        "es": {
+          "title": "Añade un proyecto y sus repositorios",
+          "description": "Un proyecto representa un producto con un único backlog compartido. Puede incluir un repositorio, varios repositorios o carpetas adicionales de contexto.",
+          "headings": [
+            "Crea el proyecto",
+            "Selecciona dónde implementar"
+          ]
+        }
+      }
+    },
+    {
+      "key": "getting-started/4-the-dashboard-tour.md",
+      "slug": "getting-started-the-dashboard-tour",
+      "sourceSlug": "the-dashboard-tour",
+      "category": "getting-started",
+      "translations": {
+        "en": {
+          "title": "Find your way around the workspace",
+          "description": "Mission mode is the starting point for talking to the agent and following the work. Board mode gives the same project backlog an organizational view.",
+          "headings": [
+            "Start with the mission",
+            "Use Board when organizing work"
+          ]
+        },
+        "es": {
+          "title": "Oriéntate en el espacio de trabajo",
+          "description": "El modo misión es el punto de partida para hablar con el agente y seguir el trabajo. El modo Board ofrece una vista organizativa del mismo backlog del proyecto.",
+          "headings": [
+            "Empieza por la misión",
+            "Usa Board para organizar trabajo"
+          ]
+        }
+      }
+    },
+    {
+      "key": "getting-started/5-multiple-repositories.md",
+      "slug": "getting-started-multiple-repositories",
+      "sourceSlug": "multiple-repositories",
+      "category": "getting-started",
+      "translations": {
+        "en": {
+          "title": "One project, several repositories",
+          "description": "Use one shared spec when a feature crosses repository boundaries, such as an API endpoint and the client that consumes it.",
+          "headings": [
+            "Define the boundaries",
+            "Accept the whole change"
+          ]
+        },
+        "es": {
+          "title": "Un proyecto, varios repositorios",
+          "description": "Usa una spec compartida cuando una función atraviese varios repositorios, por ejemplo un endpoint y el cliente que lo consume.",
+          "headings": [
+            "Define los límites",
+            "Acepta el cambio completo"
+          ]
+        }
+      }
+    },
+    {
+      "key": "missions/1-first-mission.md",
+      "slug": "missions-first-mission",
+      "sourceSlug": "first-mission",
+      "category": "missions",
+      "translations": {
+        "en": {
+          "title": "Your first mission",
+          "description": "Begin with the outcome you want, then let the mission gather enough project context to propose a precise change.",
+          "headings": [
+            "Give the agent a useful brief",
+            "From conversation to work"
+          ]
+        },
+        "es": {
+          "title": "Tu primera misión",
+          "description": "Empieza por el resultado que buscas y deja que la misión reúna el contexto del proyecto necesario para proponer un cambio preciso.",
+          "headings": [
+            "Da al agente un punto de partida útil",
+            "De la conversación al trabajo"
+          ]
+        },
+        "fr": {
+          "title": "Lancer votre première mission",
+          "description": "Choisissez le projet, puis ouvrez une mission. Décrivez le résultat, les contraintes et une façon concrète de vérifier la réussite.",
+          "headings": [
+            "Apporter le bon contexte",
+            "Suivre le travail"
+          ]
+        },
+        "de": {
+          "title": "Die erste Mission starten",
+          "description": "Wählen Sie das Projekt und öffnen Sie eine Mission. Beschreiben Sie Ziel, Einschränkungen und eine konkrete Erfolgskontrolle.",
+          "headings": [
+            "Passenden Kontext hinzufügen",
+            "Die Arbeit verfolgen"
+          ]
+        },
+        "pt": {
+          "title": "Inicie a primeira missão",
+          "description": "Escolha o projeto e abra uma missão. Descreva o resultado, as restrições e uma forma concreta de verificar o sucesso.",
+          "headings": [
+            "Forneça contexto relevante",
+            "Acompanhe o trabalho"
+          ]
+        },
+        "it": {
+          "title": "Avvia la prima missione",
+          "description": "Scegli il progetto e apri una missione. Descrivi risultato, vincoli e un modo concreto per verificarne il successo.",
+          "headings": [
+            "Fornisci il contesto corretto",
+            "Segui il lavoro"
+          ]
+        },
+        "zh": {
+          "title": "开始第一个任务",
+          "description": "选择项目并打开任务。说明预期结果、约束以及具体的成功验证方法。",
+          "headings": [
+            "提供正确的上下文",
+            "跟踪工作"
+          ]
+        },
+        "ja": {
+          "title": "最初のミッションを始める",
+          "description": "プロジェクトを選び、ミッションを開きます。期待する結果、制約、成功を確認する具体的な方法を伝えましょう。",
+          "headings": [
+            "適切なコンテキストを追加する",
+            "進行を確認する"
+          ]
+        }
+      }
+    },
+    {
+      "key": "missions/2-steering-and-receipts.md",
+      "slug": "missions-steering-and-receipts",
+      "sourceSlug": "steering-and-receipts",
+      "category": "missions",
+      "translations": {
+        "en": {
+          "title": "Queue, steer and understand the checks",
+          "description": "You can prepare the next message while an agent is working, or explicitly steer the active invocation. Sending and stopping are separate actions.",
+          "headings": [
+            "Queue or steer",
+            "Read the delivery receipts"
+          ]
+        },
+        "es": {
+          "title": "Encola, guía e interpreta los checks",
+          "description": "Puedes preparar el siguiente mensaje mientras trabaja el agente o guiar expresamente la invocación activa. Enviar y detener son acciones separadas.",
+          "headings": [
+            "Encola o guía",
+            "Interpreta los recibos"
+          ]
+        }
+      }
+    },
+    {
+      "key": "missions/3-review-and-delivery.md",
+      "slug": "missions-review-and-delivery",
+      "sourceSlug": "review-and-delivery",
+      "category": "missions",
+      "translations": {
+        "en": {
+          "title": "Review and deliver the change",
+          "description": "An implementation produces evidence and a delivery decision. Review the actual diff and verification for each affected repository before moving the work into your normal checkout or a pull request.",
+          "headings": [
+            "Understand the actions",
+            "Resolve a blocked delivery"
+          ]
+        },
+        "es": {
+          "title": "Revisa y entrega el cambio",
+          "description": "Una implementación produce evidencias y una decisión de entrega. Revisa el diff real y la verificación de cada repositorio antes de llevar el trabajo a tu carpeta habitual o a una pull request.",
+          "headings": [
+            "Distingue las acciones",
+            "Resuelve una entrega bloqueada"
+          ]
+        },
+        "fr": {
+          "title": "Examiner et accepter une livraison",
+          "description": "Une implémentation fournit des changements et des preuves à examiner. Des tests de base réussis ne prouvent pas que la fonctionnalité demandée existe.",
+          "headings": [
+            "Choisir l’action",
+            "Préserver les résultats partiels"
+          ]
+        },
+        "de": {
+          "title": "Ergebnisse prüfen und übernehmen",
+          "description": "Eine Umsetzung liefert Änderungen und Nachweise zur Prüfung. Bestehende grüne Tests allein beweisen nicht, dass die gewünschte Funktion umgesetzt wurde.",
+          "headings": [
+            "Die passende Aktion wählen",
+            "Teilergebnisse erhalten"
+          ]
+        },
+        "pt": {
+          "title": "Reveja e aceite a entrega",
+          "description": "Uma implementação produz alterações e evidências para rever. Testes de base bem-sucedidos não provam que a funcionalidade pedida foi implementada.",
+          "headings": [
+            "Escolha a ação",
+            "Preserve os resultados parciais"
+          ]
+        },
+        "it": {
+          "title": "Rivedi e accetta la consegna",
+          "description": "Un’implementazione produce modifiche e prove da esaminare. Il superamento dei test esistenti non dimostra che la funzionalità richiesta sia stata implementata.",
+          "headings": [
+            "Scegli l’azione",
+            "Conserva i risultati parziali"
+          ]
+        },
+        "zh": {
+          "title": "审核并接受交付",
+          "description": "实现会产生需要检查的代码变化和验证证据。已有测试通过，并不证明所要求的功能已经完成。",
+          "headings": [
+            "区分操作",
+            "保留部分成果"
+          ]
+        },
+        "ja": {
+          "title": "成果物をレビューして受け入れる",
+          "description": "実装は、確認すべき変更と検証結果を作成します。既存のテストが成功しても、要求された機能の完成を証明するものではありません。",
+          "headings": [
+            "操作を区別する",
+            "部分的な結果を保つ"
+          ]
+        }
+      }
+    },
+    {
+      "key": "missions/4-browser-and-capture.md",
+      "slug": "missions-browser-and-capture",
+      "sourceSlug": "browser-and-capture",
+      "category": "missions",
+      "translations": {
+        "en": {
+          "title": "Browse, capture and annotate",
+          "description": "Use the mission browser to inspect the application you are building and give the agent concrete visual context.",
+          "headings": [
+            "Choose the right surface",
+            "Make the feedback specific"
+          ]
+        },
+        "es": {
+          "title": "Navega, captura y anota",
+          "description": "Usa el navegador de la misión para inspeccionar la aplicación que construyes y aportar contexto visual concreto al agente.",
+          "headings": [
+            "Elige la superficie adecuada",
+            "Haz concreto el comentario"
+          ]
+        }
+      }
+    },
+    {
+      "key": "missions/5-mission-windows.md",
+      "slug": "missions-mission-windows",
+      "sourceSlug": "mission-windows",
+      "category": "missions",
+      "translations": {
+        "en": {
+          "title": "Keep a mission in its own window",
+          "description": "Separate mission windows are a native desktop feature. They let you keep a conversation visible beside the application you are testing without starting another agent.",
+          "headings": [
+            "Move the mission",
+            "Bring it back"
+          ]
+        },
+        "es": {
+          "title": "Mantén una misión en su propia ventana",
+          "description": "Las ventanas de misión separadas son una función de la aplicación nativa. Permiten mantener una conversación al lado de la aplicación que pruebas sin iniciar otro agente.",
+          "headings": [
+            "Mueve la misión",
+            "Reintégrala"
+          ]
+        }
+      }
+    },
+    {
+      "key": "specs/1-specs-and-the-backlog.md",
+      "slug": "specs-specs-and-the-backlog",
+      "sourceSlug": "specs-and-the-backlog",
+      "category": "specs",
+      "translations": {
+        "en": {
+          "title": "Specs and the shared backlog",
+          "description": "A spec is the durable agreement for a change. It gives an implementation more than a chat request: an outcome, boundaries and evidence you can review.",
+          "headings": [
+            "Make the contract useful",
+            "Keep one backlog"
+          ]
+        },
+        "es": {
+          "title": "Las specs y el backlog compartido",
+          "description": "Una spec es el acuerdo duradero de un cambio. Aporta a la implementación algo más que un mensaje: un resultado, unos límites y evidencias que puedas revisar.",
+          "headings": [
+            "Haz útil el contrato",
+            "Conserva un único backlog"
+          ]
+        }
+      }
+    },
+    {
+      "key": "specs/2-add-spec-quick-mode.md",
+      "slug": "specs-add-spec-quick-mode",
+      "sourceSlug": "add-spec-quick-mode",
+      "category": "specs",
+      "translations": {
+        "en": {
+          "title": "Create a spec with Quick or Raw",
+          "description": "Quick turns a focused request into a draft you can inspect. Raw lets you enter the specification directly without an authoring model call.",
+          "headings": [
+            "Start with an observable outcome",
+            "Separate creation from execution"
+          ]
+        },
+        "es": {
+          "title": "Crea una spec con Quick o Raw",
+          "description": "Quick convierte una petición concreta en un borrador revisable. Raw permite escribir la especificación directamente sin llamar a un modelo para redactarla.",
+          "headings": [
+            "Empieza por un resultado comprobable",
+            "Separa crear de ejecutar"
+          ]
+        }
+      }
+    },
+    {
+      "key": "specs/3-add-spec-explore-mode.md",
+      "slug": "specs-add-spec-explore-mode",
+      "sourceSlug": "add-spec-explore-mode",
+      "category": "specs",
+      "translations": {
+        "en": {
+          "title": "Shape a spec in Explore",
+          "description": "Explore combines a conversation with a live draft. Use it when the request needs investigation or decisions before implementation.",
+          "headings": [
+            "Work through the uncertainty",
+            "Save a coherent draft"
+          ]
+        },
+        "es": {
+          "title": "Da forma a la spec en Explore",
+          "description": "Explore combina una conversación con un borrador que se actualiza. Úsalo cuando la petición necesita investigación o decisiones antes de implementar.",
+          "headings": [
+            "Resuelve la incertidumbre",
+            "Guarda un borrador coherente"
+          ]
+        }
+      }
+    },
+    {
+      "key": "specs/4-drafts-and-contract-layer.md",
+      "slug": "specs-drafts-and-contract-layer",
+      "sourceSlug": "drafts-and-contract-layer",
+      "category": "specs",
+      "translations": {
+        "en": {
+          "title": "Drafts, contracts and frozen scope",
+          "description": "Drafts are editable planning state. An admitted implementation keeps a snapshot of its spec and repository scope so later edits do not redefine work already running.",
+          "headings": [
+            "Review before launching",
+            "Revise deliberately"
+          ]
+        },
+        "es": {
+          "title": "Borradores, contratos y alcance congelado",
+          "description": "Los borradores son planificación editable. Una implementación admitida conserva una instantánea de la spec y sus repositorios para que una edición posterior no redefina el trabajo en curso.",
+          "headings": [
+            "Revisa antes de lanzar",
+            "Revisa de forma deliberada"
+          ]
+        }
+      }
+    },
+    {
+      "key": "pipeline/1-rails-and-jobs.md",
+      "slug": "pipeline-rails-and-jobs",
+      "sourceSlug": "rails-and-jobs",
+      "category": "pipeline",
+      "translations": {
+        "en": {
+          "title": "Choose a loop and follow its rail",
+          "description": "A loop defines the process; a rail is the execution lane; a job or run records what actually happened. Missions can launch them for you, while Board exposes the same controls directly.",
+          "headings": [
+            "Pick the process for the request",
+            "Read completion as evidence"
+          ]
+        },
+        "es": {
+          "title": "Elige un loop y sigue su rail",
+          "description": "Un loop define el proceso; un rail es el carril de ejecución; un job o run registra lo ocurrido. Las misiones pueden lanzarlos por ti y Board ofrece los mismos controles directamente.",
+          "headings": [
+            "Elige el proceso adecuado",
+            "Interpreta el resultado mediante evidencias"
+          ]
+        }
+      }
+    },
+    {
+      "key": "pipeline/2-the-job-detail-view.md",
+      "slug": "pipeline-the-job-detail-view",
+      "sourceSlug": "the-job-detail-view",
+      "category": "pipeline",
+      "translations": {
+        "en": {
+          "title": "Inspect a run before retrying",
+          "description": "The run detail brings together step progress, logs, verification and delivery context. Start here when an implementation stops or a result needs explanation.",
+          "headings": [
+            "Find the actual boundary",
+            "Continue the right work"
+          ]
+        },
+        "es": {
+          "title": "Inspecciona la ejecución antes de reintentar",
+          "description": "El detalle de ejecución reúne pasos, logs, verificación y entrega. Empieza aquí cuando una implementación se detiene o necesitas entender el resultado.",
+          "headings": [
+            "Localiza el fallo real",
+            "Continúa el trabajo correcto"
+          ]
+        }
+      }
+    },
+    {
+      "key": "pipeline/3-batch-implement-and-multi-feature.md",
+      "slug": "pipeline-batch-implement-and-multi-feature",
+      "sourceSlug": "batch-implement-and-multi-feature",
+      "category": "pipeline",
+      "translations": {
+        "en": {
+          "title": "Coordinate a batch of specs",
+          "description": "Batch Implement coordinates several saved specs as one execution plan. Use it for related work whose dependencies and repository scope are already understood.",
+          "headings": [
+            "Prepare the batch",
+            "Review the complete result"
+          ]
+        },
+        "es": {
+          "title": "Coordina un lote de specs",
+          "description": "Batch Implement coordina varias specs guardadas en un plan de ejecución. Úsalo para trabajo relacionado cuyas dependencias y repositorios ya estén claros.",
+          "headings": [
+            "Prepara el lote",
+            "Revisa el resultado completo"
+          ]
+        }
+      }
+    },
+    {
+      "key": "pipeline/4-picking-an-engine-per-rail.md",
+      "slug": "pipeline-picking-an-engine-per-rail",
+      "sourceSlug": "picking-an-engine-per-rail",
+      "category": "pipeline",
+      "translations": {
+        "en": {
+          "title": "Choose a provider and its capabilities",
+          "description": "Execution settings belong to the chosen provider. A familiar model name does not imply that every provider supports the same reasoning, structured output or approval controls.",
+          "headings": [
+            "Check availability first",
+            "Use the right level of control"
+          ]
+        },
+        "es": {
+          "title": "Elige proveedor y capacidades",
+          "description": "La configuración depende del proveedor elegido. Un nombre de modelo conocido no implica las mismas opciones de razonamiento, salida estructurada o aprobación en todos ellos.",
+          "headings": [
+            "Comprueba la disponibilidad",
+            "Usa el nivel de control adecuado"
+          ]
+        }
+      }
+    },
+    {
+      "key": "pipeline/5-the-loop-builder.md",
+      "slug": "pipeline-the-loop-builder",
+      "sourceSlug": "the-loop-builder",
+      "category": "pipeline",
+      "translations": {
+        "en": {
+          "title": "Build a reusable custom loop",
+          "description": "The Loop Builder turns a process into connected steps you can inspect and reuse. Start with a built-in loop when it fits, then customize the checks your project actually needs.",
+          "headings": [
+            "Give every step a contract",
+            "Set repository scope"
+          ]
+        },
+        "es": {
+          "title": "Construye un loop reutilizable",
+          "description": "El editor de loops convierte un proceso en pasos conectados y reutilizables. Parte de un loop incluido cuando encaje y adapta las comprobaciones que necesita tu proyecto.",
+          "headings": [
+            "Define el contrato de cada paso",
+            "Configura los repositorios"
+          ]
+        }
+      }
+    },
+    {
+      "key": "agents/1-meet-the-agents.md",
+      "slug": "agents-meet-the-agents",
+      "sourceSlug": "meet-the-agents",
+      "category": "agents",
+      "translations": {
+        "en": {
+          "title": "Understand the agent roles",
+          "description": "Roles make an implementation easier to inspect: planning, development and review have different responsibilities even when the same provider runs them.",
+          "headings": [
+            "Follow the handoffs",
+            "Inspect evidence, not labels"
+          ]
+        },
+        "es": {
+          "title": "Comprende los roles de los agentes",
+          "description": "Los roles permiten inspeccionar la implementación: planificación, desarrollo y revisión tienen responsabilidades distintas aunque los ejecute el mismo proveedor.",
+          "headings": [
+            "Sigue los traspasos",
+            "Revisa evidencias, no etiquetas"
+          ]
+        }
+      }
+    },
+    {
+      "key": "agents/2-profiles-and-the-balanced-default.md",
+      "slug": "agents-profiles-and-the-balanced-default",
+      "sourceSlug": "profiles-and-the-balanced-default",
+      "category": "agents",
+      "translations": {
+        "en": {
+          "title": "Use profiles deliberately",
+          "description": "Profiles are workflow presets for allocating model capability across roles. They are useful only where the selected provider and installed workflow support them.",
+          "headings": [
+            "Start with the effective settings",
+            "Compare with a real task"
+          ]
+        },
+        "es": {
+          "title": "Usa los perfiles de forma deliberada",
+          "description": "Los perfiles distribuyen capacidades de modelo entre roles. Son útiles cuando el proveedor y el flujo instalado los admiten.",
+          "headings": [
+            "Comprueba la configuración efectiva",
+            "Compara una tarea real"
+          ]
+        }
+      }
+    },
+    {
+      "key": "agents/3-customizing-models-per-agent.md",
+      "slug": "agents-customizing-models-per-agent",
+      "sourceSlug": "customizing-models-per-agent",
+      "category": "agents",
+      "translations": {
+        "en": {
+          "title": "Tune models without losing the contract",
+          "description": "Model tuning should improve a known stage of your process while leaving the spec and verification obligations intact.",
+          "headings": [
+            "Make a bounded change",
+            "Reassess quality and usage"
+          ]
+        },
+        "es": {
+          "title": "Ajusta modelos sin perder el contrato",
+          "description": "Ajustar modelos debe mejorar una fase conocida sin reducir la spec ni las obligaciones de verificación.",
+          "headings": [
+            "Haz un cambio acotado",
+            "Contrasta calidad y consumo"
+          ]
+        }
+      }
+    },
+    {
+      "key": "agents/4-custom-agents-catalog.md",
+      "slug": "agents-custom-agents-catalog",
+      "sourceSlug": "custom-agents-catalog",
+      "category": "agents",
+      "translations": {
+        "en": {
+          "title": "Add focused custom agents",
+          "description": "Custom agents package a reusable role or set of instructions. Give them a narrow responsibility and a clear output instead of duplicating the entire implementation process.",
+          "headings": [
+            "Define the role",
+            "Test a useful handoff"
+          ]
+        },
+        "es": {
+          "title": "Añade agentes personalizados concretos",
+          "description": "Los agentes personalizados reúnen un rol o unas instrucciones reutilizables. Asígnales una responsabilidad concreta y una salida clara.",
+          "headings": [
+            "Define el rol",
+            "Prueba un traspaso útil"
+          ]
+        }
+      }
+    },
+    {
+      "key": "insights/1-analytics-and-cost-tracking.md",
+      "slug": "insights-analytics-and-cost-tracking",
+      "sourceSlug": "analytics-and-cost-tracking",
+      "category": "insights",
+      "translations": {
+        "en": {
+          "title": "Read usage and cost honestly",
+          "description": "Usage helps you understand a workflow, but providers expose different evidence. Distinguish reported values, estimates and unavailable data.",
+          "headings": [
+            "Compare like with like",
+            "Investigate a limit"
+          ]
+        },
+        "es": {
+          "title": "Interpreta el consumo y los costes",
+          "description": "El consumo ayuda a entender el flujo, pero cada proveedor ofrece evidencias distintas. Distingue valores reportados, estimaciones y datos no disponibles.",
+          "headings": [
+            "Compara lo comparable",
+            "Investiga un límite"
+          ]
+        }
+      }
+    },
+    {
+      "key": "insights/2-the-integrated-terminal.md",
+      "slug": "insights-the-integrated-terminal",
+      "sourceSlug": "the-integrated-terminal",
+      "category": "insights",
+      "translations": {
+        "en": {
+          "title": "Use the project terminal",
+          "description": "The integrated terminal gives you a local shell beside the mission. It is a working tool, separate from the agent's recorded background-process history.",
+          "headings": [
+            "Confirm the directory",
+            "Observe agent-owned services"
+          ]
+        },
+        "es": {
+          "title": "Usa el terminal del proyecto",
+          "description": "El terminal integrado ofrece una shell local junto a la misión. Es una herramienta distinta del historial de procesos en segundo plano del agente.",
+          "headings": [
+            "Confirma el directorio",
+            "Observa los servicios del agente"
+          ]
+        }
+      }
+    },
+    {
+      "key": "insights/3-code-explorer.md",
+      "slug": "insights-code-explorer",
+      "sourceSlug": "code-explorer",
+      "category": "insights",
+      "translations": {
+        "en": {
+          "title": "Explore files and their evidence",
+          "description": "Files is an explorer and observability surface. Use it to understand source and recorded changes, rather than as a code editor.",
+          "headings": [
+            "Start from the right repository",
+            "Follow recorded work"
+          ]
+        },
+        "es": {
+          "title": "Explora los archivos y sus evidencias",
+          "description": "Archivos es un explorador y una vista de observabilidad. Sirve para comprender el código y los cambios registrados, no para editarlo.",
+          "headings": [
+            "Empieza por el repositorio correcto",
+            "Sigue el trabajo registrado"
+          ]
+        }
+      }
+    },
+    {
+      "key": "insights/4-background-processes.md",
+      "slug": "insights-background-processes",
+      "sourceSlug": "background-processes",
+      "category": "insights",
+      "translations": {
+        "en": {
+          "title": "Inspect processes and retained logs",
+          "description": "Open Processes in a saved mission to inspect active services and their retained history. Finished processes remain discoverable after their temporary composer chips disappear.",
+          "headings": [
+            "Find the relevant process",
+            "Stop with confirmation"
+          ]
+        },
+        "es": {
+          "title": "Inspecciona procesos y logs guardados",
+          "description": "Abre Procesos en una misión guardada para inspeccionar servicios activos y su historial. Los terminados siguen accesibles cuando desaparecen sus chips temporales del compositor.",
+          "headings": [
+            "Localiza el proceso",
+            "Detén con confirmación"
+          ]
+        }
+      }
+    },
+    {
+      "key": "integrations/1-ai-providers.md",
+      "slug": "integrations-ai-providers",
+      "sourceSlug": "ai-providers",
+      "category": "integrations",
+      "translations": {
+        "en": {
+          "title": "Connect an AI provider",
+          "description": "Specrails coordinates your authenticated Claude, Codex, Gemini or Kimi CLI. Provider installation, account access and model billing remain separate from the application.",
+          "headings": [
+            "Connect and verify",
+            "Understand the boundary"
+          ]
+        },
+        "es": {
+          "title": "Conecta un proveedor de IA",
+          "description": "Specrails coordina tus CLI autenticadas de Claude, Codex, Gemini o Kimi. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.",
+          "headings": [
+            "Conecta y comprueba",
+            "Comprende los límites"
+          ]
+        }
+      }
+    },
+    {
+      "key": "integrations/2-plugins.md",
+      "slug": "integrations-plugins",
+      "sourceSlug": "plugins",
+      "category": "integrations",
+      "translations": {
+        "en": {
+          "title": "Connect project integrations",
+          "description": "Plugins connect Specrails with project systems such as external ticket providers. Configure them for the logical project rather than separately for every repository.",
+          "headings": [
+            "Check ownership and credentials",
+            "Add repositories without splitting the backlog"
+          ]
+        },
+        "es": {
+          "title": "Conecta integraciones del proyecto",
+          "description": "Los plugins conectan Specrails con sistemas del proyecto, como proveedores externos de tickets. Configúralos para el proyecto lógico, no por separado en cada repositorio.",
+          "headings": [
+            "Comprueba propiedad y credenciales",
+            "Añade repositorios sin dividir el backlog"
+          ]
+        }
+      }
+    },
+    {
+      "key": "integrations/3-jira-integration.md",
+      "slug": "integrations-jira-integration",
+      "sourceSlug": "jira-integration",
+      "category": "integrations",
+      "translations": {
+        "en": {
+          "title": "Keep Jira tied to the project",
+          "description": "Jira integration links external issues to the project's shared workflow. Repository selection describes where code changes belong; it does not redefine Jira ownership.",
+          "headings": [
+            "Configure the mapping",
+            "Review updates"
+          ]
+        },
+        "es": {
+          "title": "Mantén Jira vinculado al proyecto",
+          "description": "La integración con Jira vincula incidencias externas al flujo compartido del proyecto. La selección de repositorios indica dónde cambiar código; no redefine quién gestiona Jira.",
+          "headings": [
+            "Configura la relación",
+            "Revisa las actualizaciones"
+          ]
+        }
+      }
+    },
+    {
+      "key": "integrations/4-mobile-companion.md",
+      "slug": "integrations-mobile-companion",
+      "sourceSlug": "mobile-companion",
+      "category": "integrations",
+      "translations": {
+        "en": {
+          "title": "Continue from Companion",
+          "description": "Companion connects your phone or tablet to a running Desktop. The desktop machine still owns the repositories, provider sessions and execution.",
+          "headings": [
+            "Pair with the right access",
+            "Follow supported work",
+            "Connection and privacy"
+          ]
+        },
+        "es": {
+          "title": "Continúa desde Companion",
+          "description": "Companion conecta el móvil o la tableta con un Desktop en ejecución. Los repositorios, sesiones de proveedores y ejecuciones siguen en el ordenador.",
+          "headings": [
+            "Empareja con el acceso adecuado",
+            "Sigue el trabajo compatible",
+            "Conexión y privacidad"
+          ]
+        }
+      }
+    },
+    {
+      "key": "integrations/5-mcp-server.md",
+      "slug": "integrations-mcp-server",
+      "sourceSlug": "mcp-server",
+      "category": "integrations",
+      "translations": {
+        "en": {
+          "title": "Give the agent project-aware tools",
+          "description": "Specrails MCP exposes structured tools for project context, specs, rails, loops, deliveries and observation. The mission agent uses them to operate the application with recorded state.",
+          "headings": [
+            "Keep references scoped",
+            "Inspect the tool result"
+          ]
+        },
+        "es": {
+          "title": "Da al agente herramientas con contexto",
+          "description": "Specrails MCP ofrece herramientas estructuradas de contexto, specs, rails, loops, entregas y observación. El agente de la misión las utiliza para operar con estados registrados.",
+          "headings": [
+            "Mantén el alcance de las referencias",
+            "Lee el resultado"
+          ]
+        }
+      }
+    },
+    {
+      "key": "integrations/6-agent-chat.md",
+      "slug": "integrations-agent-chat",
+      "sourceSlug": "agent-chat",
+      "category": "integrations",
+      "translations": {
+        "en": {
+          "title": "Use the mission conversation",
+          "description": "The mission conversation is the primary place to work with Specrails. It combines project context, references, tools and delivery decisions while Board remains available for direct organization.",
+          "headings": [
+            "Begin with intent",
+            "Keep control while work runs"
+          ]
+        },
+        "es": {
+          "title": "Usa la conversación de misión",
+          "description": "La conversación de misión es el lugar principal para trabajar con Specrails. Reúne contexto, referencias, herramientas y decisiones de entrega, mientras Board permite organizar directamente el trabajo.",
+          "headings": [
+            "Empieza por la intención",
+            "Mantén el control durante el trabajo"
+          ]
+        }
+      }
+    },
+    {
+      "key": "settings/1-themes.md",
+      "slug": "settings-themes",
+      "sourceSlug": "themes",
+      "category": "settings",
+      "translations": {
+        "en": {
+          "title": "Choose a comfortable theme",
+          "description": "Use the appearance controls to choose the application's available theme. Theme changes should improve reading without changing project or execution state.",
+          "headings": [
+            "Check the whole workspace"
+          ]
+        },
+        "es": {
+          "title": "Elige un tema cómodo",
+          "description": "Usa los controles de apariencia para elegir un tema disponible. Cambiarlo debe mejorar la lectura sin modificar el proyecto ni la ejecución.",
+          "headings": [
+            "Revisa el espacio completo"
+          ]
+        }
+      }
+    },
+    {
+      "key": "settings/2-language.md",
+      "slug": "settings-language",
+      "sourceSlug": "language",
+      "category": "settings",
+      "translations": {
+        "en": {
+          "title": "Choose the interface language",
+          "description": "Specrails and this website provide interface translations for English, Spanish, French, German, Portuguese, Italian, Chinese and Japanese.",
+          "headings": [
+            "Separate language from project content",
+            "Read current documentation"
+          ]
+        },
+        "es": {
+          "title": "Elige el idioma de la interfaz",
+          "description": "Specrails y esta web ofrecen interfaz en inglés, español, francés, alemán, portugués, italiano, chino y japonés.",
+          "headings": [
+            "Separa idioma y contenido",
+            "Lee documentación actual"
+          ]
+        }
+      }
+    },
+    {
+      "key": "settings/3-pipeline-telemetry-and-diagnostics.md",
+      "slug": "settings-pipeline-telemetry-and-diagnostics",
+      "sourceSlug": "pipeline-telemetry-and-diagnostics",
+      "category": "settings",
+      "translations": {
+        "en": {
+          "title": "Diagnose a problem with evidence",
+          "description": "A useful problem report identifies the application version, affected operation and observable failure without exposing unrelated project data.",
+          "headings": [
+            "Capture the relevant state",
+            "Share a bounded report"
+          ]
+        },
+        "es": {
+          "title": "Diagnostica un problema con evidencias",
+          "description": "Un informe útil identifica versión, operación y fallo observable sin exponer datos ajenos al problema.",
+          "headings": [
+            "Recoge el estado relevante",
+            "Comparte un informe acotado"
+          ]
+        }
+      }
+    },
+    {
+      "key": "settings/4-where-your-data-lives.md",
+      "slug": "settings-where-your-data-lives",
+      "sourceSlug": "where-your-data-lives",
+      "category": "settings",
+      "translations": {
+        "en": {
+          "title": "Know what to back up",
+          "description": "Your repositories and Specrails' local records are different parts of the workspace. Back up both when protecting or moving your work.",
+          "headings": [
+            "Keep the two layers",
+            "Move or remove deliberately"
+          ]
+        },
+        "es": {
+          "title": "Qué datos debes respaldar",
+          "description": "Los repositorios y los registros locales de Specrails son partes distintas del espacio de trabajo. Respalda ambas para protegerlo o trasladarlo.",
+          "headings": [
+            "Conserva las dos capas",
+            "Mueve o elimina con contexto"
+          ]
+        }
+      }
+    }
+  ]
+}

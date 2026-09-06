@@ -27,8 +27,8 @@ const mockCtx = {
 
 function applyCanvasMock() {
   HTMLCanvasElement.prototype.getContext = vi.fn(
-    () => mockCtx as unknown as CanvasRenderingContext2D,
-  );
+    (contextId: string) => contextId === "2d" ? mockCtx as unknown as CanvasRenderingContext2D : null,
+  ) as unknown as typeof HTMLCanvasElement.prototype.getContext;
 }
 
 beforeAll(() => {
