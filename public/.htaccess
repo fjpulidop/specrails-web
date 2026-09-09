@@ -21,6 +21,7 @@
 # Flutter web ships .wasm (canvaskit/skwasm); some hosts default to octet-stream.
 <IfModule mod_mime.c>
   AddType application/wasm .wasm
+  AddType text/plain .md
 </IfModule>
 
 # Fallback: use index.html as the custom 404 page (LiteSpeed/Apache)

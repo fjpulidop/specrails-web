@@ -20,6 +20,7 @@ describe("DocsIndex", () => {
       screen.getByRole("heading", { level: 1, name: /build your first mission/i }),
     ).toBeInTheDocument();
     expect(screen.getByText("Documentation")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /connect claude, codex, kimi or gemini/i })).toHaveAttribute("href", "/for-agents/index.html");
   });
 
   it("filters guides and restores the index when search is cleared", async () => {

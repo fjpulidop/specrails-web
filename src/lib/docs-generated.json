@@ -534,7 +534,8 @@
           "description": "Batch Implement coordinates several saved specs as one execution plan. Use it for related work whose dependencies and repository scope are already understood.",
           "headings": [
             "Prepare the batch",
-            "Review the complete result"
+            "Review the complete result",
+            "Read the implementation result"
           ]
         },
         "es": {
@@ -542,7 +543,8 @@
           "description": "Batch Implement coordina varias specs guardadas en un plan de ejecución. Úsalo para trabajo relacionado cuyas dependencias y repositorios ya estén claros.",
           "headings": [
             "Prepara el lote",
-            "Revisa el resultado completo"
+            "Revisa el resultado completo",
+            "Interpretar el resultado de Implement"
           ]
         }
       }
@@ -895,6 +897,7 @@
           "title": "Give the agent project-aware tools",
           "description": "Specrails MCP exposes structured tools for project context, specs, rails, loops, deliveries and observation. The mission agent uses them to operate the application with recorded state.",
           "headings": [
+            "For agents only: connect your client",
             "Keep references scoped",
             "Inspect the tool result"
           ]
@@ -903,6 +906,7 @@
           "title": "Da al agente herramientas con contexto",
           "description": "Specrails MCP ofrece herramientas estructuradas de contexto, specs, rails, loops, entregas y observación. El agente de la misión las utiliza para operar con estados registrados.",
           "headings": [
+            "Exclusivamente para agentes: conecta tu cliente",
             "Mantén el alcance de las referencias",
             "Lee el resultado"
           ]
@@ -990,7 +994,8 @@
           "description": "A useful problem report identifies the application version, affected operation and observable failure without exposing unrelated project data.",
           "headings": [
             "Capture the relevant state",
-            "Share a bounded report"
+            "Share a bounded report",
+            "Completion evidence"
           ]
         },
         "es": {
@@ -998,7 +1003,8 @@
           "description": "Un informe útil identifica versión, operación y fallo observable sin exponer datos ajenos al problema.",
           "headings": [
             "Recoge el estado relevante",
-            "Comparte un informe acotado"
+            "Comparte un informe acotado",
+            "Evidencia al finalizar"
           ]
         }
       }
