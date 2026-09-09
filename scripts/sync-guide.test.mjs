@@ -14,7 +14,7 @@ async function fixture(t) {
   await writeFile(resolve(dir,'1-example.md'), marker+current);
  }
  await mkdir(resolve(root,'src/content/for-agents'),{recursive:true});
- for (const name of ['mcp.md','mcp.es.md']) await writeFile(resolve(root,'src/content/for-agents',name),current);
+ for (const name of ['mcp.md']) await writeFile(resolve(root,'src/content/for-agents',name),current);
  await mkdir(resolve(root,'src/lib'),{recursive:true});await mkdir(resolve(root,'public'));
  return root;
 }
@@ -54,7 +54,7 @@ test('publishes static agent runbooks without unrelated content and detects body
  assert.equal(await readFile(published, 'utf8'), current);
  await assert.rejects(readFile(resolve(root, 'public/for-agents/private.md')), { code: 'ENOENT' });
  const index = await readFile(resolve(root, 'public/llms.txt'), 'utf8');
- assert.match(index, /https:\/\/specrails.dev\/for-agents\/mcp.es.md/);
+ assert.match(index, /https:\/\/specrails.dev\/for-agents\/mcp.md/);
  const html = await readFile(resolve(root, 'public/for-agents/index.html'), 'utf8');
  assert.doesNotMatch(html, /<script/i);
  assert.match(html, /href="\/for-agents\/mcp.md"/);
@@ -69,7 +69,7 @@ test('explicit Desktop import preserves unrelated files and check never imports'
  const root = await fixture(t);
  const desktop = await fixture(t);
  await mkdir(resolve(desktop, 'docs/agents'), { recursive: true });
- for (const name of ['mcp.md', 'mcp.es.md']) await writeFile(resolve(desktop, 'docs/agents', name), current + '\nDesktop source.');
+ for (const name of ['mcp.md']) await writeFile(resolve(desktop, 'docs/agents', name), current + '\nDesktop source.');
  const untouched = resolve(root, 'src/content/for-agents/local.md');
  await writeFile(untouched, 'Keep this file');
  await assert.rejects(syncGuide(root, true, desktop));

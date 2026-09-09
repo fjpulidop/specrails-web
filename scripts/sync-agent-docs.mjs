@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 
-export const AGENT_DOCS = ['mcp.md', 'mcp.es.md'];
+export const AGENT_DOCS = ['mcp.md'];
 
 // Only this explicit allowlist is published; do not copy Desktop's whole docs tree.
 export async function syncAgentDocs(projectRoot, check = false, desktopSource) {
@@ -33,7 +33,6 @@ Use the local bridge included with the running Desktop app. Configure only the r
 ## Connection runbooks
 
 - [Claude, Codex, Kimi and Gemini — English](https://specrails.dev/for-agents/mcp.md)
-- [Claude, Codex, Kimi y Gemini — Español](https://specrails.dev/for-agents/mcp.es.md)
 - [Agent documentation index](https://specrails.dev/for-agents/index.html)
 
 These static files need no JavaScript. The human product guide is at https://specrails.dev/docs.
@@ -55,7 +54,6 @@ These static files need no JavaScript. The human product guide is at https://spe
     <p>Cuando te pidan conectar al MCP de Specrails, consulta el procedimiento de descubrimiento local, registro por cliente, verificación de lectura y diagnóstico.</p>
     <ul>
       <li><a href="/for-agents/mcp.md" lang="en">Claude, Codex, Kimi and Gemini — English Markdown</a></li>
-      <li><a href="/for-agents/mcp.es.md" lang="es">Claude, Codex, Kimi y Gemini — Markdown en español</a></li>
     </ul>
     <p>These instructions require no JavaScript. Keep tokens out of configuration and reports.</p>
     <a href="/docs">Human product guide / Guía del producto</a>
