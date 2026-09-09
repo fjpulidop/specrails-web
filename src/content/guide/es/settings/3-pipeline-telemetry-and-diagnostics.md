@@ -15,3 +15,13 @@ Para entregas, identifica repositorio, rama y acción. Conserva cambios y worktr
 Elimina credenciales, tokens y código ajeno al fallo. Proveedores, integraciones y diagnósticos tienen sus propios límites de datos; «local-first» no significa que toda operación configurada sea offline.
 
 Describe cómo reproducirlo y qué esperabas en el [registro de incidencias](https://github.com/fjpulidop/specrails-desktop/issues).
+
+
+## Evidencia al finalizar
+
+El historial del loop conserva el resultado final independientemente de la telemetría
+opcional del proveedor. Separa ejecución, aceptación de Core y entrega, y distingue
+pasos, evaluaciones del decider y turnos del agente. Los tiempos e intentos por fase
+proceden del registro de Core; no se deduce un coste por fase a partir del total. Con
+runtimes antiguos, la evidencia queda como no disponible. Consulta el resultado de
+Implement en la guía de ejecución por lotes.
