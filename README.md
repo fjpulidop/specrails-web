@@ -155,3 +155,13 @@ This project is open source. See the specrails [repository](https://github.com/f
 <p align="center">
   Built with 🧛 Dracula vibes for <a href="https://github.com/fjpulidop/specrails-core">specrails</a>
 </p>
+
+## Documentation exclusively for agents
+
+Agents asked to connect Claude, Codex, Kimi or Gemini to Specrails MCP should start at [the dedicated runbook](src/content/for-agents/mcp.md) ([Español](src/content/for-agents/mcp.es.md)). The built site exposes `/llms.txt`, `/for-agents/index.html`, `/for-agents/mcp.md` and `/for-agents/mcp.es.md` as static files, without JavaScript. The docs index and MCP article link to this section.
+
+The canonical runbooks live in Specrails Desktop's `docs/agents/`; this repository commits a reviewed copy in `src/content/for-agents/`. From this Web checkout, run `npm run docs:sync -- --desktop-source` followed by the quoted path to the Desktop checkout to import only those two files and regenerate public outputs. Use `npm run docs:check -- --desktop-source` followed by the same path to verify parity without writing. `npm run docs:sync` alone regenerates from the local copy; `npm run docs:check` (also run before builds) detects stale public content. Run `npm run test:docs-sync` after changing the generator.
+
+The human guide in `src/content/guide/` is maintained independently of Desktop's `docs/guide/`; `docs:sync` generates its index, loaders and sitemap, not a cross-repository article import. `.github/workflows/update-docs.yml` only updates the core dependency. Do not copy Desktop's entire docs tree into the Web guide.
+
+Coordinate Desktop and Web documentation PRs. A Desktop merge does not publish Web changes. Web deployment is a separate release/manual-dispatch workflow that uploads `dist/` to Hostinger. After an authorized deployment, check the four static URLs return their actual text/HTML rather than the SPA fallback. Until then, the committed sources and PRs are the reviewable result.

@@ -895,6 +895,7 @@
           "title": "Give the agent project-aware tools",
           "description": "Specrails MCP exposes structured tools for project context, specs, rails, loops, deliveries and observation. The mission agent uses them to operate the application with recorded state.",
           "headings": [
+            "For agents only: connect your client",
             "Keep references scoped",
             "Inspect the tool result"
           ]
@@ -903,6 +904,7 @@
           "title": "Da al agente herramientas con contexto",
           "description": "Specrails MCP ofrece herramientas estructuradas de contexto, specs, rails, loops, entregas y observación. El agente de la misión las utiliza para operar con estados registrados.",
           "headings": [
+            "Exclusivamente para agentes: conecta tu cliente",
             "Mantén el alcance de las referencias",
             "Lee el resultado"
           ]

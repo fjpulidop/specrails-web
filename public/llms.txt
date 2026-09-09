@@ -1,0 +1,13 @@
+# Specrails — agent documentation
+
+> Instructions exclusively for agents asked to connect to Specrails Desktop MCP.
+
+Use the local bridge included with the running Desktop app. Configure only the requested client and verify a read-only call. Do not include tokens in configuration or reports.
+
+## Connection runbooks
+
+- [Claude, Codex, Kimi and Gemini — English](https://specrails.dev/for-agents/mcp.md)
+- [Claude, Codex, Kimi y Gemini — Español](https://specrails.dev/for-agents/mcp.es.md)
+- [Agent documentation index](https://specrails.dev/for-agents/index.html)
+
+These static files need no JavaScript. The human product guide is at https://specrails.dev/docs.

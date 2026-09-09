@@ -22,6 +22,12 @@ export default function DocsIndex() {
         </Link>;
       })}</div>
     </header>
+    <section className="mt-8 rounded-xl border border-border/60 bg-surface-1 p-5">
+      <h2 className="text-xl font-semibold">{languageId === 'es' ? 'Exclusivamente para agentes' : 'For agents only'}</h2>
+      <a href="/for-agents/index.html" className="mt-2 inline-block text-brand-cyan underline focus-visible:ring-2 focus-visible:ring-brand-cyan">
+        {languageId === 'es' ? 'Conectar Claude, Codex, Kimi o Gemini al MCP de Specrails' : 'Connect Claude, Codex, Kimi or Gemini to Specrails MCP'}
+      </a>
+    </section>
     <div className="my-8 max-w-xl"><DocsSearch value={query} onChange={setQuery} /></div>
     {!docs.length && <p role="status" className="py-10 text-muted-foreground">{copy.empty}</p>}
     <div className="space-y-10">{(query.trim() ? ['search'] : CATEGORY_ORDER).map(category => {

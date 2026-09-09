@@ -13,6 +13,8 @@ async function fixture(t) {
   const dir=resolve(root,'src/content/guide',language,category); await mkdir(dir,{recursive:true});
   await writeFile(resolve(dir,'1-example.md'), marker+current);
  }
+ await mkdir(resolve(root,'src/content/for-agents'),{recursive:true});
+ for (const name of ['mcp.md','mcp.es.md']) await writeFile(resolve(root,'src/content/for-agents',name),current);
  await mkdir(resolve(root,'src/lib'),{recursive:true});await mkdir(resolve(root,'public'));
  return root;
 }
@@ -42,4 +44,38 @@ test('the committed guide and sitemap match all current article metadata',async(
  assert.equal(index.entries.length,37);
  assert.ok(index.entries.every(entry=>entry.translations.en&&entry.translations.es));
  for(const language of ['fr','de','pt','it','zh','ja']) assert.equal(index.entries.filter(entry=>entry.translations[language]).length,3);
+});
+
+test('publishes static agent runbooks without unrelated content and detects body drift', async t => {
+ const root = await fixture(t);
+ await writeFile(resolve(root, 'src/content/for-agents/private.md'), '# Do not publish');
+ await syncGuide(root);
+ const published = resolve(root, 'public/for-agents/mcp.md');
+ assert.equal(await readFile(published, 'utf8'), current);
+ await assert.rejects(readFile(resolve(root, 'public/for-agents/private.md')), { code: 'ENOENT' });
+ const index = await readFile(resolve(root, 'public/llms.txt'), 'utf8');
+ assert.match(index, /https:\/\/specrails.dev\/for-agents\/mcp.es.md/);
+ const html = await readFile(resolve(root, 'public/for-agents/index.html'), 'utf8');
+ assert.doesNotMatch(html, /<script/i);
+ assert.match(html, /href="\/for-agents\/mcp.md"/);
+ await writeFile(resolve(root, 'src/content/for-agents/mcp.md'), current + '\nNew instructions.');
+ await assert.rejects(syncGuide(root, true), /Outdated public\/for-agents\/mcp.md/);
+ assert.equal(await readFile(published, 'utf8'), current);
+ await syncGuide(root);
+ await syncGuide(root, true);
+});
+
+test('explicit Desktop import preserves unrelated files and check never imports', async t => {
+ const root = await fixture(t);
+ const desktop = await fixture(t);
+ await mkdir(resolve(desktop, 'docs/agents'), { recursive: true });
+ for (const name of ['mcp.md', 'mcp.es.md']) await writeFile(resolve(desktop, 'docs/agents', name), current + '\nDesktop source.');
+ const untouched = resolve(root, 'src/content/for-agents/local.md');
+ await writeFile(untouched, 'Keep this file');
+ await assert.rejects(syncGuide(root, true, desktop));
+ assert.equal(await readFile(resolve(root, 'src/content/for-agents/mcp.md'), 'utf8'), current);
+ await syncGuide(root, false, desktop);
+ await syncGuide(root, true, desktop);
+ assert.equal(await readFile(resolve(root, 'public/for-agents/mcp.md'), 'utf8'), current + '\nDesktop source.');
+ assert.equal(await readFile(untouched, 'utf8'), 'Keep this file');
 });
