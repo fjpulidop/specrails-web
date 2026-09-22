@@ -697,6 +697,19 @@ export function I18nProvider({ children }: { children: ReactNode }): JSX.Element
     document.documentElement.lang = languageId;
   }, [languageId]);
 
+  useEffect(() => {
+    const sync = () => setLanguageId(readInitialLanguage());
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEY || event.key === null) sync();
+    };
+    window.addEventListener("storage", onStorage);
+    window.addEventListener("focus", sync);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener("focus", sync);
+    };
+  }, []);
+
   const setLanguage = useCallback((next: LanguageId) => {
     setLanguageId(next);
     try {
