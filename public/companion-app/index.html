@@ -18,15 +18,14 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Talk to your Specrails missions from any device. Follow live work, steer your agent, or switch to the Board.">
   <meta name="theme-color" content="#07070E">
 
-  <!-- Brand-dark background everywhere so the PWA never flashes white — during
-       load, in the safe areas, and in the iOS status-bar region under the
-       translucent bar. -->
+  <!-- Keep the layout viewport and touch coordinates aligned in iOS standalone.
+       Let Safari reserve the status bar; do not draw a translucent bar over Flutter. -->
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; background-color: var(--companion-background, #06070E); }
+    html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; overscroll-behavior: none; background-color: var(--companion-background, #06070E); }
     #loading {
       position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
       background-color: var(--companion-background, #06070E);
@@ -53,7 +52,7 @@
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Specrails">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
@@ -67,6 +66,6 @@
   <!-- Dark splash shown while Flutter boots (its canvas covers this once it
        renders) — avoids the white loading flash on iOS standalone. -->
   <div id="loading"><img src="icons/Icon-192.png" alt="Specrails"></div>
-  <script src="flutter_bootstrap.js?v=cf9de7ee79144d18" async></script>
+  <script src="flutter_bootstrap.js?v=66698b0776f3f592" async></script>
 </body>
 </html>
