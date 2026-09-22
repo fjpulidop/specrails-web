@@ -39,16 +39,28 @@ $dir = sys_get_temp_dir() . '/specrails-signal';
 if (!is_dir($dir)) @mkdir($dir, 0700, true);
 $file = $dir . '/' . $room . '.' . $slot;
 
-// Opportunistic cleanup of stale blobs (bounded, cheap).
+// Read a bounded POST body before taking the mailbox lock: a slow upload must
+// not hold up another device's handshake.
+$body = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $input = fopen('php://input', 'rb');
+    $body = $input ? stream_get_contents($input, SIGNAL_MAX_BYTES + 1) : false;
+    if ($input) fclose($input);
+    if ($body === false) signal_fail(400, 'unreadable body');
+    if (strlen($body) > SIGNAL_MAX_BYTES) signal_fail(413, 'too large');
+}
+if (!in_array($_SERVER['REQUEST_METHOD'], ['GET', 'POST'], true)) signal_fail(405, 'method not allowed');
+
+// Serialize consume/write. Otherwise GET can read an old answer and unlink a
+// newer one written concurrently by a refreshed browser.
+$lock = fopen($dir . '/.mailbox.lock', 'c');
+if (!$lock || !flock($lock, LOCK_EX)) signal_fail(503, 'mailbox busy');
+// PHP releases this lock on exit; the lock file itself must not be unlinked.
 foreach (glob($dir . '/*') ?: [] as $f) {
     if (@filemtime($f) < time() - SIGNAL_TTL) @unlink($f);
 }
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $body = file_get_contents('php://input');
-    if ($body === false) $body = '';
-    if (strlen($body) > SIGNAL_MAX_BYTES) signal_fail(413, 'too large');
-    @file_put_contents($file, $body, LOCK_EX);
+    if (file_put_contents($file, $body) === false) signal_fail(503, 'mailbox write failed');
     http_response_code(204);
     exit;
 }
