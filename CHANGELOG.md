@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.14.0](https://github.com/fjpulidop/specrails-web/compare/v1.13.0...v1.14.0) (2026-09-22)
+
+
+### Features
+
+* **companion:** promote mobile missions and refresh hosted app ([#206](https://github.com/fjpulidop/specrails-web/issues/206)) ([dc557ac](https://github.com/fjpulidop/specrails-web/commit/dc557ac156dcdc72cc34e16677405b190b2e42c7))
+
 ## [1.13.0](https://github.com/fjpulidop/specrails-web/compare/v1.12.0...v1.13.0) (2026-09-06)
 
 
