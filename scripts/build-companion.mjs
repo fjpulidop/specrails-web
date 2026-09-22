@@ -9,8 +9,9 @@
 //   (defaults to ../specrails-companion)
 
 import { execSync } from 'node:child_process'
-import { cpSync, rmSync, existsSync, mkdirSync } from 'node:fs'
+import { cpSync, rmSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
+import { createHash } from 'node:crypto'
 
 const companionDir = path.resolve(process.argv[2] ?? '../specrails-companion')
 const outDir = path.resolve('public/companion-app')
@@ -38,3 +39,21 @@ rmSync(outDir, { recursive: true, force: true })
 mkdirSync(outDir, { recursive: true })
 cpSync(buildWeb, outDir, { recursive: true })
 console.log(`✓ companion synced → ${outDir} (commit it, then \`npm run build\`)`)
+
+// Flutter entry filenames are stable; version URLs so browser/CDN caches cannot
+// keep a previous interface after deploying a fresh build.
+const mainPath = path.join(outDir, 'main.dart.js')
+const version = createHash('sha256').update(readFileSync(mainPath)).digest('hex').slice(0, 16)
+const assetRoot = `build-${version}`
+mkdirSync(path.join(outDir, assetRoot), { recursive: true })
+cpSync(path.join(outDir, 'assets'), path.join(outDir, assetRoot, 'assets'), { recursive: true })
+const bootstrapPath = path.join(outDir, 'flutter_bootstrap.js')
+writeFileSync(bootstrapPath, readFileSync(bootstrapPath, 'utf8').replaceAll('"main.dart.js"', `"main.dart.js?v=${version}"`).replace('_flutter.loader.load({', `_flutter.loader.load({\n  config: { assetBase: "/companion-app/${assetRoot}/" },`))
+const indexPath = path.join(outDir, 'index.html')
+writeFileSync(indexPath, readFileSync(indexPath, 'utf8').replace('src="flutter_bootstrap.js"', `src="flutter_bootstrap.js?v=${version}"`))
+writeFileSync(path.join(outDir, '.htaccess'), `<IfModule mod_headers.c>
+  <FilesMatch "^(index\\.html|main\\.dart\\.js|flutter_bootstrap\\.js|flutter_service_worker\\.js|version\\.json)$">
+    Header set Cache-Control "no-cache, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+`)

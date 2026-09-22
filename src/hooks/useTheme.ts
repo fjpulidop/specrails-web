@@ -42,6 +42,19 @@ export function useTheme(): { theme: Theme; toggle: () => void } {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  useEffect(() => {
+    const sync = () => setTheme(getStoredTheme() ?? getSystemTheme());
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === STORAGE_KEY || event.key === null) sync();
+    };
+    window.addEventListener('storage', onStorage);
+    window.addEventListener('focus', sync);
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('focus', sync);
+    };
+  }, []);
+
   // Toggling is an explicit choice, so persist it (and stop following the OS).
   const toggle = () =>
     setTheme((t) => {

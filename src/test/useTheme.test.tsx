@@ -28,6 +28,20 @@ const stubPrefersDark = (prefersDark: boolean) => {
 };
 
 describe('useTheme', () => {
+  it('follows a preference changed by Companion in another tab', () => {
+    const { result } = renderHook(() => useTheme());
+    act(() => {
+      localStorage.setItem('sr-theme', 'dark');
+      window.dispatchEvent(new StorageEvent('storage', { key: 'sr-theme', newValue: 'dark' }));
+    });
+    expect(result.current.theme).toBe('dark');
+    act(() => {
+      localStorage.setItem('sr-theme', 'light');
+      window.dispatchEvent(new Event('focus'));
+    });
+    expect(result.current.theme).toBe('light');
+  });
+
   beforeEach(() => {
     vi.stubGlobal('localStorage', makeStorage());
     delete document.documentElement.dataset.theme;
