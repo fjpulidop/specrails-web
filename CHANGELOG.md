@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.1](https://github.com/fjpulidop/specrails-web/compare/v1.17.0...v1.17.1) (2026-09-22)
+
+
+### Bug Fixes
+
+* **companion:** preserve connection during pending rail launches ([#214](https://github.com/fjpulidop/specrails-web/issues/214)) ([0765a79](https://github.com/fjpulidop/specrails-web/commit/0765a79c17a986d58493bbe09ac0cfd33832696b))
+
 ## [1.17.0](https://github.com/fjpulidop/specrails-web/compare/v1.16.0...v1.17.0) (2026-09-22)
 
 
