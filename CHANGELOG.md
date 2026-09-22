@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.0](https://github.com/fjpulidop/specrails-web/compare/v1.15.0...v1.16.0) (2026-09-22)
+
+
+### Features
+
+* **companion:** ship rich mobile missions and atomic signaling ([#210](https://github.com/fjpulidop/specrails-web/issues/210)) ([3bf2971](https://github.com/fjpulidop/specrails-web/commit/3bf29710aa862d8f0ee90a071566788b532aa567))
+
 ## [1.15.0](https://github.com/fjpulidop/specrails-web/compare/v1.14.0...v1.15.0) (2026-09-22)
 
 
