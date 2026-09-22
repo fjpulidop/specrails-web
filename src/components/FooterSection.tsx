@@ -11,7 +11,7 @@ export default function FooterSection() {
   const links = [
     { label: content.nav.product, to: "/#product" },
     { label: c.workflow, to: "/#specs" },
-    { label: "Companion", to: "/companion" },
+    { label: "Companion", to: "/companion-app/" },
     { label: content.nav.docs, to: "/docs" },
   ];
   return (
@@ -58,13 +58,13 @@ export default function FooterSection() {
             aria-label={content.nav.sections}
           >
             {links.map((link) => (
-              <Link
+              <a
                 key={link.to}
-                to={link.to}
+                href={link.to}
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </nav>
           <a

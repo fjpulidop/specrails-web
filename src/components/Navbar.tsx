@@ -66,7 +66,7 @@ const Navbar = () => {
   const sectionLinks = [
     { label: nav.product, href: "/#product" },
     { label: copy.workflow, href: "/#specs" },
-    { label: "Companion", href: "/companion" },
+    { label: "Companion", href: "/companion-app/" },
   ] as const;
 
   return (

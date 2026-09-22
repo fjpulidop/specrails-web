@@ -19,20 +19,36 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Control your Specrails Desktop AI pipeline from your phone — paired peer-to-peer, no server.">
+  <meta name="description" content="Talk to your Specrails missions from any device. Follow live work, steer your agent, or switch to the Board.">
   <meta name="theme-color" content="#07070E">
 
   <!-- Brand-dark background everywhere so the PWA never flashes white — during
        load, in the safe areas, and in the iOS status-bar region under the
        translucent bar. -->
   <style>
-    html, body { margin: 0; padding: 0; height: 100%; background-color: #07070E; }
+    html, body { margin: 0; padding: 0; height: 100%; background-color: var(--companion-background, #06070E); }
     #loading {
       position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
-      background-color: #07070E;
+      background-color: var(--companion-background, #06070E);
     }
     #loading img { width: 88px; height: 88px; border-radius: 20px; }
   </style>
+
+  <script>
+    function applyCompanionTheme() {
+      let preference;
+      try { preference = localStorage.getItem('sr-theme'); } catch (_) {}
+      const dark = preference === 'dark' || (preference !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
+      const background = dark ? '#06070E' : '#FCFCFD';
+      document.documentElement.style.setProperty('--companion-background', background);
+      document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      document.querySelector('meta[name="theme-color"]').content = background;
+    }
+    applyCompanionTheme();
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyCompanionTheme);
+    window.addEventListener('storage', applyCompanionTheme);
+    window.addEventListener('companion-theme', applyCompanionTheme);
+  </script>
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">

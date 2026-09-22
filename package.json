@@ -22,7 +22,8 @@
     "test:docs-sync": "node --test scripts/sync-guide.test.mjs",
     "prebuild": "npm run docs:check",
     "prebuild:dev": "npm run docs:check",
-    "check:types": "tsc -p tsconfig.app.json --noEmit"
+    "check:types": "tsc -p tsconfig.app.json --noEmit",
+    "build:companion": "node scripts/build-companion.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

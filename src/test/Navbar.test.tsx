@@ -44,7 +44,7 @@ describe("Navbar", () => {
     );
     expect(screen.getByRole("link", { name: /^companion$/i })).toHaveAttribute(
       "href",
-      "/companion",
+      "/companion-app/",
     );
   });
 
