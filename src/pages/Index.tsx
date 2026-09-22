@@ -51,9 +51,9 @@ export default function Index() {
         <div id="product" className="scroll-mt-24">
           <ProductRecordings showHeading={false} />
         </div>
+        <CompanionShowcase />
         <ProductWorkflow />
         <ProductFeatures />
-        <CompanionShowcase />
         <DocumentationShowcase />
       </main>
       <FooterSection />

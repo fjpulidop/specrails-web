@@ -430,7 +430,7 @@ const DesktopPage = () => {
                   data.
                 </p>
                 <a
-                  href="https://specrails.dev/companion-app"
+                  href="https://specrails.dev/companion-app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-cyan transition-colors hover:text-brand-violet"

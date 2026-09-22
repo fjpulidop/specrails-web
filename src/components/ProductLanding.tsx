@@ -8,6 +8,7 @@ import {
   FolderGit2,
   GitBranch,
   MessageSquare,
+  LayoutGrid,
   Monitor,
   Network,
   ScanLine,
@@ -19,9 +20,12 @@ import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
 import { PRODUCT_COPY } from "@/lib/product-copy";
 
+import { COMPANION_COPY } from "@/lib/companion-copy";
+
 const featureIcons = [
   FolderGit2,
   MessageSquare,
+  LayoutGrid,
   GitBranch,
   SquareTerminal,
   ScanLine,
@@ -91,6 +95,11 @@ export function ProductHero() {
               </a>
             </Button>
           </div>
+          <Link to="/companion" title={COMPANION_COPY[languageId].discover} className="mt-5 inline-flex items-center gap-2 rounded-md text-sm text-muted-foreground transition-colors hover:text-brand-violet focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-violet">
+            <Smartphone className="h-4 w-4 shrink-0" aria-hidden="true" />
+            {COMPANION_COPY[languageId].hero}
+            <ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          </Link>
         </div>
       </div>
       <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-5 text-xs text-muted-foreground">
@@ -262,7 +271,7 @@ export function CompanionShowcase({
           : "mx-auto max-w-6xl scroll-mt-24 py-20 sm:py-28"
       }
     >
-      <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-24">
+      <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr] lg:gap-12">
         <div>
           <p className="mb-5 flex items-center gap-2 font-mono text-xs text-brand-violet">
             <Smartphone className="h-4 w-4" aria-hidden="true" />
@@ -274,6 +283,11 @@ export function CompanionShowcase({
           <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
             {c.companionBody}
           </p>
+          <ul className="mt-6 space-y-3 text-sm">
+            {([{icon: Monitor, label: COMPANION_COPY[languageId].progress}, {icon: MessageSquare, label: COMPANION_COPY[languageId].instruct}, {icon: LayoutGrid, label: COMPANION_COPY[languageId].board}]).map(({icon: Icon, label}) => (
+              <li key={label} className="flex items-center gap-3"><Icon className="h-4 w-4 text-brand-violet" aria-hidden="true" />{label}</li>
+            ))}
+          </ul>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button asChild className="h-12 rounded-full px-6">
               <a href="/companion-app/">
@@ -296,16 +310,20 @@ export function CompanionShowcase({
             {c.companionNote}
           </p>
         </div>
-        <figure className="mx-auto w-full max-w-md rounded-3xl border border-border bg-surface-1 p-6 sm:p-10">
-          <img
-            src="/companion/missions-real.png"
-            alt="Specrails Companion"
-            width="780"
-            height="1688"
-            loading="lazy"
-            decoding="async"
-            className="mx-auto max-h-[480px] w-auto max-w-full rounded-2xl border border-border object-contain shadow-xl"
-          />
+        <figure className="min-w-0 rounded-3xl border border-border bg-surface-1 p-5 sm:p-7">
+          <div className="mb-6 flex items-center justify-between text-xs text-muted-foreground">
+            <span className="flex items-center gap-2"><Monitor className="h-4 w-4" aria-hidden="true" />Desktop</span>
+            <span className="h-px flex-1 mx-4 bg-border" aria-hidden="true" />
+            <span className="flex items-center gap-2"><Smartphone className="h-4 w-4" aria-hidden="true" />Companion</span>
+          </div>
+          <div className="relative pb-16 pt-8 sm:pb-24">
+            <img src="/product/specrails-mission-control-real.png" alt="Specrails Desktop" width="1440" height="900" loading="lazy" decoding="async" className="w-[88%] rounded-xl border border-border shadow-lg" />
+            <img src="/companion/missions-real.png" alt="Specrails Companion" width="780" height="1688" loading="lazy" decoding="async" className="absolute bottom-0 right-0 w-[32%] rounded-2xl border border-border shadow-xl" />
+          </div>
+          <figcaption className="mt-6 text-sm leading-relaxed">
+            {COMPANION_COPY[languageId].caption}
+            <span className="mt-1 block text-xs text-muted-foreground">{COMPANION_COPY[languageId].previews}</span>
+          </figcaption>
         </figure>
       </div>
     </section>
