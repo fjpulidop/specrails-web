@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.0](https://github.com/fjpulidop/specrails-web/compare/v1.14.0...v1.15.0) (2026-09-22)
+
+
+### Features
+
+* **companion:** sync website preferences and version hosted Flutter assets ([#208](https://github.com/fjpulidop/specrails-web/issues/208)) ([09e26da](https://github.com/fjpulidop/specrails-web/commit/09e26da0516323ba3940b873fb237c7d26b726bc))
+
 ## [1.14.0](https://github.com/fjpulidop/specrails-web/compare/v1.13.0...v1.14.0) (2026-09-22)
 
 
