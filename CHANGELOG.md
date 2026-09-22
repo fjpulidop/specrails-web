@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.17.0](https://github.com/fjpulidop/specrails-web/compare/v1.16.0...v1.17.0) (2026-09-22)
+
+
+### Features
+
+* **companion:** publish code explorer and inline rail controls ([#212](https://github.com/fjpulidop/specrails-web/issues/212)) ([69b007b](https://github.com/fjpulidop/specrails-web/commit/69b007b2b47b477197d8506a73e1e76b82db2a5d))
+
 ## [1.16.0](https://github.com/fjpulidop/specrails-web/compare/v1.15.0...v1.16.0) (2026-09-22)
 
 
