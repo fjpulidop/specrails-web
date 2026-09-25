@@ -39,7 +39,7 @@ describe("MarkdownRenderer", () => {
 
   it("gives every code block a copy button", () => {
     renderWithRouter(
-      <MarkdownRenderer content={"```bash\nnpx specrails-core@latest init\n```"} />
+      <MarkdownRenderer content={"```bash\nnpm install -g specrails-desktop\n```"} />
     );
     expect(
       screen.getByRole("button", { name: /copy code/i })

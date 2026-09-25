@@ -5,14 +5,14 @@ import { cn } from "@/lib/utils";
 
 interface GitHubStarsButtonProps {
   repo?: string;
-  /** Product name shown before "Star on GitHub" (e.g. "Specrails (Core)"). */
+  /** Product name shown before "Star on GitHub" (e.g. "Specrails Desktop"). */
   label?: string;
   /** Extra classes for the button (e.g. "w-full"). */
   className?: string;
 }
 
 export const GitHubStarsButton = ({
-  repo = "fjpulidop/specrails-core",
+  repo = "fjpulidop/specrails-desktop",
   label,
   className,
 }: GitHubStarsButtonProps) => {
