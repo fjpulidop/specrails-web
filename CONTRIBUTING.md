@@ -1,6 +1,6 @@
 # Contributing to specrails-web
 
-Thank you for your interest in contributing to specrails-web — the public website and documentation site for SpecRails.
+Thank you for your interest in contributing to specrails-web — the public website and product guide for Specrails Desktop and its Companion. Specrails Core is the engine built into Desktop; describe it only as part of Desktop, never as something people install.
 
 ## Prerequisites
 
@@ -28,8 +28,9 @@ The site runs at `http://localhost:8080` (configured in `vite.config.ts`).
 ```
 specrails-web/
 ├── src/           # Application source (React + TypeScript)
+│   └── content/   # Product guide (guide/) and agent runbooks (for-agents/)
 ├── public/        # Static assets
-├── docs/          # Content and documentation source
+├── scripts/       # Guide and agent-doc generators
 └── openspec/      # OpenSpec specs for this project
 ```
 

@@ -1,5 +1,7 @@
 # Landing rebuild — approved content brief
 
+> **Superseded (2026-09-25).** The site is now the mission-first Specrails Desktop landing. The CLI-first path in this brief — the `npx specrails-core@latest init` CTA and the "specrails-core — the engine" layer — no longer applies: Specrails Core is the engine built into Desktop and is never presented as something to install. See `openspec/specs/product-narrative/spec.md`.
+
 > Working input for the OpenSpec change. Authoritative source for copy + IA.
 > Approved by the founder (Javier) in session 2026-06-18. Design system is
 > **out of scope** — colors, typography, spacing, components stay as they are.
