@@ -7,14 +7,13 @@ This file is loaded into context at the start of every session. Keep it under 20
 - CSS tokens are HSL space-separated values in `src/index.css` under `@layer base :root`
 - Theme system uses `data-theme` attribute on `documentElement` (not Tailwind `dark:` class)
 - Canvas components: all mutable state in refs/closure, never React state; must mock IntersectionObserver and canvas in tests
-- `src/data/agents.ts` is the canonical agent data source; `AgentEntry` interface is shared across three components
 
-## Landing IA (as of 2026-06-18, feat/companion-app-hosting branch)
-- Index.tsx is in active flux: hero-redesign-hub-primary partially applied (useReleaseManifest, CorePage, DemoVideo in hero); landing-spec-first-narrative change will collapse from 12 to 6 sections
-- SECTION_IDS target after landing-spec-first-narrative: ["hero", "pipeline", "demo", "problem", "products", "footer"]
-- HubShowcaseSection is deleted (file gone); HubSection import may still exist in Index.tsx
-- update-web-for-codex-support is fully applied (tasks all checked); Codex copy live in hero/features/core/docs
-- Agent count ("14 specialized agents") must NOT appear on the landing — subpages only
+## Landing IA (as of 2026-09-25)
+- Index.tsx renders the mission-first landing from ProductLanding.tsx: hero → product recordings → Companion → workflow (`#specs`, `#loops`) → features (`#engineering`) → docs showcase → footer.
+- Specrails Core is Desktop's built-in engine, not a product: no Core page, card, CLI reference, Core-vs-Desktop comparison or `npx specrails-core` CTA anywhere. Requirement: `openspec/specs/product-narrative/spec.md`.
+- `/core` redirects to `/docs/getting-started#core-is-built-into-desktop`; `/agents` and `/desktop` redirect to `/`.
+- The Core, former Desktop and Agents pages, the Agents/Commands/Features/Principles sections and `src/data/agents.ts` were removed in the `core-as-desktop-engine` change. The hero-redesign-hub-primary, landing-spec-first-narrative and update-web-for-codex-support changes were dropped as superseded.
+- Agent counts must not appear on the site.
 
 ## Explanation records
 - [2026-06-03-data-theme-over-body-class](./explanations/2026-06-03-data-theme-over-body-class.md) — why `data-theme` attribute was chosen over `body.light` class

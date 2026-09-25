@@ -1,6 +1,6 @@
 # specrails-web
 
-Landing page and documentation site for [specrails](https://github.com/fjpulidop/specrails-core) — a chained AI agent system that transforms Claude Code into a complete software development team. Hosted at [specrails.dev](https://specrails.dev).
+Website and product guide for [Specrails Desktop](https://github.com/fjpulidop/specrails-desktop) — a local workspace for agentic software development — and its mobile Companion. Hosted at [specrails.dev](https://specrails.dev).
 
 ## Stack
 
@@ -69,6 +69,12 @@ Layer-specific conventions are in `.claude/rules/` (loaded conditionally per lay
 - **Components**: shadcn/ui for standard elements, `cn()` for class merging
 - **Commits**: conventional commits (`feat:`, `fix:`, `docs:`, `chore:`)
 - **Branches**: `feat/<name>`, `fix/<name>`, `docs/<name>`
+
+## Product narrative
+
+- Specrails is one app: Specrails Desktop, plus Companion on the phone. Download, source and issue links point to `fjpulidop/specrails-desktop`.
+- Specrails Core (`specrails-core`) is the engine built into Desktop. Mention it only as part of Desktop — never as a product, CLI or package that people install, run or update: no `npx specrails-core` commands, no Core page, no Core-vs-Desktop comparison. Its version and updates live in Desktop Settings → Updates → Specrails Core.
+- Requirement: `openspec/specs/product-narrative/spec.md`. `/core` redirects to the guide section "Core is built into Desktop".
 
 ## Warnings
 

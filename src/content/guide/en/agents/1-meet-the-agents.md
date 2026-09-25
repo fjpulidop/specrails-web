@@ -14,4 +14,4 @@ The mission agent coordinates the surrounding workflow: it can inspect the proje
 
 A “reviewer” label does not prove that review happened. Look for the recorded phase, checks and findings. Retry should resume the appropriate incomplete work with bounded context, rather than pretend to resume a provider session that no longer exists.
 
-Installed Core workflows and provider capabilities determine how roles are dispatched. Read [provider settings](/docs/pipeline-picking-an-engine-per-rail) before assuming all adapters use identical subagents.
+The roles come from Specrails Core, the engine included in Desktop. The Core workflow Desktop installed in the project and the provider's capabilities determine how roles are dispatched. Read [provider settings](/docs/pipeline-picking-an-engine-per-rail) before assuming all adapters use identical subagents.

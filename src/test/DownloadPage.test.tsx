@@ -110,6 +110,12 @@ describe("DownloadPage", () => {
     expect(screen.getByRole("link", { name: DOWNLOAD_COPY.en.back })).toHaveAttribute("href", "/");
   });
 
+  it("says Specrails Core ships inside the installer instead of as a separate install", () => {
+    render(view());
+    expect(screen.getByText(DOWNLOAD_COPY.en.included)).toHaveTextContent(/includes everything Specrails needs, including Specrails Core/);
+    expect(screen.getByText(DOWNLOAD_COPY.en.included)).toHaveTextContent(/don’t install Core separately/);
+  });
+
   it.each(LANGUAGE_IDS)("localizes the complete download flow in %s", language => {
     window.localStorage.setItem("specrails-web:language", language);
     const release = manifest();
@@ -124,6 +130,7 @@ describe("DownloadPage", () => {
     expect(screen.getByText(copy.x64Hint)).toBeVisible();
     expect(screen.getByText(copy.armHint)).toBeVisible();
     expect(screen.getByText(copy.missing)).toBeVisible();
+    expect(screen.getByText(copy.included)).toBeVisible();
     expect(platform("macOS · Apple Silicon").getByRole("link", { name: `${copy.download}: macOS · Apple Silicon` })).toHaveAttribute("href", mac.url);
     expect(platform("Windows · ARM64").getByRole("link", { name: `${copy.viewReleases}: Windows · ARM64` })).toHaveAttribute("href", releases);
     expect(screen.getByRole("link", { name: copy.support })).toBeVisible();

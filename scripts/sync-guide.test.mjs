@@ -55,6 +55,8 @@ test('publishes static agent runbooks without unrelated content and detects body
  await assert.rejects(readFile(resolve(root, 'public/for-agents/private.md')), { code: 'ENOENT' });
  const index = await readFile(resolve(root, 'public/llms.txt'), 'utf8');
  assert.match(index, /https:\/\/specrails.dev\/for-agents\/mcp.md/);
+ assert.match(index, /Specrails Core \(the `specrails-core` package\) is the engine built into Desktop, not a standalone product/);
+ assert.match(index, /Do not tell people to install `specrails-core` or run `npx specrails-core`/);
  const html = await readFile(resolve(root, 'public/for-agents/index.html'), 'utf8');
  assert.doesNotMatch(html, /<script/i);
  assert.match(html, /href="\/for-agents\/mcp.md"/);

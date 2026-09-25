@@ -5,7 +5,7 @@
  * importing and rendering the *real* App module is fast, and the coverage
  * tool sees App.tsx as exercised.
  */
-import { describe, it, expect, vi, beforeAll } from "vitest";
+import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 // --- Mock page modules BEFORE importing App ---
@@ -25,14 +25,14 @@ vi.mock("@/pages/DocPage", () => ({
 vi.mock("@/pages/DocsIndex", () => ({
   default: () => <div data-testid="page-docs-index">DocsIndex</div>,
 }));
-vi.mock("@/pages/AgentsPage", () => ({
-  default: () => <div data-testid="page-agents">Agents</div>,
-}));
-
 // Import App *after* mocks are in place
 import App from "@/App";
 
 describe("App", () => {
+  afterEach(() => {
+    window.history.replaceState(null, "", "/");
+  });
+
   it("renders without crashing", () => {
     expect(() => render(<App />)).not.toThrow();
   });
@@ -40,5 +40,13 @@ describe("App", () => {
   it("renders the Index page at the default route", () => {
     render(<App />);
     expect(screen.getByTestId("page-index")).toBeInTheDocument();
+  });
+
+  it("sends legacy /core links to the guide section on Desktop's built-in engine", async () => {
+    window.history.replaceState(null, "", "/core");
+    render(<App />);
+    expect(await screen.findByTestId("page-docs-layout")).toBeInTheDocument();
+    expect(window.location.pathname).toBe("/docs/getting-started");
+    expect(window.location.hash).toBe("#core-is-built-into-desktop");
   });
 });

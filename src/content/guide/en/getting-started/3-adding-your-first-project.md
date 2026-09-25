@@ -6,7 +6,7 @@ A project is a logical product with one shared backlog. It can contain one repos
 
 ## Create the project
 
-Open Add Project, choose the primary folder and give the project a recognizable name. Add the other folders that belong to the product, then complete the prerequisite and Core setup checks.
+Open Add Project, choose the primary folder and give the project a recognizable name. Add the other folders that belong to the product, then complete the prerequisite checks. Desktop prepares the project with its built-in engine, Specrails Core; there is no setup command for you to run.
 
 For an existing project, use **Project settings → General → Repositories and folders**. Repository names help distinguish paths such as `frontend/src/index.ts` and `api/src/index.ts`; stable membership IDs keep their context separate.
 

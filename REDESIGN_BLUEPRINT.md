@@ -2,6 +2,8 @@ I have verified all the load-bearing facts. The token system, gradient definitio
 
 # specrails.dev — Redesign Blueprint
 
+> **Superseded (2026-09-25).** Historical audit. Its Core/Hub product model, Core CLI proof sections and `npx specrails-core init` CTAs no longer apply: specrails.dev presents Specrails Desktop, and Specrails Core is the engine built into it. See `openspec/specs/product-narrative/spec.md`.
+
 The brief: take a competent-but-templated dev-tool landing site to voicebox.sh / Linear / Raycast tier. The audits converge on one diagnosis: **the page describes a beautiful visual product without ever showing it, in a brand gradient that isn't actually the brand.** This blueprint fixes the brand at the token level, shows the product with real video, and rebuilds the IA around the "spec on rails" metaphor the name promises.
 
 ---

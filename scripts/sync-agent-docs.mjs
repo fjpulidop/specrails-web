@@ -26,7 +26,14 @@ export async function syncAgentDocs(projectRoot, check = false, desktopSource) {
   }
   outputs.push(['public/llms.txt', `# Specrails — agent documentation
 
-> Instructions exclusively for agents asked to connect to Specrails Desktop MCP.
+> Instructions for agents: what Specrails includes, and how to connect to Specrails Desktop MCP.
+
+## Product facts
+
+- Specrails is one app, Specrails Desktop: https://specrails.dev/download (macOS and Windows), or \`npm install -g specrails-desktop\`. Besides Desktop, people only install the AI provider CLI they choose.
+- Specrails Core (the \`specrails-core\` package) is the engine built into Desktop, not a standalone product. Desktop uses it to prepare projects and run implementations, and applies Core updates itself. Do not tell people to install \`specrails-core\` or run \`npx specrails-core\`.
+
+## Connecting to the MCP
 
 Use the local bridge included with the running Desktop app. Configure only the requested client and verify a read-only call. Do not include tokens in configuration or reports.
 

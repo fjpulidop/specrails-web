@@ -1,5 +1,7 @@
 # Handoff: specrails.dev redesign
 
+> **Note (2026-09-25).** Item 4 (the Agents section content update) no longer applies: the agents catalogue was removed together with the pages that presented specrails-core as a standalone product. See `openspec/specs/product-narrative/spec.md`.
+
 ## Overview
 This package documents a visual + content redesign of the **specrails** marketing site (`fjpulidop/specrails-web`, served at specrails.dev). It introduces four things:
 
