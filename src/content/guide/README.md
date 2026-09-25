@@ -15,6 +15,6 @@ English and Spanish currently cover all 37 articles. The other six languages cov
 
 `node scripts/sync-guide.mjs` deterministically generates the lightweight search index and sitemap from current article metadata. `--check` detects stale outputs without writing. Both production and development builds run that guard. The sitemap includes the public landing, downloads, Companion, privacy and guide routes; it excludes redirected legacy product pages.
 
-The historical `update-docs.yml` workflow updates a Core dependency. It does **not** synchronize this product guide or prove that a feature is shipped. Do not replace current product text with old Core documentation during dependency updates.
+Specrails Core is the engine built into Desktop, not a separate product. Describe it only as part of Desktop: never as a package or CLI that people install, run or update themselves, and never with `npx specrails-core` commands. Core versions and updates are shown in **Desktop Settings → Updates → Specrails Core**. The website does not track Core releases; do not import Core's repository documentation into this guide.
 
 The guide describes current source behavior; visitors must check installed-version availability. Keep provider charges, cross-repository delivery limits, mobile grants, native/browser differences and network boundaries explicit. Demo or illustrative UI must not be described as a live execution.
