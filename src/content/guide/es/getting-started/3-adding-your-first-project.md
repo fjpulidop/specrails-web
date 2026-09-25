@@ -6,7 +6,7 @@ Un proyecto representa un producto con un único backlog compartido. Puede inclu
 
 ## Crea el proyecto
 
-Abre Añadir proyecto, elige la carpeta principal y ponle un nombre reconocible. Añade las demás carpetas del producto y completa las comprobaciones de requisitos y de Core.
+Abre Añadir proyecto, elige la carpeta principal y ponle un nombre reconocible. Añade las demás carpetas del producto y completa las comprobaciones de requisitos. Desktop prepara el proyecto con su motor integrado, Specrails Core; no tienes que ejecutar ningún comando de instalación.
 
 Para un proyecto existente, usa **Ajustes del proyecto → General → Repositorios y carpetas**. Los nombres permiten distinguir rutas como `frontend/src/index.ts` y `api/src/index.ts`; los identificadores estables mantienen separado su contexto.
 

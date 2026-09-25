@@ -10,6 +10,14 @@ Instale a aplicação e autentique um fornecedor. Adicione o projeto e os reposi
 
 Uma missão também pode explorar código, usar o navegador e observar processos. A spec define a mudança; o loop define o processo. Claude, Codex, Gemini e Kimi têm capacidades diferentes. Chamadas a fornecedores e integrações podem enviar contexto e gerar custos.
 
+## O que corre onde
+
+O Specrails é uma única aplicação. O Desktop inclui o seu motor, o **Specrails Core**: quando adiciona um projeto, o Desktop usa o Core para preparar os ficheiros de fluxo de trabalho de que o seu fornecedor precisa, e os loops integrados Implement e Batch Implement recorrem ao Core para planear, desenvolver, verificar e rever a alteração antes de devolver o resultado ao Desktop. O Desktop trata de tudo o resto: missões, Board, worktrees, commits, pull requests e histórico.
+
+## O Core vem integrado no Desktop
+
+O Core não é um produto à parte. Não o instala, não o executa num terminal nem o adiciona aos seus repositórios. O Desktop inclui uma versão testada; em **Definições do Desktop → Atualizações → Specrails Core** vê a versão em uso e aplica as atualizações do Core a todos os projetos.
+
 Este guia descreve o produto atual. Verifique a versão instalada se faltar um controlo.
 
 [Primeira missão](/docs/missions-first-mission).

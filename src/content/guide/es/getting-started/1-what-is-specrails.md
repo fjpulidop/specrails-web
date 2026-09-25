@@ -16,7 +16,13 @@ Una misión también permite explorar, inspeccionar archivos, usar el navegador 
 
 ## Dónde se ejecuta cada parte
 
-Desktop coordina tus CLI instaladas de Claude, Codex, Gemini o Kimi. Core proporciona sus flujos. Que el historial sea local no significa que las llamadas al modelo se queden en tu equipo: los proveedores e integraciones pueden recibir contexto y generar cargos.
+Specrails es una sola aplicación. Desktop incluye su motor, **Specrails Core**: al añadir un proyecto, Desktop usa Core para preparar los archivos de flujo que necesita tu proveedor, y los loops integrados Implement y Batch Implement usan Core para planificar, desarrollar, verificar y revisar el cambio antes de devolver el resultado a Desktop. Desktop se encarga de todo lo demás: misiones, Board, worktrees, commits, pull requests e historial.
+
+Desktop y Core trabajan a través de la CLI de Claude, Codex, Gemini o Kimi que instalas y autenticas. Que el historial sea local no significa que las llamadas al modelo se queden en tu equipo: los proveedores e integraciones pueden recibir contexto y generar cargos.
+
+## Core viene integrado en Desktop
+
+Core no es un producto aparte. No lo instalas, no lo ejecutas desde una terminal ni lo añades a tus repositorios. Desktop incluye una versión probada; **Ajustes de Desktop → Actualizaciones → Specrails Core** muestra la versión en uso y aplica las actualizaciones de Core a todos tus proyectos.
 
 Esta guía describe el flujo actual del producto. Consulta tu versión y las [notas de lanzamiento](https://github.com/fjpulidop/specrails-desktop/releases) si falta un control.
 

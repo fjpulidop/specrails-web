@@ -12,7 +12,8 @@
           "description": "Specrails is a local workspace for turning a software idea into a precise spec, a coordinated implementation and a reviewable delivery. Start in a mission conversation; use the Board when you want to organize the backlog and execution lanes.",
           "headings": [
             "Your first path",
-            "What runs where"
+            "What runs where",
+            "Core is built into Desktop"
           ]
         },
         "es": {
@@ -20,49 +21,62 @@
           "description": "Specrails es un espacio de trabajo local para convertir una idea de software en una spec precisa, una implementación coordinada y una entrega revisable. Empieza en una conversación de misión; usa el Board cuando quieras organizar el backlog y los carriles de ejecución.",
           "headings": [
             "Tu primer recorrido",
-            "Dónde se ejecuta cada parte"
+            "Dónde se ejecuta cada parte",
+            "Core viene integrado en Desktop"
           ]
         },
         "fr": {
           "title": "Découvrir Specrails",
           "description": "Specrails est un espace de travail local pour transformer une idée en spec précise, en implémentation coordonnée et en livraison vérifiable. Commencez par une mission ; le Board permet de gérer directement le même backlog.",
           "headings": [
-            "Votre premier parcours"
+            "Votre premier parcours",
+            "Ce qui s’exécute où",
+            "Core est intégré à Desktop"
           ]
         },
         "de": {
           "title": "Specrails kennenlernen",
           "description": "Specrails ist ein lokaler Arbeitsbereich, der eine Softwareidee in eine präzise Spec, eine koordinierte Umsetzung und ein prüfbares Ergebnis überführt. Beginnen Sie mit einer Mission; im Board verwalten Sie denselben Backlog direkt.",
           "headings": [
-            "Ihr erster Ablauf"
+            "Ihr erster Ablauf",
+            "Was wo läuft",
+            "Core ist in Desktop integriert"
           ]
         },
         "pt": {
           "title": "Conheça o Specrails",
           "description": "O Specrails é um espaço de trabalho local que transforma uma ideia numa spec precisa, numa implementação coordenada e numa entrega que pode rever. Comece por uma missão; o Board permite gerir diretamente o mesmo backlog.",
           "headings": [
-            "O primeiro percurso"
+            "O primeiro percurso",
+            "O que corre onde",
+            "O Core vem integrado no Desktop"
           ]
         },
         "it": {
           "title": "Scopri Specrails",
           "description": "Specrails è uno spazio di lavoro locale che trasforma un’idea in una spec precisa, un’implementazione coordinata e una consegna verificabile. Inizia da una missione; il Board permette di gestire direttamente lo stesso backlog.",
           "headings": [
-            "Il primo percorso"
+            "Il primo percorso",
+            "Cosa viene eseguito e dove",
+            "Core è integrato in Desktop"
           ]
         },
         "zh": {
           "title": "了解 Specrails",
           "description": "Specrails 是一个本地工作空间，可将软件想法转化为明确的规格、协调的实现以及可审查的交付。建议从任务对话开始；Board 用于直接管理同一个待办列表。",
           "headings": [
-            "首次使用流程"
+            "首次使用流程",
+            "各部分在哪里运行",
+            "Core 已内置于 Desktop"
           ]
         },
         "ja": {
           "title": "Specrails を知る",
           "description": "Specrails は、ソフトウェアのアイデアを明確なスペック、連携した実装、レビュー可能な成果物へ進めるローカルの作業環境です。まずミッションから始めましょう。Board では同じバックログを直接管理できます。",
           "headings": [
-            "最初の流れ"
+            "最初の流れ",
+            "どこで何が動くか",
+            "Core は Desktop に内蔵されています"
           ]
         }
       }

@@ -12,6 +12,6 @@ Claude, Codex, Gemini y Kimi usan adaptadores distintos. Las combinaciones incom
 
 ## Usa el nivel de control adecuado
 
-El proveedor y modelo del rail controlan su ejecución. Los perfiles y el enrutado por rol dependen del proveedor y del Core instalado: revisa la configuración efectiva.
+El proveedor y modelo del rail controlan su ejecución. Los perfiles y el enrutado por rol dependen del proveedor y del flujo de Core que Desktop instaló en el proyecto: revisa la configuración efectiva.
 
 Para comparar ejecuciones, conserva spec, revisión y criterios de verificación. Distingue costes reportados, estimados y no disponibles. Consulta [perfiles](/docs/agents-profiles-and-the-balanced-default) y [consumo](/docs/insights-analytics-and-cost-tracking).
