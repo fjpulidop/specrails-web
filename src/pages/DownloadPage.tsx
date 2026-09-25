@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Apple, ArrowLeft, ArrowRight, BookOpen, Coffee, Download, ExternalLink, Github, LoaderCircle, Monitor } from "lucide-react";
+import { Apple, ArrowLeft, ArrowRight, BookOpen, Coffee, Download, ExternalLink, Github, LoaderCircle, Monitor, PackageCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import { Button } from "@/components/ui/button";
@@ -110,6 +110,7 @@ export default function DownloadPage() {
           <h2 id="download-platforms" className="text-xl font-medium tracking-tight">{copy.platforms}</h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">{copy.architecture}</p>
           <div className="mt-6 grid gap-5 md:grid-cols-3">{PLATFORMS.map(platform => <PlatformCard key={platform.key} platform={platform} state={state} copy={copy} />)}</div>
+          <p className="mt-6 flex max-w-3xl items-start gap-3 text-sm leading-relaxed text-muted-foreground"><PackageCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" /><span>{copy.included}</span></p>
         </section>
         <section className="mt-12 grid gap-6 border-t border-border pt-10 md:grid-cols-2">
           <div className="rounded-2xl border border-border bg-surface-1 p-6 sm:p-7">

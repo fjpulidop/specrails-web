@@ -39,7 +39,8 @@ const App = () => (
               <Route path=":slug" element={<DocPage />} />
             </Route>
             <Route path="/agents" element={<Navigate to="/" replace />} />
-            <Route path="/core" element={<Navigate to="/" replace />} />
+            {/* specrails-core is Desktop's built-in engine, not a separate product: old /core links land on the guide section that says so. */}
+            <Route path="/core" element={<Navigate to="/docs/getting-started#core-is-built-into-desktop" replace />} />
             <Route path="/desktop" element={<Navigate to="/" replace />} />
             <Route path="/download" element={<DownloadPage />} />
             <Route path="/companion" element={<CompanionPage />} />
