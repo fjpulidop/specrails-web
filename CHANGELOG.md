@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/fjpulidop/specrails-web/compare/v1.17.1...v1.18.0) (2026-09-25)
+
+
+### Features
+
+* **site:** present Specrails Core as Desktop's built-in engine ([#216](https://github.com/fjpulidop/specrails-web/issues/216)) ([62ae8e5](https://github.com/fjpulidop/specrails-web/commit/62ae8e51a96675e6538a5c7f7e84c8597de08a01))
+
 ## [1.17.1](https://github.com/fjpulidop/specrails-web/compare/v1.17.0...v1.17.1) (2026-09-22)
 
 
