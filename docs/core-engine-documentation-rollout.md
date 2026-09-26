@@ -80,3 +80,17 @@ index adds only the new English/Spanish search headings; routes and redirects
 are unchanged. The worktree uses the existing repository dependency tree through
 an untracked symlink; no package or lockfile change was needed. PR #218 was
 returned to draft because these paired changes are not released yet.
+
+## Verification workflow — 27 September 2026
+
+Release now calls CI at the same revision and deploys its verified artifact.
+Types, guide generation tests, coverage and build are required alongside the
+existing audit and secret gates. Manual force deployment now actually bypasses
+release-please; non-main dispatches cannot deploy. Release serialization and
+stale-main checks protect delivery ordering. See `release-verification.md`.
+
+Local validation: actionlint passed; types passed; documentation generator tests
+6/6; Web coverage 36 suites / 226 tests, statements/lines 88.36%, branches 87.25%,
+functions 92.53%; build passed. Production audit passes the existing high-severity
+gate but reports one low and three moderate advisories in the current lockfile.
+No release, merge or deployment was triggered.

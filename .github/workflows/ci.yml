@@ -1,43 +1,86 @@
 name: CI
 
 on:
+  workflow_call:
+    inputs:
+      publish_artifact:
+        description: Retain the verified site for the release workflow
+        type: boolean
+        default: false
+  merge_group:
+    types: [checks_requested]
   push:
     branches: ["**"]
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+# Keep reusable release checks in a different group from standalone CI.
+concurrency:
+  group: checks-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.workflow != 'Release' }}
+
 jobs:
   secret-scan:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
         with:
+          persist-credentials: false
           fetch-depth: 0
+      - name: Validate workflow contracts
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o "$RUNNER_TEMP/actionlint.tar.gz"
+          echo "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  $RUNNER_TEMP/actionlint.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/actionlint.tar.gz" -C "$RUNNER_TEMP" actionlint
+          "$RUNNER_TEMP/actionlint" -shellcheck=
       - name: Install gitleaks
         run: |
-          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz \
-            | tar xz -C /usr/local/bin gitleaks
+          set -euo pipefail
+          curl --fail --silent --show-error --location https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz -o "$RUNNER_TEMP/gitleaks.tar.gz"
+          echo "5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba  $RUNNER_TEMP/gitleaks.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP" gitleaks
       - name: Scan for secrets
-        run: gitleaks detect --source . --redact --exit-code 1
+        run: '"$RUNNER_TEMP/gitleaks" detect --source . --redact --exit-code 1'
 
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f  # v6.3.0
         with:
-          node-version: 20
+          node-version: 22.22.3
           cache: npm
       - run: npm ci
       # Static SPA: only production deps ship in the bundle, so scope the
       # high-severity gate to them. Dev-only tooling vulns (vitest, esbuild
       # dev-server, etc.) are tracked separately and don't reach users.
       - run: npm audit --omit=dev --audit-level=high
+      - run: npm run check:types
+      - run: npm run test:docs-sync
       - run: npm run test:coverage
+      # prebuild checks the committed guide generators before compiling assets.
+      - run: npm run build
+      - name: Upload verified site
+        if: ${{ inputs.publish_artifact }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
+        with:
+          name: verified-site-${{ github.sha }}
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
       - name: Upload coverage report
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
           name: coverage-report
           path: coverage/
-          retention-days: 30
+          retention-days: 7

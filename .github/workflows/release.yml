@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       force_deploy:
-        description: 'Force deploy to Hostinger (skips release-please)'
+        description: 'Deploy the verified main revision without running release-please'
         required: false
         default: 'true'
         type: boolean
@@ -17,44 +17,70 @@ on:
         type: boolean
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+# Serialize the whole main release, including checks. Never interrupt FTP midway.
+concurrency:
+  group: web-production-release
+  cancel-in-progress: false
 
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+  verify:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    uses: ./.github/workflows/ci.yml
+    with:
+      publish_artifact: true
 
+  release:
+    needs: verify
+    if: ${{ github.event_name != 'workflow_dispatch' || !inputs.force_deploy }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - name: Refuse an obsolete main revision
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          current_sha=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
+          test "$current_sha" = "$GITHUB_SHA" || { echo "::error::main advanced after validation; use the next verified run"; exit 1; }
       - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38  # v4.4.0
         id: release
         with:
           release-type: node
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f  # v6.3.0
+  deploy:
+    needs: [verify, release]
+    if: >-
+      ${{ !cancelled() && needs.verify.result == 'success' &&
+          (needs.release.outputs.created == 'true' ||
+           (github.event_name == 'workflow_dispatch' && inputs.force_deploy)) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Refuse an obsolete main revision
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          current_sha=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha')
+          test "$current_sha" = "$GITHUB_SHA" || { echo "::error::main advanced after validation; use the next verified run"; exit 1; }
+      - name: Download the site built by this run's verification job
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4.3.0
         with:
-          node-version: 20
-          cache: npm
-
-      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
-        run: |
-          npm ci
-          npm run build
-
-      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
-        name: Show build output
-        run: |
-          echo "=== dist/ contents ==="
-          find dist/ -type f | sort
-          echo "=== Total files: $(find dist/ -type f | wc -l) ==="
+          name: verified-site-${{ github.sha }}
+          path: dist/
 
       # Validate FTP credentials before attempting deployment.
       # FTP_SERVER must be a plain hostname (e.g. ftp.yourdomain.com) — no protocol prefix.
       # Find the correct value in Hostinger hPanel > FTP Accounts.
-      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
-        name: Validate FTP configuration
+      - name: Validate FTP configuration
         run: |
           if [ -z "$FTP_SERVER" ]; then
             echo "::error::FTP_SERVER secret is not configured. Add it under Settings > Secrets and variables > Actions."
@@ -81,7 +107,7 @@ jobs:
       # When clean_slate=true (manual dispatch) or first deploy, we do a full re-upload.
       # This fixes the common issue where the sync-state file on the server is stale,
       # causing the action to report "nothing to deploy" when files are actually missing.
-      - if: ${{ (steps.release.outputs.release_created || github.event_name == 'workflow_dispatch') && github.event.inputs.clean_slate == 'true' }}
+      - if: ${{ github.event_name == 'workflow_dispatch' && inputs.clean_slate }}
         name: Deploy to Hostinger (clean slate — full re-upload)
         uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a  # v4.3.6
         with:
@@ -95,7 +121,7 @@ jobs:
           dangerous-clean-slate: true
           log-level: verbose
 
-      - if: ${{ (steps.release.outputs.release_created || github.event_name == 'workflow_dispatch') && github.event.inputs.clean_slate != 'true' }}
+      - if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_slate }}
         name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a  # v4.3.6
         with:
@@ -107,10 +133,10 @@ jobs:
           local-dir: ./dist/
           server-dir: ${{ vars.FTP_SERVER_DIR || 'domains/specrails.dev/public_html/' }}
 
-      - if: ${{ steps.release.outputs.release_created || github.event_name == 'workflow_dispatch' }}
-        name: Smoke test — verify site is live
+      - name: Smoke test — verify site is live
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://specrails.dev' }}
         run: |
-          SITE_URL="${{ vars.SITE_URL || 'https://specrails.dev' }}"
           echo "Running smoke test against $SITE_URL"
           for i in 1 2 3; do
             STATUS=$(curl -o /tmp/smoke_body.html -s -w "%{http_code}" --max-time 15 "$SITE_URL")

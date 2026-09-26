@@ -143,3 +143,5 @@ Coordinate Desktop and Web documentation PRs. A Desktop merge does not publish W
 The [workflow engine documentation rollout](docs/core-engine-documentation-rollout.md)
 tracks the staged guide updates for the paired Core/Desktop engine migration.
 Only validated Desktop milestones become public guide instructions.
+
+See [release verification](docs/release-verification.md) for CI gates, artifact reuse, manual inputs and deployment ownership.
