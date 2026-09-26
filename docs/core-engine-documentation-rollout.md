@@ -94,3 +94,16 @@ Local validation: actionlint passed; types passed; documentation generator tests
 functions 92.53%; build passed. Production audit passes the existing high-severity
 gate but reports one low and three moderate advisories in the current lockfile.
 No release, merge or deployment was triggered.
+
+Dependency follow-up: patch-only audit repair updates the selector parser and
+router 6 patch versions, but two React Router advisories require >=7.18.0.
+Upgrade the Web-only declarative router to 7.18.4, retain React 18 and existing
+routes, and verify navigation/redirect tests, full coverage and build using an
+isolated dependency tree. This does not change Desktop's router dependencies.
+References: GHSA-wrjc-x8rr-h8h6 and GHSA-337j-9hxr-rhxg.
+
+Router validation completed: React Router 7.18.4 and selector-parser 6.1.4
+resolve all production advisories (`npm audit --omit=dev --audit-level=low`: 0).
+Removed the now-obsolete v7 future flags from one test wrapper. Types, all 226
+tests with unchanged coverage thresholds, and production build passed against
+the isolated installed lockfile. Existing routes and redirects remain covered.
