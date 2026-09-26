@@ -40,7 +40,7 @@ This repository contains specrails.dev: the landing page, the download page, the
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) >= 18 (CI uses Node 20)
+- [Node.js](https://nodejs.org) 22.22.3 (the version used in CI)
 - npm
 
 ### Development

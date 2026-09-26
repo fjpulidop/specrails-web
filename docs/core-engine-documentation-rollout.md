@@ -107,3 +107,15 @@ resolve all production advisories (`npm audit --omit=dev --audit-level=low`: 0).
 Removed the now-obsolete v7 future flags from one test wrapper. Types, all 226
 tests with unchanged coverage thresholds, and production build passed against
 the isolated installed lockfile. Existing routes and redirects remain covered.
+
+Development toolchain acceptance (27 September 2026): Vite 7.3.6,
+Vitest/coverage-v8 4.1.11, compatible transitive security updates and a constructor
+mock correction. All 38 suites / 263 tests passed in 13.03s with two workers.
+Coverage: statements 89.75%, branches 80.73%, functions 92.03%, lines 91.46%;
+all existing 80% thresholds retained. Types and production build passed on Node
+22.22.3. Full `npm audit --audit-level=low` reports zero vulnerabilities, including
+development dependencies. CI now audits development dependencies as well.
+The source-pair observation behavior remains capability-gated: recorded event
+span IDs correlate with optional Core OTLP exports; absent IDs stay absent,
+and presence does not imply delivery to a collector. A stalled decider follows
+the failed edge, never the successful stop edge.

@@ -22,7 +22,7 @@ beforeEach(() => {
 
   vi.stubGlobal(
     "IntersectionObserver",
-    vi.fn((cb: ObserverCallback) => {
+    vi.fn(function IntersectionObserverMock(cb: ObserverCallback) {
       observerCallback = cb;
       return mockObserver;
     })

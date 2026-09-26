@@ -59,10 +59,8 @@ jobs:
           node-version: 22.22.3
           cache: npm
       - run: npm ci
-      # Static SPA: only production deps ship in the bundle, so scope the
-      # high-severity gate to them. Dev-only tooling vulns (vitest, esbuild
-      # dev-server, etc.) are tracked separately and don't reach users.
-      - run: npm audit --omit=dev --audit-level=high
+      # Protect both the shipped bundle and the tools that build and test it.
+      - run: npm audit --audit-level=high
       - run: npm run check:types
       - run: npm run test:docs-sync
       - run: npm run test:coverage

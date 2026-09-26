@@ -3,7 +3,7 @@
 CI and Release share the same reusable workflow at the current commit. The
 existing `test` and `secret-scan` jobs retain their identities. Node 22.22.3 and
 npm lockfile caching keep the toolchain stable. Verification checks types,
-generator behavior, full coverage, production dependencies, workflow syntax,
+generator behavior, full coverage, production and development dependencies, workflow syntax,
 secrets and the production build (including generated guide freshness).
 
 Release waits for all checks before release-please or FTP. The build job uploads
@@ -30,3 +30,11 @@ No release or deployment was triggered to validate these changes. Local checks
 and actionlint validate the reviewable implementation; the first authorized
 production run must still verify the live static documentation URLs described in
 README.md. The workflow definition follows GitHub's [reusable workflow contract](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows).
+
+The development toolchain uses Vite 7.3.6 and Vitest/coverage-v8 4.1.11. This
+keeps the existing Vite plugin peer contracts while resolving the published
+[Vitest mocker advisory](https://github.com/advisories/GHSA-82fw-gwwq-j7x9).
+Vitest 4's source mapping exposes branches omitted by the older report; the
+80% thresholds remain unchanged. Behavioral regressions cover invalid release
+metadata, shared-request cancellation, platform fallback, video visibility,
+autoplay rejection and reduced-motion behavior. No coverage exclusions were added.
