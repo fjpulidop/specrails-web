@@ -21,3 +21,9 @@ Preview the graph, verify provider capabilities, and try a bounded change before
 Use the catalog available in your Desktop version. Drag steps onto the canvas, connect their outcomes, and configure each step in its inspector. Validate the graph before publishing it; fix the reported node and parameter errors before launching. Specrails Core is the engine built into Desktop that executes these workflows. Manage its version in Desktop Settings → Updates → Specrails Core.
 
 Give each role only the access it needs. Separate read-only investigation from code changes, and connect changes to explicit verification. Parallel branches share the workflow budget; a successful End node alone does not establish that a writing workflow has verified evidence.
+
+When the selected Core exposes invocation limits, prompt, role and decider
+pieces offer `timeoutMs` and `idleTimeoutMs`. Set a limit to `0` to disable that
+step timer, or remove the field to inherit the default. Whole-workflow budgets
+and cancellation still apply. A verification step that asks a blocking question
+waits for your answer before accepting a success result.
