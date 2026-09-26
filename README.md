@@ -139,3 +139,7 @@ The canonical runbook lives in Specrails Desktop's `docs/agents/`; this reposito
 The human guide in `src/content/guide/` is maintained independently of Desktop's `docs/guide/`; `docs:sync` generates its index, loaders and sitemap, not a cross-repository article import. Do not copy Desktop's entire docs tree into the Web guide, and do not import documentation from specrails-core: the website does not track Core releases.
 
 Coordinate Desktop and Web documentation PRs. A Desktop merge does not publish Web changes. Web deployment is a separate release/manual-dispatch workflow that uploads `dist/` to Hostinger. After an authorized deployment, check the three static URLs return their actual text/HTML rather than the SPA fallback. Until then, the committed sources and PRs are the reviewable result.
+
+The [workflow engine documentation rollout](docs/core-engine-documentation-rollout.md)
+tracks the staged guide updates for the paired Core/Desktop engine migration.
+Only validated Desktop milestones become public guide instructions.
