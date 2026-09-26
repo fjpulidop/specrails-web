@@ -113,3 +113,9 @@ Comodo per condividere un'esecuzione con un collega, o per inviare una segnalazi
 - [Rail e job](rails-and-jobs) — avvio e accodamento.
 - [Batch implement e multi-feature](batch-implement-and-multi-feature) — molte spec, ondate di dipendenze.
 - [Tracciare i costi](../analytics/tracking-cost) — trasforma i costi per job in analytics di progetto.
+
+## Riprendere l’esecuzione originale
+
+Le esecuzioni salvate conservano workflow, ambito dei repository e contesto di consegna originali. Rispondi a una domanda in sospeso o approva esplicitamente l’operazione mostrata. Dopo una scrittura interrotta, esamina prima il diff del worktree e seleziona i tentativi esatti da recuperare. Nodo e ambito distinguono i rami passati dallo stesso passaggio. La ripresa conserva l’esecuzione e la sua contabilità.
+
+La conferma di annullamento indica che la richiesta è stata registrata; attendi la conclusione dell’esecuzione prima di avviare lavoro concorrente. Le ricevute delle istruzioni distinguono l’accettazione dal consumo da parte di un tentativo successivo dell’agente. Nessuna ricevuta dimostra che la modifica richiesta sia terminata. Un costo sconosciuto non equivale a zero.

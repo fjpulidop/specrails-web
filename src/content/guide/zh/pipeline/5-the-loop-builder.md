@@ -89,3 +89,9 @@ builder 会帮你在 loop 真正跑起来之前就把它弄对：
 - [Rail 与任务](rails-and-jobs)——启动 rail 以及任务队列。
 - [任务详情视图](the-job-detail-view)——实时观看一次运行。
 - [为每条 rail 选择引擎](picking-an-engine-per-rail)——是 rail（而不是 loop）来选提供方。
+
+## 构建并验证流程图
+
+使用当前 Desktop 版本提供的目录。将步骤拖到画布上，连接其结果，并在检查器中配置各个步骤。发布前验证流程图，启动前修复报告的错误。Specrails Core 是 Desktop 内置的工作流执行引擎，可在 Desktop 设置 → 更新 → Specrails Core 中管理版本。
+
+只为每个角色授予所需的访问权限。将只读调查与代码修改分开，并为修改连接明确的验证步骤。并行分支共享工作流预算；End 节点成功本身并不能证明写入操作具有已验证的证据。

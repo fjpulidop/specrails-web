@@ -61,3 +61,22 @@ Record the paired PRs, validated Desktop milestone and any remaining rollout gat
 in each documentation PR. A merged documentation PR is not proof of deployment;
 Web publication is a separate operation. Final initiative acceptance includes a
 cross-repository documentation review after D8/C10, not merely this checklist.
+
+## Paired draft updates — 26 September 2026
+
+PR #218 now prepares Loop Builder and run-detail additions in all eight
+languages. These cover validated graph authoring, least-privilege roles,
+verification-aware outcomes, exact-attempt recovery, cancellation acknowledgement
+and steering receipts. The paired implementation is Desktop PR #708 and Core
+PR #389. The prose is staged in this draft branch; it is not evidence of a
+released Desktop version or a Web deployment. Keep this PR unmerged until the
+paired implementation gates and final user-flow review pass. Fork instructions,
+custom-agent details and final migration/rollout guidance still require the
+remaining implementation and cross-repository documentation pass.
+
+Draft validation: `docs:sync`, `docs:check` (37 routes), `test:docs-sync`
+(6 tests), and the production build passed on 26 September 2026. The generated
+index adds only the new English/Spanish search headings; routes and redirects
+are unchanged. The worktree uses the existing repository dependency tree through
+an untracked symlink; no package or lockfile change was needed. PR #218 was
+returned to draft because these paired changes are not released yet.

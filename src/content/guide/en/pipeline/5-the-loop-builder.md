@@ -15,3 +15,9 @@ A useful verification step tests both the build and the requested behavior. A re
 Choose the repository for commands that depend on a working directory. For coordinated work, the launch must include every required target. Avoid shell commands that infer another repository from a relative path outside the selected scope.
 
 Preview the graph, verify provider capabilities, and try a bounded change before reusing it widely. A graph's End node records the configured outcome; review its evidence before [accepting delivery](/docs/missions-review-and-delivery).
+
+## Compose and validate the graph
+
+Use the catalog available in your Desktop version. Drag steps onto the canvas, connect their outcomes, and configure each step in its inspector. Validate the graph before publishing it; fix the reported node and parameter errors before launching. Specrails Core is the engine built into Desktop that executes these workflows. Manage its version in Desktop Settings → Updates → Specrails Core.
+
+Give each role only the access it needs. Separate read-only investigation from code changes, and connect changes to explicit verification. Parallel branches share the workflow budget; a successful End node alone does not establish that a writing workflow has verified evidence.

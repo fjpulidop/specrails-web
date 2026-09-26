@@ -524,7 +524,8 @@
           "description": "The run detail brings together step progress, logs, verification and delivery context. Start here when an implementation stops or a result needs explanation.",
           "headings": [
             "Find the actual boundary",
-            "Continue the right work"
+            "Continue the right work",
+            "Resume the original execution"
           ]
         },
         "es": {
@@ -532,7 +533,8 @@
           "description": "El detalle de ejecución reúne pasos, logs, verificación y entrega. Empieza aquí cuando una implementación se detiene o necesitas entender el resultado.",
           "headings": [
             "Localiza el fallo real",
-            "Continúa el trabajo correcto"
+            "Continúa el trabajo correcto",
+            "Reanudar la ejecución original"
           ]
         }
       }
@@ -598,7 +600,8 @@
           "description": "The Loop Builder turns a process into connected steps you can inspect and reuse. Start with a built-in loop when it fits, then customize the checks your project actually needs.",
           "headings": [
             "Give every step a contract",
-            "Set repository scope"
+            "Set repository scope",
+            "Compose and validate the graph"
           ]
         },
         "es": {
@@ -606,7 +609,8 @@
           "description": "El editor de loops convierte un proceso en pasos conectados y reutilizables. Parte de un loop incluido cuando encaje y adapta las comprobaciones que necesita tu proyecto.",
           "headings": [
             "Define el contrato de cada paso",
-            "Configura los repositorios"
+            "Configura los repositorios",
+            "Componer y validar el grafo"
           ]
         }
       }

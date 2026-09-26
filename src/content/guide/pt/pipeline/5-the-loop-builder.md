@@ -89,3 +89,9 @@ A execução transmite ao vivo na vista **Jobs** com as mesmas métricas e o mes
 - [Rails e jobs](rails-and-jobs) — lançando rails e a fila de jobs.
 - [A vista de detalhe do job](the-job-detail-view) — acompanhando uma execução ao vivo.
 - [Escolhendo um motor por rail](picking-an-engine-per-rail) — o rail (não o loop) escolhe o provedor.
+
+## Compor e validar o grafo
+
+Use o catálogo disponível na sua versão do Desktop. Arraste etapas para o canvas, conecte os resultados e configure cada etapa no inspetor. Valide o grafo antes de publicar e corrija os erros antes de executar. O Specrails Core é o motor integrado no Desktop que executa estes workflows. A versão é gerida em Definições do Desktop → Atualizações → Specrails Core.
+
+Dê a cada função apenas o acesso necessário. Separe a investigação de leitura das alterações de código e ligue as alterações a uma verificação explícita. Os ramos paralelos partilham o orçamento do workflow; um nó End bem-sucedido, por si só, não comprova que as alterações têm evidência verificada.

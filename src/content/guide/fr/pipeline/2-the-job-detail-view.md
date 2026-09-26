@@ -113,3 +113,9 @@ Pratique pour partager une exécution avec un coéquipier, ou pour déposer un r
 - [Rails et jobs](rails-and-jobs) — lancement et mise en file.
 - [Batch implement et multi-fonctionnalité](batch-implement-and-multi-feature) — plusieurs specs, vagues de dépendances.
 - [Suivre le coût](../analytics/tracking-cost) — transformer les coûts par job en analytics de projet.
+
+## Reprendre l’exécution d’origine
+
+Les exécutions enregistrées conservent leur workflow, leurs dépôts et leur contexte de livraison d’origine. Répondez à une question en attente ou approuvez explicitement l’opération affichée. Après une écriture interrompue, inspectez le diff du worktree puis sélectionnez les tentatives exactes à reprendre. Le nœud et le périmètre distinguent les branches passées par la même étape. La reprise conserve l’exécution et sa comptabilité.
+
+L’accusé de réception d’une annulation indique que la demande est enregistrée ; attendez la fin de l’exécution avant de démarrer un travail concurrent. Les reçus de consignes distinguent leur acceptation de leur consommation par une tentative ultérieure de l’agent. Aucun reçu ne prouve que la modification demandée est terminée. Un coût inconnu n’est pas un coût nul.

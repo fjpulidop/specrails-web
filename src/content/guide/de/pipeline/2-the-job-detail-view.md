@@ -113,3 +113,9 @@ Praktisch, um einen Lauf mit einem Teammitglied zu teilen oder einen präzisen F
 - [Rails & Jobs](rails-and-jobs) — Starten und Einreihen in die Queue.
 - [Batch implement & Multi-Feature](batch-implement-and-multi-feature) — viele Specs, abhängigkeitsbewusste Wellen.
 - [Kosten verfolgen](../analytics/tracking-cost) — aus Kosten pro Job Projekt-Analysen machen.
+
+## Die ursprüngliche Ausführung fortsetzen
+
+Gespeicherte Ausführungen behalten ihren ursprünglichen Workflow, Repository-Umfang und Lieferkontext. Beantworte eine offene Frage oder genehmige die angezeigte Aktion ausdrücklich. Prüfe nach einem unterbrochenen Schreibvorgang zuerst den Worktree-Diff und wähle dann die genauen Versuche zur Wiederaufnahme. Knoten und Bereich unterscheiden Zweige, die denselben Schritt besucht haben. Die Fortsetzung erhält die Ausführung und ihre Abrechnung.
+
+Eine Abbruchbestätigung bedeutet, dass die Anfrage gespeichert wurde. Warte auf das Ende der Ausführung, bevor du konkurrierende Arbeit startest. Anweisungsbelege unterscheiden die Annahme einer Anweisung von ihrer Nutzung durch einen späteren Agentenversuch. Kein Beleg beweist, dass die gewünschte Änderung abgeschlossen ist. Unbekannte Kosten sind keine Nullkosten.

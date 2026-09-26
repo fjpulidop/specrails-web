@@ -89,3 +89,9 @@ Der Lauf streamt live in der **Jobs**-Ansicht, mit denselben Metriken und dersel
 - [Rails & Jobs](rails-and-jobs) — rails starten und die Job-Queue.
 - [Die Job-Detail-Ansicht](the-job-detail-view) — einem Lauf live zusehen.
 - [Eine Engine pro Rail wählen](picking-an-engine-per-rail) — die rail (nicht der Loop) wählt den Provider.
+
+## Den Graphen erstellen und prüfen
+
+Verwende den Katalog deiner Desktop-Version. Ziehe Schritte auf die Arbeitsfläche, verbinde ihre Ergebnisse und konfiguriere jeden Schritt im Inspektor. Prüfe den Graphen vor der Veröffentlichung und behebe gemeldete Fehler vor dem Start. Specrails Core ist die in Desktop integrierte Engine für diese Workflows. Die Version verwaltest du unter Desktop-Einstellungen → Updates → Specrails Core.
+
+Gib jeder Rolle nur die benötigten Zugriffsrechte. Trenne lesende Untersuchungen von Codeänderungen und verbinde Änderungen mit einer ausdrücklichen Prüfung. Parallele Zweige teilen sich das Workflow-Budget. Ein erfolgreicher End-Knoten allein belegt keine verifizierten Änderungen.

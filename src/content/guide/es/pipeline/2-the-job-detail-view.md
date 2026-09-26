@@ -15,3 +15,9 @@ Abre los logs y el diff del repositorio. Busca los comandos ejecutados, su resul
 Usa la acción de reintento o revisión de esa ejecución. No lances varias implementaciones idénticas porque tarde en reconectar una vista: comprueba primero el estado.
 
 Una revisión debe conservar la spec congelada y su contexto de entrega. Para otro alcance, actualiza el backlog y lanza de nuevo. Conserva el identificador y los logs relevantes al [informar de un problema](/docs/settings-pipeline-telemetry-and-diagnostics).
+
+## Reanudar la ejecución original
+
+Las ejecuciones guardadas conservan su workflow, alcance de repositorios y contexto de entrega originales. Responde a una pregunta pendiente o aprueba explícitamente la operación mostrada. Tras una escritura interrumpida, revisa primero el diff del worktree y selecciona los intentos exactos que quieres recuperar. El nodo y el ámbito distinguen las ramas que pasaron por el mismo paso. Reanudar conserva la ejecución y su contabilidad.
+
+La confirmación de cancelación indica que la solicitud quedó registrada; espera a que termine la ejecución antes de iniciar trabajo concurrente sobre ella. Los recibos de instrucciones distinguen una instrucción aceptada de otra consumida por un intento posterior del agente. Ningún recibo demuestra que el cambio solicitado haya terminado. Un coste desconocido no equivale a coste cero.

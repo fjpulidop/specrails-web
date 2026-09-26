@@ -113,3 +113,9 @@ Se a [telemetria](../settings/customizing) estava ativada para o job, aparece um
 - [Rails e jobs](rails-and-jobs) — lançar e enfileirar.
 - [Batch implement e multi-feature](batch-implement-and-multi-feature) — muitas specs, ondas de dependências.
 - [Acompanhar o custo](../analytics/tracking-cost) — transformar os custos por job em analytics do projeto.
+
+## Retomar a execução original
+
+As execuções guardadas mantêm o workflow, o âmbito dos repositórios e o contexto de entrega originais. Responda a uma pergunta pendente ou aprove explicitamente a operação apresentada. Após uma escrita interrompida, inspecione primeiro o diff do worktree e selecione as tentativas exatas a recuperar. O nó e o âmbito distinguem os ramos que passaram pela mesma etapa. Retomar preserva a execução e a sua contabilização.
+
+A confirmação do cancelamento significa que o pedido foi registado; aguarde o fim da execução antes de iniciar trabalho concorrente. Os recibos de instruções distinguem a aceitação do consumo por uma tentativa posterior do agente. Nenhum recibo comprova que a alteração pedida foi concluída. Um custo desconhecido não é custo zero.
