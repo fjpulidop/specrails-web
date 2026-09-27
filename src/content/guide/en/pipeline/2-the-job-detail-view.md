@@ -25,3 +25,5 @@ Cancellation acknowledgement means the request was recorded; wait for the execut
 ## After a workflow restart
 
 After a crash, resume the saved workflow with its original configuration and repositories. An interrupted write requires selecting the exact attempt after inspecting the worktree diff. Completed steps are reused. A provider call whose response was lost remains counted as interrupted with unknown usage; it is never reported as free. If the original delivery cannot be proven from saved records, recovery shows an error and preserves the worktree.
+
+When a decision step pauses for a question, resuming reuses its saved decision and sends the human answer to the following step. It does not call the model again for that same decision. A paused prompt can need another model turn to act on your answer.

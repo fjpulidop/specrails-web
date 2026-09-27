@@ -123,3 +123,5 @@ La conferma di annullamento indica che la richiesta è stata registrata; attendi
 ## Dopo il riavvio di un workflow
 
 Dopo un arresto improvviso, riprendi il workflow salvato con la configurazione e i repository originali. Una scrittura interrotta richiede di selezionare il tentativo esatto dopo aver esaminato il diff del worktree. I passaggi completati vengono conservati. Una chiamata al provider la cui risposta è andata persa resta conteggiata come interrotta, con consumo sconosciuto; non viene mai presentata come gratuita. Se i dati salvati non consentono di dimostrare la consegna originale, il recupero mostra un errore e conserva il worktree.
+
+Quando un passaggio decisionale si interrompe per una domanda, la ripresa riutilizza la decisione salvata e trasmette la risposta umana al passaggio successivo. Non richiama il modello per la stessa decisione. Un prompt in pausa può richiedere un altro turno del modello per applicare la risposta.
