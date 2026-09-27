@@ -119,3 +119,7 @@ Se a [telemetria](../settings/customizing) estava ativada para o job, aparece um
 As execuções guardadas mantêm o workflow, o âmbito dos repositórios e o contexto de entrega originais. Responda a uma pergunta pendente ou aprove explicitamente a operação apresentada. Após uma escrita interrompida, inspecione primeiro o diff do worktree e selecione as tentativas exatas a recuperar. O nó e o âmbito distinguem os ramos que passaram pela mesma etapa. Retomar preserva a execução e a sua contabilização.
 
 A confirmação do cancelamento significa que o pedido foi registado; aguarde o fim da execução antes de iniciar trabalho concorrente. Os recibos de instruções distinguem a aceitação do consumo por uma tentativa posterior do agente. Nenhum recibo comprova que a alteração pedida foi concluída. Um custo desconhecido não é custo zero.
+
+## Após reiniciar um workflow
+
+Após uma falha, retome o workflow salvo com a configuração e os repositórios originais. Uma escrita interrompida exige selecionar a tentativa exata depois de revisar o diff do worktree. As etapas concluídas são preservadas. Uma chamada ao provedor cuja resposta foi perdida continua contabilizada como interrompida, com consumo desconhecido; nunca é apresentada como gratuita. Se os registros salvos não comprovarem a entrega original, a recuperação mostra um erro e preserva o worktree.

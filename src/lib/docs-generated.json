@@ -525,7 +525,8 @@
           "headings": [
             "Find the actual boundary",
             "Continue the right work",
-            "Resume the original execution"
+            "Resume the original execution",
+            "After a workflow restart"
           ]
         },
         "es": {
@@ -534,7 +535,8 @@
           "headings": [
             "Localiza el fallo real",
             "Continúa el trabajo correcto",
-            "Reanudar la ejecución original"
+            "Reanudar la ejecución original",
+            "Después de reiniciar un workflow"
           ]
         }
       }

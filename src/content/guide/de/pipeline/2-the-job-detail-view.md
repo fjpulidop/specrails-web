@@ -119,3 +119,7 @@ Praktisch, um einen Lauf mit einem Teammitglied zu teilen oder einen präzisen F
 Gespeicherte Ausführungen behalten ihren ursprünglichen Workflow, Repository-Umfang und Lieferkontext. Beantworte eine offene Frage oder genehmige die angezeigte Aktion ausdrücklich. Prüfe nach einem unterbrochenen Schreibvorgang zuerst den Worktree-Diff und wähle dann die genauen Versuche zur Wiederaufnahme. Knoten und Bereich unterscheiden Zweige, die denselben Schritt besucht haben. Die Fortsetzung erhält die Ausführung und ihre Abrechnung.
 
 Eine Abbruchbestätigung bedeutet, dass die Anfrage gespeichert wurde. Warte auf das Ende der Ausführung, bevor du konkurrierende Arbeit startest. Anweisungsbelege unterscheiden die Annahme einer Anweisung von ihrer Nutzung durch einen späteren Agentenversuch. Kein Beleg beweist, dass die gewünschte Änderung abgeschlossen ist. Unbekannte Kosten sind keine Nullkosten.
+
+## Nach einem Workflow-Neustart
+
+Setze nach einem Absturz den gespeicherten Workflow mit seiner ursprünglichen Konfiguration und seinen ursprünglichen Repositorys fort. Prüfe bei einem unterbrochenen Schreibvorgang zuerst den Worktree-Diff und wähle dann den genauen Versuch aus. Abgeschlossene Schritte bleiben erhalten. Ein Anbieteraufruf mit verlorener Antwort wird weiterhin als unterbrochen mit unbekanntem Verbrauch gezählt, niemals als kostenlos. Lässt sich die ursprüngliche Auslieferung anhand der gespeicherten Daten nicht belegen, zeigt die Wiederherstellung einen Fehler und erhält den Worktree.

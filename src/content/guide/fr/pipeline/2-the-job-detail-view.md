@@ -119,3 +119,7 @@ Pratique pour partager une exécution avec un coéquipier, ou pour déposer un r
 Les exécutions enregistrées conservent leur workflow, leurs dépôts et leur contexte de livraison d’origine. Répondez à une question en attente ou approuvez explicitement l’opération affichée. Après une écriture interrompue, inspectez le diff du worktree puis sélectionnez les tentatives exactes à reprendre. Le nœud et le périmètre distinguent les branches passées par la même étape. La reprise conserve l’exécution et sa comptabilité.
 
 L’accusé de réception d’une annulation indique que la demande est enregistrée ; attendez la fin de l’exécution avant de démarrer un travail concurrent. Les reçus de consignes distinguent leur acceptation de leur consommation par une tentative ultérieure de l’agent. Aucun reçu ne prouve que la modification demandée est terminée. Un coût inconnu n’est pas un coût nul.
+
+## Après le redémarrage d’un workflow
+
+Après un arrêt brutal, reprenez le workflow enregistré avec sa configuration et ses dépôts d’origine. Une écriture interrompue exige de sélectionner la tentative exacte après avoir examiné le diff du worktree. Les étapes terminées sont conservées. Un appel au fournisseur dont la réponse a été perdue reste comptabilisé comme interrompu, avec une consommation inconnue ; il n’est jamais présenté comme gratuit. Si les données enregistrées ne permettent pas de prouver la livraison d’origine, la récupération affiche une erreur et conserve le worktree.
