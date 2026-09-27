@@ -29,3 +29,5 @@ and cancellation still apply. A verification step that asks a blocking question
 waits for your answer before accepting a success result.
 
 When a saved legacy graph is first replaced with Core pieces, its original graph is preserved. The library then offers **Export original graph**. The export has a distinct name so you can import it as a separate draft without replacing the current workflow. Conversion and later edits never publish a loop automatically.
+
+Use **Set variables** for state that must survive a pause: set typed JSON values or adjust an existing integer counter. This piece makes no AI call. All updates commit together; an invalid counter leaves every variable unchanged. Variables in a mapped component remain local to that component.
