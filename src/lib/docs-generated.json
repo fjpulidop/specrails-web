@@ -526,7 +526,8 @@
             "Find the actual boundary",
             "Continue the right work",
             "Resume the original execution",
-            "After a workflow restart"
+            "After a workflow restart",
+            "History retention"
           ]
         },
         "es": {
@@ -536,7 +537,8 @@
             "Localiza el fallo real",
             "Continúa el trabajo correcto",
             "Reanudar la ejecución original",
-            "Después de reiniciar un workflow"
+            "Después de reiniciar un workflow",
+            "Conservación del historial"
           ]
         }
       }
