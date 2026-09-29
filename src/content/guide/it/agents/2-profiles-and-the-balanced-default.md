@@ -24,7 +24,7 @@ Quando avvii un rail, Specrails sceglie un profilo in questo ordine:
 2. La tua **preferenza per sviluppatore** — un profilo che hai contrassegnato come tuo default personale per questo progetto (è locale a te e non viene committato).
 3. Il profilo **`default`** del progetto.
 
-Il profilo viene *fotografato in uno snapshot all'avvio*, così ogni rail di un batch può girare con un profilo diverso, e modificare un profilo in seguito non riscrive mai i job che sono già partiti.
+Il profilo viene *fotografato in uno snapshot all'avvio*, così ogni rail in parallelo può girare con un profilo diverso, e modificare un profilo in seguito non riscrive mai i job che sono già partiti.
 
 ## Selezionare un profilo per ogni rail
 
@@ -33,7 +33,7 @@ La scelta del profilo avviene proprio dove si lancia — nell'**intestazione del
 - Scegli un profilo dal menu a discesa per usarlo **solo per questo avvio**.
 - Usa l'opzione di persistenza per rendere un profilo la scelta stabile del rail da qui in avanti.
 
-È tutto il flusso: scegli un profilo, avvia, fatto. I rail concorrenti nello stesso batch possono portare ciascuno il proprio profilo, così una correzione veloce e una feature impegnativa possono girare fianco a fianco con configurazioni diverse.
+È tutto il flusso: scegli un profilo, avvia, fatto. I rail concorrenti possono portare ciascuno il proprio profilo, così una correzione veloce e una feature impegnativa possono girare fianco a fianco con configurazioni diverse.
 
 ## Quando la sezione Agenti tace
 

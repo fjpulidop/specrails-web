@@ -23,7 +23,7 @@ is the publication gate for user-facing documentation.
 | --- | --- |
 | D1/D2 + Quick SDD | Explain composing, publishing and launching Core-executed graphs in the Loop Builder; show node validation and per-step usage |
 | D3/D4 + Freestyle | Explain human questions/approval, repeating from a step and explicit recovery after interrupted writes |
-| D5/D6 + Implement/Batch | Update factory graph examples, nested components, bounded parallel branches and role permissions |
+| D5/D6 + Implement | Update factory graph examples, nested components, bounded parallel branches and role permissions (Batch was removed; parallel work uses several rails) |
 | D7 | Explain steering acceptance versus consumption at the next attempt; update run observation examples |
 | D8/Core C10 | Remove obsolete runner/profile instructions only after migration parity and the two-release telemetry gate |
 

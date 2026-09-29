@@ -12,7 +12,7 @@ Uma missão também pode explorar código, usar o navegador e observar processos
 
 ## O que corre onde
 
-O Specrails é uma única aplicação. O Desktop inclui o seu motor, o **Specrails Core**: quando adiciona um projeto, o Desktop usa o Core para preparar os ficheiros de fluxo de trabalho de que o seu fornecedor precisa, e os loops integrados Implement e Batch Implement recorrem ao Core para planear, desenvolver, verificar e rever a alteração antes de devolver o resultado ao Desktop. O Desktop trata de tudo o resto: missões, Board, worktrees, commits, pull requests e histórico.
+O Specrails é uma única aplicação. O Desktop inclui o seu motor, o **Specrails Core**: quando adiciona um projeto, o Desktop usa o Core para preparar os ficheiros de fluxo de trabalho de que o seu fornecedor precisa, e o loop integrado Implement recorre ao Core para planear, desenvolver, verificar e rever a alteração antes de devolver o resultado ao Desktop. O Desktop trata de tudo o resto: missões, Board, worktrees, commits, pull requests e histórico.
 
 ## O Core vem integrado no Desktop
 

@@ -12,6 +12,6 @@ The workspace brings together conversation, delivery cards, files, Git, browser 
 
 ## Use Board when organizing work
 
-Board groups specs by status and priority. Rails let you choose a loop and inspect an implementation's steps. Switch views to plan several specs or manage a batch; returning to the mission keeps the conversation as your place to direct the work.
+Board groups specs by status and priority. Rails let you choose a loop and inspect an implementation's steps. Switch views to plan several specs or spread independent work across rails; returning to the mission keeps the conversation as your place to direct the work.
 
 In the native app, [separate mission windows](/docs/missions-mission-windows) let you keep independent tasks visible. The agent remains in the shared local backend.

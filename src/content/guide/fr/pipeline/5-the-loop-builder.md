@@ -1,6 +1,6 @@
 # Le Loop Builder
 
-Un **rail exécute un Loop**. Les loops intégrés (`Implement`, `Batch`, `Freestyle`) couvrent les cas du quotidien, mais le **Loop Builder** vous laisse concevoir les vôtres — un éditeur visuel, de style n8n, pour de l'automatisation qui se répète jusqu'à ce qu'un objectif soit atteint. Cette page explique ce qu'est un loop, comment en construire un, et comment l'exécuter sur un rail.
+Un **rail exécute un Loop**. Les loops intégrés (`Implement`, `Quick SDD`, `Freestyle`) couvrent les cas du quotidien, mais le **Loop Builder** vous laisse concevoir les vôtres — un éditeur visuel, de style n8n, pour de l'automatisation qui se répète jusqu'à ce qu'un objectif soit atteint. Cette page explique ce qu'est un loop, comment en construire un, et comment l'exécuter sur un rail.
 
 ## Loops et rails — la relation
 
@@ -10,7 +10,7 @@ Un **loop** est la *recette* du travail ; un **rail** est la *voie* qui l'exécu
    Loop Builder (barre latérale gauche)    Rails (droite)
    ───────────────────────────             ─────────────
    Implement   (intégré)                   Rail 1
-   Batch       (intégré)      choisir ►       Loop: Verify-until-green
+   Quick SDD   (intégré)      choisir ►       Loop: Verify-until-green
    Freestyle   (intégré)                      ▶ Play
    Verify-until-green (le vôtre)
 ```
@@ -25,7 +25,7 @@ Donc : construisez un loop une fois, puis choisissez-le sur n'importe quel rail 
 
 Cliquez sur **Loops** dans la barre latérale gauche pour voir la bibliothèque : les trois loops intégrés plus les vôtres. Ouvrez-en un pour le visualiser, ou cliquez sur **New loop** pour partir d'un canevas vierge.
 
-Vous ne pouvez pas facilement éditer un intégré directement — à la place, faites un **Fork**. Cela vous donne une copie éditable d'un graphe fonctionnel pour démarrer, ce qui est la façon la plus simple d'apprendre.
+Les loops intégrés se modifient directement : ouvrez-en un, modifiez le graphe et publiez-le — votre version s'applique alors partout où ce loop intégré est utilisé. **Restore original** le remet à sa version d'origine. Les loops intégrés ne peuvent pas être supprimés.
 
 ## De quoi un loop est constitué
 

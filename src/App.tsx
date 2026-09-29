@@ -41,6 +41,8 @@ const App = () => (
             <Route path="/agents" element={<Navigate to="/" replace />} />
             {/* specrails-core is Desktop's built-in engine, not a separate product: old /core links land on the guide section that says so. */}
             <Route path="/core" element={<Navigate to="/docs/getting-started#core-is-built-into-desktop" replace />} />
+            {/* Batch Implement was removed: Implement runs every spec on a rail, and parallel work uses several rails. */}
+            <Route path="/docs/pipeline-batch-implement-and-multi-feature" element={<Navigate to="/docs/pipeline-rails-and-jobs" replace />} />
             <Route path="/desktop" element={<Navigate to="/" replace />} />
             <Route path="/download" element={<DownloadPage />} />
             <Route path="/companion" element={<CompanionPage />} />

@@ -24,7 +24,7 @@ Quando lança um rail, o Specrails escolhe um perfil por esta ordem:
 2. A sua **preferência por developer** — um perfil que tenha marcado como a sua predefinição pessoal para este projeto (é local a si e não é committado).
 3. O perfil **`default`** do projeto.
 
-O perfil é capturado num *snapshot no lançamento*, por isso cada rail num batch pode correr um perfil diferente, e alterar um perfil mais tarde nunca reescreve jobs que já tenham começado.
+O perfil é capturado num *snapshot no lançamento*, por isso cada rail em paralelo pode correr um perfil diferente, e alterar um perfil mais tarde nunca reescreve jobs que já tenham começado.
 
 ## Selecionar um perfil por rail
 
@@ -33,7 +33,7 @@ A seleção do perfil acontece mesmo onde lança — no **cabeçalho do rail**, 
 - Escolha um perfil no menu pendente para o usar **apenas neste lançamento**.
 - Use a opção de persistir para tornar um perfil a escolha permanente do rail daí para a frente.
 
-É todo o fluxo: escolha um perfil, lance, pronto. Rails concorrentes no mesmo batch podem levar cada um o seu próprio perfil, por isso uma correção rápida e uma funcionalidade pesada podem correr lado a lado com configurações diferentes.
+É todo o fluxo: escolha um perfil, lance, pronto. Rails concorrentes podem levar cada um o seu próprio perfil, por isso uma correção rápida e uma funcionalidade pesada podem correr lado a lado com configurações diferentes.
 
 ## Quando a secção Agentes está silenciosa
 

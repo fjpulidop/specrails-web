@@ -8,7 +8,7 @@ Scegli il progetto e apri una missione. Descrivi risultato, vincoli e un modo co
 
 Aggiungi file con `@` e una spec con `#`. Il selettore dà priorità alle spec e mantiene il riferimento nel punto di inserimento. Controlla il repository: percorsi uguali possono indicare file diversi.
 
-Chiedi un’esplorazione se la soluzione non è chiara. Rivedi bozza e criteri prima di avviare Implement, Batch Implement, SDD Quick, Freestyle o un loop personalizzato. Leggere un altro repository non lo include automaticamente nell’ambito di implementazione.
+Chiedi un’esplorazione se la soluzione non è chiara. Rivedi bozza e criteri prima di avviare Implement, SDD Quick, Freestyle o un loop personalizzato. Leggere un altro repository non lo include automaticamente nell’ambito di implementazione.
 
 ## Segui il lavoro
 

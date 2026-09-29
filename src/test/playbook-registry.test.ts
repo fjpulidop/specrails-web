@@ -9,7 +9,7 @@ import { LANGUAGE_IDS } from "@/lib/i18n";
 describe("localized guide registry entries", () => {
   it("has the same guide count in every supported language", () => {
     for (const language of LANGUAGE_IDS) {
-      expect(getDocs(language), language).toHaveLength(37);
+      expect(getDocs(language), language).toHaveLength(36);
     }
   });
 

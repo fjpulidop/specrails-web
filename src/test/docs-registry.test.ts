@@ -11,8 +11,8 @@ import {
 } from "@/lib/docs-registry";
 
 describe("docs-registry", () => {
-  it("has 37 English guide entries", () => {
-    expect(DOCS).toHaveLength(37);
+  it("has 36 English guide entries", () => {
+    expect(DOCS).toHaveLength(36);
   });
 
   it("getDocBySlug returns correct entry", () => {
@@ -67,7 +67,7 @@ describe("docs-registry", () => {
 
   it("returns localized entries", () => {
     const spanishDocs = getDocs("es");
-    expect(spanishDocs).toHaveLength(37);
+    expect(spanishDocs).toHaveLength(36);
     expect(getDocBySlug("getting-started", "es")?.title).toBe("Qué es Specrails");
   });
 

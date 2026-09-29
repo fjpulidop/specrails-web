@@ -49,7 +49,7 @@ Para uso do dia a dia não vai mexer no encaminhamento: a regra apanha-tudo envi
 
 ## Escolher o perfil quando lança
 
-Tudo isto se junta no lançamento: no cabeçalho do rail, escolha `fast`, `max` ou `default` por rail. Um batch pode misturá-los — uma correção minúscula em `fast`, uma grande funcionalidade em `max`, ambas a correr ao mesmo tempo. Veja [Perfis e a predefinição equilibrada](profiles-and-the-balanced-default) para o fluxo de seleção.
+Tudo isto se junta no lançamento: no cabeçalho do rail, escolha `fast`, `max` ou `default` por rail. Rails em paralelo podem misturá-los — uma correção minúscula em `fast`, uma grande funcionalidade em `max`, ambas a correr ao mesmo tempo. Veja [Perfis e a predefinição equilibrada](profiles-and-the-balanced-default) para o fluxo de seleção.
 
 ## Uma nota sobre segurança
 

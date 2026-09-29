@@ -12,7 +12,7 @@ Specrails は、ソフトウェアのアイデアを明確なスペック、連�
 
 ## どこで何が動くか
 
-Specrails はひとつのアプリです。Desktop にはエンジンである **Specrails Core** が同梱されています。プロジェクトを追加すると、Desktop は Core を使ってプロバイダーが必要とするワークフローファイルを準備します。組み込みの Implement と Batch Implement ループは Core を使って変更の計画、開発、検証、レビューを行い、結果を Desktop に返します。ミッション、Board、worktree、コミット、プルリクエスト、履歴など、それ以外はすべて Desktop が担います。
+Specrails はひとつのアプリです。Desktop にはエンジンである **Specrails Core** が同梱されています。プロジェクトを追加すると、Desktop は Core を使ってプロバイダーが必要とするワークフローファイルを準備します。組み込みの Implement ループは Core を使って変更の計画、開発、検証、レビューを行い、結果を Desktop に返します。ミッション、Board、worktree、コミット、プルリクエスト、履歴など、それ以外はすべて Desktop が担います。
 
 ## Core は Desktop に内蔵されています
 

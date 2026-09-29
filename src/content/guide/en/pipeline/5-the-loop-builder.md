@@ -4,6 +4,10 @@
 
 The Loop Builder turns a process into connected steps you can inspect and reuse. Start with a built-in loop when it fits, then customize the checks your project actually needs.
 
+## Edit a built-in loop
+
+Implement, Freestyle and Quick SDD are already in the loop library as ready-made loops. Open one and edit it in place like any other loop. Nothing changes until you publish; after that, your version is used everywhere that built-in loop runs. **Restore original** resets it to the version shipped with Desktop. Built-in loops cannot be deleted.
+
 ## Give every step a contract
 
 Use AI steps for investigation or implementation, shell steps for deterministic commands and deciders for explicit continuation conditions. Connect success and failure paths and set iteration, timeout and budget limits where available.

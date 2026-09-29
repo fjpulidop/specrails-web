@@ -1,6 +1,6 @@
 # Loop Builder
 
-**一条 rail 运行的是一个 Loop。** 内置的那些 loop（`Implement`、`Batch`、`Freestyle`）覆盖了日常场景，但 **Loop Builder** 让你能设计自己的——一个可视化的、n8n 风格的编辑器，用来做那种"重复执行直到目标达成"的自动化。本页会讲清楚什么是 loop、怎么搭一个，以及怎么在 rail 上运行它。
+**一条 rail 运行的是一个 Loop。** 内置的那些 loop（`Implement`、`Quick SDD`、`Freestyle`）覆盖了日常场景，但 **Loop Builder** 让你能设计自己的——一个可视化的、n8n 风格的编辑器，用来做那种"重复执行直到目标达成"的自动化。本页会讲清楚什么是 loop、怎么搭一个，以及怎么在 rail 上运行它。
 
 ## Loop 与 rail——它们的关系
 
@@ -10,7 +10,7 @@
    Loop Builder (左侧栏)                   Rails (右)
    ───────────────────────────             ─────────────
    Implement   (内置)                       Rail 1
-   Batch       (内置)          在此挑选 ►       Loop: Verify-until-green
+   Quick SDD   (内置)          在此挑选 ►       Loop: Verify-until-green
    Freestyle   (内置)                          ▶ Play
    Verify-until-green (你的)
 ```
@@ -25,7 +25,7 @@
 
 点左侧栏的 **Loops**，就能看到这个库：三个内置 loop，再加上你自己的所有 loop。打开一个来查看，或者点 **New loop** 从一张空白画布开始。
 
-你没法轻易地直接编辑内置 loop——而是要 **Fork** 它。这会给你一份可编辑的副本，从一个能跑通的图出发，这也是最容易上手的学习方式。
+内置 loop 可以直接编辑：打开它、修改图并发布——之后所有使用这个内置 loop 的地方都会使用你的版本。**Restore original** 可恢复到原始版本。内置 loop 不能删除。
 
 ## 一个 loop 由什么组成
 

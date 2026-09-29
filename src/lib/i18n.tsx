@@ -207,7 +207,7 @@ const en: SiteCopy = {
     title: "Your development process becomes",
     gradient: "a reusable graph.",
     intro:
-      "Specrails ships with Implement, Batch and Freestyle, then lets you build your own loops: AI steps, shell commands and loop deciders with iteration, timeout and cost caps.",
+      "Specrails ships with Implement, SDD Quick and Freestyle, which you can edit in place, then lets you build your own loops: AI steps, shell commands and loop deciders with iteration, timeout and cost caps.",
     loopTitle: "Ship & Green",
     loopSubtitle: "A mission-control loop for reliable vibe coding",
     nodes: [
@@ -381,7 +381,7 @@ const es: SiteCopy = {
     title: "Tu proceso de desarrollo se convierte en",
     gradient: "un grafo reutilizable.",
     intro:
-      "Specrails trae Implement, Batch y Freestyle, y además permite crear tus propios loops: pasos de IA, comandos shell y loop deciders con límites de iteración, tiempo y coste.",
+      "Specrails trae Implement, SDD Quick y Freestyle, editables directamente, y además permite crear tus propios loops: pasos de IA, comandos shell y loop deciders con límites de iteración, tiempo y coste.",
     loopSubtitle: "Un loop de mission control para vibe coding fiable",
     nodes: [
       { title: "Paso IA", body: "Implementa la spec usando el contexto del proyecto." },

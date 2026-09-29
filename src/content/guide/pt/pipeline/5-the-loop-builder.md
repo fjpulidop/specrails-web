@@ -1,6 +1,6 @@
 # O Loop Builder
 
-Um **rail roda um Loop**. Os loops embutidos (`Implement`, `Batch`, `Freestyle`) cobrem os casos do dia a dia, mas o **Loop Builder** deixa você desenhar os seus próprios — um editor visual, no estilo n8n, para automação que se repete até atingir uma meta. Esta página explica o que é um loop, como construir um e como rodá-lo em um rail.
+Um **rail roda um Loop**. Os loops embutidos (`Implement`, `Quick SDD`, `Freestyle`) cobrem os casos do dia a dia, mas o **Loop Builder** deixa você desenhar os seus próprios — um editor visual, no estilo n8n, para automação que se repete até atingir uma meta. Esta página explica o que é um loop, como construir um e como rodá-lo em um rail.
 
 ## Loops e rails — a relação
 
@@ -10,7 +10,7 @@ Um **loop** é a *receita* do trabalho; um **rail** é a *pista* que o roda cont
    Loop Builder (barra lateral esq.)        Rails (direita)
    ───────────────────────────             ─────────────
    Implement   (embutido)                  Rail 1
-   Batch       (embutido)      escolha ►      Loop: Verify-until-green
+   Quick SDD   (embutido)      escolha ►      Loop: Verify-until-green
    Freestyle   (embutido)                     ▶ Play
    Verify-until-green (seu)
 ```
@@ -25,7 +25,7 @@ Ou seja: construa um loop uma vez e depois escolha-o em qualquer rail, em qualqu
 
 Clique em **Loops** na barra lateral esquerda para ver a biblioteca: os três loops embutidos mais os seus próprios. Abra um para vê-lo, ou clique em **New loop** para começar de uma tela em branco.
 
-Você não consegue editar um embutido diretamente com facilidade — em vez disso, faça **Fork** dele. Isso te dá uma cópia editável de um grafo que funciona como ponto de partida, que é a forma mais fácil de aprender.
+Os loops embutidos são editados diretamente: abra um, altere o grafo e publique — a partir daí a sua versão vale em todo lugar onde esse loop embutido é usado. **Restore original** volta à versão original. Loops embutidos não podem ser excluídos.
 
 ## Do que um loop é feito
 

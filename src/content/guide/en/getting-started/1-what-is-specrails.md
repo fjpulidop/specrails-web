@@ -16,7 +16,7 @@ A mission can explore, inspect files, operate the browser and supervise processe
 
 ## What runs where
 
-Specrails is one app. Desktop includes its engine, **Specrails Core**: when you add a project, Desktop uses Core to prepare the workflow files your provider needs, and the built-in Implement and Batch Implement loops use Core to plan, develop, verify and review the change before handing the result back to Desktop. Desktop owns everything around it: missions, the Board, worktrees, commits, pull requests and history.
+Specrails is one app. Desktop includes its engine, **Specrails Core**: when you add a project, Desktop uses Core to prepare the workflow files your provider needs, and the built-in Implement loop uses Core to plan, develop, verify and review the change before handing the result back to Desktop. Desktop owns everything around it: missions, the Board, worktrees, commits, pull requests and history.
 
 Desktop and Core work through the Claude, Codex, Gemini or Kimi CLI that you install and sign in to. Local project history does not mean model calls stay on your machine: provider calls and configured integrations can send context and incur charges.
 
