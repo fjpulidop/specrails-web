@@ -109,7 +109,7 @@ jobs:
       # causing the action to report "nothing to deploy" when files are actually missing.
       - if: ${{ github.event_name == 'workflow_dispatch' && inputs.clean_slate }}
         name: Deploy to Hostinger (clean slate — full re-upload)
-        uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a  # v4.3.6
+        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287  # v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -123,7 +123,7 @@ jobs:
 
       - if: ${{ github.event_name != 'workflow_dispatch' || !inputs.clean_slate }}
         name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@a51268f67f6605236975928ae28b0f7e9971d50a  # v4.3.6
+        uses: SamKirkland/FTP-Deploy-Action@110f9186c050f71550953127052e77650219c287  # v4.4.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
