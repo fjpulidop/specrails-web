@@ -1,6 +1,6 @@
 # Der Loop Builder
 
-Eine **rail führt einen Loop aus**. Die eingebauten Loops (`Implement`, `Batch`, `Freestyle`) decken die Alltagsfälle ab, aber der **Loop Builder** lässt dich deine eigenen entwerfen — ein visueller Editor im n8n-Stil für Automatisierung, die sich wiederholt, bis ein Ziel erreicht ist. Diese Seite erklärt, was ein Loop ist, wie du einen baust und wie du ihn auf einer rail ausführst.
+Eine **rail führt einen Loop aus**. Die eingebauten Loops (`Implement`, `Quick SDD`, `Freestyle`) decken die Alltagsfälle ab, aber der **Loop Builder** lässt dich deine eigenen entwerfen — ein visueller Editor im n8n-Stil für Automatisierung, die sich wiederholt, bis ein Ziel erreicht ist. Diese Seite erklärt, was ein Loop ist, wie du einen baust und wie du ihn auf einer rail ausführst.
 
 ## Loops und rails — die Beziehung
 
@@ -10,7 +10,7 @@ Ein **Loop** ist das *Rezept* für die Arbeit; eine **rail** ist die *Spur*, die
    Loop Builder (linke Seitenleiste)        Rails (rechts)
    ───────────────────────────             ─────────────
    Implement   (eingebaut)                  Rail 1
-   Batch       (eingebaut)     wählen auf ►    Loop: Verify-until-green
+   Quick SDD   (eingebaut)     wählen auf ►    Loop: Verify-until-green
    Freestyle   (eingebaut)                     ▶ Play
    Verify-until-green (deiner)
 ```
@@ -25,7 +25,7 @@ Also: Bau einen Loop einmal, dann wähl ihn auf jeder rail in jedem Projekt.
 
 Klick **Loops** in der linken Seitenleiste, um die Bibliothek zu sehen: die drei eingebauten Loops plus alle deine eigenen. Öffne einen, um ihn anzusehen, oder klick **New loop**, um mit einer leeren Leinwand zu starten.
 
-Einen eingebauten Loop kannst du nicht ohne Weiteres direkt bearbeiten — stattdessen **Fork** ihn. Das gibt dir eine bearbeitbare Kopie eines funktionierenden Graphen als Ausgangspunkt, was der einfachste Weg zum Lernen ist.
+Eingebaute Loops bearbeitest du direkt: Öffne einen, ändere den Graphen und veröffentliche ihn — ab dann gilt deine Version überall, wo dieser eingebaute Loop verwendet wird. **Restore original** setzt ihn auf die ausgelieferte Version zurück. Eingebaute Loops lassen sich nicht löschen.
 
 ## Woraus ein Loop besteht
 
@@ -89,3 +89,23 @@ Der Lauf streamt live in der **Jobs**-Ansicht, mit denselben Metriken und dersel
 - [Rails & Jobs](rails-and-jobs) — rails starten und die Job-Queue.
 - [Die Job-Detail-Ansicht](the-job-detail-view) — einem Lauf live zusehen.
 - [Eine Engine pro Rail wählen](picking-an-engine-per-rail) — die rail (nicht der Loop) wählt den Provider.
+
+## Den Graphen erstellen und prüfen
+
+Verwende den Katalog deiner Desktop-Version. Ziehe Schritte auf die Arbeitsfläche, verbinde ihre Ergebnisse und konfiguriere jeden Schritt im Inspektor. Prüfe den Graphen vor der Veröffentlichung und behebe gemeldete Fehler vor dem Start. Specrails Core ist die in Desktop integrierte Engine für diese Workflows. Die Version verwaltest du unter Desktop-Einstellungen → Updates → Specrails Core.
+
+Gib jeder Rolle nur die benötigten Zugriffsrechte. Trenne lesende Untersuchungen von Codeänderungen und verbinde Änderungen mit einer ausdrücklichen Prüfung. Parallele Zweige teilen sich das Workflow-Budget. Ein erfolgreicher End-Knoten allein belegt keine verifizierten Änderungen.
+
+Wenn die ausgewählte Core-Version Aufruflimits bereitstellt, bieten Prompt-, Rollen- und Decider-Bausteine `timeoutMs` und `idleTimeoutMs` an. Mit `0` deaktivierst du den jeweiligen Timer des Schritts; entfernst du das Feld, wird der Standardwert übernommen. Budgets des gesamten Workflows und der Abbruch bleiben wirksam. Stellt ein Verifizierungsschritt eine blockierende Frage, wartet er auf deine Antwort, bevor er ein erfolgreiches Ergebnis akzeptiert.
+
+Wenn ein gespeicherter älterer Graph erstmals durch Core-Bausteine ersetzt wird, bleibt sein ursprünglicher Graph erhalten. Die Bibliothek bietet dann **Ursprünglichen Graphen exportieren** an. Der Export erhält einen eigenen Namen, damit du ihn als separaten Entwurf importieren kannst, ohne den aktuellen Workflow zu ersetzen. Konvertierungen und spätere Änderungen veröffentlichen einen Loop niemals automatisch.
+
+Mit **Variablen setzen** bleibt Zustand über eine Pause hinweg erhalten: Setzen Sie typisierte JSON-Werte oder ändern Sie einen bestehenden ganzzahligen Zähler. Dieser Baustein ruft keine KI auf. Alle Änderungen werden gemeinsam gespeichert; ein ungültiger Zähler lässt sämtliche Variablen unverändert. Variablen einer zugeordneten Komponente bleiben auf diese Komponente beschränkt.
+
+Beim Decider schützt **Fortsetzen, solange diese Bedingung erfüllt ist** noch offene Pflichtaufgaben. Beispielsweise wandelt `$vars.failedPass == true` einen Stoppvorschlag in eine Fortsetzung um, bis der Workflow das Kennzeichen löscht. Die Entscheidung wird weiterhin ausgeführt; unveränderte Wiederholungen unterliegen weiterhin der Fortschrittsgrenze. Rückfragen pausieren weiterhin bis zur Antwort.
+
+Wähle in der Loop-Bibliothek **In Core umwandeln**, um einen gespeicherten Loop der bisherigen Engine zu migrieren. Wähle das ursprüngliche Repository, wenn ein Shell-Schritt keinen expliziten Bereich hat. Die Konvertierung validiert den Graphen und speichert einen Entwurf samt exportierbarer Originalkopie. Prüfe die Verbindungen und veröffentliche ausdrücklich. Laufende Loops können nicht konvertiert werden; gleichzeitige Änderungen bleiben erhalten. Schreibende Schritte benötigen echte Prüfkommandos. Quick SDD nutzt das in Core enthaltene OpenSpec. Aktualisiere Core, falls die Konvertierung nicht verfügbar ist.
+
+Um zu sehen, welche gespeicherten Loops Aufmerksamkeit brauchen, öffne in der Bibliothek **Core-Migrationsprüfung** und wähle **Prüfen**. Sie listet Loops, die der installierte Core ablehnt, Loops, die zur Konvertierung bereit sind, und Loops, die ein Repository oder eine andere Korrektur brauchen. Sie konvertiert oder veröffentlicht nie selbst etwas.
+
+Ein künftiger Core, der nur noch Core-Workflows ausführt, startet einen nicht konvertierten Loop nicht auf einem Rail. Desktop zeigt dann einen Hinweis auf **In Core umwandeln**, statt einen Lauf zu beginnen, der unterwegs scheitern würde. Bereits gestartete Läufe behalten die Core-Version, die sie erstellt hat.

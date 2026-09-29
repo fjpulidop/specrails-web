@@ -9,10 +9,11 @@ A loop defines the process; a rail is the execution lane; a job or run records w
 | Loop | Use it for |
 | --- | --- |
 | Implement | An agreed spec with architecture, implementation and review |
-| Batch Implement | A coordinated set of specs and their dependencies |
 | SDD Quick | A shorter spec-driven route for a bounded change |
 | Freestyle | A flexible task with an explicitly stated outcome |
 | Custom | Your own AI, shell and decision steps |
+
+Implement runs every spec on a rail in one run. To work on independent specs in parallel, put them on separate rails.
 
 Select the provider, supported model settings and repositories before starting. Check prerequisites and capacity: a reserved or queued rail is not evidence that a model has begun working.
 

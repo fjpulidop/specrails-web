@@ -22,7 +22,7 @@ function manifest(): ReleaseManifest {
   return { schemaVersion: 1, version: "9.8.7", releasedAt: "2026-09-05T12:00:00Z", releaseUrl: `${releases}/tag/v9.8.7`, platforms: { "darwin-arm64": mac, "windows-x64": windows, "windows-arm64": arm } };
 }
 function view() {
-  return <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><I18nProvider><DownloadPage /></I18nProvider></MemoryRouter>;
+  return <MemoryRouter><I18nProvider><DownloadPage /></I18nProvider></MemoryRouter>;
 }
 function platform(name: string) { return within(screen.getByRole("article", { name })); }
 

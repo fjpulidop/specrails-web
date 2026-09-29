@@ -20,7 +20,7 @@ L'engine selezionato esegue ogni fase della pipeline di quel rail. Se la CLI del
 
 ## In cosa è bravo ciascun engine
 
-Tutti e tre eseguono le pipeline standard **Implement** e **Batch**. Ecco una guida pratica alla scelta:
+Tutti e tre eseguono la pipeline standard **Implement**. Ecco una guida pratica alla scelta:
 
 | Engine | Scegli questo quando… | Note |
 |--------|--------------------|-------|

@@ -20,7 +20,7 @@ O motor selecionado corre todas as fases do pipeline desse rail. Se a CLI do mot
 
 ## Em que cada motor é bom
 
-Os três correm os pipelines standard **Implement** e **Batch**. Aqui fica um guia prático para escolher:
+Os três correm o pipeline standard **Implement**. Aqui fica um guia prático para escolher:
 
 | Motor | Recorra a ele quando… | Notas |
 |--------|--------------------|-------|

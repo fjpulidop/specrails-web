@@ -40,7 +40,7 @@ This repository contains specrails.dev: the landing page, the download page, the
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org) >= 18 (CI uses Node 20)
+- [Node.js](https://nodejs.org) 22.22.3 (the version used in CI)
 - npm
 
 ### Development
@@ -105,7 +105,7 @@ openspec/                   # OpenSpec specs and change history for this site
 
 - **Mission-first landing** — Real recordings of Desktop's Mission Control, Board and Loop Builder
 - **Download page** — Installers and checksums read from Desktop's release manifest, with a GitHub fallback
-- **Product guide** — 37 articles in English and Spanish, with the essential journeys in six more languages, search and a generated sitemap
+- **Product guide** — 36 articles in English and Spanish, with the essential journeys in six more languages, search and a generated sitemap
 - **Companion** — Product page plus the hosted Companion web app at `/companion-app/`
 - **Agent-readable docs** — `/llms.txt` and `/for-agents/` as static files that need no JavaScript
 - **Light and dark themes, eight interface languages**
@@ -139,3 +139,9 @@ The canonical runbook lives in Specrails Desktop's `docs/agents/`; this reposito
 The human guide in `src/content/guide/` is maintained independently of Desktop's `docs/guide/`; `docs:sync` generates its index, loaders and sitemap, not a cross-repository article import. Do not copy Desktop's entire docs tree into the Web guide, and do not import documentation from specrails-core: the website does not track Core releases.
 
 Coordinate Desktop and Web documentation PRs. A Desktop merge does not publish Web changes. Web deployment is a separate release/manual-dispatch workflow that uploads `dist/` to Hostinger. After an authorized deployment, check the three static URLs return their actual text/HTML rather than the SPA fallback. Until then, the committed sources and PRs are the reviewable result.
+
+The [workflow engine documentation rollout](docs/core-engine-documentation-rollout.md)
+tracks the staged guide updates for the paired Core/Desktop engine migration.
+Only validated Desktop milestones become public guide instructions.
+
+See [release verification](docs/release-verification.md) for CI gates, artifact reuse, manual inputs and deployment ownership.

@@ -1,6 +1,6 @@
 # Le Loop Builder
 
-Un **rail exécute un Loop**. Les loops intégrés (`Implement`, `Batch`, `Freestyle`) couvrent les cas du quotidien, mais le **Loop Builder** vous laisse concevoir les vôtres — un éditeur visuel, de style n8n, pour de l'automatisation qui se répète jusqu'à ce qu'un objectif soit atteint. Cette page explique ce qu'est un loop, comment en construire un, et comment l'exécuter sur un rail.
+Un **rail exécute un Loop**. Les loops intégrés (`Implement`, `Quick SDD`, `Freestyle`) couvrent les cas du quotidien, mais le **Loop Builder** vous laisse concevoir les vôtres — un éditeur visuel, de style n8n, pour de l'automatisation qui se répète jusqu'à ce qu'un objectif soit atteint. Cette page explique ce qu'est un loop, comment en construire un, et comment l'exécuter sur un rail.
 
 ## Loops et rails — la relation
 
@@ -10,7 +10,7 @@ Un **loop** est la *recette* du travail ; un **rail** est la *voie* qui l'exécu
    Loop Builder (barre latérale gauche)    Rails (droite)
    ───────────────────────────             ─────────────
    Implement   (intégré)                   Rail 1
-   Batch       (intégré)      choisir ►       Loop: Verify-until-green
+   Quick SDD   (intégré)      choisir ►       Loop: Verify-until-green
    Freestyle   (intégré)                      ▶ Play
    Verify-until-green (le vôtre)
 ```
@@ -25,7 +25,7 @@ Donc : construisez un loop une fois, puis choisissez-le sur n'importe quel rail 
 
 Cliquez sur **Loops** dans la barre latérale gauche pour voir la bibliothèque : les trois loops intégrés plus les vôtres. Ouvrez-en un pour le visualiser, ou cliquez sur **New loop** pour partir d'un canevas vierge.
 
-Vous ne pouvez pas facilement éditer un intégré directement — à la place, faites un **Fork**. Cela vous donne une copie éditable d'un graphe fonctionnel pour démarrer, ce qui est la façon la plus simple d'apprendre.
+Les loops intégrés se modifient directement : ouvrez-en un, modifiez le graphe et publiez-le — votre version s'applique alors partout où ce loop intégré est utilisé. **Restore original** le remet à sa version d'origine. Les loops intégrés ne peuvent pas être supprimés.
 
 ## De quoi un loop est constitué
 
@@ -89,3 +89,23 @@ L'exécution se diffuse en direct dans la vue **Jobs** avec les mêmes métrique
 - [Rails et jobs](rails-and-jobs) — lancer des rails et la file d'attente des jobs.
 - [La vue détaillée du job](the-job-detail-view) — suivre une exécution en direct.
 - [Choisir un moteur par rail](picking-an-engine-per-rail) — c'est le rail (pas le loop) qui choisit le provider.
+
+## Composer et valider le graphe
+
+Utilisez le catalogue disponible dans votre version de Desktop. Glissez les étapes sur le canevas, reliez leurs résultats et configurez chaque étape dans son inspecteur. Validez le graphe avant de le publier et corrigez les erreurs signalées avant de le lancer. Specrails Core est le moteur intégré à Desktop qui exécute ces workflows. Sa version se gère dans les paramètres de Desktop → Mises à jour → Specrails Core.
+
+Accordez à chaque rôle uniquement les accès nécessaires. Séparez les recherches en lecture seule des modifications de code et reliez ces modifications à une vérification explicite. Les branches parallèles partagent le budget du workflow ; un nœud End réussi ne prouve pas, à lui seul, que les modifications disposent de preuves vérifiées.
+
+Lorsque la version de Core sélectionnée expose les limites par invocation, les blocs prompt, rôle et decider proposent `timeoutMs` et `idleTimeoutMs`. La valeur `0` désactive le temporisateur correspondant pour cette étape ; supprimer le champ rétablit la valeur héritée. Les budgets du workflow complet et son annulation restent actifs. Une étape de vérification qui pose une question bloquante attend votre réponse avant d’accepter un résultat réussi.
+
+Lorsqu’un ancien graphe enregistré est remplacé pour la première fois par des blocs Core, le graphe d’origine est conservé. La bibliothèque propose alors **Exporter le graphe d’origine**. L’export porte un nom distinct pour pouvoir être importé comme brouillon séparé sans remplacer le workflow actuel. La conversion et les modifications ultérieures ne publient jamais automatiquement une boucle.
+
+Utilisez **Définir les variables** pour conserver un état pendant une pause : définissez des valeurs JSON typées ou ajustez un compteur entier existant. Cette pièce ne fait aucun appel à l’IA. Toutes les modifications sont enregistrées ensemble ; un compteur invalide laisse toutes les variables inchangées. Les variables d’un composant mappé restent locales à ce composant.
+
+Pour un Decider, **Continuer tant que cette condition est remplie** protège les tâches obligatoires restantes. Par exemple, `$vars.failedPass == true` transforme une proposition d’arrêt en poursuite jusqu’à ce que le workflow efface cet indicateur. La décision est tout de même exécutée et les répétitions sans changement restent soumises à la limite de progression. Les questions humaines attendent toujours une réponse.
+
+Pour migrer une boucle enregistrée de l’ancien moteur, choisissez **Convertir vers Core** dans la bibliothèque. Sélectionnez le dépôt d’origine si une étape shell n’a pas de périmètre explicite. La conversion valide le graphe et enregistre un brouillon avec une copie exportable de l’original. Vérifiez les connexions puis publiez explicitement. Les boucles en cours ne peuvent pas être converties et les modifications concurrentes sont préservées. Les étapes d’écriture exigent de vraies commandes de vérification ; Quick SDD utilise OpenSpec inclus dans Core. Mettez Core à jour si la conversion est indisponible.
+
+Pour voir quelles loops enregistrées demandent une action, ouvrez **Vérification de la migration vers Core** dans la bibliothèque et choisissez **Vérifier**. Elle liste les loops refusées par le Core installé, celles prêtes à convertir et celles qui ont besoin d’un dépôt ou d’une autre correction. Elle ne convertit ni ne publie rien d’elle-même.
+
+Un futur Core qui n’exécute que des workflows Core refuse de lancer sur un rail une boucle non convertie. Desktop affiche alors un message qui renvoie vers **Convertir vers Core**, au lieu de démarrer une exécution qui échouerait en cours de route. Les exécutions déjà démarrées gardent la version de Core qui les a créées.

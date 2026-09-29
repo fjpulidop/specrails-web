@@ -49,4 +49,11 @@ describe("App", () => {
     expect(window.location.pathname).toBe("/docs/getting-started");
     expect(window.location.hash).toBe("#core-is-built-into-desktop");
   });
+
+  it("sends the removed Batch Implement guide route to the rails guide", async () => {
+    window.history.replaceState(null, "", "/docs/pipeline-batch-implement-and-multi-feature");
+    render(<App />);
+    expect(await screen.findByTestId("page-docs-layout")).toBeInTheDocument();
+    expect(window.location.pathname).toBe("/docs/pipeline-rails-and-jobs");
+  });
 });

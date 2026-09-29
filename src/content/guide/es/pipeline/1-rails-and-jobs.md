@@ -9,10 +9,11 @@ Un loop define el proceso; un rail es el carril de ejecución; un job o run regi
 | Loop | Para qué sirve |
 | --- | --- |
 | Implement | Una spec acordada, con arquitectura, implementación y revisión |
-| Batch Implement | Un conjunto coordinado de specs y dependencias |
 | SDD Quick | Un recorrido SDD más corto para un cambio acotado |
 | Freestyle | Una tarea flexible con un resultado explícito |
 | Personalizado | Tus pasos de IA, shell y decisión |
+
+Implement ejecuta todas las specs de un rail en una sola ejecución. Para avanzar en paralelo con specs independientes, repártelas en varios rails.
 
 Selecciona proveedor, modelo compatible y repositorios antes de empezar. Comprueba requisitos y capacidad: un rail reservado o en cola no demuestra que el modelo haya empezado.
 

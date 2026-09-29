@@ -12,6 +12,6 @@ El espacio reúne conversación, tarjetas de entrega, archivos, Git, navegador y
 
 ## Usa Board para organizar trabajo
 
-Board agrupa las specs por estado y prioridad. Los rails permiten elegir un loop e inspeccionar sus pasos. Cambia de vista para planificar varias specs o gestionar un lote; vuelve a la misión para seguir dirigiendo el trabajo desde la conversación.
+Board agrupa las specs por estado y prioridad. Los rails permiten elegir un loop e inspeccionar sus pasos. Cambia de vista para planificar varias specs o repartir trabajo independiente entre rails; vuelve a la misión para seguir dirigiendo el trabajo desde la conversación.
 
 En la aplicación nativa, las [ventanas de misión separadas](/docs/missions-mission-windows) permiten mantener visibles tareas independientes. El agente continúa en el backend local compartido.

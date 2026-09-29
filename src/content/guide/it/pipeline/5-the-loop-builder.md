@@ -1,6 +1,6 @@
 # Il Loop Builder
 
-Un **rail esegue un Loop**. I loop integrati (`Implement`, `Batch`, `Freestyle`) coprono i casi di tutti i giorni, ma il **Loop Builder** ti permette di progettare i tuoi — un editor visuale in stile n8n per automazioni che si ripetono finché un obiettivo non è raggiunto. Questa pagina spiega cos'è un loop, come costruirne uno e come eseguirlo su un rail.
+Un **rail esegue un Loop**. I loop integrati (`Implement`, `Quick SDD`, `Freestyle`) coprono i casi di tutti i giorni, ma il **Loop Builder** ti permette di progettare i tuoi — un editor visuale in stile n8n per automazioni che si ripetono finché un obiettivo non è raggiunto. Questa pagina spiega cos'è un loop, come costruirne uno e come eseguirlo su un rail.
 
 ## Loop e rail — la relazione
 
@@ -10,7 +10,7 @@ Un **loop** è la *ricetta* del lavoro; un **rail** è la *corsia* che lo esegue
    Loop Builder (sidebar sinistra)         Rail (destra)
    ───────────────────────────             ─────────────
    Implement   (integrato)                 Rail 1
-   Batch       (integrato)     scegli su ►    Loop: Verify-until-green
+   Quick SDD   (integrato)     scegli su ►    Loop: Verify-until-green
    Freestyle   (integrato)                    ▶ Play
    Verify-until-green (tuo)
 ```
@@ -25,7 +25,7 @@ Quindi: costruisci un loop una volta, poi scegli quel loop su qualsiasi rail in 
 
 Clicca **Loops** nella sidebar sinistra per vedere la libreria: i tre loop integrati più tutti i tuoi. Aprine uno per visualizzarlo, oppure clicca **New loop** per partire da una tela bianca.
 
-Non puoi modificare facilmente un integrato in modo diretto — invece fanne un **Fork**. Ti dà una copia modificabile di un grafo funzionante da cui partire, ed è il modo più semplice per imparare.
+I loop integrati si modificano direttamente: aprine uno, cambia il grafo e pubblicalo — da quel momento la tua versione vale ovunque venga usato quel loop integrato. **Restore original** lo riporta alla versione originale. I loop integrati non si possono eliminare.
 
 ## Di cosa è fatto un loop
 
@@ -89,3 +89,23 @@ L'esecuzione scorre dal vivo nella vista **Jobs** con le stesse metriche e lo st
 - [Rail e job](rails-and-jobs) — avviare i rail e la coda dei job.
 - [La vista Dettaglio job](the-job-detail-view) — seguire un'esecuzione dal vivo.
 - [Scegliere un engine per rail](picking-an-engine-per-rail) — è il rail (non il loop) a scegliere il provider.
+
+## Comporre e convalidare il grafo
+
+Usa il catalogo disponibile nella tua versione di Desktop. Trascina i passaggi sul canvas, collega i risultati e configura ogni passaggio nel suo pannello. Convalida il grafo prima di pubblicarlo e correggi gli errori prima di avviarlo. Specrails Core è il motore integrato in Desktop che esegue questi workflow. Gestisci la versione in Impostazioni di Desktop → Aggiornamenti → Specrails Core.
+
+Assegna a ogni ruolo solo gli accessi necessari. Separa le indagini in sola lettura dalle modifiche al codice e collega le modifiche a una verifica esplicita. I rami paralleli condividono il budget del workflow; un nodo End riuscito non dimostra da solo che le modifiche abbiano evidenze verificate.
+
+Quando la versione di Core selezionata espone i limiti per invocazione, i blocchi prompt, ruolo e decider offrono `timeoutMs` e `idleTimeoutMs`. Imposta `0` per disattivare quel timer del passaggio oppure rimuovi il campo per ereditare il valore predefinito. I budget dell’intero workflow e l’annullamento restano attivi. Un passaggio di verifica che pone una domanda bloccante attende la tua risposta prima di accettare un risultato positivo.
+
+Quando un grafo precedente salvato viene sostituito per la prima volta con blocchi Core, il grafo originale viene conservato. La libreria offre quindi **Esporta il grafo originale**. L’esportazione ha un nome distinto, così puoi importarla come bozza separata senza sostituire il workflow attuale. La conversione e le modifiche successive non pubblicano mai automaticamente un loop.
+
+Usa **Imposta variabili** per conservare lo stato durante una pausa: imposta valori JSON tipizzati o modifica un contatore intero esistente. Questo blocco non chiama l’IA. Gli aggiornamenti vengono salvati insieme; un contatore non valido lascia tutte le variabili invariate. Le variabili di un componente mappato restano locali a quel componente.
+
+Nel Decider, **Continua finché questa condizione è vera** protegge il lavoro obbligatorio ancora aperto. Ad esempio, `$vars.failedPass == true` trasforma una proposta di arresto in continuazione finché il workflow non azzera il flag. La decisione viene comunque eseguita e le ripetizioni senza modifiche restano soggette al limite di mancato progresso. Le domande umane attendono sempre una risposta.
+
+Per migrare un loop salvato del motore precedente, scegli **Converti in Core** nella libreria. Seleziona il repository originale se un passo shell non ha un ambito esplicito. La conversione convalida il grafo e salva una bozza con una copia esportabile dell’originale. Controlla i collegamenti e pubblica esplicitamente. I loop in esecuzione non possono essere convertiti; le modifiche concorrenti vengono conservate. I passi di scrittura richiedono veri comandi di verifica e Quick SDD usa OpenSpec incluso in Core. Aggiorna Core se la conversione non è disponibile.
+
+Per vedere quali loop salvati richiedono attenzione, apri **Verifica della migrazione a Core** nella libreria e scegli **Verifica**. Elenca i loop rifiutati dal Core installato, quelli pronti per la conversione e quelli che richiedono un repository o un’altra correzione. Non converte né pubblica mai nulla da sola.
+
+Un futuro Core che esegue solo workflow Core non avvia su un rail un loop non convertito. Desktop mostra un messaggio che rimanda a **Converti in Core**, invece di avviare un’esecuzione che fallirebbe a metà. Le esecuzioni già avviate mantengono la versione di Core che le ha create.

@@ -24,7 +24,7 @@ Wenn du eine Rail startest, wählt Specrails ein Profil in dieser Reihenfolge:
 2. Deine **persönliche Vorgabe** – ein Profil, das du als deinen persönlichen Standard für dieses Projekt markiert hast (sie ist lokal bei dir und wird nicht committet).
 3. Das **`default`**-Profil des Projekts.
 
-Das Profil wird *beim Start als Snapshot festgehalten*, sodass jede Rail in einem Batch ein anderes Profil ausführen kann und das spätere Ändern eines Profils nie bereits gestartete Jobs umschreibt.
+Das Profil wird *beim Start als Snapshot festgehalten*, sodass jede gleichzeitig laufende Rail ein anderes Profil ausführen kann und das spätere Ändern eines Profils nie bereits gestartete Jobs umschreibt.
 
 ## Ein Profil pro Rail auswählen
 
@@ -33,7 +33,7 @@ Die Profilwahl passiert genau dort, wo du startest – im **Rail-Header**, über
 - Wähle ein Profil aus dem Dropdown, um es **nur für diesen Start** zu verwenden.
 - Nutze die Option zum Festschreiben, um ein Profil künftig zur dauerhaften Wahl der Rail zu machen.
 
-Das ist der ganze Ablauf: Profil wählen, starten, fertig. Gleichzeitig laufende Rails im selben Batch können jeweils ihr eigenes Profil tragen, sodass ein schneller Fix und ein umfangreiches Feature mit unterschiedlichen Setups nebeneinander laufen können.
+Das ist der ganze Ablauf: Profil wählen, starten, fertig. Gleichzeitig laufende Rails können jeweils ihr eigenes Profil tragen, sodass ein schneller Fix und ein umfangreiches Feature mit unterschiedlichen Setups nebeneinander laufen können.
 
 ## Wenn der Agents-Bereich still ist
 
