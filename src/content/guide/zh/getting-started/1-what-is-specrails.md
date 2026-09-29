@@ -12,7 +12,7 @@ Specrails 是一个本地工作空间，可将软件想法转化为明确的规�
 
 ## 各部分在哪里运行
 
-Specrails 是一个应用。Desktop 内置了它的引擎 **Specrails Core**：添加项目时，Desktop 使用 Core 准备你的提供商所需的工作流文件；内置的 Implement 和 Batch Implement 循环借助 Core 规划、开发、验证并审查改动，再把结果交回 Desktop。其余部分都由 Desktop 负责：任务、Board、worktree、提交、pull request 和历史记录。
+Specrails 是一个应用。Desktop 内置了它的引擎 **Specrails Core**：添加项目时，Desktop 使用 Core 准备你的提供商所需的工作流文件；内置的 Implement 循环借助 Core 规划、开发、验证并审查改动，再把结果交回 Desktop。其余部分都由 Desktop 负责：任务、Board、worktree、提交、pull request 和历史记录。
 
 ## Core 已内置于 Desktop
 

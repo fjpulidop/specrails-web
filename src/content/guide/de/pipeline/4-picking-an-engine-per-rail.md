@@ -20,7 +20,7 @@ Die ausgewählte Engine führt jede Phase der Pipeline dieser Rail aus. Ist die 
 
 ## Wofür jede Engine gut ist
 
-Alle drei führen die Standard-Pipelines **Implement** und **Batch** aus. Hier ein praktischer Leitfaden zur Auswahl:
+Alle drei führen die Standard-Pipeline **Implement** aus. Hier ein praktischer Leitfaden zur Auswahl:
 
 | Engine | Greif dazu, wenn… | Hinweise |
 |--------|--------------------|-------|

@@ -4,6 +4,10 @@
 
 El editor de loops convierte un proceso en pasos conectados y reutilizables. Parte de un loop incluido cuando encaje y adapta las comprobaciones que necesita tu proyecto.
 
+## Edita un loop incluido
+
+Implement, Freestyle y Quick SDD ya aparecen en la biblioteca de loops como loops listos para usar. Abre uno y edítalo directamente, como cualquier otro loop. Nada cambia hasta que publicas; a partir de entonces, tu versión se usa en todos los sitios donde se ejecuta ese loop incluido. **Restaurar original** lo devuelve a la versión que trae Desktop. Los loops incluidos no se pueden eliminar.
+
 ## Define el contrato de cada paso
 
 Usa IA para investigar o implementar, shell para comandos deterministas y deciders para condiciones explícitas de continuación. Conecta rutas de éxito y fallo y configura límites de iteración, tiempo y presupuesto.

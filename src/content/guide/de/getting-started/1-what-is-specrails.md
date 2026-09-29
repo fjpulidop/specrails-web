@@ -12,7 +12,7 @@ Eine Mission kann auch Code untersuchen, den Browser bedienen und Prozesse beoba
 
 ## Was wo läuft
 
-Specrails ist eine einzige App. Desktop enthält seine Engine, **Specrails Core**: Wenn Sie ein Projekt hinzufügen, bereitet Desktop mit Core die Workflow-Dateien vor, die Ihr Anbieter benötigt, und die integrierten Loops Implement und Batch Implement nutzen Core, um die Änderung zu planen, umzusetzen, zu prüfen und zu reviewen, bevor das Ergebnis an Desktop zurückgeht. Desktop übernimmt alles andere: Missionen, Board, Worktrees, Commits, Pull Requests und Verlauf.
+Specrails ist eine einzige App. Desktop enthält seine Engine, **Specrails Core**: Wenn Sie ein Projekt hinzufügen, bereitet Desktop mit Core die Workflow-Dateien vor, die Ihr Anbieter benötigt, und der integrierte Loop Implement nutzt Core, um die Änderung zu planen, umzusetzen, zu prüfen und zu reviewen, bevor das Ergebnis an Desktop zurückgeht. Desktop übernimmt alles andere: Missionen, Board, Worktrees, Commits, Pull Requests und Verlauf.
 
 ## Core ist in Desktop integriert
 

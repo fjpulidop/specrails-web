@@ -41,7 +41,7 @@ test('check detects stale metadata and sitemap without rewriting either',async t
 });
 test('the committed guide and sitemap match all current article metadata',async()=>{
  const root=resolve(import.meta.dirname,'..');const index=await syncGuide(root,true);
- assert.equal(index.entries.length,37);
+ assert.equal(index.entries.length,36);
  assert.ok(index.entries.every(entry=>entry.translations.en&&entry.translations.es));
  for(const language of ['fr','de','pt','it','zh','ja']) assert.equal(index.entries.filter(entry=>entry.translations[language]).length,3);
 });

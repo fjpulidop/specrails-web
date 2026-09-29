@@ -50,8 +50,6 @@ export const articleLoaders: Record<string, () => Promise<string>> = {
   "es/pipeline/1-rails-and-jobs.md": () => import("../content/guide/es/pipeline/1-rails-and-jobs.md?raw").then(module => module.default),
   "en/pipeline/2-the-job-detail-view.md": () => import("../content/guide/en/pipeline/2-the-job-detail-view.md?raw").then(module => module.default),
   "es/pipeline/2-the-job-detail-view.md": () => import("../content/guide/es/pipeline/2-the-job-detail-view.md?raw").then(module => module.default),
-  "en/pipeline/3-batch-implement-and-multi-feature.md": () => import("../content/guide/en/pipeline/3-batch-implement-and-multi-feature.md?raw").then(module => module.default),
-  "es/pipeline/3-batch-implement-and-multi-feature.md": () => import("../content/guide/es/pipeline/3-batch-implement-and-multi-feature.md?raw").then(module => module.default),
   "en/pipeline/4-picking-an-engine-per-rail.md": () => import("../content/guide/en/pipeline/4-picking-an-engine-per-rail.md?raw").then(module => module.default),
   "es/pipeline/4-picking-an-engine-per-rail.md": () => import("../content/guide/es/pipeline/4-picking-an-engine-per-rail.md?raw").then(module => module.default),
   "en/pipeline/5-the-loop-builder.md": () => import("../content/guide/en/pipeline/5-the-loop-builder.md?raw").then(module => module.default),

@@ -20,7 +20,7 @@ Le moteur sélectionné exécute chaque phase du pipeline de ce rail. Si la CLI 
 
 ## Les points forts de chaque moteur
 
-Les trois exécutent les pipelines standards **Implement** et **Batch**. Voici un guide pratique pour choisir :
+Les trois exécutent le pipeline standard **Implement**. Voici un guide pratique pour choisir :
 
 | Moteur | À privilégier quand… | Notes |
 |--------|--------------------|-------|

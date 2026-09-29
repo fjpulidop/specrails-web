@@ -49,7 +49,7 @@ Per l'uso quotidiano non toccherai il routing: la regola "cattura-tutto" manda i
 
 ## Scegliere il profilo all'avvio
 
-Tutto questo converge all'avvio: nell'intestazione del rail, scegli `fast`, `max` o `default` per ogni rail. Un batch può mescolarli — una piccola correzione su `fast`, una grande feature su `max`, entrambe in esecuzione nello stesso momento. Vedi [Profili e il default bilanciato](profiles-and-the-balanced-default) per il flusso di selezione.
+Tutto questo converge all'avvio: nell'intestazione del rail, scegli `fast`, `max` o `default` per ogni rail. Rail in parallelo possono mescolarli — una piccola correzione su `fast`, una grande feature su `max`, entrambe in esecuzione nello stesso momento. Vedi [Profili e il default bilanciato](profiles-and-the-balanced-default) per il flusso di selezione.
 
 ## Una nota sulla sicurezza
 

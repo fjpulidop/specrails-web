@@ -16,7 +16,7 @@ The website SHALL present Specrails Desktop — the native installers or the `sp
 - **THEN** no route, published guide article or static file tells people to install `specrails-core` or run `npx specrails-core`
 
 ### Requirement: The guide explains Specrails Core as Desktop's built-in engine
-The overview article of the guide SHALL explain, in every supported language, that Specrails Core is the engine included in Desktop: Desktop uses it to prepare projects, and the built-in Implement and Batch Implement loops use it to plan, develop, verify and review changes. The overview SHALL contain a heading stating that Core is built into Desktop and SHALL point to Desktop Settings → Updates → Specrails Core for the version in use and its updates. Any guide article that mentions Core MUST describe it as part of Desktop, never as something people install, run or update by hand.
+The overview article of the guide SHALL explain, in every supported language, that Specrails Core is the engine included in Desktop: Desktop uses it to prepare projects, and the built-in Implement loop uses it to plan, develop, verify and review changes. The overview SHALL contain a heading stating that Core is built into Desktop and SHALL point to Desktop Settings → Updates → Specrails Core for the version in use and its updates. Any guide article that mentions Core MUST describe it as part of Desktop, never as something people install, run or update by hand.
 
 #### Scenario: Searching the docs for Core
 - **WHEN** a visitor searches the documentation for "core"

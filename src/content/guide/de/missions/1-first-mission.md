@@ -8,7 +8,7 @@ Wählen Sie das Projekt und öffnen Sie eine Mission. Beschreiben Sie Ziel, Eins
 
 Fügen Sie Dateien mit `@` und eine Spec mit `#` hinzu. Die Auswahl priorisiert Specs und behält die Referenz an der eingefügten Textstelle. Prüfen Sie das Repository: identische Pfade können unterschiedliche Dateien bezeichnen.
 
-Bitten Sie bei offenen Fragen zuerst um Untersuchung. Prüfen Sie Entwurf und Kriterien, bevor Sie Implement, Batch Implement, SDD Quick, Freestyle oder einen eigenen Loop starten. Das Lesen eines weiteren Repositorys erweitert den Schreibumfang nicht automatisch.
+Bitten Sie bei offenen Fragen zuerst um Untersuchung. Prüfen Sie Entwurf und Kriterien, bevor Sie Implement, SDD Quick, Freestyle oder einen eigenen Loop starten. Das Lesen eines weiteren Repositorys erweitert den Schreibumfang nicht automatisch.
 
 ## Die Arbeit verfolgen
 

@@ -18,12 +18,12 @@ SpecsBoard (gauche)         Rails (droite)
 
 Un rail est une **voie d'exécution**. Vous glissez une carte de spec depuis le SpecsBoard sur un rail, puis vous appuyez sur **▶ Play**. Pour les dépôts git, le rail lance le pipeline dans un worktree git isolé afin que l'IA puisse modifier des fichiers et lancer des tests sans toucher à votre arbre de travail actif. Si le projet n'est pas encore un dépôt git, Specrails dégrade clairement vers une exécution dans le dossier partagé et vous indique qu'aucune branche ni carte de PR n'apparaîtra.
 
-Vous pouvez avoir plusieurs rails pour organiser le travail en voies nommées (une pour la fonctionnalité sur laquelle vous êtes concentré, une autre en attente derrière). Les rails sont **dynamiques** : le bouton **+ Ajouter** de l'en-tête Rails crée une nouvelle voie (jusqu'à 12 par projet) et les voies vides et inactives peuvent être supprimées. Chaque rail est adossé au serveur, donc votre ensemble de voies survit aux rechargements et reste visible pour le companion mobile et l'agent intégré — l'agent peut même créer un rail lui-même quand toutes les voies sont occupées. Plus de détails sur le multi-rail et le batching dans [Batch implement et multi-fonctionnalité](batch-implement-and-multi-feature).
+Vous pouvez avoir plusieurs rails pour organiser le travail en voies nommées (une pour la fonctionnalité sur laquelle vous êtes concentré, une autre en attente derrière). Les rails sont **dynamiques** : le bouton **+ Ajouter** de l'en-tête Rails crée une nouvelle voie (jusqu'à 12 par projet) et les voies vides et inactives peuvent être supprimées. Chaque rail est adossé au serveur, donc votre ensemble de voies survit aux rechargements et reste visible pour le companion mobile et l'agent intégré — l'agent peut même créer un rail lui-même quand toutes les voies sont occupées. Pour avancer en parallèle sur des specs indépendants, répartissez-les sur plusieurs rails.
 
 ## Lancer un rail sur un spec
 
 1. **Glissez une carte de spec** depuis le SpecsBoard sur un rail. L'ID du spec apparaît dans la liste de specs du rail. (Vous préférez ne pas glisser ? Utilisez le popover **Move to rail** sur la carte de spec — il affiche un point de statut par rail pour que vous ne déposiez pas de travail sur une voie occupée.)
-2. **Choisissez un Loop** dans l'en-tête du rail. Un rail exécute un **Loop** — c'est le travail qu'il effectue. Par défaut, c'est le Loop intégré `Implement` ; vous pouvez aussi choisir `Batch`, `Freestyle`, ou un loop personnalisé que vous avez construit vous-même. Voir [Le Loop Builder](the-loop-builder).
+2. **Choisissez un Loop** dans l'en-tête du rail. Un rail exécute un **Loop** — c'est le travail qu'il effectue. Par défaut, c'est le Loop intégré `Implement` ; vous pouvez aussi choisir `Quick SDD`, `Freestyle`, ou un loop personnalisé que vous avez construit vous-même. Voir [Le Loop Builder](the-loop-builder).
 3. **Appuyez sur ▶ Play.**
 
 Voilà. Le rail démarre un processus AI CLI dans le bon contexte d'exécution et lance le pipeline.
@@ -34,7 +34,7 @@ Voilà. Le rail démarre un processus AI CLI dans le bon contexte d'exécution e
 |---------|--------------|
 | **Pastille de statut** | `idle`, `running`, ou `failed`. Il n'y a pas de « completed » séparé — un rail revient à `idle` quand son job se termine proprement. |
 | **Liste de specs** | Les IDs assignés à ce rail. Glissez-en d'autres, retirez-les pour les détacher. |
-| **Sélecteur de Loop** | Le Loop que ce rail exécute — un intégré (`Implement` / `Batch` / `Freestyle`) ou un loop personnalisé. Voir le tableau ci-dessous. Persisté par rail. |
+| **Sélecteur de Loop** | Le Loop que ce rail exécute — un intégré (`Implement` / `Quick SDD` / `Freestyle`) ou un loop personnalisé. Voir le tableau ci-dessous. Persisté par rail. |
 | **Sélecteur de profil** | Quel profil d'agent s'exécute (rails Claude uniquement). N'apparaît que lorsque le projet a au moins un profil. |
 | **Sélecteur de moteur** | Quel provider installé exécute ce rail — Claude, Codex, ou Gemini. Ne s'affiche que lorsque le projet a plus d'un provider. Voir [Choisir un moteur par rail](picking-an-engine-per-rail). |
 | **▶ Play / ■ Stop** | Démarrer ou annuler. |
@@ -46,7 +46,6 @@ Un rail exécute un **Loop** — la recette du travail. Trois loops sont **inté
 | Loop intégré | Commande | Ce qu'il fait |
 |------|---------|--------------|
 | **Implement** | `/specrails:implement` | Un seul job couvrant tous les specs du rail. Exécute tout le pipeline Architect → Developer → Reviewer → Ship. Le choix par défaut au quotidien. |
-| **Batch** | `/specrails:batch-implement` | Un seul job qui traite les specs du rail séquentiellement, en vagues tenant compte des dépendances. Idéal pour plusieurs specs liés. |
 | **Freestyle** | Freestyle | Claude implémente chaque spec de manière autonome, en **contournant** le pipeline. Un job indépendant par spec. Claude uniquement. |
 
 Freestyle est le cas à part : il saute la chaîne d'agents et confie le spec brut à Claude pour qu'il travaille avec ses outils natifs. C'est ouvert, donc appuyer sur Play ouvre d'abord une confirmation, et un sélecteur de modèle par rail vous laisse choisir Haiku / Sonnet / Opus. Il n'apparaît que lorsque le moteur du rail est Claude. Une exécution Freestyle est aussi le seul job qui **reste ouvert pour vous** : discutez avec lui depuis le composeur de la vue détaillée du job et cliquez sur **Finalize** quand vous êtes satisfait (tous les autres jobs se terminent tout seuls).
@@ -95,5 +94,4 @@ Si quelque chose semble anormal :
 
 - [Le Loop Builder](the-loop-builder) — ce qu'un rail exécute, et comment construire vos propres loops.
 - [La vue détaillée du job](the-job-detail-view) — phases, métriques en direct, cartes de ticket.
-- [Batch implement et multi-fonctionnalité](batch-implement-and-multi-feature) — exécutez plusieurs specs à la fois.
 - [Choisir un moteur par rail](picking-an-engine-per-rail) — Claude vs Codex vs Gemini.

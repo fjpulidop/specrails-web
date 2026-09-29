@@ -49,7 +49,7 @@ Für den Alltag fasst du das Routing nicht an: Die Auffangregel schickt Arbeit a
 
 ## Das Profil beim Start wählen
 
-All das kommt beim Start zusammen: Wähle im Rail-Header pro Rail `fast`, `max` oder `default`. Ein Batch kann sie mischen – ein winziger Fix auf `fast`, ein großes Feature auf `max`, beide gleichzeitig laufend. Den Ablauf der Auswahl findest du unter [Profile & der ausgewogene Standard](profiles-and-the-balanced-default).
+All das kommt beim Start zusammen: Wähle im Rail-Header pro Rail `fast`, `max` oder `default`. Parallele Rails können sie mischen – ein winziger Fix auf `fast`, ein großes Feature auf `max`, beide gleichzeitig laufend. Den Ablauf der Auswahl findest du unter [Profile & der ausgewogene Standard](profiles-and-the-balanced-default).
 
 ## Eine Anmerkung zur Sicherheit
 

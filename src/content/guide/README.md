@@ -9,7 +9,7 @@ The public guide is curated from the Desktop implementation and its internal doc
 3. Translate the changed essential journeys in French, German, Portuguese, Italian, Chinese and Japanese. For other articles, remove the current revision marker from a translation that has become stale: the reader will receive the current English article with an explicit notice. Never mark an old translation current just to remove that notice.
 4. Run `npm run docs:sync`, `npm run docs:check`, `npm run test:docs-sync` and the documentation tests. Commit `docs-generated.json`, `docs-loaders.ts` and `public/sitemap.xml` with the articles.
 
-English and Spanish currently cover all 37 articles. The other six languages cover the overview, first mission and delivery review. Older translated files remain preserved in source but are excluded from the current catalog unless their revision marker matches. Interface text is localized independently in `lib/docs-copy.ts`.
+English and Spanish currently cover all 36 articles. The other six languages cover the overview, first mission and delivery review. Older translated files remain preserved in source but are excluded from the current catalog unless their revision marker matches. Interface text is localized independently in `lib/docs-copy.ts`.
 
 ## Routes and synchronization
 
