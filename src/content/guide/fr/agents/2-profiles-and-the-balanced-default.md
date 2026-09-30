@@ -35,10 +35,6 @@ La sélection du profil se fait là où vous lancez — dans l'**en-tête du rai
 
 Voilà tout le flux : choisir un profil, lancer, terminé. Des rails simultanés dans un même lot peuvent chacun porter leur propre profil, si bien qu'un correctif rapide et une grosse fonctionnalité peuvent tourner côte à côte avec des configurations différentes.
 
-## Quand la section Agents reste silencieuse
-
-Les profils sont une capacité de Claude. Sur un projet qui inclut un provider non-Claude (Codex ou Gemini), la section Agents est masquée et les rails tournent sans profils — c'est le comportement attendu, pas un bug. Les profils exigent aussi un `specrails-core` suffisamment récent dans le projet ; s'il est plus ancien, vous verrez une bannière jaune. Les profils que vous créez sont tout de même **enregistrés** — ils n'affectent simplement pas le pipeline tant que core n'est pas mis à jour. Mettez à jour avec la commande indiquée dans la bannière pour les débloquer.
-
 ## Pour aller plus loin
 
 - [Personnaliser les modèles par agent](customizing-models-per-agent) — construisez des profils `fast` et `max`.

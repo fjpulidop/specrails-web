@@ -31,19 +31,6 @@ In einem Client wie Claude Desktop oder Cursor sieht die Konfiguration so aus:
 
 Clients, die entfernte HTTP-MCP-Server unterstützen, können stattdessen direkt auf `http://127.0.0.1:4200/api/mcp` mit dem Token aus dem Panel zeigen.
 
-### Vom Terminal aus: Claude Code, Gemini CLI, Codex CLI
-
-Kopiere dein Token unter **Einstellungen ▸ MCP ▸ Token kopieren**, dann:
-
-```bash
-# Claude Code
-claude mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <dein Token>"
-
-# Gemini CLI
-gemini mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <dein Token>"
-
 # Codex CLI (stdio — registriere den Bridge-Befehl aus Einstellungen ▸ MCP)
 codex mcp add specrails -- <Bridge-Befehl aus Einstellungen ▸ MCP>
 ```

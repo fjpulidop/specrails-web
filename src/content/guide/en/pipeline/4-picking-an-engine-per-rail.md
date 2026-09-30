@@ -8,7 +8,7 @@ Execution settings belong to the chosen provider. A familiar model name does not
 
 Authenticate the provider CLI and confirm its status in Specrails. Choose among the models and effort values offered by that provider's controls. An installed CLI can still fail because its session, quota or remote service is unavailable.
 
-Claude, Codex, Gemini and Kimi have different adapters. Unsupported combinations should fail before a loop starts; for example, a step requiring a structured no-tools response cannot be assumed to work with every provider.
+Claude and Codex have different adapters. Unsupported combinations should fail before a loop starts; for example, a step requiring a structured no-tools response cannot be assumed to work with every provider.
 
 ## Use the right level of control
 

@@ -1,0 +1,5 @@
+- [x] Build and verify latest Companion; record provenance.
+- [x] Replace all Desktop clips, posters and current Companion previews.
+- [x] Align localized product content and transcripts with current features.
+- [x] Run web verification and review desktop/mobile rendering.
+- [ ] Publish through verified-main workflow and check live assets.

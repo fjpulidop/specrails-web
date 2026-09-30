@@ -22,7 +22,6 @@ Scegli quale o quali provider AI dovrà usare questo progetto. Specrails ti most
 
 - 🤖 **Claude**
 - ⚡ **Codex**
-- ✨ **Gemini**
 
 I provider che non ha trovato appaiono in grigio e contrassegnati come *non trovati* — installane uno e accedi, poi riapri la finestra. Per impostazione predefinita ogni provider disponibile è preselezionato, ma puoi deselezionarli fino a tenere solo quello che ti serve. Se ne scegli più di uno, il **primo** diventa il provider predefinito del progetto; potrai poi scegliere quale usare a seconda dell'attività.
 

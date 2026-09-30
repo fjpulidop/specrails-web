@@ -19,3 +19,7 @@ After reconnecting, wait for the refreshed snapshot before interpreting status o
 ## Connection and privacy
 
 Pairing and connection may use signaling services; local-first does not mean that no network traffic leaves the device. Keep the pairing credentials private and revoke devices you no longer use. Read the [privacy information](/privacy) for connection data and retention.
+
+## Specs, rails and files
+
+Browse the shared backlog and project files with the permissions granted to your device. A compatible Desktop exposes launch and stop controls for rails and the available loops. Implement processes every spec on that rail in a single run; separate rails may run in parallel. The former Batch option is no longer offered.

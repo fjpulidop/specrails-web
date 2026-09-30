@@ -31,19 +31,6 @@ Dans un client comme Claude Desktop ou Cursor, la configuration ressemble à cec
 
 Les clients qui prennent en charge les serveurs MCP HTTP distants peuvent à la place pointer directement vers `http://127.0.0.1:4200/api/mcp` avec le jeton du panneau.
 
-### Depuis le terminal : Claude Code, Gemini CLI, Codex CLI
-
-Copiez votre jeton depuis **Réglages ▸ MCP ▸ Copier le jeton**, puis :
-
-```bash
-# Claude Code
-claude mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <votre jeton>"
-
-# Gemini CLI
-gemini mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <votre jeton>"
-
 # Codex CLI (stdio — enregistrez la commande du bridge affichée dans Réglages ▸ MCP)
 codex mcp add specrails -- <commande du bridge depuis Réglages ▸ MCP>
 ```

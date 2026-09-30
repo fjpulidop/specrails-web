@@ -22,7 +22,7 @@ Scegliere un progetto qui **non** sposta la tua dashboard: l'obiettivo dell'agen
 
 ## Provider e modello
 
-Proprio sopra la casella del messaggio scegli il **provider** (Claude, Codex o Gemini) e il suo **modello**. Ogni provider ha la propria lista di modelli, e cambiare provider avvia una sessione nuova con il modello predefinito di quel provider — così puoi, ad esempio, pilotare l'app con Claude e passare a Codex per un'altra conversazione senza che nulla si incroci.
+Proprio sopra la casella del messaggio scegli il **provider** (Claude o Codex) e il suo **modello**. Ogni provider ha la propria lista di modelli, e cambiare provider avvia una sessione nuova con il modello predefinito di quel provider — così puoi, ad esempio, pilotare l'app con Claude e passare a Codex per un'altra conversazione senza che nulla si incroci.
 
 ## Livelli di permesso — le redini le tieni tu
 

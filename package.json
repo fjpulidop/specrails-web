@@ -20,10 +20,11 @@
     "docs:sync": "node scripts/sync-guide.mjs",
     "docs:check": "node scripts/sync-guide.mjs --check",
     "test:docs-sync": "node --test scripts/sync-guide.test.mjs",
-    "prebuild": "npm run docs:check",
+    "prebuild": "npm run docs:check && npm run test:product-assets",
     "prebuild:dev": "npm run docs:check",
     "check:types": "tsc -p tsconfig.app.json --noEmit",
-    "build:companion": "node scripts/build-companion.mjs"
+    "build:companion": "node scripts/build-companion.mjs",
+    "test:product-assets": "node --test scripts/product-assets.test.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

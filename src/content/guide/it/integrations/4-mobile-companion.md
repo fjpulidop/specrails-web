@@ -36,3 +36,7 @@ Una volta abbinata, la companion mostra i tuoi progetti e la loro attività di j
 - **Prima il monitoraggio.** La companion è pensata per tenere d'occhio i rail, non per gestire l'intero flusso di lavoro desktop dal telefono.
 - **Solo in locale.** Nessun account, nessun relay cloud — la tua macchina e il tuo telefono, sulla tua rete.
 - **Tieni il desktop attivo.** La companion rispecchia un'app desktop in esecuzione; se la tua macchina va in sospensione o l'app si chiude, gli aggiornamenti in tempo reale si fermano finché non torna attiva.
+
+## Spec, rail e file
+
+Esplora il backlog condiviso e i file con le autorizzazioni concesse. Un Desktop compatibile offre avvio e arresto dei rail e i loop disponibili. Implement elabora tutte le spec di un rail in un’esecuzione; rail distinti possono funzionare in parallelo. La precedente opzione Batch non è più disponibile.

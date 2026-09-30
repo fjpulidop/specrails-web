@@ -36,7 +36,6 @@ Você pode ter vários rails para organizar o trabalho em pistas nomeadas (uma p
 | **Lista de specs** | Os IDs atribuídos a este rail. Arraste mais para dentro, arraste para fora para desanexar. |
 | **Seletor de Loop** | O Loop que este rail roda — um embutido (`Implement` / `Quick SDD` / `Freestyle`) ou um loop personalizado. Veja a tabela abaixo. Persistido por rail. |
 | **Seletor de perfil** | Qual perfil de agente roda (apenas rails Claude). Só aparece quando o projeto tem ao menos um perfil. |
-| **Seletor de motor** | Qual provedor instalado roda este rail — Claude, Codex ou Gemini. Só é renderizado quando o projeto tem mais de um provedor. Veja [Escolhendo um motor por rail](picking-an-engine-per-rail). |
 | **▶ Play / ■ Stop** | Iniciar ou cancelar. |
 
 ### O que um rail roda: Loops
@@ -78,10 +77,6 @@ Clique em qualquer cartão para abrir a **vista de detalhe do Job**, onde ficam 
 
 Clique em **■ Stop** no cabeçalho do rail. A app envia `SIGTERM` ao subprocesso, espera **5 segundos** por uma saída limpa e então faz `SIGKILL`. Nada fica spawnado pela metade.
 
-## Se um rail não lançar
-
-Se você escolher um motor cuja CLI não está instalada na sua máquina, o lançamento **falha rápido** em vez de iniciar um job quebrado — nada é spawnado. Instale a CLI do provedor que falta ([Usando Codex](../integrations/using-codex), [Usando Gemini](../integrations/using-gemini)) e lance de novo. Claude ou Codex ausentes dão uma mensagem precisa "*&lt;provider&gt; CLI not found*"; o Gemini ausente exibe um erro genérico de lançamento por enquanto, mas o resultado é o mesmo.
-
 ## Parando tudo
 
 Se algo parecer errado:
@@ -94,4 +89,3 @@ Se algo parecer errado:
 
 - [O Loop Builder](the-loop-builder) — o que um rail roda, e como construir seus próprios loops.
 - [A vista de detalhe do job](the-job-detail-view) — fases, métricas ao vivo, cartões de ticket.
-- [Escolhendo um motor por rail](picking-an-engine-per-rail) — Claude vs Codex vs Gemini.

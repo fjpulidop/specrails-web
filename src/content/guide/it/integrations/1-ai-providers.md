@@ -1,16 +1,13 @@
-# Provider AI (Claude, Codex, Gemini)
+# Provider AI (Claude, Codex)
 
-Specrails non è legato a una sola AI. Ogni parte dell'app che dialoga con un'AI — Explore Spec, Quick spec, i rail, la chat, AI Edit, il pulsante "Open AI CLI" del terminale — può funzionare con uno qualsiasi dei tre provider di prima classe. Scegli tu quali usare in un progetto, e puoi addirittura cambiare provider task per task.
+Specrails non è legato a una sola AI. Ogni parte dell'app che dialoga con un'AI — Explore Spec, Quick spec, i rail, la chat, AI Edit, il pulsante "Open AI CLI" del terminale — può funzionare con uno qualsiasi dei due provider di prima classe. Scegli tu quali usare in un progetto, e puoi addirittura cambiare provider task per task.
 
-## I tre provider
+## I due provider
 
 | Provider | CLI | Realizzato da | Note |
 |---|---|---|---|
 | **Claude** | `claude` | Anthropic | Il più completo. È l'unico provider per gli Agenti (profili), i rail Freestyle e il Contract Refine. |
 | **Codex** | `codex` | OpenAI | Richiede codex `0.128.0+`. Legge i suoi server MCP dal file globale `~/.codex/config.toml`. |
-| **Gemini** | `gemini` | Google | Richiede gemini `0.11.0+`. Usa la telemetria nativa e un file di istruzioni `GEMINI.md`. |
-
-Tutti e tre sono **abilitati di default**. Un provider compare in **Add Project** ogni volta che la sua CLI è installata e presente nel tuo `PATH`. Quindi il primo passo è sempre lo stesso: installa la CLI che vuoi usare e accedi con essa, esattamente come descritto nella documentazione di quello strumento. Una volta che `claude --version` (o `codex`, o `gemini`) funziona nel tuo terminale, Specrails può usarla.
 
 ## Installare un provider per un progetto
 
@@ -19,8 +16,6 @@ Quando aggiungi un progetto, la procedura guidata di setup ti chiede quale provi
 Se una CLI che vuoi usare non viene proposta in Add Project, quasi sempre è perché la CLI non è installata oppure non è presente nel tuo `PATH`. Installala e poi riapri Add Project.
 
 ## Installare più provider in un solo progetto
-
-Puoi installare **più di un** provider nello stesso progetto — per esempio Claude *e* Gemini. In **Add Project** l'elenco dei provider diventa una serie di caselle di spunta: seleziona tutti quelli che ti servono. Il primo che selezioni diventa il provider **primario** (predefinito) del progetto; gli altri restano disponibili come alternative.
 
 Qualche cosa utile da sapere sui progetti multi-provider:
 
@@ -47,18 +42,8 @@ Alcune funzioni sono per natura specifiche di Claude, quindi vengono nascoste o 
 - **Contract Refine** — il passaggio aggiuntivo "Contract Layer" su una spec confermata viene eseguito solo quando il provider della conversazione è Claude.
 - **Modalità avanzate di Add Spec** (SMASH / Contract Layer) — nascoste per i motori diversi da Claude.
 
-Tutto il resto — Explore, Quick spec, l'intera pipeline dei rail, AI Edit, chat, analisi dei costi — funziona con tutti e tre.
-
-## Tracciamento dei costi tra i provider
-
-La pagina **Analisi** traccia ogni invocazione fatturabile, indipendentemente dal provider. Sui progetti multi-provider aggiunge dei chip di filtro per motore così puoi confrontare la spesa per provider. Claude riporta il proprio costo esatto; per Codex e Gemini, Specrails stima il costo da un listino integrato, quindi i numeri sono approssimazioni vicine al reale più che importi effettivamente addebitati.
+Tutto il resto — Explore, Quick spec, l'intera pipeline dei rail, AI Edit, chat, analisi dei costi — funziona con tutti e due.
 
 ## Risoluzione dei problemi
 
-- **Un provider che ho installato non viene proposto.** Verifica che la CLI sia presente nel tuo `PATH` (prova `claude --version` / `codex --version` / `gemini --version` in un terminale nuovo). L'app sonda le CLI dei provider tramite il `PATH` di sistema.
 - **I server MCP di Codex non si caricano in chat.** Codex legge i server MCP dal file globale `~/.codex/config.toml` — registrali lì con `codex mcp add`.
-- **Disabilitazione d'emergenza.** Un provider può essere disattivato a livello di app tramite una variabile d'ambiente (`SPECRAILS_CODEX_BETA=0` o `SPECRAILS_GEMINI_BETA=0`). Questo nasconde il provider solo dalla *selezione*; raramente è necessario.
-
-## Vedi anche
-
-Le guide dedicate ai provider approfondiscono ciascuna CLI: la guida di Codex e la guida di Gemini coprono ognuna il setup, cosa funziona e le particolarità specifiche del provider.

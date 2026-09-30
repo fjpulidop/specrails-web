@@ -39,7 +39,7 @@ Use the local bridge included with the running Desktop app. Configure only the r
 
 ## Connection runbooks
 
-- [Claude, Codex, Kimi and Gemini — English](https://specrails.dev/for-agents/mcp.md)
+- [Claude and Codex — English](https://specrails.dev/for-agents/mcp.md)
 - [Agent documentation index](https://specrails.dev/for-agents/index.html)
 
 These static files need no JavaScript. The human product guide is at https://specrails.dev/docs.
@@ -50,7 +50,7 @@ These static files need no JavaScript. The human product guide is at https://spe
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>For agents only — Specrails MCP</title>
-  <meta name="description" content="Connect Claude, Codex, Kimi or Gemini to Specrails MCP with verified local setup instructions.">
+  <meta name="description" content="Connect Claude or Codex to Specrails MCP with verified local setup instructions.">
   <link rel="canonical" href="https://specrails.dev/for-agents/index.html">
   <link rel="alternate" type="text/plain" href="/llms.txt" title="Agent documentation index">
 </head>
@@ -60,7 +60,7 @@ These static files need no JavaScript. The human product guide is at https://spe
     <p>When asked to connect to Specrails MCP, read the runbook for local discovery, client-specific registration, read-only verification and troubleshooting.</p>
     <p>Cuando te pidan conectar al MCP de Specrails, consulta el procedimiento de descubrimiento local, registro por cliente, verificación de lectura y diagnóstico.</p>
     <ul>
-      <li><a href="/for-agents/mcp.md" lang="en">Claude, Codex, Kimi and Gemini — English Markdown</a></li>
+      <li><a href="/for-agents/mcp.md" lang="en">Claude and Codex — English Markdown</a></li>
     </ul>
     <p>These instructions require no JavaScript. Keep tokens out of configuration and reports.</p>
     <a href="/docs">Human product guide / Guía del producto</a>

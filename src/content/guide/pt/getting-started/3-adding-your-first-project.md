@@ -22,7 +22,6 @@ Escolha que fornecedor(es) de IA este projeto deve usar. O specrails mostra-lhe 
 
 - 🤖 **Claude**
 - ⚡ **Codex**
-- ✨ **Gemini**
 
 Os fornecedores que não encontrou aparecem a cinzento e marcados como *não encontrado* — instale e inicie sessão num deles e volte a abrir a janela. Por predefinição, todos os fornecedores disponíveis ficam pré-selecionados, mas pode desmarcar até ficar apenas com o que pretende. Se escolher mais do que um, o **primeiro** torna-se o fornecedor predefinido do projeto; mais tarde poderá escolher por tarefa.
 

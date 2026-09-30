@@ -19,7 +19,7 @@
 
 ## About Specrails
 
-Specrails is one app: [Specrails Desktop](https://github.com/fjpulidop/specrails-desktop). You start a mission with the AI agent you already use (Claude, Codex, Gemini or Kimi), turn it into a spec, run it through implementation loops and review the result, across one or several repositories. [Companion](https://specrails.dev/companion) lets you follow and steer missions from your phone.
+Specrails is one app: [Specrails Desktop](https://github.com/fjpulidop/specrails-desktop). You start a mission with the AI agent you already use (Claude or Codex), turn it into a spec, run it through implementation loops and review the result, across one or several repositories. [Companion](https://specrails.dev/companion) lets you follow and steer missions from your phone.
 
 Desktop includes its engine, [Specrails Core](https://github.com/fjpulidop/specrails-core) (the `specrails-core` package). Desktop uses Core to prepare each project's workflow and to run implementations, and applies Core updates itself. Core is not a separate product: nobody installs, runs or updates it by hand, and this site never presents it that way — no Core product page, no CLI reference and no `npx specrails-core` instructions. The guide explains it in [Core is built into Desktop](https://specrails.dev/docs/getting-started#core-is-built-into-desktop).
 
@@ -35,8 +35,6 @@ This repository contains specrails.dev: the landing page, the download page, the
 | **Components** | [shadcn/ui](https://ui.shadcn.com) + [Radix UI](https://www.radix-ui.com) |
 | **Icons** | [Lucide](https://lucide.dev) |
 | **Testing** | [Vitest](https://vitest.dev) + [Playwright](https://playwright.dev) |
-
-## Getting Started
 
 ### Prerequisites
 
@@ -132,7 +130,7 @@ If Specrails is useful to you, you can donate on [Ko-fi](https://ko-fi.com/D1D81
 
 ## Documentation exclusively for agents
 
-Agents asked to connect Claude, Codex, Kimi or Gemini to Specrails MCP should start at [the dedicated runbook](src/content/for-agents/mcp.md). The built site exposes `/llms.txt` (product facts for agents plus the runbook links), `/for-agents/index.html` and `/for-agents/mcp.md` as static files, without JavaScript. The docs index and MCP article link to this section.
+Agents asked to connect Claude or Codex to Specrails MCP should start at [the dedicated runbook](src/content/for-agents/mcp.md). The built site exposes `/llms.txt` (product facts for agents plus the runbook links), `/for-agents/index.html` and `/for-agents/mcp.md` as static files, without JavaScript. The docs index and MCP article link to this section.
 
 The canonical runbook lives in Specrails Desktop's `docs/agents/`; this repository commits a reviewed copy in `src/content/for-agents/`. From this Web checkout, run `npm run docs:sync -- --desktop-source` followed by the quoted path to the Desktop checkout to import only that runbook and regenerate public outputs. Use `npm run docs:check -- --desktop-source` followed by the same path to verify parity without writing. `npm run docs:sync` alone regenerates from the local copy; `npm run docs:check` (also run before builds) detects stale public content. Run `npm run test:docs-sync` after changing the generator.
 

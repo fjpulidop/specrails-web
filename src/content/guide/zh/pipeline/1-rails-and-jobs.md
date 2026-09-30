@@ -36,7 +36,6 @@ rail 是一条**执行通道**。你从 SpecsBoard 上拖一张 spec 卡片放�
 | **spec 列表** | 分配给这条 rail 的 ID。可以再拖进来，也可以拖出去解除关联。 |
 | **Loop 选择器** | 这条 rail 运行的 Loop——内置的（`Implement` / `Quick SDD` / `Freestyle`）或某个自定义 loop。见下表。按 rail 单独记忆。 |
 | **Profile 选择器** | 运行哪个 Agent Profile（仅限 Claude rail）。只有当项目至少有一个 Profile 时才会出现。 |
-| **引擎选择器** | 这条 rail 用哪个已安装的提供方来跑——Claude、Codex 或 Gemini。仅当项目装有不止一个提供方时才显示。见 [为每条 rail 选择引擎](picking-an-engine-per-rail)。 |
 | **▶ Play / ■ Stop** | 启动或取消。 |
 
 ### rail 运行的是什么：Loop
@@ -78,10 +77,6 @@ Freestyle 是个特例：它跳过 Agent 链条，把原始 spec 直接交给 Cl
 
 点击 rail 头部的 **■ Stop**。应用会向子进程发送 `SIGTERM`，等 **5 秒**让它干净退出，然后再 `SIGKILL` 掉它。不会留下半生不熟、还没启动完的进程。
 
-## 如果一条 rail 启动不起来
-
-如果你选了一个对应 CLI 还没装到机器上的引擎，启动会**快速失败**，而不是开一个坏掉的任务——什么都不会启动。装上缺失的提供方 CLI（[使用 Codex](../integrations/using-codex)、[使用 Gemini](../integrations/using-gemini)）再启动一次即可。缺 Claude 或 Codex 时会给出精确的 "*&lt;provider&gt; CLI not found*" 提示；缺 Gemini 目前会显示一个通用的启动错误，但结果是一样的。
-
 ## 全部停下
 
 如果哪里看起来不对劲：
@@ -94,4 +89,3 @@ Freestyle 是个特例：它跳过 Agent 链条，把原始 spec 直接交给 Cl
 
 - [Loop Builder](the-loop-builder)——rail 运行的是什么，以及如何搭建你自己的 loop。
 - [任务详情视图](the-job-detail-view)——阶段、实时指标、工单卡片。
-- [为每条 rail 选择引擎](picking-an-engine-per-rail)——Claude、Codex 还是 Gemini。

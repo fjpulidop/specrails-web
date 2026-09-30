@@ -19,3 +19,7 @@ Tras reconectar, espera la instantánea actualizada antes de interpretar el esta
 ## Conexión y privacidad
 
 El emparejamiento y la conexión pueden utilizar servicios de señalización; local-first no significa ausencia de tráfico fuera del dispositivo. Protege las credenciales y revoca los dispositivos que ya no uses. Consulta la [información de privacidad](/privacy) sobre datos de conexión y conservación.
+
+## Specs, rails y archivos
+
+Explora el backlog compartido y los archivos con los permisos concedidos al dispositivo. Un Desktop compatible ofrece controles de lanzamiento y parada de rails y sus loops disponibles. Implement procesa todas las specs del rail en una ejecución; varios rails pueden ejecutarse en paralelo. La antigua opción Batch ya no se ofrece.

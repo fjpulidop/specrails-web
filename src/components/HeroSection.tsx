@@ -15,7 +15,7 @@ import {
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const PROVIDERS = ["Claude", "Codex", "Gemini"] as const;
+const PROVIDERS = ["Claude", "Codex"] as const;
 
 const HeroSection = () => {
   const releaseState = useReleaseManifest();
@@ -162,7 +162,7 @@ function MissionControlShot(): JSX.Element {
       >
         <video
           className="h-full w-full bg-[#06060c] object-cover"
-          poster="/product/specrails-mission-control-real.png"
+          poster="/product/specrails-mission-control-real.png?v=20260930-29b41ac7"
           autoPlay
           muted
           loop
@@ -170,10 +170,10 @@ function MissionControlShot(): JSX.Element {
           preload="metadata"
           aria-label="Real Specrails Mission Control launcher inside Specrails Desktop"
         >
-          <source src="/product/specrails-mission-control-real.webm" type="video/webm" />
-          <source src="/product/specrails-mission-control-real.mp4" type="video/mp4" />
+          <source src="/product/specrails-mission-control-real.webm?v=20260930-29b41ac7" type="video/webm" />
+          <source src="/product/specrails-mission-control-real.mp4?v=20260930-29b41ac7" type="video/mp4" />
           <img
-            src="/product/specrails-mission-control-real.png"
+            src="/product/specrails-mission-control-real.png?v=20260930-29b41ac7"
             alt="Real Specrails Mission Control launcher inside Specrails Desktop"
             className="h-full w-full object-cover"
             loading="eager"
@@ -182,7 +182,7 @@ function MissionControlShot(): JSX.Element {
         </video>
         <noscript>
           <img
-            src="/product/specrails-mission-control-real.png"
+            src="/product/specrails-mission-control-real.png?v=20260930-29b41ac7"
             alt="Real Specrails Mission Control launcher inside Specrails Desktop"
             className="h-full w-full object-cover"
           />

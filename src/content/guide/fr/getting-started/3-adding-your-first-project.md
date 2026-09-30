@@ -22,7 +22,6 @@ Choisissez le ou les fournisseurs d'IA que ce projet doit utiliser. Specrails vo
 
 - 🤖 **Claude**
 - ⚡ **Codex**
-- ✨ **Gemini**
 
 Les fournisseurs qu'il n'a pas trouvés sont grisés et marqués *introuvable* — installez-en un et connectez-vous, puis rouvrez la boîte de dialogue. Par défaut, chaque fournisseur disponible est présélectionné, mais vous pouvez tout désélectionner pour ne garder que celui que vous voulez. Si vous en choisissez plusieurs, le **premier** devient le fournisseur par défaut du projet ; vous pourrez choisir selon la tâche plus tard.
 

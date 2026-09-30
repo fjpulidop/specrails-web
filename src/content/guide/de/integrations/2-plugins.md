@@ -35,10 +35,6 @@ Im Hintergrund läuft die Installation *chirurgisch und additiv* ab: Sie fügt d
 - **Chat.** Der Chat übernimmt automatisch die MCP-Konfiguration deines Projekts, sodass installierte Plugins auch dort verfügbar sind.
 - **Einrichtung.** Während ein Projekt noch eingerichtet wird, werden Plugins ignoriert — sie kommen ins Spiel, sobald das Projekt bereit ist.
 
-## Anbieterhinweise
-
-Plugins sind anbieterbewusst. Serena und ähnliche MCP-Plugins greifen bei Anbietern, die MCP über die `.mcp.json` des Projekts registrieren (Claude und Gemini). Bei Codex-Projekten werden MCP-Server stattdessen über Codex' eigene globale Konfiguration verwaltet, sodass Plugin-Einträge in **Integrationen** entsprechend gefiltert werden. Die Jira-Karte in den Integrationen ist anbieterunabhängig und erscheint für alle — siehe den Jira-Guide.
-
 ## Reservierte Dateien
 
 Plugins verwalten eine kleine, klar abgegrenzte Menge an Dateien in deinem Projekt: deine `.mcp.json` (chirurgisch zusammengeführt), etwas Zustand unter `.specrails/plugins/` sowie pro Plugin Agenten-Fragmente unter `.claude/agents/custom-<plugin>.md`. Das sind committbare Team-Assets, falls du eine Integration mit deinen Teamkolleg:innen teilen möchtest — die App überschreibt sie nie blind.

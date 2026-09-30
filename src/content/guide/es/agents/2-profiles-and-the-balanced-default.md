@@ -8,7 +8,7 @@ Los perfiles distribuyen capacidades de modelo entre roles. Son útiles cuando e
 
 Revisa el perfil que muestra Specrails, sin asumir que un valor por defecto antiguo sigue vigente. Un perfil equilibrado intenta repartir el trabajo, pero no predice la complejidad ni el coste de un cambio.
 
-Claude y Kimi tienen rutas con perfiles. Codex y Gemini ofrecen sus propios controles de modelo y capacidades. El nombre de un perfil no garantiza qué modelo utiliza cada llamada interna.
+Claude tienen rutas con perfiles. Codex ofrecen sus propios controles de modelo y capacidades. El nombre de un perfil no garantiza qué modelo utiliza cada llamada interna.
 
 ## Compara una tarea real
 

@@ -20,10 +20,6 @@ Die Kopfzeile hat einen **Projekt-Selektor** (wie bei Cursor). Wähle ein Projek
 
 Ein Projekt hier auszuwählen **verschiebt** dein Dashboard **nicht** — das Ziel des Agenten und das, was du gerade ansiehst, sind unabhängig voneinander.
 
-## Anbieter und Modell
-
-Direkt über dem Nachrichtenfeld wählst du den **Anbieter** (Claude, Codex oder Gemini) und dessen **Modell**. Jeder Anbieter hat seine eigene Modellliste, und ein Anbieterwechsel startet eine frische Sitzung mit dem Standardmodell dieses Anbieters — so kannst du etwa die App mit Claude steuern und für eine andere Unterhaltung zu Codex wechseln, ohne dass etwas durcheinandergerät.
-
 ## Berechtigungsstufen — du hältst die Leine
 
 Der Agent kann die ganze App anfassen, also entscheidest du, wie viel Freiheit er hat — über eine **Stufe**, die du live mit **Shift+Tab** änderst (derselbe Zyklus wie in Claude Code). Jede Stufe schließt alles darunter mit ein:

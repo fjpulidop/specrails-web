@@ -19,8 +19,6 @@ Das ist der ganze Ablauf. Alles Weitere unten ist optionale Feinjustierung.
 
 **Modell** – standardmäßig wählt die KI ein sinnvolles Modell. Du kannst es pro Spec über die Modellauswahl überschreiben, wenn du ein schnelleres oder leistungsfähigeres möchtest.
 
-**Engine** – wenn in deinem Projekt mehr als ein KI-Provider installiert ist (irgendeine Mischung aus Claude, Codex und Gemini), sitzt oben im Dialog eine Engine-Auswahl, mit der du festlegst, welche diese Spec generiert. Deine Wahl wird pro Projekt gemerkt. Projekte mit nur einem Provider zeigen das nicht – es gibt ja nichts zu wählen.
-
 **Kontext** – der Quick-Modus läuft meist als einzelner Durchgang, weil er deine Codebasis nicht lesen muss, um aus deiner Beschreibung eine Spec zu schreiben. Aber ein Kontext-Schieberegler erlaubt dir, ihm mehr an die Hand zu geben:
 
 - In der niedrigsten Einstellung liest er nur deine Beschreibung.
