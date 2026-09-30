@@ -89,7 +89,7 @@ const en: ProductCopy = {
     },
     {
       title: "Make room for focused work",
-      body: "Detach a mission into its own Desktop window. Move between screens, then bring it back into the workspace.",
+      body: "Compare missions side by side with Split View, or detach one into its own Desktop window. Keep both conversations within reach.",
     },
     {
       title: "Explore the code behind the work",
@@ -99,12 +99,13 @@ const en: ProductCopy = {
       title: "Connect your existing workflow",
       body: "Use local specs and configured GitHub or Jira integrations. The Specrails MCP gives mission agents tools to inspect context and operate project workflows.",
     },
+    { title: "Check your agent limits", body: "See local Claude and Codex subscription usage in the footer. Hover to inspect usage windows, reset countdowns and the last successful update." },
   ],
   loopNote:
     "Built-in loops to get started. A visual builder to make the process yours.",
   companionTitle: "Your mission, within reach.",
   companionBody:
-    "Step away from your desk without losing the thread. Pair Companion with Desktop to follow missions, inspect work and send the next instruction from your phone.",
+    "Pair Companion with Desktop to follow missions, send instructions, browse project files and operate rails from your phone. Implement processes every spec on a rail in one run.",
   companionCta: "Open Companion",
   companionNote:
     "Desktop runs the work and must remain online. Mission controls require a compatible Desktop and a paired device with access to all projects.",
@@ -173,7 +174,7 @@ const es: ProductCopy = {
     },
     {
       title: "Espacio para concentrarte",
-      body: "Separa una misión en su propia ventana de Desktop. Muévela entre pantallas y vuelve a integrarla en tu espacio de trabajo.",
+      body: "Compara misiones con Split View o abre una en su propia ventana de Desktop. Ten ambas conversaciones a mano.",
     },
     {
       title: "Explora el c\u00F3digo detr\u00E1s del trabajo",
@@ -183,12 +184,13 @@ const es: ProductCopy = {
       title: "Conecta tu forma de trabajar",
       body: "Usa specs locales y las integraciones configuradas de GitHub o Jira. El MCP de Specrails ofrece al agente herramientas para consultar contexto y operar los flujos del proyecto.",
     },
+    { title: "Consulta los límites de tus agentes", body: "Consulta el uso local de Claude y Codex en el pie. Pasa el ratón para ver las ventanas de uso, el tiempo hasta el reinicio y la última actualización correcta." },
   ],
   loopNote:
     "Loops de serie para empezar. Un constructor visual para adaptarlos a tu proceso.",
   companionTitle: "Tu misión, al alcance de la mano.",
   companionBody:
-    "Aléjate del escritorio sin perder el hilo. Vincula Companion con Desktop para seguir misiones, revisar el trabajo y enviar la siguiente indicación desde el móvil.",
+    "Vincula Companion con Desktop para seguir misiones, enviar indicaciones, explorar archivos y controlar rails desde el móvil. Implement procesa todas las specs de un rail en una ejecución.",
   companionCta: "Abrir Companion",
   companionNote:
     "Desktop ejecuta el trabajo y debe seguir conectado. Los controles de misión necesitan un Desktop compatible y un dispositivo vinculado con acceso a todos los proyectos.",
@@ -258,7 +260,7 @@ const fr: ProductCopy = {
     },
     {
       title: "De l’espace pour se concentrer",
-      body: "Détachez une mission dans une fenêtre Desktop, déplacez-la entre vos écrans puis réintégrez-la.",
+      body: "Comparez les missions avec Split View ou détachez-en une dans sa propre fenêtre Desktop. Gardez les deux conversations à portée de main.",
     },
     {
       title: "Explorez le code derri\u00E8re le travail",
@@ -268,12 +270,13 @@ const fr: ProductCopy = {
       title: "Connectez votre m\u00E9thode",
       body: "Utilisez les specs locales et les int\u00E9grations GitHub ou Jira configur\u00E9es. Le MCP Specrails fournit aux agents des outils de contexte et de gestion des workflows.",
     },
+    { title: "Consultez les limites de vos agents", body: "Consultez l’usage local de Claude et Codex en pied de fenêtre. Survolez-le pour voir les limites, le délai de réinitialisation et la dernière mise à jour réussie." },
   ],
   loopNote:
     "Des loops intégrés pour démarrer. Un éditeur visuel pour votre méthode.",
   companionTitle: "Votre mission à portée de main.",
   companionBody:
-    "Quittez votre bureau sans perdre le fil. Associez Companion à Desktop pour suivre les missions, examiner le travail et envoyer des instructions depuis le téléphone.",
+    "Associez Companion à Desktop pour suivre les missions, envoyer des instructions, parcourir les fichiers et piloter les rails. Implement traite toutes les specs d’un rail en une exécution.",
   companionCta: "Ouvrir Companion",
   companionNote:
     "Desktop exécute le travail et doit rester connecté. Les missions nécessitent une version compatible et un appareil autorisé pour tous les projets.",
@@ -342,7 +345,7 @@ const de: ProductCopy = {
     },
     {
       title: "Platz für konzentrierte Arbeit",
-      body: "Öffne eine Mission in einem eigenen Desktop-Fenster und integriere sie später wieder.",
+      body: "Vergleiche Missionen mit Split View oder öffne eine in einem eigenen Desktop-Fenster. Beide Gespräche bleiben griffbereit.",
     },
     {
       title: "Erkunde den Code hinter der Arbeit",
@@ -352,12 +355,13 @@ const de: ProductCopy = {
       title: "Verbinde deinen bestehenden Ablauf",
       body: "Nutze lokale Specs und konfigurierte GitHub- oder Jira-Integrationen. Specrails MCP gibt Agenten Werkzeuge f\u00FCr Projektkontext und Arbeitsabl\u00E4ufe.",
     },
+    { title: "Agentenlimits im Blick", body: "Prüfe die lokale Claude- und Codex-Nutzung in der Fußleiste. Beim Überfahren erscheinen Limits, Reset-Zeiten und die letzte erfolgreiche Aktualisierung." },
   ],
   loopNote:
     "Integrierte Loops für den Einstieg. Ein visueller Builder für deinen Ablauf.",
   companionTitle: "Deine Mission in Reichweite.",
   companionBody:
-    "Bleib auch abseits des Schreibtischs im Kontext. Kopple Companion mit Desktop, um Missionen zu verfolgen und Anweisungen vom Smartphone zu senden.",
+    "Verbinde Companion mit Desktop, um Missionen zu verfolgen, Anweisungen zu senden, Dateien anzusehen und Rails am Handy zu steuern. Implement bearbeitet alle Specs eines Rails in einem Lauf.",
   companionCta: "Companion öffnen",
   companionNote:
     "Desktop führt die Arbeit aus und muss online bleiben. Missionssteuerung benötigt eine kompatible Version und Gerätezugriff auf alle Projekte.",
@@ -426,7 +430,7 @@ const pt: ProductCopy = {
     },
     {
       title: "Espaço para se concentrar",
-      body: "Destaque uma missão em uma janela do Desktop, mova entre telas e depois reintegre.",
+      body: "Compare missões com Split View ou destaque uma para a sua própria janela de Desktop. Mantenha ambas as conversas por perto.",
     },
     {
       title: "Explore o c\u00F3digo por tr\u00E1s do trabalho",
@@ -436,12 +440,13 @@ const pt: ProductCopy = {
       title: "Conecte seu fluxo de trabalho",
       body: "Use specs locais e integra\u00E7\u00F5es configuradas de GitHub ou Jira. O MCP do Specrails oferece ferramentas de contexto e opera\u00E7\u00E3o dos fluxos do projeto aos agentes.",
     },
+    { title: "Consulte os limites dos agentes", body: "Veja o uso local de Claude e Codex no rodapé. Passe o rato para consultar os limites, o tempo até à reposição e a última atualização bem-sucedida." },
   ],
   loopNote:
     "Loops integrados para começar. Um construtor visual para seu processo.",
   companionTitle: "Sua missão ao alcance da mão.",
   companionBody:
-    "Saia da mesa sem perder o contexto. Vincule o Companion ao Desktop para acompanhar missões e enviar instruções pelo celular.",
+    "Ligue Companion ao Desktop para acompanhar missões, enviar instruções, explorar ficheiros e controlar rails. Implement processa todas as specs de um rail numa execução.",
   companionCta: "Abrir Companion",
   companionNote:
     "O Desktop executa o trabalho e precisa estar conectado. Missões exigem uma versão compatível e um dispositivo com acesso a todos os projetos.",
@@ -510,7 +515,7 @@ const it: ProductCopy = {
     },
     {
       title: "Spazio per concentrarti",
-      body: "Sposta una missione in una finestra Desktop separata e reintegrala quando vuoi.",
+      body: "Confronta le missioni con Split View o aprine una nella propria finestra Desktop. Tieni entrambe le conversazioni a portata di mano.",
     },
     {
       title: "Esplora il codice dietro il lavoro",
@@ -520,12 +525,13 @@ const it: ProductCopy = {
       title: "Collega il tuo flusso di lavoro",
       body: "Usa spec locali e integrazioni GitHub o Jira configurate. Il MCP Specrails offre agli agenti strumenti per il contesto e i flussi del progetto.",
     },
+    { title: "Controlla i limiti degli agenti", body: "Consulta l’utilizzo locale di Claude e Codex nel piè di pagina. Passa il mouse per vedere limiti, tempi di ripristino e ultimo aggiornamento riuscito." },
   ],
   loopNote:
     "Loop integrati per iniziare. Un costruttore visuale per il tuo processo.",
   companionTitle: "La tua missione a portata di mano.",
   companionBody:
-    "Allontanati dalla scrivania senza perdere il filo. Collega Companion a Desktop per seguire missioni e inviare istruzioni dal telefono.",
+    "Associa Companion a Desktop per seguire missioni, inviare istruzioni, esplorare file e controllare i rail dal telefono. Implement elabora tutte le spec di un rail in un’esecuzione.",
   companionCta: "Apri Companion",
   companionNote:
     "Desktop esegue il lavoro e deve restare connesso. Le missioni richiedono una versione compatibile e un dispositivo autorizzato per tutti i progetti.",
@@ -583,7 +589,7 @@ const zh: ProductCopy = {
     },
     {
       title: "给专注留出空间",
-      body: "将任务移至独立 Desktop 窗口，在屏幕间移动，再随时重新集成。",
+      body: "用 Split View 并排查看任务，或将任务移至独立 Desktop 窗口，让两个对话都触手可及。",
     },
     {
       title: "\u63A2\u7D22\u5F00\u53D1\u80CC\u540E\u7684\u4EE3\u7801",
@@ -593,11 +599,12 @@ const zh: ProductCopy = {
       title: "\u8FDE\u63A5\u73B0\u6709\u5DE5\u4F5C\u65B9\u5F0F",
       body: "\u4F7F\u7528\u672C\u5730\u89C4\u683C\u548C\u5DF2\u914D\u7F6E\u7684 GitHub \u6216 Jira \u96C6\u6210\u3002Specrails MCP \u4E3A\u4EFB\u52A1\u667A\u80FD\u4F53\u63D0\u4F9B\u9879\u76EE\u4E0A\u4E0B\u6587\u4E0E\u5DE5\u4F5C\u6D41\u7A0B\u64CD\u4F5C\u5DE5\u5177\u3002",
     },
+    { title: "查看代理用量限制", body: "在页脚查看本地 Claude 和 Codex 订阅用量。悬停可查看用量窗口、重置倒计时和最近一次成功更新。" },
   ],
   loopNote: "内置循环帮助你起步，可视化构建器让流程适合你。",
   companionTitle: "任务，触手可及。",
   companionBody:
-    "离开电脑也能跟上进展。将 Companion 与 Desktop 配对，在手机上跟踪任务、查看工作并发送指令。",
+    "将 Companion 与 Desktop 配对，在手机上跟进任务、发送指令、浏览项目文件和操作轨道。Implement 在一次运行中处理轨道上的全部规格。",
   companionCta: "打开 Companion",
   companionNote:
     "工作由 Desktop 执行，它必须保持在线。任务控制需要兼容的 Desktop 版本和拥有所有项目访问权限的配对设备。",
@@ -665,7 +672,7 @@ const ja: ProductCopy = {
     },
     {
       title: "集中できる作業空間",
-      body: "ミッションを独立した Desktop ウィンドウに移し、画面間で動かしてから戻せます。",
+      body: "Split View でミッションを並べて比較したり、独立した Desktop ウィンドウで開いたりできます。両方の会話を手元に。",
     },
     {
       title:
@@ -677,11 +684,12 @@ const ja: ProductCopy = {
         "\u65E2\u5B58\u306E\u30EF\u30FC\u30AF\u30D5\u30ED\u30FC\u3068\u63A5\u7D9A",
       body: "\u30ED\u30FC\u30AB\u30EB Spec \u3068\u8A2D\u5B9A\u6E08\u307F\u306E GitHub\u30FBJira \u9023\u643A\u3092\u5229\u7528\u3002Specrails MCP \u304C\u30A8\u30FC\u30B8\u30A7\u30F3\u30C8\u306B\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8\u60C5\u5831\u3068\u64CD\u4F5C\u30C4\u30FC\u30EB\u3092\u63D0\u4F9B\u3057\u307E\u3059\u3002",
     },
+    { title: "エージェントの使用枠を確認", body: "フッターでローカルの Claude と Codex の使用量を確認。カーソルを合わせると使用枠、リセットまでの時間、最終成功更新を表示します。" },
   ],
   loopNote: "組み込み Loop ですぐに開始。ビジュアルビルダーで独自の流れに。",
   companionTitle: "ミッションを手の届く場所に。",
   companionBody:
-    "デスクを離れても流れを見失いません。Companion と Desktop をペアリングし、スマートフォンで進捗確認や追加指示を行えます。",
+    "Companion を Desktop とペアリングして、スマートフォンからミッションの確認、指示、ファイル閲覧、rail の操作ができます。Implement は rail 上のすべての spec を1回で処理します。",
   companionCta: "Companion を開く",
   companionNote:
     "作業を実行する Desktop はオンラインである必要があります。ミッション操作には対応版 Desktop と、全プロジェクトへの権限を持つ端末が必要です。",

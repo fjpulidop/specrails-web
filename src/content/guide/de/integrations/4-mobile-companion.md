@@ -36,3 +36,7 @@ Sobald gekoppelt, zeigt der Companion deine Projekte und ihre Live-Job-Aktivitä
 - **Monitoring zuerst.** Der Companion ist dafür gedacht, Rails im Auge zu behalten, nicht dazu, den vollständigen Desktop-Workflow vom Smartphone aus zu steuern.
 - **Nur lokal.** Kein Konto, kein Cloud-Relay — nur dein Rechner und dein Smartphone, in deinem Netzwerk.
 - **Halte den Desktop wach.** Der Companion spiegelt eine laufende Desktop-App; geht dein Rechner in den Ruhezustand oder schließt die App, pausieren die Live-Updates, bis sie zurück ist.
+
+## Specs, Rails und Dateien
+
+Sieh den gemeinsamen Backlog und Dateien mit den gewährten Zugriffsrechten an. Ein kompatibles Desktop bietet Start- und Stoppaktionen für Rails und verfügbare Loops. Implement verarbeitet alle Specs eines Rails in einem Lauf; separate Rails können parallel laufen. Die frühere Batch-Option entfällt.

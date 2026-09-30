@@ -36,3 +36,7 @@ Uma vez emparelhada, a companion apresenta os seus projetos e a respetiva ativid
 - **Monitorização em primeiro lugar.** A companion foi pensada para acompanhar os rails, não para conduzir todo o fluxo de trabalho de ambiente de trabalho a partir do telemóvel.
 - **Apenas local.** Sem conta, sem relé na cloud — a sua máquina e o seu telemóvel, na sua rede.
 - **Mantenha o ambiente de trabalho acordado.** A companion espelha uma app de ambiente de trabalho em execução; se a sua máquina adormecer ou a app fechar, as atualizações ao vivo ficam em pausa até voltar.
+
+## Specs, rails e ficheiros
+
+Explore o backlog partilhado e os ficheiros com as permissões concedidas. Um Desktop compatível oferece lançamento e paragem dos rails e os loops disponíveis. Implement processa todas as specs do rail numa execução; rails distintos podem correr em paralelo. A antiga opção Batch já não é apresentada.

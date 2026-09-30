@@ -15,3 +15,9 @@ The workspace brings together conversation, delivery cards, files, Git, browser 
 Board groups specs by status and priority. Rails let you choose a loop and inspect an implementation's steps. Switch views to plan several specs or spread independent work across rails; returning to the mission keeps the conversation as your place to direct the work.
 
 In the native app, [separate mission windows](/docs/missions-mission-windows) let you keep independent tasks visible. The agent remains in the shared local backend.
+
+## Use the footer and arrange conversations
+
+The footer shows local Claude and Codex subscription usage. Hover or focus it to see each usage window, its reset countdown and the last successful update. Usage includes activity outside Specrails; unavailable values are not zero. The native Keep awake selector prevents idle sleep while enabled and returns to Off when the app restarts.
+
+Use Split View to compare different missions; a conversation already visible does not offer a redundant split action. Sidebar controls sit in the native title bar, and Docs, Analytics, Companion and Settings share the bottom row.

@@ -81,7 +81,7 @@ describe("ProductsSection", () => {
     renderSection();
     expect(screen.getByRole("button", { name: /expand video/i })).toBeInTheDocument();
     expect(
-      screen.getByLabelText(/Real Specrails Board flow creating a spec/i),
+      screen.getByLabelText(/Specrails Board: inspect specs and execution rails/i),
     ).toBeInTheDocument();
   });
 });

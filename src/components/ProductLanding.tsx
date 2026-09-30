@@ -42,6 +42,7 @@ const featureGuides = [
   "missions-mission-windows",
   "insights-code-explorer",
   "integrations-mcp-server",
+  "getting-started-the-dashboard-tour",
 ];
 const stepIcons = [MessageSquare, FileText, Network, CheckCheck];
 
@@ -315,8 +316,8 @@ export function CompanionShowcase({
             <span className="flex items-center gap-2"><Smartphone className="h-4 w-4" aria-hidden="true" />Companion</span>
           </div>
           <div className="relative pb-16 pt-8 sm:pb-24">
-            <img src="/product/specrails-mission-control-real.png" alt="Specrails Desktop" width="1440" height="900" loading="lazy" decoding="async" className="w-[88%] rounded-xl border border-border shadow-lg" />
-            <img src="/companion/missions-real.png" alt="Specrails Companion" width="780" height="1688" loading="lazy" decoding="async" className="absolute bottom-0 right-0 w-[32%] rounded-2xl border border-border shadow-xl" />
+            <img src="/product/specrails-mission-control-real.png?v=20260930-2f22d943" alt="Specrails Desktop" width="1440" height="900" loading="lazy" decoding="async" className="w-[88%] rounded-xl border border-border shadow-lg" />
+            <img src="/companion/missions-real.png?v=20260930-2f22d943" alt="Specrails Companion" width="780" height="1688" loading="lazy" decoding="async" className="absolute bottom-0 right-0 w-[32%] rounded-2xl border border-border shadow-xl" />
           </div>
           <figcaption className="mt-6 text-sm leading-relaxed">
             {COMPANION_COPY[languageId].caption}

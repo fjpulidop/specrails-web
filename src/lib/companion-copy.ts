@@ -6,7 +6,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Discover Companion",
     "progress": "Follow progress",
     "instruct": "Send the next instruction",
-    "board": "Switch to Board",
+    "board": "Inspect specs and control rails",
     "caption": "Start at your desk. Keep the conversation close.",
     "previews": "Product previews"
   },
@@ -15,7 +15,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Descubrir Companion",
     "progress": "Sigue el progreso",
     "instruct": "Envía la siguiente indicación",
-    "board": "Cambia al Board",
+    "board": "Consulta specs y controla rails",
     "caption": "Empieza en tu escritorio. Lleva la conversación contigo.",
     "previews": "Vistas del producto"
   },
@@ -24,7 +24,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Découvrir Companion",
     "progress": "Suivez la progression",
     "instruct": "Envoyez la prochaine instruction",
-    "board": "Passez au Board",
+    "board": "Consultez les specs et pilotez les rails",
     "caption": "Commencez au bureau. Gardez la conversation à portée de main.",
     "previews": "Aperçus du produit"
   },
@@ -33,7 +33,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Companion entdecken",
     "progress": "Fortschritt verfolgen",
     "instruct": "Nächste Anweisung senden",
-    "board": "Zum Board wechseln",
+    "board": "Specs ansehen und Rails steuern",
     "caption": "Am Schreibtisch starten. Das Gespräch bleibt dabei.",
     "previews": "Produktansichten"
   },
@@ -42,7 +42,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Descobrir Companion",
     "progress": "Acompanha o progresso",
     "instruct": "Envia a próxima instrução",
-    "board": "Muda para o Board",
+    "board": "Consulte specs e controle rails",
     "caption": "Começa no computador. Leva a conversa contigo.",
     "previews": "Vistas do produto"
   },
@@ -51,7 +51,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Scopri Companion",
     "progress": "Segui i progressi",
     "instruct": "Invia la prossima istruzione",
-    "board": "Passa al Board",
+    "board": "Consulta le spec e controlla i rail",
     "caption": "Inizia dal computer. Porta la conversazione con te.",
     "previews": "Anteprime del prodotto"
   },
@@ -60,7 +60,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "了解 Companion",
     "progress": "关注进度",
     "instruct": "发送下一条指令",
-    "board": "切换到看板",
+    "board": "查看规格并控制轨道",
     "caption": "从桌面开始，让对话随身同行。",
     "previews": "产品预览"
   },
@@ -69,7 +69,7 @@ export const COMPANION_COPY: Record<LanguageId, { hero: string; discover: string
     "discover": "Companion を知る",
     "progress": "進捗を確認",
     "instruct": "次の指示を送信",
-    "board": "ボードに切り替え",
+    "board": "Spec を確認して rail を操作",
     "caption": "デスクで始めて、会話を手元に。",
     "previews": "製品プレビュー"
   }

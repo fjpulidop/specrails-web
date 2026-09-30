@@ -8,7 +8,7 @@
 //   node scripts/build-companion.mjs [path-to-specrails-companion]
 //   (defaults to ../specrails-companion)
 
-import { execSync } from 'node:child_process'
+import { execSync, execFileSync } from 'node:child_process'
 import { cpSync, rmSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { createHash } from 'node:crypto'
@@ -44,6 +44,9 @@ console.log(`✓ companion synced → ${outDir} (commit it, then \`npm run build
 // keep a previous interface after deploying a fresh build.
 const mainPath = path.join(outDir, 'main.dart.js')
 const version = createHash('sha256').update(readFileSync(mainPath)).digest('hex').slice(0, 16)
+const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: companionDir, encoding: 'utf8' }).trim()
+const sourceVersion = readFileSync(path.join(companionDir, 'pubspec.yaml'), 'utf8').match(/^version:\s*(.+)$/m)?.[1]?.trim() ?? null
+writeFileSync(path.join(outDir, 'build-info.json'), JSON.stringify({ sourceCommit, sourceVersion, bundleHash: version }, null, 2) + '\n')
 const assetRoot = `build-${version}`
 mkdirSync(path.join(outDir, assetRoot), { recursive: true })
 cpSync(path.join(outDir, 'assets'), path.join(outDir, assetRoot, 'assets'), { recursive: true })
@@ -52,7 +55,7 @@ writeFileSync(bootstrapPath, readFileSync(bootstrapPath, 'utf8').replaceAll('"ma
 const indexPath = path.join(outDir, 'index.html')
 writeFileSync(indexPath, readFileSync(indexPath, 'utf8').replace('src="flutter_bootstrap.js"', `src="flutter_bootstrap.js?v=${version}"`))
 writeFileSync(path.join(outDir, '.htaccess'), `<IfModule mod_headers.c>
-  <FilesMatch "^(index\\.html|main\\.dart\\.js|flutter_bootstrap\\.js|flutter_service_worker\\.js|version\\.json)$">
+  <FilesMatch "^(index\\.html|main\\.dart\\.js|flutter_bootstrap\\.js|flutter_service_worker\\.js|version\\.json|build-info\\.json)$">
     Header set Cache-Control "no-cache, max-age=0, must-revalidate"
   </FilesMatch>
 </IfModule>

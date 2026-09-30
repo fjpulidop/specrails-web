@@ -277,7 +277,7 @@ const en: SiteCopy = {
     localBody: "No account system, no cloud workspace, no telemetry leaving your machine.",
     cta: "Download Specrails",
     boardExpand: "Expand video",
-    boardVideoLabel: "Real Specrails Board flow creating a spec and moving it to a rail",
+    boardVideoLabel: "Specrails Board: inspect specs and execution rails",
   },
   footer: {
     headline: "Start with a mission. Leave with a spec-backed change.",
@@ -293,7 +293,7 @@ const en: SiteCopy = {
     eyebrow: "Documentation",
     title: "Learn Specrails from the desktop app outward.",
     body:
-      "These docs are copied from the current Specrails Desktop documentation and organized around the product users actually run.",
+      "Practical guides to the current Desktop workflow, with separate reference material for agents.",
     start: "Start with Getting started",
     sidebar: "Documentation",
     sections: {
@@ -451,7 +451,7 @@ const es: SiteCopy = {
     localBody: "Sin cuentas, sin workspace cloud, sin telemetría saliendo de tu máquina.",
     cta: "Descargar Specrails",
     boardExpand: "Ampliar video",
-    boardVideoLabel: "Flujo real de Specrails Board creando una spec y moviéndola a un rail",
+    boardVideoLabel: "Specrails Board: consulta specs y rails de ejecución",
   },
   footer: {
     headline: "Empieza con una misión. Termina con un cambio respaldado por specs.",
@@ -468,7 +468,7 @@ const es: SiteCopy = {
     eyebrow: "Documentación",
     title: "Aprende Specrails desde la app desktop hacia fuera.",
     body:
-      "Estos docs están copiados de la documentación actual de Specrails Desktop y organizados alrededor del producto que realmente usan los usuarios.",
+      "Guías prácticas del flujo actual de Desktop, con material de referencia separado para agentes.",
     start: "Empieza con Getting started",
     sidebar: "Documentación",
     sections: {
@@ -507,7 +507,7 @@ const fr: SiteCopy = {
   pipeline: { ...en.pipeline, title: "La spec est l'unité de travail.", gradient: "Le prompt n'est que le début." },
   demo: { ...en.demo, title: "Votre processus de développement devient", gradient: "un graphe réutilisable." },
   problem: { ...en.problem, title: "Le vibe coding est rapide.", gradient: "Vibe Engineering le rend répétable." },
-  products: { ...en.products, title: "Specrails a deux modes.", gradient: "Mission Control d'abord.", cta: "Télécharger Specrails", boardExpand: "Agrandir la vidéo", boardVideoLabel: "Flux réel de Specrails Board créant une spec et la déplaçant vers un rail" },
+  products: { ...en.products, title: "Specrails a deux modes.", gradient: "Mission Control d'abord.", cta: "Télécharger Specrails", boardExpand: "Agrandir la vidéo", boardVideoLabel: "Specrails Board : consulter specs et rails" },
   footer: { ...en.footer, download: "Télécharger", docs: "Documentation" },
   language: { label: "Langue", change: "Changer de langue" },
 };
@@ -532,7 +532,7 @@ const de: SiteCopy = {
   pipeline: { ...en.pipeline, title: "Die Spec ist die Arbeitseinheit.", gradient: "Der Prompt ist nur der Anfang." },
   demo: { ...en.demo, title: "Ihr Entwicklungsprozess wird", gradient: "zu einem wiederverwendbaren Graphen." },
   problem: { ...en.problem, title: "Vibe Coding ist schnell.", gradient: "Vibe Engineering macht es wiederholbar." },
-  products: { ...en.products, title: "Specrails hat zwei Modi.", gradient: "Mission Control zuerst.", cta: "Specrails herunterladen", boardExpand: "Video vergrößern", boardVideoLabel: "Echter Specrails-Board-Ablauf: Spec erstellen und in ein Rail verschieben" },
+  products: { ...en.products, title: "Specrails hat zwei Modi.", gradient: "Mission Control zuerst.", cta: "Specrails herunterladen", boardExpand: "Video vergrößern", boardVideoLabel: "Specrails Board: Specs und Ausführungsrails ansehen" },
   footer: { ...en.footer, download: "Download", docs: "Dokumentation" },
   language: { label: "Sprache", change: "Sprache ändern" },
 };
@@ -557,7 +557,7 @@ const pt: SiteCopy = {
   pipeline: { ...en.pipeline, title: "A spec é a unidade de trabalho.", gradient: "O prompt é só o começo." },
   demo: { ...en.demo, title: "Seu processo de desenvolvimento vira", gradient: "um grafo reutilizável." },
   problem: { ...en.problem, title: "Vibe coding é rápido.", gradient: "Vibe Engineering torna isso repetível." },
-  products: { ...en.products, title: "Specrails tem dois modos.", gradient: "Mission Control vem primeiro.", cta: "Baixar Specrails", boardExpand: "Ampliar vídeo", boardVideoLabel: "Fluxo real do Specrails Board criando uma spec e movendo-a para um rail" },
+  products: { ...en.products, title: "Specrails tem dois modos.", gradient: "Mission Control vem primeiro.", cta: "Baixar Specrails", boardExpand: "Ampliar vídeo", boardVideoLabel: "Specrails Board: consulte specs e rails" },
   footer: { ...en.footer, download: "Baixar", docs: "Documentação" },
   language: { label: "Idioma", change: "Alterar idioma" },
 };
@@ -582,7 +582,7 @@ const it: SiteCopy = {
   pipeline: { ...en.pipeline, title: "La spec è l'unità di lavoro.", gradient: "Il prompt è solo l'inizio." },
   demo: { ...en.demo, title: "Il tuo processo di sviluppo diventa", gradient: "un grafo riutilizzabile." },
   problem: { ...en.problem, title: "Il vibe coding è veloce.", gradient: "Vibe Engineering lo rende ripetibile." },
-  products: { ...en.products, title: "Specrails ha due modalità.", gradient: "Mission Control prima di tutto.", cta: "Scarica Specrails", boardExpand: "Ingrandisci video", boardVideoLabel: "Flusso reale di Specrails Board che crea una spec e la sposta in un rail" },
+  products: { ...en.products, title: "Specrails ha due modalità.", gradient: "Mission Control prima di tutto.", cta: "Scarica Specrails", boardExpand: "Ingrandisci video", boardVideoLabel: "Specrails Board: consulta spec e rail" },
   footer: { ...en.footer, download: "Scarica", docs: "Documentazione" },
   language: { label: "Lingua", change: "Cambia lingua" },
 };
@@ -607,7 +607,7 @@ const zh: SiteCopy = {
   pipeline: { ...en.pipeline, title: "Spec 是工作的基本单元。", gradient: "Prompt 只是开始。" },
   demo: { ...en.demo, title: "你的开发流程变成", gradient: "可复用的图。" },
   problem: { ...en.problem, title: "Vibe coding 很快。", gradient: "Vibe Engineering 让它可重复。" },
-  products: { ...en.products, title: "Specrails 有两种模式。", gradient: "Mission Control 优先。", cta: "下载 Specrails", boardExpand: "放大视频", boardVideoLabel: "真实的 Specrails Board 流程：创建 spec 并移动到 rail" },
+  products: { ...en.products, title: "Specrails 有两种模式。", gradient: "Mission Control 优先。", cta: "下载 Specrails", boardExpand: "放大视频", boardVideoLabel: "Specrails Board：查看规格和执行轨道" },
   footer: { ...en.footer, download: "下载", docs: "文档" },
   language: { label: "语言", change: "切换语言" },
 };
@@ -632,7 +632,7 @@ const ja: SiteCopy = {
   pipeline: { ...en.pipeline, title: "Spec が作業単位です。", gradient: "Prompt は始まりにすぎません。" },
   demo: { ...en.demo, title: "開発プロセスは", gradient: "再利用できるグラフになります。" },
   problem: { ...en.problem, title: "Vibe coding は速い。", gradient: "Vibe Engineering は再現性を与えます。" },
-  products: { ...en.products, title: "Specrails には2つのモードがあります。", gradient: "Mission Control が中心です。", cta: "Specrails をダウンロード", boardExpand: "動画を拡大", boardVideoLabel: "Specrails Board で spec を作成し rail へ移動する実際のフロー" },
+  products: { ...en.products, title: "Specrails には2つのモードがあります。", gradient: "Mission Control が中心です。", cta: "Specrails をダウンロード", boardExpand: "動画を拡大", boardVideoLabel: "Specrails Board：spec と実行用 rail を確認" },
   footer: { ...en.footer, download: "ダウンロード", docs: "ドキュメント" },
   language: { label: "言語", change: "言語を変更" },
 };

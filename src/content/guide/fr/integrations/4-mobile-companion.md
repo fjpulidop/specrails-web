@@ -36,3 +36,7 @@ Une fois appairé, le compagnon fait remonter vos projets et l'activité en dire
 - **La supervision d'abord.** Le compagnon est conçu pour surveiller les rails, pas pour piloter l'intégralité du workflow de bureau depuis votre téléphone.
 - **Local uniquement.** Pas de compte, pas de relais cloud — votre machine et votre téléphone, sur votre réseau.
 - **Gardez le bureau éveillé.** Le compagnon reflète une app de bureau en cours d'exécution ; si votre machine se met en veille ou que l'app se ferme, les mises à jour en direct se mettent en pause jusqu'à son retour.
+
+## Specs, rails et fichiers
+
+Parcourez le backlog partagé et les fichiers selon les droits accordés. Un Desktop compatible propose les commandes de lancement et d’arrêt des rails et les boucles disponibles. Implement traite toutes les specs du rail en une exécution ; des rails distincts peuvent fonctionner en parallèle. L’ancienne option Batch n’est plus proposée.

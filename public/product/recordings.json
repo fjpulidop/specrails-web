@@ -1,0 +1,27 @@
+{
+  "recordedAt": "2026-09-30T18:56:18.122Z",
+  "desktopCommit": "840e109b9fdd67e601b541a8500fdf4ad7706cad",
+  "sampleData": true,
+  "nativeShell": "Tauri bridge simulated for capture; real React interface",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "recordings": [
+    {
+      "id": "mission-control",
+      "file": "specrails-mission-control-real",
+      "durationSeconds": 15
+    },
+    {
+      "id": "board",
+      "file": "specrails-board-real",
+      "durationSeconds": 12
+    },
+    {
+      "id": "loop-builder",
+      "file": "specrails-loop-builder-real",
+      "durationSeconds": 10
+    }
+  ]
+}

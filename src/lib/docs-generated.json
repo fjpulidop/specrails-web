@@ -140,7 +140,8 @@
           "description": "Mission mode is the starting point for talking to the agent and following the work. Board mode gives the same project backlog an organizational view.",
           "headings": [
             "Start with the mission",
-            "Use Board when organizing work"
+            "Use Board when organizing work",
+            "Use the footer and arrange conversations"
           ]
         },
         "es": {
@@ -148,7 +149,8 @@
           "description": "El modo misión es el punto de partida para hablar con el agente y seguir el trabajo. El modo Board ofrece una vista organizativa del mismo backlog del proyecto.",
           "headings": [
             "Empieza por la misión",
-            "Usa Board para organizar trabajo"
+            "Usa Board para organizar trabajo",
+            "Usa el pie y organiza las conversaciones"
           ]
         }
       }
@@ -873,7 +875,8 @@
           "headings": [
             "Pair with the right access",
             "Follow supported work",
-            "Connection and privacy"
+            "Connection and privacy",
+            "Specs, rails and files"
           ]
         },
         "es": {
@@ -882,7 +885,8 @@
           "headings": [
             "Empareja con el acceso adecuado",
             "Sigue el trabajo compatible",
-            "Conexión y privacidad"
+            "Conexión y privacidad",
+            "Specs, rails y archivos"
           ]
         }
       }
