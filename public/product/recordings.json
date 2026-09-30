@@ -1,6 +1,6 @@
 {
-  "recordedAt": "2026-09-30T18:56:18.122Z",
-  "desktopCommit": "840e109b9fdd67e601b541a8500fdf4ad7706cad",
+  "recordedAt": "2026-09-30T19:25:08.854Z",
+  "desktopCommit": "29b41ac70dbcfe399697838bcf8a4da0b649e4c3",
   "sampleData": true,
   "nativeShell": "Tauri bridge simulated for capture; real React interface",
   "viewport": {

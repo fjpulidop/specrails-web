@@ -5,6 +5,7 @@ const {default:base} = await import(path.join(desktopDir,'client/vite.demo.confi
 const conversations = [{id:'mission-checkout',title:'Recover interrupted checkout',provider:'claude',model:'sonnet',session_id:null,pinned_project_id:'demo-project-001',tier_level:1,reasoning_effort:'high',created_at:'2026-09-30T10:00:00Z',updated_at:'2026-09-30T10:00:00Z'}]
 const snapshot = {conversation:conversations[0],messages:[{id:'m1',conversation_id:'mission-checkout',role:'user',content:'Recover checkout when the network drops. Keep the cart intact and show a clear retry action.',created_at:'2026-09-30T10:00:00Z'},{id:'m2',conversation_id:'mission-checkout',role:'assistant',content:'I will preserve the cart, add a retry path and verify the checkout flow before handing it back for review.',created_at:'2026-09-30T10:01:00Z'}],pendingMessages:[],live:{isStreaming:false,streamingText:''}}
 const loops = JSON.parse(readFileSync(new URL('./factory-loops.json', import.meta.url),'utf8')).map(loop => ({...loop,status:'published',createdAt:'2026-09-30T10:00:00Z',updatedAt:'2026-09-30T10:00:00Z',source:'builtin'}))
+const catalog = JSON.parse(readFileSync(new URL('./workflow-catalog.json', import.meta.url),'utf8'))
 const now = Date.now()
 const usage = {scope:'machine',instanceId:'recording',revision:1,providers:['claude','codex'].map(providerId=>({providerId,installed:true,generation:'sample',availability:'available',refreshState:'idle',freshness:'fresh',plan:null,source:providerId==='claude'?'oauth':'app-server',observedAt:new Date(now-120000).toISOString(),attemptedAt:new Date(now-120000).toISOString(),retryAt:null,issue:null,windows:(providerId==='claude'?[['session','session',4,300,10000000],['weekly','weekly',58,10080,160000000],['fable','weekly',28,10080,160000000]]:[['weekly','weekly',28,10080,530000000]]).map(([id,label,usedPercent,durationMinutes,reset])=>({id,label,usedPercent,durationMinutes,resetsAt:new Date(now+reset).toISOString(),scope:id==='fable'?'model':'account',model:id==='fable'?'Fable':null}))}))}
 const routeCode = `
@@ -14,7 +15,7 @@ const routeCode = `
   [/\\/loop-templates/, () => json({templates:[]})],
 
   [/\\/api\\/.*git$/, () => json({git:true,branch:"main",detached:false,dirty:false,branches:["main"],lastCommit:{hash:"a47bc91",subject:"Preserve checkout state",at:"2026-09-30T10:00:00Z"}})],
-  [/\\/api\\/loops\\/catalog/, () => json({nodeKinds:[],definitionSchema:{},capabilities:{}})],
+  [/\\/api\\/loops\\/catalog/, () => json(${JSON.stringify(catalog)})],
   [/\\/api\\/loops\\/[^/]+$/, () => json({loop:${JSON.stringify(loops[1])}})],
   [/\\/api\\/loops$/, () => json({loops:${JSON.stringify(loops)}})],
   [/\\/api\\/.*terminals/, () => json({sessions:[],limit:4})],

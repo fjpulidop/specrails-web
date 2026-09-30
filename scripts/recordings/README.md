@@ -8,8 +8,10 @@ are screenshots of the hosted release build's built-in read-only Demo.
 
 From this repository, with Desktop installed alongside it:
 
-1. Refresh `factory-loops.json` from Desktop's exported `FACTORY_LOOPS` in
+1. Refresh `factory-loops.json` from Desktop's exported `factoryLoopsForCapabilities` with the paired
+   Core capability flags in
    `server/modules/loops/runtime/loop-factory.ts` if the built-ins changed.
+   Refresh `workflow-catalog.json` using the paired Core CLI's `workflows list`.
 2. Run Desktop's Vite binary with this config:
    `../specrails-desktop/client/node_modules/.bin/vite --config scripts/recordings/vite.config.mjs`
 3. Run `node scripts/recordings/capture.mjs`. Chromium and ffmpeg are required.

@@ -25,7 +25,7 @@ describe("ProductRecordings", () => {
     expect(screen.getAllByRole("img")).toHaveLength(3);
     expect(container.querySelectorAll("video, source")).toHaveLength(0);
     expect(play).not.toHaveBeenCalled();
-    for (const recording of RECORDINGS) expect(screen.getByRole("img", { name: RECORDING_COPY.en.clips[recording.id].title })).toHaveAttribute("src", `/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=20260930-2f22d943`);
+    for (const recording of RECORDINGS) expect(screen.getByRole("img", { name: RECORDING_COPY.en.clips[recording.id].title })).toHaveAttribute("src", `/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=20260930-29b41ac7`);
     expect(screen.getByText(RECORDING_COPY.en.note)).toBeVisible();
   });
 
@@ -68,7 +68,7 @@ describe("ProductRecordings", () => {
     expect(full.controls).toBe(true);
     expect(full.className).toContain("object-contain");
     expect(within(dialog).getByText(RECORDING_COPY.en.clips.mission.description)).toBeVisible();
-    expect(within(dialog).getByRole("link", { name: "Open video file" })).toHaveAttribute("href", "/product/specrails-mission-control-real.mp4?v=20260930-2f22d943");
+    expect(within(dialog).getByRole("link", { name: "Open video file" })).toHaveAttribute("href", "/product/specrails-mission-control-real.mp4?v=20260930-29b41ac7");
     Object.defineProperty(full, "duration", { value: 15 });
     fireEvent.loadedMetadata(full);
     expect(full.currentTime).toBe(6);

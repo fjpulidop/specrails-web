@@ -46,7 +46,7 @@ for(const [id, duration] of [['mission-control',15],['board',12],['loop-builder'
     await page.keyboard.press('Escape')
   } else {
     await page.waitForTimeout(1200)
-    await page.getByText('Loop Decider',{exact:true}).last().click()
+    await page.locator('.react-flow__node[data-id="decide"]').click()
     await page.waitForTimeout(2500)
     await page.screenshot({path:`${out}/${name}.png`})
     copyFileSync(`${out}/${name}.png`,`${out}/specrails-loops-real.png`)
