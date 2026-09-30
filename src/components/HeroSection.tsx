@@ -15,7 +15,7 @@ import {
 import { useI18n } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const PROVIDERS = ["Claude", "Codex", "Gemini"] as const;
+const PROVIDERS = ["Claude", "Codex"] as const;
 
 const HeroSection = () => {
   const releaseState = useReleaseManifest();

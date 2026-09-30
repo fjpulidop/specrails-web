@@ -19,8 +19,6 @@ Enquanto a spec está a ser escrita, uma pequena notificação no canto mostra o
 
 **Modelo** — por predefinição, a IA escolhe um modelo sensato. Pode substituí-lo por spec a partir do seletor de modelo se quiser um mais rápido ou mais capaz.
 
-**Motor** — se o seu projeto tiver mais do que um fornecedor de IA instalado (qualquer combinação de Claude, Codex e Gemini), um seletor de motor fica no topo da janela para que possa escolher qual deles gera esta spec. A sua escolha é memorizada por projeto. Projetos com um único fornecedor não mostram isto — não há nada por onde escolher.
-
 **Contexto** — o modo Quick normalmente corre como um único turno, porque não precisa de ler a sua base de código para escrever uma spec a partir da sua descrição. Mas um seletor de contexto permite dar-lhe mais material para trabalhar:
 
 - No nível mais baixo, lê apenas a sua descrição.

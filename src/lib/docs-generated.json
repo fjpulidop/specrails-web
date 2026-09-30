@@ -797,7 +797,7 @@
       "translations": {
         "en": {
           "title": "Connect an AI provider",
-          "description": "Specrails coordinates your authenticated Claude, Codex, Gemini or Kimi CLI. Provider installation, account access and model billing remain separate from the application.",
+          "description": "Specrails coordinates your authenticated Claude or Codex CLI. Provider installation, account access and model billing remain separate from the application.",
           "headings": [
             "Connect and verify",
             "Understand the boundary"
@@ -805,7 +805,7 @@
         },
         "es": {
           "title": "Conecta un proveedor de IA",
-          "description": "Specrails coordina tus CLI autenticadas de Claude, Codex, Gemini o Kimi. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.",
+          "description": "Specrails coordina tus CLI autenticadas de Claude o Codex. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.",
           "headings": [
             "Conecta y comprueba",
             "Comprende los límites"

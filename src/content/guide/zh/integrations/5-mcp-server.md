@@ -31,19 +31,6 @@ Specrails 可以把**自己**暴露给任何会说 [Model Context Protocol](http
 
 支持远程 HTTP MCP 服务器的客户端，则可以直接指向 `http://127.0.0.1:4200/api/mcp`，并配上面板里的令牌。
 
-### 从终端连接: Claude Code、Gemini CLI、Codex CLI
-
-先在 **设置 ▸ MCP ▸ 复制令牌** 复制令牌, 然后:
-
-```bash
-# Claude Code
-claude mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <你的令牌>"
-
-# Gemini CLI
-gemini mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <你的令牌>"
-
 # Codex CLI (stdio — 注册 设置 ▸ MCP 中显示的 bridge 命令)
 codex mcp add specrails -- <设置 ▸ MCP 中的 bridge 命令>
 ```

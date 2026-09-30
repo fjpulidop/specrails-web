@@ -8,8 +8,6 @@ O Specrails é um espaço de trabalho local que transforma uma ideia numa spec p
 
 Instale a aplicação e autentique um fornecedor. Adicione o projeto e os repositórios, abra uma missão e descreva o resultado. Reveja a spec, escolha um loop e verifique as evidências antes de aceitar cada entrega.
 
-Uma missão também pode explorar código, usar o navegador e observar processos. A spec define a mudança; o loop define o processo. Claude, Codex, Gemini e Kimi têm capacidades diferentes. Chamadas a fornecedores e integrações podem enviar contexto e gerar custos.
-
 ## O que corre onde
 
 O Specrails é uma única aplicação. O Desktop inclui o seu motor, o **Specrails Core**: quando adiciona um projeto, o Desktop usa o Core para preparar os ficheiros de fluxo de trabalho de que o seu fornecedor precisa, e o loop integrado Implement recorre ao Core para planear, desenvolver, verificar e rever a alteração antes de devolver o resultado ao Desktop. O Desktop trata de tudo o resto: missões, Board, worktrees, commits, pull requests e histórico.

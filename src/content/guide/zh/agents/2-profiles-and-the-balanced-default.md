@@ -35,10 +35,6 @@ Profile 的选择就发生在你启动的地方——**rail 头部**，通过 Pr
 
 整个流程就这么简单：选一个 Profile、启动、搞定。同一批次中并发运行的 rail 各自带着自己的 Profile，所以一个快速修复和一个重量级功能可以并排运行、采用各不相同的配置。
 
-## 当 Agents 区悄无声息时
-
-Profile 是 Claude 的能力。在包含非 Claude 提供商（Codex 或 Gemini）的项目上，Agents 区会被隐藏，rail 会在没有 Profile 的情况下运行——这是预期行为，并非 bug。Profile 还要求项目中的 `specrails-core` 足够新；如果版本偏旧，你会看到一条黄色横幅。你创建的 Profile 仍会**保存**——只是在 core 更新之前不会影响流水线。按横幅中给出的命令更新，即可解锁它们。
-
 ## 接下来去哪儿
 
 - [按 Agent 自定义模型](customizing-models-per-agent)——打造 `fast` 和 `max` Profile。

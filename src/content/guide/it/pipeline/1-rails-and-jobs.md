@@ -36,7 +36,7 @@ Tutto qui. Il rail avvia un processo CLI AI nel contesto di esecuzione corretto 
 | **Elenco spec** | Gli ID assegnati a questo rail. Trascinane altri dentro, oppure fuori per staccarli. |
 | **Selettore Loop** | Il Loop che questo rail esegue — uno integrato (`Implement` / `Quick SDD` / `Freestyle`) o un loop personalizzato. Vedi la tabella più sotto. Viene salvato per ogni rail. |
 | **Selettore profilo** | Quale profilo agente viene eseguito (solo per i rail Claude). Compare solo quando il progetto ha almeno un profilo. |
-| **Selettore engine** | Quale provider installato esegue questo rail — Claude, Codex o Gemini. Viene mostrato solo quando il progetto ha più di un provider. Vedi [Scegliere un engine per ogni rail](picking-an-engine-per-rail). |
+| **Selettore engine** | Quale provider installato esegue questo rail — Claude o Codex. Viene mostrato solo quando il progetto ha più di un provider. Vedi [Scegliere un engine per ogni rail](picking-an-engine-per-rail). |
 | **▶ Play / ■ Stop** | Avvia o annulla. |
 
 ### Cosa esegue un rail: i Loop
@@ -78,10 +78,6 @@ Clicca su una scheda qualsiasi per aprire la **vista Dettaglio job**, dove vivon
 
 Clicca su **■ Stop** nell'intestazione del rail. L'app invia `SIGTERM` al sottoprocesso, attende **5 secondi** un'uscita pulita e poi gli invia `SIGKILL`. Niente resta avviato a metà.
 
-## Se un rail non parte
-
-Se scegli un engine la cui CLI non è installata sulla tua macchina, l'avvio **fallisce subito** invece di avviare un job difettoso — non viene avviato nulla. Installa la CLI del provider mancante ([Usare Codex](../integrations/using-codex), [Usare Gemini](../integrations/using-gemini)) e riprova ad avviare. Se mancano Claude o Codex compare un messaggio preciso "*&lt;provider&gt; CLI not found*"; se manca Gemini oggi viene mostrato un errore di avvio generico, ma il risultato è lo stesso.
-
 ## Fermare tutto
 
 Se qualcosa sembra non andare:
@@ -94,4 +90,3 @@ Se qualcosa sembra non andare:
 
 - [Il Loop Builder](the-loop-builder) — cosa esegue un rail e come costruire i tuoi loop.
 - [La vista Dettaglio job](the-job-detail-view) — fasi, metriche live, schede ticket.
-- [Scegliere un engine per ogni rail](picking-an-engine-per-rail) — Claude vs Codex vs Gemini.

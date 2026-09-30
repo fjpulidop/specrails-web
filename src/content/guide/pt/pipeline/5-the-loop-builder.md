@@ -17,7 +17,6 @@ Um **loop** é a *receita* do trabalho; um **rail** é a *pista* que o roda cont
 
 - Os loops vivem na seção **Loops** (barra lateral esquerda, ao lado dos seus projetos) — eles são **globais**, compartilhados por todos os projetos.
 - Um rail **escolhe um loop** no cabeçalho (o seletor de Loop) e o roda quando você aperta Play.
-- O **rail** decide o provedor, o modelo e o esforço de raciocínio — *não* os passos do loop. O mesmo loop roda em Claude, Codex ou Gemini dependendo do rail.
 
 Ou seja: construa um loop uma vez e depois escolha-o em qualquer rail, em qualquer projeto.
 
@@ -57,7 +56,6 @@ Um loop que nunca para queimaria dinheiro para sempre, então toda execução te
 |-------|--------------|
 | **Max iterations** | Teto rígido de quantas vezes o Decider pode voltar atrás, independentemente do seu veredito. |
 | **Timeout (min)** | Limite de tempo de relógio para toda a execução. |
-| **Max cost ($)** | *Opcional.* Para o loop quando o custo acumulado cruza o seu orçamento. Verificado **entre passos** (o custo de um passo só é conhecido quando ele termina), então pode freestylepassar em um passo. No Claude o custo é exato; no Codex e no Gemini é uma estimativa. Deixe vazio para não ter teto. |
 
 ## Construindo com confiança
 

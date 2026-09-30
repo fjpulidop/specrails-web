@@ -35,10 +35,6 @@ Die Profilwahl passiert genau dort, wo du startest – im **Rail-Header**, über
 
 Das ist der ganze Ablauf: Profil wählen, starten, fertig. Gleichzeitig laufende Rails können jeweils ihr eigenes Profil tragen, sodass ein schneller Fix und ein umfangreiches Feature mit unterschiedlichen Setups nebeneinander laufen können.
 
-## Wenn der Agents-Bereich still ist
-
-Profile sind eine Claude-Fähigkeit. Bei einem Projekt, das einen Nicht-Claude-Provider (Codex oder Gemini) enthält, ist der Agents-Bereich ausgeblendet und Rails laufen ohne Profile – das ist so gewollt, kein Fehler. Außerdem setzen Profile ein hinreichend aktuelles `specrails-core` im Projekt voraus; ist es älter, siehst du ein gelbes Banner. Die von dir erstellten Profile werden trotzdem **gespeichert** – sie wirken sich nur erst auf die Pipeline aus, wenn core aktualisiert ist. Aktualisiere mit dem im Banner gezeigten Befehl, um sie freizuschalten.
-
 ## Wie es weitergeht
 
 - [Modelle pro Agent anpassen](customizing-models-per-agent) – `fast`- und `max`-Profile bauen.

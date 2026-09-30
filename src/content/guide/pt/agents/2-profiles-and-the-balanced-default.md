@@ -35,10 +35,6 @@ A seleção do perfil acontece mesmo onde lança — no **cabeçalho do rail**, 
 
 É todo o fluxo: escolha um perfil, lance, pronto. Rails concorrentes podem levar cada um o seu próprio perfil, por isso uma correção rápida e uma funcionalidade pesada podem correr lado a lado com configurações diferentes.
 
-## Quando a secção Agentes está silenciosa
-
-Os perfis são uma capacidade do Claude. Num projeto que inclua um provider que não seja o Claude (Codex ou Gemini), a secção Agentes fica oculta e os rails correm sem perfis — isso é esperado, não é um bug. Os perfis também exigem uma versão suficientemente recente do `specrails-core` no projeto; se for mais antiga, verá um banner amarelo. Os perfis que criar continuam a ser **guardados** — apenas não afetam o pipeline até o core ser atualizado. Atualize com o comando indicado no banner para os desbloquear.
-
 ## Para onde ir a seguir
 
 - [Personalizar modelos por agente](customizing-models-per-agent) — construa perfis `fast` e `max`.

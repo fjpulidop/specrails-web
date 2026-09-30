@@ -36,7 +36,6 @@ Voilà. Le rail démarre un processus AI CLI dans le bon contexte d'exécution e
 | **Liste de specs** | Les IDs assignés à ce rail. Glissez-en d'autres, retirez-les pour les détacher. |
 | **Sélecteur de Loop** | Le Loop que ce rail exécute — un intégré (`Implement` / `Quick SDD` / `Freestyle`) ou un loop personnalisé. Voir le tableau ci-dessous. Persisté par rail. |
 | **Sélecteur de profil** | Quel profil d'agent s'exécute (rails Claude uniquement). N'apparaît que lorsque le projet a au moins un profil. |
-| **Sélecteur de moteur** | Quel provider installé exécute ce rail — Claude, Codex, ou Gemini. Ne s'affiche que lorsque le projet a plus d'un provider. Voir [Choisir un moteur par rail](picking-an-engine-per-rail). |
 | **▶ Play / ■ Stop** | Démarrer ou annuler. |
 
 ### Ce qu'un rail exécute : les Loops
@@ -78,10 +77,6 @@ Cliquez sur n'importe quelle carte pour ouvrir la **vue détaillée du job**, o�
 
 Cliquez sur **■ Stop** dans l'en-tête du rail. L'app envoie `SIGTERM` au sous-processus, attend **5 secondes** une sortie propre, puis le `SIGKILL`. Rien ne reste à moitié démarré.
 
-## Si un rail ne se lance pas
-
-Si vous choisissez un moteur dont le CLI n'est pas installé sur votre machine, le lancement **échoue immédiatement** au lieu de démarrer un job cassé — rien ne démarre. Installez le CLI du provider manquant ([Utiliser Codex](../integrations/using-codex), [Utiliser Gemini](../integrations/using-gemini)) et relancez. Un Claude ou Codex manquant donne un message précis « *&lt;provider&gt; CLI not found* » ; un Gemini manquant fait apparaître une erreur de lancement générique aujourd'hui, mais le résultat est le même.
-
 ## Tout arrêter
 
 Si quelque chose semble anormal :
@@ -94,4 +89,3 @@ Si quelque chose semble anormal :
 
 - [Le Loop Builder](the-loop-builder) — ce qu'un rail exécute, et comment construire vos propres loops.
 - [La vue détaillée du job](the-job-detail-view) — phases, métriques en direct, cartes de ticket.
-- [Choisir un moteur par rail](picking-an-engine-per-rail) — Claude vs Codex vs Gemini.

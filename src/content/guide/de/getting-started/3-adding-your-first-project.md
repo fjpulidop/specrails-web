@@ -22,7 +22,6 @@ Wähle, welche KI-Provider dieses Projekt nutzen soll. specrails zeigt dir die, 
 
 - 🤖 **Claude**
 - ⚡ **Codex**
-- ✨ **Gemini**
 
 Nicht gefundene Provider sind ausgegraut und als *nicht gefunden* markiert – installiere einen, melde dich an und öffne den Dialog dann erneut. Standardmäßig ist jeder verfügbare Provider vorausgewählt, du kannst die Auswahl aber auf genau den reduzieren, den du möchtest. Wählst du mehr als einen, wird der **erste** zum Standard des Projekts; pro Aufgabe kannst du später trotzdem wählen.
 

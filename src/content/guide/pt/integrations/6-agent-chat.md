@@ -20,10 +20,6 @@ O cabeçalho tem um **seletor de projeto** (como o do Cursor). Escolha um projet
 
 Escolher um projeto aqui **não** move o seu painel — o alvo do agente e o que você está vendo são independentes.
 
-## Provedor e modelo
-
-Logo acima da caixa de mensagem você escolhe o **provedor** (Claude, Codex ou Gemini) e o seu **modelo**. Cada provedor tem a sua própria lista de modelos, e trocar de provedor inicia uma sessão nova com o modelo padrão daquele provedor — assim você pode, por exemplo, conduzir a aplicação com o Claude e passar para o Codex em outra conversa sem que nada se misture.
-
 ## Níveis de permissão — a rédea está com você
 
 O agente pode mexer na aplicação inteira, então você decide quanta liberdade ele tem por meio de um **nível** que você muda ao vivo pressionando **Shift+Tab** (o mesmo ciclo que o Claude Code usa). Cada nível inclui tudo o que está abaixo:

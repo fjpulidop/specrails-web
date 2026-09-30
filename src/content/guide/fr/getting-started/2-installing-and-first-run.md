@@ -22,7 +22,6 @@ La seule chose que specrails ne peut pas intégrer, c'est la **CLI du fournisseu
 
 - **Claude Code**
 - **Codex CLI**
-- **Gemini CLI**
 
 Installez celle que vous comptez utiliser, connectez-vous une fois depuis votre terminal, et le tour est joué. Specrails détecte automatiquement les fournisseurs présents.
 

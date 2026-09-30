@@ -8,7 +8,7 @@ Profiles are workflow presets for allocating model capability across roles. They
 
 Inspect the profile shown by Specrails rather than assuming a historical default applies to your installation. A balanced preset aims to distribute work sensibly; it cannot predict the complexity or cost of a particular change.
 
-Claude and Kimi have profile-aware paths. Codex and Gemini expose their own model and capability controls. A profile name should not be interpreted as a promise that every nested call uses the same model.
+Claude have profile-aware paths. Codex expose their own model and capability controls. A profile name should not be interpreted as a promise that every nested call uses the same model.
 
 ## Compare with a real task
 

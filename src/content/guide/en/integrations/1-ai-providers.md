@@ -2,7 +2,7 @@
 
 # Connect an AI provider
 
-Specrails coordinates your authenticated Claude, Codex, Gemini or Kimi CLI. Provider installation, account access and model billing remain separate from the application.
+Specrails coordinates your authenticated Claude or Codex CLI. Provider installation, account access and model billing remain separate from the application.
 
 ## Connect and verify
 

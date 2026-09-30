@@ -36,7 +36,6 @@ Das war's. Die rail startet einen KI-CLI-Prozess im richtigen Ausführungskontex
 | **Spec-Liste** | Die IDs, die dieser rail zugewiesen sind. Zieh weitere hinein oder heraus, um sie wieder zu lösen. |
 | **Loop-Auswahl** | Der Loop, den diese rail ausführt — ein eingebauter (`Implement` / `Quick SDD` / `Freestyle`) oder ein eigener Loop. Siehe Tabelle unten. Pro rail gespeichert. |
 | **Profil-Auswahl** | Welches Agent-Profil läuft (nur bei Claude-rails). Erscheint erst, wenn das Projekt mindestens ein Profil hat. |
-| **Engine-Auswahl** | Welcher installierte Provider diese rail ausführt — Claude, Codex oder Gemini. Wird nur angezeigt, wenn das Projekt mehr als einen Provider hat. Siehe [Engine pro Rail wählen](picking-an-engine-per-rail). |
 | **▶ Play / ■ Stop** | Starten oder abbrechen. |
 
 ### Was eine rail ausführt: Loops
@@ -78,10 +77,6 @@ Klick auf eine beliebige Karte, um die **Job-Detail-Ansicht** zu öffnen, in der
 
 Klick im rail-Header auf **■ Stop**. Die App sendet `SIGTERM` an den Subprozess, wartet **5 Sekunden** auf einen sauberen Ausstieg und schickt dann `SIGKILL`. Es bleibt nichts halb gestartet zurück.
 
-## Wenn eine Rail nicht starten will
-
-Wenn du eine Engine wählst, deren CLI nicht auf deinem Rechner installiert ist, **schlägt der Start sofort fehl**, anstatt einen kaputten Job zu starten — es wird nichts gestartet. Installiere die fehlende Provider-CLI ([Codex verwenden](../integrations/using-codex), [Gemini verwenden](../integrations/using-gemini)) und starte erneut. Ein fehlendes Claude oder Codex liefert eine präzise „*&lt;provider&gt; CLI not found*“-Meldung; ein fehlendes Gemini zeigt heute eine generische Startfehlermeldung, aber das Ergebnis ist dasselbe.
-
 ## Alles stoppen
 
 Wenn etwas nicht stimmt:
@@ -94,4 +89,3 @@ Wenn etwas nicht stimmt:
 
 - [Der Loop Builder](the-loop-builder) — was eine rail ausführt und wie du deine eigenen Loops baust.
 - [Die Job-Detail-Ansicht](the-job-detail-view) — Phasen, Live-Metriken, Ticket-Karten.
-- [Engine pro Rail wählen](picking-an-engine-per-rail) — Claude vs. Codex vs. Gemini.

@@ -138,7 +138,8 @@ describe("HeroSection", () => {
     renderHero();
     expect(screen.getByText("Claude")).toBeInTheDocument();
     expect(screen.getByText("Codex")).toBeInTheDocument();
-    expect(screen.getByText("Gemini")).toBeInTheDocument();
+    expect(screen.queryByText("Gemini")).not.toBeInTheDocument();
+    expect(screen.queryByText("Kimi")).not.toBeInTheDocument();
   });
 
   it("renders Star on GitHub button for specrails-desktop", () => {

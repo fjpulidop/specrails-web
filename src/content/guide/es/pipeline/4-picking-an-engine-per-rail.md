@@ -8,7 +8,7 @@ La configuración depende del proveedor elegido. Un nombre de modelo conocido no
 
 Autentica la CLI y revisa su estado en Specrails. Elige entre los modelos y niveles que ofrecen sus controles. Tener instalada la CLI no evita fallos de sesión, cuota o servicio remoto.
 
-Claude, Codex, Gemini y Kimi usan adaptadores distintos. Las combinaciones incompatibles deben fallar antes de empezar; un paso que exija una respuesta estructurada sin herramientas no funciona necesariamente con todos.
+Claude y Codex usan adaptadores distintos. Las combinaciones incompatibles deben fallar antes de empezar; un paso que exija una respuesta estructurada sin herramientas no funciona necesariamente con todos.
 
 ## Usa el nivel de control adecuado
 

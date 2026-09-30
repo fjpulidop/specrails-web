@@ -35,10 +35,6 @@ La scelta del profilo avviene proprio dove si lancia — nell'**intestazione del
 
 È tutto il flusso: scegli un profilo, avvia, fatto. I rail concorrenti possono portare ciascuno il proprio profilo, così una correzione veloce e una feature impegnativa possono girare fianco a fianco con configurazioni diverse.
 
-## Quando la sezione Agenti tace
-
-I profili sono una funzionalità di Claude. Su un progetto che include un provider diverso da Claude (Codex o Gemini), la sezione Agenti è nascosta e i rail girano senza profili — è il comportamento atteso, non un bug. I profili richiedono inoltre una versione di `specrails-core` abbastanza recente nel progetto; se è più datata, vedrai un banner giallo. I profili che crei vengono comunque **salvati** — semplicemente non influiscono sulla pipeline finché core non viene aggiornato. Aggiorna con il comando indicato nel banner per sbloccarli.
-
 ## Dove andare adesso
 
 - [Personalizzare i modelli per agente](customizing-models-per-agent) — costruisci i profili `fast` e `max`.

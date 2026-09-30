@@ -113,8 +113,6 @@ export function ProductHero() {
         />
         <span>Claude</span>
         <span>Codex</span>
-        <span>Gemini</span>
-        <span>Kimi</span>
         <span className="ml-auto hidden font-mono text-[10px] tracking-widest sm:block">
           SPEC → IMPLEMENT → REVIEW
         </span>

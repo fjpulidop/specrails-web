@@ -31,19 +31,6 @@ Claude Desktop や Cursor のようなクライアントでは、設定は次の
 
 リモートの HTTP MCP サーバーに対応しているクライアントなら、代わりにパネルのトークンを使って `http://127.0.0.1:4200/api/mcp` を直接指すこともできます。
 
-### ターミナルから: Claude Code、Gemini CLI、Codex CLI
-
-**設定 ▸ MCP ▸ トークンをコピー** からトークンをコピーして、次を実行します:
-
-```bash
-# Claude Code
-claude mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <あなたのトークン>"
-
-# Gemini CLI
-gemini mcp add --transport http specrails http://localhost:4200/api/mcp \
-  --header "X-Desktop-Token: <あなたのトークン>"
-
 # Codex CLI (stdio — 設定 ▸ MCP に表示されるブリッジコマンドを登録)
 codex mcp add specrails -- <設定 ▸ MCP のブリッジコマンド>
 ```

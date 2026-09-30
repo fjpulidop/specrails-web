@@ -1,16 +1,13 @@
-# KI-Anbieter (Claude, Codex, Gemini)
+# KI-Anbieter (Claude, Codex)
 
-Specrails ist nicht an eine einzige KI gebunden. Jeder Teil der App, der mit einer KI spricht — Explore Spec, Quick-Spec, Rails, Chat, AI Edit, der „Open AI CLI“-Button im Terminal — kann über einen von drei vollwertigen Anbietern laufen. Du legst fest, welche ein Projekt verwendet, und kannst sogar pro Aufgabe umschalten.
+Specrails ist nicht an eine einzige KI gebunden. Jeder Teil der App, der mit einer KI spricht — Explore Spec, Quick-Spec, Rails, Chat, AI Edit, der „Open AI CLI“-Button im Terminal — kann über einen von zwei vollwertigen Anbietern laufen. Du legst fest, welche ein Projekt verwendet, und kannst sogar pro Aufgabe umschalten.
 
-## Die drei Anbieter
+## Die zwei Anbieter
 
 | Anbieter | CLI | Hersteller | Hinweise |
 |---|---|---|---|
 | **Claude** | `claude` | Anthropic | Der mit Abstand umfangreichste. Der einzige Anbieter für Agents (Profile), Freestyle-Rails und Contract Refine. |
 | **Codex** | `codex` | OpenAI | Benötigt codex `0.128.0+`. Liest seine MCP-Server aus deiner globalen `~/.codex/config.toml`. |
-| **Gemini** | `gemini` | Google | Benötigt gemini `0.11.0+`. Nutzt native Telemetrie und eine `GEMINI.md`-Instruktionsdatei. |
-
-Alle drei sind **standardmäßig aktiviert**. Ein Anbieter taucht in **Projekt hinzufügen** auf, sobald seine CLI installiert ist und in deinem `PATH` liegt. Der erste Schritt ist also immer derselbe: Installiere die gewünschte CLI und melde dich damit an — genau so, wie es in der jeweiligen Dokumentation des Tools beschrieben ist. Sobald `claude --version` (oder `codex` bzw. `gemini`) in deinem Terminal funktioniert, kann Specrails es nutzen.
 
 ## Einen Anbieter für ein Projekt installieren
 
@@ -19,8 +16,6 @@ Wenn du ein Projekt hinzufügst, fragt dich der Einrichtungsassistent, welche(n)
 Falls eine gewünschte CLI in „Projekt hinzufügen“ nicht angeboten wird, liegt das fast immer daran, dass die CLI nicht installiert ist oder nicht in deinem `PATH` liegt. Installiere sie und öffne „Projekt hinzufügen“ erneut.
 
 ## Mehrere Anbieter für ein Projekt installieren
-
-Du kannst **mehr als einen** Anbieter in dasselbe Projekt installieren — zum Beispiel Claude *und* Gemini. In **Projekt hinzufügen** wird die Anbieterliste zu einer Reihe von Checkboxen; hake alles an, was du möchtest. Der erste, den du auswählst, wird zum **primären** (Standard-)Anbieter des Projekts; die übrigen stehen als Alternativen bereit.
 
 Ein paar Dinge, die du über Multi-Anbieter-Projekte wissen solltest:
 
@@ -47,18 +42,8 @@ Eine Handvoll Funktionen sind ihrer Natur nach Claude-spezifisch und werden dahe
 - **Contract Refine** — der zusätzliche „Contract Layer“-Durchlauf auf einer committeten Spec läuft nur, wenn der Anbieter der Konversation Claude ist.
 - **Erweiterte Modi bei „Spec hinzufügen“** (SMASH / Contract Layer) — bei Nicht-Claude-Engines ausgeblendet.
 
-Alles andere — Explore, Quick-Spec, die vollständige Rails-Pipeline, AI Edit, Chat, Kosten-Analytics — funktioniert über alle drei hinweg.
-
-## Kostenverfolgung über alle Anbieter hinweg
-
-Die **Analytics**-Seite erfasst jeden abrechenbaren Aufruf unabhängig vom Anbieter. Auf Multi-Anbieter-Projekten ergänzt sie Engine-Filter-Chips, mit denen du die Ausgaben pro Anbieter vergleichen kannst. Claude meldet seine eigenen exakten Kosten; für Codex und Gemini schätzt Specrails die Kosten anhand einer eingebauten Preistabelle — die Zahlen sind also gute Näherungswerte, keine tatsächlich abgerechneten Beträge.
+Alles andere — Explore, Quick-Spec, die vollständige Rails-Pipeline, AI Edit, Chat, Kosten-Analytics — funktioniert über alle zwei hinweg.
 
 ## Fehlerbehebung
 
-- **Ein installierter Anbieter wird nicht angeboten.** Stelle sicher, dass die CLI in deinem `PATH` liegt (probiere `claude --version` / `codex --version` / `gemini --version` in einem frischen Terminal). Die App prüft Anbieter-CLIs über deinen System-`PATH`.
 - **Codex-MCP-Server werden im Chat nicht geladen.** Codex liest MCP-Server aus deiner globalen `~/.codex/config.toml` — registriere sie dort mit `codex mcp add`.
-- **Notabschaltung.** Ein Anbieter lässt sich app-weit über eine Umgebungsvariable abschalten (`SPECRAILS_CODEX_BETA=0` oder `SPECRAILS_GEMINI_BETA=0`). Das blendet den Anbieter nur aus der *Auswahl* aus; es wird selten gebraucht.
-
-## Siehe auch
-
-Die dedizierten Anbieter-Guides gehen tiefer auf jede CLI ein: Der Codex-Guide und der Gemini-Guide behandeln jeweils Einrichtung, Funktionsumfang und anbieterspezifische Besonderheiten.

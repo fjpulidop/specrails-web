@@ -17,7 +17,6 @@ Ein **Loop** ist das *Rezept* für die Arbeit; eine **rail** ist die *Spur*, die
 
 - Loops leben im **Loops**-Bereich (linke Seitenleiste, neben deinen Projekten) — sie sind **global**, projektübergreifend geteilt.
 - Eine rail **wählt einen Loop** in ihrem Header (der Loop-Picker) und führt ihn aus, wenn du Play drückst.
-- Die **rail** entscheidet über Provider, Modell und Reasoning-Aufwand — *nicht* die Schritte des Loops. Derselbe Loop läuft auf Claude, Codex oder Gemini, je nach rail.
 
 Also: Bau einen Loop einmal, dann wähl ihn auf jeder rail in jedem Projekt.
 
@@ -57,7 +56,6 @@ Ein Loop, der nie stoppt, würde ewig Geld verbrennen, also hat jeder Lauf drei 
 |-------|--------------|
 | **Max iterations** | Harte Obergrenze, wie oft der Decider zurückschleifen darf, unabhängig von seinem Urteil. |
 | **Timeout (min)** | Echtzeit-Limit für den gesamten Lauf. |
-| **Max cost ($)** | *Optional.* Stoppt den Loop, sobald die aufgelaufenen Kosten dein Budget überschreiten. Wird **zwischen Schritten** geprüft (die Kosten eines Schritts sind erst bekannt, wenn er fertig ist), kann also um einen Schritt überschießen. Auf Claude sind die Kosten exakt; auf Codex und Gemini sind sie eine Schätzung. Lass es leer für keine Obergrenze. |
 
 ## Mit Sicherheit bauen
 

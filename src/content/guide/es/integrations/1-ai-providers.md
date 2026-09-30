@@ -2,7 +2,7 @@
 
 # Conecta un proveedor de IA
 
-Specrails coordina tus CLI autenticadas de Claude, Codex, Gemini o Kimi. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.
+Specrails coordina tus CLI autenticadas de Claude o Codex. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.
 
 ## Conecta y comprueba
 

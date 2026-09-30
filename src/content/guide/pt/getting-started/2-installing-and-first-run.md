@@ -22,7 +22,6 @@ A única coisa que o specrails não consegue incluir é a própria **CLI do forn
 
 - **Claude Code**
 - **Codex CLI**
-- **Gemini CLI**
 
 Instale aquela que planeia usar, inicie sessão nela uma vez a partir do seu terminal, e está tudo a postos. O specrails deteta automaticamente quais os fornecedores presentes.
 

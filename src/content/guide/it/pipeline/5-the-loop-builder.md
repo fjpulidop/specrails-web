@@ -17,7 +17,7 @@ Un **loop** è la *ricetta* del lavoro; un **rail** è la *corsia* che lo esegue
 
 - I loop vivono nella sezione **Loops** (sidebar sinistra, accanto ai tuoi progetti) — sono **globali**, condivisi tra tutti i progetti.
 - Un rail **sceglie un loop** nel suo header (il selettore Loop) e lo esegue quando premi Play.
-- È il **rail** a decidere provider, modello e reasoning effort — *non* gli step del loop. Lo stesso loop gira su Claude, Codex o Gemini a seconda del rail.
+- È il **rail** a decidere provider, modello e reasoning effort — *non* gli step del loop. Lo stesso loop gira su Claude o Codex a seconda del rail.
 
 Quindi: costruisci un loop una volta, poi scegli quel loop su qualsiasi rail in qualsiasi progetto.
 
@@ -57,7 +57,6 @@ Un loop che non si ferma mai brucerebbe soldi per sempre, quindi ogni esecuzione
 |-------|--------------|
 | **Max iterations** | Tetto massimo di quante volte il Decider può tornare indietro, indipendentemente dal suo verdetto. |
 | **Timeout (min)** | Limite di tempo reale per l'intera esecuzione. |
-| **Max cost ($)** | *Opzionale.* Ferma il loop quando il costo accumulato supera il tuo budget. Controllato **tra uno step e l'altro** (il costo di uno step si conosce solo quando finisce), quindi può sforare di uno step. Su Claude il costo è esatto; su Codex e Gemini è una stima. Lascialo vuoto per nessun tetto. |
 
 ## Costruire con sicurezza
 
