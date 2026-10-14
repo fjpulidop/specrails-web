@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/fjpulidop/specrails-web/compare/v1.18.0...v1.19.0) (2026-10-14)
+
+
+### Features
+
+* **download:** read Desktop releases from GitHub instead of Hostinger ([#224](https://github.com/fjpulidop/specrails-web/issues/224)) ([f0df54e](https://github.com/fjpulidop/specrails-web/commit/f0df54ebfc65bb97f5260b2b29a4126664fd292a))
+
 ## [1.18.0](https://github.com/fjpulidop/specrails-web/compare/v1.17.1...v1.18.0) (2026-09-25)
 
 
