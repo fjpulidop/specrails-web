@@ -1,0 +1,7 @@
+[
+  {
+    "id": "GHSA-vfj7-8cjw-p6xm",
+    "reason": "braces <=3.0.3 has no patched release; it reaches us only through tailwindcss 3 (chokidar/micromatch) at build time, expanding globs from our own tailwind.config.ts. The fix is the Tailwind 4 migration.",
+    "expires": "2026-12-31"
+  }
+]
