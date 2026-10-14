@@ -109,7 +109,7 @@ describe("HeroSection", () => {
     expect(downloadCta).toBeInTheDocument();
     expect(downloadCta).toHaveAttribute(
       "href",
-      expect.stringContaining("/downloads/specrails-desktop/latest/"),
+      "https://github.com/fjpulidop/specrails-desktop/releases/latest",
     );
   });
 

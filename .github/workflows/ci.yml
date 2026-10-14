@@ -60,7 +60,9 @@ jobs:
           cache: npm
       - run: npm ci
       # Protect both the shipped bundle and the tools that build and test it.
-      - run: npm audit --audit-level=high
+      # High/critical advisories block unless .github/audit-allowlist.json holds a
+      # dated, justified exception (for advisories with no patched release).
+      - run: npm run audit:gate
       - run: npm run check:types
       - run: npm run test:docs-sync
       - run: npm run test:coverage

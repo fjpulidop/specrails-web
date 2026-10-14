@@ -17,7 +17,7 @@ describe("downloadFromState", () => {
         platforms: {
           "darwin-arm64": {
             filename: "specrails-desktop-1.30.0-aarch64.dmg",
-            url: "https://specrails.dev/downloads/specrails-desktop/latest/specrails-desktop-1.30.0-aarch64.dmg",
+            url: "https://github.com/fjpulidop/specrails-desktop/releases/download/v1.30.0/specrails-desktop-1.30.0-aarch64.dmg",
             sha256: "abc",
             size: 1000,
           },
@@ -30,11 +30,11 @@ describe("downloadFromState", () => {
     expect(version).toBe("1.30.0");
   });
 
-  it("falls back to the Hostinger latest/ folder on error", () => {
+  it("falls back to the latest GitHub release page on error", () => {
     const state: ReleaseManifestState = { status: "error", reason: "boom" };
     const { href, disabled, version } = downloadFromState(state);
     expect(href).toBe(RELEASES_FALLBACK_URL);
-    expect(href).toContain("specrails.dev/downloads/specrails-desktop/latest");
+    expect(href).toBe("https://github.com/fjpulidop/specrails-desktop/releases/latest");
     expect(disabled).toBe(false);
     expect(version).toBeNull();
   });

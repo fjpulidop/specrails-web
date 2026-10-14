@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  # Desktop downloads moved to GitHub Releases (specrails-desktop openspec:
+  # github-release-download-channel). Old links keep working: a versioned
+  # folder opens its release, anything else the latest release.
+  RewriteRule ^downloads/specrails-desktop/v([0-9]+\.[0-9]+\.[0-9]+)(/.*)?$ https://github.com/fjpulidop/specrails-desktop/releases/tag/v$1 [R=302,L]
+  RewriteRule ^downloads/specrails-desktop(/.*)?$ https://github.com/fjpulidop/specrails-desktop/releases/latest [R=302,L]
 
   # If the request is for an existing file or directory, serve it directly
   RewriteRule ^index\.html$ - [L]

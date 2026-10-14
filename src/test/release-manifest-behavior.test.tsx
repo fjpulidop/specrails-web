@@ -1,18 +1,21 @@
 import { act, renderHook, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
-import { detectPlatform, downloadForPlatform, downloadFromState, formatBytes, RELEASES_FALLBACK_URL } from '@/hooks/useReleaseManifest';
+import { detectPlatform, downloadForPlatform, downloadFromState, formatBytes, manifestFromRelease, RELEASES_FALLBACK_URL } from '@/hooks/useReleaseManifest';
 
-const asset = { filename: 'desktop.dmg', url: 'https://specrails.dev/desktop.dmg', sha256: 'a'.repeat(64), size: 4096 };
-const manifest = { schemaVersion: 1 as const, version: '2.58.0', releasedAt: '2026-09-27T00:00:00Z', releaseUrl: 'https://github.com/fjpulidop/specrails-desktop/releases/tag/v2.58.0', platforms: { 'darwin-arm64': asset } };
+const download = (name: string) => `https://github.com/fjpulidop/specrails-desktop/releases/download/v2.58.0/${name}`;
+const dmg = { name: 'specrails-desktop-2.58.0-aarch64.dmg', size: 4096, browser_download_url: download('specrails-desktop-2.58.0-aarch64.dmg'), digest: `sha256:${'a'.repeat(64)}` };
+const asset = { filename: dmg.name, url: dmg.browser_download_url, sha256: 'a'.repeat(64), size: 4096 };
+// GitHub's latest-release API response (only the fields the hook reads).
+const manifest = { tag_name: 'v2.58.0', published_at: '2026-09-27T00:00:00Z', html_url: 'https://github.com/fjpulidop/specrails-desktop/releases/tag/v2.58.0', assets: [dmg] };
 beforeEach(() => vi.resetModules());
 afterEach(() => { vi.restoreAllMocks(); vi.unstubAllGlobals(); });
 
 it.each([
-  null, 'not an object', { ...manifest, schemaVersion: 2 },
-  { ...manifest, version: 1 }, { ...manifest, releasedAt: null }, { ...manifest, releaseUrl: false },
-  { ...manifest, platforms: null }, { ...manifest, platforms: 'mac' },
-  ...[null, 'missing', { ...asset, filename: 1 }, { ...asset, url: null }, { ...asset, sha256: false }, { ...asset, size: '4096' }]
-    .map(value => ({ ...manifest, platforms: { 'darwin-arm64': value } })),
+  null, 'not an object',
+  { ...manifest, tag_name: 1 }, { ...manifest, published_at: null }, { ...manifest, html_url: false },
+  { ...manifest, assets: null }, { ...manifest, assets: [] },
+  ...[null, { ...dmg, name: 'specrails-desktop-2.58.0-darwin-aarch64.app.tar.gz' }, { ...dmg, browser_download_url: null }, { ...dmg, size: '4096' }]
+    .map(value => ({ ...manifest, assets: [value] })),
 ])('keeps malformed release metadata out of download links: %j', async value => {
   vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response(JSON.stringify(value)));
   const { useReleaseManifest } = await import('@/hooks/useReleaseManifest');
@@ -47,6 +50,20 @@ it('allows remaining consumers to finish when the first consumer unmounts during
   const second = renderHook(() => useReleaseManifest());
   await act(async () => { finish(new Response(JSON.stringify(manifest))); });
   expect(second.result.current.status).toBe('ready');
+});
+
+it('maps the canonical installers of a GitHub release and ignores updater bundles', () => {
+  const names = ['latest.json', 'specrails-desktop-2.63.1-aarch64.dmg', 'specrails-desktop-2.63.1-arm64-setup.exe', 'specrails-desktop-2.63.1-darwin-aarch64.app.tar.gz',
+    'specrails-desktop-2.63.1-windows-aarch64-setup.exe', 'specrails-desktop-2.63.1-windows-x86_64-setup.exe', 'specrails-desktop-2.63.1-x64-setup.exe']
+  const assets = names.map((name, index) => ({ name, size: 100 + index, browser_download_url: `https://example.test/${name}`, ...(name.endsWith('.dmg') ? { digest: `sha256:${'b'.repeat(64)}` } : {}) }));
+  expect(manifestFromRelease({ tag_name: 'v2.63.1', published_at: '2026-10-14T13:00:00Z', html_url: 'https://example.test/v2.63.1', assets })).toEqual({
+    schemaVersion: 1, version: '2.63.1', releasedAt: '2026-10-14T13:00:00Z', releaseUrl: 'https://example.test/v2.63.1',
+    platforms: {
+      'darwin-arm64': { filename: 'specrails-desktop-2.63.1-aarch64.dmg', url: 'https://example.test/specrails-desktop-2.63.1-aarch64.dmg', sha256: 'b'.repeat(64), size: 101 },
+      'windows-x64': { filename: 'specrails-desktop-2.63.1-x64-setup.exe', url: 'https://example.test/specrails-desktop-2.63.1-x64-setup.exe', sha256: '', size: 106 },
+      'windows-arm64': { filename: 'specrails-desktop-2.63.1-arm64-setup.exe', url: 'https://example.test/specrails-desktop-2.63.1-arm64-setup.exe', sha256: '', size: 102 },
+    },
+  });
 });
 
 it.each([
