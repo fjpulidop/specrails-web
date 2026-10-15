@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.20.0](https://github.com/fjpulidop/specrails-web/compare/v1.19.0...v1.20.0) (2026-10-15)
+
+
+### Features
+
+* **companion:** preview apps a mission started on Desktop ([#226](https://github.com/fjpulidop/specrails-web/issues/226)) ([bb894eb](https://github.com/fjpulidop/specrails-web/commit/bb894eb9ff8d030da809d42f76f8afb9e545b6f2))
+
 ## [1.19.0](https://github.com/fjpulidop/specrails-web/compare/v1.18.0...v1.19.0) (2026-10-14)
 
 
