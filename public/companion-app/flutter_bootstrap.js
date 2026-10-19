@@ -43,6 +43,6 @@ _flutter.buildConfig = {"engineRevision":"deb287481e3ce9468f3434937ced4240a70539
 _flutter.loader.load({
   config: { assetBase: "/companion-app/build-a9a9ca68f715d690/" },
   serviceWorkerSettings: {
-    serviceWorkerVersion: "3801101113" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */
+    serviceWorkerVersion: "208280089" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */
   }
 });
