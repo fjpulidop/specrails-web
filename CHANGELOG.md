@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.0](https://github.com/fjpulidop/specrails-web/compare/v1.20.0...v1.21.0) (2026-10-19)
+
+
+### Features
+
+* **companion:** open mission apps via LAN links instead of the in-app preview ([#228](https://github.com/fjpulidop/specrails-web/issues/228)) ([c7e577b](https://github.com/fjpulidop/specrails-web/commit/c7e577bb07d58bf07158bd240f3c1f8219cd2fd2))
+
 ## [1.20.0](https://github.com/fjpulidop/specrails-web/compare/v1.19.0...v1.20.0) (2026-10-15)
 
 
