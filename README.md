@@ -102,7 +102,7 @@ openspec/                   # OpenSpec specs and change history for this site
 ## Features
 
 - **Mission-first landing** — Real recordings of Desktop's Mission Control, Board and Loop Builder
-- **Download page** — Installers and checksums read from Desktop's release manifest, with a GitHub fallback
+- **Download page** — Installers and checksums read from Desktop's latest GitHub Release, with a link to all releases
 - **Product guide** — 36 articles in English and Spanish, with the essential journeys in six more languages, search and a generated sitemap
 - **Companion** — Product page plus the hosted Companion web app at `/companion-app/`
 - **Agent-readable docs** — `/llms.txt` and `/for-agents/` as static files that need no JavaScript
