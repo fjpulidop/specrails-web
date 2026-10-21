@@ -799,7 +799,7 @@
       "translations": {
         "en": {
           "title": "Connect an AI provider",
-          "description": "Specrails coordinates your authenticated Claude or Codex CLI. Provider installation, account access and model billing remain separate from the application.",
+          "description": "Specrails coordinates your authenticated Claude or Codex CLI, or a local OpenAI-compatible engine you connect in Settings ▸ Specrails Agents ▸ Provider connections. Provider installation, account access and model billing remain separate from the application.",
           "headings": [
             "Connect and verify",
             "Understand the boundary"
@@ -807,7 +807,7 @@
         },
         "es": {
           "title": "Conecta un proveedor de IA",
-          "description": "Specrails coordina tus CLI autenticadas de Claude o Codex. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.",
+          "description": "Specrails coordina tus CLI autenticadas de Claude o Codex, o un motor local compatible con OpenAI que conectes en Ajustes ▸ Specrails Agents. Su instalación, la cuenta y la facturación del modelo son independientes de la aplicación.",
           "headings": [
             "Conecta y comprueba",
             "Comprende los límites"

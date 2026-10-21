@@ -6,7 +6,7 @@ Uma implementação produz alterações e evidências para rever. Testes de base
 
 ## Escolha a ação
 
-Integrar localmente aplica o trabalho ao ramo de integração verificado. Checkout move o ramo de trabalho para a pasta local do repositório; isso não aceita a spec. Antes de uma PR, verifique repositório, ramo de destino e diff. Um worktree é um checkout Git isolado, não um espaço alojado no GitHub.
+Integrar localmente aplica o trabalho ao ramo de integração verificado. Checkout move o ramo de trabalho para a pasta local do repositório; isso não aceita a spec. Antes de uma PR, verifique repositório, ramo de destino e diff. O Specrails abre as PR como rascunho e nunca as funde: o merge é feito no GitHub, por si ou pelos seus revisores. Um worktree é um checkout Git isolado, não um espaço alojado no GitHub.
 
 ## Preserve os resultados parciais
 

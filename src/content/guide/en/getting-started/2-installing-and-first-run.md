@@ -6,7 +6,7 @@ Install Specrails, check its prerequisites and sign in to the provider you inten
 
 ## Choose the application
 
-Download an installer for your machine from the [download page](/download). Check the artifacts and requirements of that release: native builds target macOS Apple Silicon and Windows x64/ARM64. An available installer is not a claim that every platform feature has identical behavior.
+Download an installer for your machine from the [download page](/download), which lists the installers published on [GitHub Releases](https://github.com/fjpulidop/specrails-desktop/releases/latest). Check the artifacts and requirements of that release: native builds target macOS Apple Silicon and Windows x64/ARM64. An available installer is not a claim that every platform feature has identical behavior.
 
 The npm distribution serves Specrails in a browser and needs Node.js 20.19+, Git and an authenticated provider CLI:
 

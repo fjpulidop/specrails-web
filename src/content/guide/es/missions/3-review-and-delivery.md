@@ -13,7 +13,7 @@ Una implementación produce evidencias y una decisión de entrega. Revisa el dif
 | Crear o publicar una PR | Repositorio, rama base, diff y autenticación disponible en GitHub |
 | Pedir una revisión | Se mantienen como referencia el alcance congelado y la entrega anterior |
 
-Hacer checkout no equivale a aceptar la spec compartida. Un worktree es una carpeta de trabajo aislada de Git; no es un espacio alojado en GitHub. Las acciones conservan el repositorio y la revisión para los que se prepararon.
+Specrails abre las PR como borrador y nunca las fusiona: la fusión la haces tú o tu equipo de revisión en GitHub. Hacer checkout no equivale a aceptar la spec compartida. Un worktree es una carpeta de trabajo aislada de Git; no es un espacio alojado en GitHub. Las acciones conservan el repositorio y la revisión para los que se prepararon.
 
 ## Resuelve una entrega bloqueada
 
