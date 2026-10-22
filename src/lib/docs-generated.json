@@ -396,6 +396,110 @@
       }
     },
     {
+      "key": "missions/6-flow-mode.md",
+      "slug": "missions-flow-mode",
+      "sourceSlug": "flow-mode",
+      "category": "missions",
+      "translations": {
+        "en": {
+          "title": "Flow: build first, spec later",
+          "description": "New. Flow lets you build working code with an agent before you know exactly what you want. You talk to the agent in the mission conversation, it writes and runs real code in an isolated worktree, and no spec is needed up front. When the result is right you say This is it, and a rail derives the spec and delivers the work as usual.",
+          "headings": [
+            "Flow to discover, Implement to delegate",
+            "Start a Flow from the mission",
+            "Stay in control while you build",
+            "Say \"This is it\"",
+            "Jira only at delivery",
+            "Requirements"
+          ]
+        },
+        "es": {
+          "title": "Flow: construir primero, spec después",
+          "description": "Nuevo. Flow te permite construir código que funciona junto a un agente antes de saber exactamente qué quieres. Hablas con el agente en la conversación de la misión, él escribe y ejecuta código real en un worktree aislado y no hace falta ninguna spec de entrada. Cuando el resultado es el bueno dices Esto es, y un rail deriva la spec y entrega el trabajo como siempre.",
+          "headings": [
+            "Flow para descubrir, Implement para delegar",
+            "Empezar un Flow desde la misión",
+            "Mantén el control mientras construyes",
+            "Di «Esto es»",
+            "Jira solo en la entrega",
+            "Requisitos"
+          ]
+        },
+        "fr": {
+          "title": "Flow : construire d’abord, la spec ensuite",
+          "description": "Nouveau. Flow vous permet de construire du code qui fonctionne avec un agent avant de savoir exactement ce que vous voulez. Vous parlez à l’agent dans la conversation de la mission, il écrit et exécute du vrai code dans un worktree isolé, et aucune spec n’est nécessaire au départ. Quand le résultat est le bon, vous dites C’est ça, et un rail dérive la spec et livre le travail comme d’habitude.",
+          "headings": [
+            "Flow pour découvrir, Implement pour déléguer",
+            "Démarrer un Flow depuis la mission",
+            "Gardez le contrôle pendant la construction",
+            "Dites « C’est ça »",
+            "Jira seulement à la livraison",
+            "Prérequis"
+          ]
+        },
+        "de": {
+          "title": "Flow: erst bauen, dann die Spec",
+          "description": "Neu. Mit Flow bauen Sie gemeinsam mit einem Agenten funktionierenden Code, bevor Sie genau wissen, was Sie wollen. Sie sprechen in der Missionsunterhaltung mit dem Agenten, er schreibt und startet echten Code in einem isolierten Worktree, und vorab ist keine Spec nötig. Passt das Ergebnis, sagen Sie Das ist es, und eine Rail leitet die Spec ab und liefert die Arbeit wie gewohnt aus.",
+          "headings": [
+            "Flow zum Entdecken, Implement zum Delegieren",
+            "Einen Flow aus der Mission starten",
+            "Behalten Sie beim Bauen die Kontrolle",
+            "Sagen Sie „Das ist es“",
+            "Jira erst bei der Auslieferung",
+            "Voraussetzungen"
+          ]
+        },
+        "pt": {
+          "title": "Flow: construir primeiro, spec depois",
+          "description": "Novo. O Flow permite construir código funcional com um agente antes de saber exatamente o que quer. Fala com o agente na conversa da missão, ele escreve e executa código real num worktree isolado e não é preciso nenhuma spec à partida. Quando o resultado é o certo, diz É isto, e um rail deriva a spec e entrega o trabalho como de costume.",
+          "headings": [
+            "Flow para descobrir, Implement para delegar",
+            "Iniciar um Flow a partir da missão",
+            "Mantenha o controlo enquanto constrói",
+            "Diga «É isto»",
+            "Jira só na entrega",
+            "Requisitos"
+          ]
+        },
+        "it": {
+          "title": "Flow: prima costruisci, poi la spec",
+          "description": "Novità. Flow ti permette di costruire codice funzionante con un agente prima di sapere esattamente cosa vuoi. Parli con l’agente nella conversazione della missione, lui scrive ed esegue codice reale in un worktree isolato e non serve nessuna spec in partenza. Quando il risultato è quello giusto dici Ecco fatto, e un rail deriva la spec e consegna il lavoro come sempre.",
+          "headings": [
+            "Flow per scoprire, Implement per delegare",
+            "Avviare un Flow dalla missione",
+            "Mantieni il controllo mentre costruisci",
+            "Di’ «Ecco fatto»",
+            "Jira solo alla consegna",
+            "Requisiti"
+          ]
+        },
+        "zh": {
+          "title": "Flow：先构建，后写 spec",
+          "description": "新功能。 在还不确定自己到底想要什么时，Flow 让你和智能体一起构建可运行的代码。你在任务对话中与智能体交流，它在隔离的 worktree 中编写并运行真实代码，事先不需要任何 spec。结果满意时点击 就是这样，轨道会推导出 spec，并像往常一样交付这项工作。",
+          "headings": [
+            "Flow 用于探索，Implement 用于委派",
+            "从任务中开始 Flow",
+            "构建过程中始终由你掌控",
+            "点击\"就是这样\"",
+            "Jira 只在交付时介入",
+            "使用要求"
+          ]
+        },
+        "ja": {
+          "title": "Flow：まず作り、spec はあとで",
+          "description": "新機能。 Flow を使うと、何を作りたいかまだはっきりしていない段階から、エージェントと一緒に動くコードを作れます。ミッションの会話でエージェントと話すと、エージェントが分離された worktree で実際のコードを書いて実行します。最初に spec を用意する必要はありません。結果に納得したら これで決まり と伝えると、レールが spec を導出し、いつもどおりに作業をデリバリーします。",
+          "headings": [
+            "見つけるなら Flow、任せるなら Implement",
+            "ミッションから Flow を始める",
+            "作っている間も主導権はあなたに",
+            "「これで決まり」と伝える",
+            "Jira はデリバリー時だけ",
+            "必要条件"
+          ]
+        }
+      }
+    },
+    {
       "key": "specs/1-specs-and-the-backlog.md",
       "slug": "specs-specs-and-the-backlog",
       "sourceSlug": "specs-and-the-backlog",

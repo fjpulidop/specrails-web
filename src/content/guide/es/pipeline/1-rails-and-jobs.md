@@ -12,6 +12,9 @@ Un loop define el proceso; un rail es el carril de ejecución; un job o run regi
 | SDD Quick | Un recorrido SDD más corto para un cambio acotado |
 | Freestyle | Una tarea flexible con un resultado explícito |
 | Personalizado | Tus pasos de IA, shell y decisión |
+| Flow → Spec (nuevo) | Código que construiste en [Flow](/docs/missions-flow-mode): deriva la spec y el cambio OpenSpec, y después verifica, revisa, archiva y entrega |
+
+Flow → Spec solo se lanza desde un Flow, cuando dices **Esto es**; no aparece como un loop que puedas elegir para una spec.
 
 Implement ejecuta todas las specs de un rail en una sola ejecución. Para avanzar en paralelo con specs independientes, repártelas en varios rails.
 
