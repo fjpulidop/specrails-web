@@ -6,7 +6,7 @@ El editor de loops convierte un proceso en pasos conectados y reutilizables. Par
 
 ## Edita un loop incluido
 
-Implement, Freestyle y Quick SDD ya aparecen en la biblioteca de loops como loops listos para usar. Abre uno y edítalo directamente, como cualquier otro loop. Nada cambia hasta que publicas; a partir de entonces, tu versión se usa en todos los sitios donde se ejecuta ese loop incluido. **Restaurar original** lo devuelve a la versión que trae Desktop. Los loops incluidos no se pueden eliminar.
+Implement, Freestyle y Quick SDD ya aparecen en la biblioteca de loops como loops listos para usar. Abre uno y edítalo directamente, como cualquier otro loop. Nada cambia hasta que publicas; a partir de entonces, tu versión se usa en todos los sitios donde se ejecuta ese loop incluido. **Restaurar original** lo devuelve a la versión que trae Desktop. Los loops incluidos no se pueden eliminar. El loop Flow → Spec no está en la biblioteca: solo se ejecuta desde un [Flow](/docs/missions-flow-mode).
 
 ## Define el contrato de cada paso
 
