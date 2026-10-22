@@ -6,7 +6,7 @@ Instala Specrails, comprueba sus requisitos e inicia sesión en el proveedor ele
 
 ## Elige la aplicación
 
-Descarga el instalador correspondiente desde [Descargas](/download). Comprueba los archivos y requisitos de esa versión: los builds nativos se dirigen a macOS Apple Silicon y Windows x64/ARM64. La existencia de un instalador no implica que todas las funciones se comporten igual en cada plataforma.
+Descarga el instalador correspondiente desde [Descargas](/download), que muestra los instaladores publicados en [GitHub Releases](https://github.com/fjpulidop/specrails-desktop/releases/latest). Comprueba los archivos y requisitos de esa versión: los builds nativos se dirigen a macOS Apple Silicon y Windows x64/ARM64. La existencia de un instalador no implica que todas las funciones se comporten igual en cada plataforma.
 
 La distribución npm abre Specrails en tu navegador y necesita Node.js 20.19+, Git y una CLI de IA autenticada:
 

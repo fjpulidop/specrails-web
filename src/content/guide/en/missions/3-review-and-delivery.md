@@ -13,7 +13,7 @@ An implementation produces evidence and a delivery decision. Review the actual d
 | Create or publish a PR | Target repository, base branch, diff and available GitHub authentication |
 | Request a revision | The original frozen scope and previous delivery remain the reference |
 
-Checkout is not the same as accepting the shared spec. A worktree is an isolated Git checkout; it is not a GitHub-hosted workspace. Delivery actions retain the repository and revision they were prepared for.
+Specrails opens pull requests as drafts and never merges them: you or your reviewers merge in GitHub. Checkout is not the same as accepting the shared spec. A worktree is an isolated Git checkout; it is not a GitHub-hosted workspace. Delivery actions retain the repository and revision they were prepared for.
 
 ## Resolve a blocked delivery
 

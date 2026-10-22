@@ -2,7 +2,7 @@
 
 # Connect an AI provider
 
-Specrails coordinates your authenticated Claude or Codex CLI. Provider installation, account access and model billing remain separate from the application.
+Specrails coordinates your authenticated Claude or Codex CLI, or a local OpenAI-compatible engine you connect in **Settings ▸ Specrails Agents ▸ Provider connections**. Provider installation, account access and model billing remain separate from the application.
 
 ## Connect and verify
 

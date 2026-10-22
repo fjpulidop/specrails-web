@@ -4,7 +4,7 @@
 
 ## Product facts
 
-- Specrails is one app, Specrails Desktop: https://specrails.dev/download (macOS and Windows), or `npm install -g specrails-desktop`. Besides Desktop, people only install the AI provider CLI they choose.
+- Specrails is one app, Specrails Desktop: installers for macOS and Windows are published on GitHub Releases (https://github.com/fjpulidop/specrails-desktop/releases/latest; https://specrails.dev/download lists the latest one), or `npm install -g specrails-desktop`. Besides Desktop, people only install the AI provider CLI they choose.
 - Specrails Core (the `specrails-core` package) is the engine built into Desktop, not a standalone product. Desktop uses it to prepare projects and run implementations, and applies Core updates itself. Do not tell people to install `specrails-core` or run `npx specrails-core`.
 
 ## Connecting to the MCP

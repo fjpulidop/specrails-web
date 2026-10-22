@@ -6,7 +6,7 @@ Eine Umsetzung liefert Änderungen und Nachweise zur Prüfung. Bestehende grüne
 
 ## Die passende Aktion wählen
 
-Lokal integrieren übernimmt die Arbeit in den geprüften Integrationsbranch. Checkout verschiebt den Arbeitsbranch in den lokalen Repository-Ordner; das akzeptiert die Spec noch nicht. Prüfen Sie vor einer PR Repository, Zielbranch und Diff. Ein Worktree ist ein isolierter Git-Checkout und kein von GitHub gehosteter Arbeitsbereich.
+Lokal integrieren übernimmt die Arbeit in den geprüften Integrationsbranch. Checkout verschiebt den Arbeitsbranch in den lokalen Repository-Ordner; das akzeptiert die Spec noch nicht. Prüfen Sie vor einer PR Repository, Zielbranch und Diff. Specrails öffnet PRs als Entwurf und führt sie nie zusammen: Den Merge erledigen Sie oder Ihre Reviewer in GitHub. Ein Worktree ist ein isolierter Git-Checkout und kein von GitHub gehosteter Arbeitsbereich.
 
 ## Teilergebnisse erhalten
 
