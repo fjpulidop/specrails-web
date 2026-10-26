@@ -38,6 +38,7 @@ export function LanguageSwitcher({
   const choose = (next: LanguageId) => {
     setLanguage(next);
     setOpen(false);
+    triggerRef.current?.focus();
   };
 
   return (
@@ -50,7 +51,7 @@ export function LanguageSwitcher({
         aria-expanded={open}
         aria-controls={open ? choicesId : undefined}
         title={`${content.language.label}: ${LANGUAGES[languageId].nativeName}`}
-        className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-border/70 bg-surface-2 text-muted-foreground transition-colors hover:bg-surface-3 hover:text-foreground"
+        className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg border border-border/70 bg-surface-2 text-muted-foreground transition-colors hover:bg-surface-3 hover:text-foreground"
       >
         <Languages className="h-4 w-4" aria-hidden="true" />
       </button>
@@ -69,7 +70,7 @@ export function LanguageSwitcher({
                 type="button"
                 onClick={() => choose(id)}
                 className={cn(
-                  "flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
+                  "flex min-h-11 w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm transition-colors",
                   selected
                     ? "bg-surface-2 text-foreground"
                     : "text-muted-foreground hover:bg-surface-2/70 hover:text-foreground",

@@ -1,3 +1,4 @@
+import { RECORDING_ASSET_VERSION } from "@/lib/recording-copy";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bot, GitPullRequest, KanbanSquare, Lock, Maximize2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -136,7 +137,7 @@ const ProductsSection = () => {
                   >
                     <video
                       className="h-full w-full bg-[#06060c] object-cover"
-                      poster="/product/specrails-board-real.png?v=20260930-29b41ac7"
+                      poster={`/product/specrails-board-real.png?v=${RECORDING_ASSET_VERSION}`}
                       autoPlay
                       muted
                       loop
@@ -144,10 +145,10 @@ const ProductsSection = () => {
                       preload="metadata"
                       aria-label={products.boardVideoLabel}
                     >
-                      <source src="/product/specrails-board-real.webm?v=20260930-29b41ac7" type="video/webm" />
-                      <source src="/product/specrails-board-real.mp4?v=20260930-29b41ac7" type="video/mp4" />
+                      <source src={`/product/specrails-board-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
+                      <source src={`/product/specrails-board-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
                       <img
-                        src="/product/specrails-board-real.png?v=20260930-29b41ac7"
+                        src={`/product/specrails-board-real.png?v=${RECORDING_ASSET_VERSION}`}
                         alt={products.boardVideoLabel}
                         className="h-full w-full object-cover"
                         loading="lazy"
@@ -178,7 +179,7 @@ const ProductsSection = () => {
                   >
                     <video
                       className="h-full w-full bg-[#06060c] object-cover"
-                      poster="/product/specrails-board-real.png?v=20260930-29b41ac7"
+                      poster={`/product/specrails-board-real.png?v=${RECORDING_ASSET_VERSION}`}
                       autoPlay
                       muted
                       loop
@@ -186,10 +187,10 @@ const ProductsSection = () => {
                       preload="metadata"
                       aria-label={products.boardVideoLabel}
                     >
-                      <source src="/product/specrails-board-real.webm?v=20260930-29b41ac7" type="video/webm" />
-                      <source src="/product/specrails-board-real.mp4?v=20260930-29b41ac7" type="video/mp4" />
+                      <source src={`/product/specrails-board-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
+                      <source src={`/product/specrails-board-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
                       <img
-                        src="/product/specrails-board-real.png?v=20260930-29b41ac7"
+                        src={`/product/specrails-board-real.png?v=${RECORDING_ASSET_VERSION}`}
                         alt={products.boardVideoLabel}
                         className="h-full w-full object-cover"
                         loading="lazy"

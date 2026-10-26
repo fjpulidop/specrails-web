@@ -1,0 +1,1906 @@
+[
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Start with a mission.Ship with a plan."
+      },
+      {
+        "tag": "H3",
+        "text": "Mission Control"
+      },
+      {
+        "tag": "H3",
+        "text": "Specs and rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Loop builder"
+      },
+      {
+        "tag": "H2",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "A clear path from idea to implementation."
+      },
+      {
+        "tag": "H3",
+        "text": "Start a mission"
+      },
+      {
+        "tag": "H3",
+        "text": "Make it a spec"
+      },
+      {
+        "tag": "H3",
+        "text": "Put it on Rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Review and deliver"
+      },
+      {
+        "tag": "H2",
+        "text": "The context you need. The control you expect."
+      },
+      {
+        "tag": "H3",
+        "text": "One project, many repositories"
+      },
+      {
+        "tag": "H3",
+        "text": "A conversation that keeps moving"
+      },
+      {
+        "tag": "H3",
+        "text": "Isolated work, deliberate delivery"
+      },
+      {
+        "tag": "H3",
+        "text": "See beyond the progress indicator"
+      },
+      {
+        "tag": "H3",
+        "text": "Show the agent what you mean"
+      },
+      {
+        "tag": "H3",
+        "text": "Make room for focused work"
+      },
+      {
+        "tag": "H3",
+        "text": "Explore the code behind the work"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect your existing workflow"
+      },
+      {
+        "tag": "H3",
+        "text": "Check your agent limits"
+      },
+      {
+        "tag": "H2",
+        "text": "Understand the workflow. Make it your own."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Skip to content",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "text": "Follow your missions from your phone, too.",
+        "width": 330.921875,
+        "height": 20
+      },
+      {
+        "text": "What this recording shows",
+        "width": 276,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 276,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 276,
+        "height": 19.5
+      },
+      {
+        "text": "Loop Builder",
+        "width": 105.453125,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/download",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Download Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Choose your platform"
+      },
+      {
+        "tag": "H3",
+        "text": "macOS"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H2",
+        "text": "Get your first project ready"
+      },
+      {
+        "tag": "H2",
+        "text": "Explore the source"
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "All releases",
+        "width": 96.078125,
+        "height": 20
+      },
+      {
+        "text": "Release notes",
+        "width": 112.671875,
+        "height": 20
+      },
+      {
+        "text": "File details",
+        "width": 300,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 300,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 300,
+        "height": 16
+      },
+      {
+        "text": "Support on Ko-fi",
+        "width": 308,
+        "height": 20
+      },
+      {
+        "text": "Back to home",
+        "width": 114.515625,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/companion",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/docs",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Build your first mission"
+      },
+      {
+        "tag": "H2",
+        "text": "For agents only"
+      },
+      {
+        "tag": "H2",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H2",
+        "text": "Missions"
+      },
+      {
+        "tag": "H2",
+        "text": "Specs"
+      },
+      {
+        "tag": "H2",
+        "text": "Loops and rails"
+      },
+      {
+        "tag": "H2",
+        "text": "Agents"
+      },
+      {
+        "tag": "H2",
+        "text": "Files and processes"
+      },
+      {
+        "tag": "H2",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H2",
+        "text": "Settings"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/docs/getting-started",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "What is Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Your first path"
+      },
+      {
+        "tag": "H2",
+        "text": "What runs where"
+      },
+      {
+        "tag": "H2",
+        "text": "Core is built into Desktop"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Documentation",
+        "width": 100.625,
+        "height": 20
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "release notes",
+        "width": 101.609375,
+        "height": 20
+      },
+      {
+        "text": "installation",
+        "width": 80.96875,
+        "height": 20
+      },
+      {
+        "text": "your first mission",
+        "width": 129.96875,
+        "height": 20
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Start with a mission.Ship with a plan."
+      },
+      {
+        "tag": "H3",
+        "text": "Mission Control"
+      },
+      {
+        "tag": "H3",
+        "text": "Specs and rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Loop builder"
+      },
+      {
+        "tag": "H2",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "A clear path from idea to implementation."
+      },
+      {
+        "tag": "H3",
+        "text": "Start a mission"
+      },
+      {
+        "tag": "H3",
+        "text": "Make it a spec"
+      },
+      {
+        "tag": "H3",
+        "text": "Put it on Rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Review and deliver"
+      },
+      {
+        "tag": "H2",
+        "text": "The context you need. The control you expect."
+      },
+      {
+        "tag": "H3",
+        "text": "One project, many repositories"
+      },
+      {
+        "tag": "H3",
+        "text": "A conversation that keeps moving"
+      },
+      {
+        "tag": "H3",
+        "text": "Isolated work, deliberate delivery"
+      },
+      {
+        "tag": "H3",
+        "text": "See beyond the progress indicator"
+      },
+      {
+        "tag": "H3",
+        "text": "Show the agent what you mean"
+      },
+      {
+        "tag": "H3",
+        "text": "Make room for focused work"
+      },
+      {
+        "tag": "H3",
+        "text": "Explore the code behind the work"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect your existing workflow"
+      },
+      {
+        "tag": "H3",
+        "text": "Check your agent limits"
+      },
+      {
+        "tag": "H2",
+        "text": "Understand the workflow. Make it your own."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Skip to content",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "Follow your missions from your phone, too.",
+        "width": 330.921875,
+        "height": 20
+      },
+      {
+        "text": "What this recording shows",
+        "width": 1110,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 524,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 524,
+        "height": 19.5
+      },
+      {
+        "text": "Loop Builder",
+        "width": 105.453125,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/download",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Download Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Choose your platform"
+      },
+      {
+        "tag": "H3",
+        "text": "macOS"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H2",
+        "text": "Get your first project ready"
+      },
+      {
+        "tag": "H2",
+        "text": "Explore the source"
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "All releases",
+        "width": 96.078125,
+        "height": 20
+      },
+      {
+        "text": "Release notes",
+        "width": 112.671875,
+        "height": 20
+      },
+      {
+        "text": "File details",
+        "width": 291.328125,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 291.328125,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 291.34375,
+        "height": 16
+      },
+      {
+        "text": "Support on Ko-fi",
+        "width": 133.671875,
+        "height": 20
+      },
+      {
+        "text": "Back to home",
+        "width": 114.515625,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/companion",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/docs",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Build your first mission"
+      },
+      {
+        "tag": "H2",
+        "text": "For agents only"
+      },
+      {
+        "tag": "H2",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H2",
+        "text": "Missions"
+      },
+      {
+        "tag": "H2",
+        "text": "Specs"
+      },
+      {
+        "tag": "H2",
+        "text": "Loops and rails"
+      },
+      {
+        "tag": "H2",
+        "text": "Agents"
+      },
+      {
+        "tag": "H2",
+        "text": "Files and processes"
+      },
+      {
+        "tag": "H2",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H2",
+        "text": "Settings"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/docs/getting-started",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "What is Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Your first path"
+      },
+      {
+        "tag": "H2",
+        "text": "What runs where"
+      },
+      {
+        "tag": "H2",
+        "text": "Core is built into Desktop"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "Documentation",
+        "width": 100.625,
+        "height": 20
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "release notes",
+        "width": 101.609375,
+        "height": 20
+      },
+      {
+        "text": "installation",
+        "width": 80.96875,
+        "height": 20
+      },
+      {
+        "text": "your first mission",
+        "width": 129.96875,
+        "height": 20
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Start with a mission.Ship with a plan."
+      },
+      {
+        "tag": "H3",
+        "text": "Mission Control"
+      },
+      {
+        "tag": "H3",
+        "text": "Specs and rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Loop builder"
+      },
+      {
+        "tag": "H2",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "A clear path from idea to implementation."
+      },
+      {
+        "tag": "H3",
+        "text": "Start a mission"
+      },
+      {
+        "tag": "H3",
+        "text": "Make it a spec"
+      },
+      {
+        "tag": "H3",
+        "text": "Put it on Rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Review and deliver"
+      },
+      {
+        "tag": "H2",
+        "text": "The context you need. The control you expect."
+      },
+      {
+        "tag": "H3",
+        "text": "One project, many repositories"
+      },
+      {
+        "tag": "H3",
+        "text": "A conversation that keeps moving"
+      },
+      {
+        "tag": "H3",
+        "text": "Isolated work, deliberate delivery"
+      },
+      {
+        "tag": "H3",
+        "text": "See beyond the progress indicator"
+      },
+      {
+        "tag": "H3",
+        "text": "Show the agent what you mean"
+      },
+      {
+        "tag": "H3",
+        "text": "Make room for focused work"
+      },
+      {
+        "tag": "H3",
+        "text": "Explore the code behind the work"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect your existing workflow"
+      },
+      {
+        "tag": "H3",
+        "text": "Check your agent limits"
+      },
+      {
+        "tag": "H2",
+        "text": "Understand the workflow. Make it your own."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Skip to content",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "text": "Follow your missions from your phone, too.",
+        "width": 330.921875,
+        "height": 20
+      },
+      {
+        "text": "What this recording shows",
+        "width": 276,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 276,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 276,
+        "height": 19.5
+      },
+      {
+        "text": "Loop Builder",
+        "width": 105.453125,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/download",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Download Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Choose your platform"
+      },
+      {
+        "tag": "H3",
+        "text": "macOS"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H2",
+        "text": "Get your first project ready"
+      },
+      {
+        "tag": "H2",
+        "text": "Explore the source"
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "All releases",
+        "width": 96.078125,
+        "height": 20
+      },
+      {
+        "text": "Release notes",
+        "width": 112.671875,
+        "height": 20
+      },
+      {
+        "text": "File details",
+        "width": 300,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 300,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 300,
+        "height": 16
+      },
+      {
+        "text": "Support on Ko-fi",
+        "width": 308,
+        "height": 20
+      },
+      {
+        "text": "Back to home",
+        "width": 114.515625,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/companion",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/docs",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Build your first mission"
+      },
+      {
+        "tag": "H2",
+        "text": "For agents only"
+      },
+      {
+        "tag": "H2",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H2",
+        "text": "Missions"
+      },
+      {
+        "tag": "H2",
+        "text": "Specs"
+      },
+      {
+        "tag": "H2",
+        "text": "Loops and rails"
+      },
+      {
+        "tag": "H2",
+        "text": "Agents"
+      },
+      {
+        "tag": "H2",
+        "text": "Files and processes"
+      },
+      {
+        "tag": "H2",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H2",
+        "text": "Settings"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/docs/getting-started",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "What is Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Your first path"
+      },
+      {
+        "tag": "H2",
+        "text": "What runs where"
+      },
+      {
+        "tag": "H2",
+        "text": "Core is built into Desktop"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Documentation",
+        "width": 100.625,
+        "height": 20
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "release notes",
+        "width": 101.609375,
+        "height": 20
+      },
+      {
+        "text": "installation",
+        "width": 80.96875,
+        "height": 20
+      },
+      {
+        "text": "your first mission",
+        "width": 129.96875,
+        "height": 20
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Start with a mission.Ship with a plan."
+      },
+      {
+        "tag": "H3",
+        "text": "Mission Control"
+      },
+      {
+        "tag": "H3",
+        "text": "Specs and rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Loop builder"
+      },
+      {
+        "tag": "H2",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "A clear path from idea to implementation."
+      },
+      {
+        "tag": "H3",
+        "text": "Start a mission"
+      },
+      {
+        "tag": "H3",
+        "text": "Make it a spec"
+      },
+      {
+        "tag": "H3",
+        "text": "Put it on Rails"
+      },
+      {
+        "tag": "H3",
+        "text": "Review and deliver"
+      },
+      {
+        "tag": "H2",
+        "text": "The context you need. The control you expect."
+      },
+      {
+        "tag": "H3",
+        "text": "One project, many repositories"
+      },
+      {
+        "tag": "H3",
+        "text": "A conversation that keeps moving"
+      },
+      {
+        "tag": "H3",
+        "text": "Isolated work, deliberate delivery"
+      },
+      {
+        "tag": "H3",
+        "text": "See beyond the progress indicator"
+      },
+      {
+        "tag": "H3",
+        "text": "Show the agent what you mean"
+      },
+      {
+        "tag": "H3",
+        "text": "Make room for focused work"
+      },
+      {
+        "tag": "H3",
+        "text": "Explore the code behind the work"
+      },
+      {
+        "tag": "H3",
+        "text": "Connect your existing workflow"
+      },
+      {
+        "tag": "H3",
+        "text": "Check your agent limits"
+      },
+      {
+        "tag": "H2",
+        "text": "Understand the workflow. Make it your own."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Skip to content",
+        "width": 1,
+        "height": 1
+      },
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "Follow your missions from your phone, too.",
+        "width": 330.921875,
+        "height": 20
+      },
+      {
+        "text": "What this recording shows",
+        "width": 1110,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 524,
+        "height": 19.5
+      },
+      {
+        "text": "What this recording shows",
+        "width": 524,
+        "height": 19.5
+      },
+      {
+        "text": "Loop Builder",
+        "width": 105.453125,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/download",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Download Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Choose your platform"
+      },
+      {
+        "tag": "H3",
+        "text": "macOS"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H3",
+        "text": "Windows"
+      },
+      {
+        "tag": "H2",
+        "text": "Get your first project ready"
+      },
+      {
+        "tag": "H2",
+        "text": "Explore the source"
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "All releases",
+        "width": 96.078125,
+        "height": 20
+      },
+      {
+        "text": "Release notes",
+        "width": 112.671875,
+        "height": 20
+      },
+      {
+        "text": "File details",
+        "width": 291.328125,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 291.328125,
+        "height": 16
+      },
+      {
+        "text": "File details",
+        "width": 291.34375,
+        "height": 16
+      },
+      {
+        "text": "Support on Ko-fi",
+        "width": 133.671875,
+        "height": 20
+      },
+      {
+        "text": "Back to home",
+        "width": 114.515625,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/companion",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Your mission, within reach."
+      },
+      {
+        "tag": "H2",
+        "text": "What will your next mission be?"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "Product",
+        "width": 51.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 62.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 75.796875,
+        "height": 20
+      },
+      {
+        "text": "Docs",
+        "width": 33.890625,
+        "height": 20
+      },
+      {
+        "text": "Privacy",
+        "width": 42,
+        "height": 16
+      },
+      {
+        "text": "MIT",
+        "width": 21.8125,
+        "height": 16
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/docs",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "Build your first mission"
+      },
+      {
+        "tag": "H2",
+        "text": "For agents only"
+      },
+      {
+        "tag": "H2",
+        "text": "Getting started"
+      },
+      {
+        "tag": "H2",
+        "text": "Missions"
+      },
+      {
+        "tag": "H2",
+        "text": "Specs"
+      },
+      {
+        "tag": "H2",
+        "text": "Loops and rails"
+      },
+      {
+        "tag": "H2",
+        "text": "Agents"
+      },
+      {
+        "tag": "H2",
+        "text": "Files and processes"
+      },
+      {
+        "tag": "H2",
+        "text": "Integrations"
+      },
+      {
+        "tag": "H2",
+        "text": "Settings"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      }
+    ],
+    "videoSources": 0
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/docs/getting-started",
+    "errors": [],
+    "overflow": false,
+    "headings": [
+      {
+        "tag": "H1",
+        "text": "What is Specrails"
+      },
+      {
+        "tag": "H2",
+        "text": "Your first path"
+      },
+      {
+        "tag": "H2",
+        "text": "What runs where"
+      },
+      {
+        "tag": "H2",
+        "text": "Core is built into Desktop"
+      }
+    ],
+    "unlabeled": [],
+    "smallTargets": [
+      {
+        "text": "Product",
+        "width": 67.8125,
+        "height": 20
+      },
+      {
+        "text": "Workflow",
+        "width": 78.828125,
+        "height": 20
+      },
+      {
+        "text": "Companion",
+        "width": 91.796875,
+        "height": 20
+      },
+      {
+        "text": "Documentation",
+        "width": 100.625,
+        "height": 20
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "Link to this section",
+        "width": 16,
+        "height": 16
+      },
+      {
+        "text": "release notes",
+        "width": 101.609375,
+        "height": 20
+      },
+      {
+        "text": "installation",
+        "width": 80.96875,
+        "height": 20
+      },
+      {
+        "text": "your first mission",
+        "width": 129.96875,
+        "height": 20
+      }
+    ],
+    "videoSources": 0
+  }
+]

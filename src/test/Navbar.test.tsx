@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, within, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -72,6 +72,9 @@ describe("Navbar", () => {
     const drawer = await screen.findByRole("dialog");
     const docsLink = within(drawer).getByRole("link", { name: /^docs$/i });
     expect(docsLink).toHaveAttribute("href", "/docs");
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(menuButton).toHaveFocus());
+    expect(menuButton).toHaveAttribute("aria-expanded", "false");
   });
 
   it("offers a Download CTA pointing to /download", () => {

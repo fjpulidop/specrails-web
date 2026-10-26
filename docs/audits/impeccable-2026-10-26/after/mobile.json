@@ -1,0 +1,213 @@
+[
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "span.text-brand-cyan"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "article.group.flex:nth-of-type(1) > div.flex.flex-1 > div.mt-5.flex > button.inline-flex.items-center:nth-of-type(1)"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "article.group.flex:nth-of-type(2) > div.flex.flex-1 > div.mt-5.flex > button.inline-flex.items-center:nth-of-type(1)"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "article.group.flex:nth-of-type(3) > div.flex.flex-1 > div.mt-5.flex > button.inline-flex.items-center:nth-of-type(1)"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Purple/violet neon text on dark background",
+    "selector": "p.mb-5.flex"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "#specs > div.grid.gap-5 > div > p.mb-4.font-mono"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "a.ml-auto.inline-flex"
+  },
+  {
+    "antipattern": "ai-color-palette",
+    "name": "AI color palette",
+    "description": "Purple/violet gradients and cyan-on-dark are the most recognizable tells of AI-generated UIs. A gradient in one of those hues is the tell on its own; flat neon ink on a dark ground is charged once a second tell hue joins it. Choose a distinctive, intentional palette.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Cyan neon text on dark background",
+    "selector": "div.mx-auto.max-w-6xl > div.grid.gap-5 > div > p.mb-4.font-mono"
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Primary font: inter (86% of text)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "numbered-section-labels",
+    "name": "Tiny numbered section labels",
+    "description": "Small numeric index labels riding next to section headings, repeated section after section, are AI editorial scaffolding — a page numbering its own chapters instead of earning structure. Let hierarchy, content, and rhythm carry the sequence.",
+    "severity": "advisory",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "tiny numbered label \"01 / Workflow\" beside h2 \"A clear path from idea to implementation.\" (2 on page)",
+    "advisory": true,
+    "selector": "body"
+  },
+  {
+    "antipattern": "numbered-section-labels",
+    "name": "Tiny numbered section labels",
+    "description": "Small numeric index labels riding next to section headings, repeated section after section, are AI editorial scaffolding — a page numbering its own chapters instead of earning structure. Let hierarchy, content, and rhythm carry the sequence.",
+    "severity": "advisory",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "tiny numbered label \"02 / Specrails Desktop\" beside h2 \"The context you need. The control you expect.\" (2 on page)",
+    "advisory": true,
+    "selector": "body"
+  },
+  {
+    "antipattern": "dark-glow",
+    "name": "Glowing shadow accents",
+    "description": "Colored glow shadows — a zero-offset chromatic halo (box- or text-shadow) on any background, or any colored blurred shadow on a dark background — are the default \"cool\" look of AI-generated UIs. Use neutral elevation shadows and subtle, purposeful lighting instead.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/",
+    "line": 0,
+    "snippet": "Zero-offset box-shadow glow (#25cbe4)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/download",
+    "line": 0,
+    "snippet": "Primary font: inter (87% of text)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "dark-glow",
+    "name": "Glowing shadow accents",
+    "description": "Colored glow shadows — a zero-offset chromatic halo (box- or text-shadow) on any background, or any colored blurred shadow on a dark background — are the default \"cool\" look of AI-generated UIs. Use neutral elevation shadows and subtle, purposeful lighting instead.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/download",
+    "line": 0,
+    "snippet": "Zero-offset box-shadow glow (#25cbe4)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/companion",
+    "line": 0,
+    "snippet": "Primary font: inter (97% of text)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "dark-glow",
+    "name": "Glowing shadow accents",
+    "description": "Colored glow shadows — a zero-offset chromatic halo (box- or text-shadow) on any background, or any colored blurred shadow on a dark background — are the default \"cool\" look of AI-generated UIs. Use neutral elevation shadows and subtle, purposeful lighting instead.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/companion",
+    "line": 0,
+    "snippet": "Zero-offset box-shadow glow (#25cbe4)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "overused-font",
+    "name": "Overused font",
+    "description": "Inter, Roboto, Fraunces, Geist, Plus Jakarta Sans, and Space Grotesk are used on so many sites they no longer feel distinctive. Each new wave of AI-generated UIs converges on the same handful of faces. Choose a face that gives your interface personality.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/docs",
+    "line": 0,
+    "snippet": "Primary font: inter (98% of text)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "dark-glow",
+    "name": "Glowing shadow accents",
+    "description": "Colored glow shadows — a zero-offset chromatic halo (box- or text-shadow) on any background, or any colored blurred shadow on a dark background — are the default \"cool\" look of AI-generated UIs. Use neutral elevation shadows and subtle, purposeful lighting instead.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/docs",
+    "line": 0,
+    "snippet": "Zero-offset box-shadow glow (#25cbe4)",
+    "selector": "body"
+  },
+  {
+    "antipattern": "kicker-above-heading",
+    "name": "Kicker / eyebrow label above heading",
+    "description": "A tiny tracked uppercase or small-caps label sitting as its own block directly above a heading is banned outright, repeated or not. Generated kickers never earn their place: the heading carries its own weight. Delete the label and let the heading speak; if the words matter, work them into the heading or the body.",
+    "severity": "warning",
+    "category": "slop",
+    "file": "http://127.0.0.1:8080/docs",
+    "line": 0,
+    "snippet": "kicker \"Documentation\" above h1 \"Build your first mission\"",
+    "selector": "p.mb-4.flex"
+  }
+]

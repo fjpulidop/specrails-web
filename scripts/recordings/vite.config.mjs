@@ -1,7 +1,11 @@
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
+import { createRequire } from 'node:module'
 const desktopDir = path.resolve(process.env.SPECRAILS_DESKTOP_DIR ?? '../specrails-desktop')
-const {default:base} = await import(path.join(desktopDir,'client/vite.demo.config.ts'))
+const desktopRequire = createRequire(path.join(desktopDir, 'client/package.json'))
+const { default: react } = await import(desktopRequire.resolve('@vitejs/plugin-react'))
+const { default: tailwindcss } = await import(desktopRequire.resolve('@tailwindcss/vite'))
+const base = { plugins: [tailwindcss(), react()], base: '/desktop-demo/', define: { __WS_URL__: JSON.stringify('') } }
 const conversations = [{id:'mission-checkout',title:'Recover interrupted checkout',provider:'claude',model:'sonnet',session_id:null,pinned_project_id:'demo-project-001',tier_level:1,reasoning_effort:'high',created_at:'2026-09-30T10:00:00Z',updated_at:'2026-09-30T10:00:00Z'}]
 const snapshot = {conversation:conversations[0],messages:[{id:'m1',conversation_id:'mission-checkout',role:'user',content:'Recover checkout when the network drops. Keep the cart intact and show a clear retry action.',created_at:'2026-09-30T10:00:00Z'},{id:'m2',conversation_id:'mission-checkout',role:'assistant',content:'I will preserve the cart, add a retry path and verify the checkout flow before handing it back for review.',created_at:'2026-09-30T10:01:00Z'}],pendingMessages:[],live:{isStreaming:false,streamingText:''}}
 const loops = JSON.parse(readFileSync(new URL('./factory-loops.json', import.meta.url),'utf8')).map(loop => ({...loop,status:'published',createdAt:'2026-09-30T10:00:00Z',updatedAt:'2026-09-30T10:00:00Z',source:'builtin'}))
@@ -9,6 +13,8 @@ const catalog = JSON.parse(readFileSync(new URL('./workflow-catalog.json', impor
 const now = Date.now()
 const usage = {scope:'machine',instanceId:'recording',revision:1,providers:['claude','codex'].map(providerId=>({providerId,installed:true,generation:'sample',availability:'available',refreshState:'idle',freshness:'fresh',plan:null,source:providerId==='claude'?'oauth':'app-server',observedAt:new Date(now-120000).toISOString(),attemptedAt:new Date(now-120000).toISOString(),retryAt:null,issue:null,windows:(providerId==='claude'?[['session','session',4,300,10000000],['weekly','weekly',58,10080,160000000],['fable','weekly',28,10080,160000000]]:[['weekly','weekly',28,10080,530000000]]).map(([id,label,usedPercent,durationMinutes,reset])=>({id,label,usedPercent,durationMinutes,resetsAt:new Date(now+reset).toISOString(),scope:id==='fable'?'model':'account',model:id==='fable'?'Fable':null}))}))}
 const routeCode = `
+  [/\\/code\\/activity/, () => json({entries:[],nextCursor:null,truncated:false})],
+  [/\\/agent\\/conversations\\/[^/]+\\/subagents$/, () => json({subagents:[],session:null})],
   [/\\/agent-runtime\\/runs/, () => json({runs:[]})],
   [/\\/loops\\/constants/, () => json({constants:[]})],
   [/\\/loops\\/commands/, () => json({commands:[]})],
@@ -27,4 +33,4 @@ const routeCode = `
   [/\\/api\\/subscription-usage\\/refresh/, () => json({snapshot:${JSON.stringify(usage)},scheduled:false})],
   [/\\/api\\/subscription-usage/, () => json(${JSON.stringify(usage)})],
 `
-export default {...base,root:path.join(desktopDir,'client'),server:{host:'127.0.0.1',port:5202,fs:{allow:[desktopDir,path.resolve('.')]}},plugins:[...base.plugins,{name:'recording-fixtures',enforce:'pre',transform(code,id){if(id.endsWith('/demo-api.ts'))return code.replace('const routes: Array<[RegExp, () => Response]> = [','const routes: Array<[RegExp, () => Response]> = ['+routeCode);if(id.endsWith('/demo-entry.tsx'))return code.replace("import './tour/tour.css'",'').replace('ric(() => startTour(), { timeout: 1500 })','void ric; void startTour;') }}]}
+export default {...base,root:path.join(desktopDir,'client'),server:{host:'127.0.0.1',port:5202,fs:{allow:[desktopDir,path.resolve('.')]}},plugins:[...base.plugins,{name:'recording-fixtures',enforce:'pre',transformIndexHtml() { return [{ tag: 'script', children: "document.documentElement.dataset.theme = 'specrails'", injectTo: 'head-prepend' }] },transform(code,id){if(id.endsWith('/demo-api.ts'))return code.replace('const routes: Array<[RegExp, () => Response]> = [','const routes: Array<[RegExp, () => Response]> = ['+routeCode);if(id.endsWith('/demo-entry.tsx'))return code.replace("import './tour/tour.css'",'').replace('ric(() => startTour(), { timeout: 1500 })','void ric; void startTour;') }}]}

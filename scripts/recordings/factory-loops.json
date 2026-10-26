@@ -195,18 +195,39 @@
           }
         },
         {
-          "id": "developer",
+          "id": "initialize-corrections",
           "type": "core",
           "position": {
             "x": 0,
             "y": 1260
           },
           "data": {
+            "kind": "assign",
+            "label": "Initialize automatic correction budget",
+            "params": {
+              "set": {
+                "correctionAttempts": 0,
+                "correctionLimit": 3,
+                "implementationAttempts": 0,
+                "implementationLimit": 3,
+                "archiveRetries": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "developer",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 1400
+          },
+          "data": {
             "kind": "role-turn",
             "label": "Developer",
             "params": {
               "roleId": "build",
-              "prompt": "Implement every approved task for change {{run.changeId}} using the bound official apply skill. Preserve proposal, design and specs; only tick tasks you completed. Report summary and incomplete task descriptions. Prior execution evidence and human answers: {{history.text}}",
+              "prompt": "Implement every approved task for change {{run.changeId}} using the bound official apply skill. Preserve proposal, design and specs; only tick tasks you completed. Report summary and incomplete task descriptions. If a task cannot be finished because of a host precondition or environment blocker outside this change (for example the sandbox forbids starting a local server, a credential or tool is missing), keep the work done, leave that task unchecked and return the structured blocker (kind, command, cwd, evidence, requiredAction). A failing test, a test you cannot make pass, or unexpected browser or tool behaviour is NOT a host blocker: change the test or the implementation instead. The host confirms a blocker by running its own verification before ending the run; a failure it reproduces comes back as a correction. Prior execution evidence and human answers: {{history.text}}",
               "structuredOutput": {
                 "type": "object",
                 "properties": {
@@ -219,6 +240,39 @@
                       "type": "string"
                     },
                     "maxItems": 100
+                  },
+                  "blocker": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "enum": [
+                          "network",
+                          "credential",
+                          "environment-variable",
+                          "toolchain",
+                          "setup",
+                          "environment",
+                          "scope"
+                        ]
+                      },
+                      "command": {
+                        "type": "string"
+                      },
+                      "cwd": {
+                        "type": "string"
+                      },
+                      "evidence": {
+                        "type": "string"
+                      },
+                      "requiredAction": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "requiredAction"
+                    ],
+                    "additionalProperties": false
                   }
                 },
                 "required": [
@@ -232,11 +286,41 @@
           }
         },
         {
+          "id": "developer-blocker",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 1540
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Developer reported a host blocker",
+            "params": {
+              "expr": "exists($outputs.developer.structured.blocker) && $outputs.developer.structured.blocker != null"
+            }
+          }
+        },
+        {
+          "id": "developer-blocker-kind",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 1680
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Blocker needs the person",
+            "params": {
+              "expr": "$outputs.developer.structured.blocker.kind == \"credential\" || $outputs.developer.structured.blocker.kind == \"network\" || $outputs.developer.structured.blocker.kind == \"environment-variable\""
+            }
+          }
+        },
+        {
           "id": "tasks",
           "type": "core",
           "position": {
             "x": 0,
-            "y": 1400
+            "y": 1820
           },
           "data": {
             "kind": "artifact-contract",
@@ -250,11 +334,61 @@
           }
         },
         {
+          "id": "implementation-budget",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 1960
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Check implementation attempt budget",
+            "params": {
+              "expr": "$vars.implementationAttempts < $vars.implementationLimit"
+            }
+          }
+        },
+        {
+          "id": "implementation-progress",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 2100
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Check implementation progress",
+            "params": {
+              "expr": "!exists($vars.lastImplementationHash) || $outputs.developer.candidateHash != $vars.lastImplementationHash"
+            }
+          }
+        },
+        {
+          "id": "begin-implementation",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 2240
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Count implementation attempt",
+            "params": {
+              "increment": {
+                "implementationAttempts": 1
+              },
+              "set": {
+                "lastImplementationHash": "{{outputs.developer.candidateHash}}"
+              }
+            }
+          }
+        },
+        {
           "id": "verify",
           "type": "core",
           "position": {
             "x": 0,
-            "y": 1540
+            "y": 2380
           },
           "data": {
             "kind": "verify",
@@ -270,14 +404,14 @@
           "type": "core",
           "position": {
             "x": 0,
-            "y": 1680
+            "y": 2520
           },
           "data": {
             "kind": "role-turn",
             "label": "Reviewer",
             "params": {
               "roleId": "assess",
-              "prompt": "Review change {{run.changeId}} read-only against all approved artifacts and frozen ticket acceptance criteria. Inspect real code and the host verification evidence: {{outputs.verify}}. Return approved, summary, issues, score (0-100), and aspects. Prior execution: {{history.text}}",
+              "prompt": "Review change {{run.changeId}} read-only against all approved artifacts and frozen ticket acceptance criteria. Inspect real code and the host verification evidence: {{outputs.verify}}. Return approved, summary, issues, score (0-100), and aspects. Acceptance policy: approved == true; issues must be empty; score >= 70; type_correctness >= 60; pattern_adherence >= 60; test_coverage >= 60; security >= 75; architectural_alignment >= 60. For any rejection or below-threshold score, explain the concrete unmet requirement and actionable repair in summary and issues; passing commands do not prove every acceptance obligation. Prior execution: {{history.text}}",
               "structuredOutput": {
                 "type": "object",
                 "properties": {
@@ -356,7 +490,7 @@
           "type": "core",
           "position": {
             "x": 0,
-            "y": 1820
+            "y": 2660
           },
           "data": {
             "kind": "condition",
@@ -367,18 +501,99 @@
           }
         },
         {
+          "id": "correction-context",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 2800
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Select current review findings",
+            "params": {
+              "expr": "$outputs.verify.valid == true && exists($outputs.reviewer.candidateHash) && $outputs.reviewer.candidateHash == $outputs.verify.candidateHash"
+            }
+          }
+        },
+        {
+          "id": "capture-review",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 2940
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Capture current review findings",
+            "params": {
+              "set": {
+                "latestReview": "{{outputs.reviewer.structured}}"
+              }
+            }
+          }
+        },
+        {
+          "id": "clear-review",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 3080
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Clear outdated review findings",
+            "params": {
+              "set": {
+                "latestReview": "No reviewer findings for the current verified candidate. Diagnose the current host verification failure first."
+              }
+            }
+          }
+        },
+        {
+          "id": "correction-budget",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 3220
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Check automatic correction budget",
+            "params": {
+              "expr": "$vars.correctionAttempts < $vars.correctionLimit"
+            }
+          }
+        },
+        {
+          "id": "begin-correction",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 3360
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Count automatic correction attempt",
+            "params": {
+              "increment": {
+                "correctionAttempts": 1
+              }
+            }
+          }
+        },
+        {
           "id": "fixer",
           "type": "core",
           "position": {
             "x": 0,
-            "y": 1960
+            "y": 3500
           },
           "data": {
             "kind": "role-turn",
             "label": "Fixer",
             "params": {
               "roleId": "correct",
-              "prompt": "Correct only failures in change {{run.changeId}}, using the bound apply skill and preserving approved artifacts. Report summary and incomplete tasks. Host verification: {{outputs.verify}}.  Prior execution: {{history.text}}",
+              "prompt": "Correct the reported implementation, test or review failure for change {{run.changeId}} using the bound apply skill and preserving approved artifacts. Read failureSummary, command, cwd, exitCode and evidenceId first; use read_verification_evidence for truncated evidence. If Host verification is valid, repair the concrete rejected review obligation or below-threshold aspect instead of only rerunning green commands. Acceptance policy: approved == true; issues must be empty; score >= 70; type_correctness >= 60; pattern_adherence >= 60; test_coverage >= 60; security >= 75; architectural_alignment >= 60. Reproduce the exact focused failure, inspect the assertion and tested code, then apply the smallest repair that preserves the required behavior. An unchanged filename does not prove an unrelated failure. A mandatory test inside the admitted workspace may receive a proven formatting/compatibility repair while retaining every required guard. Report diagnosis, focused commands with original exit codes, repair and unresolved failures in summary and incomplete. If the cause is a host precondition or environment blocker outside this change, make no edits and return the structured blocker (kind, command, cwd, evidence, requiredAction): the host ends the run with your required action. Any other unchanged correction stops this run even when host checks pass. Do not make unrelated edits merely to change the candidate hash. Host verification: {{outputs.verify}}. Latest review findings for this candidate: {{run.latestReview}}. Prior execution: {{history.text}}",
               "structuredOutput": {
                 "type": "object",
                 "properties": {
@@ -391,6 +606,39 @@
                       "type": "string"
                     },
                     "maxItems": 100
+                  },
+                  "blocker": {
+                    "type": "object",
+                    "properties": {
+                      "kind": {
+                        "enum": [
+                          "network",
+                          "credential",
+                          "environment-variable",
+                          "toolchain",
+                          "setup",
+                          "environment",
+                          "scope"
+                        ]
+                      },
+                      "command": {
+                        "type": "string"
+                      },
+                      "cwd": {
+                        "type": "string"
+                      },
+                      "evidence": {
+                        "type": "string"
+                      },
+                      "requiredAction": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "requiredAction"
+                    ],
+                    "additionalProperties": false
                   }
                 },
                 "required": [
@@ -404,11 +652,41 @@
           }
         },
         {
+          "id": "correction-blocker",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 3640
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Fixer reported a host blocker",
+            "params": {
+              "expr": "exists($outputs.fixer.structured.blocker) && $outputs.fixer.structured.blocker != null"
+            }
+          }
+        },
+        {
+          "id": "correction-progress",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 3780
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Check correction progress",
+            "params": {
+              "expr": "exists($outputs.fixer.candidateHash) && $outputs.fixer.candidateHash != null && $outputs.fixer.candidateHash != $outputs.verify.candidateHash"
+            }
+          }
+        },
+        {
           "id": "approve",
           "type": "core",
           "position": {
             "x": 0,
-            "y": 2100
+            "y": 3920
           },
           "data": {
             "kind": "approval",
@@ -425,7 +703,7 @@
           "type": "core",
           "position": {
             "x": 0,
-            "y": 2240
+            "y": 4060
           },
           "data": {
             "kind": "condition",
@@ -440,7 +718,7 @@
           "type": "core",
           "position": {
             "x": 0,
-            "y": 2380
+            "y": 4200
           },
           "data": {
             "kind": "openspec-archive",
@@ -455,11 +733,43 @@
           }
         },
         {
+          "id": "archive-retry",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 4340
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Archive needs a fresh verification",
+            "params": {
+              "expr": "exists($outputs.archive.reason) && ($outputs.archive.reason == \"unverified\" || $outputs.archive.reason == \"candidate_changed\") && $vars.archiveRetries < 2"
+            }
+          }
+        },
+        {
+          "id": "count-archive-retry",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 4480
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Count archive re-verification",
+            "params": {
+              "increment": {
+                "archiveRetries": 1
+              }
+            }
+          }
+        },
+        {
           "id": "verify-archive",
           "type": "core",
           "position": {
             "x": 0,
-            "y": 2520
+            "y": 4620
           },
           "data": {
             "kind": "verify",
@@ -475,7 +785,7 @@
           "type": "end",
           "position": {
             "x": 0,
-            "y": 2660
+            "y": 4760
           },
           "data": {
             "outcome": "success",
@@ -487,10 +797,94 @@
           "type": "end",
           "position": {
             "x": 360,
-            "y": 2660
+            "y": 4760
           },
           "data": {
             "outcome": "failure"
+          }
+        },
+        {
+          "id": "archive-failed",
+          "type": "end",
+          "position": {
+            "x": 360,
+            "y": 4900
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "OpenSpec could not archive change {{run.changeId}}. The implementation was verified and reviewed; the archive step in the run log shows OpenSpec's reason (for example a requirement whose first body line has no SHALL or MUST). Fix the spec in the original worktree, then archive it there or relaunch."
+          }
+        },
+        {
+          "id": "correction-stalled",
+          "type": "end",
+          "position": {
+            "x": 720,
+            "y": 4760
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "Automatic correction made no candidate changes. Host verification is valid: {{outputs.verify.valid}}. Acceptance policy: approved == true; issues must be empty; score >= 70; type_correctness >= 60; pattern_adherence >= 60; test_coverage >= 60; security >= 75; architectural_alignment >= 60. Latest review findings: {{run.latestReview}}. Fixer diagnosis: {{outputs.fixer.structured.summary}}"
+          }
+        },
+        {
+          "id": "correction-exhausted",
+          "type": "end",
+          "position": {
+            "x": 1080,
+            "y": 4760
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "Automatic correction limit reached ({{run.correctionAttempts}}/{{run.correctionLimit}}). Acceptance policy: approved == true; issues must be empty; score >= 70; type_correctness >= 60; pattern_adherence >= 60; test_coverage >= 60; security >= 75; architectural_alignment >= 60. Latest review findings: {{run.latestReview}}. Fixer diagnosis: {{outputs.fixer.structured.summary}}. Host verification: {{outputs.verify}}"
+          }
+        },
+        {
+          "id": "implementation-stalled",
+          "type": "end",
+          "position": {
+            "x": 720,
+            "y": 4760
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "The developer made no changes while approved tasks are still incomplete. Incomplete: {{outputs.developer.structured.incomplete}}. Developer summary: {{outputs.developer.structured.summary}}"
+          }
+        },
+        {
+          "id": "implementation-exhausted",
+          "type": "end",
+          "position": {
+            "x": 1080,
+            "y": 4760
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "Implementation attempt limit reached ({{run.implementationAttempts}}/{{run.implementationLimit}}) with approved tasks still incomplete. Incomplete: {{outputs.developer.structured.incomplete}}. Developer summary: {{outputs.developer.structured.summary}}"
+          }
+        },
+        {
+          "id": "developer-blocked",
+          "type": "end",
+          "position": {
+            "x": 1440,
+            "y": 4760
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "Developer reported a host blocker ({{outputs.developer.structured.blocker.kind}}): {{outputs.developer.structured.blocker.requiredAction}} Evidence: {{outputs.developer.structured.blocker.evidence}}"
+          }
+        },
+        {
+          "id": "fixer-blocked",
+          "type": "end",
+          "position": {
+            "x": 1440,
+            "y": 4760
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "Fixer reported a host blocker ({{outputs.fixer.structured.blocker.kind}}): {{outputs.fixer.structured.blocker.requiredAction}} Evidence: {{outputs.fixer.structured.blocker.evidence}}"
           }
         }
       ],
@@ -593,7 +987,7 @@
         {
           "id": "e-freeze-pass",
           "source": "freeze",
-          "target": "developer",
+          "target": "initialize-corrections",
           "label": "pass"
         },
         {
@@ -609,9 +1003,21 @@
           "label": "failed"
         },
         {
+          "id": "e-initialize-corrections-next",
+          "source": "initialize-corrections",
+          "target": "developer",
+          "label": "next"
+        },
+        {
+          "id": "e-initialize-corrections-failed",
+          "source": "initialize-corrections",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
           "id": "e-developer-next",
           "source": "developer",
-          "target": "tasks",
+          "target": "developer-blocker",
           "label": "next"
         },
         {
@@ -627,6 +1033,30 @@
           "label": "failed"
         },
         {
+          "id": "e-developer-blocker-true",
+          "source": "developer-blocker",
+          "target": "developer-blocker-kind",
+          "label": "true"
+        },
+        {
+          "id": "e-developer-blocker-false",
+          "source": "developer-blocker",
+          "target": "tasks",
+          "label": "false"
+        },
+        {
+          "id": "e-developer-blocker-kind-true",
+          "source": "developer-blocker-kind",
+          "target": "developer-blocked",
+          "label": "true"
+        },
+        {
+          "id": "e-developer-blocker-kind-false",
+          "source": "developer-blocker-kind",
+          "target": "verify",
+          "label": "false"
+        },
+        {
           "id": "e-tasks-pass",
           "source": "tasks",
           "target": "verify",
@@ -635,12 +1065,48 @@
         {
           "id": "e-tasks-fail",
           "source": "tasks",
-          "target": "developer",
+          "target": "implementation-budget",
           "label": "fail"
         },
         {
           "id": "e-tasks-failed",
           "source": "tasks",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-implementation-budget-true",
+          "source": "implementation-budget",
+          "target": "implementation-progress",
+          "label": "true"
+        },
+        {
+          "id": "e-implementation-budget-false",
+          "source": "implementation-budget",
+          "target": "implementation-exhausted",
+          "label": "false"
+        },
+        {
+          "id": "e-implementation-progress-true",
+          "source": "implementation-progress",
+          "target": "begin-implementation",
+          "label": "true"
+        },
+        {
+          "id": "e-implementation-progress-false",
+          "source": "implementation-progress",
+          "target": "implementation-stalled",
+          "label": "false"
+        },
+        {
+          "id": "e-begin-implementation-next",
+          "source": "begin-implementation",
+          "target": "developer",
+          "label": "next"
+        },
+        {
+          "id": "e-begin-implementation-failed",
+          "source": "begin-implementation",
           "target": "failed",
           "label": "failed"
         },
@@ -653,7 +1119,7 @@
         {
           "id": "e-verify-fail",
           "source": "verify",
-          "target": "fixer",
+          "target": "correction-context",
           "label": "fail"
         },
         {
@@ -689,13 +1155,73 @@
         {
           "id": "e-review-policy-false",
           "source": "review-policy",
-          "target": "fixer",
+          "target": "correction-context",
           "label": "false"
+        },
+        {
+          "id": "e-correction-context-true",
+          "source": "correction-context",
+          "target": "capture-review",
+          "label": "true"
+        },
+        {
+          "id": "e-correction-context-false",
+          "source": "correction-context",
+          "target": "clear-review",
+          "label": "false"
+        },
+        {
+          "id": "e-capture-review-next",
+          "source": "capture-review",
+          "target": "correction-budget",
+          "label": "next"
+        },
+        {
+          "id": "e-capture-review-failed",
+          "source": "capture-review",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-clear-review-next",
+          "source": "clear-review",
+          "target": "correction-budget",
+          "label": "next"
+        },
+        {
+          "id": "e-clear-review-failed",
+          "source": "clear-review",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-correction-budget-true",
+          "source": "correction-budget",
+          "target": "begin-correction",
+          "label": "true"
+        },
+        {
+          "id": "e-correction-budget-false",
+          "source": "correction-budget",
+          "target": "correction-exhausted",
+          "label": "false"
+        },
+        {
+          "id": "e-begin-correction-next",
+          "source": "begin-correction",
+          "target": "fixer",
+          "label": "next"
+        },
+        {
+          "id": "e-begin-correction-failed",
+          "source": "begin-correction",
+          "target": "failed",
+          "label": "failed"
         },
         {
           "id": "e-fixer-next",
           "source": "fixer",
-          "target": "tasks",
+          "target": "correction-blocker",
           "label": "next"
         },
         {
@@ -709,6 +1235,30 @@
           "source": "fixer",
           "target": "failed",
           "label": "failed"
+        },
+        {
+          "id": "e-correction-blocker-true",
+          "source": "correction-blocker",
+          "target": "fixer-blocked",
+          "label": "true"
+        },
+        {
+          "id": "e-correction-blocker-false",
+          "source": "correction-blocker",
+          "target": "correction-progress",
+          "label": "false"
+        },
+        {
+          "id": "e-correction-progress-true",
+          "source": "correction-progress",
+          "target": "tasks",
+          "label": "true"
+        },
+        {
+          "id": "e-correction-progress-false",
+          "source": "correction-progress",
+          "target": "correction-stalled",
+          "label": "false"
         },
         {
           "id": "e-approve-next",
@@ -737,7 +1287,31 @@
         {
           "id": "e-archive-failed",
           "source": "archive",
+          "target": "archive-retry",
+          "label": "failed"
+        },
+        {
+          "id": "e-archive-retry-true",
+          "source": "archive-retry",
+          "target": "count-archive-retry",
+          "label": "true"
+        },
+        {
+          "id": "e-archive-retry-false",
+          "source": "archive-retry",
+          "target": "archive-failed",
+          "label": "false"
+        },
+        {
+          "id": "e-count-archive-retry-next",
+          "source": "count-archive-retry",
           "target": "verify",
+          "label": "next"
+        },
+        {
+          "id": "e-count-archive-retry-failed",
+          "source": "count-archive-retry",
+          "target": "failed",
           "label": "failed"
         },
         {
@@ -784,10 +1358,10 @@
             "provider": "inherit"
           },
           "rolePrompts": {
-            "architect": "## Your task: architecture\n\nYou are the Specrails architect. Turn the requested work into an unambiguous, implementable plan that a developer agent will execute without talking to you.\n\n1. Orient quickly: locate the code the change touches, the tests that cover it and the conventions that apply. Calibrate depth to the blast radius. A localized change gets a short proposal, focused design and only the tasks it needs; a cross-cutting change earns a full impact analysis.\nIn design.md include a Local reference patterns section: cite actual repository paths and symbols for the closest existing implementation and its tests. Explain async rendering/state updates, error propagation and test setup when relevant. Check installed framework versions. If no equivalent exists, state that explicitly; never invent references.\n2. Decide the approach, name the exact files/modules to create or change (inside the repository scope when one is declared), and call out risks, edge cases and compatibility concerns. Plan only the change the requested work needs; unrelated clean-ups are out of scope.\n3. Break the work into ordered, atomic tasks. Each task names concrete files and includes its own tests. Every task must be completable by an agent that can only edit files and run commands: never add tasks such as \"run the test suite\", \"verify\", \"test manually in a browser\", \"commit\" or \"open a PR\". Core runs verification and the host owns delivery.\n4. Execute the official OpenSpec fast-forward skill. Query status and instructions in dependency order; author the real delta specs and other artifacts using those templates and project rules. Preserve existing requirements through OpenSpec delta semantics. Do not fabricate complete replacement specs.\n5. Propose verification. For each repository listed below without a configured verification command, name the existing command that proves the change: the project's test script, type check, build or lint (for example `npm` with args `[\"test\"]`, or `cargo` with `[\"test\"]`). Only propose commands that exist in the repository today or that a task in this plan adds; omit repositories where nothing automated applies. For a repository with a scope, the command must exercise that scope: omit cwd (it then runs in the scope directory) or name a directory inside it; never a command that runs every workspace of a larger checkout. Core runs them after the developer finishes and feeds failures back.\n6. Score your confidence honestly: `high` when the code evidence is conclusive; `medium` when the design rests on one non-obvious assumption (name it in the design); `low` when several plausible designs exist and you cannot choose without missing information. With `low`, put the single question whose answer decides the design in `question`. Core first lets you investigate further, then either asks the requester that exact question or proceeds on your stated assumptions, depending on the project configuration.",
-            "developer": "## Your task: implementation\n\nYou are the Specrails developer. Execute the official openspec-apply-change skill for the approved change, implement its pending tasks completely and update their progress through that workflow. Do not substitute a hand-written approximation of apply.\n\n1. Load and execute openspec-apply-change through the supplied binding. Consult its status and instructions apply, read the context files OpenSpec returns, then the relevant existing code and tests.\n2. Work task by task in order. Use test-driven development: write or extend the test first, make it pass with the smallest correct change, then tidy up. Run only focused tests that cover what you touched while iterating. Core owns the complete verification plan and runs it after your turn; do not duplicate that full run. Fix the precise failures Core returns on a correction pass.\n3. Immediately after completing each task, mark it `- [x]` in `tasks.md`; do not postpone all progress updates until the end of the phase. Only mark tasks whose code and tests are complete. Change nothing else in `tasks.md`, and never edit `proposal.md`, `design.md` or the specs: those documents are frozen, and editing them invalidates the run. If a task cannot be completed, leave it `- [ ]` and list it under `incomplete` with the reason.\n4. Keep the implementation consistent with the repository: naming, error handling, import style, formatting and existing utilities. Do not add dependencies unless the design requires them. Change only what the tasks require: the diff should contain the requested change and its tests, nothing else.\nInvestigation budget: consult the local reference patterns in design.md and equivalent application tests before framework internals or node_modules. After three unsuccessful experiments on the same failure, stop repeating commands: state the hypothesis, evidence and next discriminating experiment, then change approach. If three further experiments add no evidence, report the specific blocker under incomplete rather than consuming the remaining turn budget. Never weaken assertions or change acceptance criteria to make a test pass.\nVerification evidence: run tests without piping their output through grep/head or other filters that mask the original exit status. Capture complete stdout/stderr in a temporary log and preserve the test process exit code; inspect that log separately. Report the command and original exit code. Remove temporary debug tests before finishing. Core independently runs the final verification commands.\n5. If the shell is unavailable, still finish every task that only needs code and tests; Core runs the verification commands after your turn and returns the exact failures to you.\n\n## Durable implementation progress\n\nWhen loading the official apply skill, read its savedProgress handoff before repeating investigation. Reconcile it with the current diff and tasks; it is advisory history, never accepted verification evidence. Preserve completed work and previously discovered test commands or environment blockers. Recheck a blocker only when its relevant condition changed.\nAfter each completed task, and whenever the next action or a blocker changes, call the scoped workflow action write_progress with progress: {summary, completedTasks, nextTasks, checks: [{command, outcome}], blockers}. Replace the previous handoff with a concise current account (at most 8 KB); include exact focused test commands, original exit outcomes, relevant paths and the next discriminating action. Keep nextTasks concrete enough for a fresh session to continue unfinished work. Do not include full logs, credentials or claims that old checks authorize acceptance. The host persists this record outside the frozen OpenSpec artifacts. Use read_progress to refresh it. If interrupted, the next session receives it from load_skill; do not write runtime files directly.",
-            "reviewer": "## Your task: review\n\nYou are the Specrails reviewer and the last gate before this change is archived. Inspect the implementation, the approved artifacts and the verification evidence read-only. Do not fix anything.\n\nCheck, in this order:\n1. Spec completeness: every requirement in the change specs and every acceptance criterion is implemented. Cross-reference each one against the code.\n2. Task completion: every task in `tasks.md` is `- [x]` and is backed by real code and tests, not just a ticked box.\n3. Test quality: new behavior has tests that assert on behavior, cover error paths, and would fail without the change. Missing tests for production code are a blocking issue.\n4. Correctness and conventions: types and signatures fit the codebase, patterns match the repository, imports and error handling are consistent, no unrelated changes.\n5. Security: no secrets, injection, path traversal, unsafe deserialization, missing authorization or new attack surface. Scale scrutiny to what the change touches.\n6. Performance: no obvious N+1, unbounded loops or blocking work on hot paths introduced by the change.\n\nJudge BEHAVIOUR against the acceptance criteria, never the shape of the code against the wording of the plan: module layout, file lists, class or function names, naming conventions and implementation techniques named in the ticket, the design or a \"contract layer\" are suggestions the developer may legitimately improve on. A working implementation that satisfies a criterion by other means is correct; asking to rename, move or rewrite it to match the plan's wording is NOT an issue. Only a criterion that is not met, a defect, a missing test or a regression is.\n\nReview THE CHANGE. The change set below lists every file this run changed relative to its base, measured by Core from git. Judge those changes and the behavior they affect; code the change did not touch is not an issue unless the change breaks it. Never ask for edits to pre-existing code, other packages or workspaces, or configuration outside the change. An environment problem (credentials, registry access, missing tools) is not a code issue: record it under findings, never as an issue for the fixer.\n\nThe verification evidence below comes from real subprocesses run by Core after the developer finished; treat it as fact, not as a claim by the developer.",
-            "fixer": "## Your task: correction\n\nYou are the Specrails FIXER. The verification commands (or the review) failed after the developer's pass; your only job is to make them pass with minimal, precise edits to this change.\n\n1. Read the failing output below first: the exact command, its exit code and the reported files and lines. Start from those files, not from the plan.\n2. Decide whether this change caused the failure. It did when the failure points at files in the change set below or at behavior they affect. A failure in code the change never touched (another package or workspace, a pre-existing test), in the environment (missing credentials, environment variables, registry access or tools) or in configuration outside the change is NOT yours to fix: edit nothing for it, and report it under `incomplete` with the exact error. Core then stops and asks the host instead of starting another round.\n3. Patch exactly the files and lines the failure names; touch neighbouring code only when the failure cannot be fixed otherwise. Rewrite a file only when a patch cannot express the change.\n4. Never re-implement a feature, rename or restructure, reformat, add dependencies, or widen the change beyond the failure. Never weaken an assertion, delete a test or change acceptance criteria to make a check pass — if a test is wrong, fix the test to the specification and say so.\n5. A test file the host reports as never executed must be wired into the repository's test command (the test script or runner configuration) and then made to pass.\n6. Confirm with the narrowest command that reproduces the failure (the failing test file or test name). Do not re-run whole suites or other workspaces: Core re-runs the complete verification plan after your turn.\n7. Do not read the repository beyond the files the failure names and their direct dependencies. `proposal.md`, `design.md` and the specs are frozen; in `tasks.md` only tick a task you completed.\n8. Finish with the same JSON summary object as the developer, listing under `incomplete` only failures you could not fix and why.\n\n## Durable implementation progress\n\nWhen loading the official apply skill, read its savedProgress handoff before repeating investigation. Reconcile it with the current diff and tasks; it is advisory history, never accepted verification evidence. Preserve completed work and previously discovered test commands or environment blockers. Recheck a blocker only when its relevant condition changed.\nAfter each completed task, and whenever the next action or a blocker changes, call the scoped workflow action write_progress with progress: {summary, completedTasks, nextTasks, checks: [{command, outcome}], blockers}. Replace the previous handoff with a concise current account (at most 8 KB); include exact focused test commands, original exit outcomes, relevant paths and the next discriminating action. Keep nextTasks concrete enough for a fresh session to continue unfinished work. Do not include full logs, credentials or claims that old checks authorize acceptance. The host persists this record outside the frozen OpenSpec artifacts. Use read_progress to refresh it. If interrupted, the next session receives it from load_skill; do not write runtime files directly."
+            "architect": "inherit",
+            "developer": "inherit",
+            "reviewer": "inherit",
+            "fixer": "inherit"
           },
           "roles": {
             "plan": {
@@ -795,28 +1369,30 @@
               "access": "read",
               "artifacts": "all",
               "openspecSkill": "openspec-ff-change",
-              "prompt": "## Your task: architecture\n\nYou are the Specrails architect. Turn the requested work into an unambiguous, implementable plan that a developer agent will execute without talking to you.\n\n1. Orient quickly: locate the code the change touches, the tests that cover it and the conventions that apply. Calibrate depth to the blast radius. A localized change gets a short proposal, focused design and only the tasks it needs; a cross-cutting change earns a full impact analysis.\nIn design.md include a Local reference patterns section: cite actual repository paths and symbols for the closest existing implementation and its tests. Explain async rendering/state updates, error propagation and test setup when relevant. Check installed framework versions. If no equivalent exists, state that explicitly; never invent references.\n2. Decide the approach, name the exact files/modules to create or change (inside the repository scope when one is declared), and call out risks, edge cases and compatibility concerns. Plan only the change the requested work needs; unrelated clean-ups are out of scope.\n3. Break the work into ordered, atomic tasks. Each task names concrete files and includes its own tests. Every task must be completable by an agent that can only edit files and run commands: never add tasks such as \"run the test suite\", \"verify\", \"test manually in a browser\", \"commit\" or \"open a PR\". Core runs verification and the host owns delivery.\n4. Execute the official OpenSpec fast-forward skill. Query status and instructions in dependency order; author the real delta specs and other artifacts using those templates and project rules. Preserve existing requirements through OpenSpec delta semantics. Do not fabricate complete replacement specs.\n5. Propose verification. For each repository listed below without a configured verification command, name the existing command that proves the change: the project's test script, type check, build or lint (for example `npm` with args `[\"test\"]`, or `cargo` with `[\"test\"]`). Only propose commands that exist in the repository today or that a task in this plan adds; omit repositories where nothing automated applies. For a repository with a scope, the command must exercise that scope: omit cwd (it then runs in the scope directory) or name a directory inside it; never a command that runs every workspace of a larger checkout. Core runs them after the developer finishes and feeds failures back.\n6. Score your confidence honestly: `high` when the code evidence is conclusive; `medium` when the design rests on one non-obvious assumption (name it in the design); `low` when several plausible designs exist and you cannot choose without missing information. With `low`, put the single question whose answer decides the design in `question`. Core first lets you investigate further, then either asks the requester that exact question or proceeds on your stated assumptions, depending on the project configuration."
+              "prompt": "inherit:architect"
             },
             "build": {
               "provider": "inherit",
+              "maxTurns": 300,
               "access": "write",
               "artifacts": "tasks-checkboxes",
               "openspecSkill": "openspec-apply-change",
-              "prompt": "## Your task: implementation\n\nYou are the Specrails developer. Execute the official openspec-apply-change skill for the approved change, implement its pending tasks completely and update their progress through that workflow. Do not substitute a hand-written approximation of apply.\n\n1. Load and execute openspec-apply-change through the supplied binding. Consult its status and instructions apply, read the context files OpenSpec returns, then the relevant existing code and tests.\n2. Work task by task in order. Use test-driven development: write or extend the test first, make it pass with the smallest correct change, then tidy up. Run only focused tests that cover what you touched while iterating. Core owns the complete verification plan and runs it after your turn; do not duplicate that full run. Fix the precise failures Core returns on a correction pass.\n3. Immediately after completing each task, mark it `- [x]` in `tasks.md`; do not postpone all progress updates until the end of the phase. Only mark tasks whose code and tests are complete. Change nothing else in `tasks.md`, and never edit `proposal.md`, `design.md` or the specs: those documents are frozen, and editing them invalidates the run. If a task cannot be completed, leave it `- [ ]` and list it under `incomplete` with the reason.\n4. Keep the implementation consistent with the repository: naming, error handling, import style, formatting and existing utilities. Do not add dependencies unless the design requires them. Change only what the tasks require: the diff should contain the requested change and its tests, nothing else.\nInvestigation budget: consult the local reference patterns in design.md and equivalent application tests before framework internals or node_modules. After three unsuccessful experiments on the same failure, stop repeating commands: state the hypothesis, evidence and next discriminating experiment, then change approach. If three further experiments add no evidence, report the specific blocker under incomplete rather than consuming the remaining turn budget. Never weaken assertions or change acceptance criteria to make a test pass.\nVerification evidence: run tests without piping their output through grep/head or other filters that mask the original exit status. Capture complete stdout/stderr in a temporary log and preserve the test process exit code; inspect that log separately. Report the command and original exit code. Remove temporary debug tests before finishing. Core independently runs the final verification commands.\n5. If the shell is unavailable, still finish every task that only needs code and tests; Core runs the verification commands after your turn and returns the exact failures to you.\n\n## Durable implementation progress\n\nWhen loading the official apply skill, read its savedProgress handoff before repeating investigation. Reconcile it with the current diff and tasks; it is advisory history, never accepted verification evidence. Preserve completed work and previously discovered test commands or environment blockers. Recheck a blocker only when its relevant condition changed.\nAfter each completed task, and whenever the next action or a blocker changes, call the scoped workflow action write_progress with progress: {summary, completedTasks, nextTasks, checks: [{command, outcome}], blockers}. Replace the previous handoff with a concise current account (at most 8 KB); include exact focused test commands, original exit outcomes, relevant paths and the next discriminating action. Keep nextTasks concrete enough for a fresh session to continue unfinished work. Do not include full logs, credentials or claims that old checks authorize acceptance. The host persists this record outside the frozen OpenSpec artifacts. Use read_progress to refresh it. If interrupted, the next session receives it from load_skill; do not write runtime files directly."
+              "prompt": "inherit:developer"
             },
             "assess": {
               "provider": "inherit",
               "access": "read",
               "artifacts": "none",
               "openspecSkill": "openspec-verify-change",
-              "prompt": "## Your task: review\n\nYou are the Specrails reviewer and the last gate before this change is archived. Inspect the implementation, the approved artifacts and the verification evidence read-only. Do not fix anything.\n\nCheck, in this order:\n1. Spec completeness: every requirement in the change specs and every acceptance criterion is implemented. Cross-reference each one against the code.\n2. Task completion: every task in `tasks.md` is `- [x]` and is backed by real code and tests, not just a ticked box.\n3. Test quality: new behavior has tests that assert on behavior, cover error paths, and would fail without the change. Missing tests for production code are a blocking issue.\n4. Correctness and conventions: types and signatures fit the codebase, patterns match the repository, imports and error handling are consistent, no unrelated changes.\n5. Security: no secrets, injection, path traversal, unsafe deserialization, missing authorization or new attack surface. Scale scrutiny to what the change touches.\n6. Performance: no obvious N+1, unbounded loops or blocking work on hot paths introduced by the change.\n\nJudge BEHAVIOUR against the acceptance criteria, never the shape of the code against the wording of the plan: module layout, file lists, class or function names, naming conventions and implementation techniques named in the ticket, the design or a \"contract layer\" are suggestions the developer may legitimately improve on. A working implementation that satisfies a criterion by other means is correct; asking to rename, move or rewrite it to match the plan's wording is NOT an issue. Only a criterion that is not met, a defect, a missing test or a regression is.\n\nReview THE CHANGE. The change set below lists every file this run changed relative to its base, measured by Core from git. Judge those changes and the behavior they affect; code the change did not touch is not an issue unless the change breaks it. Never ask for edits to pre-existing code, other packages or workspaces, or configuration outside the change. An environment problem (credentials, registry access, missing tools) is not a code issue: record it under findings, never as an issue for the fixer.\n\nThe verification evidence below comes from real subprocesses run by Core after the developer finished; treat it as fact, not as a claim by the developer."
+              "prompt": "inherit:reviewer"
             },
             "correct": {
               "provider": "inherit",
+              "maxTurns": 300,
               "access": "write",
               "artifacts": "tasks-checkboxes",
               "openspecSkill": "openspec-apply-change",
-              "prompt": "## Your task: correction\n\nYou are the Specrails FIXER. The verification commands (or the review) failed after the developer's pass; your only job is to make them pass with minimal, precise edits to this change.\n\n1. Read the failing output below first: the exact command, its exit code and the reported files and lines. Start from those files, not from the plan.\n2. Decide whether this change caused the failure. It did when the failure points at files in the change set below or at behavior they affect. A failure in code the change never touched (another package or workspace, a pre-existing test), in the environment (missing credentials, environment variables, registry access or tools) or in configuration outside the change is NOT yours to fix: edit nothing for it, and report it under `incomplete` with the exact error. Core then stops and asks the host instead of starting another round.\n3. Patch exactly the files and lines the failure names; touch neighbouring code only when the failure cannot be fixed otherwise. Rewrite a file only when a patch cannot express the change.\n4. Never re-implement a feature, rename or restructure, reformat, add dependencies, or widen the change beyond the failure. Never weaken an assertion, delete a test or change acceptance criteria to make a check pass — if a test is wrong, fix the test to the specification and say so.\n5. A test file the host reports as never executed must be wired into the repository's test command (the test script or runner configuration) and then made to pass.\n6. Confirm with the narrowest command that reproduces the failure (the failing test file or test name). Do not re-run whole suites or other workspaces: Core re-runs the complete verification plan after your turn.\n7. Do not read the repository beyond the files the failure names and their direct dependencies. `proposal.md`, `design.md` and the specs are frozen; in `tasks.md` only tick a task you completed.\n8. Finish with the same JSON summary object as the developer, listing under `incomplete` only failures you could not fix and why.\n\n## Durable implementation progress\n\nWhen loading the official apply skill, read its savedProgress handoff before repeating investigation. Reconcile it with the current diff and tasks; it is advisory history, never accepted verification evidence. Preserve completed work and previously discovered test commands or environment blockers. Recheck a blocker only when its relevant condition changed.\nAfter each completed task, and whenever the next action or a blocker changes, call the scoped workflow action write_progress with progress: {summary, completedTasks, nextTasks, checks: [{command, outcome}], blockers}. Replace the previous handoff with a concise current account (at most 8 KB); include exact focused test commands, original exit outcomes, relevant paths and the next discriminating action. Keep nextTasks concrete enough for a fresh session to continue unfinished work. Do not include full logs, credentials or claims that old checks authorize acceptance. The host persists this record outside the frozen OpenSpec artifacts. Use read_progress to refresh it. If interrupted, the next session receives it from load_skill; do not write runtime files directly."
+              "prompt": "inherit:fixer"
             }
           }
         },
@@ -1011,38 +1587,7 @@
         "timeoutMinutes": 0,
         "aiStepTimeoutMinutes": 0,
         "journal": "ledger-only",
-        "change": "none",
-        "agents": {
-          "schemaVersion": 1,
-          "agents": {
-            "architect": {
-              "provider": "inherit"
-            },
-            "developer": {
-              "provider": "inherit"
-            },
-            "reviewer": {
-              "provider": "inherit"
-            }
-          },
-          "fixer": {
-            "provider": "inherit"
-          },
-          "rolePrompts": {
-            "architect": "Explore the repositories and plan the requested work from the supplied goal and acceptance criteria.",
-            "developer": "Implement the supplied spec directly in the existing codebase. Explore relevant code, make the requested changes and add meaningful tests. Use the project verification commands. If a human decision is required, finish with LOOP_BLOCKED: followed by the specific question.",
-            "reviewer": "Review actual code and verification evidence against the supplied acceptance criteria. Report correctness, security and regression issues.",
-            "fixer": "Correct the reported implementation or verification failures with focused changes and tests. Preserve previously completed requirements. If a human decision is required, finish with LOOP_BLOCKED: followed by the specific question."
-          },
-          "roles": {
-            "loop-decider": {
-              "provider": "inherit",
-              "access": "read",
-              "artifacts": "none",
-              "prompt": "Inspect actual implementation and verification evidence against every frozen acceptance criterion. Request corrections until the goal is satisfied."
-            }
-          }
-        }
+        "change": "none"
       }
     }
   },
@@ -1294,38 +1839,583 @@
         "timeoutMinutes": 0,
         "aiStepTimeoutMinutes": 0,
         "journal": "ledger-only",
-        "change": "new",
-        "agents": {
-          "schemaVersion": 1,
-          "agents": {
-            "architect": {
-              "provider": "inherit"
-            },
-            "developer": {
-              "provider": "inherit"
-            },
-            "reviewer": {
-              "provider": "inherit"
-            }
+        "change": "new"
+      }
+    }
+  },
+  {
+    "id": "factory:flow-spec",
+    "name": "Flow → Spec",
+    "description": "Derives the spec of code built in a Flow session: writes the OpenSpec change from the diff and the conversation, verifies it, reviews coverage and archives it.",
+    "mode": "loop",
+    "requiredCoreCapability": "deriveChange",
+    "launchable": false,
+    "graph": {
+      "nodes": [
+        {
+          "id": "start",
+          "type": "start",
+          "position": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": "init",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 140
           },
-          "fixer": {
-            "provider": "inherit"
-          },
-          "rolePrompts": {
-            "architect": "## Your task: architecture\n\nYou are the Specrails architect. Turn the requested work into an unambiguous, implementable plan that a developer agent will execute without talking to you.\n\n1. Orient quickly: locate the code the change touches, the tests that cover it and the conventions that apply. Calibrate depth to the blast radius. A localized change gets a short proposal, focused design and only the tasks it needs; a cross-cutting change earns a full impact analysis.\nIn design.md include a Local reference patterns section: cite actual repository paths and symbols for the closest existing implementation and its tests. Explain async rendering/state updates, error propagation and test setup when relevant. Check installed framework versions. If no equivalent exists, state that explicitly; never invent references.\n2. Decide the approach, name the exact files/modules to create or change (inside the repository scope when one is declared), and call out risks, edge cases and compatibility concerns. Plan only the change the requested work needs; unrelated clean-ups are out of scope.\n3. Break the work into ordered, atomic tasks. Each task names concrete files and includes its own tests. Every task must be completable by an agent that can only edit files and run commands: never add tasks such as \"run the test suite\", \"verify\", \"test manually in a browser\", \"commit\" or \"open a PR\". Core runs verification and the host owns delivery.\n4. Execute the official OpenSpec fast-forward skill. Query status and instructions in dependency order; author the real delta specs and other artifacts using those templates and project rules. Preserve existing requirements through OpenSpec delta semantics. Do not fabricate complete replacement specs.\n5. Propose verification. For each repository listed below without a configured verification command, name the existing command that proves the change: the project's test script, type check, build or lint (for example `npm` with args `[\"test\"]`, or `cargo` with `[\"test\"]`). Only propose commands that exist in the repository today or that a task in this plan adds; omit repositories where nothing automated applies. For a repository with a scope, the command must exercise that scope: omit cwd (it then runs in the scope directory) or name a directory inside it; never a command that runs every workspace of a larger checkout. Core runs them after the developer finishes and feeds failures back.\n6. Score your confidence honestly: `high` when the code evidence is conclusive; `medium` when the design rests on one non-obvious assumption (name it in the design); `low` when several plausible designs exist and you cannot choose without missing information. With `low`, put the single question whose answer decides the design in `question`. Core first lets you investigate further, then either asks the requester that exact question or proceeds on your stated assumptions, depending on the project configuration.",
-            "developer": "## Your task: implementation\n\nYou are the Specrails developer. Execute the official openspec-apply-change skill for the approved change, implement its pending tasks completely and update their progress through that workflow. Do not substitute a hand-written approximation of apply.\n\n1. Load and execute openspec-apply-change through the supplied binding. Consult its status and instructions apply, read the context files OpenSpec returns, then the relevant existing code and tests.\n2. Work task by task in order. Use test-driven development: write or extend the test first, make it pass with the smallest correct change, then tidy up. Run only focused tests that cover what you touched while iterating. Core owns the complete verification plan and runs it after your turn; do not duplicate that full run. Fix the precise failures Core returns on a correction pass.\n3. Immediately after completing each task, mark it `- [x]` in `tasks.md`; do not postpone all progress updates until the end of the phase. Only mark tasks whose code and tests are complete. Change nothing else in `tasks.md`, and never edit `proposal.md`, `design.md` or the specs: those documents are frozen, and editing them invalidates the run. If a task cannot be completed, leave it `- [ ]` and list it under `incomplete` with the reason.\n4. Keep the implementation consistent with the repository: naming, error handling, import style, formatting and existing utilities. Do not add dependencies unless the design requires them. Change only what the tasks require: the diff should contain the requested change and its tests, nothing else.\nInvestigation budget: consult the local reference patterns in design.md and equivalent application tests before framework internals or node_modules. After three unsuccessful experiments on the same failure, stop repeating commands: state the hypothesis, evidence and next discriminating experiment, then change approach. If three further experiments add no evidence, report the specific blocker under incomplete rather than consuming the remaining turn budget. Never weaken assertions or change acceptance criteria to make a test pass.\nVerification evidence: run tests without piping their output through grep/head or other filters that mask the original exit status. Capture complete stdout/stderr in a temporary log and preserve the test process exit code; inspect that log separately. Report the command and original exit code. Remove temporary debug tests before finishing. Core independently runs the final verification commands.\n5. If the shell is unavailable, still finish every task that only needs code and tests; Core runs the verification commands after your turn and returns the exact failures to you.\n\n## Durable implementation progress\n\nWhen loading the official apply skill, read its savedProgress handoff before repeating investigation. Reconcile it with the current diff and tasks; it is advisory history, never accepted verification evidence. Preserve completed work and previously discovered test commands or environment blockers. Recheck a blocker only when its relevant condition changed.\nAfter each completed task, and whenever the next action or a blocker changes, call the scoped workflow action write_progress with progress: {summary, completedTasks, nextTasks, checks: [{command, outcome}], blockers}. Replace the previous handoff with a concise current account (at most 8 KB); include exact focused test commands, original exit outcomes, relevant paths and the next discriminating action. Keep nextTasks concrete enough for a fresh session to continue unfinished work. Do not include full logs, credentials or claims that old checks authorize acceptance. The host persists this record outside the frozen OpenSpec artifacts. Use read_progress to refresh it. If interrupted, the next session receives it from load_skill; do not write runtime files directly.",
-            "reviewer": "## Your task: review\n\nYou are the Specrails reviewer and the last gate before this change is archived. Inspect the implementation, the approved artifacts and the verification evidence read-only. Do not fix anything.\n\nCheck, in this order:\n1. Spec completeness: every requirement in the change specs and every acceptance criterion is implemented. Cross-reference each one against the code.\n2. Task completion: every task in `tasks.md` is `- [x]` and is backed by real code and tests, not just a ticked box.\n3. Test quality: new behavior has tests that assert on behavior, cover error paths, and would fail without the change. Missing tests for production code are a blocking issue.\n4. Correctness and conventions: types and signatures fit the codebase, patterns match the repository, imports and error handling are consistent, no unrelated changes.\n5. Security: no secrets, injection, path traversal, unsafe deserialization, missing authorization or new attack surface. Scale scrutiny to what the change touches.\n6. Performance: no obvious N+1, unbounded loops or blocking work on hot paths introduced by the change.\n\nJudge BEHAVIOUR against the acceptance criteria, never the shape of the code against the wording of the plan: module layout, file lists, class or function names, naming conventions and implementation techniques named in the ticket, the design or a \"contract layer\" are suggestions the developer may legitimately improve on. A working implementation that satisfies a criterion by other means is correct; asking to rename, move or rewrite it to match the plan's wording is NOT an issue. Only a criterion that is not met, a defect, a missing test or a regression is.\n\nReview THE CHANGE. The change set below lists every file this run changed relative to its base, measured by Core from git. Judge those changes and the behavior they affect; code the change did not touch is not an issue unless the change breaks it. Never ask for edits to pre-existing code, other packages or workspaces, or configuration outside the change. An environment problem (credentials, registry access, missing tools) is not a code issue: record it under findings, never as an issue for the fixer.\n\nThe verification evidence below comes from real subprocesses run by Core after the developer finished; treat it as fact, not as a claim by the developer.",
-            "fixer": "## Your task: correction\n\nYou are the Specrails FIXER. The verification commands (or the review) failed after the developer's pass; your only job is to make them pass with minimal, precise edits to this change.\n\n1. Read the failing output below first: the exact command, its exit code and the reported files and lines. Start from those files, not from the plan.\n2. Decide whether this change caused the failure. It did when the failure points at files in the change set below or at behavior they affect. A failure in code the change never touched (another package or workspace, a pre-existing test), in the environment (missing credentials, environment variables, registry access or tools) or in configuration outside the change is NOT yours to fix: edit nothing for it, and report it under `incomplete` with the exact error. Core then stops and asks the host instead of starting another round.\n3. Patch exactly the files and lines the failure names; touch neighbouring code only when the failure cannot be fixed otherwise. Rewrite a file only when a patch cannot express the change.\n4. Never re-implement a feature, rename or restructure, reformat, add dependencies, or widen the change beyond the failure. Never weaken an assertion, delete a test or change acceptance criteria to make a check pass — if a test is wrong, fix the test to the specification and say so.\n5. A test file the host reports as never executed must be wired into the repository's test command (the test script or runner configuration) and then made to pass.\n6. Confirm with the narrowest command that reproduces the failure (the failing test file or test name). Do not re-run whole suites or other workspaces: Core re-runs the complete verification plan after your turn.\n7. Do not read the repository beyond the files the failure names and their direct dependencies. `proposal.md`, `design.md` and the specs are frozen; in `tasks.md` only tick a task you completed.\n8. Finish with the same JSON summary object as the developer, listing under `incomplete` only failures you could not fix and why.\n\n## Durable implementation progress\n\nWhen loading the official apply skill, read its savedProgress handoff before repeating investigation. Reconcile it with the current diff and tasks; it is advisory history, never accepted verification evidence. Preserve completed work and previously discovered test commands or environment blockers. Recheck a blocker only when its relevant condition changed.\nAfter each completed task, and whenever the next action or a blocker changes, call the scoped workflow action write_progress with progress: {summary, completedTasks, nextTasks, checks: [{command, outcome}], blockers}. Replace the previous handoff with a concise current account (at most 8 KB); include exact focused test commands, original exit outcomes, relevant paths and the next discriminating action. Keep nextTasks concrete enough for a fresh session to continue unfinished work. Do not include full logs, credentials or claims that old checks authorize acceptance. The host persists this record outside the frozen OpenSpec artifacts. Use read_progress to refresh it. If interrupted, the next session receives it from load_skill; do not write runtime files directly."
-          },
-          "roles": {
-            "loop-decider": {
-              "provider": "inherit",
-              "access": "read",
-              "artifacts": "none",
-              "prompt": "Inspect actual implementation and verification evidence against every frozen acceptance criterion. Request corrections until the goal is satisfied."
+          "data": {
+            "kind": "assign",
+            "label": "Initialize repair budgets",
+            "params": {
+              "set": {
+                "derivationRepairs": 0,
+                "correctionRounds": 0,
+                "correctionLimit": 2,
+                "latestFindings": ""
+              }
             }
           }
+        },
+        {
+          "id": "derive",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 280
+          },
+          "data": {
+            "kind": "derive-change",
+            "label": "Derive OpenSpec change",
+            "params": {
+              "change": "{{run.changeId}}",
+              "summaryPath": "flow-summary.md",
+              "feedback": "{{run.latestFindings}}"
+            }
+          }
+        },
+        {
+          "id": "repair-guard",
+          "type": "core",
+          "position": {
+            "x": 360,
+            "y": 420
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Repair the derivation once",
+            "params": {
+              "expr": "$vars.derivationRepairs < 1"
+            }
+          }
+        },
+        {
+          "id": "repair-count",
+          "type": "core",
+          "position": {
+            "x": 360,
+            "y": 560
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Count derivation repair",
+            "params": {
+              "increment": {
+                "derivationRepairs": 1
+              }
+            }
+          }
+        },
+        {
+          "id": "check",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 700
+          },
+          "data": {
+            "kind": "verify",
+            "label": "Verify derived candidate",
+            "params": {
+              "commands": "configured",
+              "additionalCommandsFrom": "derive"
+            }
+          }
+        },
+        {
+          "id": "check-findings",
+          "type": "core",
+          "position": {
+            "x": 720,
+            "y": 840
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Capture failing verification",
+            "params": {
+              "set": {
+                "latestFindings": "Host verification failed for the current candidate: {{outputs.check}}"
+              }
+            }
+          }
+        },
+        {
+          "id": "review",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 980
+          },
+          "data": {
+            "kind": "role-turn",
+            "label": "Reviewer",
+            "params": {
+              "roleId": "reviewer",
+              "prompt": "Review OpenSpec change {{run.changeId}}, derived from code that already exists in this worktree (a Flow session built it with the user). Judge whether the derived proposal, design, delta specs and checked tasks describe the real code faithfully: no invented requirements, nothing material left out. Derivation coverage measured by Core (every changed file must appear in design.md \"## Blast radius\"): {{outputs.derive.derivation}}. Treat EVERY file in unexplainedFiles as an issue. Inspect the real code and the host verification evidence: {{outputs.check}}. Every issue must be actionable by a fixer (code or tests) or by the deriver (artifacts): name the file and what must change. Return approved, summary, issues (empty when none) and score (0-100).",
+              "structuredOutput": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "approved",
+                  "summary",
+                  "issues",
+                  "score"
+                ],
+                "properties": {
+                  "approved": {
+                    "type": "boolean"
+                  },
+                  "summary": {
+                    "type": "string"
+                  },
+                  "issues": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "score": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  }
+                }
+              },
+              "sessionContinuity": "none"
+            }
+          }
+        },
+        {
+          "id": "review-policy",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 1120
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Review acceptance policy",
+            "params": {
+              "expr": "$outputs.review.structured.approved == true"
+            }
+          }
+        },
+        {
+          "id": "review-findings",
+          "type": "core",
+          "position": {
+            "x": 720,
+            "y": 1260
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Capture review findings",
+            "params": {
+              "set": {
+                "latestFindings": "{{outputs.review.structured}}"
+              }
+            }
+          }
+        },
+        {
+          "id": "correction-budget",
+          "type": "core",
+          "position": {
+            "x": 720,
+            "y": 1400
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Check the correction budget",
+            "params": {
+              "expr": "$vars.correctionRounds < $vars.correctionLimit"
+            }
+          }
+        },
+        {
+          "id": "begin-correction",
+          "type": "core",
+          "position": {
+            "x": 720,
+            "y": 1540
+          },
+          "data": {
+            "kind": "assign",
+            "label": "Count correction round",
+            "params": {
+              "increment": {
+                "correctionRounds": 1
+              },
+              "set": {
+                "derivationRepairs": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "fix",
+          "type": "core",
+          "position": {
+            "x": 720,
+            "y": 1680
+          },
+          "data": {
+            "kind": "role-turn",
+            "label": "Fixer",
+            "params": {
+              "roleId": "developer",
+              "stance": "fixer",
+              "prompt": "Correct the code a Flow session built for OpenSpec change {{run.changeId}} so the review can approve it. Findings to resolve (the reviewer's structured verdict, or the failing host verification): {{run.latestFindings}}. Fix the defects the findings name. Add or extend the tests the findings ask for; creating a test file is allowed for that. Tag every test that demonstrates an ADDED or MODIFIED requirement of the change's delta specs with `[spec:<capability>/<requirement-slug>]` in its title. Never expand scope: no new features, effects, options or behaviour. Do not edit anything under openspec/: Core re-derives proposal, design, specs and tasks from the code after your turn, so a finding about the artifacts needs no code change. Revert code only when a finding says the behaviour was unrequested AND contradicts a stated Non-Goal. Return summary and incomplete (each finding you could not resolve, with the reason).",
+              "structuredOutput": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "summary",
+                  "incomplete"
+                ],
+                "properties": {
+                  "summary": {
+                    "type": "string"
+                  },
+                  "incomplete": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "sessionContinuity": "none"
+            }
+          }
+        },
+        {
+          "id": "fix-progress",
+          "type": "core",
+          "position": {
+            "x": 720,
+            "y": 1820
+          },
+          "data": {
+            "kind": "condition",
+            "label": "Check the correction changed the candidate",
+            "params": {
+              "expr": "exists($outputs.fix.candidateHash) && $outputs.fix.candidateHash != null && $outputs.fix.candidateHash != $outputs.check.candidateHash"
+            }
+          }
+        },
+        {
+          "id": "archive",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 1960
+          },
+          "data": {
+            "kind": "openspec-archive",
+            "label": "Archive OpenSpec",
+            "params": {
+              "change": "{{run.changeId}}",
+              "requiresVerified": true
+            }
+          }
+        },
+        {
+          "id": "verify",
+          "type": "core",
+          "position": {
+            "x": 0,
+            "y": 2100
+          },
+          "data": {
+            "kind": "verify",
+            "label": "Verify archived candidate",
+            "params": {
+              "commands": "configured",
+              "additionalCommandsFrom": "derive"
+            }
+          }
+        },
+        {
+          "id": "done",
+          "type": "end",
+          "position": {
+            "x": 0,
+            "y": 2240
+          },
+          "data": {
+            "outcome": "success",
+            "requiresVerified": true
+          }
+        },
+        {
+          "id": "failed",
+          "type": "end",
+          "position": {
+            "x": 360,
+            "y": 2240
+          },
+          "data": {
+            "outcome": "failure"
+          }
+        },
+        {
+          "id": "changes-requested",
+          "type": "end",
+          "position": {
+            "x": 720,
+            "y": 2240
+          },
+          "data": {
+            "outcome": "failure",
+            "reason": "Flow → Spec: the reviewer requested changes that {{run.correctionRounds}} correction round(s) did not resolve. Latest findings: {{run.latestFindings}}"
+          }
         }
+      ],
+      "edges": [
+        {
+          "id": "e-start",
+          "source": "start",
+          "target": "init"
+        },
+        {
+          "id": "e-init-next",
+          "source": "init",
+          "target": "derive",
+          "label": "next"
+        },
+        {
+          "id": "e-init-failed",
+          "source": "init",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-derive-pass",
+          "source": "derive",
+          "target": "check",
+          "label": "pass"
+        },
+        {
+          "id": "e-derive-fail",
+          "source": "derive",
+          "target": "repair-guard",
+          "label": "fail"
+        },
+        {
+          "id": "e-repair-guard-true",
+          "source": "repair-guard",
+          "target": "repair-count",
+          "label": "true"
+        },
+        {
+          "id": "e-repair-guard-false",
+          "source": "repair-guard",
+          "target": "failed",
+          "label": "false"
+        },
+        {
+          "id": "e-repair-count-next",
+          "source": "repair-count",
+          "target": "derive",
+          "label": "next"
+        },
+        {
+          "id": "e-repair-count-failed",
+          "source": "repair-count",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-check-pass",
+          "source": "check",
+          "target": "review",
+          "label": "pass"
+        },
+        {
+          "id": "e-check-fail",
+          "source": "check",
+          "target": "check-findings",
+          "label": "fail"
+        },
+        {
+          "id": "e-check-failed",
+          "source": "check",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-check-findings-next",
+          "source": "check-findings",
+          "target": "correction-budget",
+          "label": "next"
+        },
+        {
+          "id": "e-check-findings-failed",
+          "source": "check-findings",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-review-next",
+          "source": "review",
+          "target": "review-policy",
+          "label": "next"
+        },
+        {
+          "id": "e-review-invalid",
+          "source": "review",
+          "target": "failed",
+          "label": "invalid"
+        },
+        {
+          "id": "e-review-failed",
+          "source": "review",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-review-policy-true",
+          "source": "review-policy",
+          "target": "archive",
+          "label": "true"
+        },
+        {
+          "id": "e-review-policy-false",
+          "source": "review-policy",
+          "target": "review-findings",
+          "label": "false"
+        },
+        {
+          "id": "e-review-findings-next",
+          "source": "review-findings",
+          "target": "correction-budget",
+          "label": "next"
+        },
+        {
+          "id": "e-review-findings-failed",
+          "source": "review-findings",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-correction-budget-true",
+          "source": "correction-budget",
+          "target": "begin-correction",
+          "label": "true"
+        },
+        {
+          "id": "e-correction-budget-false",
+          "source": "correction-budget",
+          "target": "changes-requested",
+          "label": "false"
+        },
+        {
+          "id": "e-begin-correction-next",
+          "source": "begin-correction",
+          "target": "fix",
+          "label": "next"
+        },
+        {
+          "id": "e-begin-correction-failed",
+          "source": "begin-correction",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-fix-next",
+          "source": "fix",
+          "target": "fix-progress",
+          "label": "next"
+        },
+        {
+          "id": "e-fix-invalid",
+          "source": "fix",
+          "target": "failed",
+          "label": "invalid"
+        },
+        {
+          "id": "e-fix-failed",
+          "source": "fix",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-fix-progress-true",
+          "source": "fix-progress",
+          "target": "derive",
+          "label": "true"
+        },
+        {
+          "id": "e-fix-progress-false",
+          "source": "fix-progress",
+          "target": "changes-requested",
+          "label": "false"
+        },
+        {
+          "id": "e-archive-next",
+          "source": "archive",
+          "target": "verify",
+          "label": "next"
+        },
+        {
+          "id": "e-archive-failed",
+          "source": "archive",
+          "target": "failed",
+          "label": "failed"
+        },
+        {
+          "id": "e-verify-pass",
+          "source": "verify",
+          "target": "done",
+          "label": "pass"
+        },
+        {
+          "id": "e-verify-fail",
+          "source": "verify",
+          "target": "failed",
+          "label": "fail"
+        },
+        {
+          "id": "e-verify-failed",
+          "source": "verify",
+          "target": "failed",
+          "label": "failed"
+        }
+      ],
+      "config": {
+        "maxIterations": 12,
+        "maxTransitions": 100,
+        "timeoutMinutes": 0,
+        "aiStepTimeoutMinutes": 0,
+        "change": "new",
+        "journal": "ledger-only",
+        "reviewerStepId": "review"
       }
     }
   }

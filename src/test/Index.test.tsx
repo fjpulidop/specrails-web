@@ -41,6 +41,12 @@ describe("Index page", () => {
     expect(document.querySelector("#main-content")).toBeInTheDocument();
   });
 
+  it("keeps a complete heading outline before the recording cards", () => {
+    renderIndex();
+    const levels = screen.getAllByRole("heading").map(heading => Number(heading.tagName.slice(1)));
+    for (let i = 1; i < levels.length; i++) expect(levels[i]).toBeLessThanOrEqual(levels[i - 1] + 1);
+  });
+
   it("contains elements with section ids", () => {
     renderIndex();
     const sections = document.querySelectorAll("section, [id]");

@@ -13,6 +13,7 @@ export interface ProductCopy {
   skip: string;
   theme: string;
   menu: string;
+  navigation: string;
   learn: string;
   workflowTitle: string;
   workflowBody: string;
@@ -41,6 +42,7 @@ const en: ProductCopy = {
   skip: "Skip to content",
   theme: "Change color theme",
   menu: "Open menu",
+  navigation: "Main navigation",
   learn: "Explore the guide",
   workflowTitle: "A clear path from idea to implementation.",
   workflowBody:
@@ -126,6 +128,7 @@ const es: ProductCopy = {
   skip: "Saltar al contenido",
   theme: "Cambiar tema de color",
   menu: "Abrir menú",
+  navigation: "Navegación principal",
   learn: "Explorar la guía",
   workflowTitle: "Un camino claro de la idea a la implementación.",
   workflowBody:
@@ -212,6 +215,7 @@ const fr: ProductCopy = {
   skip: "Aller au contenu",
   theme: "Changer de thème",
   menu: "Ouvrir le menu",
+  navigation: "Navigation principale",
   learn: "Explorer le guide",
   workflowTitle: "Un chemin clair de l’idée à l’implémentation.",
   workflowBody:
@@ -297,6 +301,7 @@ const de: ProductCopy = {
   skip: "Zum Inhalt",
   theme: "Farbschema ändern",
   menu: "Menü öffnen",
+  navigation: "Hauptnavigation",
   learn: "Anleitung lesen",
   workflowTitle: "Ein klarer Weg von der Idee zur Umsetzung.",
   workflowBody:
@@ -382,6 +387,7 @@ const pt: ProductCopy = {
   skip: "Ir para o conteúdo",
   theme: "Alterar tema",
   menu: "Abrir menu",
+  navigation: "Navegação principal",
   learn: "Explorar o guia",
   workflowTitle: "Um caminho claro da ideia à implementação.",
   workflowBody:
@@ -467,6 +473,7 @@ const it: ProductCopy = {
   skip: "Vai al contenuto",
   theme: "Cambia tema",
   menu: "Apri menu",
+  navigation: "Navigazione principale",
   learn: "Esplora la guida",
   workflowTitle: "Un percorso chiaro dall’idea all’implementazione.",
   workflowBody:
@@ -552,6 +559,7 @@ const zh: ProductCopy = {
   skip: "跳至内容",
   theme: "切换主题",
   menu: "打开菜单",
+  navigation: "主导航",
   learn: "阅读指南",
   workflowTitle: "从想法到实现，路径清晰。",
   workflowBody: "对话确定方向，规格明确结果，循环让开发流程可以重复执行。",
@@ -624,6 +632,7 @@ const ja: ProductCopy = {
   skip: "本文へ移動",
   theme: "テーマを変更",
   menu: "メニューを開く",
+  navigation: "メインナビゲーション",
   learn: "ガイドを読む",
   workflowTitle: "アイデアから実装まで、明確な道筋。",
   workflowBody:

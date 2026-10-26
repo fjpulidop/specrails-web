@@ -18,6 +18,7 @@ import {
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useI18n } from "@/lib/i18n";
+import { RECORDING_ASSET_VERSION } from "@/lib/recording-copy";
 import { PRODUCT_COPY } from "@/lib/product-copy";
 
 import { COMPANION_COPY } from "@/lib/companion-copy";
@@ -70,7 +71,7 @@ export function ProductHero() {
           <span className="text-brand-cyan">{c.accent}</span>
         </h1>
         <div className="pb-1">
-          <p className="max-w-xl text-base leading-relaxed text-muted-foreground lg:text-lg">
+          <p className="max-w-xl text-pretty text-base leading-relaxed text-muted-foreground lg:text-lg">
             {c.intro}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -135,11 +136,11 @@ export function ProductWorkflow() {
           <p className="mb-4 font-mono text-xs text-brand-cyan">
             01 / {c.workflow}
           </p>
-          <h2 className="max-w-xl text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
+          <h2 className="text-balance max-w-xl text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
             {c.workflowTitle}
           </h2>
         </div>
-        <p className="self-end text-base leading-relaxed text-muted-foreground">
+        <p className="self-end text-pretty text-base leading-relaxed text-muted-foreground">
           {c.workflowBody}
         </p>
       </div>
@@ -154,8 +155,8 @@ export function ProductWorkflow() {
                   0{index + 1}
                 </span>
               </span>
-              <h3 className="mb-3 font-medium">{step.title}</h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <h3 className="text-balance mb-3 font-medium">{step.title}</h3>
+              <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
                 {step.body}
               </p>
             </li>
@@ -201,7 +202,7 @@ export function ProductFeatures() {
   return (
     <section
       id="engineering"
-      className="border-y border-border bg-surface-1/50 py-20 sm:py-28"
+      className="-mx-5 border-y border-border bg-surface-1/50 px-5 py-20 sm:-mx-8 sm:px-8 sm:py-28"
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-5 md:grid-cols-2 md:gap-20">
@@ -209,11 +210,11 @@ export function ProductFeatures() {
             <p className="mb-4 font-mono text-xs text-brand-cyan">
               02 / Specrails Desktop
             </p>
-            <h2 className="max-w-xl text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
+            <h2 className="text-balance max-w-xl text-3xl font-medium leading-tight tracking-tight sm:text-4xl">
               {c.featureTitle}
             </h2>
           </div>
-          <p className="self-end text-base leading-relaxed text-muted-foreground">
+          <p className="self-end text-pretty text-base leading-relaxed text-muted-foreground">
             {c.featureIntro}
           </p>
         </div>
@@ -229,7 +230,7 @@ export function ProductFeatures() {
                   className="mb-5 h-5 w-5 text-brand-cyan"
                   aria-hidden="true"
                 />
-                <h3 className="mb-3 font-medium">
+                <h3 className="text-balance mb-3 font-medium">
                   <Link
                     to={`/docs/${featureGuides[index]}`}
                     className="inline-flex items-start gap-2 hover:text-brand-cyan"
@@ -241,7 +242,7 @@ export function ProductFeatures() {
                     />
                   </Link>
                 </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
                   {feature.body}
                 </p>
               </article>
@@ -276,10 +277,10 @@ export function CompanionShowcase({
             <Smartphone className="h-4 w-4" aria-hidden="true" />
             Specrails Companion
           </p>
-          <Heading className="max-w-lg text-4xl font-medium leading-tight tracking-tight sm:text-5xl">
+          <Heading className="text-balance max-w-lg text-4xl font-medium leading-tight tracking-tight sm:text-5xl">
             {c.companionTitle}
           </Heading>
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-lg text-pretty text-base leading-relaxed text-muted-foreground">
             {c.companionBody}
           </p>
           <ul className="mt-6 space-y-3 text-sm">
@@ -316,10 +317,10 @@ export function CompanionShowcase({
             <span className="flex items-center gap-2"><Smartphone className="h-4 w-4" aria-hidden="true" />Companion</span>
           </div>
           <div className="relative pb-16 pt-8 sm:pb-24">
-            <img src="/product/specrails-mission-control-real.png?v=20260930-29b41ac7" alt="Specrails Desktop" width="1440" height="900" loading="lazy" decoding="async" className="w-[88%] rounded-xl border border-border shadow-lg" />
+            <img src={`/product/specrails-mission-control-real.png?v=${RECORDING_ASSET_VERSION}`} alt="Specrails Desktop" width="1440" height="900" loading="lazy" decoding="async" className="w-[88%] rounded-xl border border-border shadow-lg" />
             <img src="/companion/missions-real.png?v=20260930-29b41ac7" alt="Specrails Companion" width="780" height="1688" loading="lazy" decoding="async" className="absolute bottom-0 right-0 w-[32%] rounded-2xl border border-border shadow-xl" />
           </div>
-          <figcaption className="mt-6 text-sm leading-relaxed">
+          <figcaption className="mt-6 text-pretty text-sm leading-relaxed">
             {COMPANION_COPY[languageId].caption}
             <span className="mt-1 block text-xs text-muted-foreground">{COMPANION_COPY[languageId].previews}</span>
           </figcaption>
@@ -336,8 +337,8 @@ export function DocumentationShowcase() {
     <section className="mx-auto mb-20 grid max-w-6xl gap-6 rounded-2xl border border-border bg-surface-1 p-7 sm:p-10 md:grid-cols-[1fr_auto] md:items-center">
       <div>
         <BookOpen className="mb-5 h-5 w-5 text-brand-cyan" aria-hidden="true" />
-        <h2 className="text-2xl font-medium tracking-tight">{c.docsTitle}</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+        <h2 className="text-balance text-2xl font-medium tracking-tight">{c.docsTitle}</h2>
+        <p className="mt-3 max-w-2xl text-pretty text-sm leading-relaxed text-muted-foreground">
           {c.docsBody}
         </p>
       </div>

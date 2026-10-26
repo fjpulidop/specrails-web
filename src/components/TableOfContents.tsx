@@ -135,7 +135,7 @@ export function TableOfContents({
       className={cn("text-sm", className)}
     >
       {variant === "rail" && (
-        <div className="eyebrow mb-3 flex items-center gap-2 text-muted-foreground/80">
+        <div className="eyebrow mb-3 flex items-center gap-2 text-muted-foreground">
           <List className="h-3.5 w-3.5" aria-hidden="true" />
           {copy.contents}
         </div>

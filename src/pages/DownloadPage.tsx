@@ -45,7 +45,7 @@ function PlatformCard({ platform, state, copy }: { platform: typeof PLATFORMS[nu
       <Icon className="mb-6 h-7 w-7 text-brand-cyan" aria-hidden="true" />
       <h3 className="text-2xl font-medium tracking-tight">{platform.title}</h3>
       <p className="mt-2 text-sm font-medium text-foreground">{platform.architecture}</p>
-      <p className="mb-7 mt-3 min-h-12 text-sm leading-relaxed text-muted-foreground">{copy[platform.hint]}</p>
+      <p className="mb-7 mt-3 min-h-12 text-pretty text-sm leading-relaxed text-muted-foreground">{copy[platform.hint]}</p>
       <div className="mt-auto">
         {state.status === "loading" ? (
           <Button disabled className="h-auto min-h-11 w-full whitespace-normal rounded-full px-4 py-3"><LoaderCircle className="motion-safe:animate-spin" aria-hidden="true" />{copy.loading}</Button>

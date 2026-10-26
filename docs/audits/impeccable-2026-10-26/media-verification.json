@@ -1,0 +1,92 @@
+[
+  {
+    "file": "public/product/specrails-mission-control-real.mp4",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "15.000000"
+    }
+  },
+  {
+    "file": "public/product/specrails-mission-control-real.webm",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "15.000000"
+    }
+  },
+  {
+    "file": "public/product/specrails-board-real.mp4",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "12.000000"
+    }
+  },
+  {
+    "file": "public/product/specrails-board-real.webm",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "12.000000"
+    }
+  },
+  {
+    "file": "public/product/specrails-loop-builder-real.mp4",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "10.000000"
+    }
+  },
+  {
+    "file": "public/product/specrails-loop-builder-real.webm",
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "vp9",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "format": {
+      "duration": "10.000000"
+    }
+  }
+]

@@ -1,3 +1,4 @@
+import { RECORDING_ASSET_VERSION } from "@/lib/recording-copy";
 import { CheckCircle2, Workflow } from "lucide-react";
 import { ProductFrame } from "@/components/ProductFrame";
 import { Reveal } from "@/components/Reveal";
@@ -30,7 +31,7 @@ const DemoSection = () => {
             >
               <video
                 className="h-full w-full bg-[#06060c] object-cover"
-                poster="/product/specrails-loop-builder-real.png?v=20260930-29b41ac7"
+                poster={`/product/specrails-loop-builder-real.png?v=${RECORDING_ASSET_VERSION}`}
                 autoPlay
                 muted
                 loop
@@ -38,10 +39,10 @@ const DemoSection = () => {
                 preload="metadata"
                 aria-label="Real Specrails Loop Builder with AI step inspector"
               >
-                <source src="/product/specrails-loop-builder-real.webm?v=20260930-29b41ac7" type="video/webm" />
-                <source src="/product/specrails-loop-builder-real.mp4?v=20260930-29b41ac7" type="video/mp4" />
+                <source src={`/product/specrails-loop-builder-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
+                <source src={`/product/specrails-loop-builder-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
                 <img
-                  src="/product/specrails-loop-builder-real.png?v=20260930-29b41ac7"
+                  src={`/product/specrails-loop-builder-real.png?v=${RECORDING_ASSET_VERSION}`}
                   alt="Real Specrails Loop Builder with AI step inspector"
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -50,7 +51,7 @@ const DemoSection = () => {
               </video>
               <noscript>
                 <img
-                  src="/product/specrails-loop-builder-real.png?v=20260930-29b41ac7"
+                  src={`/product/specrails-loop-builder-real.png?v=${RECORDING_ASSET_VERSION}`}
                   alt="Real Specrails Loop Builder with AI step inspector"
                   className="h-full w-full object-cover"
                 />
@@ -71,7 +72,7 @@ const DemoSection = () => {
               bodyClassName="overflow-hidden"
             >
               <img
-                src="/product/specrails-loops-real.png?v=20260930-29b41ac7"
+                src={`/product/specrails-loops-real.png?v=${RECORDING_ASSET_VERSION}`}
                 alt="Real Specrails loops library with built-in and template loops"
                 className="h-full w-full object-cover"
                 loading="lazy"

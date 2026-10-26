@@ -2,9 +2,9 @@ import { useId } from 'react';
 import { Search, X } from 'lucide-react';
 import { getDocsCopy } from '@/lib/docs-copy';
 import { useI18n } from '@/lib/i18n';
-export function DocsSearch({ value, onChange }: {value: string; onChange: (value: string) => void}) {
+export function DocsSearch({ value, onChange, landmarkLabel }: {value: string; onChange: (value: string) => void; landmarkLabel?: string}) {
   const id = useId(); const {languageId} = useI18n(); const copy = getDocsCopy(languageId);
-  return <div role="search" className="relative">
+  return <div role="search" aria-label={landmarkLabel ?? copy.search} className="relative">
     <label className="sr-only" htmlFor={id}>{copy.search}</label>
     <Search aria-hidden="true" className="pointer-events-none absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
     <input id={id} type="search" value={value} onChange={event => onChange(event.target.value)} placeholder={copy.search}
