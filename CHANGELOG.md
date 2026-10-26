@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.1](https://github.com/fjpulidop/specrails-web/compare/v1.21.0...v1.21.1) (2026-10-26)
+
+
+### Bug Fixes
+
+* **web:** address design audit and refresh Specrails recordings ([#233](https://github.com/fjpulidop/specrails-web/issues/233)) ([2f3c950](https://github.com/fjpulidop/specrails-web/commit/2f3c950d8b6676165e2ebb19bf39432bc7b81f47))
+
 ## [1.21.0](https://github.com/fjpulidop/specrails-web/compare/v1.20.0...v1.21.0) (2026-10-19)
 
 
