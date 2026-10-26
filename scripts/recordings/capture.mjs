@@ -9,6 +9,7 @@ mkdirSync(raw,{recursive:true})
 const browser = await chromium.launch({headless:true})
 const records = []
 for(const [id, duration] of [['mission-control',15],['board',12],['loop-builder',10]]) {
+  console.log(`Capturing ${id}…`)
   const context = await browser.newContext({viewport:{width:1440,height:900},recordVideo:{dir:raw,size:{width:1440,height:900}}})
   const page = await context.newPage()
   const errors=[]
@@ -16,21 +17,22 @@ for(const [id, duration] of [['mission-control',15],['board',12],['loop-builder'
   await page.addInitScript(()=>{
     localStorage.setItem('specrails-desktop:sidebar-mode:left','pinned-open')
     localStorage.setItem('specrails-desktop:sidebar-mode:right','pinned-open')
-    localStorage.setItem('specrails-desktop:ui-theme','obsidian-dark')
+    localStorage.setItem('specrails-desktop:ui-theme','specrails')
     Object.defineProperty(navigator,'platform',{value:'MacIntel'})
     window.__TAURI_EVENT_PLUGIN_INTERNALS__={unregisterListener:()=>{}}
     window.__TAURI_INTERNALS__={metadata:{currentWindow:{label:'main'},currentWebview:{label:'main'}},invoke:async command=>command==='desktop_system_status'?{supported:true,awake:false}:command==='plugin:event|listen'?1:null,transformCallback:()=>1,unregisterCallback:()=>{}}
   })
   const video=page.video();const epoch=Date.now()
   await page.goto('http://127.0.0.1:5202/desktop-demo/demo.html')
+  await page.waitForFunction(() => document.documentElement.dataset.theme === 'specrails')
   await page.waitForTimeout(6000)
-  if(id==='board') await page.getByRole('button',{name:'Switch to Board',exact:true}).click()
+  if(id==='board') await page.getByRole('radio',{name:'Board',exact:true}).click()
   if(id==='loop-builder') await page.evaluate(()=>location.hash='/loops/factory%3Afreestyle/edit')
   await page.waitForTimeout(1600)
   const start=(Date.now()-epoch)/1000
   const name=`specrails-${id}-real`
   if(id==='mission-control') {
-    await page.getByRole('button',{name:/Recover interrupted checkout/}).click()
+    await page.getByRole('button',{name:'Recover interrupted checkout',exact:true}).click()
     await page.waitForTimeout(3500)
     await page.screenshot({path:`${out}/${name}.png`})
     copyFileSync(`${out}/${name}.png`,`${out}/specrails-mission-control-preview.png`)
@@ -43,6 +45,8 @@ for(const [id, duration] of [['mission-control',15],['board',12],['loop-builder'
     copyFileSync(`${out}/${name}.png`,`${out}/specrails-dashboard-real.png`)
     await page.getByText('Build real-time job streaming via WebSocket',{exact:true}).click()
     await page.waitForTimeout(4000)
+    const alerts = await page.getByRole('alert').allTextContents()
+    if (alerts.length) throw new Error(`Unexpected spec alerts: ${alerts.join('; ')}`)
     await page.keyboard.press('Escape')
   } else {
     await page.waitForTimeout(1200)
@@ -56,12 +60,13 @@ for(const [id, duration] of [['mission-control',15],['board',12],['loop-builder'
   await context.close()
   const input=await video.path()
   for(const [extension,codec] of [['mp4',['-c:v','libx264','-preset','slow','-crf','24','-pix_fmt','yuv420p','-movflags','+faststart']],['webm',['-c:v','libvpx-vp9','-crf','34','-b:v','0']]]) {
-    execFileSync('ffmpeg',['-y','-ss',String(start),'-i',input,'-t',String(duration),'-an','-vf','fps=25,tpad=stop_mode=clone:stop_duration=1',...codec,`${out}/${name}.${extension}`],{stdio:'ignore'})
+    console.log(`Encoding ${name}.${extension}…`)
+    execFileSync(process.env.FFMPEG_PATH ?? 'ffmpeg',['-y','-ss',String(start),'-i',input,'-t',String(duration),'-an','-vf','fps=25,tpad=stop_mode=clone:stop_duration=1',...codec,`${out}/${name}.${extension}`],{stdio:'ignore'})
   }
   records.push({id,file:name,durationSeconds:duration})
 }
 await browser.close()
 const desktop=path.resolve(process.env.SPECRAILS_DESKTOP_DIR ?? '../specrails-desktop')
 const desktopCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:desktop,encoding:'utf8'}).trim()
-writeFileSync(`${out}/recordings.json`,JSON.stringify({recordedAt:new Date().toISOString(),desktopCommit,sampleData:true,nativeShell:'Tauri bridge simulated for capture; real React interface',viewport:{width:1440,height:900},recordings:records},null,2)+'\n')
+writeFileSync(`${out}/recordings.json`,JSON.stringify({recordedAt:new Date().toISOString(),desktopCommit,theme:'specrails',sampleData:true,nativeShell:'Tauri bridge simulated for capture; real React interface',viewport:{width:1440,height:900},recordings:records},null,2)+'\n')
 console.log('Recorded and encoded all three clips.')

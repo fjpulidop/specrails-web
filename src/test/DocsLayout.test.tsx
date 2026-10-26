@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import DocsLayout from "@/pages/DocsLayout";
@@ -19,6 +19,13 @@ describe("DocsLayout", () => {
     renderDocsLayout();
     const logo = document.querySelector("[data-logo='nav']");
     expect(logo).toBeInTheDocument();
+  });
+
+  it("names the global and guide navigation separately", () => {
+    renderDocsLayout();
+    expect(screen.getByRole("navigation", { name: "Main navigation" })).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "Documentation" })).toBeInTheDocument();
+    expect(screen.getByRole("complementary", { name: "Browse the guide" })).toBeInTheDocument();
   });
 
   it("renders the desktop sidebar", () => {
@@ -43,6 +50,8 @@ describe("DocsLayout", () => {
     // After click, at least one navigation element should be present
     const navs = screen.getAllByRole("navigation");
     expect(navs.length).toBeGreaterThanOrEqual(1);
+    await user.keyboard("{Escape}");
+    await waitFor(() => expect(screen.getByRole("button", {name:"Browse the guide"})).toHaveFocus());
   });
 
   it("renders an <Outlet /> placeholder (main content area)", () => {

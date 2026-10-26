@@ -28,7 +28,7 @@ const DELAY: Record<number, string> = {
  * Single scroll-reveal primitive. Replaces the ~10 hand-copied
  * `isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"` strings.
  * Entrance is `opacity 0→1` + `translateY` + `blur` via `.animate-reveal`; the
- * global reduced-motion block in index.css forces the end state instantly, so
+ * targeted reduced-motion styles in index.css preserve the end state, so
  * content is never left invisible.
  */
 export function Reveal({

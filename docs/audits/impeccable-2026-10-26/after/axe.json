@@ -1,0 +1,282 @@
+[
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 5
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/docs",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/docs/getting-started",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/docs",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/docs/getting-started",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 5
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/docs",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/docs/getting-started",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-valid-attr-value",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/docs",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/docs/getting-started",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  }
+]

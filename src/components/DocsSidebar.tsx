@@ -12,7 +12,7 @@ export function DocsSidebar({onNavigate}: {onNavigate?: () => void}) {
   let section = '';
   return <nav className="space-y-4 p-4" aria-label={copy.label}>
     <Link to="/docs" onClick={onNavigate} aria-current={/^\/docs\/?$/.test(location.pathname) ? 'page' : undefined} className="block px-2 py-1 text-sm font-semibold text-foreground hover:text-brand-cyan">{copy.overview}</Link>
-    <DocsSearch value={query} onChange={setQuery} />
+    <DocsSearch landmarkLabel={copy.menu} value={query} onChange={setQuery} />
     {!docs.length && <p role="status" className="px-2 text-sm text-muted-foreground">{copy.empty}</p>}
     <ul className="space-y-1">{docs.map(entry => {
       const showSection = entry.section !== section; section = entry.section;

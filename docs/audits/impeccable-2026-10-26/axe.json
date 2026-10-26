@@ -1,0 +1,516 @@
+[
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/",
+    "violations": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/heading-order?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".md\\:col-span-2 > .p-5.flex-1.flex-col > .text-lg.font-semibold.text-foreground"
+            ],
+            "html": "<h3 class=\"text-lg font-semibold tracking-tight text-foreground\">Mission Control</h3>",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 5
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/docs",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 390,
+    "route": "/docs/getting-started",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/",
+    "violations": [
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/heading-order?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".md\\:col-span-2 > .p-5.flex-1.flex-col > .text-lg.font-semibold.text-foreground"
+            ],
+            "html": "<h3 class=\"text-lg font-semibold tracking-tight text-foreground\">Mission Control</h3>",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/docs",
+    "violations": [
+      {
+        "id": "landmark-unique",
+        "impact": "moderate",
+        "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".space-y-4 > .relative[role=\"search\"]"
+            ],
+            "html": "<div role=\"search\" class=\"relative\">",
+            "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "dark",
+    "width": 1440,
+    "route": "/docs/getting-started",
+    "violations": [
+      {
+        "id": "landmark-unique",
+        "impact": "moderate",
+        "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".bottom-0"
+            ],
+            "html": "<aside class=\"fixed bottom-0 left-0 top-16 hidden w-64 overflow-y-auto border-r border-border/50 bg-surface-1/50 lg:block\">",
+            "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          },
+          {
+            "target": [
+              ".space-y-4"
+            ],
+            "html": "<nav class=\"space-y-4 p-4\" aria-label=\"Documentation\">",
+            "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".-ml-3.px-3[aria-label=\"Play: Mission Control\"]"
+            ],
+            "html": "<button class=\"inline-flex items-ce...\" type=\"button\" aria-label=\"Play: Mission Contro...\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".-ml-3.px-3[aria-label=\"Play: Specs and rails\"]"
+            ],
+            "html": "<button class=\"inline-flex items-ce...\" type=\"button\" aria-label=\"Play: Specs and rail...\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".-ml-3.px-3[aria-label=\"Play: Loop builder\"]"
+            ],
+            "html": "<button class=\"inline-flex items-ce...\" type=\"button\" aria-label=\"Play: Loop builder\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".ml-auto.gap-1\\.5[data-discover=\"true\"]"
+            ],
+            "html": "<a class=\"ml-auto inline-flex items-center gap-1.5 text-sm text-brand-cyan\" href=\"/docs/pipeline-the-loop-builder\" data-discover=\"true\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/heading-order?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".md\\:col-span-2 > .p-5.flex-1.flex-col > .text-lg.font-semibold.text-foreground"
+            ],
+            "html": "<h3 class=\"text-lg font-semibold tracking-tight text-foreground\">Mission Control</h3>",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 5
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/docs",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".tracking-widest"
+            ],
+            "html": "<p class=\"mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".inline-block"
+            ],
+            "html": "<a href=\"/for-agents/index.html\" class=\"mt-2 inline-block text-brand-cyan underline focus-visible:ring-2 focus-visible:ring-brand-cyan\">Connect Claude or Codex to Specrails MCP</a>",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 390,
+    "route": "/docs/getting-started",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 1
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".-ml-3.px-3[aria-label=\"Play: Mission Control\"]"
+            ],
+            "html": "<button class=\"inline-flex items-ce...\" type=\"button\" aria-label=\"Play: Mission Contro...\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".-ml-3.px-3[aria-label=\"Play: Specs and rails\"]"
+            ],
+            "html": "<button class=\"inline-flex items-ce...\" type=\"button\" aria-label=\"Play: Specs and rail...\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".-ml-3.px-3[aria-label=\"Play: Loop builder\"]"
+            ],
+            "html": "<button class=\"inline-flex items-ce...\" type=\"button\" aria-label=\"Play: Loop builder\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".ml-auto.gap-1\\.5[data-discover=\"true\"]"
+            ],
+            "html": "<a class=\"ml-auto inline-flex items-center gap-1.5 text-sm text-brand-cyan\" href=\"/docs/pipeline-the-loop-builder\" data-discover=\"true\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "heading-order",
+        "impact": "moderate",
+        "help": "Heading levels should only increase by one",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/heading-order?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".md\\:col-span-2 > .p-5.flex-1.flex-col > .text-lg.font-semibold.text-foreground"
+            ],
+            "html": "<h3 class=\"text-lg font-semibold tracking-tight text-foreground\">Mission Control</h3>",
+            "failureSummary": "Fix any of the following:\n  Heading order invalid"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 6
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/download",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/companion",
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 3
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/docs",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".tracking-widest"
+            ],
+            "html": "<p class=\"mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-cyan\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          },
+          {
+            "target": [
+              ".inline-block"
+            ],
+            "html": "<a href=\"/for-agents/index.html\" class=\"mt-2 inline-block text-brand-cyan underline focus-visible:ring-2 focus-visible:ring-brand-cyan\">Connect Claude or Codex to Specrails MCP</a>",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.35 (foreground color: #047d95, background color: #f2f4f7, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "landmark-unique",
+        "impact": "moderate",
+        "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".space-y-4 > .relative[role=\"search\"]"
+            ],
+            "html": "<div role=\"search\" class=\"relative\">",
+            "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  },
+  {
+    "theme": "light",
+    "width": 1440,
+    "route": "/docs/getting-started",
+    "violations": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "help": "Elements must meet minimum color contrast ratio thresholds",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".eyebrow"
+            ],
+            "html": "<div class=\"eyebrow mb-3 flex items-center gap-2 text-muted-foreground/80\">",
+            "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.1 (foreground color: #787b88, background color: #fcfcfd, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+          }
+        ]
+      },
+      {
+        "id": "landmark-unique",
+        "impact": "moderate",
+        "help": "Landmarks should have a unique role or role/label/title (i.e. accessible name) combination",
+        "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/landmark-unique?application=axeAPI",
+        "nodes": [
+          {
+            "target": [
+              ".bottom-0"
+            ],
+            "html": "<aside class=\"fixed bottom-0 left-0 top-16 hidden w-64 overflow-y-auto border-r border-border/50 bg-surface-1/50 lg:block\">",
+            "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          },
+          {
+            "target": [
+              ".space-y-4"
+            ],
+            "html": "<nav class=\"space-y-4 p-4\" aria-label=\"Documentation\">",
+            "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+          }
+        ]
+      }
+    ],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "nodes": 2
+      }
+    ]
+  }
+]

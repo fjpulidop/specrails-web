@@ -15,6 +15,7 @@ import {
   SheetContent,
   SheetClose,
   SheetTitle,
+  SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
@@ -48,7 +49,7 @@ const Navbar = () => {
       onClick={toggle}
       aria-label={themeLabel}
       className={cn(
-        "flex items-center justify-center w-9 h-9 rounded-lg bg-surface-2 border border-border/70 text-muted-foreground hover:text-foreground hover:bg-surface-3 transition-colors flex-shrink-0",
+        "flex items-center justify-center w-11 h-11 rounded-lg bg-surface-2 border border-border/70 text-muted-foreground hover:text-foreground hover:bg-surface-3 transition-colors flex-shrink-0",
         className,
       )}
     >
@@ -71,6 +72,7 @@ const Navbar = () => {
 
   return (
     <nav
+      aria-label={copy.navigation}
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
@@ -115,7 +117,7 @@ const Navbar = () => {
             rel="noopener noreferrer"
             aria-label={nav.donate}
             title={nav.donate}
-            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-brand-violet transition-colors"
+            className="flex items-center justify-center w-11 h-11 rounded-lg text-muted-foreground hover:text-brand-violet transition-colors"
           >
             <Coffee className="w-5 h-5" />
           </a>
@@ -124,7 +126,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={nav.github}
-            className="flex items-center justify-center w-9 h-9 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center justify-center w-11 h-11 rounded-lg text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="w-5 h-5" />
           </a>
@@ -148,15 +150,16 @@ const Navbar = () => {
           <LanguageSwitcher />
           <ThemeToggleBtn />
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label={copy.menu}
-              onClick={() => setMobileOpen(true)}
-              className="w-9 h-9 text-muted-foreground hover:text-foreground"
-            >
-              <Menu className="w-5 h-5" />
-            </Button>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label={copy.menu}
+                className="w-11 h-11 text-muted-foreground hover:text-foreground"
+              >
+                <Menu className="w-5 h-5" />
+              </Button>
+            </SheetTrigger>
             <SheetContent
               side="right"
               className="w-[88vw] max-w-sm p-0 flex flex-col bg-surface-0"
@@ -165,7 +168,7 @@ const Navbar = () => {
                 {nav.menu}
               </SheetTitle>
 
-              <nav className="flex-1 overflow-y-auto px-3 pb-4">
+              <nav aria-label={copy.menu} className="flex-1 overflow-y-auto px-3 pb-4">
                 {/* Sections */}
                 <div className="px-3 pt-4 pb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   {nav.sections}

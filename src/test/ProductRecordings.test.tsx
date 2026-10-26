@@ -3,7 +3,7 @@ import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testi
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ProductRecordings } from "@/components/ProductRecordings";
 import { I18nProvider, LANGUAGE_IDS } from "@/lib/i18n";
-import { RECORDINGS, RECORDING_COPY } from "@/lib/recording-copy";
+import { RECORDING_ASSET_VERSION, RECORDINGS, RECORDING_COPY } from "@/lib/recording-copy";
 
 let play: ReturnType<typeof vi.spyOn>;
 let pause: ReturnType<typeof vi.spyOn>;
@@ -25,7 +25,7 @@ describe("ProductRecordings", () => {
     expect(screen.getAllByRole("img")).toHaveLength(3);
     expect(container.querySelectorAll("video, source")).toHaveLength(0);
     expect(play).not.toHaveBeenCalled();
-    for (const recording of RECORDINGS) expect(screen.getByRole("img", { name: RECORDING_COPY.en.clips[recording.id].title })).toHaveAttribute("src", `/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=20260930-29b41ac7`);
+    for (const recording of RECORDINGS) expect(screen.getByRole("img", { name: RECORDING_COPY.en.clips[recording.id].title })).toHaveAttribute("src", `/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=${RECORDING_ASSET_VERSION}`);
     expect(screen.getByText(RECORDING_COPY.en.note)).toBeVisible();
   });
 
@@ -68,7 +68,7 @@ describe("ProductRecordings", () => {
     expect(full.controls).toBe(true);
     expect(full.className).toContain("object-contain");
     expect(within(dialog).getByText(RECORDING_COPY.en.clips.mission.description)).toBeVisible();
-    expect(within(dialog).getByRole("link", { name: "Open video file" })).toHaveAttribute("href", "/product/specrails-mission-control-real.mp4?v=20260930-29b41ac7");
+    expect(within(dialog).getByRole("link", { name: "Open video file" })).toHaveAttribute("href", `/product/specrails-mission-control-real.mp4?v=${RECORDING_ASSET_VERSION}`);
     Object.defineProperty(full, "duration", { value: 15 });
     fireEvent.loadedMetadata(full);
     expect(full.currentTime).toBe(6);
@@ -82,7 +82,7 @@ describe("ProductRecordings", () => {
   it("opens a recording directly from its poster and retains native controls if play is blocked", async () => {
     play.mockRejectedValue(new Error("Media policy"));
     render(<ProductRecordings showHeading={false} />);
-    expect(screen.queryByRole("heading", { level: 2 })).toBeNull();
+    expect(screen.getByRole("heading", { level: 2 })).toHaveAccessibleName(RECORDING_COPY.en.title);
     fireEvent.click(screen.getByRole("button", { name: "Expand recording: Loop builder" }));
     const video = screen.getByRole("dialog").querySelector("video")!;
     expect(video.controls).toBe(true);

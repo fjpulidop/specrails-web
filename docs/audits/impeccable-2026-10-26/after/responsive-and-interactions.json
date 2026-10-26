@@ -1,0 +1,2788 @@
+{
+  "results": [
+    {
+      "language": "en",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Start with a mission.Ship with a plan.",
+        "See the workflow for yourself.",
+        "Your mission, within reach.",
+        "A clear path from idea to implementation.",
+        "The context you need. The control you expect.",
+        "Understand the workflow. Make it your own.",
+        "What will your next mission be?"
+      ],
+      "controls": [
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Open menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Build your first mission",
+        "For agents only",
+        "Getting started",
+        "Missions",
+        "Specs",
+        "Loops and rails",
+        "Agents",
+        "Files and processes",
+        "Integrations",
+        "Settings"
+      ],
+      "controls": [
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Open menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Start with a mission.Ship with a plan.",
+        "See the workflow for yourself.",
+        "Your mission, within reach.",
+        "A clear path from idea to implementation.",
+        "The context you need. The control you expect.",
+        "Understand the workflow. Make it your own.",
+        "What will your next mission be?"
+      ],
+      "controls": [
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Open menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Build your first mission",
+        "For agents only",
+        "Getting started",
+        "Missions",
+        "Specs",
+        "Loops and rails",
+        "Agents",
+        "Files and processes",
+        "Integrations",
+        "Settings"
+      ],
+      "controls": [
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Open menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Start with a mission.Ship with a plan.",
+        "See the workflow for yourself.",
+        "Your mission, within reach.",
+        "A clear path from idea to implementation.",
+        "The context you need. The control you expect.",
+        "Understand the workflow. Make it your own.",
+        "What will your next mission be?"
+      ],
+      "controls": [
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Open menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Build your first mission",
+        "For agents only",
+        "Getting started",
+        "Missions",
+        "Specs",
+        "Loops and rails",
+        "Agents",
+        "Files and processes",
+        "Integrations",
+        "Settings"
+      ],
+      "controls": [
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Open menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Start with a mission.Ship with a plan.",
+        "See the workflow for yourself.",
+        "Your mission, within reach.",
+        "A clear path from idea to implementation.",
+        "The context you need. The control you expect.",
+        "Understand the workflow. Make it your own.",
+        "What will your next mission be?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Build your first mission",
+        "For agents only",
+        "Getting started",
+        "Missions",
+        "Specs",
+        "Loops and rails",
+        "Agents",
+        "Files and processes",
+        "Integrations",
+        "Settings"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Start with a mission.Ship with a plan.",
+        "See the workflow for yourself.",
+        "Your mission, within reach.",
+        "A clear path from idea to implementation.",
+        "The context you need. The control you expect.",
+        "Understand the workflow. Make it your own.",
+        "What will your next mission be?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "en",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Build your first mission",
+        "For agents only",
+        "Getting started",
+        "Missions",
+        "Specs",
+        "Loops and rails",
+        "Agents",
+        "Files and processes",
+        "Integrations",
+        "Settings"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Change language",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Change color theme",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Empieza con una misi\u00f3n.Entrega con un plan.",
+        "Mira c\u00f3mo funciona.",
+        "Tu misi\u00f3n, al alcance de la mano.",
+        "Un camino claro de la idea a la implementaci\u00f3n.",
+        "El contexto que necesitas. El control que esperas.",
+        "Conoce el flujo. Ad\u00e1ptalo a ti.",
+        "\u00bfCu\u00e1l ser\u00e1 tu pr\u00f3xima misi\u00f3n?"
+      ],
+      "controls": [
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir men\u00fa",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea tu primera misi\u00f3n",
+        "Exclusivamente para agentes",
+        "Primeros pasos",
+        "Misiones",
+        "Specs",
+        "Loops y rails",
+        "Agentes",
+        "Archivos y procesos",
+        "Integraciones",
+        "Ajustes"
+      ],
+      "controls": [
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir men\u00fa",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Empieza con una misi\u00f3n.Entrega con un plan.",
+        "Mira c\u00f3mo funciona.",
+        "Tu misi\u00f3n, al alcance de la mano.",
+        "Un camino claro de la idea a la implementaci\u00f3n.",
+        "El contexto que necesitas. El control que esperas.",
+        "Conoce el flujo. Ad\u00e1ptalo a ti.",
+        "\u00bfCu\u00e1l ser\u00e1 tu pr\u00f3xima misi\u00f3n?"
+      ],
+      "controls": [
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir men\u00fa",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea tu primera misi\u00f3n",
+        "Exclusivamente para agentes",
+        "Primeros pasos",
+        "Misiones",
+        "Specs",
+        "Loops y rails",
+        "Agentes",
+        "Archivos y procesos",
+        "Integraciones",
+        "Ajustes"
+      ],
+      "controls": [
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir men\u00fa",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Empieza con una misi\u00f3n.Entrega con un plan.",
+        "Mira c\u00f3mo funciona.",
+        "Tu misi\u00f3n, al alcance de la mano.",
+        "Un camino claro de la idea a la implementaci\u00f3n.",
+        "El contexto que necesitas. El control que esperas.",
+        "Conoce el flujo. Ad\u00e1ptalo a ti.",
+        "\u00bfCu\u00e1l ser\u00e1 tu pr\u00f3xima misi\u00f3n?"
+      ],
+      "controls": [
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir men\u00fa",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea tu primera misi\u00f3n",
+        "Exclusivamente para agentes",
+        "Primeros pasos",
+        "Misiones",
+        "Specs",
+        "Loops y rails",
+        "Agentes",
+        "Archivos y procesos",
+        "Integraciones",
+        "Ajustes"
+      ],
+      "controls": [
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir men\u00fa",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Empieza con una misi\u00f3n.Entrega con un plan.",
+        "Mira c\u00f3mo funciona.",
+        "Tu misi\u00f3n, al alcance de la mano.",
+        "Un camino claro de la idea a la implementaci\u00f3n.",
+        "El contexto que necesitas. El control que esperas.",
+        "Conoce el flujo. Ad\u00e1ptalo a ti.",
+        "\u00bfCu\u00e1l ser\u00e1 tu pr\u00f3xima misi\u00f3n?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea tu primera misi\u00f3n",
+        "Exclusivamente para agentes",
+        "Primeros pasos",
+        "Misiones",
+        "Specs",
+        "Loops y rails",
+        "Agentes",
+        "Archivos y procesos",
+        "Integraciones",
+        "Ajustes"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Empieza con una misi\u00f3n.Entrega con un plan.",
+        "Mira c\u00f3mo funciona.",
+        "Tu misi\u00f3n, al alcance de la mano.",
+        "Un camino claro de la idea a la implementaci\u00f3n.",
+        "El contexto que necesitas. El control que esperas.",
+        "Conoce el flujo. Ad\u00e1ptalo a ti.",
+        "\u00bfCu\u00e1l ser\u00e1 tu pr\u00f3xima misi\u00f3n?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "es",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea tu primera misi\u00f3n",
+        "Exclusivamente para agentes",
+        "Primeros pasos",
+        "Misiones",
+        "Specs",
+        "Loops y rails",
+        "Agentes",
+        "Archivos y procesos",
+        "Integraciones",
+        "Ajustes"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Cambiar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambiar tema de color",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Commencez par une mission.Livrez avec un plan.",
+        "D\u00e9couvrez le fonctionnement.",
+        "Votre mission \u00e0 port\u00e9e de main.",
+        "Un chemin clair de l\u2019id\u00e9e \u00e0 l\u2019impl\u00e9mentation.",
+        "Le contexte n\u00e9cessaire. Le contr\u00f4le attendu.",
+        "Comprenez la m\u00e9thode. Adaptez-la.",
+        "Quelle sera votre prochaine mission ?"
+      ],
+      "controls": [
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Ouvrir le menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Cr\u00e9ez votre premi\u00e8re mission",
+        "For agents only",
+        "Bien d\u00e9marrer",
+        "Missions",
+        "Specs",
+        "Loops et rails",
+        "Agents",
+        "Fichiers et processus",
+        "Int\u00e9grations",
+        "R\u00e9glages"
+      ],
+      "controls": [
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Ouvrir le menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Commencez par une mission.Livrez avec un plan.",
+        "D\u00e9couvrez le fonctionnement.",
+        "Votre mission \u00e0 port\u00e9e de main.",
+        "Un chemin clair de l\u2019id\u00e9e \u00e0 l\u2019impl\u00e9mentation.",
+        "Le contexte n\u00e9cessaire. Le contr\u00f4le attendu.",
+        "Comprenez la m\u00e9thode. Adaptez-la.",
+        "Quelle sera votre prochaine mission ?"
+      ],
+      "controls": [
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Ouvrir le menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Cr\u00e9ez votre premi\u00e8re mission",
+        "For agents only",
+        "Bien d\u00e9marrer",
+        "Missions",
+        "Specs",
+        "Loops et rails",
+        "Agents",
+        "Fichiers et processus",
+        "Int\u00e9grations",
+        "R\u00e9glages"
+      ],
+      "controls": [
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Ouvrir le menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Commencez par une mission.Livrez avec un plan.",
+        "D\u00e9couvrez le fonctionnement.",
+        "Votre mission \u00e0 port\u00e9e de main.",
+        "Un chemin clair de l\u2019id\u00e9e \u00e0 l\u2019impl\u00e9mentation.",
+        "Le contexte n\u00e9cessaire. Le contr\u00f4le attendu.",
+        "Comprenez la m\u00e9thode. Adaptez-la.",
+        "Quelle sera votre prochaine mission ?"
+      ],
+      "controls": [
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Ouvrir le menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Cr\u00e9ez votre premi\u00e8re mission",
+        "For agents only",
+        "Bien d\u00e9marrer",
+        "Missions",
+        "Specs",
+        "Loops et rails",
+        "Agents",
+        "Fichiers et processus",
+        "Int\u00e9grations",
+        "R\u00e9glages"
+      ],
+      "controls": [
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Ouvrir le menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Commencez par une mission.Livrez avec un plan.",
+        "D\u00e9couvrez le fonctionnement.",
+        "Votre mission \u00e0 port\u00e9e de main.",
+        "Un chemin clair de l\u2019id\u00e9e \u00e0 l\u2019impl\u00e9mentation.",
+        "Le contexte n\u00e9cessaire. Le contr\u00f4le attendu.",
+        "Comprenez la m\u00e9thode. Adaptez-la.",
+        "Quelle sera votre prochaine mission ?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Cr\u00e9ez votre premi\u00e8re mission",
+        "For agents only",
+        "Bien d\u00e9marrer",
+        "Missions",
+        "Specs",
+        "Loops et rails",
+        "Agents",
+        "Fichiers et processus",
+        "Int\u00e9grations",
+        "R\u00e9glages"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Commencez par une mission.Livrez avec un plan.",
+        "D\u00e9couvrez le fonctionnement.",
+        "Votre mission \u00e0 port\u00e9e de main.",
+        "Un chemin clair de l\u2019id\u00e9e \u00e0 l\u2019impl\u00e9mentation.",
+        "Le contexte n\u00e9cessaire. Le contr\u00f4le attendu.",
+        "Comprenez la m\u00e9thode. Adaptez-la.",
+        "Quelle sera votre prochaine mission ?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "fr",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Cr\u00e9ez votre premi\u00e8re mission",
+        "For agents only",
+        "Bien d\u00e9marrer",
+        "Missions",
+        "Specs",
+        "Loops et rails",
+        "Agents",
+        "Fichiers et processus",
+        "Int\u00e9grations",
+        "R\u00e9glages"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Changer de langue",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Changer de th\u00e8me",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starte mit einer Mission.Liefere mit einem Plan.",
+        "So l\u00e4uft die Arbeit ab.",
+        "Deine Mission in Reichweite.",
+        "Ein klarer Weg von der Idee zur Umsetzung.",
+        "Der n\u00f6tige Kontext. Die erwartete Kontrolle.",
+        "Verstehe den Ablauf. Mach ihn zu deinem.",
+        "Was ist deine n\u00e4chste Mission?"
+      ],
+      "controls": [
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Men\u00fc \u00f6ffnen",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starten Sie Ihre erste Mission",
+        "For agents only",
+        "Erste Schritte",
+        "Missionen",
+        "Specs",
+        "Loops und Rails",
+        "Agenten",
+        "Dateien und Prozesse",
+        "Integrationen",
+        "Einstellungen"
+      ],
+      "controls": [
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Men\u00fc \u00f6ffnen",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starte mit einer Mission.Liefere mit einem Plan.",
+        "So l\u00e4uft die Arbeit ab.",
+        "Deine Mission in Reichweite.",
+        "Ein klarer Weg von der Idee zur Umsetzung.",
+        "Der n\u00f6tige Kontext. Die erwartete Kontrolle.",
+        "Verstehe den Ablauf. Mach ihn zu deinem.",
+        "Was ist deine n\u00e4chste Mission?"
+      ],
+      "controls": [
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Men\u00fc \u00f6ffnen",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starten Sie Ihre erste Mission",
+        "For agents only",
+        "Erste Schritte",
+        "Missionen",
+        "Specs",
+        "Loops und Rails",
+        "Agenten",
+        "Dateien und Prozesse",
+        "Integrationen",
+        "Einstellungen"
+      ],
+      "controls": [
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Men\u00fc \u00f6ffnen",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starte mit einer Mission.Liefere mit einem Plan.",
+        "So l\u00e4uft die Arbeit ab.",
+        "Deine Mission in Reichweite.",
+        "Ein klarer Weg von der Idee zur Umsetzung.",
+        "Der n\u00f6tige Kontext. Die erwartete Kontrolle.",
+        "Verstehe den Ablauf. Mach ihn zu deinem.",
+        "Was ist deine n\u00e4chste Mission?"
+      ],
+      "controls": [
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Men\u00fc \u00f6ffnen",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starten Sie Ihre erste Mission",
+        "For agents only",
+        "Erste Schritte",
+        "Missionen",
+        "Specs",
+        "Loops und Rails",
+        "Agenten",
+        "Dateien und Prozesse",
+        "Integrationen",
+        "Einstellungen"
+      ],
+      "controls": [
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Men\u00fc \u00f6ffnen",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starte mit einer Mission.Liefere mit einem Plan.",
+        "So l\u00e4uft die Arbeit ab.",
+        "Deine Mission in Reichweite.",
+        "Ein klarer Weg von der Idee zur Umsetzung.",
+        "Der n\u00f6tige Kontext. Die erwartete Kontrolle.",
+        "Verstehe den Ablauf. Mach ihn zu deinem.",
+        "Was ist deine n\u00e4chste Mission?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starten Sie Ihre erste Mission",
+        "For agents only",
+        "Erste Schritte",
+        "Missionen",
+        "Specs",
+        "Loops und Rails",
+        "Agenten",
+        "Dateien und Prozesse",
+        "Integrationen",
+        "Einstellungen"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starte mit einer Mission.Liefere mit einem Plan.",
+        "So l\u00e4uft die Arbeit ab.",
+        "Deine Mission in Reichweite.",
+        "Ein klarer Weg von der Idee zur Umsetzung.",
+        "Der n\u00f6tige Kontext. Die erwartete Kontrolle.",
+        "Verstehe den Ablauf. Mach ihn zu deinem.",
+        "Was ist deine n\u00e4chste Mission?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "de",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Starten Sie Ihre erste Mission",
+        "For agents only",
+        "Erste Schritte",
+        "Missionen",
+        "Specs",
+        "Loops und Rails",
+        "Agenten",
+        "Dateien und Prozesse",
+        "Integrationen",
+        "Einstellungen"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Sprache \u00e4ndern",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Farbschema \u00e4ndern",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Comece com uma miss\u00e3o.Entregue com um plano.",
+        "Veja como funciona.",
+        "Sua miss\u00e3o ao alcance da m\u00e3o.",
+        "Um caminho claro da ideia \u00e0 implementa\u00e7\u00e3o.",
+        "O contexto necess\u00e1rio. O controle esperado.",
+        "Conhe\u00e7a o fluxo. Adapte ao seu jeito.",
+        "Qual ser\u00e1 sua pr\u00f3xima miss\u00e3o?"
+      ],
+      "controls": [
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crie a primeira miss\u00e3o",
+        "For agents only",
+        "Primeiros passos",
+        "Miss\u00f5es",
+        "Specs",
+        "Loops e rails",
+        "Agentes",
+        "Ficheiros e processos",
+        "Integra\u00e7\u00f5es",
+        "Defini\u00e7\u00f5es"
+      ],
+      "controls": [
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Comece com uma miss\u00e3o.Entregue com um plano.",
+        "Veja como funciona.",
+        "Sua miss\u00e3o ao alcance da m\u00e3o.",
+        "Um caminho claro da ideia \u00e0 implementa\u00e7\u00e3o.",
+        "O contexto necess\u00e1rio. O controle esperado.",
+        "Conhe\u00e7a o fluxo. Adapte ao seu jeito.",
+        "Qual ser\u00e1 sua pr\u00f3xima miss\u00e3o?"
+      ],
+      "controls": [
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crie a primeira miss\u00e3o",
+        "For agents only",
+        "Primeiros passos",
+        "Miss\u00f5es",
+        "Specs",
+        "Loops e rails",
+        "Agentes",
+        "Ficheiros e processos",
+        "Integra\u00e7\u00f5es",
+        "Defini\u00e7\u00f5es"
+      ],
+      "controls": [
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Comece com uma miss\u00e3o.Entregue com um plano.",
+        "Veja como funciona.",
+        "Sua miss\u00e3o ao alcance da m\u00e3o.",
+        "Um caminho claro da ideia \u00e0 implementa\u00e7\u00e3o.",
+        "O contexto necess\u00e1rio. O controle esperado.",
+        "Conhe\u00e7a o fluxo. Adapte ao seu jeito.",
+        "Qual ser\u00e1 sua pr\u00f3xima miss\u00e3o?"
+      ],
+      "controls": [
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crie a primeira miss\u00e3o",
+        "For agents only",
+        "Primeiros passos",
+        "Miss\u00f5es",
+        "Specs",
+        "Loops e rails",
+        "Agentes",
+        "Ficheiros e processos",
+        "Integra\u00e7\u00f5es",
+        "Defini\u00e7\u00f5es"
+      ],
+      "controls": [
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Abrir menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Comece com uma miss\u00e3o.Entregue com um plano.",
+        "Veja como funciona.",
+        "Sua miss\u00e3o ao alcance da m\u00e3o.",
+        "Um caminho claro da ideia \u00e0 implementa\u00e7\u00e3o.",
+        "O contexto necess\u00e1rio. O controle esperado.",
+        "Conhe\u00e7a o fluxo. Adapte ao seu jeito.",
+        "Qual ser\u00e1 sua pr\u00f3xima miss\u00e3o?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 47.90625,
+          "height": 36
+        },
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crie a primeira miss\u00e3o",
+        "For agents only",
+        "Primeiros passos",
+        "Miss\u00f5es",
+        "Specs",
+        "Loops e rails",
+        "Agentes",
+        "Ficheiros e processos",
+        "Integra\u00e7\u00f5es",
+        "Defini\u00e7\u00f5es"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 47.90625,
+          "height": 36
+        },
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Comece com uma miss\u00e3o.Entregue com um plano.",
+        "Veja como funciona.",
+        "Sua miss\u00e3o ao alcance da m\u00e3o.",
+        "Um caminho claro da ideia \u00e0 implementa\u00e7\u00e3o.",
+        "O contexto necess\u00e1rio. O controle esperado.",
+        "Conhe\u00e7a o fluxo. Adapte ao seu jeito.",
+        "Qual ser\u00e1 sua pr\u00f3xima miss\u00e3o?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 47.90625,
+          "height": 36
+        },
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "pt",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crie a primeira miss\u00e3o",
+        "For agents only",
+        "Primeiros passos",
+        "Miss\u00f5es",
+        "Specs",
+        "Loops e rails",
+        "Agentes",
+        "Ficheiros e processos",
+        "Integra\u00e7\u00f5es",
+        "Defini\u00e7\u00f5es"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 47.90625,
+          "height": 36
+        },
+        {
+          "label": "Alterar idioma",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Alterar tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Inizia con una missione.Consegna con un piano.",
+        "Guarda come funziona.",
+        "La tua missione a portata di mano.",
+        "Un percorso chiaro dall\u2019idea all\u2019implementazione.",
+        "Il contesto necessario. Il controllo atteso.",
+        "Comprendi il flusso. Fallo tuo.",
+        "Quale sar\u00e0 la tua prossima missione?"
+      ],
+      "controls": [
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Apri menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea la prima missione",
+        "For agents only",
+        "Primi passi",
+        "Missioni",
+        "Spec",
+        "Loop e rail",
+        "Agenti",
+        "File e processi",
+        "Integrazioni",
+        "Impostazioni"
+      ],
+      "controls": [
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Apri menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Inizia con una missione.Consegna con un piano.",
+        "Guarda come funziona.",
+        "La tua missione a portata di mano.",
+        "Un percorso chiaro dall\u2019idea all\u2019implementazione.",
+        "Il contesto necessario. Il controllo atteso.",
+        "Comprendi il flusso. Fallo tuo.",
+        "Quale sar\u00e0 la tua prossima missione?"
+      ],
+      "controls": [
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Apri menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea la prima missione",
+        "For agents only",
+        "Primi passi",
+        "Missioni",
+        "Spec",
+        "Loop e rail",
+        "Agenti",
+        "File e processi",
+        "Integrazioni",
+        "Impostazioni"
+      ],
+      "controls": [
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Apri menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Inizia con una missione.Consegna con un piano.",
+        "Guarda come funziona.",
+        "La tua missione a portata di mano.",
+        "Un percorso chiaro dall\u2019idea all\u2019implementazione.",
+        "Il contesto necessario. Il controllo atteso.",
+        "Comprendi il flusso. Fallo tuo.",
+        "Quale sar\u00e0 la tua prossima missione?"
+      ],
+      "controls": [
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Apri menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea la prima missione",
+        "For agents only",
+        "Primi passi",
+        "Missioni",
+        "Spec",
+        "Loop e rail",
+        "Agenti",
+        "File e processi",
+        "Integrazioni",
+        "Impostazioni"
+      ],
+      "controls": [
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Apri menu",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Inizia con una missione.Consegna con un piano.",
+        "Guarda come funziona.",
+        "La tua missione a portata di mano.",
+        "Un percorso chiaro dall\u2019idea all\u2019implementazione.",
+        "Il contesto necessario. Il controllo atteso.",
+        "Comprendi il flusso. Fallo tuo.",
+        "Quale sar\u00e0 la tua prossima missione?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 47.90625,
+          "height": 36
+        },
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea la prima missione",
+        "For agents only",
+        "Primi passi",
+        "Missioni",
+        "Spec",
+        "Loop e rail",
+        "Agenti",
+        "File e processi",
+        "Integrazioni",
+        "Impostazioni"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Inizia con una missione.Consegna con un piano.",
+        "Guarda come funziona.",
+        "La tua missione a portata di mano.",
+        "Un percorso chiaro dall\u2019idea all\u2019implementazione.",
+        "Il contesto necessario. Il controllo atteso.",
+        "Comprendi il flusso. Fallo tuo.",
+        "Quale sar\u00e0 la tua prossima missione?"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 47.90625,
+          "height": 36
+        },
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "it",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "Crea la prima missione",
+        "For agents only",
+        "Primi passi",
+        "Missioni",
+        "Spec",
+        "Loop e rail",
+        "Agenti",
+        "File e processi",
+        "Integrazioni",
+        "Impostazioni"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "Cambia lingua",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "Cambia tema",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u4ece\u4e00\u4e2a\u4efb\u52a1\u5f00\u59cb\u3002\u6709\u8ba1\u5212\u5730\u4ea4\u4ed8\u3002",
+        "\u4eb2\u773c\u770b\u770b\u5de5\u4f5c\u6d41\u7a0b\u3002",
+        "\u4efb\u52a1\uff0c\u89e6\u624b\u53ef\u53ca\u3002",
+        "\u4ece\u60f3\u6cd5\u5230\u5b9e\u73b0\uff0c\u8def\u5f84\u6e05\u6670\u3002",
+        "\u9700\u8981\u7684\u4e0a\u4e0b\u6587\uff0c\u671f\u5f85\u7684\u63a7\u5236\u529b\u3002",
+        "\u7406\u89e3\u6d41\u7a0b\uff0c\u8ba9\u5b83\u9002\u5408\u4f60\u3002",
+        "\u4f60\u7684\u4e0b\u4e00\u4e2a\u4efb\u52a1\u662f\u4ec0\u4e48\uff1f"
+      ],
+      "controls": [
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u6253\u5f00\u83dc\u5355",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u5f00\u59cb\u7b2c\u4e00\u4e2a\u4efb\u52a1",
+        "For agents only",
+        "\u5165\u95e8",
+        "\u4efb\u52a1",
+        "\u89c4\u683c",
+        "\u5faa\u73af\u4e0e\u6267\u884c\u901a\u9053",
+        "\u4ee3\u7406",
+        "\u6587\u4ef6\u4e0e\u8fdb\u7a0b",
+        "\u96c6\u6210",
+        "\u8bbe\u7f6e"
+      ],
+      "controls": [
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u6253\u5f00\u83dc\u5355",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u4ece\u4e00\u4e2a\u4efb\u52a1\u5f00\u59cb\u3002\u6709\u8ba1\u5212\u5730\u4ea4\u4ed8\u3002",
+        "\u4eb2\u773c\u770b\u770b\u5de5\u4f5c\u6d41\u7a0b\u3002",
+        "\u4efb\u52a1\uff0c\u89e6\u624b\u53ef\u53ca\u3002",
+        "\u4ece\u60f3\u6cd5\u5230\u5b9e\u73b0\uff0c\u8def\u5f84\u6e05\u6670\u3002",
+        "\u9700\u8981\u7684\u4e0a\u4e0b\u6587\uff0c\u671f\u5f85\u7684\u63a7\u5236\u529b\u3002",
+        "\u7406\u89e3\u6d41\u7a0b\uff0c\u8ba9\u5b83\u9002\u5408\u4f60\u3002",
+        "\u4f60\u7684\u4e0b\u4e00\u4e2a\u4efb\u52a1\u662f\u4ec0\u4e48\uff1f"
+      ],
+      "controls": [
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u6253\u5f00\u83dc\u5355",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u5f00\u59cb\u7b2c\u4e00\u4e2a\u4efb\u52a1",
+        "For agents only",
+        "\u5165\u95e8",
+        "\u4efb\u52a1",
+        "\u89c4\u683c",
+        "\u5faa\u73af\u4e0e\u6267\u884c\u901a\u9053",
+        "\u4ee3\u7406",
+        "\u6587\u4ef6\u4e0e\u8fdb\u7a0b",
+        "\u96c6\u6210",
+        "\u8bbe\u7f6e"
+      ],
+      "controls": [
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u6253\u5f00\u83dc\u5355",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u4ece\u4e00\u4e2a\u4efb\u52a1\u5f00\u59cb\u3002\u6709\u8ba1\u5212\u5730\u4ea4\u4ed8\u3002",
+        "\u4eb2\u773c\u770b\u770b\u5de5\u4f5c\u6d41\u7a0b\u3002",
+        "\u4efb\u52a1\uff0c\u89e6\u624b\u53ef\u53ca\u3002",
+        "\u4ece\u60f3\u6cd5\u5230\u5b9e\u73b0\uff0c\u8def\u5f84\u6e05\u6670\u3002",
+        "\u9700\u8981\u7684\u4e0a\u4e0b\u6587\uff0c\u671f\u5f85\u7684\u63a7\u5236\u529b\u3002",
+        "\u7406\u89e3\u6d41\u7a0b\uff0c\u8ba9\u5b83\u9002\u5408\u4f60\u3002",
+        "\u4f60\u7684\u4e0b\u4e00\u4e2a\u4efb\u52a1\u662f\u4ec0\u4e48\uff1f"
+      ],
+      "controls": [
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u6253\u5f00\u83dc\u5355",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u5f00\u59cb\u7b2c\u4e00\u4e2a\u4efb\u52a1",
+        "For agents only",
+        "\u5165\u95e8",
+        "\u4efb\u52a1",
+        "\u89c4\u683c",
+        "\u5faa\u73af\u4e0e\u6267\u884c\u901a\u9053",
+        "\u4ee3\u7406",
+        "\u6587\u4ef6\u4e0e\u8fdb\u7a0b",
+        "\u96c6\u6210",
+        "\u8bbe\u7f6e"
+      ],
+      "controls": [
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u6253\u5f00\u83dc\u5355",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u4ece\u4e00\u4e2a\u4efb\u52a1\u5f00\u59cb\u3002\u6709\u8ba1\u5212\u5730\u4ea4\u4ed8\u3002",
+        "\u4eb2\u773c\u770b\u770b\u5de5\u4f5c\u6d41\u7a0b\u3002",
+        "\u4efb\u52a1\uff0c\u89e6\u624b\u53ef\u53ca\u3002",
+        "\u4ece\u60f3\u6cd5\u5230\u5b9e\u73b0\uff0c\u8def\u5f84\u6e05\u6670\u3002",
+        "\u9700\u8981\u7684\u4e0a\u4e0b\u6587\uff0c\u671f\u5f85\u7684\u63a7\u5236\u529b\u3002",
+        "\u7406\u89e3\u6d41\u7a0b\uff0c\u8ba9\u5b83\u9002\u5408\u4f60\u3002",
+        "\u4f60\u7684\u4e0b\u4e00\u4e2a\u4efb\u52a1\u662f\u4ec0\u4e48\uff1f"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 44,
+          "height": 36
+        },
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u5f00\u59cb\u7b2c\u4e00\u4e2a\u4efb\u52a1",
+        "For agents only",
+        "\u5165\u95e8",
+        "\u4efb\u52a1",
+        "\u89c4\u683c",
+        "\u5faa\u73af\u4e0e\u6267\u884c\u901a\u9053",
+        "\u4ee3\u7406",
+        "\u6587\u4ef6\u4e0e\u8fdb\u7a0b",
+        "\u96c6\u6210",
+        "\u8bbe\u7f6e"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 44,
+          "height": 36
+        },
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u4ece\u4e00\u4e2a\u4efb\u52a1\u5f00\u59cb\u3002\u6709\u8ba1\u5212\u5730\u4ea4\u4ed8\u3002",
+        "\u4eb2\u773c\u770b\u770b\u5de5\u4f5c\u6d41\u7a0b\u3002",
+        "\u4efb\u52a1\uff0c\u89e6\u624b\u53ef\u53ca\u3002",
+        "\u4ece\u60f3\u6cd5\u5230\u5b9e\u73b0\uff0c\u8def\u5f84\u6e05\u6670\u3002",
+        "\u9700\u8981\u7684\u4e0a\u4e0b\u6587\uff0c\u671f\u5f85\u7684\u63a7\u5236\u529b\u3002",
+        "\u7406\u89e3\u6d41\u7a0b\uff0c\u8ba9\u5b83\u9002\u5408\u4f60\u3002",
+        "\u4f60\u7684\u4e0b\u4e00\u4e2a\u4efb\u52a1\u662f\u4ec0\u4e48\uff1f"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 44,
+          "height": 36
+        },
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u5f00\u59cb\u7b2c\u4e00\u4e2a\u4efb\u52a1",
+        "For agents only",
+        "\u5165\u95e8",
+        "\u4efb\u52a1",
+        "\u89c4\u683c",
+        "\u5faa\u73af\u4e0e\u6267\u884c\u901a\u9053",
+        "\u4ee3\u7406",
+        "\u6587\u4ef6\u4e0e\u8fdb\u7a0b",
+        "\u96c6\u6210",
+        "\u8bbe\u7f6e"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 44,
+          "height": 36
+        },
+        {
+          "label": "\u5207\u6362\u8bed\u8a00",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u5207\u6362\u4e3b\u9898",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 320,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3002\u8a08\u753b\u3092\u6301\u3063\u3066\u5c4a\u3051\u308b\u3002",
+        "\u5b9f\u969b\u306e\u6d41\u308c\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u624b\u306e\u5c4a\u304f\u5834\u6240\u306b\u3002",
+        "\u30a2\u30a4\u30c7\u30a2\u304b\u3089\u5b9f\u88c5\u307e\u3067\u3001\u660e\u78ba\u306a\u9053\u7b4b\u3002",
+        "\u5fc5\u8981\u306a\u60c5\u5831\u3068\u3001\u671f\u5f85\u3059\u308b\u64cd\u4f5c\u6027\u3002",
+        "\u6d41\u308c\u3092\u7406\u89e3\u3057\u3001\u81ea\u5206\u306e\u3082\u306e\u306b\u3002",
+        "\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u4f55\u3067\u3059\u304b\uff1f"
+      ],
+      "controls": [
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u304f",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 320,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u308b",
+        "For agents only",
+        "\u306f\u3058\u3081\u306b",
+        "\u30df\u30c3\u30b7\u30e7\u30f3",
+        "\u30b9\u30da\u30c3\u30af",
+        "\u30eb\u30fc\u30d7\u3068\u30ec\u30fc\u30eb",
+        "\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
+        "\u30d5\u30a1\u30a4\u30eb\u3068\u30d7\u30ed\u30bb\u30b9",
+        "\u9023\u643a",
+        "\u8a2d\u5b9a"
+      ],
+      "controls": [
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u304f",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 390,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3002\u8a08\u753b\u3092\u6301\u3063\u3066\u5c4a\u3051\u308b\u3002",
+        "\u5b9f\u969b\u306e\u6d41\u308c\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u624b\u306e\u5c4a\u304f\u5834\u6240\u306b\u3002",
+        "\u30a2\u30a4\u30c7\u30a2\u304b\u3089\u5b9f\u88c5\u307e\u3067\u3001\u660e\u78ba\u306a\u9053\u7b4b\u3002",
+        "\u5fc5\u8981\u306a\u60c5\u5831\u3068\u3001\u671f\u5f85\u3059\u308b\u64cd\u4f5c\u6027\u3002",
+        "\u6d41\u308c\u3092\u7406\u89e3\u3057\u3001\u81ea\u5206\u306e\u3082\u306e\u306b\u3002",
+        "\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u4f55\u3067\u3059\u304b\uff1f"
+      ],
+      "controls": [
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u304f",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 390,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u308b",
+        "For agents only",
+        "\u306f\u3058\u3081\u306b",
+        "\u30df\u30c3\u30b7\u30e7\u30f3",
+        "\u30b9\u30da\u30c3\u30af",
+        "\u30eb\u30fc\u30d7\u3068\u30ec\u30fc\u30eb",
+        "\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
+        "\u30d5\u30a1\u30a4\u30eb\u3068\u30d7\u30ed\u30bb\u30b9",
+        "\u9023\u643a",
+        "\u8a2d\u5b9a"
+      ],
+      "controls": [
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u304f",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 768,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3002\u8a08\u753b\u3092\u6301\u3063\u3066\u5c4a\u3051\u308b\u3002",
+        "\u5b9f\u969b\u306e\u6d41\u308c\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u624b\u306e\u5c4a\u304f\u5834\u6240\u306b\u3002",
+        "\u30a2\u30a4\u30c7\u30a2\u304b\u3089\u5b9f\u88c5\u307e\u3067\u3001\u660e\u78ba\u306a\u9053\u7b4b\u3002",
+        "\u5fc5\u8981\u306a\u60c5\u5831\u3068\u3001\u671f\u5f85\u3059\u308b\u64cd\u4f5c\u6027\u3002",
+        "\u6d41\u308c\u3092\u7406\u89e3\u3057\u3001\u81ea\u5206\u306e\u3082\u306e\u306b\u3002",
+        "\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u4f55\u3067\u3059\u304b\uff1f"
+      ],
+      "controls": [
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u304f",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 768,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u308b",
+        "For agents only",
+        "\u306f\u3058\u3081\u306b",
+        "\u30df\u30c3\u30b7\u30e7\u30f3",
+        "\u30b9\u30da\u30c3\u30af",
+        "\u30eb\u30fc\u30d7\u3068\u30ec\u30fc\u30eb",
+        "\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
+        "\u30d5\u30a1\u30a4\u30eb\u3068\u30d7\u30ed\u30bb\u30b9",
+        "\u9023\u643a",
+        "\u8a2d\u5b9a"
+      ],
+      "controls": [
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30e1\u30cb\u30e5\u30fc\u3092\u958b\u304f",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 1024,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3002\u8a08\u753b\u3092\u6301\u3063\u3066\u5c4a\u3051\u308b\u3002",
+        "\u5b9f\u969b\u306e\u6d41\u308c\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u624b\u306e\u5c4a\u304f\u5834\u6240\u306b\u3002",
+        "\u30a2\u30a4\u30c7\u30a2\u304b\u3089\u5b9f\u88c5\u307e\u3067\u3001\u660e\u78ba\u306a\u9053\u7b4b\u3002",
+        "\u5fc5\u8981\u306a\u60c5\u5831\u3068\u3001\u671f\u5f85\u3059\u308b\u64cd\u4f5c\u6027\u3002",
+        "\u6d41\u308c\u3092\u7406\u89e3\u3057\u3001\u81ea\u5206\u306e\u3082\u306e\u306b\u3002",
+        "\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u4f55\u3067\u3059\u304b\uff1f"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 50.984375,
+          "height": 36
+        },
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 1024,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u308b",
+        "For agents only",
+        "\u306f\u3058\u3081\u306b",
+        "\u30df\u30c3\u30b7\u30e7\u30f3",
+        "\u30b9\u30da\u30c3\u30af",
+        "\u30eb\u30fc\u30d7\u3068\u30ec\u30fc\u30eb",
+        "\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
+        "\u30d5\u30a1\u30a4\u30eb\u3068\u30d7\u30ed\u30bb\u30b9",
+        "\u9023\u643a",
+        "\u8a2d\u5b9a"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 1440,
+      "route": "/",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u304b\u3089\u59cb\u3081\u308b\u3002\u8a08\u753b\u3092\u6301\u3063\u3066\u5c4a\u3051\u308b\u3002",
+        "\u5b9f\u969b\u306e\u6d41\u308c\u3092\u3054\u89a7\u304f\u3060\u3055\u3044\u3002",
+        "\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u624b\u306e\u5c4a\u304f\u5834\u6240\u306b\u3002",
+        "\u30a2\u30a4\u30c7\u30a2\u304b\u3089\u5b9f\u88c5\u307e\u3067\u3001\u660e\u78ba\u306a\u9053\u7b4b\u3002",
+        "\u5fc5\u8981\u306a\u60c5\u5831\u3068\u3001\u671f\u5f85\u3059\u308b\u64cd\u4f5c\u6027\u3002",
+        "\u6d41\u308c\u3092\u7406\u89e3\u3057\u3001\u81ea\u5206\u306e\u3082\u306e\u306b\u3002",
+        "\u6b21\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u306f\u4f55\u3067\u3059\u304b\uff1f"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 50.984375,
+          "height": 36
+        },
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "language": "ja",
+      "width": 1440,
+      "route": "/docs",
+      "errors": [],
+      "overflow": false,
+      "headings": [
+        "\u6700\u521d\u306e\u30df\u30c3\u30b7\u30e7\u30f3\u3092\u4f5c\u308b",
+        "For agents only",
+        "\u306f\u3058\u3081\u306b",
+        "\u30df\u30c3\u30b7\u30e7\u30f3",
+        "\u30b9\u30da\u30c3\u30af",
+        "\u30eb\u30fc\u30d7\u3068\u30ec\u30fc\u30eb",
+        "\u30a8\u30fc\u30b8\u30a7\u30f3\u30c8",
+        "\u30d5\u30a1\u30a4\u30eb\u3068\u30d7\u30ed\u30bb\u30b9",
+        "\u9023\u643a",
+        "\u8a2d\u5b9a"
+      ],
+      "controls": [
+        {
+          "label": null,
+          "width": 49.890625,
+          "height": 36
+        },
+        {
+          "label": "\u8a00\u8a9e\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "label": "\u30c6\u30fc\u30de\u3092\u5909\u66f4",
+          "width": 44,
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "interaction": [
+    {
+      "reducedMotion": "reduce",
+      "motion": {
+        "animation": "reduced-surface-in",
+        "duration": "0.1s",
+        "transition": "color, background-color, border-color, text-decoration-color, fill, stroke"
+      },
+      "focused": "Abrir men\u00fa",
+      "language": "es",
+      "pageFeedback": "dark"
+    },
+    {
+      "reducedMotion": "no-preference",
+      "motion": {
+        "animation": "enter",
+        "duration": "0.5s",
+        "transition": "color, background-color, border-color, text-decoration-color, fill, stroke"
+      },
+      "focused": "Abrir men\u00fa",
+      "language": "es",
+      "pageFeedback": "dark"
+    }
+  ]
+}

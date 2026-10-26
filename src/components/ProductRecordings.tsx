@@ -4,7 +4,7 @@ import { ArrowUpRight, Maximize2, Pause, Play, RotateCcw, X } from "lucide-react
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogClose, DialogDescription, DialogOverlay, DialogPortal, DialogTitle } from "@/components/ui/dialog";
 import { useI18n } from "@/lib/i18n";
-import { RECORDINGS, RECORDING_COPY, type RecordingCopy, type RecordingId } from "@/lib/recording-copy";
+import { RECORDING_ASSET_VERSION, RECORDINGS, RECORDING_COPY, type RecordingCopy, type RecordingId } from "@/lib/recording-copy";
 
 interface PlaybackRequest { id: RecordingId | null; revision: number }
 type Recording = typeof RECORDINGS[number];
@@ -54,7 +54,7 @@ function RecordingVideo({ recording, videoRef, full = false, request, startTime 
       ref={videoRef}
       aria-label={label}
       className={full ? "block max-h-[65vh] w-full bg-surface-0 object-contain" : "absolute inset-0 h-full w-full object-contain"}
-      poster={`/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=20260930-29b41ac7`}
+      poster={`/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=${RECORDING_ASSET_VERSION}`}
       preload="none"
       playsInline
       muted
@@ -71,8 +71,8 @@ function RecordingVideo({ recording, videoRef, full = false, request, startTime 
         }
       }}
     >
-      <source src={`/product/${recording.file}.webm?v=20260930-29b41ac7`} type="video/webm" />
-      <source src={`/product/${recording.file}.mp4?v=20260930-29b41ac7`} type="video/mp4" />
+      <source src={`/product/${recording.file}.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
+      <source src={`/product/${recording.file}.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
     </video>
   );
 }
@@ -103,7 +103,7 @@ function RecordingCard({ recording, copy, request, requestPlayback, expand }: {
         {loaded ? (
           <RecordingVideo key={attempt} recording={recording} videoRef={videoRef} request={request} onPlaying={setPlaying} onError={() => { setFailed(true); setPlaying(false); }} />
         ) : (
-          <img src={`/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=20260930-29b41ac7`} alt={clip.title} width={1440} height={900} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-contain" />
+          <img src={`/product/${recording.id === "mission" ? "specrails-mission-control-preview" : recording.file}.png?v=${RECORDING_ASSET_VERSION}`} alt={clip.title} width={1440} height={900} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-contain" />
         )}
         {!playing && !failed && (
           <div className="absolute inset-0 grid place-items-center bg-surface-0/10">
@@ -148,7 +148,7 @@ function FullRecording({ recording, time, copy }: { recording: Recording; time: 
       <p>{copy.error}</p><Button variant="outline" size="sm" onClick={() => { setFailed(false); setAttempt(value => value + 1); }}>{copy.retry}</Button>
     </div>}
     <p className="text-xs text-muted-foreground">{copy.fullscreenHint}</p>
-    <a href={`/product/${recording.file}.mp4?v=20260930-29b41ac7`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-brand-cyan underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{copy.openFile}<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
+    <a href={`/product/${recording.file}.mp4?v=${RECORDING_ASSET_VERSION}`} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm text-brand-cyan underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{copy.openFile}<ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></a>
   </>;
 }
 
@@ -174,6 +174,7 @@ export function ProductRecordings({ showHeading = true }: { showHeading?: boolea
           <h2 className="section-heading mt-3">{copy.title}</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">{copy.intro}</p>
         </div>}
+        {!showHeading && <h2 className="sr-only">{copy.title}</h2>}
         <div className="grid gap-5 md:grid-cols-2">
           {RECORDINGS.map(recording => <RecordingCard key={recording.id} recording={recording} copy={copy} request={request} requestPlayback={requestPlayback} expand={(id, time, trigger) => {
             expandTriggerRef.current = trigger;

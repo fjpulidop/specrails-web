@@ -35,7 +35,7 @@ export default function DocPage() {
   const {prev,next} = getAdjacentDocs(slug,languageId);
   return <div className="mx-auto flex w-full max-w-6xl gap-10 px-5 py-8 md:px-10 md:py-12">
     <div className="min-w-0 flex-1">
-      <nav aria-label={copy.label} className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"><Link to="/docs" className="hover:text-brand-cyan">{copy.label}</Link><ChevronRight className="h-3.5 w-3.5" aria-hidden="true" /><span>{doc.section}</span></nav>
+      <nav aria-label={copy.breadcrumb} className="mb-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"><Link to="/docs" className="hover:text-brand-cyan">{copy.label}</Link><ChevronRight className="h-3.5 w-3.5" aria-hidden="true" /><span>{doc.section}</span></nav>
       {doc.isFallback && <p role="note" className="mb-6 flex items-start gap-3 rounded-xl border border-brand-cyan/30 bg-brand-cyan/5 p-4 text-sm leading-relaxed text-foreground"><Languages className="mt-0.5 h-4 w-4 shrink-0 text-brand-cyan" aria-hidden="true" />{copy.fallback}</p>}
       {loaded?.error ? <div role="alert" className="rounded-xl border border-border bg-surface-1 p-6"><h1 className="mb-4 text-2xl font-bold" lang={doc.contentLanguage}>{doc.title}</h1><p className="mb-4 text-muted-foreground">{copy.failed}</p><Button onClick={() => setAttempt(v=>v+1)}>{copy.retry}</Button></div>
       : loaded?.content === undefined ? <p role="status" className="py-12 text-muted-foreground">{copy.loading}</p>
@@ -47,6 +47,6 @@ export default function DocPage() {
         </nav>
       </>}
     </div>
-    {loaded?.content !== undefined && <aside className="hidden w-48 shrink-0 xl:block"><div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pb-8"><TableOfContents contentKey={key} /></div></aside>}
+    {loaded?.content !== undefined && <aside aria-label={copy.contents} className="hidden w-48 shrink-0 xl:block"><div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pb-8"><TableOfContents contentKey={key} /></div></aside>}
   </div>;
 }

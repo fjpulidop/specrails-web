@@ -22,6 +22,7 @@ describe("Published product assets", () => {
   it("includes both formats and a poster for every current recording", () => {
     const manifest = JSON.parse(read("product/recordings.json").toString());
     assert.equal(manifest.sampleData, true);
+    assert.equal(manifest.theme, "specrails");
     assert.match(manifest.desktopCommit, /^[a-f0-9]{40}$/);
     for (const clip of RECORDINGS) {
       assert.ok(manifest.recordings.find((item) => item.file === clip.file));

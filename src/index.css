@@ -134,16 +134,16 @@
     --muted-foreground: 228 10% 38%;
 
     /* Accents darkened to clear 4.5:1 as inline text on the light canvas */
-    --brand-cyan:   190 95% 30%;
+    --brand-cyan:   190 95% 27%;
     --brand-violet: 268 60% 46%;
 
-    --primary:            190 95% 30%;
+    --primary:            190 95% 27%;
     --primary-foreground: 0 0% 100%;
     --secondary:            220 24% 92%;
     --secondary-foreground: 228 22% 12%;
-    --accent:             190 95% 30%;
+    --accent:             190 95% 27%;
     --accent-foreground:  0 0% 100%;
-    --accent-cyan:        190 95% 30%;
+    --accent-cyan:        190 95% 27%;
 
     --gradient-primary: linear-gradient(120deg, hsl(190 90% 32%), hsl(245 70% 50%), hsl(268 60% 50%));
     --gradient-primary-hover: linear-gradient(120deg, hsl(190 92% 28%), hsl(245 72% 46%), hsl(268 62% 46%));
@@ -153,14 +153,14 @@
     --accent-success: 150 70% 30%;
     --accent-warning: 35 92% 38%;
     --accent-danger:  0 72% 44%;
-    --accent-info:    190 95% 30%;
+    --accent-info:    190 95% 27%;
     --destructive:            0 72% 44%;
     --destructive-foreground: 0 0% 100%;
 
     --border:    228 16% 86%;
     --hairline:  228 16% 86%;
     --input:     220 24% 92%;
-    --ring:      190 95% 30%;
+    --ring:      190 95% 27%;
 
     --glow-brand:    0 24px 60px -24px hsl(var(--brand-cyan) / 0.22);
     --glow-violet:   0 24px 60px -24px hsl(var(--brand-violet) / 0.20);
@@ -174,7 +174,7 @@
     --dracula-current: 220 18% 90%;
     --dracula-fg:      228 22% 12%;
     --dracula-comment: 228 14% 36%;
-    --dracula-cyan:    190 95% 30%;
+    --dracula-cyan:    190 95% 27%;
     --dracula-green:   150 70% 28%;
     --dracula-orange:  30 95% 36%;
     --dracula-pink:    330 75% 42%;
@@ -182,8 +182,8 @@
     --dracula-red:     0 72% 44%;
     --dracula-yellow:  42 92% 32%;
 
-    --sidebar-primary: 190 95% 30%;
-    --sidebar-ring: 190 95% 30%;
+    --sidebar-primary: 190 95% 27%;
+    --sidebar-ring: 190 95% 27%;
   }
 }
 
@@ -516,18 +516,52 @@
   @keyframes logo-seat-beam { 0% { stroke-dashoffset: 100; opacity: 0; } 10% { opacity: 1; } 80% { opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
 }
 
-/* ── Global reduced-motion contract ── */
+/* Reduced motion keeps color/focus feedback while replacing spatial effects. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  /* entrances must not leave content invisible */
+
+  /* Reveal content immediately; never leave a delayed entrance transparent. */
   .animate-fade-up,
   .animate-reveal,
   .animate-card-drop,
-  .animate-bar-rise { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; }
-  .logo-seat-rim, .logo-seat-glow, .logo-seat-beam { animation: none !important; opacity: 0 !important; }
+  .animate-bar-rise {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  /* Decorative loops and loading icons have a stable, readable resting state. */
+  .animate-float, .animate-pulse-glow, .animate-hero-breath,
+  .animate-rail-glide, .animate-rail-flow, .animate-lane-pulse,
+  .animate-download-pulse, .animate-arrow-x, .animate-arrow-y,
+  .animate-cursor-ping, .animate-caret, .animate-drift-a, .animate-drift-b,
+  .animate-section-nav-up, .animate-section-nav-down,
+  .animate-spin, .animate-pulse, .animate-ping {
+    animation: none !important;
+  }
+  .animate-pulse-glow { opacity: 0.1; }
+  .animate-cursor-ping { opacity: 0; }
+  .logo-seat-rim, .logo-seat-glow, .logo-seat-beam {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Keep hover and state feedback without interpolating position or scale. */
+  .transition, .transition-all, .transition-transform, [class*="transition-["] {
+    transition-property: color, background-color, border-color, box-shadow, opacity !important;
+  }
+  .cta-sheen::after { transition: none; }
+
+  /* Radix surfaces fade briefly instead of sliding or zooming. The opacity
+     animation still gives Presence its close lifecycle before restoring focus. */
+  [data-state="open"][class*="animate-in"] {
+    animation: reduced-surface-in 100ms ease-out !important;
+  }
+  [data-state="closed"][class*="animate-out"] {
+    animation: reduced-surface-out 80ms ease-in !important;
+  }
+  [class*="animate-accordion-"] { animation: none !important; }
+  @keyframes reduced-surface-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes reduced-surface-out { from { opacity: 1; } to { opacity: 0; } }
 }
