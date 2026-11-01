@@ -10,9 +10,9 @@ Un loop define el proceso; un rail es el carril de ejecución; un job o run regi
 | --- | --- |
 | Implement | Una spec acordada, con arquitectura, implementación y revisión |
 | Personalizado | Tus pasos de IA, shell y decisión, incluidos los loops que añades desde la galería (por ejemplo Freestyle o Quick SDD) |
-| Flow → Spec | Código que construiste en una [sesión Intent](/docs/missions-intent-mode): deriva la spec y el cambio OpenSpec, y después verifica, revisa, archiva y entrega |
+| Intent → Spec | Código que construiste en una [sesión Intent](/docs/missions-intent-mode): deriva la spec y el cambio OpenSpec, y después verifica, revisa, archiva y entrega |
 
-Implement es el único loop incluido y Specrails nunca ofrece otros por su cuenta. Flow → Spec solo se lanza desde una sesión Intent, cuando pulsas **Pasar a un rail**; no aparece como un loop que puedas elegir para una spec.
+Implement es el único loop incluido y Specrails nunca ofrece otros por su cuenta. Intent → Spec solo se lanza desde una sesión Intent, cuando pulsas **Pasar a un rail**; no aparece como un loop que puedas elegir para una spec.
 
 Implement ejecuta todas las specs de un rail en una sola ejecución. Para avanzar en paralelo con specs independientes, repártelas en varios rails.
 

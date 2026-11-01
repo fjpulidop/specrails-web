@@ -6,7 +6,7 @@ El editor de loops convierte un proceso en pasos conectados y reutilizables. Par
 
 ## Edita un loop incluido
 
-Implement es el único loop incluido. Ábrelo y edítalo directamente, como cualquier otro loop. Nada cambia hasta que publicas; a partir de entonces, tu versión se usa en todos los sitios donde se ejecuta Implement. **Restaurar original** lo devuelve a la versión que trae Desktop. Los loops incluidos no se pueden eliminar. El loop Flow → Spec no está en la biblioteca: solo se ejecuta desde una [sesión Intent](/docs/missions-intent-mode).
+Implement es el único loop incluido. Ábrelo y edítalo directamente, como cualquier otro loop. Nada cambia hasta que publicas; a partir de entonces, tu versión se usa en todos los sitios donde se ejecuta Implement. **Restaurar original** lo devuelve a la versión que trae Desktop. Los loops incluidos no se pueden eliminar. El loop Intent → Spec no está en la biblioteca: solo se ejecuta desde una [sesión Intent](/docs/missions-intent-mode).
 
 Freestyle y Quick SDD (OpenSpec) son loops listos para usar en la galería de **Plantillas**. Añade uno a propósito cuando lo quieras; Specrails nunca los pone en un rail por su cuenta. Un rail que seguía configurado con uno de los antiguos loops incluidos vuelve a Implement, y un loop incluido que hubieras editado se conserva como un loop normal en tu biblioteca.
 
