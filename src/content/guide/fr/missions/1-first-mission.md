@@ -8,7 +8,7 @@ Choisissez le projet, puis ouvrez une mission. Décrivez le résultat, les contr
 
 Ajoutez les fichiers utiles avec `@` et une spec avec `#`. Le sélecteur privilégie les specs et conserve la référence à sa position dans le message. Vérifiez le dépôt : deux fichiers portant le même chemin ne sont pas la même source.
 
-Demandez une exploration si la solution reste incertaine. Relisez le brouillon et ses critères avant de lancer Implement, SDD Quick, Freestyle ou un loop personnalisé. Une lecture d’un autre dépôt ne lui donne pas automatiquement un périmètre d’implémentation.
+Demandez une exploration si la solution reste incertaine ; l’agent peut aussi vous interroger et présenter un [Intent](/docs/missions-intent-mode). Relisez le brouillon et ses critères avant de lancer Implement ou un loop que vous avez ajouté. Une lecture d’un autre dépôt ne lui donne pas automatiquement un périmètre d’implémentation.
 
 ## Suivre le travail
 

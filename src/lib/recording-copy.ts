@@ -24,7 +24,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "Mission Control", summary: "Open a mission. Check local usage.", description: "An existing sample mission opens from the sidebar. Hovering over the footer shows Claude and Codex usage windows, their reset countdowns and when the data was updated. No agent execution or delivery is performed." },
       board: { title: "Specs and rails", summary: "Inspect the backlog and execution rails.", description: "Board shows the spec backlog beside three execution rails and the current loop choices. Opening a spec reveals its details; the view returns to the board. No implementation run is launched." },
-      loop: { title: "Loop builder", summary: "Inspect the verification and stopping rule.", description: "The built-in Freestyle graph connects implementation, verification and a decision. Selecting its decision node exposes the stopping criteria and the path back to fix and verify. This is a loop definition with sample project data, not an execution result." },
+      loop: { title: "Loop builder", summary: "Inspect the verification and stopping rule.", description: "A loop graph connects implementation, verification and a decision. Selecting its decision node exposes the stopping criteria and the path back to fix and verify. This is a loop definition with sample project data, not an execution result." },
     },
   },
   es: {
@@ -35,7 +35,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "Control de misiones", summary: "Abre una misión. Consulta el uso local.", description: "Se abre una misión de ejemplo desde la sidebar. Al pasar el ratón por el pie se muestran las ventanas de uso de Claude y Codex, cuánto falta para reiniciarlas y cuándo se actualizaron. No se ejecuta un agente ni se realiza una entrega." },
       board: { title: "Specs y rails", summary: "Explora el backlog y los rails de ejecución.", description: "El Board muestra el backlog de specs junto a tres rails y los loops disponibles. Se abre una spec para consultar sus detalles y se vuelve al tablero. No se lanza una implementación." },
-      loop: { title: "Constructor de loops", summary: "Consulta la verificación y la condición de parada.", description: "El loop integrado Freestyle conecta implementación, verificación y una decisión. Al seleccionar la decisión se muestran los criterios de parada y el camino para corregir y verificar de nuevo. Es una definición con datos de ejemplo, no el resultado de una ejecución." },
+      loop: { title: "Constructor de loops", summary: "Consulta la verificación y la condición de parada.", description: "Un loop conecta implementación, verificación y una decisión. Al seleccionar la decisión se muestran los criterios de parada y el camino para corregir y verificar de nuevo. Es una definición con datos de ejemplo, no el resultado de una ejecución." },
     },
   },
   fr: {
@@ -46,7 +46,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "Contrôle des missions", summary: "Ouvrez une mission. Consultez l’usage local.", description: "Une mission d’exemple s’ouvre depuis la barre latérale. Survoler le pied de fenêtre affiche les limites de Claude et Codex, le délai de réinitialisation et la dernière mise à jour. Aucun agent ni aucune livraison n’est lancé." },
       board: { title: "Specs et rails", summary: "Explorez les specs et les rails.", description: "Le Board affiche les specs à côté de trois rails et des boucles disponibles. Une spec s’ouvre pour consulter ses détails, puis la vue revient au Board. Aucune implémentation n’est lancée." },
-      loop: { title: "Éditeur de boucles", summary: "Consultez la vérification et la règle d’arrêt.", description: "Le graphe Freestyle intégré relie implémentation, vérification et décision. Sélectionner la décision affiche les critères d’arrêt et le chemin de correction et de vérification. Il s’agit d’une définition avec des données d’exemple, pas d’un résultat d’exécution." },
+      loop: { title: "Éditeur de boucles", summary: "Consultez la vérification et la règle d’arrêt.", description: "Un graphe de boucle relie implémentation, vérification et décision. Sélectionner la décision affiche les critères d’arrêt et le chemin de correction et de vérification. Il s’agit d’une définition avec des données d’exemple, pas d’un résultat d’exécution." },
     },
   },
   de: {
@@ -57,7 +57,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "Missionssteuerung", summary: "Mission öffnen. Lokale Nutzung prüfen.", description: "Eine Beispielmission wird aus der Seitenleiste geöffnet. Beim Bewegen über die Fußleiste erscheinen Claude- und Codex-Limits, die Zeit bis zum Zurücksetzen und die letzte Aktualisierung. Es wird kein Agentenlauf oder Auslieferung gestartet." },
       board: { title: "Specs und Rails", summary: "Backlog und Ausführungsrails ansehen.", description: "Das Board zeigt Specs neben drei Rails und den verfügbaren Loops. Die Details einer Spec werden geöffnet, danach erscheint wieder das Board. Es wird keine Implementierung gestartet." },
-      loop: { title: "Loop-Editor", summary: "Prüfung und Abbruchregel ansehen.", description: "Der integrierte Freestyle-Graph verbindet Implementierung, Prüfung und Entscheidung. Die ausgewählte Entscheidung zeigt die Abbruchkriterien und den Rückweg zur Korrektur und erneuten Prüfung. Zu sehen ist eine Definition mit Beispieldaten, kein Ausführungsergebnis." },
+      loop: { title: "Loop-Editor", summary: "Prüfung und Abbruchregel ansehen.", description: "Ein Loop-Graph verbindet Implementierung, Prüfung und Entscheidung. Die ausgewählte Entscheidung zeigt die Abbruchkriterien und den Rückweg zur Korrektur und erneuten Prüfung. Zu sehen ist eine Definition mit Beispieldaten, kein Ausführungsergebnis." },
     },
   },
   pt: {
@@ -68,7 +68,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "Controlo de missões", summary: "Abra uma missão. Consulte o uso local.", description: "Uma missão de exemplo abre a partir da barra lateral. Passar o rato pelo rodapé mostra os limites de Claude e Codex, o tempo até à reposição e a última atualização. Não é executado um agente nem uma entrega." },
       board: { title: "Specs e rails", summary: "Explore as specs e os rails.", description: "O Board mostra o backlog junto de três rails e dos loops disponíveis. Abre-se uma spec para consultar os detalhes e regressa-se ao Board. Não é iniciada uma implementação." },
-      loop: { title: "Editor de loops", summary: "Consulte a verificação e a regra de paragem.", description: "O grafo Freestyle integrado liga implementação, verificação e decisão. Selecionar a decisão mostra os critérios de paragem e o caminho para corrigir e verificar novamente. É uma definição com dados de exemplo, não um resultado de execução." },
+      loop: { title: "Editor de loops", summary: "Consulte a verificação e a regra de paragem.", description: "Um grafo de loop liga implementação, verificação e decisão. Selecionar a decisão mostra os critérios de paragem e o caminho para corrigir e verificar novamente. É uma definição com dados de exemplo, não um resultado de execução." },
     },
   },
   it: {
@@ -79,7 +79,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "Controllo missioni", summary: "Apri una missione. Controlla l’utilizzo locale.", description: "Una missione di esempio si apre dalla barra laterale. Passando sul piè di pagina compaiono i limiti di Claude e Codex, il tempo al ripristino e l’ultimo aggiornamento. Non viene eseguito un agente né una consegna." },
       board: { title: "Specs e rails", summary: "Esplora le spec e i rail.", description: "Il Board mostra il backlog accanto a tre rail e ai loop disponibili. Si apre una spec per vedere i dettagli, poi si torna al Board. Non viene avviata un’implementazione." },
-      loop: { title: "Editor di loop", summary: "Consulta la verifica e la regola di arresto.", description: "Il grafo Freestyle integrato collega implementazione, verifica e decisione. Selezionando la decisione si vedono i criteri di arresto e il percorso di correzione e nuova verifica. È una definizione con dati di esempio, non un risultato di esecuzione." },
+      loop: { title: "Editor di loop", summary: "Consulta la verifica e la regola di arresto.", description: "Un grafo di loop collega implementazione, verifica e decisione. Selezionando la decisione si vedono i criteri di arresto e il percorso di correzione e nuova verifica. È una definizione con dati di esempio, non un risultato di esecuzione." },
     },
   },
   zh: {
@@ -90,7 +90,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "任务控制", summary: "打开任务，查看本地用量。", description: "从侧栏打开一个示例任务。将鼠标移到页脚，即可查看 Claude 和 Codex 的用量窗口、重置倒计时和上次更新时间。没有启动代理执行或交付。" },
       board: { title: "Specs 与 rails", summary: "查看待办列表和执行轨道。", description: "Board 在规格待办列表旁显示三条执行轨道及可选循环。打开一条规格查看详情，然后返回看板。没有启动实施。" },
-      loop: { title: "循环编辑器", summary: "查看验证和停止条件。", description: "内置 Freestyle 图连接实施、验证和决策。选择决策节点后，可查看停止条件以及返回修复和再次验证的路径。展示的是使用示例数据的循环定义，而非执行结果。" },
+      loop: { title: "循环编辑器", summary: "查看验证和停止条件。", description: "循环图连接实施、验证和决策。选择决策节点后，可查看停止条件以及返回修复和再次验证的路径。展示的是使用示例数据的循环定义，而非执行结果。" },
     },
   },
   ja: {
@@ -101,7 +101,7 @@ export const RECORDING_COPY: Record<LanguageId, RecordingCopy> = {
     clips: {
       mission: { title: "ミッション管理", summary: "ミッションを開き、ローカル使用量を確認。", description: "サイドバーからサンプルのミッションを開きます。フッターにカーソルを合わせると、Claude と Codex の使用枠、リセットまでの時間、最終更新が表示されます。エージェント実行や納品は行いません。" },
       board: { title: "Specs と rails", summary: "バックログと実行用 rail を確認。", description: "Board は spec のバックログ、3本の rail、利用可能な Loop を表示します。spec の詳細を開き、Board に戻ります。実装は開始しません。" },
-      loop: { title: "ループエディター", summary: "検証と停止条件を確認。", description: "組み込み Freestyle グラフは実装、検証、判定を接続します。判定ノードを選ぶと、停止条件と修正・再検証への経路が表示されます。サンプルデータを使った定義であり、実行結果ではありません。" },
+      loop: { title: "ループエディター", summary: "検証と停止条件を確認。", description: "ループのグラフは実装、検証、判定を接続します。判定ノードを選ぶと、停止条件と修正・再検証への経路が表示されます。サンプルデータを使った定義であり、実行結果ではありません。" },
     },
   },
 };

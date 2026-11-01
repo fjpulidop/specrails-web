@@ -172,7 +172,7 @@ export function ProductWorkflow() {
             className="mr-1 h-4 w-4 text-brand-violet"
             aria-hidden="true"
           />
-          {["Implement", "SDD Quick", "Freestyle"].map(
+          {["Implement", "Loop gallery", "Your own loops"].map(
             (name) => (
               <span
                 key={name}

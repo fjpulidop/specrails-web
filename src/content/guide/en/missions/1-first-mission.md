@@ -6,7 +6,7 @@ Begin with the outcome you want, then let the mission gather enough project cont
 
 ## Give the agent a useful brief
 
-For example: “Add password recovery to this product. Check the API and frontend, propose the acceptance criteria, and wait for the spec before implementing.” Mention constraints, existing behavior and how you will judge the result.
+For example: “Add password recovery to this product. Check the API and frontend, propose the acceptance criteria, and wait for the spec before implementing.” Mention constraints, existing behavior and how you will judge the result. If the request is about a problem rather than a solution, the agent may interview you first and show an [Intent](/docs/missions-intent-mode) card for you to confirm.
 
 Select the intended project. Use **#** to reference a spec and **@** for project context such as files. Spec suggestions take priority, and references stay at the insertion point. Check the repository label when filenames repeat across repos. Attach relevant screenshots or files; do not include credentials.
 

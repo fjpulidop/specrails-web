@@ -21,7 +21,7 @@ describe("localized guide registry entries", () => {
 
   it("keeps adjacent docs inside the guide order", () => {
     const { prev, next } = getAdjacentDocs("specs-specs-and-the-backlog");
-    expect(prev?.slug).toBe("missions-flow-mode");
+    expect(prev?.slug).toBe("missions-intent-mode");
     expect(next?.slug).toBe("specs-add-spec-quick-mode");
   });
 

@@ -14,4 +14,4 @@ Describe the problem, expected behavior, acceptance criteria, constraints and af
 
 Missions and Board use the same project backlog. A multi-repository spec stays one spec with an explicit repository selection; it is not copied into unrelated backlogs. A spec without that selection uses the primary repository.
 
-Use [Quick](/docs/specs-add-spec-quick-mode) for a clear request, [Explore](/docs/specs-add-spec-explore-mode) to work through uncertainty, or Raw to write the contract yourself. Review the draft before saving and launching it.
+Add Spec opens in **Intent**, the default mode: describe the problem, not the solution, and Specrails writes the [intent](/docs/missions-intent-mode) and the spec derived from it for you to review. Then use [Quick](/docs/specs-add-spec-quick-mode) for a clear, focused request, [Explore](/docs/specs-add-spec-explore-mode) to work through uncertainty, or Raw to write the contract yourself. Review the draft before saving and launching it.

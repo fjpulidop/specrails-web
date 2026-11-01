@@ -6,7 +6,9 @@ The Loop Builder turns a process into connected steps you can inspect and reuse.
 
 ## Edit a built-in loop
 
-Implement, Freestyle and Quick SDD are already in the loop library as ready-made loops. Open one and edit it in place like any other loop. Nothing changes until you publish; after that, your version is used everywhere that built-in loop runs. **Restore original** resets it to the version shipped with Desktop. Built-in loops cannot be deleted. The Flow → Spec loop is not in the library: it runs only from a [Flow](/docs/missions-flow-mode).
+Implement is the only built-in loop. Open it and edit it in place like any other loop. Nothing changes until you publish; after that, your version is used everywhere Implement runs. **Restore original** resets it to the version shipped with Desktop. Built-in loops cannot be deleted. The Flow → Spec loop is not in the library: it runs only from an [Intent session](/docs/missions-intent-mode).
+
+Freestyle and Quick SDD (OpenSpec) are ready-made loops in the **Templates** gallery. Add one on purpose when you want it; Specrails never puts them on a rail by itself. A rail that was still set to one of the old built-ins falls back to Implement, and a built-in you had edited is kept as an ordinary loop in your library.
 
 ## Give every step a contract
 

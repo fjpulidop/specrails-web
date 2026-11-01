@@ -14,4 +14,4 @@ Describe el problema, el comportamiento esperado, los criterios de aceptación, 
 
 Misiones y Board comparten el backlog del proyecto. Una spec con varios repositorios sigue siendo una spec con una selección explícita; no se copia a otros backlogs. Sin esa selección se utiliza el repositorio principal.
 
-Usa [Quick](/docs/specs-add-spec-quick-mode) para una petición clara, [Explore](/docs/specs-add-spec-explore-mode) para resolver dudas o Raw para escribir el contrato. Revisa el borrador antes de guardar y lanzar.
+Añadir spec se abre en **Intent**, el modo por defecto: describe el problema, no la solución, y Specrails escribe el [intent](/docs/missions-intent-mode) y la spec derivada de él para que la revises. Después usa [Quick](/docs/specs-add-spec-quick-mode) para una petición clara y concreta, [Explore](/docs/specs-add-spec-explore-mode) para resolver dudas o Raw para escribir el contrato. Revisa el borrador antes de guardar y lanzar.
