@@ -145,8 +145,8 @@ const ProductsSection = () => {
                       preload="metadata"
                       aria-label={products.boardVideoLabel}
                     >
-                      <source src={`/product/specrails-board-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
                       <source src={`/product/specrails-board-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
+                      <source src={`/product/specrails-board-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
                       <img
                         src={`/product/specrails-board-real.png?v=${RECORDING_ASSET_VERSION}`}
                         alt={products.boardVideoLabel}
@@ -187,8 +187,8 @@ const ProductsSection = () => {
                       preload="metadata"
                       aria-label={products.boardVideoLabel}
                     >
-                      <source src={`/product/specrails-board-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
                       <source src={`/product/specrails-board-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
+                      <source src={`/product/specrails-board-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
                       <img
                         src={`/product/specrails-board-real.png?v=${RECORDING_ASSET_VERSION}`}
                         alt={products.boardVideoLabel}

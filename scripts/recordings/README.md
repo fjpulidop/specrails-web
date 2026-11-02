@@ -25,3 +25,11 @@ version and bundle hash. Companion's unchanged semantic version alone is not
 sufficient to identify its source revision.
 
 The 2026-10-26 refresh uses Desktop `f1ed7f8f8da67f9adb3f5092cfa51589eb2414ad`. Factory graphs were exported with `engineV2`, `workflowDefinitions`, `deriveChange`, `workflowAgentSteps` and `workflowImplementationSteps` set to 1. The workflow catalog remains at nodeKindsVersion 7, matching the paired Core source. Mission-session fixtures now return an empty subagent snapshot before the generic conversation route. Code activity returns an empty, valid page for specs that have not run; capture rejects error alerts in spec details. No real provider or execution is invoked.
+
+## Playback and hosting
+
+For recordings mounted on demand with `preload="none"`, call `load()` before the first `play()` while `readyState` is zero. WebKit otherwise can remain idle without metadata; do not reload a video that already has metadata or its seek position will be lost.
+
+List H.264 MP4 before VP9 WebM in every player so Safari selects MP4 when supported. Keep WebM as the fallback. `public/.htaccess` explicitly maps `.mp4` to `video/mp4` and `.webm` to `video/webm`: a successful upload alone does not guarantee a playable HTTP response. On 2026-11-02 the deployed WebM files still returned `text/plain`; the MP4 files returned `video/mp4`.
+
+After deployment, check both MIME types on a fresh media URL (with the current `RECORDING_ASSET_VERSION` query), then test inline playback and the expanded viewer in Safari. The playback cache version was advanced without changing the recording binaries.

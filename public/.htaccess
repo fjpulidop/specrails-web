@@ -25,6 +25,9 @@
 
 # Flutter web ships .wasm (canvaskit/skwasm); some hosts default to octet-stream.
 <IfModule mod_mime.c>
+  # Explicit media types: Hostinger otherwise serves WebM as text/plain.
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
   AddType application/wasm .wasm
   AddType text/plain .md
 </IfModule>

@@ -1,6 +1,6 @@
 import type { LanguageId } from "@/lib/i18n";
 
-export const RECORDING_ASSET_VERSION = "20261026-f1ed7f8f";
+export const RECORDING_ASSET_VERSION = "20261102-playback-v2";
 
 export type RecordingId = "mission" | "board" | "loop";
 export const RECORDINGS: ReadonlyArray<{ id: RecordingId; file: string; duration: string }> = [

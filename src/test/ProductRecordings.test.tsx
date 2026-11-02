@@ -38,6 +38,11 @@ describe("ProductRecordings", () => {
     expect(mission).toHaveAttribute("preload", "none");
     expect(mission).toHaveAttribute("playsinline");
     expect(mission.controls).toBe(false);
+    expect(load.mock.contexts).toContain(mission);
+    expect(load.mock.invocationCallOrder[0]).toBeLessThan(play.mock.invocationCallOrder[0]);
+    // Browsers choose the first supported format. Prefer H.264 for Safari;
+    // retain WebM as a fallback for browsers without MP4 support.
+    expect(Array.from(mission.querySelectorAll("source"), source => source.type)).toEqual(["video/mp4", "video/webm"]);
     expect(within(card("Mission Control")).getByRole("button", { name: "Pause: Mission Control" })).toBeVisible();
     playCard("Specs and rails");
     expect(pause.mock.contexts).toContain(mission);
@@ -46,6 +51,19 @@ describe("ProductRecordings", () => {
     fireEvent.click(within(card("Specs and rails")).getByRole("button", { name: "Pause: Specs and rails" }));
     expect(within(card("Specs and rails")).getAllByRole("button", { name: "Play: Specs and rails" }).length).toBeGreaterThan(0);
     await act(async () => {});
+  });
+
+  it("resumes a loaded recording without discarding its position", () => {
+    render(<ProductRecordings />);
+    playCard("Mission Control");
+    const mission = card("Mission Control").querySelector("video")!;
+    Object.defineProperty(mission, "readyState", { value: 1 });
+    mission.currentTime = 5;
+    fireEvent.click(within(card("Mission Control")).getByRole("button", { name: "Pause: Mission Control" }));
+    load.mockClear();
+    playCard("Mission Control");
+    expect(load).not.toHaveBeenCalled();
+    expect(mission.currentTime).toBe(5);
   });
 
   it("stops inline playback when the page becomes hidden", () => {
