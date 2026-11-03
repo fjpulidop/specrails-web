@@ -39,8 +39,8 @@ const DemoSection = () => {
                 preload="metadata"
                 aria-label="Real Specrails Loop Builder with AI step inspector"
               >
-                <source src={`/product/specrails-loop-builder-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
                 <source src={`/product/specrails-loop-builder-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
+                <source src={`/product/specrails-loop-builder-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
                 <img
                   src={`/product/specrails-loop-builder-real.png?v=${RECORDING_ASSET_VERSION}`}
                   alt="Real Specrails Loop Builder with AI step inspector"

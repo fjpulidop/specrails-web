@@ -7,6 +7,13 @@ const RECORDINGS = ["specrails-mission-control-real", "specrails-board-real", "s
 
 const read = (file) => readFileSync(resolve("public", file));
 describe("Published product assets", () => {
+  it("declares video MIME types for the production Apache/LiteSpeed host", () => {
+    const config = read(".htaccess").toString();
+    const mimeBlock = config.match(/<IfModule mod_mime\.c>([\s\S]*?)<\/IfModule>/)?.[1];
+    assert.ok(mimeBlock, "production needs mod_mime configuration");
+    assert.match(mimeBlock, /^\s*AddType\s+video\/mp4\s+\.mp4\s*$/m);
+    assert.match(mimeBlock, /^\s*AddType\s+video\/webm\s+\.webm\s*$/m);
+  });
   it("ships the recorded release bundle, bootstrap and asset directory together", () => {
     const info = JSON.parse(read("companion-app/build-info.json").toString());
     const hash = createHash("sha256").update(read("companion-app/main.dart.js")).digest("hex").slice(0, 16);

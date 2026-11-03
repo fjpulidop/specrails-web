@@ -171,8 +171,8 @@ function MissionControlShot(): JSX.Element {
           preload="metadata"
           aria-label="Real Specrails Mission Control launcher inside Specrails Desktop"
         >
-          <source src={`/product/specrails-mission-control-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
           <source src={`/product/specrails-mission-control-real.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
+          <source src={`/product/specrails-mission-control-real.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
           <img
             src={`/product/specrails-mission-control-real.png?v=${RECORDING_ASSET_VERSION}`}
             alt="Real Specrails Mission Control launcher inside Specrails Desktop"

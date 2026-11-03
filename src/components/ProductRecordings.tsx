@@ -27,6 +27,10 @@ function RecordingVideo({ recording, videoRef, full = false, request, startTime 
     const video = videoRef.current;
     if (!video) return;
     if (request.id === recording.id) {
+      // With preload="none", WebKit can leave a dynamically mounted <source>
+      // idle even after play(). Explicitly start resource selection before the
+      // first play, but never reload a video that already has metadata.
+      if (video.readyState === 0) video.load();
       // The visitor requested playback. A browser can still require its native
       // control (e.g. media policy); retain the player and the explicit play button.
       void video.play().catch(() => { onPlaying(false); });
@@ -71,8 +75,8 @@ function RecordingVideo({ recording, videoRef, full = false, request, startTime 
         }
       }}
     >
-      <source src={`/product/${recording.file}.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
       <source src={`/product/${recording.file}.mp4?v=${RECORDING_ASSET_VERSION}`} type="video/mp4" />
+      <source src={`/product/${recording.file}.webm?v=${RECORDING_ASSET_VERSION}`} type="video/webm" />
     </video>
   );
 }
