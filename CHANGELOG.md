@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.2](https://github.com/fjpulidop/specrails-web/compare/v1.21.1...v1.21.2) (2026-11-03)
+
+
+### Bug Fixes
+
+* **web:** start Safari recording playback reliably ([#236](https://github.com/fjpulidop/specrails-web/issues/236)) ([9ef6a64](https://github.com/fjpulidop/specrails-web/commit/9ef6a640d177f564bbe523e9ff913a98f541ff85))
+
 ## [1.21.1](https://github.com/fjpulidop/specrails-web/compare/v1.21.0...v1.21.1) (2026-10-26)
 
 
