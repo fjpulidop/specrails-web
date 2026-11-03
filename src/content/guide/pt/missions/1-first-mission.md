@@ -8,7 +8,7 @@ Escolha o projeto e abra uma missão. Descreva o resultado, as restrições e um
 
 Adicione ficheiros com `@` e uma spec com `#`. O seletor dá prioridade às specs e mantém a referência no ponto onde a inseriu. Verifique o repositório: caminhos iguais podem identificar ficheiros diferentes.
 
-Peça uma exploração se a solução ainda não estiver clara. Reveja o rascunho e os critérios antes de iniciar Implement, SDD Quick, Freestyle ou um loop personalizado. Ler outro repositório não o inclui automaticamente no âmbito de implementação.
+Peça uma exploração se a solução ainda não estiver clara; o agente também pode entrevistá-lo e mostrar um [Intent](/docs/missions-intent-mode). Reveja o rascunho e os critérios antes de iniciar Implement ou um loop que tenha adicionado. Ler outro repositório não o inclui automaticamente no âmbito de implementação.
 
 ## Acompanhe o trabalho
 

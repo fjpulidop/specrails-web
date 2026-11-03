@@ -396,103 +396,119 @@
       }
     },
     {
-      "key": "missions/6-flow-mode.md",
-      "slug": "missions-flow-mode",
-      "sourceSlug": "flow-mode",
+      "key": "missions/6-intent-mode.md",
+      "slug": "missions-intent-mode",
+      "sourceSlug": "intent-mode",
       "category": "missions",
       "translations": {
         "en": {
-          "title": "Flow: build first, spec later",
-          "description": "New. Flow lets you build working code with an agent before you know exactly what you want. You talk to the agent in the mission conversation, it writes and runs real code in an isolated worktree, and no spec is needed up front. When the result is right you say This is it, and a rail derives the spec and delivers the work as usual.",
+          "title": "Intent: say the problem, not the solution",
+          "description": "Intent is how work starts in Specrails. Instead of writing a solution, you write down the intent: the problem, the outcome you want, how you will know it worked, who and what it affects, the limits and what nobody knows yet. Specrails derives the spec from it, and you review the spec instead of writing it. (Intent is the new name of what used to be called Flow, and it keeps everything Flow could do.)",
           "headings": [
-            "Flow to discover, Implement to delegate",
-            "Start a Flow from the mission",
+            "The intent",
+            "Where an intent comes from",
+            "Explore or Delegate",
+            "Start an Intent session",
             "Stay in control while you build",
-            "Say \"This is it\"",
+            "Hand off",
             "Jira only at delivery",
             "Requirements"
           ]
         },
         "es": {
-          "title": "Flow: construir primero, spec después",
-          "description": "Nuevo. Flow te permite construir código que funciona junto a un agente antes de saber exactamente qué quieres. Hablas con el agente en la conversación de la misión, él escribe y ejecuta código real en un worktree aislado y no hace falta ninguna spec de entrada. Cuando el resultado es el bueno dices Esto es, y un rail deriva la spec y entrega el trabajo como siempre.",
+          "title": "Intent: di el problema, no la solución",
+          "description": "Intent es la forma de empezar un trabajo en Specrails. En lugar de escribir una solución, escribes el intent: el problema, el resultado que buscas, cómo sabrás que funcionó, a quién y a qué afecta, los límites y lo que nadie sabe todavía. Specrails deriva la spec a partir de él y tú revisas la spec en lugar de escribirla. (Intent es el nuevo nombre de lo que antes se llamaba Flow, y conserva todo lo que Flow hacía.)",
           "headings": [
-            "Flow para descubrir, Implement para delegar",
-            "Empezar un Flow desde la misión",
+            "El intent",
+            "De dónde sale un intent",
+            "Explorar o Delegar",
+            "Inicia una sesión Intent",
             "Mantén el control mientras construyes",
-            "Di «Esto es»",
+            "Pasar a un rail",
             "Jira solo en la entrega",
             "Requisitos"
           ]
         },
         "fr": {
-          "title": "Flow : construire d’abord, la spec ensuite",
-          "description": "Nouveau. Flow vous permet de construire du code qui fonctionne avec un agent avant de savoir exactement ce que vous voulez. Vous parlez à l’agent dans la conversation de la mission, il écrit et exécute du vrai code dans un worktree isolé, et aucune spec n’est nécessaire au départ. Quand le résultat est le bon, vous dites C’est ça, et un rail dérive la spec et livre le travail comme d’habitude.",
+          "title": "Intent : dites le problème, pas la solution",
+          "description": "Intent est la façon de démarrer un travail dans Specrails. Au lieu d’écrire une solution, vous écrivez l’intent : le problème, le résultat recherché, comment vous saurez que ça a marché, qui et quoi est concerné, les limites et ce que personne ne sait encore. Specrails en dérive la spec, et vous relisez la spec au lieu de l’écrire. (Intent est le nouveau nom de ce qui s’appelait Flow, et il conserve tout ce que Flow savait faire.)",
           "headings": [
-            "Flow pour découvrir, Implement pour déléguer",
-            "Démarrer un Flow depuis la mission",
+            "L’intent",
+            "D’où vient un intent",
+            "Explorer ou Déléguer",
+            "Démarrer une session Intent",
             "Gardez le contrôle pendant la construction",
-            "Dites « C’est ça »",
+            "Remettre à un rail",
             "Jira seulement à la livraison",
             "Prérequis"
           ]
         },
         "de": {
-          "title": "Flow: erst bauen, dann die Spec",
-          "description": "Neu. Mit Flow bauen Sie gemeinsam mit einem Agenten funktionierenden Code, bevor Sie genau wissen, was Sie wollen. Sie sprechen in der Missionsunterhaltung mit dem Agenten, er schreibt und startet echten Code in einem isolierten Worktree, und vorab ist keine Spec nötig. Passt das Ergebnis, sagen Sie Das ist es, und eine Rail leitet die Spec ab und liefert die Arbeit wie gewohnt aus.",
+          "title": "Intent: Sagen Sie das Problem, nicht die Lösung",
+          "description": "Intent ist der Weg, in Specrails eine Arbeit zu beginnen. Statt eine Lösung zu schreiben, halten Sie den Intent fest: das Problem, das gewünschte Ergebnis, woran Sie erkennen, dass es funktioniert hat, wen und was es betrifft, die Grenzen und was noch niemand weiß. Specrails leitet daraus die Spec ab, und Sie prüfen die Spec, statt sie zu schreiben. (Intent ist der neue Name für das, was früher Flow hieß, und kann alles, was Flow konnte.)",
           "headings": [
-            "Flow zum Entdecken, Implement zum Delegieren",
-            "Einen Flow aus der Mission starten",
+            "Der Intent",
+            "Woher ein Intent kommt",
+            "Erkunden oder Delegieren",
+            "Eine Intent-Sitzung starten",
             "Behalten Sie beim Bauen die Kontrolle",
-            "Sagen Sie „Das ist es“",
+            "Übergeben",
             "Jira erst bei der Auslieferung",
             "Voraussetzungen"
           ]
         },
         "pt": {
-          "title": "Flow: construir primeiro, spec depois",
-          "description": "Novo. O Flow permite construir código funcional com um agente antes de saber exatamente o que quer. Fala com o agente na conversa da missão, ele escreve e executa código real num worktree isolado e não é preciso nenhuma spec à partida. Quando o resultado é o certo, diz É isto, e um rail deriva a spec e entrega o trabalho como de costume.",
+          "title": "Intent: diga o problema, não a solução",
+          "description": "Intent é a forma de começar um trabalho no Specrails. Em vez de escrever uma solução, escreve o intent: o problema, o resultado que procura, como saberá que funcionou, quem e o que é afetado, os limites e o que ninguém sabe ainda. O Specrails deriva a spec a partir dele, e você revê a spec em vez de a escrever. (Intent é o novo nome do que antes se chamava Flow, e mantém tudo o que o Flow fazia.)",
           "headings": [
-            "Flow para descobrir, Implement para delegar",
-            "Iniciar um Flow a partir da missão",
+            "O intent",
+            "De onde vem um intent",
+            "Explorar ou Delegar",
+            "Iniciar uma sessão Intent",
             "Mantenha o controlo enquanto constrói",
-            "Diga «É isto»",
+            "Passar a um rail",
             "Jira só na entrega",
             "Requisitos"
           ]
         },
         "it": {
-          "title": "Flow: prima costruisci, poi la spec",
-          "description": "Novità. Flow ti permette di costruire codice funzionante con un agente prima di sapere esattamente cosa vuoi. Parli con l’agente nella conversazione della missione, lui scrive ed esegue codice reale in un worktree isolato e non serve nessuna spec in partenza. Quando il risultato è quello giusto dici Ecco fatto, e un rail deriva la spec e consegna il lavoro come sempre.",
+          "title": "Intent: di’ il problema, non la soluzione",
+          "description": "Intent è il modo in cui un lavoro comincia in Specrails. Invece di scrivere una soluzione, scrivi l’intent: il problema, il risultato che cerchi, come saprai che ha funzionato, chi e cosa riguarda, i limiti e ciò che nessuno sa ancora. Specrails ne deriva la spec e tu rivedi la spec invece di scriverla. (Intent è il nuovo nome di ciò che prima si chiamava Flow, e mantiene tutto ciò che Flow faceva.)",
           "headings": [
-            "Flow per scoprire, Implement per delegare",
-            "Avviare un Flow dalla missione",
+            "L’intent",
+            "Da dove arriva un intent",
+            "Esplora o Delega",
+            "Avviare una sessione Intent",
             "Mantieni il controllo mentre costruisci",
-            "Di’ «Ecco fatto»",
+            "Affidare a un rail",
             "Jira solo alla consegna",
             "Requisiti"
           ]
         },
         "zh": {
-          "title": "Flow：先构建，后写 spec",
-          "description": "新功能。 在还不确定自己到底想要什么时，Flow 让你和智能体一起构建可运行的代码。你在任务对话中与智能体交流，它在隔离的 worktree 中编写并运行真实代码，事先不需要任何 spec。结果满意时点击 就是这样，轨道会推导出 spec，并像往常一样交付这项工作。",
+          "title": "Intent：说清问题，而不是方案",
+          "description": "Intent 是在 Specrails 中开始一项工作的方式。你不必先写方案，而是写下 Intent：问题是什么、想要什么结果、如何判断它奏效了、影响谁和什么、有哪些限制，以及目前还没有人知道的事。Specrails 会据此推导出 spec，你审阅 spec，而不是自己去写。（Intent 是原来 Flow 的新名称，并保留 Flow 的全部能力。）",
           "headings": [
-            "Flow 用于探索，Implement 用于委派",
-            "从任务中开始 Flow",
+            "Intent 的构成",
+            "Intent 从哪里来",
+            "探索或委派",
+            "开始 Intent 会话",
             "构建过程中始终由你掌控",
-            "点击\"就是这样\"",
+            "交给 Rail",
             "Jira 只在交付时介入",
             "使用要求"
           ]
         },
         "ja": {
-          "title": "Flow：まず作り、spec はあとで",
-          "description": "新機能。 Flow を使うと、何を作りたいかまだはっきりしていない段階から、エージェントと一緒に動くコードを作れます。ミッションの会話でエージェントと話すと、エージェントが分離された worktree で実際のコードを書いて実行します。最初に spec を用意する必要はありません。結果に納得したら これで決まり と伝えると、レールが spec を導出し、いつもどおりに作業をデリバリーします。",
+          "title": "Intent: 解決策ではなく、課題を伝える",
+          "description": "Intent は、Specrails で作業を始める方法です。解決策を書く代わりに、Intent を書きます。課題は何か、どんな結果を目指すか、うまくいったとどう確かめるか、誰と何に影響するか、制約は何か、まだ誰も知らないことは何か。Specrails はそこから spec を導き、あなたは spec を書く代わりにレビューします。（Intent はこれまで Flow と呼ばれていたものの新しい名前で、Flow の機能はすべて引き継いでいます。）",
           "headings": [
-            "見つけるなら Flow、任せるなら Implement",
-            "ミッションから Flow を始める",
+            "Intent の中身",
+            "Intent の出どころ",
+            "探索するか、任せるか",
+            "Intent セッションを始める",
             "作っている間も主導権はあなたに",
-            "「これで決まり」と伝える",
+            "引き渡す",
             "Jira はデリバリー時だけ",
             "必要条件"
           ]
@@ -531,7 +547,7 @@
       "translations": {
         "en": {
           "title": "Create a spec with Quick or Raw",
-          "description": "Quick turns a focused request into a draft you can inspect. Raw lets you enter the specification directly without an authoring model call.",
+          "description": "Intent is the first and default mode of Add Spec: describe the problem and press Generate intent and spec, and one pass writes the intent and the spec derived from it. Quick, Explore and Raw remain for when you prefer another route.",
           "headings": [
             "Start with an observable outcome",
             "Separate creation from execution"
@@ -539,7 +555,7 @@
         },
         "es": {
           "title": "Crea una spec con Quick o Raw",
-          "description": "Quick convierte una petición concreta en un borrador revisable. Raw permite escribir la especificación directamente sin llamar a un modelo para redactarla.",
+          "description": "Intent es el primer modo de Añadir spec y el que se abre por defecto: describe el problema y pulsa Generar intent y spec, y una sola pasada escribe el intent y la spec derivada de él. Quick, Explore y Raw siguen ahí para cuando prefieras otro camino.",
           "headings": [
             "Empieza por un resultado comprobable",
             "Separa crear de ejecutar"

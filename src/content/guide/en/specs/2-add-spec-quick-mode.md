@@ -2,6 +2,8 @@
 
 # Create a spec with Quick or Raw
 
+**Intent** is the first and default mode of Add Spec: describe the problem and press **Generate intent and spec**, and one pass writes the [intent](/docs/missions-intent-mode) and the spec derived from it. Quick, Explore and Raw remain for when you prefer another route.
+
 Quick turns a focused request into a draft you can inspect. Raw lets you enter the specification directly without an authoring model call.
 
 ## Start with an observable outcome

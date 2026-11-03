@@ -6,7 +6,7 @@ Empieza por el resultado que buscas y deja que la misión reúna el contexto del
 
 ## Da al agente un punto de partida útil
 
-Por ejemplo: «Añade recuperación de contraseña al producto. Revisa API y frontend, propone los criterios de aceptación y espera a tener la spec antes de implementar». Incluye restricciones, comportamiento existente y cómo valorarás el resultado.
+Por ejemplo: «Añade recuperación de contraseña al producto. Revisa API y frontend, propone los criterios de aceptación y espera a tener la spec antes de implementar». Incluye restricciones, comportamiento existente y cómo valorarás el resultado. Si la petición describe un problema y no una solución, el agente puede entrevistarte primero y mostrar una tarjeta de [Intent](/docs/missions-intent-mode) para que la confirmes.
 
 Selecciona el proyecto correcto. Usa **#** para referenciar una spec y **@** para aportar contexto, como archivos. Las sugerencias priorizan las specs y las referencias mantienen su posición en el texto. Comprueba el repositorio cuando se repitan nombres de archivo. Adjunta capturas o archivos relevantes; no incluyas credenciales.
 
