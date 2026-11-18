@@ -4,15 +4,15 @@ Thank you for your interest in contributing to specrails-web — the public webs
 
 ## Prerequisites
 
-- **Node.js** >= 18 (or **Bun** >= 1.0)
-- **npm** >= 9 (or **bun**)
+- **Node.js** 22.22.3 (the version CI uses)
+- **npm** (the repository's lockfile is `package-lock.json`)
 
 ## Local Setup
 
 ```bash
 git clone https://github.com/fjpulidop/specrails-web.git
 cd specrails-web
-npm install
+npm ci
 ```
 
 ## Development Server
@@ -30,7 +30,8 @@ specrails-web/
 ├── src/           # Application source (React + TypeScript)
 │   └── content/   # Product guide (guide/) and agent runbooks (for-agents/)
 ├── public/        # Static assets
-├── scripts/       # Guide and agent-doc generators
+├── scripts/       # Guide and agent-doc generators, audit gate, recordings
+├── docs/          # Contributor notes (release verification)
 └── openspec/      # OpenSpec specs for this project
 ```
 
@@ -56,8 +57,9 @@ The output goes to `dist/`. Preview the production build with `npm run preview`.
 
 1. Fork the repository and create a branch from `main`.
 2. Make your changes. Keep PRs focused — one concern per PR.
-3. Run `npm test` to verify nothing broke.
-4. Build locally to catch any TypeScript or bundling errors.
+3. Run `npm run lint`, `npm run check:types` and `npm test` to verify nothing broke.
+4. If you changed the guide, run `npm run docs:sync` and commit the generated files with your articles. See [src/content/guide/README.md](src/content/guide/README.md).
+5. Build locally (`npm run build`) to catch bundling errors; it also checks that the generated guide files are current.
 
 ## Commit Convention
 

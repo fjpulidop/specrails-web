@@ -30,7 +30,8 @@ Give each role only the access it needs. Separate read-only investigation from c
 
 When the selected Core exposes invocation limits, prompt, role and decider
 pieces offer `timeoutMs` and `idleTimeoutMs`. Set a limit to `0` to disable that
-step timer, or remove the field to inherit the default. Whole-workflow budgets
+step timer, or remove the field to inherit the default: CLI agents then run with
+no total time limit and stop only after 15 minutes without output. Whole-workflow budgets
 and cancellation still apply. A verification step that asks a blocking question
 waits for your answer before accepting a success result.
 

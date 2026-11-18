@@ -19,6 +19,6 @@ This file is loaded into context at the start of every session. Keep it under 20
 - [2026-06-03-data-theme-over-body-class](./explanations/2026-06-03-data-theme-over-body-class.md) — why `data-theme` attribute was chosen over `body.light` class
 - [2026-06-03-canvas-palette-runtime-tokens](./explanations/2026-06-03-canvas-palette-runtime-tokens.md) — why canvas reads CSS tokens at runtime rather than accepting props
 - [2026-06-03-computepositions-exported](./explanations/2026-06-03-computepositions-exported.md) — why `computePositions` is the only exported function from HeroMesh
-- [2026-06-18-architect-spec-first-ia-demotions](../../.claude/agent-memory/explanations/2026-06-18-architect-spec-first-ia-demotions.md) — why 6 sections demoted from Index.tsx
-- [2026-06-18-architect-pipeline-section-dual-role](../../.claude/agent-memory/explanations/2026-06-18-architect-pipeline-section-dual-role.md) — why spec explainer lives inside PipelineSection
-- [2026-06-18-architect-products-3-col-layout](../../.claude/agent-memory/explanations/2026-06-18-architect-products-3-col-layout.md) — why ProductsSection uses 5-column grid for 3 products
+- [2026-06-18-architect-spec-first-ia-demotions](../explanations/2026-06-18-architect-spec-first-ia-demotions.md) — why 6 sections demoted from Index.tsx
+- [2026-06-18-architect-pipeline-section-dual-role](../explanations/2026-06-18-architect-pipeline-section-dual-role.md) — why spec explainer lives inside PipelineSection
+- [2026-06-18-architect-products-3-col-layout](../explanations/2026-06-18-architect-products-3-col-layout.md) — why ProductsSection uses 5-column grid for 3 products

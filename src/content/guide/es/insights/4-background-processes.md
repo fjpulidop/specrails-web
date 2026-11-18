@@ -10,6 +10,10 @@ Busca en el historial y comprueba comando, repositorio, directorio y hora de ini
 
 El historial sobrevive a recargas y reconexiones cuando funciona la persistencia. Tiene límites de edad, cantidad y tamaño; no es una grabación ilimitada. Deben indicarse el truncamiento y los errores de guardado.
 
+## Mira qué está ejecutando Specrails
+
+**Recursos**, en la barra de estado, muestra la CPU, la memoria y el número de procesos de todo lo que Specrails ha lanzado en la aplicación. Ábrelo para verlos agrupados por origen: misiones y chats, rails, loops y jobs, procesos en segundo plano, terminales, CLI de agentes, MCP y runners, Git y el propio servidor de Specrails. Cada proceso se cuenta una vez. Las cifras se actualizan mientras el panel está abierto; si el sistema no puede informarlas, el panel lo indica.
+
 ## Detén con confirmación
 
 Detener utiliza la identidad registrada, no sólo un PID que podría haberse reutilizado. Durante la confirmación se mantiene el estado deteniendo. Un error puede reintentarse sin fingir que el servicio desapareció.

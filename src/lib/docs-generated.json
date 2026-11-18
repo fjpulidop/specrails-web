@@ -262,7 +262,9 @@
           "description": "You can prepare the next message while an agent is working, or explicitly steer the active invocation. Sending and stopping are separate actions.",
           "headings": [
             "Queue or steer",
-            "Read the delivery receipts"
+            "Read the delivery receipts",
+            "Ask about a selection",
+            "Watch the context window"
           ]
         },
         "es": {
@@ -270,7 +272,9 @@
           "description": "Puedes preparar el siguiente mensaje mientras trabaja el agente o guiar expresamente la invocación activa. Enviar y detener son acciones separadas.",
           "headings": [
             "Encola o guía",
-            "Interpreta los recibos"
+            "Interpreta los recibos",
+            "Pregunta sobre una selección",
+            "Vigila la ventana de contexto"
           ]
         }
       }
@@ -645,6 +649,7 @@
           "title": "Inspect a run before retrying",
           "description": "The run detail brings together step progress, logs, verification and delivery context. Start here when an implementation stops or a result needs explanation.",
           "headings": [
+            "Move through the run detail",
             "Find the actual boundary",
             "Continue the right work",
             "Read the implementation result",
@@ -657,6 +662,7 @@
           "title": "Inspecciona la ejecución antes de reintentar",
           "description": "El detalle de ejecución reúne pasos, logs, verificación y entrega. Empieza aquí cuando una implementación se detiene o necesitas entender el resultado.",
           "headings": [
+            "Recorre el detalle de la ejecución",
             "Localiza el fallo real",
             "Continúa el trabajo correcto",
             "Interpretar el resultado de Implement",
@@ -825,6 +831,7 @@
           "title": "Read usage and cost honestly",
           "description": "Usage helps you understand a workflow, but providers expose different evidence. Distinguish reported values, estimates and unavailable data.",
           "headings": [
+            "See where the money went",
             "Compare like with like",
             "Investigate a limit"
           ]
@@ -833,6 +840,7 @@
           "title": "Interpreta el consumo y los costes",
           "description": "El consumo ayuda a entender el flujo, pero cada proveedor ofrece evidencias distintas. Distingue valores reportados, estimaciones y datos no disponibles.",
           "headings": [
+            "Mira en qué se ha gastado",
             "Compara lo comparable",
             "Investiga un límite"
           ]
@@ -898,6 +906,7 @@
           "description": "Open Processes in a saved mission to inspect active services and their retained history. Finished processes remain discoverable after their temporary composer chips disappear.",
           "headings": [
             "Find the relevant process",
+            "See what Specrails is running",
             "Stop with confirmation"
           ]
         },
@@ -906,6 +915,7 @@
           "description": "Abre Procesos en una misión guardada para inspeccionar servicios activos y su historial. Los terminados siguen accesibles cuando desaparecen sus chips temporales del compositor.",
           "headings": [
             "Localiza el proceso",
+            "Mira qué está ejecutando Specrails",
             "Detén con confirmación"
           ]
         }
@@ -1022,6 +1032,7 @@
           "description": "Specrails MCP exposes structured tools for project context, specs, rails, loops, deliveries and observation. The mission agent uses them to operate the application with recorded state.",
           "headings": [
             "For agents only: connect your client",
+            "What a connected client can do",
             "Keep references scoped",
             "Inspect the tool result"
           ]
@@ -1031,6 +1042,7 @@
           "description": "Specrails MCP ofrece herramientas estructuradas de contexto, specs, rails, loops, entregas y observación. El agente de la misión las utiliza para operar con estados registrados.",
           "headings": [
             "Exclusivamente para agentes: conecta tu cliente",
+            "Qué puede hacer un cliente conectado",
             "Mantén el alcance de las referencias",
             "Lee el resultado"
           ]

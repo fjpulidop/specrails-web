@@ -4,6 +4,14 @@
 
 El detalle de ejecución reúne pasos, logs, verificación y entrega. Empieza aquí cuando una implementación se detiene o necesitas entender el resultado.
 
+## Recorre el detalle de la ejecución
+
+El detalle de la ejecución tiene una fila de secciones: **Motivos del fallo**, **Grafo de ejecución** y **Detalle del registro**. Una ejecución fallida o cancelada se abre en Motivos del fallo; las demás, en el registro. En la aplicación de escritorio, el detalle del job se abre en su propia ventana, que cierras con los controles de la ventana o con Escape.
+
+**Motivos del fallo** indica el paso que falló, según el propio registro del runtime, con el intento, la iteración y la hora. **Analizar con IA** pide al proveedor y modelo del propio job que lean el registro y expliquen la causa y qué hacer. El análisis cita las líneas del registro en las que se basa; compruébalas. Te avisa cuando el registro ha cambiado desde el análisis y puedes volver a analizar. El análisis es una llamada de IA y cuenta como gasto de Soporte en [Analíticas](/docs/insights-analytics-and-cost-tracking).
+
+El **Grafo de ejecución** permanece desplegado, sigue el paso en curso o fallido y resalta el camino que tomó la ejecución. **Detalle del registro** contiene la secuencia de pasos y los logs, y se abre en el paso fallido. Los detalles solo muestran datos registrados.
+
 ## Localiza el fallo real
 
 Lee el paso y su error antes de reiniciar. Distingue requisitos ausentes, cuota o autenticación, fallos de comandos, criterios incumplidos y conflictos de entrega. El último párrafo del modelo no sustituye al estado registrado.

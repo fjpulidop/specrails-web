@@ -6,8 +6,8 @@ paths:
 # Frontend Conventions
 
 ## File Naming
-- PascalCase for component files (`HeroSection.tsx`, `AgentsDropdown.tsx`)
-- camelCase for hooks (`useScrollAnimation.ts`, `use-mobile.tsx`)
+- PascalCase for component files (`HeroSection.tsx`, `DocsDropdown.tsx`)
+- camelCase for hooks (`useScrollAnimation.ts`; shadcn's `use-mobile.tsx` and `use-toast.ts` keep their names)
 - camelCase for utilities (`docs-registry.ts`)
 - lowercase for shadcn/ui components (`button.tsx`, `card.tsx`)
 
@@ -17,7 +17,7 @@ paths:
 
 ## Styling
 - Tailwind utility classes only — no inline styles, no CSS modules
-- Dracula theme CSS custom properties for all colors
+- Theme CSS custom properties (the `--dracula-*` tokens in `src/index.css`, defined for light and dark) for all colors
 - Use `cn()` from `@/lib/utils` for conditional class merging
 - Never use arbitrary Tailwind values for colors — use theme tokens
 
@@ -35,7 +35,7 @@ paths:
 - Mock IntersectionObserver, canvas, matchMedia for jsdom
 
 ## React Patterns
-- React Router v6 for routing (`useNavigate`, `Link`, `Routes`)
+- React Router 7 in declarative mode for routing (`Routes`, `Route`, `Link`, `Navigate`)
 - @tanstack/react-query for async state
 - Custom hooks in `src/hooks/` for reusable logic
 - Prefer composition over prop drilling

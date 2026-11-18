@@ -6,58 +6,57 @@ Website and product guide for [Specrails Desktop](https://github.com/fjpulidop/s
 
 | Layer | Tech |
 |-------|------|
-| Framework | React 18 + TypeScript (strict mode) |
-| Build | Vite + SWC |
-| Styling | Tailwind CSS with Dracula color theme |
+| Framework | React 18 + TypeScript |
+| Build | Vite 7 + SWC |
+| Styling | Tailwind CSS, light and dark themes on the `--dracula-*` tokens in `src/index.css` |
 | Components | shadcn/ui + Radix UI |
 | Icons | Lucide React |
-| Routing | React Router DOM v6 |
+| Routing | React Router 7 (declarative) |
 | State | @tanstack/react-query |
+| Guide | Markdown in `src/content/guide/<language>/`, rendered with react-markdown |
 | Testing | Vitest + @testing-library/react + Playwright |
 
 ## Repo layout
 
 ```
 src/
-├── components/        # Page sections (HeroSection, PipelineSection, etc.)
-│   └── ui/            # shadcn/ui primitives (button, card, etc.)
-├── hooks/             # Custom React hooks (useScrollAnimation, use-mobile)
-├── lib/               # Utilities (cn helper)
-├── pages/             # Route pages (Index, NotFound)
-└── test/              # Test files
-public/                # Static assets (favicon, OG images)
-index.html             # Entry point
+├── App.tsx            # Routes: /, /download, /companion, /privacy, /docs/:slug and redirects
+├── pages/             # Index, DownloadPage, CompanionPage, PrivacyPage, DocsLayout, DocsIndex, DocPage, NotFound
+├── components/        # Landing sections, Navbar, FooterSection, docs UI
+│   └── ui/            # shadcn/ui primitives
+├── content/
+│   ├── guide/         # Product guide articles per language (see its README.md)
+│   └── for-agents/    # Agent runbook copied from Desktop's docs/agents
+├── hooks/             # useReleaseManifest, useSeo, useTheme, useScrollAnimation, ...
+├── lib/               # Per-language copy, i18n, docs registry and generated guide index
+└── test/              # Vitest suites
+scripts/               # Guide/agent-doc generators, audit gate, Companion build, recordings
+public/                # Static assets, product recordings, Companion web app, llms.txt, for-agents/
+docs/                  # Contributor notes (release verification)
+openspec/              # Specs and change history
 ```
 
 ## Dev commands
 
 ```bash
-npm run dev          # Start dev server (localhost:8080)
-npm run build        # Production build (vite build)
-npm run lint         # ESLint
-npm test             # Vitest run
-npx tsc --noEmit     # Type check
+npm run dev            # Dev server (localhost:8080)
+npm run build          # Production build (prebuild runs docs:check and test:product-assets)
+npm run lint           # ESLint
+npm run check:types    # Type check
+npm test               # Vitest run
+npm run test:coverage  # Vitest with 80% thresholds (as in CI)
+npm run docs:sync      # Regenerate guide index, loaders, sitemap and agent files
+npm run docs:check     # Verify generated guide and agent files are current
+npm run test:docs-sync # Generator and audit-gate tests
 ```
 
 ## Environment
 
-- Node.js >= 18, npm
-- No backend — static SPA deployed to static hosting
-- No CI/CD pipeline configured yet
+- Node.js 22.22.3 (the CI version), npm with `package-lock.json`
+- No backend: a static SPA uploaded by FTP by the Release workflow
+- CI (`.github/workflows/ci.yml`) runs the audit gate, types, generator tests, coverage and build; DCO sign-off is checked on PRs. See `docs/release-verification.md`
 - GitHub Issues used for backlog (label: `product-driven-backlog`)
 - Open-source project (public repo)
-
-## Architecture
-
-```
-React 18 + TypeScript SPA (Vite + SWC)
-├── src/components/     → Page sections + shadcn/ui primitives
-├── src/hooks/          → Custom React hooks
-├── src/lib/            → Utilities
-├── src/pages/          → Route pages
-├── public/             → Static assets
-└── index.html          → Entry point
-```
 
 ## Conventions
 
@@ -78,11 +77,11 @@ Layer-specific conventions are in `.claude/rules/` (loaded conditionally per lay
 
 ## Warnings
 
-- Dracula color theme is mandatory — all new UI must use CSS custom properties
+- Colors come from the theme's CSS custom properties, in both light and dark themes
 - shadcn/ui components must be used where applicable — no custom reimplementations
 - No backend — this is a static SPA, do not add server-side code
-- Test coverage is minimal — include basic Vitest tests for new features
-- No CI/CD yet — verify manually with lint, type check, build, and test commands
+- CI enforces 80% coverage — include Vitest tests for new behavior
+- Guide changes must be followed by `npm run docs:sync`; commit the generated files with the articles
 
 ## OpenSpec
 
