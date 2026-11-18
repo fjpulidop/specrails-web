@@ -10,6 +10,12 @@ When a person asks an agent to connect, read the [dedicated MCP connection runbo
 
 Keep Specrails running and open **Settings ▸ MCP ▸ Copy client config**. Some versions return only `specrails-mcp`, which may not be on PATH; the runbook explains how to locate the actual executable and script. The bridge reads the token locally, so no token belongs in client configuration. Registration alone is not proof of connection: complete `initialize`, `tools/list`, and a read-only `specrails_projects` call with `{"action":"list"}`.
 
+## What a connected client can do
+
+An external client such as Claude Code or Codex gets the same project-aware tools. `specrails_status` gives a one-call glance at the whole app: what is running, what needs you, recent failures, today's spend and resource use. `specrails_inbox` reads and answers the Needs you inbox, `specrails_missions` lists, reads and messages missions, `specrails_board` and `specrails_spend` summarize a project's board and spend, and `specrails_jobs` can diagnose a failed job and return the end of its log.
+
+Every tool answers in one shape: a short summary an assistant can relay, the data, the identifiers involved and suggested next calls. Errors carry stable codes such as `not_found`, `invalid_input` or `confirmation_required`. A destructive call from an external client runs only when it is resent with `confirm: true` after you agreed; `dryRun: true` describes what would happen without running it. Every call still needs its permission tier (Read, Write, AI spawn or Destructive) to be enabled in **Settings ▸ MCP**.
+
 ## Keep references scoped
 
 A logical project owns its backlog. Repository identifiers select individual code roots, while a spec or coordinated execution can name several repositories. The same file path in two repositories is not the same reference.

@@ -22,7 +22,10 @@ From this repository, with Desktop installed alongside it:
 `public/product/recordings.json` records the theme, Desktop revision and sample-data
 provenance. `public/companion-app/build-info.json` records the upstream commit,
 version and bundle hash. Companion's unchanged semantic version alone is not
-sufficient to identify its source revision.
+sufficient to identify its source revision. Media consumers use versioned URLs,
+and the Companion build uses versioned bootstrap, entrypoint and asset roots.
+`npm run test:product-assets` (also run before every production build) checks
+that clips, posters and the Companion build ship coherently.
 
 The 2026-10-26 refresh uses Desktop `f1ed7f8f8da67f9adb3f5092cfa51589eb2414ad`. Factory graphs were exported with `engineV2`, `workflowDefinitions`, `deriveChange`, `workflowAgentSteps` and `workflowImplementationSteps` set to 1. The workflow catalog remains at nodeKindsVersion 7, matching the paired Core source. Mission-session fixtures now return an empty subagent snapshot before the generic conversation route. Code activity returns an empty, valid page for specs that have not run; capture rejects error alerts in spec details. No real provider or execution is invoked.
 

@@ -26,15 +26,12 @@ belong only to release-please; validation and deployment have read-only reposito
 permissions. FTP credentials remain scoped to deployment steps. Standalone CI
 cancels obsolete runs, while release validation has a separate concurrency key.
 
-No release or deployment was triggered to validate these changes. Local checks
-and actionlint validate the reviewable implementation; the first authorized
-production run must still verify the live static documentation URLs described in
-README.md. The workflow definition follows GitHub's [reusable workflow contract](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows).
+After each deployment, check that the static agent documentation URLs described
+in README.md (`/llms.txt`, `/for-agents/index.html`, `/for-agents/mcp.md`) return
+their own text or HTML rather than the SPA fallback. The workflow definition
+follows GitHub's [reusable workflow contract](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows).
 
-The development toolchain uses Vite 7.3.6 and Vitest/coverage-v8 4.1.11. This
-keeps the existing Vite plugin peer contracts while resolving the published
-[Vitest mocker advisory](https://github.com/advisories/GHSA-82fw-gwwq-j7x9).
-Vitest 4's source mapping exposes branches omitted by the older report; the
-80% thresholds remain unchanged. Behavioral regressions cover invalid release
-metadata, shared-request cancellation, platform fallback, video visibility,
-autoplay rejection and reduced-motion behavior. No coverage exclusions were added.
+The dependency audit runs through `npm run audit:gate`: it fails on any high or
+critical advisory, in production or development dependencies, unless the advisory
+is listed with an expiry date in `.github/audit-allowlist.json`. Coverage keeps
+80% thresholds for statements, branches, functions and lines (`vitest.config.ts`).

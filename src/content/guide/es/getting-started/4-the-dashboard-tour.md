@@ -18,6 +18,6 @@ En la aplicación nativa, las [ventanas de misión separadas](/docs/missions-mis
 
 ## Usa el pie y organiza las conversaciones
 
-El pie muestra el uso local de las suscripciones de Claude y Codex. Pasa el ratón o enfócalo para consultar cada ventana, el tiempo hasta su reinicio y la última actualización correcta. El uso incluye actividad fuera de Specrails; un valor no disponible no es cero. El selector nativo Mantener despierto evita la suspensión por inactividad mientras está activo y vuelve a Off al reiniciar la app.
+El pie muestra el uso local de las suscripciones de Claude y Codex. Pasa el ratón o enfócalo para consultar cada ventana, el tiempo hasta su reinicio y la última actualización correcta. El uso incluye actividad fuera de Specrails; un valor no disponible no es cero. El selector nativo Mantener despierto evita la suspensión por inactividad mientras está activo y vuelve a Off al reiniciar la app. [Recursos](/docs/insights-background-processes) muestra la CPU, la memoria y los procesos de todo lo que Specrails ha lanzado.
 
-Usa Split View para comparar misiones distintas; una conversación ya visible no ofrece una división redundante. Los controles de las sidebars están en la barra de título nativa, y Docs, Analytics, Companion y Settings comparten la fila inferior.
+Usa Split View para comparar misiones distintas; una conversación ya visible no ofrece una división redundante. Los controles de las sidebars están en la barra de título nativa, y Docs, Analytics, Companion y Settings comparten la fila inferior. En la aplicación de escritorio, Settings se abre en su propia ventana.

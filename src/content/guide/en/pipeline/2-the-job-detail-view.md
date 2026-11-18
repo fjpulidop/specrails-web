@@ -4,6 +4,14 @@
 
 The run detail brings together step progress, logs, verification and delivery context. Start here when an implementation stops or a result needs explanation.
 
+## Move through the run detail
+
+The run detail has one row of sections: **Failure reasons**, **Execution graph** and **Log detail**. A failed or cancelled run opens on Failure reasons; other runs open on the log. In the desktop app, the job detail opens in its own window, which you close with the window controls or Escape.
+
+**Failure reasons** names the step that failed, from the runtime's own record, with the attempt, iteration and time. **Analyze with AI** asks the job's own provider and model to read the log and explain the cause and what to do next. The analysis quotes the log lines it relies on; check them. It tells you when the log has changed since it was written, and you can analyze again. The analysis is an AI call and counts as Support spend in [Analytics](/docs/insights-analytics-and-cost-tracking).
+
+The **Execution graph** stays expanded, follows the running or failed step and highlights the path the run took. **Log detail** holds the step trail and the logs and opens on the failed step. Details show only recorded data.
+
 ## Find the actual boundary
 
 Read the failed step and its error before restarting. Distinguish missing prerequisites, provider quota or authentication, command failures, unmet spec criteria and delivery conflicts. A model's final paragraph is not a substitute for the recorded outcome.

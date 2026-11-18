@@ -10,6 +10,12 @@ Cuando una persona pida al agente conectarse, consulta el [procedimiento de cone
 
 Mantén Specrails en ejecución y abre **Ajustes ▸ MCP ▸ Copiar configuración de cliente**. Algunas versiones devuelven solo `specrails-mcp`, que puede no estar en PATH; el procedimiento explica cómo localizar ejecutable y script. El puente lee el token localmente: no lo copies en la configuración. Registrar no demuestra conexión: completa `initialize`, `tools/list` y una llamada de lectura a `specrails_projects` con `{"action":"list"}`.
 
+## Qué puede hacer un cliente conectado
+
+Un cliente externo como Claude Code o Codex obtiene las mismas herramientas con contexto. `specrails_status` resume toda la aplicación en una llamada: qué se está ejecutando, qué necesita tu atención, los fallos recientes, el gasto de hoy y el uso de recursos. `specrails_inbox` lee y responde la bandeja de pendientes, `specrails_missions` lista, lee y envía mensajes a misiones, `specrails_board` y `specrails_spend` resumen el tablero y el gasto de un proyecto, y `specrails_jobs` puede diagnosticar un job fallido y devolver el final de su registro.
+
+Todas las herramientas responden con la misma forma: un resumen breve que el asistente puede transmitir, los datos, los identificadores implicados y las siguientes llamadas sugeridas. Los errores llevan códigos estables como `not_found`, `invalid_input` o `confirmation_required`. Una llamada destructiva desde un cliente externo solo se ejecuta si se reenvía con `confirm: true` después de que des tu conformidad; `dryRun: true` describe lo que ocurriría sin ejecutarlo. Cada llamada sigue necesitando que su nivel de permiso (Lectura, Escritura, Lanzar IA o Destructivo) esté activado en **Ajustes ▸ MCP**.
+
 ## Mantén el alcance de las referencias
 
 El proyecto lógico posee el backlog. Los identificadores de repositorio seleccionan carpetas de código; una spec o ejecución coordinada puede incluir varias. La misma ruta en dos repositorios no es la misma referencia.
